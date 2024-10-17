@@ -1,0 +1,5 @@
+##Tex documents
+*.aux
+*.log
+*.toc
+*.synctex.gz
