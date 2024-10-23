@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Glossario}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\center 
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\raggedright
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+Questo documento ha lo scopo di fornire una raccolta di termini specifici e delle loro definizioni. Il glossario è stato pensato per facilitare la comprensione dei concetti chiave utilizzati nei vari documenti redatti. Per questa ragione ogni termine elencato viene accompagnato da una definizione chiara e concisa.\\
+
+\section{Tabella Glossario}
+
+% Tabella Glossario
+\renewcommand{\arraystretch}{1.5} % gestisce altezza delle righe
+\setlength{\tabcolsep}{10pt} % padding orizzontale alle celle
+
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.9}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+\setlength{\arrayrulewidth}{0.5mm} % ritorno spessore normale
+Esempio di Termine & Esempio di Definizione.\\
+
+\hline
+\end{tabularx}
+
+\end{document}
