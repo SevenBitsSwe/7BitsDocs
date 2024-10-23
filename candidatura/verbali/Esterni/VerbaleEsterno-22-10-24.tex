@@ -31,9 +31,9 @@ sevenbits.swe.unipd@gmail.com\\
 \hline
 1.0 & 22/10 & Stesura del verbale & Scrittori & Rubino Alfredo\\
 \hline
-1.0 & 22/10 & Redazione Verbale & Scrittori & Trolese Leonardo\\
+1.0 & 23/10 & Redazione Verbale & Scrittori & Trolese Leonardo\\
 \hline
-1.0 & 22/10 & Redazione Verbale & Relatori & Uncas Peruzzi\\
+1.0 & 23/10 & Redazione Verbale & Relatori & Uncas Peruzzi\\
 \hline
 \end{tabular}
 
@@ -44,16 +44,16 @@ sevenbits.swe.unipd@gmail.com\\
 \subsection{Durata e partecipanti}
 \begin{itemize}
 \item Ora: 15:00 - 15:30;
-\item Partecipanti: 	
-	\begin{itemize}
-	\item Gusella Manuel;
-	\item Cristellon Giovanni;
-	\item Peruzzi Uncas;
-	\item Piva Riccardo;
-	\item Pivetta Federico;
-	\item Rubino Alfredo;
-	\item Trolese Leonardo.
-	\end{itemize}
+\item Partecipanti: 
+\begin{itemize}
+\item Gusella Manuel;
+\item Cristellon Giovanni;
+\item Peruzzi Uncas;
+\item Piva Riccardo;
+\item Pivetta Federico;
+\item Rubino Alfredo;
+\item Trolese Leonardo.
+\end{itemize}
 \item Piattaforma: Google Meet (online)
 \end{itemize}
 \subsection{Oggetto}
@@ -64,7 +64,8 @@ Hanno fatto loro un'introduzione esaustiva rispondendo alla maggior parte delle 
 \vspace{2mm}
 Segue il riassunto della loro introduzione:\\
 \vspace{2mm}
-Non dobbiamo creare noi la piattaforma completa; la proponente chiede di creare un simulatore dello spostamento degli utenti (10-20 circa). Per questi utenti il simulatore crea dati GPS che simulano uno spostamento della persona in maniera realistica ogni 5/10 secondi.\newline
+La piattaforma andrà sviluppata attraverso dei tool che offrono delle funzionalità out-of-the-box adeguate alla visualizzazione di mappe, come ad esempio Grafana, Tableau e Superset, anche se c'è molta libertà nella scelta di strumenti anche diversi da questi. \\ 
+La proponente chiede nello specifico di creare un simulatore dello spostamento degli utenti (10-20 circa). Per questi utenti il simulatore crea dati GPS che simulano uno spostamento della persona in maniera realistica ogni 5/10 secondi.\newline
 Si parte dal presupposto che gli utenti siano già stati profilati, e per realizzare ciò creiamo dei dati utili e popoliamo un database con gli stessi.\newline 
 Va gestita la parte di data streaming: non appena si ha una nuova posizione per l'utente, viene effettuato un controllo per verificare se l'utente è in vicinanza di un cliente della piattaforma; se si allora si genera il messaggio personalizzato sulla base dei dati immagazzianti nel DB su quello specifico utente.\newline
 Il risultato finale dev'essere una dashboard (meglio implementata con piattaforme già esistenti come ad es. Grafana) con visualizzazione di una mappa dove gli utenti sono rappresentati da punti in movimento. Quando l'utente entra in un area di interesse (si avvicina ad un'attività commerciale) appare un messaggio generato tramite intelligenza artificiale. Le tecnologie da utilizzare saranno da discutere insieme al gruppo SyncLab in base al caso d'uso che abbiamo in mente.
