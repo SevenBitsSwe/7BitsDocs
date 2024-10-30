@@ -1,0 +1,501 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Valutazione Capitolati}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Descrizione} & \textbf{Ruolo} & \textbf{Componente} \\
+\hline
+1.0 & 29/10/2024 & Stesura della valutazione & Scrittore & Gusella Manuel\\
+& & & Scrittore & Trolese Leonardo\\
+& & & Scrittore & Rubino Alfredo\\
+& & & Scrittore & Peruzzi Uncas\\
+& & & Scrittore & Piva Riccardo\\
+& & & Scrittore & Cristellon Giovanni\\
+& & & Scrittore & Pivetta Federico\\
+\hline
+1.0 & 30/10/2024 & Revisione della valutazione & Relatore & Gusella Manuel\\
+& & & Relatore & Trolese Leonardo\\
+& & & Relatore & Rubino Alfredo\\
+& & & Relatore & Piva Riccardo\\
+\hline
+\end{tabular}
+\end{center}
+\newpage
+\tableofcontents
+\newpage
+\section{Contenuto del documento}
+\textbf{}Nel corso delle prime due settimane c'è stato modo di valutare i vari capitolati proposti, e dopo un’analisi iniziale sono state contattate le aziende proponenti dei capitolati:
+\begin{itemize}
+    \item C1 - Zucchetti
+    \item C2 - Vimar
+    \item C4 - SyncLab
+    \item C9 - AzzurroDigitale
+\end{itemize}
+\textbf{}Delle quattro proponenti contattate il dialogo si è svolto in tutti e quattro i casi in forma telematica: nel caso di “Vimar” in forma solo testuale; negli altri casi mediante meeting online.\\
+Dei tre meeting affrontati sono stati redatti i relativi verbali, firmati anche dai rappresentanti delle aziende coinvolte, e disponibili nella cartella candidatura/verbali/Esterni della repository GitHub dedicata alla documentazione del gruppo.\\
+\\
+Seguono le valutazioni del capitolato scelto e le valutazioni delle proposte restanti, con motivazione della scelta o mancata scelta.
+
+\section{Valutazione del capitolato scelto}
+\subsection{Capitolato C4: "NearYou - Smart custom advertising platform"}
+\begin{itemize}
+    \item Proponente: Synclab srl
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Realizzare un'interfaccia web “amministrativa” che mostri una mappa con ipotetici clienti (dati generati per simulazione) che si spostano su di essa. L’obiettivo finale è generare annunci pubblicitari in base agli interessi e alla posizione attuale del cliente.
+\end{itemize}
+\textbf{Dominio applicativo:}
+Il progetto sfrutta un modello di intelligenza artificiale per creare messaggi pubblicitari (testuali o con immagine) in base al contesto dell’utente, ottimizzando la creatività e flessibilità di contesto degli LLM.\\
+\\
+\textbf{Dominio tecnologico:}  
+Il proponente consiglia le seguenti tecnologie:
+\begin{itemize}
+    \item \textbf{Generazione dei dati}: Script in Python.
+    \item \textbf{Broker per lo stream di informazioni dei simulatori}: Apache Kafka, RabbitMQ, HiveMQ.
+    \item \textbf{Stream processing}: Apache Airflow, Apache NiFi, Apache Spark, Apache Flink.
+    \item \textbf{Comunicazione con LLM}: LangChain, Flow.
+    \item \textbf{Storage}: Database o altro supporto storage, suggeriti: PostGIS, ClickHouse, Timescale.
+    \item \textbf{Data visualization per visualizzazione web}: Superset, Grafana, Tableau.
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Utilizzo alternativo delle tecnologie AI e LLM rispetto agli altri capitolati.
+    \item Possibilità di apprendere sistemi di stream processing e broking di stream.
+    \item Linee guida ben definite.
+    \item Varietà e specificità delle tecnologie suggerite.
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Presentazione dei capitolati.
+\end{itemize}
+\textbf{Conclusioni:}  
+Il capitolato C4 inizialmente non sembrava una buona opzione, ma dopo dei chiarimenti durante l’incontro avvenuto il 22/10/2024 (vedasi Verbale Esterno), ha convinto pienamente il gruppo. Sono state necessarie alcune delucidazioni per cambiare idea, grazie anche alla moltitudine di tecnologie suggerite che offrono la possibilità di adattare il progetto alle nostre esigenze. Inoltre, questo capitolato consente di apprendere una varietà di strumenti, tra cui LLM e più in generale l’AI.
+
+\section{Valutazioni sui capitolati rimanenti}
+\subsection{Capitolato C1: “Artificial QI” }
+\begin{itemize}
+    \item Proponente: Zucchetti Spa
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Realizzare un sistema che valuti la capacità dei modelli AI di rispondere a domande complesse, mettendo a confronto risposte attese con quelle generate dai modelli. Lo scopo è creare uno strumento che possa testare e migliorare le performance dei modelli AI attraverso metodi di valutazione flessibili e configurabili.
+\end{itemize}
+\textbf{Dominio applicativo:}
+Il progetto si inserisce nel contesto dei sistemi basati su modelli di Intelligenza Artificiale, con particolare attenzione alla valutazione e alla validazione delle risposte generate nei sistemi che usano LLM.\\
+\\
+\textbf{Dominio tecnologico:}
+Utilizzo di Large Language Models (LLM) e sviluppo di API Rest per l’integrazione con sistemi esterni. Nella documentazione non vengono indicate tecnologie specifiche: è stato confermato durante il colloquio con l’azienda che tutte le scelte tecniche sono a carico del gruppo, sulla base degli strumenti che si padroneggiano già (vedasi Verbale Esterno del 25/10/2024).\\
+\\
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Progetto innovativo, in linea con le tendenze AI e LLM
+    \item Libertà di esplorare tecnologie e approcci diversi
+    \item Opportunità di approfondire competenze avanzate di testing e valutazione con AI
+    \item Si distingue dalla proposta del classico chatbot, frequente fra gli altri capitolati
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Libertà eccessiva nelle scelte progettuali e tecnologiche
+    \item Mancanza di linee guida chiare e carico decisionale elevato
+    \item Non negli interessi complessivi del gruppo
+\end{itemize}
+\textbf{Conclusioni:}
+Il capitolato rappresenta un’opportunità formativa interessante e orientata alla sperimentazione su AI e LLM. Tuttavia, il progetto è stato scartato per la libertà eccessiva nella scelta delle tecnologie e delle metodologie di implementazione, dato che il gruppo tende a preferire indicazioni più precise, per avere una maggiore chiarezza operativa e progettuale.
+
+\subsection{Capitolato C2 “Vimar GENIALE”}
+\begin{itemize}
+    \item Proponente: Vimar
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Realizzare un applicativo che possa essere interrogato attraverso linguaggio naturale degli installatori Vimar, e che, mediante l’uso di IA generativa, sia in grado di fornire responsi testuali e grafici. L’applicativo web deve essere accessibile via browser e deve includere un sistema di conversazione e una dashboard di amministrazione. L’applicativo server deve invece permettere l’estrazione e il salvataggio dei dati oltre che l’elaborazione delle risposte per le domande degli utenti.
+\end{itemize}
+\textbf{Dominio applicativo:}
+Il progetto opera nell’ambito dell’automazione e della domotica, e si concentra sull’uso dell’IA generativa per facilitare il lavoro di installazione di impianti domotici realizzati dall’azienda proponente, consentendo un’interrogazione diretta tramite linguaggio naturale dell'installatore nei confronti di un LLM allenato specificatamente sui dati estratti e poi salvati in un database dal sito ufficiale del proponente.\\
+\\
+\textbf{Dominio tecnologico:}
+Le tecnologie richieste dal proponente sono:
+\begin{itemize}
+    \item Infrastruttura cloud:
+    \begin{itemize}
+        \item Docker con docker-compose
+        \item opzionalmente anche Terraform, AWS CDK V2 o Ansible
+    \end{itemize}
+    \item Versionamento del repository di lavoro:
+    \begin{itemize}
+        \item GitHub, GitLab o BitBucket
+        \item licenza open source MIT o Apache 2
+    \end{itemize}
+    \item Parte di IA:
+    \begin{itemize}
+        \item RAG
+        \item LLM
+    \end{itemize}
+\end{itemize}
+Le tecnologie raccomandate dal proponente sono:
+\begin{itemize}
+    \item Infrastruttura cloud:
+    \begin{itemize}
+        \item Flask
+        \item Angular
+    \end{itemize}
+    \item Versionamento del repository di lavoro:
+    \begin{itemize}
+        \item GitHub, GitLab o BitBucket
+        \item licenza open source MIT o Apache 2
+        \item VueJS
+    \end{itemize}
+    \item API:
+    \begin{itemize}
+        \item Python
+    \end{itemize}
+    \item Estrazione e reperimento informazioni:
+    \begin{itemize}
+        \item Scrapy
+        \item OCRmyPDF
+    \end{itemize}
+    \item Database:
+    \begin{itemize}
+        \item PostgreSQL
+        \item pgvector
+        \item TimescaleDB
+        \item InfluxDB
+    \end{itemize}
+    \item LLM:
+    \begin{itemize}
+        \item Mistral
+        \item Llama 3.1
+        \item Phi
+        \item Bert
+    \end{itemize}
+    \item Sviluppo su AWS:
+    \begin{itemize}
+        \item AWS LightSail
+        \item AWS EC2
+    \end{itemize}
+    \item Software development lifecycle:
+    \begin{itemize}
+        \item CI con GitHub Runners
+    \end{itemize}
+    \item Sviluppo software:
+    \begin{itemize}
+        \item GitHub Copilot
+        \item Amazon Q
+    \end{itemize}
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Utilizzo di  tecnologie di IA generativa
+    \item Proposta interessante per la maggior parte dei membri del gruppo
+    \item Chiarezza nella presentazione del capitolato e requisiti opzionali e obbligatori molto chiari
+    \item Disponibilità per organizzare incontri di approfondimento sulle tecnologie citate nel capitolato
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Grande interesse per il progetto e molta competizione per aggiudicarsi il capitolato
+    \item Proposta di realizzazione di un chatbot molto diffusa fra i vari proponenti
+\end{itemize}
+\textbf{Conclusioni:}
+Sebbene inizialmente il gruppo si fosse direzionato verso questo capitolato, la notevole competizione e la richiesta di creare un chatbot molto diffusa fra i vari proponenti, dopo un'attenta analisi da parte dei membri, hanno fatto deviare la scelta del gruppo altrove.
+
+\subsection{Capitolato C3 “Automatizzare le routine digitali tramite l’intelligenza generativa”}
+\begin{itemize}
+    \item Proponente: Var Group S.p.A.
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Realizzare un servizio ad agenti dove gli utenti, tramite un applicativo client per Mac o Windows, possono disegnare localmente un workflow sfruttando le API dei software locali (per esempio: Outlook, Calendar, etc.) e l’intelligenza artificiale in cloud, che utilizzi i sistemi di Generative AI di AWS, per automatizzare attività quotidiane che l’utente svolge manualmente.
+\end{itemize}
+\textbf{Dominio applicativo:}
+Gli studenti, per poter realizzare questa applicazione, devono:
+\begin{itemize}
+    \item Creare un'infrastruttura cloud che utilizzi i sistemi di Generative AI di AWS
+    \item Creare un client per Windows e/o Mac per disegnare i flussi di automazione
+    \item Creare almeno 3 blocchi di automazione presenti nel repository del client
+    \item Creare un'interfaccia drag and drop dei blocchi per generare il workflow del processo di automazione
+    \item Creare un'interfaccia conversazionale dove l'utente può esprimere in linguaggio naturale la logica funzionale desiderata
+    \item Sviluppare le logiche di integrazione tra l’ambiente locale e i servizi cloud
+\end{itemize}
+\textbf{Dominio tecnologico:}
+L’azienda raccomanda di utilizzare le seguenti tecnologie:
+\begin{itemize}
+    \item Sviluppo Agent:
+    \begin{itemize}
+        \item Ambiente Windows:
+        \begin{itemize}
+            \item Python o C\#
+            \item React per interfaccia applicativa web
+        \end{itemize}
+        \item Ambiente Apple:
+        \begin{itemize}
+            \item Swift
+            \item Swift UI
+        \end{itemize}
+    \end{itemize}
+    \item Database:
+    \begin{itemize}
+        \item MongoDB
+    \end{itemize}
+    \item Sviluppo API cloud:
+    \begin{itemize}
+        \item NodeJS
+        \item Python
+        \item Typescript
+    \end{itemize}
+    \item Cloud:
+    \begin{itemize}
+        \item AWS
+    \end{itemize}
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Utilizzo dell'ecosistema AWS
+    \item Formazione sulle tecnologie proposte
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Elevato numero di tecnologie e casi da gestire, dispendioso a livello di risorse e costi
+    \item Come proposta generale, non negli interessi del gruppo
+\end{itemize}
+\textbf{Conclusioni:}
+Sebbene la proposta di progetto si distingua dalle altre, gli interessi del gruppo sono rivolti verso altri capitolati.
+
+\subsection{Capitolato C5 “3Dataviz”}
+\begin{itemize}
+    \item Proponente: Sanmarco Informatica SPA
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Rappresentare i dati in un modello 3D, navigabile e interattivo.
+\end{itemize}
+\textbf{Dominio applicativo:}
+Scopo del progetto è realizzare un'interfaccia web per la visualizzazione tridimensionale di dati tramite barre verticali (istogramma 3D) e i relativi dati di origine (tabella).
+I dati ricevuti avranno coordinate x, y, z:
+\begin{itemize}
+    \item x e y, con valori discreti (es. anni, città), definiranno il posizionamento della base della barra nel piano;
+    \item z assumerà valori numerici e definirà l'altezza della barra;
+    \item y avrà associato un colore che definirà il valore della barra.
+\end{itemize}
+I valori potranno essere inseriti in una tabella tramite l'interfaccia web, oppure recuperati da un database a scelta utilizzando SQL o tramite un'API REST pubblica. Inoltre, selezionando un elemento del grafico o una cella della griglia, sarà possibile nascondere o opacizzare le barre con valori superiori o inferiori al valore della barra selezionata.\\
+\\
+\textbf{Dominio tecnologico:}
+L'azienda consiglia di utilizzare le seguenti tecnologie:
+\begin{itemize}
+    \item Three.js
+    \item d3js
+    \item Angular
+    \item React
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Unico capitolato in cui non vi è presenza di IA
+    \item Creazione di elementi in 3D
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Capitolato molto ambito tra i vari gruppi
+    \item Non negli interessi complessivi del gruppo
+\end{itemize}
+\textbf{Conclusioni:}
+Per quanto fosse l’unica proposta tra i vari capitolati senza la presenza di IA e con la possibilità di creare elementi 3D, il gruppo ha deciso di indirizzarsi verso soluzioni diverse e proiettate verso la contemporaneità.
+
+\subsection{Capitolato C6 “Sistema di Gestione di un Magazzino Distribuito”}
+\begin{itemize}
+    \item Proponente: M31 S.R.L
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Sviluppare un sistema distribuito che favorisca l’interoperabilità tra diversi magazzini e la centralizzazione delle informazioni in modo efficiente e sicuro.
+\end{itemize}
+\textbf{Dominio applicativo:}
+Il sistema di gestione richiesto dovrà essere in grado di ottimizzare i livelli di scorte attraverso un monitoraggio continuo dei livelli di inventario, con eventuali azioni di riassortimento o trasferimento per mantenere scorte minime tra i magazzini. È necessario avere una visione limpida delle scorte presenti in ogni magazzino con aggiornamenti in tempo reale. Un’altra richiesta riguarda l’utilizzo di algoritmi di machine learning per prevedere la domanda futura, utilizzando dati storici, stagionalità e pattern di consumo, così da ottimizzare l’acquisto di materiali e ridurre il rischio di esaurimento. Infine, dovranno essere implementati dei meccanismi per gestire possibili conflitti di aggiornamento simultaneo, come nel caso di ordini distinti per lo stesso prodotto dallo stesso magazzino.\\
+\\
+\textbf{Dominio tecnologico:}
+Per quanto riguarda le tecnologie di riferimento, non ci sono vincoli imposti dal proponente, ma è richiesto che siano in linea con quelle già adottate da M31. Vengono comunque raccomandate alcune tecnologie:
+\begin{itemize}
+    \item Sviluppo dei microservizi (usando TypeScript come linguaggio):
+    \begin{itemize}
+        \item Node.js
+        \item Nest.js
+    \end{itemize}
+    \item Eventuali servizi di sincronizzazione:
+    \begin{itemize}
+        \item Go
+    \end{itemize}
+    \item Comunicazione tra i microservizi:
+    \begin{itemize}
+        \item NATS
+        \item Apache Kafka
+    \end{itemize}
+    \item Sistema di orchestrazione e gestione centralizzata:
+    \begin{itemize}
+        \item Google Cloud Platform (con supporto per Kubernetes)
+    \end{itemize}
+    \item Memorizzazione dei dati non strutturati:
+    \begin{itemize}
+        \item MongoDB
+    \end{itemize}
+    \item Persistenza dei dati strutturati:
+    \begin{itemize}
+        \item PostgreSQL
+    \end{itemize}
+    \item Sistema di caching:
+    \begin{itemize}
+        \item Redis
+    \end{itemize}
+    \item Interfaccia Utente:
+    \begin{itemize}
+        \item Angular
+    \end{itemize}
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Proposta originale rispetto agli altri capitolati
+    \item Libertà nella scelta delle tecnologie da utilizzare
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Proposta ritenuta più complessa rispetto agli altri capitolati
+    \item Elevato numero di tecnologie sconosciute al gruppo
+\end{itemize}
+\textbf{Conclusioni:}
+Dopo un'attenta analisi, il gruppo ha deciso di scartare questa proposta soprattutto a causa della complessità. In particolare, è stato riconosciuto l’ampio lavoro necessario per lo studio delle tecnologie richieste per raggiungere l’obiettivo di questo capitolato.
+
+\subsection{Capitolato C7 “LLM: Assistente virtuale”}
+\begin{itemize}
+    \item Proponente: Ergon Informatica
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Realizzare un assistente virtuale che aiuti i clienti di un’ipotetica azienda di vendita di prodotti nella ricerca di informazioni sui prodotti e risponda alle domande più comuni.
+\end{itemize}
+\textbf{Dominio applicativo:}
+L’azienda proponente chiede la realizzazione di un’interfaccia mobile che implementi un chatbot a cui l’utente può rivolgere domande. Una volta formulata la domanda, questa viene inviata mediante API REST al sistema, che la trasforma in una rappresentazione vettoriale. La domanda viene quindi utilizzata per ricercare in un database i vettori più simili, e una volta trovati, questi vengono inviati insieme alla domanda all’LLM, che genera una risposta di conseguenza. Attraverso API REST, la risposta viene infine inviata all’utente.\\
+\\
+\textbf{Dominio tecnologico:}
+\begin{itemize}
+    \item Database relazionale:
+    \begin{itemize}
+        \item SQL Server Express
+        \item MySQL
+        \item MariaDB
+    \end{itemize}
+    \item LLM:
+    \begin{itemize}
+        \item BLOOM
+        \item Falcon IA
+        \item Pythia
+        \item Italia by iGenius
+        \item Minerva
+    \end{itemize}
+    \item API REST
+    \item Comunicazione da/per database:
+    \begin{itemize}
+        \item Connettori standard
+        \item Implementazione di un middleware
+    \end{itemize}
+    \item Interfaccia utente:
+    \begin{itemize}
+        \item .NET MAUI
+        \item Android
+    \end{itemize}
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Supporto sia da remoto che in presenza nei locali aziendali
+    \item Referente interno dedicato agli studenti dall’azienda
+    \item Due corsi online per approfondire i sistemi LLM e lo sviluppo su piattaforma .NET MAUI
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Proposta simile ad altri capitolati focalizzati sulla realizzazione di un chatbot
+    \item Scarso interesse da parte del gruppo a causa della poca incisività della presentazione
+\end{itemize}
+\textbf{Conclusione:}
+La proposta è stata accolta in modo tiepido dai componenti del gruppo, poiché considerata molto simile a quella di altre aziende (trattasi infatti di un chatbot). Il gruppo, sin dall’inizio, si è orientato verso altri capitolati più attraenti e chiari nelle loro presentazioni. Sebbene si sia discusso di questa proposta in qualche occasione, Ergon Informatica non è stata contattata, in quanto il gruppo si è orientato verso una proposta più originale.
+
+\subsection{Capitolato C8 “Requirement Tracker - Plug-in VS Code”}
+\begin{itemize}
+    \item Proponente: Bluewind
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Sviluppo di un plug-in per il tracciamento dell'implementazione dei requisiti di progetto.
+\end{itemize}
+\textbf{Dominio applicativo:}  
+Il plug-in dovrà includere le seguenti funzionalità di base, mantenendo un'architettura aperta per future estensioni:
+\begin{itemize}
+    \item \textbf{Analisi del codice:} Caricamento e scansione dei file sorgente per identificare dove i requisiti sono implementati. Il sistema dovrà essere configurabile per lavorare con requisiti derivati da documenti tecnici, come manuali e datasheet di componenti hardware, e verificare che siano stati implementati nel codice.
+    \item \textbf{Supporto ai linguaggi:} C e C++.
+    \item \textbf{Interfaccia grafica:} Visualizzazione dei risultati all'interno di Visual Studio Code, con la possibilità di navigare e filtrare i risultati per nome del requisito, file o sezione del codice.
+    \item \textbf{Integrazione con API AI:} Utilizzo di API per inviare porzioni di codice e requisiti, ricevendo feedback sia sull'implementazione che sulla qualità dei requisiti stessi.
+    \item \textbf{Suggerimenti per la scrittura dei requisiti:} Il plug-in dovrà essere in grado di esaminare i requisiti caricati o inseriti manualmente, evidenziando frasi ambigue, incomplete o mal strutturate, e suggerire miglioramenti, come:
+    \begin{itemize}
+        \item Rendere i requisiti più chiari e specifici.
+        \item Identificare eventuali informazioni tecniche mancanti, ad esempio nei requisiti derivati da manuali o datasheet.
+        \item Riformulare i requisiti per renderli conformi alle best practice di scrittura tecnica.
+    \end{itemize}
+\end{itemize}
+\textbf{Dominio tecnologico:}  
+L’azienda incoraggia l’utilizzo delle seguenti tecnologie:
+\begin{itemize}
+    \item \textbf{Visual Studio Code Extension API}: per costruire un'architettura modulare, che consenta l'aggiunta di nuove funzionalità in maniera semplice.
+    \item \textbf{API REST}: per connettersi a modelli di AI per l'analisi del codice e dei requisiti.
+    \item \textbf{Python o Node.js}: per l'integrazione con le API AI, con un design flessibile che consenta di aggiungere nuovi linguaggi o componenti senza modifiche significative.
+    \item \textbf{Modelli AI pre-addestrati} (come GPT o simili): per analisi semantiche, con la possibilità di integrare facilmente nuovi modelli o algoritmi in futuro.
+    \item \textbf{Ollama}: o eventuali alternative per il deployment locale di LLM (opzionale).
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Differenza rispetto ad altri capitolati per la creazione di un plug-in.
+    \item Obiettivo di facilitare l’analisi dei requisiti del codice.
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Spiegazione ed esposizione non molto chiara.
+    \item Richiede l’interazione con IA come gli altri capitolati.
+\end{itemize}
+\textbf{Conclusione:}  
+La proposta è stata ritenuta fin da subito poco allettante dalla maggioranza del gruppo. Poiché la maggior parte dei capitolati si incentra sull’utilizzo di IA, si è optato per una proposta ritenuta più interessante.
+
+\subsection{Capitolato C9 “Progetto BuddyBot”}
+\begin{itemize}
+    \item Proponente: AzzurroDigitale S.R.L.
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Realizzare un assistente virtuale che centralizzi e aggreghi le informazioni provenienti da diverse fonti in modo facile e veloce.
+\end{itemize}
+\textbf{Dominio applicativo:}  
+Si richiede la realizzazione di BuddyBot, un assistente virtuale a supporto dei team di sviluppo e consulenza di AzzurroDigitale. Il progetto prevede lo sviluppo di una piattaforma web con interfaccia chat, che faciliti l’accesso alle informazioni provenienti dai diversi canali aziendali, come Confluence, Jira o GitHub. Sarà necessario utilizzare API di terze parti per reperire e processare ogni informazione e per permettere il recupero dello storico della chat, salvando su un database tutte le domande e le risposte.\\
+\\
+\textbf{Dominio tecnologico:}  
+Tecnologie a libera scelta, con suggerimenti dell’azienda su alcuni componenti:
+\begin{itemize}
+    \item \textbf{OpenAI}: per la comprensione del testo e la generazione delle risposte.
+    \item \textbf{Langchain}: per integrare funzionalità di IA.
+    \item \textbf{Angular}: per la costruzione di applicazioni web.
+    \item \textbf{Node/NestJS}: per lo sviluppo di applicazioni server-side.
+    \item \textbf{Spring Boot}: per creare applicazioni standalone e pronte per la produzione.
+\end{itemize}
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Figure di riferimento disponibili.
+    \item Incontri settimanali con l’azienda.
+    \item Libertà nella scelta delle tecnologie.
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Proposta simile agli altri capitolati che richiedono un chatbot.
+\end{itemize}
+\textbf{Conclusioni:}  
+Il gruppo ha ritenuto interessante questo progetto, sebbene per certi aspetti simile ad altri capitolati, apprezzando in particolar modo la disponibilità dimostrata dall’azienda AzzurroDigitale (vedasi il Verbale Esterno del 17/10/2024). Tuttavia, si è deciso di orientarsi verso un’idea più originale.
+
+\end{document}

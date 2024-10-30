@@ -1,0 +1,92 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Valutazione Capitolati}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Descrizione} & \textbf{Ruolo} & \textbf{Componente} \\
+\hline
+1.0 & 29/10 & Stesura e revisione del preventivo & Scrittore & Gusella Manuel\\
+\hline
+\end{tabular}
+\end{center}
+\tableofcontents
+\newpage
+\section{Valutazione del capitolato scelto}
+\subsection{Capitolato C4: "NearYou - Smart custom advertising platform"}
+\textbf{Descrizione:}
+\begin{itemize}
+    \item Proponente: Synclab srl
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: 
+\end{itemize}
+\textbf{Dominio applicativo:}
+\textbf{Dominio tecnologico:}
+\textbf{Motivazioni della scelta:}
+\textbf{Conclusioni:}
+
+\section{Valutazioni sui capitolati rimanenti}
+\subsection{Capitolato C1: “Artificial QI” }
+\begin{itemize}
+    \item Proponente: Zucchetti Spa
+    \item Committenti: Prof. Tullio Vardanega e Prof. Riccardo Cardin
+    \item Obiettivo: Realizzare un sistema che valuti la capacità dei modelli AI di rispondere a domande complesse, mettendo a confronto risposte attese con quelle generate dai modelli. Lo scopo è creare uno strumento che possa testare e migliorare le performance dei modelli AI attraverso metodi di valutazione flessibili e configurabili.
+\end{itemize}
+\textbf{Dominio applicativo:}
+Il progetto si inserisce nel contesto dei sistemi basati su modelli di Intelligenza Artificiale, con particolare attenzione alla valutazione e alla validazione delle risposte generate nei sistemi che usano LLM.
+\textbf{Dominio tecnologico:}
+Utilizzo di Large Language Models (LLM) e sviluppo di API Rest per l’integrazione con sistemi esterni. Nella documentazione non vengono indicate tecnologie specifiche: è stato confermato durante il colloquio con l’azienda che tutte le scelte tecniche sono a carico del gruppo, sulla base degli strumenti che si padroneggiano già.
+\textbf{Aspetti positivi:}
+\begin{itemize}
+    \item Progetto innovativo, in linea con le tendenze AI e LLM
+    \item Libertà di esplorare tecnologie e approcci diversi
+    \item Opportunità di approfondire competenze avanzate di testing e valutazione con AI
+    \item Si distingue dalla proposta del classico chatbot, frequente fra gli altri capitolati
+\end{itemize}
+\textbf{Aspetti negativi:}
+\begin{itemize}
+    \item Libertà eccessiva nelle scelte progettuali e tecnologiche
+    \item Mancanza di linee guida chiare e carico decisionale elevato
+    \item Non negli interessi complessivi del gruppo
+\end{itemize}
+\textbf{Conclusioni:}
+Il capitolato C1 rappresenta un’opportunità formativa interessante e orientata alla sperimentazione su AI e LLM. Tuttavia, il progetto è stato scartato per la libertà eccessiva nella scelta delle tecnologie e delle metodologie di implementazione, dato che il gruppo tende a preferire indicazioni più precise, per avere una maggiore chiarezza operativa e progettuale.
+
+\subsection{Capitolato C2 “Vimar GENIALE”}
+
+\subsection{Capitolato C3 “Automatizzare le routine digitali tramite l’intelligenza generativa”}
+
+\subsection{Capitolato C5 “3Dataviz”}
+
+\subsection{Capitolato C6 “Sistema di Gestione di un Magazzino Distribuito”}
+
+\subsection{Capitolato C7 “LLM: Assistente virtuale”}
+
+\subsection{Capitolato C8 “Requirement Tracker - Plug-in VS Code”}
+
+\subsection{Capitolato C9 “Progetto BuddyBot”}
+
+\end{document}

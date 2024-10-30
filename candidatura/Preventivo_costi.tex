@@ -6,12 +6,12 @@
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
 
-\graphicspath{{../images/}}
+\graphicspath{{images/}}
 
 %cambio misure della pagina
 \geometry{a4paper,left=20mm,right=20mm,top=20mm}
 
-\title{Verbale Interno del meeting in data}
+\title{Preventivo Costi}
 \date{A.A 2024/2025}
 
 \renewcommand*\contentsname{Indice}
@@ -30,11 +30,13 @@ sevenbits.swe.unipd@gmail.com\\
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Descrizione} & \textbf{Ruolo} & \textbf{Componente} \\
 \hline
-1.0 & 28/10/2024 & Stesura del preventivo & Scrittori & Gusella Manuel\\
+1.0 & 28/10/2024 & Stesura del preventivo & Scrittore & Gusella Manuel\\
+& & & Scrittore & Trolese Leonardo\\
+& & & Scrittore & Piva Riccardo\\
 \hline
 \end{tabular}
 \end{center}
-
+\newpage
 \tableofcontents
 \newpage
 \section{Valutazione orari e costi}
@@ -44,16 +46,16 @@ sevenbits.swe.unipd@gmail.com\\
 \hline
 \rowcolor{lightgray} \textbf{Ruolo} & \textbf{Costo Orario (\texteuro)} & \textbf{Ore per ruolo}\\
 \hline
-Responsabile & 30 & ?\\
-Amministratore & 20 & ?\\
-Analista & 25 & ?\\
-Progettista & 25 & ?\\
-Programmatore & 15 & ?\\
-Verificatore & 15 & ? \\
+Responsabile & 30 & 65\\
+Amministratore & 20 & 56\\
+Analista & 25 & 68\\
+Progettista & 25 & 120\\
+Programmatore & 15 & 180\\
+Verificatore & 15 & 160\\
 \hline
 \rowcolor{lightgray} & \textbf{Totale Costo (\texteuro)} & \textbf{Totale Ore}\\
 \hline
-& 12 & \\
+& 12870 & 649\\
 \hline
 \end{tabular}
 \end{center}
@@ -65,13 +67,13 @@ Verificatore & 15 & ? \\
 \hline
 \textbf{Membro} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Prj} & \textbf{Prg} & \textbf{Ver} & \textbf{Totale}\\
 \hline
-Cristellon &  &  &  &  &  &  & 95\\
-Gusella &  &  &  &  &  &  & 95\\
-Peruzzi &  &  &  &  &  &  & 92\\
-Piva &  &  &  &  &  &  & 95\\
-Pivetta &  &  &  &  &  &  & 95\\
-Rubino &  &  &  &  &  &  & \\
-Trolese &  &  &  &  &  &  & 90\\
+Cristellon & 9 & 8 & 10 & 18 & 27 & 23 & 95\\
+Gusella    & 10 & 8 & 10 & 18 & 26 & 23 & 95\\
+Peruzzi    & 9 & 8 & 9 & 17 & 26 & 23 & 92\\
+Piva       & 10 & 8 & 10 & 17 & 27 & 23 & 95\\
+Pivetta    & 10 & 9 & 10 & 17 & 26 & 23 & 95\\
+Rubino     & 8 & 7 & 9 & 16 & 23 & 22 & 85\\
+Trolese    & 9 & 8 & 10 & 17 & 25 & 23 & 92\\
 \hline
 \end{tabular}
 \end{center}
@@ -85,10 +87,20 @@ Glossario dei termini in tabella:
 \item Ve: Verificatore.
 \end{itemize}
 
-
+\section{Suddivisione ruoli}
+La suddivisione delle ore è stata fatta tenendo in considerazione del differente apporto che ciascun ruolo dà al progetto. Le riflessioni del gruppo sono state le seguenti:
+\begin{itemize}
+    \item Responsabile, essendo il nucleo del progetto, è necessario che abbia almeno un paio di ore a settimana (da moderare a causa dell'elevato costo), per garantirsi che il gruppo stia rispettando le scadenze;
+    \item L'amministratore, come il responsabile, è un ruolo che è sempre presente, anche se questo ruolo non è troppo impegnativo a livello di tempo dato che il suo compito è quello di accertarsi che il team stia lavorando seguendo le regole prefissate e alcuni picchi quando ci sono dei deploy del prodotto;
+    \item L'Analista, presente principalmente nella prima parte dello sviluppo del progetto, richiederà meno ore rispetto ad altri ruoli;
+    \item Il Progettista è presente durante tutta la fase di sviluppo del progetto, e per questa ragione abbiamo scelto di attribuirgli molte ore, prevedendo che la fase di design sarà di importanza centrale per la realizzazione del capitolato;
+    \item Il Programmatore, anche se presente solo nell'ultima parte di progetto, secondo noi coprirà molte ore, non eccessive, nella durata complessiva del progetto.
+    \item Il Verificatore, poichè che è presente per tutta la durata del progetto, avrà un ruolo fondamentale e coprirà una buona parte del totale delle ore del progetto;
+\end{itemize}
+Le ore individuali sono state poi ripartite equamente e proporzionalmente fra ogni ruolo tenendo in considerazione la differenza di ore produttive dichiarate dai membri, e attribuendole a seconda di preferenze personali laddove una suddivisione completamente proporzionale non è stata possibile.
 
 \section{Preventivo dei costi}
-In base alla pianificazione effettuata per la suddivisione del monte orario nei vari ruoli presenti durante lo svolgimento del progetto,si prevede che il costo finale del progetto ammonti a \texteuro . Costo verificabile nella prima tabella presente nel documento.
+In base alla pianificazione effettuata per la suddivisione del monte orario nei vari ruoli presenti durante lo svolgimento del progetto, si prevede che il costo finale del progetto ammonti a 12870\texteuro . Costo verificabile nella prima tabella presente nel documento.
 \section{Scadenza prevista}
-Il gruppo prevede di poter consegnare il prodotto finale relativo al quarto capitolato "NearYou - Smart custom advertising platform" proposto dall'Azienda SyncLab entro il //2024.
+Il gruppo prevede di poter consegnare il prodotto finale relativo al quarto capitolato "NearYou - Smart custom advertising platform" proposto dall'Azienda SyncLab entro il 21/03/2025.
 \end{document}
