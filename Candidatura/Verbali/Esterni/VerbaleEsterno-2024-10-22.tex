@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Esterno del meeting in data 22/10/2024}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\center 
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Descrizione} & \textbf{Ruolo} & \textbf{Componente} \\
+\hline
+1.0 & 22/10 & Stesura del verbale & Scrittori & Rubino Alfredo\\
+\hline
+1.0 & 23/10 & Redazione Verbale & Scrittori & Trolese Leonardo\\
+\hline
+1.0 & 23/10 & Redazione Verbale & Relatori & Uncas Peruzzi\\
+\hline
+\end{tabular}
+
+\raggedright
+\tableofcontents
+\newpage
+\section{22/10/2024}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 15:00 - 15:30;
+\item Partecipanti: 
+\begin{itemize}
+\item Gusella Manuel;
+\item Cristellon Giovanni;
+\item Peruzzi Uncas;
+\item Piva Riccardo;
+\item Pivetta Federico;
+\item Rubino Alfredo;
+\item Trolese Leonardo.
+\end{itemize}
+\item Piattaforma: Google Meet (online)
+\end{itemize}
+\subsection{Oggetto}
+Incontro con Andrea Dorigo e Fabio Pallaro dell'azienda SyncLab per chiarimenti sul capitolato 4.\\ 
+\subsection{Sintesi}
+Colloquio esterno con l'azienda SyncLab del capitolato 4.
+Hanno fatto loro un'introduzione esaustiva rispondendo alla maggior parte delle domande che avevamo preparato.\\
+\vspace{2mm}
+Segue il riassunto della loro introduzione:\\
+\vspace{2mm}
+La piattaforma andrà sviluppata attraverso dei tool che offrono delle funzionalità out-of-the-box adeguate alla visualizzazione di mappe, come ad esempio Grafana, Tableau e Superset, anche se c'è molta libertà nella scelta di strumenti anche diversi da questi. \\ 
+La proponente chiede nello specifico di creare un simulatore dello spostamento degli utenti (10-20 circa). Per questi utenti il simulatore crea dati GPS che simulano uno spostamento della persona in maniera realistica ogni 5/10 secondi.\newline
+Si parte dal presupposto che gli utenti siano già stati profilati, e per realizzare ciò creiamo dei dati utili e popoliamo un database con gli stessi.\newline 
+Va gestita la parte di data streaming: non appena si ha una nuova posizione per l'utente, viene effettuato un controllo per verificare se l'utente è in vicinanza di un cliente della piattaforma; se si allora si genera il messaggio personalizzato sulla base dei dati immagazzianti nel DB su quello specifico utente.\newline
+Il risultato finale dev'essere una dashboard (meglio implementata con piattaforme già esistenti come ad es. Grafana) con visualizzazione di una mappa dove gli utenti sono rappresentati da punti in movimento. Quando l'utente entra in un area di interesse (si avvicina ad un'attività commerciale) appare un messaggio generato tramite intelligenza artificiale. Le tecnologie da utilizzare saranno da discutere insieme al gruppo SyncLab in base al caso d'uso che abbiamo in mente.
+Il messaggio può eventualmente contenere anche immagini o emoji, ma questo rappresenta già un requisito più avanzato, mentre deve necessariamente contenere il testo.\newline 
+Come LLM si consiglia GPT per via dell'ampio supporto e l'uso della libreria langchain che non richiede acquisto di licenza.\newline
+Si prevede l'uso di tecnlogie già esistenti che devono solo essere adeguate al contesto per la realizzazione della dashboard, inoltre quest'ultima non ha rilevanza centrale, l'importante è generare l'informazione correttamente.\newline
+Verrà utilizzato un server Discord per comunicare con loro e fra noi membri del gruppo.\newline 
+SyncLab è a disposizione per incontri settimanali o bisettimanali su Google Meet, e si mette a disposizione anche per eventuali webinar dedicati alla spiegazione delle tecnologie consigliate dall'azienda se necessario.\\
+\vspace{2mm}
+Sono state fatte quindi delle domande conclusive per rispondere ai dubbi rimasti:
+\begin{enumerate}
+\item Nel documento non si parla di PoC, non ne date importanza contando solamente l’MVP o c’è un altro motivo al riguardo?
+\item Verranno fatti comunque degli incontri in presenza?
+\end{enumerate}
+
+Risposte:
+\begin{enumerate}
+\item Il PoC consiste nella realizzazione della dashboard con simulazione dei dati per un solo utente e con una sola attività commerciale, mentre l'MVP scala sul numero di utenti simulati e un eventuale passo successivo rispetto all'MVP potrebbe essere l'introduzione di emoji o immagini nei messaggi personalizzati generati. Eventualmente c'è poi anche la possibilità di considerare non più solo percorsi prestabiliti per gli utenti.
+SyncLab è comunque disponibile a ritrattare l'MVP durante lo svolgimento del progetto se necessario, ma si raccomanda di fissare degli obiettivi effettivamente raggiungibili nel tempo dato.
+\item Che gli incontri avvengano online o in presenza è indifferente, l'importante sono i risultati. Il passaggio finale di consegna dell'MVP avverrà in presenza per conoscersi e festeggiare la conclusione del progetto.
+\end{enumerate}
+
+%parte di firma
+\vfill
+\begin{minipage}{10cm}
+Firma: \hrulefill \\
+\vspace{2mm}
+Data: \dotfill
+\end{minipage}
+
+\end{document}
