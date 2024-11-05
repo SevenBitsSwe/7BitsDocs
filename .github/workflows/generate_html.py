@@ -49,15 +49,19 @@ def generate_html():
             
             # Prima i file con data
             for pdf_file, _ in pdf_files_with_dates:
-                html_content += f'<li><a href="{pdf_file}">{pdf_file}</a></li>\n'
+                # Rimuovi l'estensione .pdf dal nome del file
+                link_text = os.path.splitext(pdf_file)[0]
+                html_content += f'<li><a href="{pdf_file}">{link_text}</a></li>\n'
 
             # Poi i file senza data
             for pdf_file in pdf_files_without_dates:
-                html_content += f'<li><a href="{pdf_file}">{pdf_file}</a></li>\n'
+                # Rimuovi l'estensione .pdf dal nome del file
+                link_text = os.path.splitext(pdf_file)[0]
+                html_content += f'<li><a href="{pdf_file}">{link_text}</a></li>\n'
 
             html_content += "</ul>\n"
             continue  # Salta la parte successiva per questa cartella "Esterni"
-
+        
         subdirs_with_tex = []
 
         if tex_files:
@@ -113,7 +117,6 @@ def generate_html():
             html_content += "</ul>\n"
 
     return html_content
-
 
 def copy_sitoweb_files():
     for item in os.listdir(sitoweb_dir):
