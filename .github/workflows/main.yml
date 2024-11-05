@@ -28,6 +28,8 @@ jobs:
         mkdir -p output
         find . -name "*.tex" | while read file; do
         pdflatex -interaction=nonstopmode --output-directory=output "$file"
+        pdflatex -interaction=nonstopmode --output-directory=output "$file"
+        pdflatex -interaction=nonstopmode --output-directory=output "$file"
         done
 
     - name: Generate HTML index with Python
