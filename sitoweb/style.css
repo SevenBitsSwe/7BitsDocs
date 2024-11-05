@@ -1,0 +1,141 @@
+/* Reset di base per evitare stili indesiderati */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Impostazioni generali per il body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #bbdefb; /* Blu chiaro tenue per lo sfondo del body */
+    color: #333; /* Colore scuro per il testo, facilmente leggibile */
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+    flex-direction: column; /* Colonna per centralità verticale */
+}
+
+/* Main che contiene il contenuto */
+main {
+    background-color: #e1f5fe; /* Blu chiaro più tenue per il contenitore */
+    padding: 40px;
+    border-radius: 8px; /* Angoli arrotondati per il contenitore */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra per effetto di profondità */
+    width: 90%;
+    max-width: 800px; /* Limita la larghezza massima */
+}
+
+/* Header con l'icona e la descrizione */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+header .logo img {
+    width: 200px; /* Immagine ingrandita */
+    height: auto;
+   
+}
+
+header .group-description p {
+    max-width: 600px;
+    text-align: center;
+    font-size: 18px;
+    color: #555; /* Colore scuro per il testo della descrizione */
+}
+#GroupName {
+    font-size: 36px; /* Dimensione del testo grande */
+    font-weight: bold; /* Grassetto per risaltare */
+    color: #0066ff; /* Colore dorato per un buon contrasto */
+    letter-spacing: 2px; /* Spaziatura tra le lettere */
+    text-transform: uppercase; /* Rende il testo tutto maiuscolo */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Ombra per far risaltare il testo */
+    
+}
+.group-description {
+    text-align: center; /* Centra il testo orizzontalmente */
+    display: flex; /* Usa Flexbox */
+    flex-direction: column; /* Dispone gli elementi in colonna */
+    align-items: center; /* Allinea il contenuto al centro (orizzontalmente) */
+    justify-content: center; /* Allinea il contenuto al centro (verticalmente) */
+    height: 100%; /* Assicurati che prenda tutta l'altezza disponibile */
+}
+/* Titolo principale centrato */
+h1 {
+    font-size: 30px;
+    text-align: left; /* Allineato a sinistra */
+    margin-bottom: 20px;
+    color: #1a1a1a; /* Colore molto scuro per h1 */
+    margin-left: 20px; /* Distanza a sinistra per allineare meglio con i link */
+}
+
+/* Titoli secondari (h2) */
+h2 {
+    font-size: 24px;
+    text-align: left; /* Allineato a sinistra */
+    margin-bottom: 15px;
+    color: #333333; /* Colore grigio scuro per h2 */
+    margin-left: 28px; /* Distanza a sinistra per allineare meglio con i link */
+}
+
+/* Titoli terziari (h3) */
+h3 {
+    font-size: 18px;
+    text-align: left; /* Allineato a sinistra */
+    margin-bottom: 15px;
+    color: #666666; /* Colore grigio chiaro per h3 */
+    margin-left: 40px; /* Distanza a sinistra per allineare meglio con i link */
+}
+
+
+/* Lista dei link */
+ul {
+    list-style-type: none; /* Rimuove i punti elenco */
+    padding: 0;
+}
+
+/* Elementi della lista */
+ul li {
+    margin: 15px 0; /* Distanza tra i vari elementi */
+    position: relative;
+}
+
+/* Aggiunge il simbolo "~" prima dei link */
+ul li::before {
+    content: "~"; /* Aggiungi il simbolo "~" prima del testo del link */
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente */
+    font-size: 18px;
+    margin-left: 35px; /* Tabula il link a destra rispetto al titolo */
+    margin-right: 10px;
+    color: #2980b9; /* Colore blu chiaro */
+}
+
+/* Link alle cartelle */
+ul li a {
+    text-decoration: none;
+    color: #2980b9; /* Colore iniziale blu chiaro per i link */
+    font-size: 18px;
+    margin-left: 58px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Aggiunto effetto di ingrandimento */
+    display: inline-block; /* Necessario per poter usare 'transform' su inline elements */
+
+}
+
+/* Effetto hover sui link */
+ul li a:hover {
+    color: #3498db; /* Colore blu più brillante al passaggio del mouse */
+    transform: scale(1.1); /* Aumentato l'ingrandimento del link al passaggio del mouse */
+}
+
+/* Spaziatura generale */
+section {
+    margin-bottom: 30px;
+}
