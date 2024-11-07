@@ -18,4 +18,5 @@ La repository è strutturata in modo da avere due branch **main** e **approval**
 Tutta la documentazione prodotta deve essere prima collocata in **approval**, per poter essere revisionata. Solo dopo essere stato revisionato un file può essere portato in **main**.
 Si segue quindi un modello *git-flow semplificato*, e pertanto i due branch sopra indicati non devono essere eliminati.
 
-Tutta la documentazione è consultabile nella [pagina web] (<https://sevenbitsswe.github.io/7BitsDocs/>).
+Tutta la documentazione è consultabile nella pagina web:
+<https://sevenbitsswe.github.io/7BitsDocs/>
