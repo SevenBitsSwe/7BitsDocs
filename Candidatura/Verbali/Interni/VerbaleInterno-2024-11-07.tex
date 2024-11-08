@@ -1,0 +1,112 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\center 
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.0.1 & 2024-11-08 & Uncas Peruzzi & Federico Pivetta & Redazione del documento \\
+\hline
+\end{tabular}
+
+\raggedright
+\newpage
+\tableofcontents
+\newpage
+\section{2024-11-07}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 15:30 - 16:30 ;
+\item Partecipanti: 	
+	\begin{itemize}
+	\item Gusella Manuel;
+	\item Cristellon Giovanni;
+	\item Peruzzi Uncas;
+	\item Piva Riccardo;
+	\item Pivetta Federico;
+	\item Trolese Leonardo.
+	\end{itemize}
+\item Piattaforma: Discord (online)
+\end{itemize}
+\subsection{Sintesi}
+\subsubsection{Motivo Riunione}
+A seguito della ricezione dell'avvenuta aggiudicazione d'appalto per il \textbf{Capitolato C4} il gruppo ha deciso di riunirsi in maniera sincrona per riflettere sui nuovi feedback ricevuti dal professore nel file \textit{Avanzamento Revisioni.xlsx} e per riflettere sulle decisioni da prendere nel periodo che segue.
+\subsubsection{Strumento di Redazione Verbali}
+Si è discusso su un eventuale passaggio da LaTex a Typst per la redazione e verifica dei verbali, con la veloce conclusione che disponendo ora di una Github Action funzionante con LaTex non è poi così vantaggioso questo cambio di tecnologia.
+\subsubsection{Rotazione dei Ruoli}
+Il corpo centrale della riunione ha riguardato la rotazione e assegnazione dei vari ruoli. Si è deciso che essendo ancora in una fase pre-iniziale del progetto , di assegnare dei ruoli fino al giorno \textbf{2024-11-12} cioè il giorno della presentazione del diario di bordo in attesa di eventuali indicazioni e di un colloquio con la proponente esterna. A questo proposito si è deciso di inviare una mail per contattare l'azienda \textit{SyncLab} per avere un colloquio e discutere sulle fasi iniziali. É stato sottolineato inoltre,che durante lo svolgimento effettivo del progetto i ruoli resteranno i medesimi per almeno 14 giorni, cioè per tutta la durata di uno \textit{sprint}.
+\subsubsection{Analisi dei Feedback ricevuti}
+Nell'ultima frazione della riunione sono stati analizzati i feedback ricevuti dal docente. In particolare ci si è soffermati su \textit{"Non avete ancora ben compreso che
+solo la verifica andata a buon fine
+causa (abilita) l'attuazione di una
+modifica di baseline e quindi di un
+cambio di versione"}. \\
+Dopo un analisi e un confronto di alcuni componenti con il docente in aula per avere delle esplicazioni si è deciso di modificare leggermente il \href{https://github.com/SevenBitsSwe/7BitsDocs/blob/main/ModelloVerbale.tex}{Modello del Verbale}, e il processo di stesura.
+\begin{itemize}
+    \item Aggiunta colonna della colonna verificatore ad ogni "modifica" svolta sul documento
+    \item Il cambio di versione avviene solamente una volta che è stata effettuala una verifica andata a buon fine.
+    \item Il redattore del documento, che lavora sul branch approval, una volta scritto il documento, dovrà aprire una Pull Request su github e il verificatore tramite commenti e tag dovrà informare i componenti di eventuali modifiche o verifica a buon fine
+    \item Il documento ora dovrà essere infine approvato da un componente, una volta effettuata l'approvazione sarà chiamato il verificatore di questo procedimento che chiuderà la procedura con la \textbf{chiusura della pull request} e il merge del branch approval in main. 
+\end{itemize}
+\subsection{Decisioni Prese}
+Queste le decisioni finali dei componenti:
+\begin{itemize}
+    \item Decisione dei ruoli fino a 2024-11-12: \\ Responsabile: \textbf{Manuel Gusella} \\ Verificatori: \textbf{Federico Pivetta, Riccardo Piva}
+    \item \textbf{Uncas Peruzzi} si occuperà della stesura del Verbale Interno
+    \item \textbf{Manuel Gusella} si occuperà della redazione del Diario di Bordo da presentare il giorno 2024-11-12.
+    \item \textbf{Leonardo Trolese} invierà una mail all'azienda per informare dell'aggiudicazione d'appalto e modifica il file README.md aggiungendo il link alla Github Pages contenente la documentazione.
+
+
+\end{itemize}
+
+\vspace{2mm}
+
+
+
+\begin{center}
+    
+
+
+\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+\hline
+\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+\hline
+\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/15}{Issue \#15} & Stesura VerbaleInterno-2024-11-07 \\
+\hline
+\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/16}{Issue \#16} & Creazione del secondo Diario di Bordo\\
+\hline
+\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/17}{Issue \#17} & Modificare il template dei verbali.\\
+\hline
+\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/18}{Issue \#18} & Verifica e Approvazione VerbaleInterno-2024-11-07 \\
+\hline 
+
+\end{tabular}
+\end{center}
+
+\end{document}
