@@ -1,6 +1,6 @@
 # 7BitsDocs
 Repository dedicata alla documentazione del progetto di *Ingegneria del software* dell'anno accademico 2024/25 per il gruppo **SevenBits** con componenti:
- | Cognome | Manuel | Matricola |
+ | Cognome | Nome | Matricola |
  | -------- | -------- | -------- |
  | Cristellon | Giovanni | 1216730 |
  | Gusella | Manuel | 2076430 |
