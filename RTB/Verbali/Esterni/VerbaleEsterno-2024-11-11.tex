@@ -1,9 +1,12 @@
+
 \documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{tabularx}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
 
 %path per conversione in locale
 %\graphicspath{{../../../images/}}
@@ -33,9 +36,14 @@ sevenbits.swe.unipd@gmail.com\\
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
-1.0.0 & 2024-11-11 & Manuel Gusella & Uncas Peruzzi & Stesura iniziale del verbale\\
-& & & Alfredo Rubino &\\
+1.0.0 & 2024-11-13  & Alfredo Rubino & Uncas Peruzzi & Approvazione del verbale\\
 \hline
+0.2.0 & 2024-11-13 & Uncas Peruzzi & Alfredo Rubino & Modifiche minori al verbale\\
+\hline
+0.1.0 & 2024-11-11 & Manuel Gusella & Alfredo Rubino & Redazione del verbale\\
+\hline
+
+
 \end{tabular}
 \end{center}
 \newpage
@@ -68,11 +76,11 @@ Si sono già fissati due meeting, per poter già avere delle date fissate di met
 Come periodo di sprint si è deciso che debba essere di 2 settimane, per darci il tempo di portare risultati significativi al SAL, con un incontro intermedio   per visionare gli avanzamenti durante quello sprint.
 
 \subsubsection{Tecnologie}
-Suggeriscono l'utilizzo di docker compose e consigliano di partire con una costruzione effettiva limitata al dato iniziale, con una generazione dati degli utenti e messaggi in streaming.\\
+Suggeriscono l'utilizzo di docker compose per facilitare la configurazione e la distribuzione dell'ambiente di sviluppo e consigliano di partire con una costruzione effettiva limitata al dato iniziale, con una generazione dati degli utenti e messaggi in streaming.\\
 Propongono lo studio delle tecnologie consigliate nella documentazione di capitolato per poter avere un'idea sul come realizzare il progetto e quali effettivamente utilizzare nella sua realizzazione.
 
 \subsubsection{Documentazione}
-Si è parlato di alcune parti di documentazione che si devono creare durante questa fase di RTB, che saranno: l'analisi dei requisiti, il piano di progetto e lo studio di fattibilità.\\
+Si è parlato di alcune parti di documentazione che si devono creare durante questa fase di RTB, che saranno: l'analisi dei requisiti, il piano di progetto, piano di qualifica.\\
 Nella fase iniziale di analisi hanno suggerito di non vincolarsi troppo ai dettagli, cosa che però sarà richiesta nei Casi d'uso.
 
 \subsection{Conclusioni}
@@ -81,12 +89,24 @@ Queste sono le decisioni prese durante il meeting:
 \begin{itemize}
 	\item Discord come piattaforma di contatto rapido tra proponente e fornitore;
 	\item Sprint della durata di 2 settimane con incontro di revisione intermedio;
-	\item Date prossimi incontri:
-	\begin{itemize}
-		\item Intermedio: 2024-11-20
-		\item SAL: 2024-11-25
-	\end{itemize}
+    \item Altre decisioni:
 \end{itemize}
+
+\begin{center}
+    
+
+
+\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+\hline
+\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+\hline
+\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/26}{Issue \#26} & Q\&A Intermedio con azienda 2024-11-20 \\
+\hline
+\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/27}{Issue \#27} & Incontro per update sullo Stato Avanzamento Lavori 2024-11-25\\
+\hline
+
+\end{tabular}
+\end{center}
 
 \subsubsection{Compiti concordati}
 Queste sono i compiti che si siamo assegnati durante questo periodo di sprint:
