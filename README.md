@@ -13,10 +13,24 @@ Repository dedicata alla documentazione del progetto di *Ingegneria del software
 
 
 ## Struttura della repo
-La repository è strutturata in modo da avere due branch **main** e **approval**, e un sito GitHub Pages che mediante GitHub Action è costantemente aggiornato e contiene tutta la documentazione prodotta in formato pdf.
+La repository è strutturata in modo da avere i seguenti quattro branch principali: 
+ - `main`
+ - `verbali`
+ - `glossario`
+ - `norme`
 
-Tutta la documentazione prodotta deve essere prima collocata in **approval**, per poter essere revisionata. Solo dopo essere stato revisionato un file può essere portato in **main**.
-Si segue quindi un modello *git-flow semplificato*, e pertanto i due branch sopra indicati non devono essere eliminati.
+Questa suddivisione facilita lo sviluppo parallelo della documentazione, evitando che materiale incompleto finisca accidentalmente nel `main`.
+Ogni branch raccoglie le modifiche relative alla componente di documentazione a cui è associato, permettendo di mantenere un flusso di lavoro ordinato e strutturato.
 
-Tutta la documentazione è consultabile nella pagina web:
+### Processo di Revisione e Pubblicazione
+Per garantire la qualità della documentazione, ogni documento deve essere:
+1. **Inserito nel branch dedicato** (ad es. `verbali` per i verbali, `glossario` per il glossario, ecc.).
+2. **Sottoposto a revisione**: una volta completato e revisionato, il documento può essere portato nel branch `main` tramite una pull request.
+
+Si segue quindi un modello *git-flow semplificato* con più branch di lavoro separati, e pertanto nessuno dei branch sopra indicati deve essere eliminato.
+
+### Integrazione con GitHub Pages
+La repository è dotata di un sito GitHub Pages associato al branch `main`, che mediante GitHub Action è costantemente aggiornato e contiene tutta la documentazione prodotta e revisionata in formato PDF.
+
+Tutta la documentazione fin'ora prodotta e verificata è consultabile nella pagina web:
 <https://sevenbitsswe.github.io/7BitsDocs/>
