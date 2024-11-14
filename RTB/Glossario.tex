@@ -92,6 +92,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
+0.2.2 & 2024-11-14  & Federico Pivetta & Riccardo Piva  & Aggiunta di alcuni termini ed\\ & & & & inserimento del link all'Indice\\
+\hline
 0.2.1 & 2024-11-14  & Uncas Peruzzi & Federico Pivetta  & Modifica design front page\\ & & & & e aggiunto header \\
 \hline
 0.2.0 & 2024-11-13  & Federico Pivetta & Riccardo Piva  & Modifica alla struttura ed\\
@@ -101,7 +103,9 @@
 \hline
 
 \end{tabular}
+
 \newpage
+\hypertarget{indice}{}
 \raggedright
 \tableofcontents
 \newpage
@@ -120,6 +124,17 @@ Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tab
 \renewcommand{\arraystretch}{1.5} % gestisce altezza delle righe
 \setlength{\tabcolsep}{10pt} % padding orizzontale alle celle
 
+% Aggiungi il pulsante "Torna su" in basso a destra solo a partire dalla pagina 4
+\AddToShipoutPictureBG{
+    \ifnum\value{page}>3 % Appare a partire dalla pagina 4
+    \begin{tikzpicture}[overlay, remember picture]
+        \node[anchor=south east, xshift=-10mm, yshift=10mm] at (current page.south east) {
+            \hyperlink{indice}{\textbf{\underline{Torna all'indice}}}
+        };
+    \end{tikzpicture}
+    \fi
+}
+
 \subsection{A} % LETTERA A
 \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
 \hline
@@ -137,6 +152,10 @@ Analisi dei Requisiti & Processo fondamentale dello sviluppo di un prodotto soft
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+Baseline & Versione approvata di un prodotto di lavoro che può essere modificato solo attraverso delle procedure formali. Una baseline funge da punto di riferimento per monitorare e confrontare i progressi o le modifiche del progetto nel tempo.\\
+\hline
+Branch & Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività.\\
 \hline
  & \\
 \hline
@@ -210,6 +229,8 @@ Docker & Piattaforma che consente di creare, distribuire e eseguire applicazioni
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, bug, richieste di funzionalità o altre attività relative ad un progetto. Le issue permettono di descrivere, assegnare e discutere vari aspetti di un progetto come ad esempio errori o nuove funzionalità con l'aiuto di alcuni strumenti come i commenti, le etichette e le milestone.\\
+\hline
  & \\
 \hline
 \end{tabularx}
@@ -252,6 +273,10 @@ LaTeX & Linguaggio di marcatura basato su comandi che permettono di formattare i
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+Merge & Operazione in un sistema di versionamentobranches che combina le modifiche provenienti da diversi rami (branches) di sviluppo in un unico ramo, unificando il codice o la documentazione, senza perdere il lavoro svolto separatamente.\\
+\hline
+Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel tempo all'interno di un progetto. Viene utilizzata per monitorare i progressi e assicurare che il progetto rispetti la pianificazione stabilita. Il raggiungimento degli obiettivi associati ad una milestone viene sostanziato attraverso lo sviluppo di una baseline.\\
+\hline
  & \\
 \hline
 \end{tabularx}
@@ -282,6 +307,8 @@ LaTeX & Linguaggio di marcatura basato su comandi che permettono di formattare i
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+PR & Acronimo di Pull Request, è una proposta di modifica in un progetto gestito tramite un sistema di versionamento. Consente ad uno sviluppatore di proporre una revisione e integrazione di alcune modifiche. Altri membri del team possono esaminare, commentare e testare le modifiche prima di approvare la pull request ed concludere la proposta con un merge.\\
+\hline
  & \\
 \hline
 \end{tabularx}
@@ -306,7 +333,7 @@ Retrospettiva & Incontro che si tiene alla fine di ogni sprint, subito dopo la r
 \hline
 Review & Incontro che si tiene alla fine di uno sprint, in cui il team di sviluppo presenta il lavoro completato. Durante questa sessione, il team mostra le funzionalità sviluppate e raccoglie feedback per verificare se i requisiti sono stati soddisfatti e se ci sono modifiche da apportare.\\
 \hline
-RTB & Acronimo per Requirement and Technology Retrospective, prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
+RTB & Acronimo per Requirement and Technology Retrospective, è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
 \hline
 & \\
 \hline
@@ -397,6 +424,5 @@ SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale ch
  & \\
 \hline
 \end{tabularx}
-
 
 \end{document}
