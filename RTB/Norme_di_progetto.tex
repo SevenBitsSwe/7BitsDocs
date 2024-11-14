@@ -1,0 +1,135 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{array}  
+\usepackage{graphicx} % Per inserire immagini (loghi)
+\usepackage{geometry} % Per personalizzare i margini
+\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
+\usepackage{tikz}
+\usepackage{anyfontsize}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
+\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
+
+\graphicspath{{../images/}}
+
+
+
+
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+%ebdfc7
+\definecolor{colorePie}{HTML}{ebdfc7}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+}
+\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.1}
+}
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
+
+
+
+
+\renewcommand*\contentsname{Indice}
+
+\begin{document}
+
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    
+    % Titolo
+     {\fontsize{40}{40}\bfseries Norme di Progetto}\selectfont \\[3.9em]
+    
+    % Sottotitolo
+    % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    % Spazio per il logo dell'università
+    \hfill
+    
+        
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+        
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+        
+    
+
+    \vfill % Aggiunge spazio verticale per centrare il contenuto
+\end{titlepage}
+\newpage
+\clearpage
+\setcounter{page}{1}
+
+
+\centering\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\hline
+0.1.0 & 2024-10-23  & Leonardo Trolese & Federico Pivetta  & Creazione del documento secondo \\ & & & & la struttura definita dal gruppo\\
+\hline
+
+\end{tabular}
+\newpage
+\raggedright
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+    \subsection{Funzione del documento}
+    Il presente documeto è stato realizzato ai fini di definire e reccagliore le best 
+    practices e il way of working a cui ogni componente del gruppo Seven Bits dovrà
+    aderire per l'intera realizzazione del progetto, al fine di garantire l'adozione 
+    di un metodo di lavoro completamente omogeno\\
+    La formulaziome delle norme di porgetto avviene in maniera progressiva, permettendo
+    al gruppo di apportare continui aggiornamenti ad esse in risposta alle esigenze che
+    il team deve affrontare durante lo svolgimento del progetto stesso.\\ 
+
+    \subsection{Glossario}
+    Ai fini di garantire l'adesione dei membri del gruppo a un vocabolario comune 
+    e condiviso, che non lasci spazio a ambiguità, dubbi o imprecisioni; il team ha definito
+    un documento denominato Glossario, nel quale sono presenti tutti i termini tecnici adottati
+    dal gruppo per l'intera durata della realizzazione del progetto.
+
+    \subsection{Riferimenti}
+        \subsubsection{Riferimenti progettuali}
+        \begin{itemize}
+            \item \href{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}{Descrizione capitolato di porgetto}
+            \item Presentazione capitolato di progetto: 
+        \end{itemize}
+        \subsubsection{Riferimenti tecnologici}
+        \begin{itemize}
+            \item \href{https://git-scm.com/docs}{Documentazione git}
+            \item \href{https://docs.github.com/en}{Documentazione GitHub}
+            \item \href{https://www.latex-project.org/help/documentation/}{Documentazione LATEX}
+            \item \href{https://www.python.org/doc/}{Documentazione Python:}
+        \end{itemize}
+
+
+\end{document}
