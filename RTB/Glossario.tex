@@ -1,40 +1,97 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage{geometry}
 \usepackage{tabularx}
-\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+\usepackage{graphicx} % Per inserire immagini (loghi)
+\usepackage{geometry} % Per personalizzare i margini
+\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
+\usepackage{tikz}
+\usepackage{anyfontsize}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{tabularx, xcolor, etoolbox} % aggiungi etoolbox per condizioni
+\usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
+\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
 
-%path per conversione in locale
-%\graphicspath{{../../../images/}}
-
-%path per quando caricare in repo
 \graphicspath{{images/}}
+
+
+
+
 
 %cambio misure della pagina
 \geometry{a4paper,left=20mm,right=20mm,top=20mm}
+%ebdfc7
+\definecolor{colorePie}{HTML}{ebdfc7}
 
-\title{Glossario}
-\date{A.A 2024/2025}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+}
+\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.1}
+}
+\cfoot{\thepage}
+
+
+
 
 \renewcommand*\contentsname{Indice}
+
 \begin{document}
-%contenuti principali
-\maketitle
-\begin{center}
-\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
-\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
-sevenbits.swe.unipd@gmail.com\\
-\vspace{2mm}
+
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    
+    % Titolo
+     {\fontsize{40}{40}\bfseries Glossario}\selectfont \\[3.9em]
+    
+    % Sottotitolo
+    % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    % Spazio per il logo dell'università
+    \hfill
+    
+        
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+        
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+        
+    
+
+    \vfill % Aggiunge spazio verticale per centrare il contenuto
+\end{titlepage}
+\newpage
+\clearpage
+\setcounter{page}{1}
 
 
-\textbf{Registro modifiche}\\
+\centering\textbf{Registro modifiche}\\
 \vspace{2mm}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\hline
+0.2.1 & 2024-11-14  & Uncas Peruzzi & Federico Pivetta  & Modifica design front page\\ & & & & e aggiunto header \\
 \hline
 0.2.0 & 2024-11-13  & Federico Pivetta & Riccardo Piva  & Modifica alla struttura ed\\
 & & & & inserimento dei primi termini\\
@@ -43,9 +100,8 @@ sevenbits.swe.unipd@gmail.com\\
 \hline
 
 \end{tabular}
-\end{center}
 \newpage
-
+\raggedright
 \tableofcontents
 \newpage
 
