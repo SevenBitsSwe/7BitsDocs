@@ -13,6 +13,10 @@
 \usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
 \usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
 
+\newcommand\version{0.2.1} %aggiunta versione come variabile
+
+
+
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
 
@@ -31,7 +35,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ Piano di Progetto v0.2.0}
+\rhead{\textcolor[HTML]{9e978a}{ Piano di Progetto v\version}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -93,9 +97,11 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
-0.2.0 & 2024-11-15 & Manuel Gusella & & Stesura iniziale sezione Pianificazione\\
+0.2.1 & 2024-11-17 & Manuel Gusella & Federico Pivetta & Modifiche di stile delle liste e dei link nel verbale \\
 \hline
-0.1.0 & 2024-11-14  & Manuel Gusella &   & Stesura sezione Introduzione\\
+0.2.0 & 2024-11-15 & Manuel Gusella & Federico Pivetta & Stesura iniziale sezione Pianificazione\\
+\hline
+0.1.0 & 2024-11-14  & Manuel Gusella & Riccardo Piva & Stesura sezione Introduzione\\
 \hline
 
 \end{tabularx}   
@@ -108,10 +114,10 @@
 Questo documento ha lo scopo di definire in modo chiaro le modalità con cui le attività saranno svolte dai membri del gruppo per la realizzazione del progetto.\\
 Saranno trattati in dettagli i seguenti temi:
 \begin{itemize}
-    \item Analisi dei rischi;
-    \item Organizzazione delle attività nei singoli periodi;
-    \item Suddivisione dei ruoli tra i membri del gruppo;
-    \item Stima dei costi e delle risorse nelle varie iterazioni.
+    \item [-] Analisi dei rischi;
+    \item [-] Organizzazione delle attività nei singoli periodi;
+    \item [-] Suddivisione dei ruoli tra i membri del gruppo;
+    \item [-] Stima dei costi e delle risorse nelle varie iterazioni.
 \end{itemize}
 
 \subsection{Scopo del capitolato}
@@ -122,18 +128,17 @@ Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno 
 \subsubsection{Informativi}
 Slide del corso di Ingegneria del Software:
 \begin{itemize}
-    \item Gestione di Progetto:\\ \url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T04.pdf}
+    \item [-] Gestione di Progetto:\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T04.pdf}}}
 \end{itemize}
 
 \subsubsection{Normativi}
 \begin{itemize}
-\item Norme di Progetto v
-    \item Documento e presentazione del capitolato C4 - NearYou - Smart custom advertising platform:
-    \begin{itemize}
-        \item \url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}
-        \item \url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}
-    \end{itemize}
-    \item Regolamento del progetto didattico\\ \url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}
+	\item [-] \textit{Norme di Progetto v1.0.0}
+    \item [-] Documento e presentazione del capitolato C4 - NearYou - Smart custom advertising platform:\\
+    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}}}\\
+    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}
+    
+    \item [-] Regolamento del progetto didattico\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}}}
 \end{itemize}
 \newpage
 \section{Analisi dei Rischi}
@@ -147,13 +152,14 @@ Slide del corso di Ingegneria del Software:
 \textbf{Fine:} 2024-11-25\\ 
 \textbf{Obiettivi:}
 \begin{itemize}
-\item Studio delle tecnologie consigliate dal proponente per capire quale utilizzare nella realizzazione del progetto;
-\item Inizio stesura del Piano di Progetto;
-\item Inizio redazione dell'Analisi dei Requisiti;
-\item Inizio scrittura delle Norme di Progetto;
+\item [-] Studio delle tecnologie consigliate dal proponente per capire quale utilizzare nella realizzazione del progetto;
+\item [-] Inizio stesura del Piano di Progetto;
+\item [-] Inizio redazione dell'Analisi dei Requisiti;
+\item [-] Inizio scrittura delle Norme di Progetto;
 \end{itemize}
 \textbf{Rischi:}\\
 \textbf{Ruoli:}\\
+Questi sono i ruoli assegnati per membro in questo primo sprint.\\
 \vspace{2mm}
 \begin{center}
 \begin{tabular}{|c|c|}
