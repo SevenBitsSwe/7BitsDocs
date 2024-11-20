@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Esterno del meeting in data 2024-11-20}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.1.0 & 2024-11-20 & Manuel Gusella & Riccardo Piva & Redazione del verbale\\
+\hline
+
+\end{tabularx}
+\end{center}
+\newpage
+\tableofcontents
+\newpage
+\section{2024-11-20}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 17:00 - 17:23;
+\item Partecipanti: 	
+	\begin{itemize}
+        \item SevenBits:
+        \begin{itemize}
+			\item Gusella Manuel;
+			\item Peruzzi Uncas;
+			\item Piva Riccardo;
+			\item Pivetta Federico;
+			\item Rubino Alfredo;
+			\item Trolese Leonardo.
+		\end{itemize}
+		\item SyncLab:
+		\begin{itemize}
+			\item Rodrigo Andrea;
+			\item Pallaro Fabio.
+		\end{itemize}
+	\end{itemize}
+\item Piattaforma: Google meet (online)
+\end{itemize}
+\subsection{Oggetto}
+Incontro intermedio del primo Sprint con Andra Rodrigo e Fabio Pallaro di SyncLab.
+
+\subsection{Sintesi}
+In questo meeting si è discusso sul nostro punto di avanzamento nello sprint ed abbiamo esposto delle domande ai proponenti per dei chiarimenti:\\
+\begin{enumerate}
+\item \label{uno} La generazione dei dati di spostamento deve essere casuale o deve seguire un percorso specifico?
+\item \label{due} \'E richiesta solo la dashboard amministratore, come detto dagli scorsi colloqui, o anche la web app per i singoli utenti?
+\item \label{tre} Visto che le tecnologie proposte, come apache flink, sono nativamente utilizzabili con Java, dobbiamo utilizzare Java o possiamo utilizzare altri linguaggi come Python?
+\item \label{quattro} \'E un problema se sono presenti tempi di latenza, dato che nella fase di utilizzo di langchain con un LLM si possono provocarli?
+\item \label{cinque} Come attori del problema chiesto vanno aggiunti anche gli utenti, anche se effettivamente i messaggi sarebbero visualizzati poi su una web app riservata all'utente?
+\end{enumerate}
+
+\subsection{Risposte alle domande}
+\subsubsection{Domanda \ref{uno}}
+Per l'MVP il percorso non viene prestabilito, ma viene simulato.\\
+Però il proponente ha detto che per il PoC potrebbe andare bene anche un percorso prestabilito.
+\subsubsection{Domanda \ref{due}}
+Il proponente ha confermato che basta la dashboard amministratore.\\
+Hanno aggiunto che la web app per il singolo utente potrebbe essere un requisito opzionale per il capitolato, limitandosi alla visualizzazione del messaggio in una maniera più gradevole.
+\subsubsection{Domanda \ref{tre}}
+Il proponente non ha preferenze sul linguaggio da utilizzare per lo svolgimento del capitolato, quindi ci lascia piena libertà sulla scelta.\\
+\subsubsection{Domanda \ref{quattro}}
+Per il tema trattato dal capitolato, cioè annunci pubblicitari dei punti di interesse, non è problema se sono presenti problemi di latenza.\\
+Il proponente ricorda che il messaggio è un evento asincrono rispetto al movimento dell'utente e che si deve generare solo un messaggio per l'utente finché rimane dentro all'area del punto di interesse.
+\subsubsection{Domanda \ref{cinque}}
+Nel problema sono visti anche gli utenti come attori, più nello specifico attori interni.\\
+Per questa domanda dobbiamo chiedere al docente Cardin per essere più sicuri.
+
+\subsection{Presentazione bozza schema architetturale}
+Abbiamo mostrato al proponente la bozza di schema architetturale che avevamo pensato per il progetto, esponendo pure un dubbio per il collegamento tra Apache Kafka e Grafana.\\
+Il proponente lo ha visionato e ci ha consigliato di mettere come intermediario un DB che lavori bene con i timeseries, come ClickHouse o Timescale, e che abbia già un connettore per Kafka.
+
+\subsection{Decisioni prese}
+Abbiamo deciso di continuare lo studio delle tecnologie in visione del primo SAL del 2024-11-25 e di ristrutturare lo schema architetturale come proposto durante questo meeting.
+
+%parte di firma
+\vfill
+\begin{minipage}{10cm}
+Firma: \hrulefill \\
+\vspace{2mm}
+Data: \dotfill
+\end{minipage}
+
+
+
+\end{document}
