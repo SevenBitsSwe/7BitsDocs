@@ -94,6 +94,9 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.2.0 & 2024-11-21 & Uncas Peruzzi  & Riccardo Piva & Migliorie varie e inizio\\
+& & & & redazione sez.3 (Casi d'uso) \\
+\hline
 0.1.1 & 2024-11-15 & Uncas Peruzzi  & Riccardo Piva & Redazione sez.1 e sez.2 \\
 \hline
 0.1.0 & 2024-11-14 & Uncas Peruzzi  & Riccardo Piva & Inizio redazione del documento\\
@@ -163,40 +166,86 @@ Smart custom advertising platform}, è focalizzato per clienti che offrono un se
     \item [-] informazioni date dagli utenti in fase di iscrizione;
     \item [-] informazioni di stato fisico dell’utente.
 \end{itemize}
-Per il progetto è stato accordato con la proponente che il display sarà simulabile tramite l'utilizzo di una web-app.
+
 \subsection{Panoramica del prodotto}
 \subsubsection{Prospettiva generale del prodotto} 
 In questa sezione vengono elencate tutte le interfacce di sistema che possono interagire con il prodotto \textit{Near You}.
 
 \paragraph{Interfacce utente}\mbox{}\\
-\textit{Near You} è un prodotto che offre un interfaccia utilizzabile su display touchscreen ,con la quale l'utente può interagire visivamente e fisicamente. Nell'ambiente di sviluppo del prodotto,il display è simulato con una web-app, che consiste in una dashboard nella quale è possibile visualizzare una mappa sulla base della posizione corrente e i vari punti di interesse, se generati dal software sottostante.
+\textit{Near You} è un prodotto che offre un interfaccia utilizzabile su display touchscreen ,con la quale l'utente può interagire visivamente e fisicamente. Nell'ambiente di sviluppo del prodotto, il display è emulato tramite una web-app che presenta una mappa interattiva, sulla quale vengono visualizzate pubblicità associate ai punti di interesse. Per l'utente privilegiato,che offre il servizio di renting, è presente dashboard nella quale è possibile visualizzare la mappa, con tutte le posizioni live dei mezzi e i vari punti di interesse, se generati dal software sottostante.
 \paragraph{Interfacce hardware}\mbox{}\\
-Il prodotto sviluppato sfrutta i dati monitorati e acquisiti da sensori, nel constesto di sviluppo saranno dati generati attraverso simulazioni reali. Il display touchscreen, corrisponderà a una dashboard accedibile da un web browser. Come risultato di quanto detto lo sviluppo del progetto non avviene con elementi hardware fisici.
+Il prodotto sviluppato sfrutta i dati monitorati e acquisiti da sensori, nel contesto di sviluppo saranno dati generati attraverso simulazioni reali. Il display touchscreen, corrisponderà a una web-app accessibile da un web browser. Come risultato di quanto detto lo sviluppo del progetto non avviene con elementi hardware fisici.
 
 \subsubsection{Funzionalità del prodotto}
 Il prodotto software dovrà garantire le seguenti caratteristiche:
 \begin{itemize}
     \item [-] permettere all'utente di creare un profilo dettagliato in modo da poter raccogliere dati significativi.
-    \item [-] la simulazione dei dati GPS, nel caso del percorso effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
+    \item [-] la simulazione dati provenienti dai sensori GPS, nel caso del percorso effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
     \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, facilitando di fatto la gestione delle informazioni tra i diversi componenti del sistema.
     \item [-] individuazione dei punti di interessi specifici, sfruttando LLM, che prende in input i dati di profilazione e posizione.
     \item [-] serializzazione dei dati precedentemente menzionati, in un database adatto e performante alla tipizzazione degli input.
-    \item [-] acquisizione e processazione dei dati,per mezzo di uno strumento adatto allo stream processing,per fornirli in pasto al framework di generative AI.
-    %queste parti sono da rivedere in seguito a futuri chiarimenti deurante l'incontro
-    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente che cliente, per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati.
+    \item [-] acquisizione e processazione dei dati dei sensori,per mezzo di uno strumento adatto allo stream processing,per fornirli in pasto al framework di generative AI.
+    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente che cliente, per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati, per il secondo una dashboard interattiva.
     
 \end{itemize}
 
 \subsubsection{Caratteristiche degli utenti}
-L'utente tipico di \textit{Near You} è un individuo a bordo di un mezzo di trasporto, dotato di display, che fornisce , durante il tragitto eventuali annunci personalizzati affini a punti di interesse generati ad hoc.
+Gli utenti si possono distinguere in utente privilegiato, il quale offre il servizio di renting del mezzo e il noleggiatore designato come un normale utente.\\
+L'utente privilegiato, deve poter accedere a una dashboard per visualizzare il tracking gps dei vari mezzi di trasporto, e gli ultimi punti di interesse generati per essi.
+L'utente tipico di \textit{Near You} è un individuo a bordo di un veicolo, dotato di display, che fornisce , durante il tragitto eventuali annunci personalizzati affini a punti di interesse generati ad hoc.
 \subsubsection{Limitazioni}
 Non è stata segnalata da parte del proponente, alcuna limitazione o problematica relativa alla privacy nella raccolta dati dell'utente e nella fase di sviluppo del prodotto.
 \\
 Sono invece note nel documento \textit{Piano di Progetto v1.0.0} restrizioni, che riguardano il tempo a disposizione e il budget allocato per lo sviluppo del progetto. 
 \newpage
-\section{Use Cases}
+\section{Casi d'uso}
+\subsection{Finalità e specifiche}
+Questa sezione espone una serie di casi d'uso, come risultato di un'analisi dei requisiti continuativa del capitolato, dal confronto con la proponente e dalle riflessioni degli Analisiti del team. La specifica di ogni caso d'uso segue gli standard descritti in maniera dettagliata nel documento Norme di Progetto v1.0.0.
+
+\subsection{Attori}
+Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
+\begin{itemize}
+    \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il nolleggiatore dei mezzi di trasporto, che deve poter accedere alla dashboard con il tracciamento dei propri mezzi, previa autenticazione ???
+    \item \textbf{Utente}: è il soggetto utilizzatore del servizio di renting, che visualizza la mappa con gli eventuali punti di interesse.
+    \item \textbf{Sensore}: è un dispositivo che raccoglie dati di posizione geografica, che sono letti e utilizzati del sistema.
+\end{itemize}
+\subsection{Elenco dei casi d'uso}
+%modello da seguire copia incolla
+% \subsubsection{\textbf{UC1.0 - Visualizzazione Dashboard}}
+% \begin{itemize}
+%     \item \textbf{Attore Principale:}
+%     \item \textbf{Precondizioni:}
+%     \item \textbf{Postcondizioni:}
+%     \item \textbf{Scenario Principale:}
+%     \item \textbf{User story associata:}
+%     \item \textbf{Estensioni:}
+% \end{itemize}
+\subsubsection{\textbf{UC1.0 - Visualizzazione Dashboard}}
+\begin{itemize}
+    \item \textbf{Attore Principale:} Utente privilegiato.
+    \item \textbf{Precondizioni:} Il sistema è operativo e accessibile.
+    \item \textbf{Postcondizioni:} l'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale e le varie pubblicità offerte agli utenti.
+    \item \textbf{Scenario Principale:}
+    \begin{enumerate}
+        \item L'utente privilegiato accede alla piattaforma di visualizzazione della dashboard.
+        \item Il sistema mette a disposizioni tutte le informazioni storicizzate e ricevute dai sensori.
+    \end{enumerate}
+    \item \textbf{User story associata:} Come utente privilegiato, voglio accedere alla dashboard per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS) e le inserzioni che vengono generate.
+    
+\end{itemize}
+
+\subsubsection{\textbf{UC2.0 - Visualizzazione Dashboard}}
+\begin{itemize}
+     \item \textbf{Attore Principale:}
+     \item \textbf{Precondizioni:}
+     \item \textbf{Postcondizioni:}
+     \item \textbf{Scenario Principale:}
+     \item \textbf{User story associata:}
+     \item \textbf{Estensioni:}
+\end{itemize}
 
 
+\newpage
 \section{Requisiti}
 %sicuramente da suddividere intenamente tra obbligatori, desiderabilli e opzionali
 \subsection{Requisiti funzionali}
@@ -207,3 +256,4 @@ Sono invece note nel documento \textit{Piano di Progetto v1.0.0} restrizioni, ch
 
 \end{justify}
 \end{document}
+
