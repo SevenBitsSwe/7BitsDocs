@@ -72,26 +72,26 @@ sevenbits.swe.unipd@gmail.com\\
 Incontro intermedio del primo Sprint con Andra Rodrigo e Fabio Pallaro di SyncLab.
 
 \subsection{Sintesi}
-In questo meeting abbiamo discusso sul nostro punto di avanzamento nello sprint ed abbiamo esposto delle domande ai proponenti per dei chiarimenti:\\
+In questo meeting abbiamo discusso sul nostro punto di avanzamento nello sprint ed abbiamo esposto delle domande ai proponenti per alcuni chiarimenti:\\
 \begin{enumerate}
 \item \label{uno} La generazione dei dati di spostamento deve essere casuale o deve seguire un percorso specifico?
 \item \label{due} \'E richiesta solo la dashboard amministratore, come indicato nei precedenti colloqui, o anche la web app per i singoli utenti?
-\item \label{tre} Visto che le tecnologie proposte, come apache flink, sono nativamente utilizzabili con Java, dobbiamo utilizzare Java o possiamo utilizzare altri linguaggi come Python?
-\item \label{quattro} \'E un problema se sono presenti tempi di latenza, dato che nella fase di utilizzo di langchain con un LLM si possono provocarli?
+\item \label{tre} Visto che le tecnologie proposte, come Apache Flink, sono nativamente utilizzabili con Java, dobbiamo utilizzare Java o possiamo utilizzare altri linguaggi come Python?
+\item \label{quattro} \'E un problema se sono presenti tempi di latenza, dato che nella fase di utilizzo di LangChain con un LLM si possono provocarli?
 \item \label{cinque} Come attori del problema chiesto vanno aggiunti anche gli utenti, anche se effettivamente i messaggi sarebbero visualizzati poi su una web app riservata all'utente?
 \end{enumerate}
 
 \subsection{Risposte alle domande}
 \subsubsection{Risposta \ref{uno}}
 Per l'MVP il percorso non viene prestabilito, ma viene simulato.\\
-Però il proponente ha detto che per il PoC potrebbe andare bene anche un percorso prestabilito.
+Mentre per il PoC il proponente ha detto che potrebbe andare bene anche un percorso prestabilito.
 \subsubsection{Risposta \ref{due}}
 Il proponente ha confermato che basta la dashboard amministratore.\\
 Hanno aggiunto che la web app per il singolo utente potrebbe essere un requisito opzionale per il capitolato, limitandosi alla visualizzazione del messaggio in una maniera più gradevole.
 \subsubsection{Risposta \ref{tre}}
 Il proponente non ha preferenze sul linguaggio da utilizzare per lo svolgimento del capitolato, quindi ci lascia piena libertà sulla scelta.\\
 \subsubsection{Risposta \ref{quattro}}
-Per il tema trattato dal capitolato, cioè annunci pubblicitari dei punti di interesse, non è problema se sono presenti problemi di latenza.\\
+Per il tema trattato dal capitolato, cioè annunci pubblicitari dei punti di interesse, non è un problema se sono presenti problemi di latenza.\\
 Il proponente ricorda che il messaggio è un evento asincrono rispetto al movimento dell'utente e che si deve generare solo un messaggio per l'utente finché rimane dentro all'area del punto di interesse.
 \subsubsection{Risposta \ref{cinque}}
 Nel problema sono visti anche gli utenti come attori, più nello specifico attori interni.\\
