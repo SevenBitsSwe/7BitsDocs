@@ -13,7 +13,7 @@
 \usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
 \usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
 
-\newcommand\version{0.2.1} %aggiunta versione come variabile
+\newcommand\version{0.2.2} %aggiunta versione come variabile
 
 
 
@@ -97,6 +97,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
+0.2.2 & 2024-11-22 & Manuel Gusella & Riccardo Piva & Stesura iniziale della sezione  Modello di sviluppo, preventivo e consuntivo\\
+\hline
 0.2.1 & 2024-11-17 & Manuel Gusella & Federico Pivetta & Modifiche di stile delle liste e dei link nel verbale \\
 \hline
 0.2.0 & 2024-11-15 & Manuel Gusella & Federico Pivetta & Stesura iniziale sezione Pianificazione\\
@@ -128,6 +130,7 @@ Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno 
 \subsubsection{Informativi}
 Slide del corso di Ingegneria del Software:
 \begin{itemize}
+  \item [-] Modelli di sviluppo software:\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T03.pdf}}}
     \item [-] Gestione di Progetto:\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T04.pdf}}}
 \end{itemize}
 
@@ -143,7 +146,26 @@ Slide del corso di Ingegneria del Software:
 \newpage
 \section{Analisi dei Rischi}
 \newpage
-\section{Modello di sviluppo}
+\section{Modello di sviluppo, preventivo e consuntivo}
+\subsection{Modello di sviluppo}
+Il team ha deciso di utilizzare principalmente il \textit{framework}$_G$ Scrum come modello di sviluppo.\\
+Scrum, essendo un modello di sviluppo agile, permette di poter avanzare con il progetto tramite periodi chiamati \textit{sprint}$_G$, della durata di 2-3 settimane, alla fine dei quali consente di avere una \textit{baseline}$_G$ di prodotto da poter mostrare al \textit{proponente}$_G$.
+\subsubsection{Vantaggi del Modello utilizzato}
+Il \textit{framework}$_G$ Scrum fornisce numerosi vantaggi per lo svolgimento di progetti di gruppo, soprattutto per lo svolgimento del nostro progetto. Alcuni principali vantaggi sono:
+\begin{itemize}
+  \item \textbf{Riduzione dei rischi:} il \textit{framework}$_G$ Scrum , visto la breve durata degli \textit{sprint}$_G$, permette di minimizzare lo sviluppo e la gravità di rischi nello svolgimento del progetto;
+  \item \textbf{Flessibilità e Adattabilità:} questo modello di sviluppo permette una risposta veloce e tempestiva ai cambiamenti nei requisiti da parte degli \textit{stakeholders}$_G$;
+  \item \textbf{Consegna incrementale:} gli approcci di tipo agile permettono di effettuare rilasci frequenti del progetto permettendo al proponente di avere sempre una \textit{baseline}$_G$ di prodotto da poter valutare e fornire un \textit{feedback}$_G$;
+  \item \textbf{Collaborazione e Comunicazione:} il \textit{framework}$_G$ Scrum promuove una comunicazione aperta e costante tra i membri del team e i proponenti, migliorando la comprensione tra le due parti;
+  \item \textbf{Miglioramento continuo:} le retrospettive permettono di portare un miglioramento continuo, permettendo al team di poter identificare e sistemare eventuali problemi riscontrati durante lo svolgimento di uno \textit{sprint}$_G$.
+\end{itemize}
+
+\subsection{Preventivo}
+Stima delle risorse necessarie per svolgere e terminare le attività pianificate. Include una previsione del consumo di risorse, dovendo tener conto delle limitazioni orarie ed economiche sostenuti dal team.
+\subsection{Consuntivo}
+Riporta le risorse effettivamente utilizzate per lo svolgimento delle attività proposte nel preventivo e se tali attività sono state portate al termine.\\
+Questo confronto ci permette di identificare eventuali scostamenti rispetto al piano iniziale e reagire di conseguenza, portando un miglioramento continuo.
+\subsection{Struttura dei periodi}
 \newpage
 \section{Pianificazione}
 \subsection{Requirements and Technology Baseline \textit{RTB}$_G$}
@@ -183,5 +205,8 @@ Verificatore & Federico Pivetta\\
 \hline
 \end{tabular}
 \end{center}
+\textbf{Preventivo ore:}\\
+\textbf{Consuntivo ore:}
+
 
 \end{document}
