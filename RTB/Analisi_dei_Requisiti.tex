@@ -29,7 +29,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.1.1}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.0}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -94,7 +94,7 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
-0.2.0 & 2024-11-21 & Uncas Peruzzi  & Riccardo Piva & Migliorie varie e inizio\\
+0.2.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Migliorie varie e inizio\\
 & & & & redazione sez.3 (Casi d'uso) \\
 \hline
 0.1.1 & 2024-11-15 & Uncas Peruzzi  & Riccardo Piva & Redazione sez.1 e sez.2 \\
@@ -144,13 +144,11 @@ Smart custom advertising platform\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}
     \item[-] Analisi dei Requisiti - SWE 2024-25\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T05.pdf}}}
-    \item[-] Analisi e descrizione delle funzionalità: Use Case e relativi diagammi (UML) - SWE 2024-25\\
-    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T05.pdf}}}
+    \item[-] Analisi e descrizione delle funzionalità: Use Case e relativi diagammi (UML) - SWE 2024-25\\    
+    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi\%20Use\%20Case.pdf}}}
     \item[-] Verbali Interni
     \item[-] Verbali Esterni
     
-    
-
 \end{itemize}
 
 \newpage
@@ -224,25 +222,43 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{itemize}
     \item \textbf{Attore Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} Il sistema è operativo e accessibile.
-    \item \textbf{Postcondizioni:} l'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale e le varie pubblicità offerte agli utenti.
+    \item \textbf{Postcondizioni:} l'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale (marker) e le varie pubblicità offerte agli utenti.
     \item \textbf{Scenario Principale:}
     \begin{enumerate}
         \item L'utente privilegiato accede alla piattaforma di visualizzazione della dashboard.
-        \item Il sistema mette a disposizioni tutte le informazioni storicizzate e ricevute dai sensori.
+        \item Il sistema mette a disposizioni tutte le informazioni storicizzate e ricevute dai sensori, distribuiti su una mappa tramite marker.
     \end{enumerate}
     \item \textbf{User story associata:} Come utente privilegiato, voglio accedere alla dashboard per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS) e le inserzioni che vengono generate.
     
 \end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC1image.png}
+    \caption{UC1 - Visualizzazione Dashboard}
+    \label{fig:UC1}
+\end{figure}
 
-\subsubsection{\textbf{UC2.0 - Visualizzazione Dashboard}}
+\subsubsection{\textbf{UC1.1 - Visualizzazioine dettagli dei marker sulla mappa }}
 \begin{itemize}
-     \item \textbf{Attore Principale:}
-     \item \textbf{Precondizioni:}
-     \item \textbf{Postcondizioni:}
+     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:} Il sistema è operativo e accessibile.
+     \item \textbf{Postcondizioni:} l'utente privilegiato è in grado di ottenere informazioni più dettagliate dell'utente selezionando il marker visibile sulla mappa.
      \item \textbf{Scenario Principale:}
+     \begin{itemize}
+         \item L'utente privilegiato ha accesso alla dashboard con la mappa interattiva (UC1).
+         \item L'utente privilegiato seleaziona un marker per vederne informazioni più dettagliate.
+         \item Il sistema mette a disposizione il dato più recententemente archiviato per quel marker.
+     \end{itemize}
      \item \textbf{User story associata:}
-     \item \textbf{Estensioni:}
+     Come utente privilegiato voglio selezionare i vari marker , che indicano i mezzi di trasporto, presenti sulla mappa , in modo da vedere i dettagli sulla posizione e sull'utente che sta utilizzando il mezzo.
 \end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC1.1image.png}
+    \caption{UC1.1 - Visualizzazioine dettagli dei marker sulla mappa}
+    \label{fig:UC1.1}
+\end{figure}
+
 
 
 \newpage
@@ -256,4 +272,3 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \end{justify}
 \end{document}
-
