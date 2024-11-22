@@ -13,7 +13,7 @@
 \usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
 \usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
 
-\newcommand\version{0.2.2} %aggiunta versione come variabile
+\newcommand\version{0.3.1} %aggiunta versione come variabile
 
 
 
@@ -97,7 +97,9 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
-0.2.2 & 2024-11-22 & Manuel Gusella & Riccardo Piva & Stesura iniziale della sezione  Modello di sviluppo, preventivo e consuntivo\\
+0.3.1 & 2024-11-22 & Manuel Gusella & Riccardo Piva & Stesura sottosezione \ref{struttura-espositiva}\\
+\hline
+0.3.0 & 2024-11-22 & Manuel Gusella & Riccardo Piva & Stesura iniziale della sezione \ref{modello-sviluppo} Modello di sviluppo, preventivo e consuntivo\\
 \hline
 0.2.1 & 2024-11-17 & Manuel Gusella & Federico Pivetta & Modifiche di stile delle liste e dei link nel verbale \\
 \hline
@@ -146,7 +148,8 @@ Slide del corso di Ingegneria del Software:
 \newpage
 \section{Analisi dei Rischi}
 \newpage
-\section{Modello di sviluppo, preventivo e consuntivo}
+\section{Modello di sviluppo, preventivo e consuntivo} 
+\label{modello-sviluppo}
 \subsection{Modello di sviluppo}
 Il team ha deciso di utilizzare principalmente il \textit{framework}$_G$ Scrum come modello di sviluppo.\\
 Scrum, essendo un modello di sviluppo agile, permette di poter avanzare con il progetto tramite periodi chiamati \textit{sprint}$_G$, della durata di 2-3 settimane, alla fine dei quali consente di avere una \textit{baseline}$_G$ di prodotto da poter mostrare al \textit{proponente}$_G$.
@@ -165,22 +168,32 @@ Stima delle risorse necessarie per svolgere e terminare le attività pianificate
 \subsection{Consuntivo}
 Riporta le risorse effettivamente utilizzate per lo svolgimento delle attività proposte nel preventivo e se tali attività sono state portate al termine.\\
 Questo confronto ci permette di identificare eventuali scostamenti rispetto al piano iniziale e reagire di conseguenza, portando un miglioramento continuo.
-\subsection{Struttura dei periodi}
+\newpage
+\subsection{Struttura espositiva dei periodi} \label{struttura-espositiva}
+Ogni periodo di avanzamento verrà esposto nella seguente configurazione:
+\begin{enumerate}
+ \item \textbf{Durata:} Esprime la durata del periodo di \textit{sprint}$_G$ scritta in "Dal data-inizio al data-fine" con data-inizio e data-fine espresse in aaaa-mm-gg.
+ \item \textbf{Obiettivi:} Lista degli obiettivi da raggiungere entro fine sprint.
+ \item \textbf{Rischi incontrati:} Lista di rischi imbattuti durante il periodo. Nel caso  della verifica di eventuali rischi sarà presente anche una sezione di come il team li ha risolti e che impatto hanno avuto sulle attività pianificate. 
+ \item \textbf{Ruoli:} Tabella con i ruoli occupati dai componenti del team durante il periodo.
+ \item \textbf{Preventivo:} Espone le informazioni di ore e costi preventivati per il periodo di \textit{sprint}$_G$.
+ \item \textbf{Consuntivo:} Espone le informazioni di ore e costi effettivi per il periodo di \textit{sprint}$_G$.
+\end{enumerate}
 \newpage
 \section{Pianificazione}
 \subsection{Requirements and Technology Baseline \textit{RTB}$_G$}
 \subsubsection{Primo \textit{sprint}$_G$}
-\textbf{Inizio:} 2024-11-11\\ 
-\textbf{Fine:} 2024-11-25\\ 
-\textbf{Obiettivi:}
+\begin{enumerate}
+\item\textbf{Durata:} Dal 2024-11-11 al 2024-11-25
+\item \textbf{Obiettivi:}
 \begin{itemize}
 \item [-] Studio delle tecnologie consigliate dal proponente per capire quale utilizzare nella realizzazione del progetto;
 \item [-] Inizio stesura del Piano di Progetto;
 \item [-] Inizio redazione dell'Analisi dei Requisiti;
 \item [-] Inizio scrittura delle Norme di Progetto;
 \end{itemize}
-\textbf{Rischi:}\\
-\textbf{Ruoli:}\\
+\item \textbf{Rischi incontrati:}
+\item \textbf{Ruoli:}\\
 Questi sono i ruoli assegnati per membro in questo primo sprint.\\
 \vspace{2mm}
 \begin{center}
@@ -205,8 +218,8 @@ Verificatore & Federico Pivetta\\
 \hline
 \end{tabular}
 \end{center}
-\textbf{Preventivo ore:}\\
-\textbf{Consuntivo ore:}
-
+\item \textbf{Preventivo ore:}
+\item \textbf{Consuntivo ore:}
+\end{enumerate}
 
 \end{document}
