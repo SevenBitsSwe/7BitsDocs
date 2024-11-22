@@ -264,10 +264,82 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \newpage
 \section{Requisiti}
 %sicuramente da suddividere intenamente tra obbligatori, desiderabilli e opzionali
+
 \subsection{Requisiti funzionali}
-\subsection{Requisiti di usabilità}
-\subsection{Requisiti prestazionali}
+
+% Definisci una nuova colonna centrata con larghezza fissa
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\begin{center}
+\begin{table}[h]
+
+\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+\hline
+\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\hline
+ RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la dashboard composta da una mappa interattiva con i vari marker (sensori) su di essa &  Capitolato\\
+\hline
+\end{tabular}
+\caption{requisiti funzionali}
+\end{table}
+\end{center}
+
+
+
+\newpage
+\subsection{Requisiti di qualità}
+\begin{center}
+\begin{table}[h]
+\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+
+\hline
+\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\hline
+RQ01 & Obbligatorio & Presentare documento di analisi dei requisiti d'analisi contenente i diagrami UML relativi ai casi d'uso & Capitolato\\
+\hline
+\end{tabular}
+\caption{requisiti di qualità}
+\end{table}
+\end{center}
+
+\newpage
 \subsection{Requisiti di vincolo}
+\begin{center}
+\begin{table}[h]
+\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+
+\hline
+\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\hline
+RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python & Interna\\
+
+\hline 
+RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnlogia multi-container, in particolare Docker Compose & Capitolato, \newline Interna\\
+\hline
+RV03 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di dashboard interattive, come Grafana. & Capitolato, \newline
+Interna\\
+\hline
+\end{tabular}
+\caption{requisiti di vincolo}
+\end{table}
+\end{center}
+
+
+\newpage
+\subsection{Requisiti prestazionali}
+\begin{center}
+\begin{table}[ht]
+\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+
+\hline
+\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\hline
+RP01 & Obbligatorio &  Il sistema deve gestire inizialmente la generazione di un dato geoposizionale ogni 5 secondi e un utente noleggiatore del mezzo & Capitolato\\
+\hline
+
+\end{tabular}
+\caption{requisiti prestazionali}
+\end{table}
+\end{center}
 
 
 \end{justify}
