@@ -15,6 +15,7 @@
 \usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
 
 \graphicspath{{images/}}
+%\graphicspath{{../images/}}
 
 \setcounter{secnumdepth}{4}
 
@@ -29,7 +30,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.0}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.1}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -90,18 +91,19 @@
 
 \centering\textbf{Registro modifiche}\\
 \vspace{2mm}
-\begin{tabular}{|l|l|l|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
-0.2.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Migliorie varie e inizio\\
-& & & & redazione sez.3 (Casi d'uso) \\
+0.2.1 & 2024-11-23 & Manuel Gusella  & Federico Pivetta & Aggiunta di UC1.2, UC2, RF02 e RF03 \\
 \hline
-0.1.1 & 2024-11-15 & Uncas Peruzzi  & Riccardo Piva & Redazione sez.1 e sez.2 \\
+0.2.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Migliorie varie e inizio redazione sez.\ref{sec:casi-uso} (Casi d'uso) \\
+\hline
+0.1.1 & 2024-11-15 & Uncas Peruzzi  & Riccardo Piva & Redazione sez.\ref{sec:intro} e sez.\ref{sec:descrizione} \\
 \hline
 0.1.0 & 2024-11-14 & Uncas Peruzzi  & Riccardo Piva & Inizio redazione del documento\\
 \hline
-\end{tabular}
+\end{tabularx}
 \newpage
 \tableofcontents
 \listoffigures %elenco delle figure sarà da usare per ogni immagine
@@ -112,7 +114,7 @@
     
 
 \section{Introduzione}
-
+\label{sec:intro}
 
 \subsection{Scopo del documento}
 
@@ -153,6 +155,7 @@ Smart custom advertising platform\\
 
 \newpage
 \section{Descrizione del prodotto}
+\label{sec:descrizione}
 \subsection{Obiettivi del prodotto}
 
 Il prodotto software da sviluppare, ha il principale obiettivo di generare annunci personalizzati per l'utente, sulla base della sua profilazione e posizione in tempo reale sulla mappa, tramite l'utilizzo dei LLM , nel momento in cui si trovi su un veicolo (dotato di display). Il risultato desiderato, prevede di proporre agli utenti esclusivamente annunci finalizzati a catturare il loro interesse, con il fine di massimizzare il tasso di engagement.
@@ -197,6 +200,8 @@ Non è stata segnalata da parte del proponente, alcuna limitazione o problematic
 Sono invece note nel documento \textit{Piano di Progetto v1.0.0} restrizioni, che riguardano il tempo a disposizione e il budget allocato per lo sviluppo del progetto. 
 \newpage
 \section{Casi d'uso}
+\label{sec:casi-uso}
+
 \subsection{Finalità e specifiche}
 Questa sezione espone una serie di casi d'uso, come risultato di un'analisi dei requisiti continuativa del capitolato, dal confronto con la proponente e dalle riflessioni degli Analisiti del team. La specifica di ogni caso d'uso segue gli standard descritti in maniera dettagliata nel documento Norme di Progetto v1.0.0.
 
@@ -238,7 +243,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \label{fig:UC1}
 \end{figure}
 
-\subsubsection{\textbf{UC1.1 - Visualizzazioine dettagli dei marker sulla mappa }}
+\subsubsection{\textbf{UC1.1 - Visualizzazione dettagli dei marker sulla mappa }}
 \begin{itemize}
      \item \textbf{Attore Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:} Il sistema è operativo e accessibile.
@@ -255,10 +260,56 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1.1image.png}
-    \caption{UC1.1 - Visualizzazioine dettagli dei marker sulla mappa}
+    \caption{UC1.1 - Visualizzazione dettagli dei marker sulla mappa}
     \label{fig:UC1.1}
 \end{figure}
 
+\subsubsection{\textbf{UC1.2 - Visualizzazione Annunci sulla mappa}}
+\begin{itemize}
+	\item \textbf{Attore Principale:} Utente privilegiato
+    \item \textbf{Precondizioni:} 
+    	\begin{itemize}
+    		\item [-] Il sistema è operativo e accessibile;
+    		\item [-] L'Utente privilegiato abbia visualizzato la Dashboard (UC1);
+    		\item [-] Un utente entri nell'area di un punto di interesse.
+    	\end{itemize}
+    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino al punto.
+    \item \textbf{Scenario Principale:} 
+    \begin{itemize}
+    		\item [-] Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
+    		\item [-] Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'annuncio.
+	\end{itemize}
+    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare gli annunci pubblicitari che arrivano ai vari utenti.
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC1.2image.png}
+    \caption{UC1.2 - Visualizzazione Annunci sulla mappa}
+    \label{fig:UC1.2}
+\end{figure}
+\subsubsection{\textbf{UC2 - Visualizzazione Annuncio}}
+\begin{itemize}
+	\item \textbf{Attore Principale:} Utente
+    \item \textbf{Precondizioni:} 
+    	\begin{itemize}
+    		\item [-] Il sistema è operativo e accessibile;
+    		\item [-] Un utente entri nell'area di un punto di interesse.
+    	\end{itemize}
+    \item \textbf{Postcondizioni:} L'Utente visualizzerà un messaggio contenente un annuncio personalizzato in base ai suoi dati personali e dal punto di interesse.
+    \item \textbf{Scenario Principale:} 
+    \begin{itemize}
+    		\item [-] Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
+    		\item [-] Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'annuncio;
+    		\item [-] Il sistema invia all'utente il messaggio contenente l'annuncio generato.
+	\end{itemize}
+    \item \textbf{User story associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC2image.png}
+    \caption{UC2 - Visualizzazione Annuncio}
+    \label{fig:UC2}
+\end{figure}
 
 
 \newpage
@@ -277,6 +328,10 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
  RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la dashboard composta da una mappa interattiva con i vari marker (sensori) su di essa &  Capitolato\\
+\hline
+RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse & Capitolato, UC1.2\\
+\hline
+RF03 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando & Capitolato, UC2\\
 \hline
 \end{tabular}
 \caption{requisiti funzionali}
@@ -315,7 +370,7 @@ RQ01 & Obbligatorio & Presentare documento di analisi dei requisiti d'analisi co
 RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python & Interna\\
 
 \hline 
-RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnlogia multi-container, in particolare Docker Compose & Capitolato, \newline Interna\\
+RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare Docker Compose & Capitolato, \newline Interna\\
 \hline
 RV03 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di dashboard interattive, come Grafana. & Capitolato, \newline
 Interna\\
@@ -369,7 +424,7 @@ Interna &  RV02 \linebreak RV03 \\
 \hline
 \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\
 \hline
-Funzionali & 1 & - & - & 1\\
+Funzionali & 2 & - & 1 & 3\\
 \hline
 Di qualità & 1 & - & - & 1 \\
 \hline
@@ -377,7 +432,7 @@ Di vincolo & 3 & - & - & 3 \\
 \hline
 Prestazionali & 1 & - & - & 1 \\
 \hline
-Totale & 6 & - & - & 6 \\
+Totale & 6 & - & - & 8 \\
 \hline
 
 \end{tabular}
