@@ -35,6 +35,8 @@ sevenbits.swe.unipd@gmail.com\\
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+1.0.0 & 2024-11-25 & Riccardo Piva & Federico Pivetta & Approvazione del verbale\\
+\hline
 0.1.0 & 2024-11-25 & Manuel Gusella & Federico Pivetta & Redazione del verbale\\
 \hline
 
@@ -51,7 +53,7 @@ sevenbits.swe.unipd@gmail.com\\
 	\begin{itemize}
         \item SevenBits:
         \begin{itemize}
-        		\item Cristellon Giovanni;
+        	\item Cristellon Giovanni;
 			\item Gusella Manuel;
 			\item Peruzzi Uncas;
 			\item Piva Riccardo;
@@ -69,23 +71,23 @@ sevenbits.swe.unipd@gmail.com\\
 \item Piattaforma: Google meet (online)
 \end{itemize}
 \subsection{Oggetto}
-Primo SAL con Andra Dorigo, Fabio Pallaro e Daniele Zorzi di SyncLab.
+Primo SAL (Stato Avanzamento Lavori) con Andra Dorigo, Fabio Pallaro e Daniele Zorzi di SyncLab.
 
 \subsection{Sintesi}
-In questo primo SAL abbiamo mostrato al proponente il lavoro svolto durante questo primo sprint e fatto alcune domande al proponente.
+In questo primo SAL abbiamo mostrato al proponente il lavoro svolto durante il primo sprint e posto alcune domande al proponente.
 \subsection{Studio delle tecnologie}
 Abbiamo fatto vedere i file docker e python per la visualizzazione della dashboard grafana con visualizzazione dati presenti, per il momento, nel database di grafana stesso.\\
-Durante la riunione ci sono stati problemi tecnici che hanno impedita la visualizzazione dei marker su grafana.\\
-Il proponente suggerisce di far vedere subito se abbiamo una base di prodotto SW in mano.
+Durante la riunione ci sono stati alcuni problemi tecnici che hanno impedito la visualizzazione dei marker su grafana.\\
+Il proponente suggerisce per il futuro, di far vedere subito una base di prodotto software nel caso fosse pronta per la presentazione.
 
 \subsection{Documentazione}
-Abbiamo riferito al proponente dell'iniziale stesura dei vari documenti senza mostrarglieli effettivamente.\\
+Abbiamo riferito al proponente dell'iniziale stesura dei vari documenti da presentare alla revisione RTB senza mostrarglieli effettivamente.\\
 Il proponente chiede se, per il prossimo SAL, possiamo preparare una prima versione dell'analisi dei requisiti da inviargli per una successiva valutazione da parte loro.
 
 \subsection{Formato dei messaggi}
 Abbiamo esposto la nostra idea di visualizzare il messaggio in output come stringa.\\
-Il proponente ha chiesto di pensare bene alla parte di input rispetto a quella di output, che sarebbe appunto la visualizzazione di una notifica.\\
-Per i topic il proponente suggerisce di non vincolarci troppo, ma di rimanere su categorie abbastanza generali, per esempio: sport, cibo etc...
+Il proponente ci ha chiesto di pensare bene alla parte di input rispetto a quella di output, che sarebbe appunto la visualizzazione di una notifica.\\
+Mentre per quanto riguarda i topic il proponente suggerisce di non vincolarci troppo, ma di rimanere su categorie abbastanza generali, per esempio: sport, cibo etc...
 
 \subsection{Domande}
 Abbiamo fatto alcune domande al proponente per ulteriori chiarimenti sul progetto:\\
@@ -97,24 +99,23 @@ Abbiamo fatto alcune domande al proponente per ulteriori chiarimenti sul progett
 \end{enumerate}
 \subsection{Risposte}
 \begin{enumerate}
-\item Il proponente ha detto che sarebbe ottimale averne due, uno per il mantenimento dei dati relazionali e un altro per il posizionamento degli utenti. Però ci hanno successivamente consigliato di mantenere la struttura presente, cioè singolo DB Clickhouse che gestisce tutto. \\
-Se saranno presenti problemi con l'utilizzo di Clickhouse ci hanno dato la possibilità di contattare un loro team che lavora principalmente con questa tecnologia per dei suggerimenti.\\
-Oppure possiamo passare ad un'architettura con due database (postgres e PostGIS), però dobbiamo dare una motivazione valida se decidiamo di passare a questa struttura.
-\item Ci hanno sconsigliato la produzione di un connettore custom fatto da noi e di utilizzare quello già integrato per connettore Clickhouse e Kafka.
+\item Il proponente all'inizio ha detto che sarebbe stato ottimale averne due, uno per il mantenimento dei dati relazionali ed un altro per il posizionamento degli utenti. Tuttavia, dopo un confronto, ci hanno consigliato di mantenere la struttura presente, cioè un singolo DB Clickhouse che gestisce tutto.\\
+Se riscontreremo problemi con l'utilizzo di Clickhouse ci hanno dato la possibilità di contattare un loro team che lavora principalmente con questa tecnologia per dei suggerimenti. In alternativa possiamo passare ad un'architettura con due database (Postgres e PostGIS), soltanto se abbiamo una motivazione valida per passare a questa struttura.
+\item Ci hanno sconsigliato di sviluppare un connettore custom creato da noi e, al contrario, ci hanno suggerito di utilizzare il connettore già integrato per Clickhouse e Kafka.
 \item Per questo progetto specifico il proponente pensa che ci basti l'utilizzo di ChatGPT in versione demo.
 \item Si, è uno use case effettivo anche se fatto da grafana.
 \end{enumerate}
 
 \subsection{Decisioni prese}
 Abbiamo deciso la data del prossimo SAL, e quindi di fine del prossimo sprint, che sarà anticipata al 2024-12-05 rispetto alle solite due settimane prefissate di sprint per problemi di disponibilità del proponente.\\
-Per questo periodo di sprint abbiamo deciso col proponente di non effettuare un incontro intermedio ma di contattarci tramite messaggi su discord per eventuali dubbi. 
+Per questo periodo di sprint abbiamo deciso insieme al proponente di non effettuare un incontro intermedio ma di contattarci tramite messaggi su Discord per eventuali dubbi. 
 
 \subsection{Obiettivi prossimo SAL}
 Come obiettivi per il prossimo SAL abbiamo deciso con il proponente di:
 \begin{itemize}
 \item Fare una prima versione del documento di analisi dei requisiti da poter inviare al proponente per una verifica iniziale;
 \item Continuare con lo svolgimento di una base funzionante per grafana e la visualizzazione dei dati;
-\item Iniziare un prototipo di ambiente apache Flink da poter successivamente collegare all'ambiente.
+\item Iniziare un prototipo di ambiente Apache Flink da poter successivamente collegare alla base già sviluppata.
 \end{itemize}
 
 %parte di firma
@@ -124,7 +125,5 @@ Firma: \hrulefill \\
 \vspace{2mm}
 Data: \dotfill
 \end{minipage}
-
-
 
 \end{document}
