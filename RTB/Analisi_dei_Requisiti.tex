@@ -95,6 +95,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.2.2 & 2024-11-25 & Leonardo Trolese  & Federico Pivetta & Aggiunta di UC3, UC3.1, UC3.2, UC4, RF04 e RF05 \\
+\hline
 0.2.1 & 2024-11-23 & Manuel Gusella  & Federico Pivetta & Aggiunta di UC1.2, UC2, RF02 e RF03 \\
 \hline
 0.2.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Migliorie varie e inizio redazione sez.\ref{sec:casi-uso} (Casi d'uso) \\
@@ -223,6 +225,80 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %     \item \textbf{User story associata:}
 %     \item \textbf{Estensioni:}
 % \end{itemize}
+
+\subsubsection{\textbf{UC3 - Autenticazione}}
+\begin{itemize}
+     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:} Il sistema è operativo, accessibile e l'utente privilegiato possiede le credenziali di accesso alla dashboard.
+     \item \textbf{Postcondizioni:} L'utente privilegiato ha accesso alla dashboard.
+     \item \textbf{Scenario Principale:}
+     \begin{itemize}
+         \item L'utente privilegiato entra nell'applicazione web e visualizza un'interfaccia di accesso che richiede l'inserimento di username e password.
+         \item L'utente privilegiato inserisce username e password e procede con il tentato accesso.
+         \item Il sistema invia le credenziali di accesso a Grafana.
+         \item Grafana verica le credenziali ricevute e invia un responso positivo o negativo all'utente privilegiato.
+     \end{itemize}
+     \item \textbf{User story associata:}
+     Come utente privilegiato voglio poter accedere alla dashboard della web app per monitorare lo spostamento degli utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi invio la richiesta. Se le credenziali sono corrette voglio accedere alla visualizzazione della dashboard, altrimenti voglio visualizzare un messaggio di errore generico e poter inserire nuovamente le credenziali.
+\end{itemize}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC3-UC4image.png}
+    \caption{UC3 - Autenticazione | UC4 - Visualizzazione errore autenticazione}
+    \label{fig:UC3 e UC4}
+\end{figure}
+
+\subsubsection{\textbf{UC3.1 - Inserimento username}}
+\begin{itemize}
+     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:} 
+            \begin{itemize}
+                \item [-] Il sistema è operativo e accessibile.
+                \item [-] L'utente privilegiato sta eseguendo l'autenticazione.
+            \end{itemize}
+     \item \textbf{Postcondizioni:} Il nome utente è stato inserito nel campo dati preposto.
+     \item \textbf{Scenario Principale:}
+     \begin{enumerate}
+         \item L'utente privilegiato inserisce il suo username nell'apposito campo dati.
+     \end{enumerate}
+     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire lo username al fine di eseguire l'accesso.
+\end{itemize}
+
+\subsubsection{\textbf{UC3.2 - Inserimento password}}
+\begin{itemize}
+     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:} 
+            \begin{itemize}
+                \item [-] Il sistema è operativo e accessibile.
+                \item [-] L'utente privilegiato sta eseguendo l'autenticazione.
+            \end{itemize}
+     \item \textbf{Postcondizioni:} La password è stata inserito nel campo dati preposto.
+     \item \textbf{Scenario Principale:}
+     \begin{enumerate}
+         \item L'utente privilegiato inserisce la sua password nell'apposito campo dati.
+     \end{enumerate}
+     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire la password al fine di eseguire l'accesso.
+\end{itemize}
+
+\subsubsection{\textbf{UC4 - Visualizzazione errore autenticazione}}
+\begin{itemize}
+    \item \textbf{Attore Principale:} Utente privilegiato.
+    \item \textbf{Precondizioni:}
+            \begin{itemize}
+                \item [-] Il sistema è operativo e accessibile.
+                \item [-] L'utente privilegiato ha inserito una combinazione non valida di username e password.
+                \item [-] L'autenticazione descritta in UC3 è fallita.
+            \end{itemize}
+    \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un messaggio di errore di accesso.
+    \item \textbf{Scenario Principale:}
+            \begin{enumerate}
+                \item L'utente privilegiato inserisce le credenziali e effettua l'accesso.
+                \item Il sistema verifica la credenziali inserite e se una delle due o entrambe non sono valide fa visualizzare un messaggio di errore.
+            \end{enumerate}
+\end{itemize}
+
+
 \subsubsection{\textbf{UC1.0 - Visualizzazione dashboard}}
 \begin{itemize}
     \item \textbf{Attore Principale:} Utente privilegiato.
@@ -332,6 +408,10 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse & Capitolato, UC1.2\\
 \hline
 RF03 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando & Capitolato, UC2\\
+\hline
+RF04 & Obbligatorio & L'utente privilegiato deve poter effetturare l'accesso per visualizzare la dashboard & Capitolato, UC3, UC3.1, UC3.2\\
+\hline
+RF05 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute & Capitolato, UC4\\
 \hline
 \end{tabular}
 \caption{requisiti funzionali}
