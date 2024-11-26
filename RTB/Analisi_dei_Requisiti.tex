@@ -95,6 +95,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.2.3 & 2024-11-26 & Leonardo Trolese  & Federico Pivetta & Correzioni minori grammaticali e di contenuto \\
+\hline
 0.2.2 & 2024-11-25 & Leonardo Trolese  & Federico Pivetta & Aggiunta di UC3, UC3.1, UC3.2, UC4, RF04 e RF05 \\
 \hline
 0.2.1 & 2024-11-23 & Manuel Gusella  & Federico Pivetta & Aggiunta di UC1.2, UC2, RF02 e RF03 \\
@@ -121,12 +123,12 @@
 \subsection{Scopo del documento}
 
 Il seguente documento ha l'obiettivo di fornire una descrizione accurata dei casi d'uso e dei requisiti riguardanti il progetto \textit{"NearYou - 
-Smart custom advertising platform"} concernenti al Capitolato C4 proposto da \href{https://www.synclab.it/home}{SyncLab} e aggiudicato al gruppo dal committente.
+Smart custom advertising platform"} concernenti il Capitolato C4 proposto da \href{https://www.synclab.it/home}{SyncLab} e aggiudicato al gruppo dal committente.
 
 
 \subsection{Glossario}
 Con l'intendo di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un Glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del progetto. I termini presenti nel glossario sono contrasegnati con una \textit{G} a pedice : Termine\(_G\).\\
-Le definizioni sono presenti nell'apposito documento \textit{Glossario v1.0.0}
+Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf}
 
 
 \subsection{Riferimenti}
@@ -160,10 +162,15 @@ Smart custom advertising platform\\
 \label{sec:descrizione}
 \subsection{Obiettivi del prodotto}
 
-Il prodotto software da sviluppare, ha il principale obiettivo di generare annunci personalizzati per l'utente, sulla base della sua profilazione e posizione in tempo reale sulla mappa, tramite l'utilizzo dei LLM , nel momento in cui si trovi su un veicolo (dotato di display). Il risultato desiderato, prevede di proporre agli utenti esclusivamente annunci finalizzati a catturare il loro interesse, con il fine di massimizzare il tasso di engagement.
+Il prodotto software da sviluppare, ha il principale obiettivo di generare annunci personalizzati per l'utente, 
+sulla base della sua profilazione e posizione in tempo reale sulla mappa, tramite l'utilizzo dei LLM, nel momento 
+in cui si trovi su un veicolo (dotato di display). Il risultato desiderato, prevede di proporre agli utenti 
+esclusivamente annunci finalizzati a catturare il loro interesse, con il fine di massimizzare il tasso di engagement.
 \subsection{Ambito del prodotto}
 Il campo di applicazione del prodotto software \textit{NearYou - 
-Smart custom advertising platform}, è focalizzato per clienti che offrono un servizio di renting di mezzi di trasporto, dotati di display, nei quali durante l'itinerario di viaggio vengano presentate pubblicità mirate in base a:
+Smart custom advertising platform}, è focalizzato su una serie di clienti che offrono un servizio di renting di 
+mezzi di trasporto, dotati di display, nei quali durante l'itinerario di viaggio vengano presentate pubblicità 
+mirate in base a:
 \begin{itemize}
     \item [-] sensori di posizione (GPS);
     \item [-] informazioni date dagli utenti in fase di iscrizione;
@@ -172,47 +179,78 @@ Smart custom advertising platform}, è focalizzato per clienti che offrono un se
 
 \subsection{Panoramica del prodotto}
 \subsubsection{Prospettiva generale del prodotto} 
-In questa sezione vengono elencate tutte le interfacce di sistema che possono interagire con il prodotto \textit{Near You}.
+In questa sezione vengono elencate tutte le interfacce di sistema che possono interagire con il prodotto 
+\textit{Near You}.
 
 \paragraph{Interfacce utente}\mbox{}\\
-\textit{Near You} è un prodotto che offre un interfaccia utilizzabile su display touchscreen ,con la quale l'utente può interagire visivamente e fisicamente. Nell'ambiente di sviluppo del prodotto, il display è emulato tramite una web-app che presenta una mappa interattiva, sulla quale vengono visualizzate pubblicità associate ai punti di interesse. Per l'utente privilegiato,che offre il servizio di renting, è presente dashboard nella quale è possibile visualizzare la mappa, con tutte le posizioni live dei mezzi e i vari punti di interesse, se generati dal software sottostante.
+\textit{Near You} è un prodotto che genera messaggi pubblicitari personalizzati per l'utente. Questi messaggi sono 
+pensati per essere visualizzati mediante un'interfaccia utilizzabile su display touchscreen, con la quale l'utente 
+può interagire visivamente e fisicamente; tuttavia con la proponente è stato stabilito che tale interfaccia utente 
+è un requisito opzionale poichè può essere facilmente ottenuta a partire dalla dashboard dell'utente privilegiato 
+mediante semplice filtro. \\
+In ogni caso, nell'ambiente di sviluppo del prodotto, il display è emulato tramite una web-app che presenta 
+una mappa interattiva sulla quale vengono visualizzate pubblicità associate ai punti di interesse. Per l'utente 
+privilegiato, che offre il servizio di renting, è invece presente, come accenato prima, una dashboard 
+nella quale è possibile visualizzare la mappa, con tutte le posizioni live dei mezzi e i vari punti di interesse, 
+generati dal software sottostante.
 \paragraph{Interfacce hardware}\mbox{}\\
-Il prodotto sviluppato sfrutta i dati monitorati e acquisiti da sensori, nel contesto di sviluppo saranno dati generati attraverso simulazioni reali. Il display touchscreen, corrisponderà a una web-app accessibile da un web browser. Come risultato di quanto detto lo sviluppo del progetto non avviene con elementi hardware fisici.
+Il prodotto sviluppato sfrutta i dati monitorati e acquisiti da sensori, nel contesto di sviluppo saranno dati 
+generati attraverso simulazioni reali. Il display touchscreen, corrisponderà a una web-app accessibile da un web 
+browser. Come risultato di quanto detto lo sviluppo del progetto non avviene con elementi hardware fisici.
 
 \subsubsection{Funzionalità del prodotto}
 Il prodotto software dovrà garantire le seguenti caratteristiche:
 \begin{itemize}
-    \item [-] permettere all'utente di creare un profilo dettagliato in modo da poter raccogliere dati significativi.
-    \item [-] la simulazione dati provenienti dai sensori GPS, nel caso del percorso effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
-    \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, facilitando di fatto la gestione delle informazioni tra i diversi componenti del sistema.
-    \item [-] individuazione dei punti di interessi specifici, sfruttando LLM, che prende in input i dati di profilazione e posizione.
-    \item [-] serializzazione dei dati precedentemente menzionati, in un database adatto e performante alla tipizzazione degli input.
-    \item [-] acquisizione e processazione dei dati dei sensori,per mezzo di uno strumento adatto allo stream processing,per fornirli in pasto al framework di generative AI.
-    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente che cliente, per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati, per il secondo una dashboard interattiva.
+    \item [-] generazione e salvataggio di dati personali relativi a utenti fittizi, su cui dimostrare il funzionamento 
+    del software.
+    \item [-] simulazione dati provenienti dai sensori GPS, nel caso del percorso effettuato dall'utente, 
+    deve corrispondere a coordinate di itinerari che esistono realmente.
+    \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, 
+    facilitando di fatto la gestione delle informazioni tra i diversi componenti del sistema.
+    \item [-] individuazione dei punti di interesse specifici, sfruttando LLM, che prende in input i dati di 
+    profilazione e posizione simulati.
+    \item [-] serializzazione dei dati precedentemente menzionati, in un database adatto alla tipizzazione degli input 
+    e performante in tale contesto.
+    \item [-] acquisizione e elaborazione dei dati dei sensori per mezzo di uno strumento adatto allo stream 
+    processing, per fornirli in pasto al framework di generative AI.
+    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente (opzionale) che utente privilegiato. 
+    per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati, per il secondo una dashboard 
+    interattiva.
     
 \end{itemize}
 
 \subsubsection{Caratteristiche degli utenti}
-Gli utenti si possono distinguere in utente privilegiato, il quale offre il servizio di renting del mezzo e il noleggiatore designato come un normale utente.\\
-L'utente privilegiato, deve poter accedere a una dashboard per visualizzare il tracking gps dei vari mezzi di trasporto, e gli ultimi punti di interesse generati per essi.
-L'utente tipico di \textit{Near You} è un individuo a bordo di un veicolo, dotato di display, che fornisce , durante il tragitto eventuali annunci personalizzati affini a punti di interesse generati ad hoc.
+Gli utenti si possono distinguere in utente privilegiato, il quale offre il servizio di renting del mezzo e il 
+noleggiatore designato come un normale utente.\\
+L'utente privilegiato, deve poter accedere a una dashboard per visualizzare il tracking gps dei vari mezzi di 
+trasporto, e gli ultimi punti di interesse generati per essi.
+L'utente tipico di \textit{Near You} è un individuo a bordo di un veicolo, dotato di display, che fornisce, durante 
+il tragitto, eventuali annunci personalizzati affini a punti di interesse generati ad hoc.
 \subsubsection{Limitazioni}
-Non è stata segnalata da parte del proponente, alcuna limitazione o problematica relativa alla privacy nella raccolta dati dell'utente e nella fase di sviluppo del prodotto.
+Non è stata segnalata da parte del proponente, alcuna limitazione o problematica relativa alla privacy nella raccolta 
+dati dell'utente poichè quest'ultima viene simulata mediante la generazione di dati ad hoc. Lo stesso vale per la fase 
+di sviluppo del prodotto.
 \\
-Sono invece note nel documento \textit{Piano di Progetto v1.0.0} restrizioni, che riguardano il tempo a disposizione e il budget allocato per lo sviluppo del progetto. 
+Sono invece note nel documento \textit{Piano di Progetto v1.0.0} restrizioni, che riguardano il tempo a disposizione 
+e il budget allocato per lo sviluppo del progetto. 
 \newpage
 \section{Casi d'uso}
 \label{sec:casi-uso}
 
 \subsection{Finalità e specifiche}
-Questa sezione espone una serie di casi d'uso, come risultato di un'analisi dei requisiti continuativa del capitolato, dal confronto con la proponente e dalle riflessioni degli Analisiti del team. La specifica di ogni caso d'uso segue gli standard descritti in maniera dettagliata nel documento Norme di Progetto v1.0.0.
+Questa sezione espone una serie di casi d'uso come risultato di un'analisi dei requisiti continuativa del capitolato, 
+dal confronto con la proponente e dalle riflessioni degli Analisiti del team. La specifica di ogni caso d'uso segue 
+gli standard descritti in maniera dettagliata nel documento \textit{Norme di Progetto v1.0.0}.
 
 \subsection{Attori}
 Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{itemize}
-    \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il nolleggiatore dei mezzi di trasporto, che deve poter accedere alla dashboard con il tracciamento dei propri mezzi, previa autenticazione ???
-    \item \textbf{Utente}: è il soggetto utilizzatore del servizio di renting, che visualizza la mappa con gli eventuali punti di interesse.
-    \item \textbf{Sensore}: è un dispositivo che raccoglie dati di posizione geografica, che sono letti e utilizzati del sistema.
+    \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il nolleggiatore dei mezzi di 
+    trasporto, che deve poter accedere alla dashboard con il tracciamento dei propri mezzi, previa autenticazione
+    \item \textbf{Utente}: è il soggetto utilizzatore del servizio di renting, che visualizza la mappa con gli 
+    eventuali punti di interesse.
+    \item \textbf{Sensore}: è un dispositivo che raccoglie dati di posizione geografica, che sono letti e utilizzati 
+    dal sistema.
 \end{itemize}
 \subsection{Elenco dei casi d'uso}
 %modello da seguire copia incolla
@@ -229,17 +267,22 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC3 - Autenticazione}}
 \begin{itemize}
      \item \textbf{Attore Principale:} Utente Privilegiato.
-     \item \textbf{Precondizioni:} Il sistema è operativo, accessibile e l'utente privilegiato possiede le credenziali di accesso alla dashboard.
+     \item \textbf{Precondizioni:} Il sistema è operativo, accessibile e l'utente privilegiato possiede le credenziali 
+     di accesso alla dashboard.
      \item \textbf{Postcondizioni:} L'utente privilegiato ha accesso alla dashboard.
      \item \textbf{Scenario Principale:}
      \begin{itemize}
-         \item L'utente privilegiato entra nell'applicazione web e visualizza un'interfaccia di accesso che richiede l'inserimento di username e password.
-         \item L'utente privilegiato inserisce username e password e procede con il tentato accesso.
+         \item L'utente privilegiato entra nell'applicazione web e visualizza un'interfaccia di accesso che richiede 
+         l'inserimento di username e password.
+         \item L'utente privilegiato inserisce username e password e procede con il tentativo di accesso.
          \item Il sistema invia le credenziali di accesso a Grafana.
          \item Grafana verica le credenziali ricevute e invia un responso positivo o negativo all'utente privilegiato.
      \end{itemize}
      \item \textbf{User story associata:}
-     Come utente privilegiato voglio poter accedere alla dashboard della web app per monitorare lo spostamento degli utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi invio la richiesta. Se le credenziali sono corrette voglio accedere alla visualizzazione della dashboard, altrimenti voglio visualizzare un messaggio di errore generico e poter inserire nuovamente le credenziali.
+     Come utente privilegiato voglio poter accedere alla dashboard della web-app per monitorare lo spostamento degli 
+     utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi 
+     invio la richiesta. Se le credenziali sono corrette voglio accedere alla visualizzazione della dashboard, 
+     altrimenti voglio visualizzare un messaggio di errore generico e poter inserire nuovamente le credenziali.
 \end{itemize}
 
 \begin{figure}[ht]
@@ -262,7 +305,8 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \begin{enumerate}
          \item L'utente privilegiato inserisce il suo username nell'apposito campo dati.
      \end{enumerate}
-     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire lo username al fine di eseguire l'accesso.
+     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire lo username al fine di 
+     eseguire l'accesso.
 \end{itemize}
 
 \subsubsection{\textbf{UC3.2 - Inserimento password}}
@@ -273,12 +317,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
                 \item [-] Il sistema è operativo e accessibile.
                 \item [-] L'utente privilegiato sta eseguendo l'autenticazione.
             \end{itemize}
-     \item \textbf{Postcondizioni:} La password è stata inserito nel campo dati preposto.
+     \item \textbf{Postcondizioni:} La password è stata inserita nel campo dati preposto.
      \item \textbf{Scenario Principale:}
      \begin{enumerate}
          \item L'utente privilegiato inserisce la sua password nell'apposito campo dati.
      \end{enumerate}
-     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire la password al fine di eseguire l'accesso.
+     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire la password al fine di 
+     eseguire l'accesso.
 \end{itemize}
 
 \subsubsection{\textbf{UC4 - Visualizzazione errore autenticazione}}
@@ -294,7 +339,8 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Scenario Principale:}
             \begin{enumerate}
                 \item L'utente privilegiato inserisce le credenziali e effettua l'accesso.
-                \item Il sistema verifica la credenziali inserite e se una delle due o entrambe non sono valide fa visualizzare un messaggio di errore.
+                \item Il sistema verifica la credenziali inserite e se una delle due o entrambe non sono valide fa 
+                visualizzare un messaggio di errore.
             \end{enumerate}
 \end{itemize}
 
@@ -303,13 +349,17 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{itemize}
     \item \textbf{Attore Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} Il sistema è operativo e accessibile.
-    \item \textbf{Postcondizioni:} l'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale (marker) e le varie pubblicità offerte agli utenti.
+    \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare una mappa geografica, con i 
+    sensori GPS aggiornati in tempo reale (marker) e le varie pubblicità offerte agli utenti.
     \item \textbf{Scenario Principale:}
     \begin{enumerate}
         \item L'utente privilegiato accede alla piattaforma di visualizzazione della dashboard.
-        \item Il sistema mette a disposizioni tutte le informazioni storicizzate e ricevute dai sensori, distribuiti su una mappa tramite marker.
+        \item Il sistema mette a disposizioni tutte le informazioni storicizzate e ricevute dai sensori, distribuiti 
+        su una mappa tramite marker.
     \end{enumerate}
-    \item \textbf{User story associata:} Come utente privilegiato, voglio accedere alla dashboard per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS) e le inserzioni che vengono generate.
+    \item \textbf{User story associata:} Come utente privilegiato, voglio accedere alla dashboard per visualizzare 
+    in tempo reale i mezzi che ho messo a noleggio (sensori GPS) e le inserzioni che vengono generate per gli 
+    utenti che hanno effettuato il noleggio.
     
 \end{itemize}
 \begin{figure}[ht]
@@ -319,11 +369,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \label{fig:UC1}
 \end{figure}
 
-\subsubsection{\textbf{UC1.1 - Visualizzazione dettagli dei marker sulla mappa }}
+\subsubsection{\textbf{UC1.1 - Visualizzazione dettagli dei marker sulla mappa}}
 \begin{itemize}
      \item \textbf{Attore Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:} Il sistema è operativo e accessibile.
-     \item \textbf{Postcondizioni:} l'utente privilegiato è in grado di ottenere informazioni più dettagliate dell'utente selezionando il marker visibile sulla mappa.
+     \item \textbf{Postcondizioni:} l'utente privilegiato è in grado di ottenere informazioni più dettagliate 
+     dell'utente selezionando il marker visibile sulla mappa.
      \item \textbf{Scenario Principale:}
      \begin{itemize}
          \item L'utente privilegiato ha accesso alla dashboard con la mappa interattiva (UC1).
@@ -331,7 +382,8 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
          \item Il sistema mette a disposizione il dato più recententemente archiviato per quel marker.
      \end{itemize}
      \item \textbf{User story associata:}
-     Come utente privilegiato voglio selezionare i vari marker , che indicano i mezzi di trasporto, presenti sulla mappa , in modo da vedere i dettagli sulla posizione e sull'utente che sta utilizzando il mezzo.
+     Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla 
+     mappa, in modo da vedere i dettagli sulla posizione e sull'utente che sta utilizzando il mezzo.
 \end{itemize}
 \begin{figure}[ht]
     \centering
@@ -346,16 +398,19 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
     	\begin{itemize}
     		\item [-] Il sistema è operativo e accessibile;
-    		\item [-] L'Utente privilegiato abbia visualizzato la Dashboard (UC1);
-    		\item [-] Un utente entri nell'area di un punto di interesse.
+    		\item [-] L'Utente privilegiato ha effettuato l'accesso e sta visualizzando la Dashboard (UC3 e UC1);
+    		\item [-] Un utente entra nell'area di un punto di interesse.
     	\end{itemize}
-    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino al punto.
+    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un annuncio personalizzato del punto di 
+    interesse in base ai dati dell'utente che passa vicino al punto.
     \item \textbf{Scenario Principale:} 
     \begin{itemize}
     		\item [-] Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
-    		\item [-] Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'annuncio.
+    		\item [-] Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo 
+            dell'eventuale annuncio.
 	\end{itemize}
-    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare gli annunci pubblicitari che arrivano ai vari utenti.
+    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare gli annunci pubblicitari che 
+    arrivano ai vari utenti.
 \end{itemize}
 \begin{figure}[ht]
     \centering
@@ -369,16 +424,19 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
     	\begin{itemize}
     		\item [-] Il sistema è operativo e accessibile;
-    		\item [-] Un utente entri nell'area di un punto di interesse.
+    		\item [-] Un utente entra nell'area di un punto di interesse.
     	\end{itemize}
-    \item \textbf{Postcondizioni:} L'Utente visualizzerà un messaggio contenente un annuncio personalizzato in base ai suoi dati personali e dal punto di interesse.
+    \item \textbf{Postcondizioni:} L'Utente visualizzerà un eventuale messaggio contenente un annuncio personalizzato in base 
+    ai suoi dati personali e al punto di interesse.
     \item \textbf{Scenario Principale:} 
     \begin{itemize}
     		\item [-] Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
-    		\item [-] Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'annuncio;
-    		\item [-] Il sistema invia all'utente il messaggio contenente l'annuncio generato.
+    		\item [-] Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo 
+            dell'eventuale annuncio;
+    		\item [-] Il sistema invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
 	\end{itemize}
-    \item \textbf{User story associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
+    \item \textbf{User story associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che 
+    mi arrivano.
 \end{itemize}
 \begin{figure}[ht]
     \centering
