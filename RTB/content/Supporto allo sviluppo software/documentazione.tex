@@ -37,24 +37,24 @@ I documenti seguono due workflow distinti a seconda che si tratti di verbali (in
         delle considerazioni fatte e successive decisioni prese;
         \item Nella sezione \textit{Decisioni prese} si compila una 
         tabella in cui ciascuna azione da intraprendere viene associata 
-        ad una \textit{issue}$_G$ corrispondente;
-        \item Creazione di una \textit{pull request}$_G$ dal \textit{branch}$_G$ \framebox{Verbali} al \textit{branch}$_G$ \framebox{Main};
+        ad una issue$_G$ corrispondente;
+        \item Creazione di una pull-request$_G$ dal branch$_G$ \framebox{Verbali} al \textit{branch}$_G$ \framebox{Main};
         \item Verifica del verbale prodotto da parte del verificatore 
         indicato nel \textit{Registro modifiche} del documento stesso;
         \item Se ci sono correzioni o ulteriori modifiche da fare, queste 
         devono essere indicate a loro volta nella sezione \textit{Registro modifiche} per poi essere verificate;
-        \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare. \newline Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda \textit{SyncLab}$_G$ perché venga firmato;
+        \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare. \newline Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
         \item Quando il documento è completo l'ultimo verificatore 
-        chiude la \textit{pull request}$_G$ ed esegue il \textit{merge}$_G$ nel \textit{branch}$_G$ \framebox{Main};
+        chiude la pull-request$_G$ ed esegue il merge$_G$ nel branch$_G$ \framebox{Main};
     \end{enumerate}
 
     \paragraph{Workflow altri documenti}
     Gli altri documenti seguono il seguente workflow:
     \begin{enumerate}
-        \item Creazione di un \textit{branch}$_G$ dedicato esclusivamente alla redazione di un documento specifico;
+        \item Creazione di un branch$_G$ dedicato esclusivamente alla redazione di un documento specifico;
         \item Creazione del documento a partire da un template comune 
         suddiviso in file \textit{.tex} distinti (uno per ogni componente del documento finale). La versione iniziale del documento corrisponde a \textit{0.1.0};
-        \item Creazione di una draft pull request dal \textit{branch}$_G$ corrispondente a tale documento al \textit{branch}$_G$ \framebox{Main};
+        \item Creazione di una draft pull request dal branch$_G$ corrispondente a tale documento al branch$_G$ \framebox{Main};
         \item Compilazione dei campi della sezione \textit{Registro modifiche};
         \item Redazione del documento o di una sua sezione;
         \item Verifica della documentazione prodotta da parte del verificatore indicato nel \textit{Registro modifiche} e associato alle modifiche effettuate in quella seduta di lavoro;
@@ -62,11 +62,11 @@ I documenti seguono due workflow distinti a seconda che si tratti di verbali (in
         devono essere indicate a loro volta nella sezione \textit{Registro modifiche} per poi essere verificate a loro volta;
         \item Si ripetono le operazioni indicate dal punto \textit{3} al punto \textit{6} fino a quando il documento non è stato completato;
         \item Quando il documento è completo l'ultimo verificatore 
-        chiude la draft pull request ed esegue il \textit{merge}$_G$ nel \textit{branch}$_G$ \framebox{Main}, dopodiché si procede ad eliminare il \textit{branch}$_G$ dedicato;
+        chiude la draft pull request ed esegue il merge$_G$ nel branch$_G$ \framebox{Main}, dopodiché si procede ad eliminare il branch$_G$ dedicato;
     \end{enumerate}
 
-\subsubsection{Template in \textit{LaTeX}$_G$}
-Per la stesura dei documenti, viene utilizzato un template in formato \textit{LaTeX}$_G$. Questo template ha lo scopo di semplificare la redazione dei documenti, garantire la coerenza e risparmiare del tempo, in modo da rendere la produzione dei documenti più efficiente e professionale. Sono stati sviluppati tre diversi modelli di template:
+\subsubsection{Template in \LaTeX}
+Per la stesura dei documenti, viene utilizzato un template in formato \LaTeX$_G$. Questo template ha lo scopo di semplificare la redazione dei documenti, garantire la coerenza e risparmiare del tempo, in modo da rendere la produzione dei documenti più efficiente e professionale. Sono stati sviluppati tre diversi modelli di template:
 \begin{itemize}
     \item Documenti ufficiali
     \item Verbale Interno
@@ -114,8 +114,8 @@ Nel caso dei verbali, la nomenclatura prevede l'uso del nome "VerbaleInterno" o 
     I verbali hanno lo scopo di tenere traccia di chi ha partecipato agli incontri ed in particolare quali decisioni sono state prese.\\
     Sono composti da 2 macrosezioni:
     \begin{itemize}
-    \item  \textbf{Durata e Partecipanti}: viene indicata la data di inizio e fine incontro e il luogo in cui si è svolto. A seguire, i nomi dei partecipanti del gruppo. Se il verbale è esterno si indicano anche i partecipanti dell'azienda \textit{SyncLab}$_G$;
-    \item  \textbf{Sintesi e Decisioni Prese}: riassunto degli argomenti trattati ed elenco delle decisioni prese durante il meeting, collegate alle \textit{issue}$_G$ corrispondenti tramite una tabella;
+    \item  \textbf{Durata e Partecipanti}: viene indicata la data di inizio e fine incontro e il luogo in cui si è svolto. A seguire, i nomi dei partecipanti del gruppo. Se il verbale è esterno si indicano anche i partecipanti dell'azienda SyncLab$_G$;
+    \item  \textbf{Sintesi e Decisioni Prese}: riassunto degli argomenti trattati ed elenco delle decisioni prese durante il meeting, collegate alle issue$_G$ corrispondenti tramite una tabella;
     \end{itemize}
     Per i verbali esterni è presente una sezione per la convalida del documento mediante una firma.\\
 
@@ -123,8 +123,9 @@ Nel caso dei verbali, la nomenclatura prevede l'uso del nome "VerbaleInterno" o 
     \paragraph{Stile del testo}
     \begin{itemize}
         \item \textbf{Grassetto}: viene utilizzato per i titoli di sezioni/sottosezioni/paragrafi di un documento e per le definizioni di termini negli elenchi puntati.
-        \item \textbf{Corsivo}: viene utilizzato per i termini presenti nel glossario (seguiti da $_G$).
+        \item \textbf{Corsivo}: viene utilizzato per i nomi dei file e per i titoli delle sezioni.
         \item \textbf{Link}: sono collegamenti ipertestuali, consentono di accedere a risorse esterne o interne, come altre pagine, sezioni, immagini o file, con un semplice click.
+        \item \textbf{Glossario}: i termini che si possono ritrovare nel glossario sono seguiti dall'apice $_G$.
     \end{itemize}
 
     \paragraph{Formato delle date}
@@ -138,6 +139,6 @@ Nel caso dei verbali, la nomenclatura prevede l'uso del nome "VerbaleInterno" o 
 \subsubsection{Strumenti}
 Il gruppo ha deciso di utilizzare i seguenti strumenti:
 \begin{itemize}
-    \item \textbf{\textit{LaTeX}}$_G$: linguaggio scelto per la redazione dei documenti, spesso utilizzato in ambito accademico, scientifico e tecnico;
-    \item \textbf{GitHub}: piattaforma di versionamento e repository per la documentazione. Permette la gestione del codice sorgente, il controllo delle modifiche tramite funzionalità come le \textit{issue}$_G$ e le \textit{pull request}$_G$, facilitando la collaborazione all’interno di un team di sviluppo;
+    \item \textbf{\LaTeX}$_G$: linguaggio scelto per la redazione dei documenti, spesso utilizzato in ambito accademico, scientifico e tecnico;
+    \item \textbf{GitHub}: piattaforma di versionamento e repository per la documentazione. Permette la gestione del codice sorgente, il controllo delle modifiche tramite funzionalità come le issue$_G$ e le pull request$_G$, facilitando la collaborazione all’interno di un team di sviluppo;
 \end{itemize}
