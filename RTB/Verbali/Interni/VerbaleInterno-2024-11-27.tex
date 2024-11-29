@@ -1,0 +1,115 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data 2024-11-27}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.1.0 & 2024-11-27 & Leonardo Trolese & Giovanni Cristellon & Piccole modifiche ortografiche e verifica del verbale\\
+\hline
+0.1.0 & 2024-11-27 & Manuel Gusella & Leonardo Trolese & Stesura del verbale\\
+\hline
+\end{tabularx}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+\section{2024-11-27}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 16:00 - 17:45;
+\item Partecipanti: 	
+	\begin{itemize}
+	\item Gusella Manuel;
+	\item Cristellon Giovanni;
+	\item Peruzzi Uncas;
+	\item Piva Riccardo;
+	\item Pivetta Federico;
+	\item Rubino Alfredo;
+	\item Trolese Leonardo.
+	\end{itemize}
+\item Piattaforma: Discord (online)
+\end{itemize}
+\subsection{Sintesi}
+Riunione interna per l'assegnazione dei ruoli per questo secondo periodo di sprint e per discutere su alcuni dubbi interni del gruppo sui temi scritti a seguire.
+
+\subsubsection{Assegnazione Ruoli}
+Per il secondo sprint si è deciso di suddividere i ruoli cercando di non riassegnare lo stesso ruolo a membri che lo hanno già ricoperto.
+
+\subsubsection{Uso dell'impersonale nella documentazione}
+Visto un suggerimento da parte del proponente di utilizzare l'impersonale per documenti tecnici e di supporto, il gruppo ha deciso di utilizzare la terza persona per i prossimi documenti da redarre.
+
+\subsubsection{Priorità delle issue}
+D'ora in avanti si è deciso di assegnare alle issue successive anche un livello di priorità per capire più facilmente su che lavori concentrarsi e per avere una suddivisione più dettagliata delle issue.
+
+\subsubsection{Visualizzazione dei termini di Glossario}
+Per i termini di Glossario, soprattutto per quelli composti, si è deciso di aggiungere, oltre al G a pedice, anche dei trattini per una più semplice lettura del termine che è effettivamente presente nel Glossario.\\
+Non si è voluto utilizzare il corsivo, visto che viene utilizzato per far riferimento ai Documenti.
+
+\subsubsection{PoC}
+In questa riunione interna si è discusso sull'avanzamento del PoC per poterlo poi mostrare al proponente durante il prossimo SAL.\\
+In questi giorni si è riuscito a creare un ambiente Flink funzionante, l'unica cosa che manca è il connettore tra Flink e ClickHouse per reperire i dati dalla tabella.
+
+\subsection{Decisioni Prese}
+Queste sono le decisioni finali dei componenti
+\begin{itemize}
+\item Decisione dei ruoli fino al 2024-12-05:\\
+Responsabile: Uncas Peruzzi\\
+Amministratore: Alfredo Rubino\\
+Analisti: Manuel Gusella, Riccado Piva, Federico Pivetta\\
+Verificatori: Leonardo Trolese, Giovanni Cristellon\\
+\item Utilizzo dell'informale sui prossimi documenti
+\item Adozione di 4 livelli di priorità per le issue
+\item Cambiamento della visualizzazione dei termini di Glossario in: termine$_G$ o termine-composto$_G$
+\item Aggiornare i termini di Glossario già presenti nel formato di visualizzazione deciso in riunione
+\item Connettere l'ambiente di Apache Flink con ClickHouse ed iniziare la popolazione del DB in ClickHouse con i dati degli utenti
+\end{itemize}
+\begin{center}
+\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+	\hline
+	\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+	\hline
+	\href{https://github.com/SevenBitsSwe/PoC/issues/1}{Issue \#1} &  Creazione di un collegamento tra Apache Flink e Clickhouse\\
+	\hline
+	\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/47}{Issue \#47} &  Redazione Verbale Interno 2024-11-27\\
+	\hline
+	\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/48}{Issue \#48} &  Cambiare i termini di Glossario presenti nel documento di Piano di Progetto\\
+	\hline
+	\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/49}{Issue \#49} &  Cambiare i termini di Glossario presenti nel documento di Analisi dei Requisiti\\
+	\hline
+	\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/50}{Issue \#50} &  Cambiare i termini di Glossario presenti nel documento di Norme di Progetto\\
+	\hline
+\end{tabular}
+\end{center}
+\end{document}
