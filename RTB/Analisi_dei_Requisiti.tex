@@ -16,7 +16,7 @@
 \usepackage{float}
 
 
-\graphicspath{{images/}}
+\graphicspath{{images/images}}
 %\graphicspath{{../images/}}
 
 \setcounter{secnumdepth}{4}
@@ -32,7 +32,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.1}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.5}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -95,6 +95,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.2.5 & 2024-11-29 & Uncas Peruzzi & Leonardo Trolese & Aggiunta di UC5, aggiornati requisiti di qualità, vincolo e tabella \\
+\hline
 0.2.4 & 2024-11-28 & Federico Pivetta & Leonardo Trolese & Aggiunta di UC1.3, UC1.3.1, RF02, RF04 e RF05, correzione tabella requisiti funzionali \\
 \hline
 0.2.3 & 2024-11-26 & Leonardo Trolese  & Federico Pivetta & Correzioni minori grammaticali e di contenuto \\
@@ -112,6 +114,7 @@
 \end{tabularx}
 \newpage
 \tableofcontents
+\newpage
 \listoffigures %elenco delle figure sarà da usare per ogni immagine
 %degli use cases , utilizzando begin figures, caption ecc..
 
@@ -214,7 +217,7 @@ Sono invece note nel documento \textit{Piano\_di\_Progetto.pdf} restrizioni, che
 
 \subsection{Finalità e specifiche}
 Questa sezione espone una serie di casi d'uso come risultato di un'analisi dei requisiti continuativa del capitolato, dal confronto con la proponente e dalle riflessioni degli Analisiti del team. La specifica di ogni caso d'uso segue gli standard descritti in maniera dettagliata nel documento \textit{Norme\_di\_Progetto.pdf}.
-
+%---------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Attori}
 Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{itemize}
@@ -456,6 +459,31 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{\textbf{UC5 - Trasmissione dati geoposizionali}}
+\begin{itemize}
+    \item \textbf{Attore Principale:} Sensore
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+    	\item Il sensore è attivo e connesso al sistema.
+        \end{itemize}
+    \item \textbf{Postcondizioni:} Il sistema memorizza ed elabora i dati ricevuti dal sensore.
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente(latitudine e longitudine).
+            \item Il sensore GPS formatta il messaggio da trasmettere al sistema contenente l’identificativo dell'utente e le coordinate geografiche individuate.
+            \item Il sensore GPS emette il messaggio al sistema.
+        \end{enumerate}
+    \item \textbf{User story associata:} Come Sensore GPS, desidero trasmettere i rilevamenti di posizione al sistema.
+
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC5image.png}
+    \caption{UC5 - Trasmissione dati geoposizionali}
+    \label{fig:UC2}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
@@ -473,27 +501,29 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
- RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la dashboard composta da una mappa interattiva con i vari marker e punti di interesse su di essa &  Capitolato, UC1\\
+ RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la dashboard composta da una mappa interattiva con i vari marker e punti di interesse su di essa. &  Capitolato, UC1\\
 \hline
-RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker & Interna, UC1.1\\
+RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker. & Interna, UC1.1\\
 \hline
-RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse & Capitolato, UC1.2\\
+RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & Capitolato, UC1.2\\
 \hline
-RF04 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato punto di interesse & Interna, UC1.3\\
+RF04 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato punto di interesse. & Interna, UC1.3\\
 \hline
-RF05 & Opzionale & L'utente privilegiato deve poter visualizzare l'area di influenza di un punto di interesse selezionato & Interna, UC1.3.1\\
+RF05 & Opzionale & L'utente privilegiato deve poter visualizzare l'area di influenza di un punto di interesse selezionato. & Interna, UC1.3.1\\
 \hline
-RF06 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando & Capitolato, UC2\\
+RF06 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & Capitolato, UC2\\
 \hline
-RF07 & Obbligatorio & L'utente privilegiato deve poter effetturare l'accesso per visualizzare la dashboard & Capitolato, UC3, UC3.1, UC3.2\\
+RF07 & Obbligatorio & L'utente privilegiato deve poter effetturare l'accesso per visualizzare la dashboard. & Capitolato, UC3, UC3.1, UC3.2\\
 \hline
-RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute & Capitolato, UC4\\
+RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & Capitolato, UC4\\
+\hline
+RF09 & Obbligatorio & Il sistema deve essere in grado di ricevere e memorizzare i dati in tempo reali ricevuti dai sensori geoposizionali. & Capitolato, UC5\\
 \hline
 \end{tabular}
 \caption{Requisiti funzionali}
 \end{table}
 
-
+%---------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{Requisiti di qualità}
 
@@ -503,13 +533,20 @@ RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
-RQ01 & Obbligatorio & Presentare documento di analisi dei requisiti d'analisi contenente i diagrami UML relativi ai casi d'uso & Capitolato\\
+RQ01 & Obbligatorio & Presentare documento di analisi dei requisiti d'analisi contenente i diagrami UML relativi ai casi d'uso. & Capitolato\\
+\hline
+RQ02 & Obbligatorio & Devono essere rispettate tutte
+le norme definite in Norme di Progetto, nell'apposita sezione Analisi dei Requisiti. & Interna\\
+\hline
+RQ03 & Obbligatorio & Deve essere fornita documentazione riguardante le scelte di design del prodotto, con la motivazione delle scelte implementative e tecnologiche. & Capitolato, Verbale Esterno 2024-11-25\\
+\hline
+RQ04 & Obbligatorio & È necessaria la realizzazione di test che dimostrino il corretto funzionamento dei servizi e delle funzionalità previste, con una copertura minima dell'80\% e documentata tramite un report.  & Capitolato \\
 \hline
 \end{tabular}
 \caption{Requisiti di qualità}
 \end{table}
 
-
+%---------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{Requisiti di vincolo}
 
@@ -519,16 +556,24 @@ RQ01 & Obbligatorio & Presentare documento di analisi dei requisiti d'analisi co
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
-RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python & Interna\\
+RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python. & Interna\\
 \hline 
-RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare Docker Compose & Capitolato, \newline Interna\\
+RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare Docker Compose. & Capitolato, \newline Interna\\
 \hline
-RV03 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di dashboard interattive, come Grafana. & Capitolato, \newline
+RV03 & Obbligatorio & I rilevamenti dei sensori geoposizionali
+devono essere memorizzati nel corretto formato in 
+un time series database, nel nostro sistema sarà Clickhouse. & Capitolato, Interna \\
+\hline
+RV04 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di dashboard interattive, come Grafana. & Capitolato, \newline
 Interna\\
 \hline
 \end{tabular}
+
 \caption{Requisiti di vincolo}
 \end{table}
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -547,6 +592,9 @@ RP01 & Obbligatorio &  Il sistema deve gestire inizialmente la generazione di un
 \caption{Requisiti prestazionali}
 \end{table}
 
+%---------------------------------------------------------------------------------------------------------------------------------------------
+
+
 \newpage
 \section{Tracciamento Requisiti}
 
@@ -556,14 +604,15 @@ RP01 & Obbligatorio &  Il sistema deve gestire inizialmente la generazione di un
 \hline
 \textbf{Fonte} & \textbf{Id. Requisiti}\\
 \hline
-Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RQ01 \linebreak RV02 \linebreak RV03 \linebreak RP01 \\
+Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RQ01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ03 \linebreak RQ04 \linebreak RF09 \\
 \hline
-Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV02 \linebreak RV03 \\
+Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
 \end{tabular}
 \caption{Tracciamento Fonte-Requisiti}
 \end{table}
 
+%---------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Riepilogo}
 \begin{table}[H]
@@ -572,15 +621,15 @@ Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV02 \linebreak RV03 \
 \hline
 \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\
 \hline
-Funzionali & 6 & - & 2 & 8\\
+Funzionali & 7 & - & 2 & 9\\
 \hline
-Di qualità & 1 & - & - & 1 \\
+Di qualità & 4 & - & - & 4 \\
 \hline
-Di vincolo & 3 & - & - & 3 \\
+Di vincolo & 4 & - & - & 4 \\
 \hline
 Prestazionali & 1 & - & - & 1 \\
 \hline
-Totale & 11 & - & 2 & 13 \\
+Totale & 16 & - & 2 & 18 \\
 \hline
 \end{tabular}
 \caption{Riepilogo}
