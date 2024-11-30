@@ -4,17 +4,16 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{array}  
-\usepackage{graphicx} % Per inserire immagini (loghi)
-\usepackage{geometry} % Per personalizzare i margini
-\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
+\usepackage{graphicx}
+\usepackage{geometry} 
+\usepackage{fancyhdr} 
 \usepackage{tikz}
 \usepackage{ragged2e}
 \usepackage{anyfontsize}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
-\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
+\usepackage{tabularx, etoolbox} 
+\usepackage{eso-pic}
 \usepackage{float}
-
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -32,16 +31,15 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.5}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.6}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
 
 
-
-
 \renewcommand*\contentsname{Indice}
 \renewcommand{\listfigurename}{Elenco delle figure}
+\renewcommand{\listtablename}{Elenco delle tabelle}
 
 \begin{document}
 
@@ -63,8 +61,7 @@
     
     % Spazio per il logo dell'università
     \hfill
-    
-        
+      
     \AddToShipoutPictureBG{ % Imposta il triangolo con logo
         \ifnum\value{page}=0
         \begin{tikzpicture}[overlay]
@@ -81,19 +78,19 @@
         \fi
     }
         
-    
 \vfill % Aggiunge spazio verticale per centrare il contenuto
 \end{titlepage}
 \newpage
 \clearpage
 \setcounter{page}{1}
 
-
 \centering\textbf{Registro modifiche}\\
 \vspace{2mm}
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.2.6 & 2024-11-30 & Federico Pivetta & Giovanni Cristellon & Aggiunta di RQ05, RQ06, RV05, RP02, indice tabelle e nuovo stile tabelle \\
 \hline
 0.2.5 & 2024-11-29 & Uncas Peruzzi & Leonardo Trolese & Aggiunta di UC5, aggiornati requisiti di qualità, vincolo e tabella \\
 \hline
@@ -112,15 +109,16 @@
 0.1.0 & 2024-11-14 & Uncas Peruzzi  & Riccardo Piva & Inizio redazione del documento\\
 \hline
 \end{tabularx}
+
 \newpage
 \tableofcontents
 \newpage
-\listoffigures %elenco delle figure sarà da usare per ogni immagine
-%degli use cases , utilizzando begin figures, caption ecc..
+\listoffigures
+\newpage
+\listoftables
 
 \newpage
 \begin{justify}
-    
 
 \section{Introduzione}
 \label{sec:intro}
@@ -138,7 +136,6 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf}
 
 \subsection{Riferimenti}
 
-
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
     \item[-] ISO/IEC/IEEE 29148:2018(E) \\
@@ -150,12 +147,11 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf}
 \end{itemize}
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item[-] Capitolato C4- NearYou - 
-Smart custom advertising platform\\
+    \item[-] Capitolato C4 - NearYou - Smart custom advertising platform\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}
     \item[-] Analisi dei Requisiti - SWE 2024-25\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T05.pdf}}}
-    \item[-] Analisi e descrizione delle funzionalità: Use Case e relativi diagammi (UML) - SWE 2024-25\\    
+    \item[-] Analisi e descrizione delle funzionalità: Use Case e relativi diagammi - SWE 2024-25\\    
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi\%20Use\%20Case.pdf}}}
     \item[-] Verbali Interni
     \item[-] Verbali Esterni
@@ -458,7 +454,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \label{fig:UC2}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \subsubsection{\textbf{UC5 - Trasmissione dati geoposizionali}}
 \begin{itemize}
     \item \textbf{Attore Principale:} Sensore
@@ -480,7 +475,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \centering
     \includegraphics[width=0.5\linewidth]{UC5image.png}
     \caption{UC5 - Trasmissione dati geoposizionali}
-    \label{fig:UC2}
+    \label{fig:UC5}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -497,7 +492,9 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
+%\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
@@ -517,7 +514,7 @@ RF07 & Obbligatorio & L'utente privilegiato deve poter effetturare l'accesso per
 \hline
 RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & Capitolato, UC4\\
 \hline
-RF09 & Obbligatorio & Il sistema deve essere in grado di ricevere e memorizzare i dati in tempo reale ricevuti dai sensori geoposizionali. & Capitolato, UC5\\
+RF09 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati in tempo reale al sistema. & Capitolato, UC5\\
 \hline
 \end{tabular}
 \caption{Requisiti funzionali}
@@ -529,18 +526,23 @@ RF09 & Obbligatorio & Il sistema deve essere in grado di ricevere e memorizzare 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
+%\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
 RQ01 & Obbligatorio & Presentare documento di analisi dei requisiti d'analisi contenente i diagrami UML relativi ai casi d'uso. & Capitolato\\
 \hline
-RQ02 & Obbligatorio & Devono essere rispettate tutte
-le norme definite in Norme di Progetto, nell'apposita sezione Analisi dei Requisiti. & Interna\\
+RQ02 & Obbligatorio & Devono essere rispettate tutte le norme definite nel documento \textit{Norme\_di\_Progetto.pdf}, nell'apposita sezione Analisi dei Requisiti. & Interna\\
 \hline
 RQ03 & Obbligatorio & Deve essere fornita documentazione riguardante le scelte di design del prodotto, con la motivazione delle scelte implementative e tecnologiche. & Capitolato, Verbale Esterno 2024-11-25\\
 \hline
-RQ04 & Obbligatorio & È necessaria la realizzazione di test che dimostrino il corretto funzionamento dei servizi e delle funzionalità previste, con una copertura minima dell'80\% e documentata tramite un report.  & Capitolato \\
+RQ04 & Obbligatorio & È necessaria la realizzazione di test che dimostrino il corretto funzionamento dei servizi e delle funzionalità previste, con una copertura minima dell'80\% e documentata tramite un report.  & Capitolato\\
+\hline
+RQ05 & Obbligatorio & È richiesto che il sistema venga testato nella sua interezza tramite test end-to-end, anche non automatizzati.  & Capitolato\\
+\hline
+RQ06 & Obbligatorio & La documentazione dovrà riguardare anche problemi aperti ed eventuali possibili soluzioni da approfondire in futuro.  & Capitolato\\
 \hline
 \end{tabular}
 \caption{Requisiti di qualità}
@@ -552,20 +554,22 @@ RQ04 & Obbligatorio & È necessaria la realizzazione di test che dimostrino il c
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
+%\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
 RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python. & Interna\\
 \hline 
-RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare Docker Compose. & Capitolato, \newline Interna\\
+RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare Docker Compose. & Capitolato, Interna\\
 \hline
 RV03 & Obbligatorio & I rilevamenti dei sensori geoposizionali
-devono essere memorizzati nel corretto formato in 
-un time series database, nel nostro sistema sarà Clickhouse. & Capitolato, Interna \\
+devono essere memorizzati nel corretto formato in un time series database, nel nostro sistema sarà Clickhouse. & Capitolato, Interna \\
 \hline
-RV04 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di dashboard interattive, come Grafana. & Capitolato, \newline
-Interna\\
+RV04 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di dashboard interattiva, come Grafana. & Capitolato, Interna\\
+\hline
+RV05 & Obbligatorio & Le coordinate generate per la simulazione di un utente che segue un percorso devono essere realistiche. & Capitolato\\
 \hline
 \end{tabular}
 
@@ -574,19 +578,20 @@ Interna\\
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 \newpage
 \subsection{Requisiti prestazionali}
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
+%\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
 RP01 & Obbligatorio &  Il sistema deve gestire inizialmente la generazione di un dato geoposizionale ogni 5 secondi e un utente noleggiatore del mezzo & Capitolato\\
+\hline
+RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità do dato in INSERT & Capitolato\\
 \hline
 \end{tabular}
 \caption{Requisiti prestazionali}
@@ -623,13 +628,13 @@ Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV01 \linebreak RV02 \
 \hline
 Funzionali & 7 & - & 2 & 9\\
 \hline
-Di qualità & 4 & - & - & 4 \\
+Di qualità & 6 & - & - & 6 \\
 \hline
-Di vincolo & 4 & - & - & 4 \\
+Di vincolo & 5 & - & - & 5 \\
 \hline
-Prestazionali & 1 & - & - & 1 \\
+Prestazionali & 2 & - & - & 2 \\
 \hline
-Totale & 16 & - & 2 & 18 \\
+Totale & 20 & - & 2 & 22 \\
 \hline
 \end{tabular}
 \caption{Riepilogo}
