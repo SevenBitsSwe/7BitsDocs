@@ -52,8 +52,7 @@ I documenti seguono due workflow distinti a seconda che si tratti di verbali (in
     Gli altri documenti seguono il seguente workflow:
     \begin{enumerate}
         \item Creazione di un branch$_G$ dedicato esclusivamente alla redazione di un documento specifico;
-        \item Creazione del documento a partire da un template comune 
-        suddiviso in file \textit{.tex} distinti (uno per ogni componente del documento finale). La versione iniziale del documento corrisponde a \textit{0.1.0};
+        \item Creazione del documento a partire da un template comune a tutti i documenti (esclusi i verbali). La versione iniziale del documento corrisponde a \textit{0.1.0};
         \item Creazione di una draft pull request dal branch$_G$ corrispondente a tale documento al branch$_G$ \framebox{Main};
         \item Compilazione dei campi della sezione \textit{Registro modifiche};
         \item Redazione del documento o di una sua sezione;
@@ -96,7 +95,7 @@ Nel caso dei verbali, la nomenclatura prevede l'uso del nome "VerbaleInterno" o 
     Su ogni pagina del documento, eccetto la prima, si trova il logo del gruppo seguito dal titolo del documento e dalla sua versione.\\
 
     \paragraph{Registro modifiche}
-    Il registro delle modifiche è una tabella dettagliata che tiene traccia di ogni modifiche avvenuta al documento nel corso del tempo. È utile per tenere traccia dell’evoluzione del documento e per consentire a chiunque stia lavorando sul progetto di comprendere quali modifiche sono state apportate e quando.
+    Il registro delle modifiche è una tabella dettagliata che tiene traccia di ogni modifica avvenuta al documento nel corso del tempo. È utile per tenere traccia dell’evoluzione del documento e per consentire a chiunque stia lavorando sul progetto di comprendere quali modifiche sono state apportate e quando.
     L’intestazione comprende:
     \begin{itemize}
     \item \textbf{Versione}: versione del documento;
@@ -139,6 +138,8 @@ Nel caso dei verbali, la nomenclatura prevede l'uso del nome "VerbaleInterno" o 
 \subsubsection{Strumenti}
 Il gruppo ha deciso di utilizzare i seguenti strumenti:
 \begin{itemize}
-    \item \textbf{\LaTeX}$_G$: linguaggio scelto per la redazione dei documenti, spesso utilizzato in ambito accademico, scientifico e tecnico;
+    \item \textbf{Git}: strumento per il controllo di versione distribuito impiegato dal gruppo per gestire i documenti e le versioni successive di essi prodotte in maniera asincrona dai membri;
     \item \textbf{GitHub}: piattaforma di versionamento e repository per la documentazione. Permette la gestione del codice sorgente, il controllo delle modifiche tramite funzionalità come le issue$_G$ e le pull request$_G$, facilitando la collaborazione all’interno di un team di sviluppo;
+    \item \textbf{\LaTeX}$_G$: linguaggio scelto per la redazione dei documenti, spesso utilizzato in ambito accademico, scientifico e tecnico;
+    \item \textbf{Overleaf}: servizio utilizzato dal gruppo per la creazione e modifica sincrona da parte di due o più componenti di file .tex usati per produrre documentazione;
 \end{itemize}
