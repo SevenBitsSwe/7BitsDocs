@@ -16,7 +16,10 @@ I casi d’uso rappresentano scenari concreti che descrivono come gli utenti e a
 \medskip Ogni caso d'uso ha le seguenti caratteristiche:
 
 \begin{enumerate}
-    \item \textbf{Identificativo:} UC [Numero caso d’uso] . [Numero sottocaso d’uso] - [Titolo]\\
+    \item \textbf{Identificativo:} 
+    \[
+    UC [Numero caso d’uso] . [Numero sottocaso d’uso] - [Titolo]
+    \]
     \medskip Dove:
     \begin{itemize}
         \item \textbf{Numero caso d’uso:} ID relativo al caso d'uso principale.
@@ -121,11 +124,59 @@ I casi d’uso rappresentano scenari concreti che descrivono come gli utenti e a
         \end{figure}
 \end{itemize}
 
-\paragraph{Requisiti}
+\paragraph{Requisiti} I requisiti di un prodotto software sono specifiche documentate che delineano le funzionalità che il sistema deve soddisfare. Essi fungono da guida per lo sviluppo, il testing e la validazione del prodotto, garantendo che risponda alle esigenze degli utenti e agli obiettivi del progetto. Ogni requisito deve essere definito con precisione, e riflettere pienamente le attese del cliente o del proponente.
+
+\medskip I requisiti si suddividono in tre diverse tipologie:
+\begin{itemize}
+    \item \textbf{Requisiti funzionali (F)}: Specificano le funzionalità che il sistema deve essere in grado di svolgere, descrivendo le azioni principali e le informazioni che fornisce.
+    \item \textbf{Requisiti di qualità (Q)}: Definiscono standard relativi alle prestazioni, affidabilità, sicurezza e altri criteri di qualità che il sistema deve rispettare.
+    \item \textbf{Requisiti di vincolo (V)}: Rappresentano restrizioni o condizioni imposte al progetto, come vincoli tecnologici o normativi.
+    \item \textbf{Requisiti prestazionali (P)}: Descrivono le capacità o le prestazioni minime richieste, come tempi di risposta, scalabilità o capacità di carico.
+\end{itemize}
+
+Ogni requisito è composto da:
+\begin{enumerate}
+    \item \textbf{Identificativo}: Un codice univoco nel formato:
+    \[
+    R[{Importanza}][{Tipologia}] \, X
+    \]
+    \begin{itemize}
+        \item \textbf{Importanza}:
+        \begin{itemize}
+            \item \textbf{O}: Obbligatorio. Essenziale per soddisfare le esigenze del proponente.
+            \item \textbf{D}: Desiderabile. Utile ma non prioritario, può essere implementato in seguito.
+            \item \textbf{P}: Opzionale. Aggiunge valore al prodotto, ma può essere tralasciato per motivi di costo o tempistica.
+        \end{itemize}
+        \item \textbf{Tipologia}:
+        \begin{itemize}
+            \item \textbf{F}: Funzionale.
+            \item \textbf{Q}: Qualità.
+            \item \textbf{V}: Vincolo.
+            \item \textbf{P}: Prestazionale.
+        \end{itemize}
+        \item \textbf{X}: Numero progressivo per ogni requisito aggiunto.
+    \end{itemize}
+    \item \textbf{Descrizione}: Una descrizione dettagliata che spiega la caratteristica richiesta al sistema.
+    \item \textbf{Fonte}: L'origine del requisito.
+    \item \textbf{Casi d’uso associati}: Un elenco di casi d'uso che forniscono il contesto operativo per il requisito.
+\end{enumerate}
+
+Alcuni requisiti, pur non avendo un identificativo, vengono documentati per assicurare la loro tracciabilità. Questi comprendono:
+\begin{itemize}
+    \item \textbf{Requisiti d’ambiente}: Specificano le condizioni e le risorse necessarie per sviluppare, testare e implementare il software.
+    \item \textbf{Requisiti di sicurezza}: Delineano le misure e i comportamenti richiesti per proteggere il sistema da minacce.
+    \item \textbf{Requisiti di performance}: Definiscono i livelli di prestazione richiesti, come velocità di elaborazione o capacità di gestione del carico.
+\end{itemize}
 
 \paragraph{Metriche}
+%da completare e inserire tabella%
 
 \subsubsection{Progettazione}
+\paragraph{Documentazione}
+\paragraph{Qualità dell'architettura}
+\paragraph{Diagrammi UML}
+\paragraph{Design pattern}
+\paragraph{Metriche}
 
 \subsubsection{Codifica}
 
