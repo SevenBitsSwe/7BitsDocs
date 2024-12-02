@@ -128,7 +128,7 @@
 \subsection{Scopo del documento}
 
 Il seguente documento ha l'obiettivo di fornire una descrizione accurata dei casi d'uso e dei requisiti riguardanti il progetto \textit{"NearYou - 
-Smart custom advertising platform"} concernenti il Capitolato C4 proposto dall'azienda SyncLab e aggiudicato al gruppo dal committente.
+Smart custom advertising platform"} concernenti il Capitolato C4 proposto dall'azienda Synclab$_G$ e aggiudicato al gruppo dal committente.
 
 
 \subsection{Glossario}
@@ -164,7 +164,7 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf}
 \section{Descrizione del prodotto}
 \label{sec:descrizione}
 \subsection{Obiettivi del prodotto}
-Il prodotto software da sviluppare, ha il principale obiettivo di generare annunci personalizzati per l'utente, sulla base della sua profilazione e posizione in tempo reale sulla mappa, tramite l'utilizzo degli LLM, nel momento in cui si trovi su un veicolo (dotato di display). Il risultato desiderato, prevede di proporre agli utenti esclusivamente annunci finalizzati a catturare il loro interesse, con il fine di massimizzare il tasso di engagement.
+Il prodotto software da sviluppare, ha il principale obiettivo di generare annunci personalizzati per l'utente, sulla base della sua profilazione e posizione in tempo reale sulla mappa, tramite l'utilizzo degli LLM$_G$, nel momento in cui si trovi su un veicolo (dotato di display). Il risultato desiderato, prevede di proporre agli utenti esclusivamente annunci finalizzati a catturare il loro interesse, con il fine di massimizzare il tasso di engagement.
 
 \subsection{Ambito del prodotto}
 Il campo di applicazione del prodotto software \textit{NearYou - 
@@ -196,7 +196,7 @@ Il prodotto software dovrà garantire le seguenti caratteristiche:
     \item [-] generazione e salvataggio di dati personali relativi a utenti fittizi, su cui dimostrare il funzionamento del software.
     \item [-] simulazione dati provenienti dai sensori GPS, nel caso del percorso effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
     \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, facilitando di fatto la gestione delle informazioni tra i diversi componenti del sistema.
-    \item [-] individuazione dei punti di interesse specifici, sfruttando LLM, che prende in input i dati di profilazione e posizione simulati.
+    \item [-] individuazione dei punti di interesse specifici, sfruttando LLM$_G$, che prende in input i dati di profilazione e posizione simulati.
     \item [-] serializzazione dei dati precedentemente menzionati, in un database adatto alla tipizzazione degli input e performante in tale contesto.
     \item [-] acquisizione e elaborazione dei dati dei sensori per mezzo di uno strumento adatto allo stream processing, per fornirli in pasto al framework di generative AI.
     \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente (opzionale) che utente privilegiato. per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati, per il secondo una dashboard interattiva.
@@ -588,7 +588,7 @@ RQ06 & Obbligatorio & La documentazione dovrà riguardare anche problemi aperti 
 \hline
 RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python. & Interna\\
 \hline 
-RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare Docker Compose. & Capitolato, Interna\\
+RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare docker$_G$ Compose. & Capitolato, Interna\\
 \hline
 RV03 & Obbligatorio & I rilevamenti dei sensori geoposizionali
 devono essere memorizzati nel corretto formato in un time series database, nel nostro sistema sarà Clickhouse. & Capitolato, Interna \\
