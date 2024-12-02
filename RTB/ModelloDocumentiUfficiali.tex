@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{array}  
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr} 
+\usepackage{tikz}
+\usepackage{anyfontsize}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx, etoolbox}
+\usepackage{eso-pic}
+\usepackage{float}
+
+\newcommand\version{0.1.0} % Versione
+
+\graphicspath{{images/}}
+%\graphicspath{{../images/}}
+
+\geometry{a4paper,left=20mm,right=20mm,top=20mm} % cambio misure pagina
+%ebdfc7
+\definecolor{colorePie}{HTML}{ebdfc7}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+}
+\rhead{\textcolor[HTML]{9e978a}{ Nome\_Documento v\version}
+}
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
+
+\renewcommand*\contentsname{Indice}
+
+\begin{document}
+
+\begin{titlepage} % Pagina del titolo
+    \setcounter{page}{0}
+    \centering
+    % Logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    
+    % Titolo
+     {\fontsize{40}{40}\bfseries Nome\_Documento}\selectfont \\[3.9em]
+    
+    % Sottotitolo : Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    % Spazio per il logo dell'università
+    \hfill
+    
+        
+    \AddToShipoutPictureBG{ % Triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+        
+            % Definisce un triangolo in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+
+\vfill
+\end{titlepage}
+\newpage
+\clearpage
+
+\setcounter{page}{1}
+
+\begin{center} % Registro modifiche
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\hline
+\end{tabularx}   
+\end{center}
+
+\newpage
+\tableofcontents % Indice
+
+%% Codice per Immagini %%
+
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.5\linewidth]{NomeImmagine.png}
+%    \caption{TestoCaption}
+%    \label{LabelImmagine}
+%\end{figure}
+
+
+%% Codice per Tabelle %%
+
+%\begin{table}[H]
+%\centering
+%\renewcommand{\arraystretch}{1.5}
+%\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
+%\hline
+%\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+%\hline
+%\end{tabular}
+%\caption{TestoCaption}
+%\end{table}
+
+
+\end{document}
