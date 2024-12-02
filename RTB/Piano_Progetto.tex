@@ -4,24 +4,20 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{array}  
-\usepackage{graphicx} % Per inserire immagini (loghi)
-\usepackage{geometry} % Per personalizzare i margini
-\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
 \usepackage{tikz}
 \usepackage{anyfontsize}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
-\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
+\usepackage{tabularx, etoolbox}
+\usepackage{eso-pic} 
+\usepackage{float}
 
-\newcommand\version{0.3.2} %aggiunta versione come variabile
-
-
+\newcommand\version{0.4.0} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
-
-
-
 
 %cambio misure della pagina
 \geometry{a4paper,left=20mm,right=20mm,top=20mm}
@@ -41,9 +37,8 @@
 \cfoot{\thepage}
 
 
-
-
 \renewcommand*\contentsname{Indice}
+\renewcommand{\listfigurename}{Elenco delle figure}
 
 \begin{document}
 
@@ -63,8 +58,7 @@
     
     % Spazio per il logo dell'università
     \hfill
-    
-        
+     
     \AddToShipoutPictureBG{ % Imposta il triangolo con logo
         \ifnum\value{page}=0
         \begin{tikzpicture}[overlay]
@@ -81,9 +75,8 @@
         \fi
     }
         
-    
 
-    \vfill % Aggiunge spazio verticale per centrare il contenuto
+\vfill
 \end{titlepage}
 \newpage
 \clearpage
@@ -97,27 +90,31 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
-0.3.2 & 2024-11-28 & Manuel Gusella & Giovanni Cristellon & Fine Stesura primo sprint$_G$ \ref{primo-sprint$_G$} e aggiunta immagini\\
+0.4.0 & 2024-12-02 & Federico Pivetta & Leonardo Trolese & Stesura iniziale della sezione \ref{analisi-rischi}, completa della sottosezione \ref{introduzione-analisi} e aggiunta RT1\\
+\hline
+0.3.2 & 2024-11-28 & Manuel Gusella & Giovanni Cristellon & Fine stesura primo sprint$_G$ \ref{primo-sprint$_G$} e aggiunta immagini\\
 \hline
 0.3.1 & 2024-11-22 & Manuel Gusella & Riccardo Piva & Stesura sottosezione \ref{struttura-espositiva}\\
 \hline
-0.3.0 & 2024-11-22 & Manuel Gusella & Riccardo Piva & Stesura iniziale della sezione \ref{modello-sviluppo} Modello di sviluppo, preventivo e consuntivo\\
+0.3.0 & 2024-11-22 & Manuel Gusella & Riccardo Piva & Stesura iniziale della sezione \ref{modello-sviluppo} e sottosezioni Modello di sviluppo, preventivo e consuntivo\\
 \hline
 0.2.1 & 2024-11-17 & Manuel Gusella & Federico Pivetta & Modifiche di stile delle liste e dei link nel verbale \\
 \hline
-0.2.0 & 2024-11-15 & Manuel Gusella & Federico Pivetta & Stesura iniziale sezione Pianificazione\\
+0.2.0 & 2024-11-15 & Manuel Gusella & Federico Pivetta & Stesura iniziale sezione \ref{pianificazione}\\
 \hline
-0.1.0 & 2024-11-14  & Manuel Gusella & Riccardo Piva & Stesura sezione Introduzione\\
+0.1.0 & 2024-11-14  & Manuel Gusella & Riccardo Piva & Stesura sezione \ref{introduzione}\\
 \hline
 
 \end{tabularx}   
 \end{center}
 \newpage
 \tableofcontents
-\listoffigures %elenco delle figure sarà da usare per ogni immagine
+\newpage
+\listoffigures
 
 \newpage
 \section{Introduzione}
+\label{introduzione}
 \subsection{Scopo del documento}
 Questo documento ha lo scopo di definire in modo chiaro le modalità con cui le attività saranno svolte dai membri del gruppo per la realizzazione del progetto.\\
 Saranno trattati in dettagli i seguenti temi:
@@ -129,9 +126,12 @@ Saranno trattati in dettagli i seguenti temi:
 \end{itemize}
 
 \subsection{Scopo del capitolato}
-Il capitolato C4 ha come scopo la realizzazione di una dashboard "amministrativa" in grado di proporre ad ogni utente degli annunci personalizzati tramite l'utilizzo di LLM$_G$.\\ La dashboard deve mostrare una mappa con ipotetici utenti generati virtualmente, che poi verranno rappresentati come punti in movimento, e ogni volta che un utente passa per un'area di interesse appare un annuncio generato tramite IA$_G$.
+Il capitolato C4 ha come scopo la realizzazione di una dashboard "amministrativa" in grado di proporre ad ogni utente degli annunci personalizzati tramite l'utilizzo di LLM$_G$.\\ 
+La dashboard deve mostrare una mappa con ipotetici utenti generati virtualmente, che poi verranno rappresentati come punti in movimento, e ogni volta che un utente passa per un'area di interesse appare un annuncio generato tramite IA$_G$.
+
 \subsection{Glossario}
-Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno del documento, è presente il \textit{Glossario v}, in cui vengono riportate tutte le definizione delle parole con un significato specifico. Questi termini veranno marcati con una$_G$ a pedice, mentre i termini composti, oltre alla $_G$ a pedice, saranno uniti da un "-" come segue: termine-composto$_G$. 
+Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno del documento, è presente il \textit{Glossario.pdf}, in cui vengono riportate tutte le definizione delle parole con un significato specifico. Questi termini veranno marcati con una $_G$ a pedice, mentre i termini composti, oltre alla $_G$ a pedice, saranno uniti da un "-" come segue: termine-composto$_G$. 
+
 \subsection{Riferimenti}
 \subsubsection{Informativi}
 Slide del corso di Ingegneria del Software:
@@ -142,15 +142,98 @@ Slide del corso di Ingegneria del Software:
 
 \subsubsection{Normativi}
 \begin{itemize}
-	\item [-] \textit{Norme di Progetto v1.0.0}
+	\item [-] \textit{Norme\_di\_Progetto.pdf}
     \item [-] Documento e presentazione del capitolato C4 - NearYou - Smart custom advertising platform:\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}}}\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}
     
     \item [-] Regolamento del progetto didattico\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}}}
 \end{itemize}
+
 \newpage
 \section{Analisi dei Rischi}
+\label{analisi-rischi}
+    \subsection{Introduzione}
+    \label{introduzione-analisi}
+    L'analisi dei rischi è un processo che ha l'obiettivo di anticipare e gestire le diverse situazioni avverse che possono sorgere durante il ciclo di vita di un progetto.\\
+    Il gruppo, in conformità allo standard ISO/IEC 31000:2018, si è concentrato sull'identificazione, comprensione e classificazione dei rischi in base alla loro probabilità di verificarsi e alle possibili ripercussioni che ne deriverebbero.\\ 
+    L'approccio adottato si può articolare in cinque fasi fondamentali:
+    \begin{enumerate}
+        \item \textbf{Individuazione dei Rischi}:
+        Questa fase consiste nell'individuare in maniera esaustiva di tutti gli eventi e le cause potenzialmente sfavorevoli che potrebbero verificarsi nel corso del progetto. Si raggiunge la conclusione una volta creato un elenco degli elementi che rappresentano delle minacce al raggiungimento degli obiettivi prefissati;
+        \item \textbf{Analisi dei Rischi}:
+        Questa fase consiste nell'analisi dettagliata di tutti i rischi e nella determinazione delle azioni da intraprendere più appropriate, con l'obiettivo di prendere decisioni corrette riguardo alle misure di attenuazione e alla gestione degli eventi;
+        \item \textbf{Valutazione dei Rischi}:
+        Questa fase consiste nella valutazione dei rischi in termini di probabilità di occorrenza e potenziali ripercussioni, al fine di stabilire la priorità delle misure di attenuazione per gestire al meglio ciascuna situazione avversa;
+        \item \textbf{Gestione dei Rischi}:
+        Questa fase consiste nell'adozione delle misure di attenuazione o prevenzione, in base alla natura e all'entità del rischio. Le decisioni prese durante la fase di Analisi dei Rischi si traducono in azioni concrete;
+        \item \textbf{Monitoraggio e Revisione dei Rischi}:
+        Questa fase consiste in un monitoraggio continuo dei rischi identificati, per garantire l'efficacia delle misure adottate e per rilevare tempestivamente la comparsa di nuovi rischi;
+    \end{enumerate}
+    I rischi identificati sono stati suddivisi in tre categorie principali:
+    \begin{itemize}
+        \item \textbf{Rischi Tecnologici}: Riguardano le incertezze e i possibili fallimenti legati alle tecnologie impiegate nel progetto, come malfunzionamenti o difficoltà nell'integrazione; 
+        \item \textbf{Rischi di Comunicazione}: Riguardano le difficoltà nello scambio di informazioni tra i membri del gruppo o con la proponente, che potrebbero compromettere il corretto svolgimento del progetto;
+        \item \textbf{Rischi di Pianificazione}: Riguardano le problematiche relative alla gestione del tempo, delle scadenze e delle risorse, inclusi eventuali ritardi, stime imprecise o spreco delle risorse;
+    \end{itemize}
+
+    \subsubsection{Struttura dei Rischi}
+    Il formato utilizzato per la classificazione dei rischi è R[Tipo][Indice], dove:
+    \begin{itemize}
+        \item \textbf{R}: abbreviazione di "Rischio";
+        \item \textbf{Tipo}: rappresenta la categoria del rischio e può essere:
+        \begin{itemize}
+            \item \textbf{T}: Rischio Tecnologico;
+            \item \textbf{C}: Rischio di Comunicazione;
+            \item \textbf{P}: Rischio di Pianificazione;
+        \end{itemize}
+        \item \textbf{Indice}: numero progressivo che identifica univocamente ciascun rischio all'interno della categoria di appartenenza.
+    \end{itemize}
+
+\subsection{Rischi Tecnologici}
+    \subsubsection{RT1 - Complessità delle nuove tecnologie}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Il progetto richiede l'utilizzo di tecnologie poco conosciute o con cui il gruppo ha un'esperienza limitata. Di conseguenza l'apprendimento e l'adattamento a queste nuove tecnologie richiede del tempo, che potrebbe comportare rallentamenti nel progresso del progetto;
+        \item \textbf{Gravità}: Alta;
+        \item \textbf{Occorrenza}: Alta;
+        \item \textbf{Possibili Attenuazioni}: Per affrontare la complessità delle nuove tecnologie, verranno adottate diverse strategie. L'azienda proponente si è resa disponibile ad organizzare incontri focalizzati su tecnologie specifiche, per risolvere eventuali dubbi. Inoltre, i membri del gruppo collaboreranno attivamente, condividendo le proprie informazioni al fine di raggiungere un livello condiviso di conoscenze. Infine, verrà dedicato del tempo alla fase di apprendimento, consentendo al gruppo di esplorare diverse tecnologie, identificare i punti di forza e le criticità, così da accelerare l'apprendimento e prevenire errori futuri;
+    \end{itemize}
+
+    \subsubsection{RT2 - }
+
+\subsection{Rischi di Comunicazione}
+    \subsubsection{RC1 - }
+    \begin{itemize}
+        \item \textbf{Descrizione}:
+        \item \textbf{Gravità}:
+        \item \textbf{Occorrenza}:
+        \item \textbf{Possibili Attenuazioni}:
+    \end{itemize}
+    
+\subsection{Rischi di Pianificazione}
+    \subsubsection{RP1 - }
+    \begin{itemize}
+        \item \textbf{Descrizione}:
+        \item \textbf{Gravità}:
+        \item \textbf{Occorrenza}:
+        \item \textbf{Possibili Attenuazioni}:
+    \end{itemize}
+
+\subsection{Riepilogo}
+I rischi identificati vengono riportati in una tabella, insieme alla loro gravità e probabilità di occorrenza.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering\arraybackslash}m{10cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|}
+\hline
+\textbf{Rischio} & \textbf{Gravità} & \textbf{Occorrenza} \\
+\hline
+RT1 - Complessità delle nuove tecnologie & Alta & Alta\\
+\hline
+\end{tabular}
+\caption{Riepilogo dei rischi}
+\end{table}
+
 \newpage
 \section{Modello di sviluppo, preventivo e consuntivo} 
 \label{modello-sviluppo}
@@ -185,6 +268,7 @@ Ogni periodo di avanzamento verrà esposto nella seguente configurazione:
 \end{enumerate}
 \newpage
 \section{Pianificazione}
+\label{pianificazione}
 \subsection{Requirements and Technology Baseline RTB$_G$}
 \subsubsection{Primo sprint$_G$}
 \label{primo-sprint$_G$}
