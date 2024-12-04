@@ -4,19 +4,16 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{array}  
-\usepackage{graphicx} % Per inserire immagini (loghi)
-\usepackage{geometry} % Per personalizzare i margini
-\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
 \usepackage{tikz}
 \usepackage{anyfontsize}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
-\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
+\usepackage{tabularx, etoolbox}
+\usepackage{eso-pic}
 
 \graphicspath{{images/}}
-
-
-
 
 
 %cambio misure della pagina
@@ -24,20 +21,16 @@
 %ebdfc7
 \definecolor{colorePie}{HTML}{ebdfc7}
 
-
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
-}
-\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.3}
-}
+    }
+\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.4}
+    }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
-
-
-
 
 \renewcommand*\contentsname{Indice}
 
@@ -59,7 +52,6 @@
     
     % Spazio per il logo dell'università
     \hfill
-    
         
     \AddToShipoutPictureBG{ % Imposta il triangolo con logo
         \ifnum\value{page}=0
@@ -77,9 +69,8 @@
         \fi
     }
         
-    
+\vfill 
 
-    \vfill % Aggiunge spazio verticale per centrare il contenuto
 \end{titlepage}
 \newpage
 \clearpage
@@ -91,6 +82,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\hline
+0.2.4 & 2024-12-04 & Federico Pivetta & Giovanni Cristellon & Aggiunta di alcuni termini\\
 \hline
 0.2.3 & 2024-11-14  & Manuel Gusella & Riccardo Piva  & Aggiunta di alcuni termini e modifica struttura tabella del Registro modifiche\\
 \hline
@@ -143,7 +136,9 @@ Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tab
 \hline
 Analisi dei Requisiti & Processo fondamentale dello sviluppo di un prodotto software, durante il quale vengono identificati e definiti in dettaglio i requisiti che il sistema deve soddisfare.\newline È molto importante questa analisi per assicurarsi che i requisiti individuatisiano completi e corretti, riducendo così possibili errori nelle fasi successive del progetto.\\
 \hline
- & \\
+Attore & Entità esterna al sistema che interagisce con esso per raggiungere un scopo specifico. Gli attori possono essere principali (comunica attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi).\\
+\hline
+& \\
 \hline
 \end{tabularx}
 
@@ -154,6 +149,8 @@ Analisi dei Requisiti & Processo fondamentale dello sviluppo di un prodotto soft
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
 Baseline & Versione approvata di un prodotto di lavoro che può essere modificato solo attraverso delle procedure formali. Una baseline funge da punto di riferimento per monitorare e confrontare i progressi o le modifiche del progetto nel tempo.\\
+\hline
+Best Practices & Insieme di metodi o procedure considerate le più efficaci e affidabili per raggiungere determinati obiettivi in un determinato contesto.\\
 \hline
 Branch & Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività.\\
 \hline
@@ -167,6 +164,8 @@ Branch & Linea parallela di sviluppo in un sistema di versionamento, che permett
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla sua concezione iniziale fino all'uso ed eventualmente alla sua dismissione. \'E compito di un progetto far progredire lo stato di avanzamento di un software lungo il suo ciclo di vita.\\
+\hline
  & \\
 \hline
 \end{tabularx}
@@ -176,6 +175,10 @@ Branch & Linea parallela di sviluppo in un sistema di versionamento, che permett
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+Dashboard & Interfaccia grafica che raccoglie e presenta in modo chiaro e sintetico delle informazioni attraverso vari elementi visivi come grafici, tabelle e indicatori.\\
+\hline
+Documentazione & Insieme di documenti, manuali e guide che descrivono un prodotto, un sistema o un processo. Ha lo scopo di fornire istruzioni, spiegazioni e dettagli utili per l'uso, la manutenzione e lo sviluppo di un prodotto.\\
 \hline
 Docker & Piattaforma che consente di creare, distribuire e eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione.\\
 \hline
@@ -188,6 +191,10 @@ Docker & Piattaforma che consente di creare, distribuire e eseguire applicazioni
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+Efficacia & Misura la capacità di raggiungere un obiettivo o un risultato desiderato, indipendentemente dalle risorse utilizzate.\\
+\hline
+Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato desiderato, impiegando le risorse minime indispensabili.\\
 \hline
  & \\
 \hline
@@ -281,7 +288,9 @@ Merge & Operazione in un sistema di versionamentobranches che combina le modific
 \hline
 Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel tempo all'interno di un progetto. Viene utilizzata per monitorare i progressi e assicurare che il progetto rispetti la pianificazione stabilita. Il raggiungimento degli obiettivi associati ad una milestone viene sostanziato attraverso lo sviluppo di una baseline.\\
 \hline
- & \\
+MVP & Acronimo di "Minimal Viable Product", è una versione di un prodotto software che include solo le funzionalità essenziali per soddisfare i bisogni principali degli utenti. L'obiettivo di un MVP è quello di testare il prodotto, raccogliendo feedback degli utenti per migliorarlo e svilupparlo ulteriormente.\\
+\hline
+& \\
 \hline
 \end{tabularx}
 
@@ -311,7 +320,11 @@ Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel t
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-PR & Acronimo di Pull Request, è una proposta di modifica in un progetto gestito tramite un sistema di versionamento. Consente ad uno sviluppatore di proporre una revisione e integrazione di alcune modifiche. Altri membri del team possono esaminare, commentare e testare le modifiche prima di approvare la pull request ed concludere la proposta con un merge.\\
+PoC & Acronimo di "Proof of Concept", è un prototipo iniziale realizzato per dimostrare la fattibilità tecnologica di un prodotto atteso, permettendo di delineare il suo potenziale di realizzazione.\\
+\hline
+Progetto & Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Hanno una data d'inizio e una data di fine fissate.\\
+\hline
+PR & Acronimo di "Pull Request", è una proposta di modifica in un progetto gestito tramite un sistema di versionamento. Consente ad uno sviluppatore di proporre una revisione e integrazione di alcune modifiche. Altri membri del team possono esaminare, commentare e testare le modifiche prima di approvare la pull request ed concludere la proposta con un merge.\\
 \hline
  & \\
 \hline
@@ -333,11 +346,9 @@ PR & Acronimo di Pull Request, è una proposta di modifica in un progetto gestit
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-Retrospettiva & Incontro che si tiene alla fine di ogni sprint, subito dopo la review. Durante questa riunione, il team di sviluppo riflette sullo sprint appena concluso, discutendo cosa è andato bene, cosa potrebbe essere migliorato e quali azioni concrete debbano essere adottate per migliorare i successivi sprint.\\
+Repository & Archivio digitale centralizzato utilizzato per conservare, organizzare e gestire file, dati o codice sorgente. Facilita la condivisione, il controllo delle versioni e l'accesso collaborativo, ottimizzando la gestione e lo sviluppo di un progetto.\\
 \hline
-Review & Incontro che si tiene alla fine di uno sprint, in cui il team di sviluppo presenta il lavoro completato. Durante questa sessione, il team mostra le funzionalità sviluppate e raccoglie feedback per verificare se i requisiti sono stati soddisfatti e se ci sono modifiche da apportare.\\
-\hline
-RTB & Acronimo per Requirement and Technology Retrospective, è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
+RTB & Acronimo di "Requirement and Technology Retrospective", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
 \hline
 & \\
 \hline
@@ -349,9 +360,15 @@ RTB & Acronimo per Requirement and Technology Retrospective, è la prima revisio
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-SAL & Acronimo per "Stato Avanzamento Lavori", è un incontro in cui il team si riunisce per controllare il progresso degli obiettivi pianificati.\newline Durante questo incontro, si discute cosa è stato completato, cosa è ancora in corso ed cosa potrebbe ostacolare il progetto.\\
+SAL & Acronimo di "Stato Avanzamento Lavori", è un incontro in cui il team si riunisce per controllare il progresso degli obiettivi pianificati.\newline Durante questo incontro, si discute cosa è stato completato, cosa è ancora in corso ed cosa potrebbe ostacolare il progetto.\\
 \hline
 Sprint & Periodo di tempo dalle 2 alle 4 settimane, in cui un team di sviluppo si concentra sul completamento di un insieme ristretto di attività. Ogni sprint è seguito da una review per verificare il progresso raggiunto e da una retrospettiva per adottare ulteriori miglioramenti.\\
+\hline
+Sprint Retrospective & Incontro che si tiene alla fine di ogni sprint, subito dopo la review. Durante questa riunione, il team di sviluppo riflette sullo sprint appena concluso, discutendo cosa è andato bene, cosa potrebbe essere migliorato e quali azioni concrete debbano essere adottate per migliorare i successivi sprint.\\
+\hline
+Sprint Review & Incontro che si tiene alla fine di uno sprint, in cui il team di sviluppo presenta il lavoro completato. Durante questa sessione, il team mostra le funzionalità sviluppate e raccoglie feedback per verificare se i requisiti sono stati soddisfatti e se ci sono modifiche da apportare.\\
+\hline
+Stakeholder & Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori.\\
 \hline
 SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale che realizza prodotti e soluzioni per diversi mercati quali: Sanità, Industria, Energia, Telco, Finanza e Trasporti \& Logistica. Offre anche consulenze per diversi temi come: GDPR, Big Data, Cloud Computing, IoT, Mobile e Cyber Security.\\
 \hline
@@ -365,7 +382,9 @@ SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale ch
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
- & \\
+Teamwork & Collaborazione tra membri di un gruppo per raggiungere obiettivi comuni, in modo efficace ed efficiente. Richiede il rispetto di regole condivise e l'adozione di best practices per ottimizzare il lavoro, come la condivisione dei rischi, l'assunzione di responsabilità o la comunicazione aperta e trasparente.\\
+\hline
+& \\
 \hline
 \end{tabularx}
 
@@ -374,6 +393,8 @@ SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale ch
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+User story & Descrizione concisa di una funzionalità o di un requisito del sistema, espressa dal punto di vista dell'utente. Viene utilizzata per definire i requisiti di un prodotto in modo semplice e comprensibile, per questo è solitamente scritta in linguaggio naturale.\\
 \hline
  & \\
 \hline
@@ -394,6 +415,8 @@ SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale ch
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei comportamenti che devono essere adottati da un team o un'organizzazione per svolgere le proprie attività allo stato dell'arte.\\
 \hline
  & \\
 \hline
