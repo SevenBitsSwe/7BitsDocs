@@ -6,48 +6,40 @@ Le linee guida descritte in questa sezione sono volte a strutturare il lavoro in
 L'obiettivo è consegnare un prodotto software di alta qualità, che soddisfi le esigenze richieste, rispettando le tempistiche e garantendo il successo del progetto.\\
 
 \subsubsection{Analisi dei Requisiti}
-L’analisi dei requisiti è la prima fase cruciale del processo di sviluppo software. Lo scopo principale di questa fase è definire con chiarezza le funzionalità e le caratteristiche che il sistema dovrà offrire, in base alle necessità degli utenti. Per raggiungere tale obiettivo, è essenziale stabilire una comunicazione efficace con il proponente, assicurandosi che tutte le esigenze siano documentate e validate. Questo processo permette di chiarire gli obiettivi del prodotto, identificare i vincoli operativi e fornire ai Progettisti le informazioni necessarie per sviluppare un’architettura coerente e un design adeguato.
-Il risultato di questa attività è formalizzato nel documento \textit{Analisi\_dei\_requisiti.pdf}, redatto dagli Analisti, che contiene una descrizione dettagliata degli obiettivi del prodotto, delle funzionalità previste, delle caratteristiche degli utenti e delle tecnologie coinvolte. Include inoltre una sezione dedicata ai casi d’uso, che descrivono le interazioni tra gli attori esterni e il sistema.
-Infine, l’analisi dei requisiti contribuisce a migliorare la comunicazione tra tutti gli stakeholder, agevola la pianificazione del progetto in termini di tempistiche e costi e fornisce un riferimento chiaro per le attività di verifica e test.\\
+    \paragraph{Descrizione e Scopo}
+    L’analisi dei requisiti è la prima fase cruciale del processo di sviluppo software. Lo scopo principale di questa fase è definire con chiarezza le funzionalità e le caratteristiche che il sistema dovrà offrire, in base alle necessità degli utenti. Per raggiungere tale obiettivo, è essenziale stabilire una comunicazione efficace con il proponente, assicurandosi che tutte le esigenze siano documentate e validate. Questo processo permette di chiarire gli obiettivi del prodotto, identificare i vincoli operativi e fornire ai Progettisti le informazioni necessarie per sviluppare un’architettura coerente e un design adeguato. Il risultato di questa attività è formalizzato nel documento \textit{Analisi\_dei\_Requisiti.pdf}, redatto dagli Analisti, che contiene una descrizione dettagliata degli obiettivi del prodotto, delle funzionalità previste, delle caratteristiche degli utenti e delle tecnologie coinvolte. Include inoltre una sezione dedicata ai casi d’uso, che descrivono le interazioni tra gli attori esterni e il sistema. \newline 
+    Infine, l’analisi dei requisiti contribuisce a migliorare la comunicazione tra tutti gli stakeholder, agevola la pianificazione del progetto in termini di tempistiche e costi e fornisce un riferimento chiaro per le attività di verifica e test.\\
 
-\paragraph{Casi d'uso}
-I casi d’uso rappresentano scenari concreti che descrivono come gli utenti e altri attori interagiranno con il sistema per raggiungere obiettivi specifici. Questi scenari aiutano a identificare requisiti chiave e prevenire malintesi. È importante sottolineare che i diagrammi dei casi d’uso non si concentrano sui dettagli implementativi. Il loro scopo è quello di rappresentare la funzionalità del sistema esclusivamente dal punto di vista esterno, evidenziando come esso interagisce con gli attori e soddisfa le loro esigenze.\\
-
-\medskip Ogni caso d'uso ha le seguenti caratteristiche:
-
-\begin{enumerate}
-    \item \textbf{Identificativo:} 
-    \[
-    UC [Numero caso d’uso] . [Numero sottocaso d’uso] - [Titolo]
-    \]
-    \medskip Dove:
+    \paragraph{Casi d'uso}
+    I casi d’uso rappresentano scenari concreti che descrivono come gli utenti e altri attori interagiranno con il sistema per raggiungere obiettivi specifici. Questi scenari aiutano a identificare requisiti chiave e prevenire malintesi. È importante sottolineare che i diagrammi dei casi d’uso non si concentrano sui dettagli implementativi. Il loro scopo è quello di rappresentare la funzionalità del sistema esclusivamente dal punto di vista esterno, evidenziando come esso interagisce con gli attori e soddisfa le loro esigenze.\\
+    \medskip
+    Ogni caso d'uso ha le seguenti caratteristiche:
+    
     \begin{itemize}
-        \item \textbf{Numero caso d’uso:} ID relativo al caso d'uso principale.
-        \item \textbf{Numero sottocaso d’uso:} ID relativo allo specifico sottocaso d'uso (se applicabile).
-        \item \textbf{Titolo:} descrizione breve ed esplicativa.
+    \item \textbf{Identificativo}:
+    \begin{quote}
+    \textbf{UC [Numero caso d’uso] . [Numero sottocaso d’uso] - [Titolo]}
+    \end{quote}
+    Dove:
+    \begin{itemize}
+        \item \textbf{Numero caso d’uso}: ID relativo al caso d'uso principale;
+        \item \textbf{Numero sottocaso d’uso}: ID relativo allo specifico sottocaso d'uso (se applicabile);
+        \item \textbf{Titolo}: descrizione breve ed esplicativa;
     \end{itemize}
 
-    \item \textbf{Attore principale:} L'entità che interagisce attivamente con il sistema, ad esempio un utente specifico o un altro sistema esterno.
+    \item \textbf{Attore principale}: Entità esterna che interagisce attivamente con il sistema per raggiungere uno scopo, ad esempio un utente specifico o un altro sistema esterno;
+    \item \textbf{Attore secondario}: Eventuale entità esterna invocata dal sistema per fornire un supporto, in modo da soddisfare il bisogno dell’attore principale;
+    \item \textbf{Descrizione}: Breve descrizione della funzionalità del caso d’uso;
+    \item \textbf{Scenario principale}: Sequenza di eventi che si susseguono da quando un attore inizia ad interagire con il sistema;
+    \item \textbf{Precondizioni}: Descrizione dello stato del sistema necessario per attivare il caso d’uso;
+    \item \textbf{Postcondizioni}: Descrizione dello stato del sistema al completamento del caso d’uso;
+    \item \textbf{Estensioni}: Eventuali scenari alternativi, descritti in questa sezione se presenti;
+    \item \textbf{User story associata}: Funzionalità descritta dal punto di vista dell'utente, scritta in linguaggio naturale perché risulti semplice e comprensibile. Definita nella forma seguente: \newline
+    Come [utente], desidero poter [funzionalità] per [valore aggiunto].
+\end{itemize}
 
-    \item \textbf{Attore secondario:} Eventuale entità esterna che non interagisce attivamente con il sistema, ma permette al sistema di soddisfare il bisogno dell’attore principale.
-
-    \item \textbf{Descrizione:} Breve descrizione della funzionalità del caso d’uso.
-
-    \item \textbf{Scenario principale:} Sequenza di eventi che si susseguono da quando un attore inizia ad interagire con il sistema.
-
-    \item \textbf{Precondizioni:} Descrizione dello stato necessario per attivare il caso d’uso.
-
-    \item \textbf{Postcondizioni:} Descrizione dello stato del sistema al termine del caso d’uso.
-
-    \item \textbf{Estensioni:} Eventuali scenari alternativi, descritti in questa sezione se presenti.
-
-    \item \textbf{User story associata:} Funzionalità software descritta dal punto di vista dell'utente, definita nella forma:
-    \begin{quote}
-        Come [utente], desidero poter [funzionalità] per [valore aggiunto].
-    \end{quote}
-\end{enumerate}
-
-\paragraph{Diagrammi dei casi d'uso} I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionalità del sistema dal punto di vista dell'utente. Mostrano come gli attori esterni (utenti, dispositivi, altri sistemi) interagiscono con il sistema, senza entrare nei dettagli tecnici. Il loro obiettivo principale è descrivere le interazioni tra attori e sistema, facilitando la comprensione dei requisiti funzionali e la comunicazione tra gli stakeholder. Ogni caso d'uso descrive una sequenza di azioni che un attore compie per raggiungere un obiettivo specifico. Questi casi sono interconnessi e rappresentano i flussi di lavoro principali, evidenziando come l'utente interagisce con il sistema. I diagrammi non trattano i dettagli implementativi, ma si concentrano sulle funzionalità, trattando il sistema come un "black box" esterno.\\
+\paragraph{Diagrammi dei casi d'uso} 
+I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionalità del sistema dal punto di vista dell'utente. Mostrano come gli attori esterni (utenti, dispositivi, altri sistemi) interagiscono con il sistema, senza entrare nei dettagli tecnici. Il loro obiettivo principale è descrivere le interazioni tra attori e sistema, facilitando la comprensione dei requisiti funzionali e la comunicazione tra gli stakeholder. Ogni caso d'uso descrive una sequenza di azioni che un attore compie per raggiungere un obiettivo specifico. Questi casi sono interconnessi e rappresentano i flussi di lavoro principali, evidenziando come l'utente interagisce con il sistema. I diagrammi non trattano i dettagli implementativi, ma si concentrano sulle funzionalità, trattando il sistema come un "black box" esterno.\\
 \medskip Di seguito sono elencati i principali componenti di un diagramma dei casi d’uso:
 
 \begin{itemize}
@@ -124,18 +116,18 @@ I casi d’uso rappresentano scenari concreti che descrivono come gli utenti e a
         \end{figure}
 \end{itemize}
 
-\paragraph{Requisiti} I requisiti di un prodotto software sono specifiche documentate che delineano le funzionalità che il sistema deve soddisfare. Essi fungono da guida per lo sviluppo, il testing e la validazione del prodotto, garantendo che risponda alle esigenze degli utenti e agli obiettivi del progetto. Ogni requisito deve essere definito con precisione, e riflettere pienamente le attese del cliente o del proponente.
+    \paragraph{Requisiti}
+    I requisiti di un prodotto software sono specifiche documentate che delineano le funzionalità che il sistema deve soddisfare. Essi fungono da guida per lo sviluppo, il testing e la validazione del prodotto, garantendo che risponda alle esigenze degli utenti e agli obiettivi del progetto. Ogni requisito deve essere definito con precisione, e riflettere pienamente le attese del cliente o del proponente.\newline
+    I requisiti si suddividono in tre diverse tipologie:
+    \begin{itemize}
+        \item \textbf{Requisiti funzionali (F)}: Specificano le funzionalità che il sistema deve essere in grado di svolgere, descrivendo le azioni principali e le informazioni che fornisce;
+        \item \textbf{Requisiti di qualità (Q)}: Definiscono standard relativi alle prestazioni, affidabilità, sicurezza e altri criteri di qualità che il sistema deve rispettare;
+        \item \textbf{Requisiti di vincolo (V)}: Rappresentano restrizioni o condizioni imposte al progetto, come vincoli tecnologici o normativi.
+        \item \textbf{Requisiti prestazionali (P)}: Descrivono le capacità o le prestazioni minime richieste, come tempi di risposta, scalabilità o capacità di carico;
+    \end{itemize}
 
-\medskip I requisiti si suddividono in tre diverse tipologie:
-\begin{itemize}
-    \item \textbf{Requisiti funzionali (F)}: Specificano le funzionalità che il sistema deve essere in grado di svolgere, descrivendo le azioni principali e le informazioni che fornisce.
-    \item \textbf{Requisiti di qualità (Q)}: Definiscono standard relativi alle prestazioni, affidabilità, sicurezza e altri criteri di qualità che il sistema deve rispettare.
-    \item \textbf{Requisiti di vincolo (V)}: Rappresentano restrizioni o condizioni imposte al progetto, come vincoli tecnologici o normativi.
-    \item \textbf{Requisiti prestazionali (P)}: Descrivono le capacità o le prestazioni minime richieste, come tempi di risposta, scalabilità o capacità di carico.
-\end{itemize}
-
-Ogni requisito è composto da:
-\begin{enumerate}
+    Ogni requisito è composto da:
+    \begin{enumerate}
     \item \textbf{Identificativo}: Un codice univoco nel formato:
     \[
     R[{Importanza}][{Tipologia}] \, X
@@ -156,28 +148,73 @@ Ogni requisito è composto da:
         \end{itemize}
         \item \textbf{X}: Numero progressivo per ogni requisito aggiunto.
     \end{itemize}
-    \item \textbf{Descrizione}: Una descrizione dettagliata che spiega la caratteristica richiesta al sistema.
-    \item \textbf{Fonte}: L'origine del requisito.
-    \item \textbf{Casi d’uso associati}: Un elenco di casi d'uso che forniscono il contesto operativo per il requisito.
-\end{enumerate}
+    \item \textbf{Descrizione}: Una descrizione dettagliata che spiega la caratteristica richiesta al sistema;
+    \item \textbf{Fonte}: L'origine del requisito;
+    \item \textbf{Casi d’uso associati}: Un elenco di casi d'uso che forniscono il contesto operativo per il requisito;
+    \end{enumerate}
 
-Alcuni requisiti, pur non avendo un identificativo, vengono documentati per assicurare la loro tracciabilità. Questi comprendono:
-\begin{itemize}
-    \item \textbf{Requisiti d’ambiente}: Specificano le condizioni e le risorse necessarie per sviluppare, testare e implementare il software.
-    \item \textbf{Requisiti di sicurezza}: Delineano le misure e i comportamenti richiesti per proteggere il sistema da minacce.
-    \item \textbf{Requisiti di performance}: Definiscono i livelli di prestazione richiesti, come velocità di elaborazione o capacità di gestione del carico.
-\end{itemize}
+    Alcuni requisiti, pur non avendo un identificativo, vengono documentati per assicurare la loro tracciabilità. Questi comprendono:
+    \begin{itemize}
+        \item \textbf{Requisiti d’ambiente}: 
+        Specificano le condizioni e le risorse necessarie per sviluppare, testare e implementare il software;
+        \item \textbf{Requisiti di sicurezza}: 
+        Delineano le misure e i comportamenti richiesti per proteggere il sistema da minacce;
+        \item \textbf{Requisiti di performance}: 
+        Definiscono i livelli di prestazione richiesti, come velocità di elaborazione o capacità di gestione del carico;
+    \end{itemize}
 
-\paragraph{Metriche}
-%da completare e inserire tabella%
+    \paragraph{Metriche}
+    %da completare e inserire tabella%
 
 \subsubsection{Progettazione}
-\paragraph{Documentazione}
-\paragraph{Qualità dell'architettura}
-\paragraph{Diagrammi UML}
-\paragraph{Design pattern}
-\paragraph{Metriche}
 
+    \paragraph{Descrizione e Scopo}     
+    La progettazione, o design, è un'altra fase cruciale del processo di sviluppo software che ha l'obiettivo di tradurre i requisiti individuati durante la fase di analisi in una struttura architetturale definita. Questa attività definisce in dettaglio i vincoli e le caratteristiche del prodotto semplificando la pianificazione e la suddivisione delle attività di codifica.\newline
+    Prima di avviare la progettazione vera e propria, si intraprende una fase preliminare che prevede la creazione di un PoC (Proof of Concept), un prototipo preliminare "usa e getta" realizzato per dimostrare la fattibilità tecnologica del prodotto previsto. Questa fase serve a confermare le tecnologie da adottare e a definire insieme alla proponente le componenti principali che costituiranno l'MVP (Minimum Viable Product).\\
+    
+    \paragraph{Diagrammi delle classi}
+    Sono una tipologia di diagramma UML utile a rappresentare la struttura statica di un sistema software orientato agli oggetti. Questi diagrammi visualizzano le classi del sistema con i loro attributi e metodi insieme alle relazioni tra di esse.\newline
+    Le classi sono rappresentate tramite rettangoli suddivisi in tre sezioni: 
+    \begin{enumerate}
+        \item \textbf{Nome}: contiene il nome della classe in grassetto, se la classe è astratta allora viene scritto anche in corsivo;
+        \item \textbf{Attributi}:
+        \begin{quote}
+            \textbf{Visibilità nome : tipo} [molteplicità] = default
+        \end{quote}
+        \begin{itemize}
+            \item [-] \textbf{Visibilità}: se privata viene indicata con il - , se protetta viene indicata con il \# e se pubblica viene indicata con il + ;
+            \item [-] \textbf{Nome}: il nome dell’attributo, se statico viene sottolineato;
+            \item [-] \textbf{Tipo}: rappresenta il tipo di dato dell’elemento;
+            \item [-] \textbf{Molteplicità}: quante istanze dell’elemento possono esistere in relazione ad altri elementi;
+            \item [-] \textbf{Default}: se configurato, indica il valore predefinito per l’elemento;
+        \end{itemize}
+        
+        \item \textbf{Metodi}:
+        \begin{quote}
+            \textbf{Visibilità nome (lista-parametri) : tipo-ritorno}
+        \end{quote}
+        \begin{itemize}
+            \item [-] \textbf{Visibilità}: segue quanto definito sopra;
+            \item [-] \textbf{Nome}: nome del metodo, se statico viene sottolineato;
+            \item [-] \textbf{Lista-Parametri}: se la funzione prevede più di un parametro, questi vengono separati tramite “,”;
+            \item [-] \textbf{Ritorno}: il tipo restituito dal metodo;
+        \end{itemize}
+    \end{enumerate}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.25\textwidth]{classe.png}
+        \caption{Rappresentazione di una classe.}
+    \end{figure}
+    
+     Di seguito vengono elencate tutte le possibili relazioni:
+     \begin{itemize}
+        \item \textbf{Dipendenza}:
+     \end{itemize}
+    
+    \paragraph{Design pattern}
+    
+    \paragraph{Metriche}
+    %da completare e inserire tabella%
 \subsubsection{Codifica}
 
 \subsubsection{Integrazione}
