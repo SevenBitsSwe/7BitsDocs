@@ -73,7 +73,7 @@ Secondo SAL con Andra Dorigo e Daniele Zorzi di SyncLab.
 \subsection{Sintesi}
 Questo SAL si è centrato sull'esposizione del lavoro svolto durante questo sprint.
 \subsubsection{PoC}
-Si è mostrato al proponente il lavoro effettuato durante questa settimana, correggendo principalmente i problemi presenti nello scorso SAL e iniziando con l'interrogazione dell'LLM. \\
+\`E stato mostrato al proponente il lavoro effettuato durante questa settimana, correggendo principalmente i problemi presenti nello scorso SAL e iniziando con l'interrogazione dell'LLM. \\
 Il nostro gruppo ha presentato la dashboard grafana nella quale si sono aggiunti le provision e si è riuscito a far lavorare assieme kafka, flink e clickhouse, utilizzando gli appositi connettori.\\
 Successivamente si è mostrato il prompt per il messaggio da mandare all'LLM e detto a voce alcuni risultati ottenuti con esso.\\
 Visto la presenza di solo uno dei tre membri del proponente non si è discusso molto sul lavoro effettuato.\\
@@ -84,13 +84,13 @@ Il 2024-12-03 è stato inviato al proponente il documento di Analisi di Requisit
 Il proponente ha riscontrato solo alcuni dettagli che non ha menzionato esplicitamente durante il SAL, ma ci farà sapere tramite email.
 
 \subsubsection{Pyflink API}
-E' stata fatta una discussione sull'utilizzo della table API di pyflink per ottenere i dati batch dell'utente.\\
+\`E stata fatta una discussione sull'utilizzo della table API di pyflink per ottenere i dati batch dell'utente.\\
 Essendo che la versione python di flink ha dei problemi con le dipendenze del connettore JDBC(nativo JAVA) il gruppo ha proposto di utilizzare le normali REST API di clickhouse per ottenere questi dati.\\
 Flink viene sfruttato tramite la Datastream API ,per ottenere i dati posizionali dal topic Kafka, elaborarli con la funzione di mapping, infine per la pubblicazione nel topic Kafka MessageElaborated.\\
 Il proponente ha detto che il problema è irrilevante ed è d'accordo per l'utilizzo delle normali REST API.
 
 \subsubsection{Chiavi Kafka}
-Il proponente ci ha suggerito di indagare ed utilizzare le chiavi di Kafka, che apporterebbero alcuni vantaggi.
+Il proponente ci ha suggerito di indagare ed utilizzare le chiavi di Kafka, che porterebbero alcuni vantaggi.
 
 \subsubsection{Clickhouse FOREIGN KEY}
 Si è discusso col proponente dell'assenza di FOREIGN KEY in Clickhouse, vista la strutturazione della tecnologia.\\
