@@ -127,31 +127,32 @@ I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionali
     \end{itemize}
 
     Ogni requisito è composto da:
-    \begin{enumerate}
+    \begin{itemize}
     \item \textbf{Identificativo}: Un codice univoco nel formato:
-    \[
-    R[{Importanza}][{Tipologia}] \, X
-    \]
+    \begin{quote}
+    \textbf{R[{Importanza}][{Tipologia}] X}
+    \end{quote}
+    Dove:
     \begin{itemize}
         \item \textbf{Importanza}:
         \begin{itemize}
-            \item \textbf{O}: Obbligatorio. Essenziale per soddisfare le esigenze del proponente.
-            \item \textbf{D}: Desiderabile. Utile ma non prioritario, può essere implementato in seguito.
-            \item \textbf{P}: Opzionale. Aggiunge valore al prodotto, ma può essere tralasciato per motivi di costo o tempistica.
+            \item \textbf{O}: Obbligatorio. Essenziale per soddisfare le esigenze del proponente;
+            \item \textbf{D}: Desiderabile. Utile ma non prioritario, può essere implementato in seguito;
+            \item \textbf{P}: Opzionale. Aggiunge valore al prodotto, ma può essere tralasciato per motivi di costo o tempistica;
         \end{itemize}
         \item \textbf{Tipologia}:
         \begin{itemize}
-            \item \textbf{F}: Funzionale.
-            \item \textbf{Q}: Qualità.
-            \item \textbf{V}: Vincolo.
-            \item \textbf{P}: Prestazionale.
+            \item \textbf{F}: Funzionale;
+            \item \textbf{Q}: Qualità;
+            \item \textbf{V}: Vincolo;
+            \item \textbf{P}: Prestazionale;
         \end{itemize}
-        \item \textbf{X}: Numero progressivo per ogni requisito aggiunto.
+        \item \textbf{X}: Numero progressivo per ogni requisito aggiunto;
     \end{itemize}
     \item \textbf{Descrizione}: Una descrizione dettagliata che spiega la caratteristica richiesta al sistema;
     \item \textbf{Fonte}: L'origine del requisito;
     \item \textbf{Casi d’uso associati}: Un elenco di casi d'uso che forniscono il contesto operativo per il requisito;
-    \end{enumerate}
+    \end{itemize}
 
     Alcuni requisiti, pur non avendo un identificativo, vengono documentati per assicurare la loro tracciabilità. Questi comprendono:
     \begin{itemize}
@@ -205,34 +206,67 @@ I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionali
         \includegraphics[width=0.25\textwidth]{classe.png}
         \caption{Rappresentazione di una classe.}
     \end{figure}
-    
+    \vspace{2mm}
      Di seguito vengono elencate tutte le possibili relazioni:
      \begin{itemize}
-        \item \textbf{Dipendenza}:
+        \item \textbf{Dipendenza}: La relazione di dipendenza tra due classi è rappresentata da una freccia tratteggiata con la punta, che parte dalla classe dipendente A e punta alla classe da cui si origina la dipendenza B. Questa freccia indica che eventuali modifiche nella classe B potrebbero influenzare o avere un impatto sulla classe A;
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{dipendenza.png}
+            \caption{Rappresentazione della relazione di dipendenza.}
+        \end{figure}
+        
+        \item \textbf{Aggregazione}: La relazione di aggregazione rappresenta un legame di tipo "part of" tra due classi, in cui una classe è associata ad un'altra ma può esistere anche indipendentemente da essa. Questa relazione viene utilizzata quando una classe A (contenitore) contiene un riferimento ad un oggetto di tipo B (contenuto). L'aggregazione è rappresentata graficamente con una linea che collega le due classi, con un rombo vuoto posto vicino alla classe che rappresenta il contenitore;
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{aggregazione.png}
+            \caption{Rappresentazione della relazione di aggregazione.}
+        \end{figure}
+        
+        \item \textbf{Composizione}: La relazione di composizione si verifica quando una classe A contiene un oggetto di tipo B e ne ha la responsabilità di crearne e gestirne l'esistenza. La vita di B (contenuto) è vincolata a quella di A (contenitore): se A viene eliminata, anche B viene distrutta. La composizione è rappresentata graficamente con un rombo pieno vicino alla classe che rappresenta il contenitore e una linea che collega le due classi;
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{composizione.png}
+            \caption{Rappresentazione della relazione di composizione.}
+        \end{figure}
+        
+        \item \textbf{Associazione}: La relazione di associazione si verifica quando una classe può contenere riferimenti o istanze di un’altra classe senza implicare una stretta dipendenza. L'associazione è rappresentata graficamente con una linea che collega le classi, spesso accompagnata da valori di molteplicità. Per indicare il senso della relazione, può essere utilizzata una freccia posizionata su uno dei due estremi;
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{associazione_classe.png}
+            \caption{Rappresentazione della relazione di associazione.}
+        \end{figure}
+        
+        \item \textbf{Generalizzazione}: La relazione di generalizzazione si verifica quando una classe eredita attributi, comportamenti e relazioni dalla classe genitore. Nello specifico ogni istanza della classe figlia è anche un'istanza della classe genitore, ma con caratteristiche o dettagli aggiuntivi specifici. La generalizzazione è rappresentata graficamente con una freccia vuota che collega la classe figlia (B) alla classe genitore (A);
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.2\textwidth]{generalizzazione.png}
+            \caption{Rappresentazione della relazione di generalizzazione.}
+        \end{figure}
      \end{itemize}
-    
-    \paragraph{Design pattern}
     
     \paragraph{Metriche}
     %da completare e inserire tabella%
+
+    
     \subsubsection{Codifica}
 
     \paragraph{Descrizione e scopo} 
-    L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, mantenibilità e coerenza nell’intero progetto.
+    L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, mantenibilità e coerenza nell’intero progetto.\\
     L’obiettivo principale della codifica è quindi creare un prodotto software che soddisfi le esigenze del proponente e rispetti gli accordi contrattuali. Le aspettative del codice sviluppato includono:
     \begin{itemize}
         \item \textbf{Conformità alle specifiche}: garantire che il codice traduca fedelmente i requisiti e le funzionalità richieste;
         \item \textbf{Chiarezza e leggibilità}: scrivere codice autoesplicativo, riducendo la necessità di commenti superflui;
         \item \textbf{Ottimizzazione delle prestazioni}: assicurare che il codice sia efficiente e scalabile;
-        \item \textbf{Testabilità}: integrare test di unità e di integrazione per verificare la correttezza e l’affidabilità.
+        \item \textbf{Testabilità}: integrare test di unità e di integrazione per verificare la correttezza e l’affidabilità;
     \end{itemize}
     
     \paragraph{Norme di codifica}
-    Per garantire uno sviluppo del codice coerente e di alta qualità, i Programmatori adottano le seguenti regoleù:
+    Per garantire uno sviluppo del codice coerente e di alta qualità, i Programmatori adottano le seguenti regole:
     \begin{itemize}
         \item \textbf{Nomi significativi}: utilizzare nomi univoci, oltre che chiari e descrittivi per variabili, metodi e classi, evitando abbreviazioni ambigue;
-        \item \textbf{Indentazione}: applicare uno schema di formattazione uniforme per migliorare la leggibilità del codice. Ogni livello di annidamento deve essere chiaramente separato con un tab o spazi coerenti.
-        \item \textbf{Lunghezza dei metodi}: i metodi devono essere brevi e focalizzati su una singola responsabilità, per favorire test di unità efficaci.
+        \item \textbf{Indentazione}: applicare uno schema di formattazione uniforme per migliorare la leggibilità del codice. Ogni livello di annidamento deve essere chiaramente separato con un tab o spazi coerenti;
+        \item \textbf{Lunghezza dei metodi}: i metodi devono essere brevi e focalizzati su una singola responsabilità, per favorire test di unità efficaci;
     \end{itemize}
     
     \paragraph{Strumenti utilizzati}
@@ -243,6 +277,7 @@ I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionali
     
     \paragraph{Metriche}
     %da completare e inserire tabella%
+
     
     \subsubsection{Integrazione}
     
