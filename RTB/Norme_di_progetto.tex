@@ -3,59 +3,736 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tabularx}
 \usepackage{hyperref}
-\usepackage{array}  
-\usepackage{graphicx} % Per inserire immagini (loghi)
-\usepackage{geometry} % Per personalizzare i margini
-\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
-\usepackage{tikz} % Per disegni grafici
-%\usepackage{xcolor} % Per definire e usare colori
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{ragged2e}
 \usepackage{anyfontsize}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{tabularx, etoolbox} % Aggiungi etoolbox per condizioni % Load xcolor
-\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
-\usepackage{titlesec} % Per avere ulteriore profondità nell'albero delle sottosezioni \subsubsubsection=\paragraph
-\usepackage{float} % Per posizionare le immagini in un elenco puntato
+\usepackage{tabularx, etoolbox}
+\usepackage{eso-pic}
+\usepackage{titlesec}
+\usepackage{float}
 
-\graphicspath{{../images/}}
+\graphicspath{{images}}
+%\graphicspath{{../images/}}
 
+% Imposta il livello di profondità dell'indice
+\setcounter{tocdepth}{4} % Aggiunge paragraph all'indice
 
-\input{assets/impostazione_paragrafi.tex}
+% Abilita la numerazione fino a paragraph
+\setcounter{secnumdepth}{5} % Estende la profondità della numerazione
 
+% Ridefinizione dello stile di paragraph per includere la numerazione
+\renewcommand\theparagraph{\thesubsubsection.\arabic{paragraph}}
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+  {0pt}{1ex plus .2ex}{1ex plus .2ex}
 
-% Cambio misure della pagina
-\geometry{a4paper,left=20mm,right=20mm,top=20mm}
-% Colore:ebdfc7
+% Ridefinizione dello stile di subparagraph per includere la numerazione
+\renewcommand\thesubparagraph{\theparagraph.\arabic{subparagraph}}
+\titleformat{\subparagraph}
+  {\normalfont\normalsize\itshape}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}
+  {0pt}{1ex plus .2ex}{1ex plus .2ex}
+
+%cambio misure della pagina
+\geometry{a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm}
 \definecolor{colorePie}{HTML}{ebdfc7}
 
+% Header per ogni pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+}
+\rhead{\textcolor[HTML]{9e978a}{ NORME DI PROGETTO v0.4.0}
+}
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
 
-\input{assets/header_pagine.tex}
-
-
-\renewcommand*\contentsname{Indice}
-
+% Indice
+\renewcommand{\contentsname}{\centering Indice}
+\renewcommand{\listfigurename}{\centering Elenco delle figure}
 
 \begin{document}
 
-\include{assets/title_page.tex}
-
-
-%\clearpage
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    % Titolo
+     {\fontsize{40}{40}\bfseries Norme di Progetto}\selectfont \\[3.9em]
+    % Sottotitolo
+        % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    \hfill % Spazio per il logo dell'università
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+    \vfill % Aggiunge spazio verticale per centrare il contenuto
+\end{titlepage}
+\newpage
+\clearpage
 \setcounter{page}{1}
 
+% Registro Modifiche
+\begin{center}
+\textbf{Registro modifiche}\\
+\vspace{2mm}
 
-\include{assets/registro_modifiche.tex}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+    \hline
+    0.4.0 & 2024-12-06 & Federico Pivetta &  & Inizio stesura sottosezione "Gestione Organizzativa" e abbandono impostazione in sottodocumenti\\
+    \hline
+    0.3.9 & 2024-12-05 & Alfredo Rubino & Leonardo Trolese & Completata sezione "Processi Primari"\\
+    \hline
+    0.3.8 & 2024-12-05 & Federico Pivetta & Leonardo Trolese & Completato paragrafo "Diagrammi delle classi"\\
+    \hline
+    0.3.7 & 2024-12-04 & Alfredo Rubino & Leonardo Trolese & Aggiornamento sottosezione "Sviluppo" (terza parte) e completata modifica ai termini del Glossario\\
+    \hline
+    0.3.6 & 2024-12-04 & Federico Pivetta & Leonardo Trolese & Aggiornata sottosezione "Sviluppo" (seconda parte)\\
+    \hline
+    0.3.5 & 2024-12-02 & Alfredo Rubino & Giovanni Cristellon & Aggiornata sottosezione "Sviluppo"\\
+    \hline
+    0.3.4 & 2024-11-30 & Leonardo Trolese & Giovanni Cristellon & Correzioni grammaticali e di contenuti non più aderenti al Way of Working stabilito\\
+    \hline
+    0.3.3 & 2024-11-30 & Alfredo Rubino & Giovanni Cristellon & Aggiornata sottosezione "Sviluppo" e aggiunti livelli di profondità nell'indice\\
+    \hline
+    0.3.2 & 2024-11-28 & Alfredo Rubino & Giovanni Cristellon & Modifica ai termini del Glossario\\
+    \hline
+    0.3.1 & 2024-11-25 & Federico Pivetta & Riccardo Piva & Completata sottosezione "Fornitura" e aggiunta sottosezione "Sviluppo"\\
+    \hline
+    0.3.0 & 2024-11-24 & Federico Pivetta & Riccardo Piva & Aggiunta sezione "Processi primari"\\
+    \hline
+     0.2.1 & 2024-11-21 & Federico Pivetta  & Riccardo Piva & Completata sezione "Introduzione" e sottosezione "Documentazione", inclusa modifica alla tabella Registro modifiche\\
+    \hline
+    0.2.0 & 2024-11-20 & Leonardo Trolese & Federico Pivetta & Aggiunta sezione "Processi di supporto" e impostazione della divisione in sottodocumenti\\
+    \hline
+    0.1.0 & 2024-11-11 & Leonardo Trolese & Federico Pivetta & Creazione del documento secondo la struttura definita dal gruppo\\
+    \hline
+\end{tabularx}
+\end{center}
 
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
 
-\include{assets/indice_contenuti.tex}
+\newpage
+\begin{justify}
 
+\section{Introduzione}
+    \subsection{Scopo del documento}
+    Il presente documento è stato realizzato ai fini di definire e raccogliere le best practices e il way of working a cui ogni componente del gruppo Seven Bits dovrà aderire per l'intera realizzazione del progetto, al fine di garantire l'adozione di un metodo di lavoro completamente omogeno.\\
+    La formulaziome delle norme di progetto avviene in maniera progressiva, permettendo al gruppo di apportare continui aggiornamenti ad esse in risposta alle esigenze che il team dovrà affrontare durante lo svolgimento del progetto stesso.\\ 
 
-\include{content/Introduzione/introduzione.tex}
+    \subsection{Scopo del prodotto}
+    Ogni giorno, le persone vengono sommerse da una miriade di annunci generici che spesso non rispecchiano i loro reali interessi o il contesto in cui si trovano. Questa separazione tra il messaggio e il destinatario porta ad una bassa interazione con gli utenti e una riduzione delle conversioni per i brand.\\
+    Il progetto “Near You” si concentra sulla creazione di una dashboard composta principalmente da una mappa, sulla quale verranno visualizzate in tempo reale le posizioni degli utenti. Mediante un popup o una finestra a parte, verranno visualizzati messaggi personalizzati solo in prossimità dei punti di interesse.\\
+    L'obiettivo finale è generare annunci pubblicitari in base agli interessi del cliente e alla sua posizione in quel momento.\\
+    
+    \subsection{Glossario}
+    Ai fini di garantire l'adesione dei membri del gruppo ad un vocabolario comune e condiviso, che non lasci spazio ad ambiguità, dubbi o imprecisioni; il gruppo ha definito un documento denominato Glossario, nel quale sono presenti tutti i termini tecnici adottati dal gruppo per l'intera durata della realizzazione del progetto. Tali termini saranno contrassegnati con una $_G$ a pedice. Nel caso di termini composti, essi saranno uniti da un trattino (es. Analisi-dei-requisiti$_G$)
 
+    \subsection{Riferimenti}
+        \subsubsection{Riferimenti normativi}
+        \begin{itemize}
+            \item Capitolato di progetto C4 - Near You: \href{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}
+            \item Standard ISO/IEC 12207:1995: \href{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}
+        \end{itemize}
+        \subsubsection{Riferimenti tecnologici}
+        \begin{itemize}
+            \item Documentazione Git: \href{https://git-scm.com/docs}{https://git-scm.com/docs}
+            \item Documentazione GitHub: \href{https://docs.github.com/en}{https://docs.github.com/en}
+            \item Documentazione \LaTeX: \href{https://www.latex-project.org/help/documentation/}{https://www.latex-project.org/help/documentation/}
+            \item Documentazione Python: \href{https://www.python.org/doc/}{https://www.python.org/doc/}
+        \end{itemize}
+        
+\newpage
+\section{Processi Primari}
+    \subsection{Fornitura}
 
-\include{content/Processi Primari/processi_primari.tex}
+    \subsubsection{Descrizione e Scopo}
+    Come stabilito dallo standard ISO/IEC 12207:1995, il processo di fornitura definisce un insieme di linee guida necessario per una buona comunicazione tra fornitore e proponente. Il processo di fornitura si occupa di controllare e coordinare tutte le attività svolte dal gruppo, dalla comprensione dei requisiti fino alla consegna, per garantire che il prodotto finale soddisfi le esigenze concordate con la propontente.\\
 
+    \subsubsection{Attività}
+    Il processo di fornitura, come stabilito dallo standard ISO/IEC 12207:1995, si compone delle seguenti attività :
+    \begin{enumerate}
+        \item \textbf{Avvio}: Composto dall'identificazione e comprensione delle richieste della proponente, con successiva verifica della fattibilità tecnologica di quest'ultime;
+        \item \textbf{Preparazione dell'offerta}: Composta dall'elaborazione della proposta in grado di soddisfare le richieste della proponente, che dettagli i requisiti, i tempi, i costi e le condizioni contrattuali;
+        \item \textbf{Contrattazione}: Composta dalla collaborazione tra fornitore e proponente per finalizzare i punti cardine della proposta;
+        \item \textbf{Pianificazione}: Composta dalla pianificazione delle attività necessarie per soddisfare i requisiti della proponente, seguita da una suddivisione delle ore produttive disponibili ed una stima dei costi;
+        \item \textbf{Esecuzione}: Composta dalla pianificazione e dallo sviluppo del prodotto in conformità ai requisiti concordati, insieme ad un monitoraggio continuo delle attività;
+        \item \textbf{Revisione}: Composta dalla verifica periodica del progresso rispetto ai criteri definiti dal contratto;
+        \item \textbf{Consegna}: Composta dalla consegna del prodotto software alla proponente, accompagnato dalla documentazione finale.
+    \end{enumerate}
 
-\include{content/Supporto allo sviluppo software/supporto_sviluppo.tex}
+    \subsubsection{Rapporti con l'azienda proponente}
+    L'azienda proponente SyncLab$_G$ si è resa disponibile mediante diversi canali tra cui: e-mail, Discord e Google Meet ad una comunicazione frequente con il gruppo Seven Bits, così da risolvere tempestivamente eventuali domande o dubbi che possono emergere durante lo svolgimento del progetto.\\
+    Durante la prima riunione organizzativa con l'azienda, è stata definita l'organizzazione dei periodi di sprint$_G$, stabilendo una durata di due settimane per ciascun ciclo. Al termine di ogni sprint$_G$ avviene un incontro SAL$_G$ (Stato di Avanzamento Lavori), dove verranno analizzati i risultati del lavoro svolto e si procederà con una sprint-review$_G$. Inoltre, tra un SAL$_G$ e l'altro, secondo le necessità di proponente e team, è possibile concordare un incontro intermedio per monitorare i progressi raggiunti e rispondere ad eventuali quesiti emersi.\\
+    Ogni incontro con l'azienda viene formalizzato attraverso un verbale esterno. Tale verbale è successivamente sottoposto alla proponente per la validazione mediante firma, in modo da ottenere un'approvazione formale del resoconto delle discussioni svolte durante la riunione.\\
 
+    \subsubsection{Documentazione fornita}
+    Di seguito sono elencati i documenti che il gruppo si impegna a consegnare ai Committenti, Prof. Tullio Vardanega e Prof. Riccardo Cardin, nonché all'azienda proponente:\\
 
+        \paragraph{Analisi dei Requisiti}
+        \'E un documento essenziale per lo sviluppo del prodotto software, che include la descrizione degli attori coinvolti, dei casi d’uso e l’elenco dei requisiti, suddivisi in requisiti funzionali, di qualità, di vincolo e prestazionali.\\
+
+        \paragraph{Piano di Progetto}
+        Il Piano di Progetto è un documento che ha lo scopo di definire in modo chiaro le modalità con cui ogni membro del gruppo svolgerà le attività per la realizzazione del progetto. Include l'analisi dei rischi, la pianificazione delle attività, la suddivisione dei ruoli e la stima di costi e risorse.\\
+
+        \paragraph{Piano di Qualifica}
+        Il Piano di Qualifica è un documento che ha l'obiettivo di garantire la qualità del prodotto e dei processi durante l'intero ciclo di vita del progetto, per questo motivo sarà aggiornato nel tempo per riflettere eventuali modifiche e i risultati delle verifiche effettuate. Include le sezioni sulla qualità di processo, sulla qualità di prodotto, le modalità di testing e il cruscotto di valutazione delle qualità.\\
+
+        \paragraph{Glossario}
+        Il Glossario è un documento che raccoglie dei termini specifici e le loro definizioni chiare e concise. Il suo scopo è quello di facilitare la comprensione dei concetti chiave presenti nei vari documenti redatti.\\
+
+        \paragraph{Lettera di Presentazione}
+        La Lettera di Presentazione è un documento che accompagna la consegna del prodotto software e della relativa documentazione durante le fasi di revisione di progetto. Il contenuto di questo documento comprende un link alla pagina web che contiene tutta la documentazione fin'ora prodotta ed un preventivo aggiornato rispetto a quello presentato alla revisione precedente.\\
+
+    \subsubsection{Strumenti}
+    Gli strumenti utilizzati per la gestione del processo di fornitura sono i seguenti :
+    \begin{itemize}
+        \item \textbf{Canva}: Piattaforma che permette la creazione di presentazioni multimediali, utilizzata per la realizzazione dei diari di bordo;
+        \item \textbf{Draw.io}: Software utilizzato per creare diagrammi e grafici di vario tipo, in particolare è stato impiegato per realizzare diagrammi UML, come quelli dei casi d’uso;
+        \item \textbf{Google Meet e Discord}: Servizi che permettono di effettuare videochiamate, utilizzati dal team per le discussioni sincrone e asincrone con la proponente;
+        \item \textbf{Google Sheets}: Servizio che permette la creazione di fogli di calcolo, utilizzato dal gruppo per la rendicontazione delle ore produttive impiegate durante ogni sprint$_G$;
+    \end{itemize}
+
+    \subsection{Sviluppo}
+
+    \subsubsection{Descrizione e Scopo}
+    Il processo di sviluppo rappresenta l’insieme delle attività necessarie per realizzare il prodotto software, garantendo il rispetto dei requisiti e delle scadenze concordate con la proponente. Questo processo si articola in diverse fasi fondamentali, quali l'analisi dei requisiti, la progettazione, la codifica, l'integrazione, e la verifica, assicurando che ogni fase contribuisca al raggiungimento degli obiettivi prefissati.\\
+    Le linee guida descritte in questa sezione sono volte a strutturare il lavoro in modo chiaro e uniforme, promuovendo la qualità del prodotto finale. Seguendo standard solidi e definiti, nel caso specifico l'ISO/IEC 12207:1995, si crea un ambiente di lavoro orientato a garantire la coerenza nei metodi utilizzati e il rispetto delle aspettative.\\
+    L'obiettivo è consegnare un prodotto software di alta qualità, che soddisfi le esigenze richieste, rispettando le tempistiche e garantendo il successo del progetto.\\
+
+    \subsubsection{Analisi dei Requisiti}
+        \paragraph{Descrizione e Scopo}
+        L’Analisi-dei-Requisiti$_G$ è la prima fase cruciale del processo di sviluppo software. Lo scopo principale di questa fase è definire con chiarezza le funzionalità e le caratteristiche che il sistema dovrà offrire, in base alle necessità degli utenti. Per raggiungere tale obiettivo, è essenziale stabilire una comunicazione efficace con la proponente, assicurandosi che tutte le esigenze siano documentate e validate. Questo processo permette di chiarire gli obiettivi del prodotto, identificare i vincoli operativi e fornire ai Progettisti le informazioni necessarie per sviluppare un’architettura coerente e un design adeguato. Il risultato di questa attività è formalizzato nel documento \textit{Analisi\_dei\_Requisiti.pdf}, redatto dagli Analisti, che contiene una descrizione dettagliata degli obiettivi del prodotto, delle funzionalità previste, delle caratteristiche degli utenti e delle tecnologie coinvolte. Include inoltre una sezione dedicata ai casi d’uso, che descrivono le interazioni tra gli attori esterni e il sistema.\\
+        Infine, l’Analisi-dei-Requisiti contribuisce a migliorare la comunicazione tra tutti gli stakeholder, agevola la pianificazione del progetto in termini di tempistiche e costi e fornisce un riferimento chiaro per le attività di verifica e test.\\
+
+        \paragraph{Casi d'uso}
+        I casi d’uso rappresentano scenari concreti che descrivono come gli utenti e altri attori interagiranno con il sistema per raggiungere obiettivi specifici. Questi scenari aiutano a identificare requisiti chiave e prevenire malintesi.\\
+        È importante sottolineare che i diagrammi dei casi d’uso non si concentrano sui dettagli implementativi. Il loro scopo è quello di rappresentare la funzionalità del sistema esclusivamente dal punto di vista esterno, evidenziando come esso interagisce con gli attori e soddisfa le loro esigenze.\\
+        Ogni caso d'uso ha le seguenti caratteristiche:
+        \begin{itemize}
+            \item \textbf{Identificativo}:
+            \begin{quote}
+                \textbf{UC [Numero caso d’uso] . [Numero sottocaso d’uso] - [Titolo]}
+            \end{quote}
+            Dove:
+            \begin{itemize}
+                \item \textbf{Numero caso d’uso}: ID relativo al caso d'uso principale;
+                \item \textbf{Numero sottocaso d’uso}: ID relativo allo specifico sottocaso d'uso (se applicabile);
+                \item \textbf{Titolo}: Descrizione breve ed esplicativa;
+            \end{itemize}
+
+            \item \textbf{Attore principale}: Entità esterna che interagisce attivamente con il sistema per raggiungere uno scopo, ad esempio un utente specifico o un altro sistema esterno;
+            \item \textbf{Attore secondario}: Eventuale entità esterna invocata dal sistema per fornire un supporto, in modo da soddisfare il bisogno dell’attore principale;
+            \item \textbf{Descrizione}: Breve descrizione della funzionalità del caso d’uso;
+            \item \textbf{Scenario principale}: Sequenza di eventi che si susseguono da quando un attore inizia ad interagire con il sistema;
+            \item \textbf{Precondizioni}: Descrizione dello stato del sistema necessario per attivare il caso d’uso;
+            \item \textbf{Postcondizioni}: Descrizione dello stato del sistema al completamento del caso d’uso;
+            \item \textbf{Estensioni}: Eventuali scenari alternativi, descritti in questa sezione se presenti;
+            \item \textbf{User story associata}: Funzionalità descritta dal punto di vista dell'utente, scritta in linguaggio naturale perché risulti semplice e comprensibile. Definita nella forma seguente: \newline
+            - Come [utente], desidero poter [funzionalità] per [valore aggiunto]. -
+        \end{itemize}
+
+        \paragraph{Diagrammi dei casi d'uso} 
+        I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionalità del sistema dal punto di vista dell'utente. Mostrano come gli attori esterni (utenti, dispositivi, altri sistemi) interagiscono con il sistema, senza entrare nei dettagli tecnici. Il loro obiettivo principale è descrivere le interazioni tra attori e sistema, facilitando la comprensione dei requisiti funzionali e la comunicazione tra gli stakeholder.\\ 
+        Ogni caso d'uso descrive una sequenza di azioni che un attore compie per raggiungere un obiettivo specifico. Questi casi sono interconnessi e rappresentano i flussi di lavoro principali, evidenziando come l'utente interagisce con il sistema. I diagrammi non trattano i dettagli implementativi, ma si concentrano sulle funzionalità, trattando il sistema come un "black box" esterno.\\
+        Di seguito sono elencati i principali componenti di un diagramma dei casi d’uso:
+        \begin{itemize}
+            \item \textbf{Attori}\\
+            Gli attori sono entità esterne al sistema che interagiscono con esso per utilizzare le sue funzionalità. Possono essere utenti umani, altri sistemi software, dispositivi, macchine o organizzazioni. Un caso d'uso definisce una specifica funzionalità che il sistema fornisce agli attori, senza entrare nei dettagli implementativi. Nel diagramma dei casi d'uso, gli attori sono rappresentati da figure stilizzate posizionate all'esterno del rettangolo che delinea il sistema, e ciascuno è identificato da un’etichetta con il suo nome.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.45\textwidth]{Attore.PNG}
+            \caption{Rappresentazione di un attore.}
+            \end{figure}
+
+            \item \textbf{Casi d'uso}\\
+            Ogni caso d’uso identifica una specifica azione o funzionalità offerta dal sistema, con cui l’attore può interagire. I casi d'uso sono collegati tramite una linea continua agli attori che hanno accesso a quella funzionalità, creando una chiara relazione tra gli utenti e le azioni che possono compiere.\\
+            Nel diagramma dei casi d’uso, ogni caso è rappresentato da una forma ovale contenente un ID univoco e un titolo esplicativo.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.30\textwidth]{UC.PNG}
+            \caption{Rappresentazione di un caso d'uso.}
+            \end{figure}
+
+            \item \textbf{Sottocasi d'uso}\\
+            Un sottocaso d’uso rappresenta una versione più dettagliata di un caso d’uso  generico. Esso offre un livello di dettaglio più approfondito sulle funzionalità o sui particolari scenari di utilizzo rispetto al caso d’uso principale. Non è obbligatorio per un caso d'uso possedere uno o più sottocasi.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{SottoUC.PNG}
+            \caption{Rappresentazione di un sottocaso d'uso.}
+            \end{figure}
+
+            \item \textbf{Sistema}\\
+            Il sistema viene rappresentato con un rettangolo all'interno del quale vengono collocati i casi d'uso. All'esterno del rettangolo sono invece posizionati i vari attori.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.4\textwidth]{Sistema.PNG}
+            \caption{Rappresentazione di un sistema.}
+            \end{figure}
+
+            \item \textbf{Associazione}\\
+            Una linea di associazione stabilisce una connessione tra un attore e un caso d'uso quando l'attore è coinvolto nell'attività descritta dal caso d'uso. Questo collegamento visivo rappresenta il ruolo dell'attore nell'attivare o nell'utilizzare una specifica funzionalità del sistema.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{AssociazioneAttore.PNG}
+            \caption{Rappresentazione di una associazione tra attore e UC.}
+            \end{figure}
+
+            \item \textbf{Generalizzazione (attori)}\\
+            La generalizzazione tra attori rappresenta una relazione gerarchica in cui un attore specializzato (figlio) eredita comportamenti e caratteristiche da un attore base (genitore). Questo meccanismo aiuta a organizzare gerarchicamente gli attori nei diagrammi dei casi d’uso, definendo i casi d'uso che un attore può utilizzare e che sono anche disponibili per gli attori più specializzati. La generalizzazione viene rappresentata con una linea solida e una freccia vuota che va dall'attore figlio all'attore genitore, indicando la direzione dell'eredità.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{GeneralizzazioneAttore.PNG}
+            \caption{Rappresentazione di una generalizzazione tra attori.}
+            \end{figure}
+
+            \item \textbf{Inclusione}\\
+            La relazione di inclusione indica quando un caso d'uso (includente) comprende l'esecuzione di un altro caso d'uso (incluso). Quando un attore interagisce con il caso d'uso includente, il caso d'uso incluso viene eseguito automaticamente come parte di quest'ultimo. Questa relazione è utile per il riutilizzo delle funzionalità e per evitare la duplicazione delle stesse logiche in più casi d'uso. La relazione di inclusione viene rappresentata da una freccia tratteggiata che collega il caso d'uso incluso al caso d'uso includente.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{InclusioneUC.PNG}
+            \caption{Rappresentazione di una inclusione tra UC.}
+            \end{figure}
+
+            \item \textbf{Estensione}\\
+            La relazione di estensione indica quando un caso d'uso (estendente) può modificare o arricchire il comportamento di un altro caso d'uso (esteso) in determinate circostanze. Questa relazione viene utilizzata quando un evento o una condizione porta il flusso del caso d'uso a deviare dallo scenario principale verso uno scenario alternativo, come nei casi di errore, ma mantenendo le stesse precondizioni del caso d'uso principale. La relazione di estensione è rappresentata da una freccia tratteggiata che collega il caso d'uso estendente al caso d'uso esteso.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{EstensioneUC.PNG}
+            \caption{Rappresentazione di una estensione tra UC.}
+            \end{figure}
+
+            \item \textbf{Generalizzazione (casi d'uso)}\\
+            La generalizzazione nei diagrammi dei casi d’uso rappresenta una relazione di ereditarietà tra casi d’uso, in cui un caso d’uso più specifico eredita il comportamento da un caso d’uso più generico. Questa relazione è utile per definire funzionalità più dettagliate, ed è simboleggiata da una linea con una freccia vuota che va dal caso d'uso specifico al caso d'uso generico.
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.55\textwidth]{GeneralizzazioneUC.PNG}
+            \caption{Rappresentazione di una generalizzazione tra UC.}
+            \end{figure}
+        \end{itemize}
+
+        \paragraph{Requisiti}
+        I requisiti di un prodotto software sono specifiche documentate che delineano le funzionalità che il sistema deve soddisfare. Essi fungono da guida per lo sviluppo, il testing e la validazione del prodotto, garantendo che risponda alle esigenze degli utenti e agli obiettivi del progetto. Ogni requisito deve essere definito con precisione, e riflettere pienamente le attese del cliente o del proponente.\\
+        I requisiti si suddividono in tre diverse tipologie:
+        \begin{itemize}
+            \item \textbf{Requisiti funzionali (F)}: Specificano le funzionalità che il sistema deve essere in grado di svolgere, descrivendo le azioni principali e le informazioni che fornisce;
+            \item \textbf{Requisiti di qualità (Q)}: Definiscono standard relativi alle prestazioni, affidabilità, sicurezza e altri criteri di qualità che il sistema deve rispettare;
+            \item \textbf{Requisiti di vincolo (V)}: Rappresentano restrizioni o condizioni imposte al progetto, come vincoli tecnologici o normativi;
+            \item \textbf{Requisiti prestazionali (P)}: Descrivono le capacità o le prestazioni minime richieste, come tempi di risposta, scalabilità o capacità di carico;
+        \end{itemize}
+        Ogni requisito è composto da:
+        \begin{itemize}
+            \item \textbf{Identificativo}: Un codice univoco nel formato:
+            \begin{quote}
+                \textbf{R[{Tipologia}]X}
+            \end{quote}
+            Dove:
+            \item [-] \textbf{R}: Abbreviazione di "Requisito";
+            \item [-] \textbf{Tipologia}:
+            \begin{itemize}
+                \item [*] \textbf{F}: Funzionale;
+                \item [*] \textbf{Q}: Qualità;
+                \item [*] \textbf{V}: Vincolo;
+                \item [*] \textbf{P}: Prestazionale;
+            \end{itemize}
+            \item [-] \textbf{X}: Numero progressivo per ogni requisito aggiunto;
+            \item \textbf{Descrizione}: Una descrizione dettagliata che spiega la caratteristica richiesta al sistema;
+            \item \textbf{Fonte}: L'origine del requisito;
+            \item \textbf{Casi d’uso associati}: Un elenco di casi d'uso che forniscono il contesto operativo per il requisito;
+        \end{itemize}
+        Alcuni requisiti, pur non avendo un identificativo, vengono documentati per assicurare la loro tracciabilità. Questi comprendono:
+        \begin{itemize}
+            \item \textbf{Requisiti d’ambiente}: Specificano le condizioni e le risorse necessarie per sviluppare, testare e implementare il software;
+            \item \textbf{Requisiti di sicurezza}: Delineano le misure e i comportamenti richiesti per proteggere il sistema da minacce;
+            \item \textbf{Requisiti di performance}: Definiscono i livelli di prestazione richiesti, come velocità di elaborazione o capacità di gestione del carico;
+        \end{itemize}
+
+        \paragraph{Metriche}
+        %da completare e inserire tabella%
+
+    \subsubsection{Progettazione}
+
+        \paragraph{Descrizione e Scopo}     
+        La progettazione, o design, è un'altra fase cruciale del processo di sviluppo software che ha l'obiettivo di tradurre i requisiti individuati durante la fase di analisi in una struttura architetturale definita. Questa attività definisce in dettaglio i vincoli e le caratteristiche del prodotto semplificando la pianificazione e la suddivisione delle attività di codifica.\\
+        Prima di avviare la progettazione vera e propria, si intraprende una fase preliminare che prevede la creazione di un PoC (Proof of Concept), un prototipo preliminare "usa e getta" realizzato per dimostrare la fattibilità tecnologica del prodotto previsto. Questa fase serve a confermare le tecnologie da adottare e a definire insieme alla proponente le componenti principali che costituiranno l'MVP (Minimum Viable Product).\\
+    
+        \paragraph{Diagrammi delle classi}
+        Sono una tipologia di diagramma UML utile a rappresentare la struttura statica di un sistema software orientato agli oggetti. Questi diagrammi visualizzano le classi del sistema con i loro attributi e metodi insieme alle relazioni tra di esse.\\
+        Le classi sono rappresentate tramite rettangoli suddivisi in tre sezioni: 
+        \begin{enumerate}
+            \item \textbf{Nome}: Contiene il nome della classe in grassetto, se la classe è astratta allora viene scritto anche in corsivo;
+            \item \textbf{Attributi}:
+            \begin{quote}
+                \textbf{Visibilità nome : tipo} [molteplicità] = default
+            \end{quote}
+            \begin{itemize}
+                \item [-] \textbf{Visibilità}: Se privata viene indicata con il - , se protetta viene indicata con il \# e se pubblica viene indicata con il + ;
+                \item [-] \textbf{Nome}: Il nome dell’attributo, se statico viene sottolineato;
+                \item [-] \textbf{Tipo}: Rappresenta il tipo di dato dell’elemento;
+                \item [-] \textbf{Molteplicità}: Quante istanze dell’elemento possono esistere in relazione ad altri elementi;
+                \item [-] \textbf{Default}: Se configurato, indica il valore predefinito per l’elemento;
+            \end{itemize}
+        
+            \item \textbf{Metodi}:
+            \begin{quote}
+                \textbf{Visibilità nome (lista-parametri) : tipo-ritorno}
+            \end{quote}
+            \begin{itemize}
+                \item [-] \textbf{Visibilità}: Segue quanto definito sopra;
+                \item [-] \textbf{Nome}: Nome del metodo, se statico viene sottolineato;
+                \item [-] \textbf{Lista-Parametri}: Se la funzione prevede più di un parametro, questi vengono separati tramite “,”;
+                \item [-] \textbf{Ritorno}: Il tipo restituito dal metodo;
+            \end{itemize}
+        \end{enumerate}
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.25\textwidth]{classe.png}
+        \caption{Rappresentazione di una classe.}
+        \end{figure}
+        
+        \vspace{2mm}
+        Di seguito vengono elencate tutte le possibili relazioni:
+        \begin{itemize}
+            \item \textbf{Dipendenza}: La relazione di dipendenza tra due classi è rappresentata da una freccia tratteggiata con la punta, che parte dalla classe dipendente A e punta alla classe da cui si origina la dipendenza B. Questa freccia indica che eventuali modifiche nella classe B potrebbero influenzare o avere un impatto sulla classe A;
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{DipendenzaClasse.png}
+            \caption{Rappresentazione della relazione di dipendenza.}
+            \end{figure}
+        
+            \item \textbf{Aggregazione}: La relazione di aggregazione rappresenta un legame di tipo "part of" tra due classi, in cui una classe è associata ad un'altra ma può esistere anche indipendentemente da essa. Questa relazione viene utilizzata quando una classe A (contenitore) contiene un riferimento ad un oggetto di tipo B (contenuto). L'aggregazione è rappresentata graficamente con una linea che collega le due classi, con un rombo vuoto posto vicino alla classe che rappresenta il contenitore;
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{AggregazioneClasse.png}
+            \caption{Rappresentazione della relazione di aggregazione.}
+            \end{figure}
+        
+            \item \textbf{Composizione}: La relazione di composizione si verifica quando una classe A contiene un oggetto di tipo B e ne ha la responsabilità di crearne e gestirne l'esistenza. La vita di B (contenuto) è vincolata a quella di A (contenitore): se A viene eliminata, anche B viene distrutta. La composizione è rappresentata graficamente con un rombo pieno vicino alla classe che rappresenta il contenitore e una linea che collega le due classi;
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{ComposizioneClasse.png}
+            \caption{Rappresentazione della relazione di composizione.}
+            \end{figure}
+        
+            \item \textbf{Associazione}: La relazione di associazione si verifica quando una classe può contenere riferimenti o istanze di un’altra classe senza implicare una stretta dipendenza. L'associazione è rappresentata graficamente con una linea che collega le classi, spesso accompagnata da valori di molteplicità. Per indicare il senso della relazione, può essere utilizzata una freccia posizionata su uno dei due estremi;
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{AssociazioneClasse.png}
+            \caption{Rappresentazione della relazione di associazione.}
+            \end{figure}
+        
+            \item \textbf{Generalizzazione}: La relazione di generalizzazione si verifica quando una classe eredita attributi, comportamenti e relazioni dalla classe genitore. Nello specifico ogni istanza della classe figlia è anche un'istanza della classe genitore, ma con caratteristiche o dettagli aggiuntivi specifici. La generalizzazione è rappresentata graficamente con una freccia vuota che collega la classe figlia (B) alla classe genitore (A);
+            \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.15\textwidth]{GeneralizzazioneClasse.png}
+            \caption{Rappresentazione della relazione di generalizzazione.}
+            \end{figure}
+        \end{itemize}
+    
+        \paragraph{Metriche}
+        %da completare e inserire tabella%
+
+    \subsubsection{Codifica}
+
+        \paragraph{Descrizione e scopo} 
+        L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, mantenibilità e coerenza nell’intero progetto.\\
+        L’obiettivo principale della codifica è quindi creare un prodotto software che soddisfi le esigenze del proponente e rispetti gli accordi contrattuali. Le aspettative del codice sviluppato includono:
+        \begin{itemize}
+            \item \textbf{Conformità alle specifiche}: Garantire che il codice traduca fedelmente i requisiti e le funzionalità richieste;
+            \item \textbf{Chiarezza e leggibilità}: Scrivere codice autoesplicativo, riducendo la necessità di commenti superflui;
+            \item \textbf{Ottimizzazione delle prestazioni}: Assicurare che il codice sia efficiente e scalabile;
+            \item \textbf{Testabilità}: Integrare test di unità e di integrazione per verificare la correttezza e l’affidabilità;
+        \end{itemize}
+    
+        \paragraph{Norme di codifica}
+        Per garantire uno sviluppo del codice coerente e di alta qualità, i Programmatori adottano le seguenti regole:
+        \begin{itemize}
+            \item \textbf{Nomi significativi}: Utilizzare nomi univoci, oltre che chiari e descrittivi per variabili, metodi e classi, evitando abbreviazioni ambigue;
+            \item \textbf{Indentazione}: Applicare uno schema di formattazione uniforme per migliorare la leggibilità del codice. Ogni livello di annidamento deve essere chiaramente separato con un tab o spazi coerenti;
+            \item \textbf{Lunghezza dei metodi}: I metodi devono essere brevi e focalizzati su una singola responsabilità, per favorire test di unità efficaci;
+        \end{itemize}
+    
+        \paragraph{Strumenti utilizzati}
+        Il team di sviluppo utilizza strumenti che supportano la scrittura di codice leggibile, mantenibile e conforme agli standard. Tra questi:
+        \begin{itemize}
+            \item \textbf{Visual Studio Code}: L'IDE principale scelto per la codifica, grazie alla sua versatilità e facilità d'uso;
+        \end{itemize}
+
+        \paragraph{Integrazione}
+        Durante la fase di integrazione le diverse componenti, moduli o servizi del progetto vengono combinati e testati per creare un sistema coeso e funzionante.\\ 
+        L'obiettivo principale dell'integrazione è garantire che tutte le parti del sistema interagiscano correttamente e rispettino i requisiti funzionali e di prestazione definiti. 
+        Sin dalle prime fasi di sviluppo è necessario integrare le componenti del prodotto adottando un approccio solido ma flessibile, essenziale per garantire che le soluzioni esplorate durante la fase di Proof of Concept (PoC) siano utili una volta che il progetto entra nella fase di sviluppo del Minimum Viable Product (MVP).\\
+        Questa fase è supportata da test di integrazione che verificano che i moduli lavorino correttamente insieme. L'integrazione continua, supportata da strumenti automatizzati come CI/CD (Continuous Integration/Continuous Delivery), permette di garantire che ogni nuova modifica non comprometta l'affidabilità del sistema, mantenendo un flusso di lavoro agile e risolvendo eventuali problemi o incompatibilità prima che si presentino nel sistema finale.\\
+
+        \paragraph{Verifica}
+        La verifica è una fase cruciale del ciclo di vita del software, durante la quale si controlla che il codice sviluppato rispetti le specifiche e soddisfi i requisiti stabiliti. Questo processo garantisce che il prodotto sia conforme agli standard di qualità, riducendo al minimo la presenza di errori e assicurando un’implementazione efficiente e mantenibile.\\
+        Il processo di verifica comprende sia un’analisi statica del codice, per rilevare eventuali errori o problemi di formattazione, sia l’esecuzione di test mirati per validare le funzionalità implementate.\\
+    
+        \paragraph{Metriche}
+        %da completare e inserire tabella%
+        
+\newpage
+\section{Processi di supporto}
+    \subsection{Documentazione}
+
+    \subsubsection{Descrizione e Scopo}
+    La documentazione è l'insieme delle informazioni che accompagna lo sviluppo di un prodotto software, svolge un ruolo essenziale nella descrizione del prodotto per coloro che lo realizzano, lo distribuiscono e lo utilizzano.\\
+    Il suo scopo principale è quello di semplificare il lavoro dei membri del team durante l'intero ciclo di vita del progetto, monitorando tutti i processi e le attività coinvolte. Questo permette di migliorare il risultato finale e semplifica notevolmente la manutenzione.\\
+
+    \subsubsection{Lista documenti}
+    I documenti prodotti nel contesto della realizzazione del progetto sono:
+    \begin{itemize}
+        \item [-] \textit{Analisi\_dei\_requisiti.pdf}
+        \item [-] \textit{Glossario.pdf}
+        \item [-] \textit{Norme\_di\_progetto.pdf}
+        \item [-] \textit{Piano\_di\_progetto.pdf}
+        \item [-] \textit{Piano\_di\_qualifica.pdf}
+        \item [-] \textit{Verbali esterni}
+        \item [-] \textit{Verbali interni}
+    \end{itemize}
+
+    \subsubsection{Ciclo di vita documenti e Versionamento}
+    I documenti seguono due workflow distinti a seconda che si tratti di verbali (interni o esterni) oppure di documenti più corposi, e le versioni delle modifiche successive apportate ai documenti seguono il sistema di versionamento indicato di seguito.\\
+
+        \paragraph{Versionamento dei documenti}
+        Il sistema adottato dal team per il versionamento dei documenti è il sistema di versionamento semantico: \textbf{x.y.z}, in cui ogni numero (x, y, z) ha un significato specifico:\\
+        \begin{itemize}
+            \item "x" indica la versione maggiore, incrementata per cambiamenti incompatibili con versioni precedenti;
+            \item "y" rappresenta la versione minore, usata per aggiungere informazioni compatibili;
+            \item "z" è la versione di patch, aggiornata per correzioni di errori poco significativi e retrocompatibili.
+        \end{itemize} 
+        Questo sistema aiuta il team a comprendere velocemente l'impatto di un aggiornamento fatto ad un documento prodotto.\\
+
+        \paragraph{Workflow verbali}
+        I verbali seguono il seguente workflow:
+        \begin{enumerate}
+            \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno (la versione iniziale del documento corrisponde a \textit{0.1.0});
+            \item Compilazione dei campi della sezione \textit{Registro modifiche};
+            \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
+            \item Nella sezione \textit{Decisioni prese} si compila una 
+            tabella in cui ciascuna azione da intraprendere viene associata ad una issue corrispondente;
+            \item Creazione di una pull-request (PR) dal branch Verbali al branch Main;
+            \item Verifica del verbale prodotto da parte del verificatore 
+            indicato nel \textit{Registro modifiche} del documento stesso;
+            \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate a loro volta nella sezione \textit{Registro modifiche} per poi essere verificate;
+            \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare. \\
+            Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab perché venga firmato;
+            \item Quando il documento è completo l'ultimo verificatore 
+            chiude la pull-request ed esegue il merge nel branch Main;
+        \end{enumerate}
+
+        \paragraph{Workflow altri documenti}
+        Gli altri documenti seguono il seguente workflow:
+        \begin{enumerate}
+            \item Creazione di un branch dedicato esclusivamente alla redazione di un documento specifico;
+            \item Creazione del documento a partire da un template comune a tutti i documenti (esclusi i verbali). La versione iniziale del documento corrisponde a \textit{0.1.0};
+            \item Creazione di una draft pull request dal branch corrispondente a tale documento al branch Main;
+            \item Compilazione dei campi della sezione \textit{Registro modifiche};
+            \item Redazione del documento o di una sua sezione;
+            \item Verifica della documentazione prodotta da parte del verificatore indicato nel \textit{Registro modifiche} e associato alle modifiche effettuate in quella seduta di lavoro;
+            \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate a loro volta nella sezione \textit{Registro modifiche} per poi essere verificate a loro volta;
+            \item Si ripetono le operazioni indicate dal punto \textit{3} al punto \textit{6} fino a quando il documento non è stato completato;
+            \item Quando il documento è completo l'ultimo verificatore 
+            chiude la draft pull request ed esegue il merge nel branch Main, dopodiché si procede ad eliminare il branch$_G$ dedicato;
+        \end{enumerate}
+
+    \subsubsection{Template in \LaTeX}
+    Per la stesura dei documenti, viene utilizzato un template in formato \LaTeX. Questo template ha lo scopo di semplificare la redazione dei documenti, garantire la coerenza e risparmiare del tempo, in modo da rendere la produzione dei documenti più efficiente e professionale. Sono stati sviluppati tre diversi modelli di template:
+    \begin{itemize}
+        \item Documenti ufficiali
+        \item Verbale Interno
+        \item Verbale Esterno
+    \end{itemize}
+
+    \subsubsection{Nomenclatura}
+    La nomenclatura dei documenti prevede l'unione del nome del file, utilizzando degli underscore (\_), ad esempio Piano\_di\_Qualifica.pdf.
+    Nel caso dei verbali, la nomenclatura prevede l'uso del nome "VerbaleInterno" o "VerbaleEsterno", seguito dalla data nel formato "YYYY-MM-DD", con un trattino (-) che li unisce, come nell'esempio "VerbaleEsterno-2024-11-10.pdf".\\
+
+    \subsubsection{Struttura documenti}
+
+        \paragraph{Prima Pagina}
+        \begin{itemize}
+            \item \textbf{Logo Team}: Situato in alto al centro;
+            \item \textbf{Titolo}: \begin{itemize}
+            \item Nome del documento, qualora non sia un verbale
+            \item Verbale Interno
+            \item Verbale Esterno
+            \end{itemize}
+            \item\textbf{Sottotitolo}: Nome del capitolato;
+            \item\textbf{Contatti}: Email del team;
+            \item\textbf{Logo Università}: Situato in basso a destra;
+        \end{itemize}
+
+        \paragraph{Intestazione}
+        Su ogni pagina del documento, eccetto la prima, si trova il logo del gruppo seguito dal titolo del documento e dalla sua versione.\\
+
+        \paragraph{Registro modifiche}
+        Il registro delle modifiche è una tabella dettagliata che tiene traccia di ogni modifica avvenuta al documento nel corso del tempo. È utile per tenere traccia dell’evoluzione del documento e per consentire a chiunque stia lavorando sul progetto di comprendere quali modifiche sono state apportate e quando.
+        L’intestazione comprende:
+        \begin{itemize}
+            \item \textbf{Versione}: Versione del documento;
+            \item \textbf{Data}: Data della modifica apportata;
+            \item \textbf{Autore}: Autore della modifica;
+            \item \textbf{Verificatore}: Autore della verifica;
+            \item \textbf{Descrizione}: Cosa è stato modificato o aggiunto al file;
+        \end{itemize}
+
+        \paragraph{Indice}
+        Nella pagina successiva al registro delle modifiche è presente l’indice, che permette di facilitare la ricerca e la navigazione all’interno del documento.\\
+
+        \paragraph{Verbali}
+        I verbali sono dei documenti di sintesi di un incontro che sia interno al team o esterno con l'azienda, per questo motivo la loro struttura è diversa rispetto agli altri documenti ufficiali.\\
+        I verbali hanno lo scopo di tenere traccia di chi ha partecipato agli incontri ed in particolare quali decisioni sono state prese.\\
+        Sono composti da 2 macrosezioni:
+        \begin{itemize}
+            \item  \textbf{Durata e Partecipanti}: Viene indicata la data di inizio e fine incontro e il luogo in cui si è svolto. A seguire, i nomi dei partecipanti del gruppo. Se il verbale è esterno si indicano anche i partecipanti dell'azienda SyncLab;
+            \item  \textbf{Sintesi e Decisioni Prese}: Riassunto degli argomenti trattati ed elenco delle decisioni prese durante il meeting, collegate alle issue corrispondenti tramite una tabella;
+        \end{itemize}
+        Per i verbali esterni è presente una sezione per la convalida del documento mediante una firma.\\
+
+    \subsubsection{Convenzioni stilistiche}
+        \paragraph{Stile del testo}
+        \begin{itemize}
+            \item \textbf{Grassetto}: Viene utilizzato per i titoli di sezioni/sottosezioni/paragrafi di un documento e per le definizioni di termini negli elenchi puntati.
+            \item \textbf{Corsivo}: Viene utilizzato per i nomi dei file e per i titoli delle sezioni.
+            \item \textbf{Link}: Sono collegamenti ipertestuali, consentono di accedere a risorse esterne o interne, come altre pagine, sezioni, immagini o file, con un semplice click.
+            \item \textbf{Glossario}: I termini che si possono ritrovare nel glossario sono seguiti dall'apice $_G$.
+        \end{itemize}
+
+        \paragraph{Formato delle date}
+        \'E stato adottato il formato "YYYY-MM-DD", ovvero:
+        \begin{itemize}
+            \item YYYY: anno con 4 cifre;
+            \item MM: mese con 2 cifre;
+            \item DD: giorno con 2 cifre;
+        \end{itemize}
+
+    \subsubsection{Strumenti}
+    Il gruppo ha deciso di utilizzare i seguenti strumenti:
+    \begin{itemize}
+        \item \textbf{Git}: Strumento per il controllo di versione distribuito impiegato dal gruppo per gestire i documenti e le versioni successive di essi prodotte in maniera asincrona dai membri;
+        \item \textbf{GitHub}: Piattaforma di versionamento e repository per la documentazione. Permette la gestione del codice sorgente, il controllo delle modifiche tramite funzionalità come le issue e le pull request (PR), facilitando la collaborazione all’interno di un team di sviluppo;
+        \item \textbf{\LaTeX}: Linguaggio scelto per la redazione dei documenti, spesso utilizzato in ambito accademico, scientifico e tecnico;
+        \item \textbf{Overleaf}: Servizio utilizzato dal gruppo per la creazione e modifica sincrona da parte di due o più componenti di file .tex usati per produrre documentazione;
+    \end{itemize}
+
+\newpage
+\section{Processi Organizzativi}
+    \subsection{Gestione Organizzativa}
+
+    \subsubsection{Decisioni}
+
+    \subsubsection{Pianificazione}
+
+    \subsubsection{Ruoli di progetto}
+    Durante lo sviluppo del progetto, ciascun membro del gruppo assume sei ruoli distinti, ciascuno con responsabilità ben definite che riguardano specifiche attività di specifici processi.
+    Ogni ruolo contribuisce al raggiungimento degli obiettivi del progetto, risultando essenziale per completare tutte le attività necessarie alla creazione di un prodotto finale di qualità.\\
+    I ruoli assunti dal gruppo sono i seguenti:
+    
+        \paragraph{Responsabile}
+        Figura incaricata di supervisionare e coordinare le attività del gruppo, assicurandosi il raggiungimento degli obiettivi del progetto nei tempi e nei modi previsti. Si occupa di garantire una comunicazione efficace tra il gruppo e la proponente, pianifica e gestisce le risorse e valuta eventuali scelte e rischi che ne derivano.\\
+        I suoi compiti sono:
+        \begin{itemize}
+            \item Comunicare con la proponente attraverso i canali concordati;
+            \item Stesura e avanzamento del documento "Piano di progetto";
+            \item Redazione dei verbali interni ed esterni;
+            \item Creazione e assegnazione delle issue ai membri del team;
+            \item Creazione dei diari di bordo;
+        \end{itemize}
+
+        \paragraph{Amministratore}
+        Figura responsabile della creazione, manutenzione e ottimizzazione degli strumenti, delle risorse e dei processi necessari per il corretto svolgimento del progetto. Supervisiona la configurazione degli ambienti di lavoro e il monitoraggio delle scadenze amministrative, fornendo supporto al gruppo nello svolgimento delle attività.\\
+        I suoi compiti sono:
+        \begin{itemize}
+            \item Configurazione e gestione gli ambienti di lavoro;
+            \item Controllare e mantenere gli strumenti necessari per la collaborazione e la comunicazione del gruppo;
+            \item Gestione del versionamento dei documenti;
+            \item Stesura e avanzamento del documento Norme di Progetto;
+            \item Stesura e avanzamento del documento Piano di Qualifica;
+        \end{itemize}
+
+        \paragraph{Analista}
+        Figura responsabile di raccogliere, analizzare e documentare i requisiti del progetto, traducendoli in casi d'uso. Collabora con la proponente per comprendere tutte le specifiche e verifica che il prodotto finale risponda alle esigenze e alle aspettative richieste.\\
+        I suoi compiti sono:
+        \begin{itemize}
+            \item Studiare il dominio del problema e relativo contesto applicativo;
+            \item Studiare i bisogni dei committenti;
+            \item Stesura del documento Analisi dei Requisiti;
+            \item Studiare i requisiti definendo la loro complessità;
+        \end{itemize}
+    
+        \paragraph{Progettista}
+        Figura specializzata nella progettazione architetturale e strutturale di sistemi software. Si occupa di tradurre i requisiti identificati dagli Analisti in un'architettura dettagliata, inoltre determina le scelte realizzative del progetto e supervisiona lo sviluppo, senza occuparsi direttamente della manutenzione.\\
+        I suoi compiti sono:
+        \begin{itemize}
+            \item Determinare le tecnologie, i linguaggi e i framework da utilizzare;
+            \item Progettare l'architettura del sistema, definendo componenti, moduli e interazioni;
+            \item Gestiore eventuali rischi che possono sorgere durante lo sviluppo;
+            \item Supervisionare lo sviluppo per garantire la conformità all'architettura;
+        \end{itemize}
+        
+        \paragraph{Programmatore}
+        Figura incaricata di trasformare l’architettura proposta dai Progettisti in un sistema software funzionante. Si occupa dello sviluppo delle componenti principali e di supporto, seguendo specifiche tecniche e garantendo l’aderenza agli standard di qualità e alle linee guida del progetto.\\
+        I suoi compiti sono:
+        \begin{itemize}
+            \item Tradurre le specifiche tecniche in codice funzionante;
+            \item Creazione di test per la verifica e validazione del software;
+            \item Scrittura di codice chiaro, leggibile e manutenibile;
+            \item Risoluzione di eventuali bug;
+        \end{itemize}
+
+        \paragraph{Verificatore}
+        Figura che si occupa di controllare che il lavoro svolto dagli altri membri del gruppo sia corretto, assicurandosi che vengano rispettate tutte le norme stabilite per il progetto.\\
+        I suoi compiti sono:
+        \begin{itemize}
+            \item Revisionare e valutare la documentazione prodotta dai membri del gruppo;
+            \item Analizzare il codice per individuare errori, discrepanze o possibili miglioramenti;
+            \item Identificare e segnalare eventuali problemi;
+        \end{itemize}
+
+    \subsubsection{Cambio dei ruoli}
+    Per garantire che ogni membro ricopra tutti i ruoli essenziali al completamento del progetto, il gruppo si impegna a ruotarli ad ogni nuovo sprint.\\
+
+    \subsubsection{Tracciamento}
+
+    \subsubsection{Gestione strumenti coordinamento}
+
+    \subsubsection{Gestione dei rischi}
+
+    \subsubsection{Procedure comunicative}
+
+\newpage
+\section{Metriche per la qualità}
+
+        
+        
+
+\end{justify}
 \end{document}
