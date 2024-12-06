@@ -50,7 +50,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ NORME DI PROGETTO v0.4.0}
+\rhead{\textcolor[HTML]{9e978a}{ NORME DI PROGETTO v0.4.1}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -103,7 +103,9 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
     \hline
-    0.4.0 & 2024-12-06 & Federico Pivetta &  & Inizio stesura sottosezione "Gestione Organizzativa" e abbandono impostazione in sottodocumenti\\
+    0.4.1 & 2024-12-06 & Alfredo Rubino & Giovanni Cristellon & Aggiunte generali e correzioni\\
+    \hline
+    0.4.0 & 2024-12-06 & Federico Pivetta & Alfredo Rubino & Inizio stesura sottosezione "Gestione Organizzativa" e abbandono impostazione in sottodocumenti\\
     \hline
     0.3.9 & 2024-12-05 & Alfredo Rubino & Leonardo Trolese & Completata sezione "Processi Primari"\\
     \hline
@@ -340,7 +342,13 @@
 
         \paragraph{Requisiti}
         I requisiti di un prodotto software sono specifiche documentate che delineano le funzionalità che il sistema deve soddisfare. Essi fungono da guida per lo sviluppo, il testing e la validazione del prodotto, garantendo che risponda alle esigenze degli utenti e agli obiettivi del progetto. Ogni requisito deve essere definito con precisione, e riflettere pienamente le attese del cliente o del proponente.\\
-        I requisiti si suddividono in tre diverse tipologie:
+        Ad ogni requisito è assegnato un grado di importanza:
+        \begin{itemize}
+            \item \textbf{Obbligatorio}: Essenziale per soddisfare le esigenze del proponente.
+            \item \textbf{Desiderabile}: Utile ma non prioritario, può essere implementato in seguito.
+            \item \textbf{Opzionale}: Aggiunge valore al prodotto, ma può essere tralasciato per motivi di costo o tempistica.
+        \end{itemize}
+        I requisiti si suddividono inoltre in tre diverse tipologie:
         \begin{itemize}
             \item \textbf{Requisiti funzionali (F)}: Specificano le funzionalità che il sistema deve essere in grado di svolgere, descrivendo le azioni principali e le informazioni che fornisce;
             \item \textbf{Requisiti di qualità (Q)}: Definiscono standard relativi alle prestazioni, affidabilità, sicurezza e altri criteri di qualità che il sistema deve rispettare;
@@ -407,7 +415,7 @@
             \begin{itemize}
                 \item [-] \textbf{Visibilità}: Segue quanto definito sopra;
                 \item [-] \textbf{Nome}: Nome del metodo, se statico viene sottolineato;
-                \item [-] \textbf{Lista-Parametri}: Se la funzione prevede più di un parametro, questi vengono separati tramite “,”;
+                \item [-] \textbf{Lista-Parametri}: Se la funzione prevede più di un parametro, questi vengono separati tramite virgola;
                 \item [-] \textbf{Ritorno}: Il tipo restituito dal metodo;
             \end{itemize}
         \end{enumerate}
@@ -504,7 +512,7 @@
 
     \subsubsection{Descrizione e Scopo}
     La documentazione è l'insieme delle informazioni che accompagna lo sviluppo di un prodotto software, svolge un ruolo essenziale nella descrizione del prodotto per coloro che lo realizzano, lo distribuiscono e lo utilizzano.\\
-    Il suo scopo principale è quello di semplificare il lavoro dei membri del team durante l'intero ciclo di vita del progetto, monitorando tutti i processi e le attività coinvolte. Questo permette di migliorare il risultato finale e semplifica notevolmente la manutenzione.\\
+    Il suo scopo principale è quello di semplificare il lavoro dei membri del team durante l'intero ciclo di vita del progetto, monitorando tutti i processi e le attività coinvolte. Questo permette di migliorare il risultato finale e semplifica notevolmente la manutenzione.
 
     \subsubsection{Lista documenti}
     I documenti prodotti nel contesto della realizzazione del progetto sono:
@@ -652,9 +660,9 @@
     \subsubsection{Pianificazione}
 
     \subsubsection{Ruoli di progetto}
-    Durante lo sviluppo del progetto, ciascun membro del gruppo assume sei ruoli distinti, ciascuno con responsabilità ben definite che riguardano specifiche attività di specifici processi.
+    Durante l'intero sviluppo del progetto, ciascun membro del gruppo assume sei ruoli distinti, ciascuno con responsabilità ben definite che riguardano specifiche attività di specifici processi.
     Ogni ruolo contribuisce al raggiungimento degli obiettivi del progetto, risultando essenziale per completare tutte le attività necessarie alla creazione di un prodotto finale di qualità.\\
-    I ruoli assunti dal gruppo sono i seguenti:
+    I ruoli assunti a rotazione da ciascun membro del gruppo sono i seguenti:
     
         \paragraph{Responsabile}
         Figura incaricata di supervisionare e coordinare le attività del gruppo, assicurandosi il raggiungimento degli obiettivi del progetto nei tempi e nei modi previsti. Si occupa di garantire una comunicazione efficace tra il gruppo e la proponente, pianifica e gestisce le risorse e valuta eventuali scelte e rischi che ne derivano.\\
@@ -718,7 +726,7 @@
         \end{itemize}
 
     \subsubsection{Cambio dei ruoli}
-    Per garantire che ogni membro ricopra tutti i ruoli essenziali al completamento del progetto, il gruppo si impegna a ruotarli ad ogni nuovo sprint.\\
+    Per garantire che ogni membro ricopra tutti i ruoli essenziali al completamento del progetto, il gruppo si impegna a ruotarli all'inizio di ogni nuovo sprint, della durata di due settimane.\\
 
     \subsubsection{Tracciamento}
 
