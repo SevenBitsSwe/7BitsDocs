@@ -35,6 +35,8 @@ sevenbits.swe.unipd@gmail.com\\
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.1.1 & 2024-12-06 & Manuel Gusella & Alfredo Rubino & Correzione grammaticale dopo una prima verifica del documento\\
+\hline
 0.1.0 & 2024-12-05 & Manuel Gusella & Alfredo Rubino & Stesura iniziale del documento\\
 \hline
 
@@ -71,41 +73,41 @@ sevenbits.swe.unipd@gmail.com\\
 Secondo SAL con Andra Dorigo e Daniele Zorzi di SyncLab.
 
 \subsection{Sintesi}
-Questo SAL si è centrato sull'esposizione del lavoro svolto durante questo sprint.
+Questo SAL si è centrato sull'esposizione del lavoro svolto durante questo secondo sprint.
 \subsubsection{PoC}
 \`E stato mostrato al proponente il lavoro effettuato durante questa settimana, correggendo principalmente i problemi presenti nello scorso SAL e iniziando con l'interrogazione dell'LLM. \\
-Il nostro gruppo ha presentato la dashboard grafana nella quale si sono aggiunti le provision e si è riuscito a far lavorare assieme kafka, flink e clickhouse, utilizzando gli appositi connettori.\\
-Successivamente si è mostrato il prompt per il messaggio da mandare all'LLM e detto a voce alcuni risultati ottenuti con esso.\\
-Visto la presenza di solo uno dei tre membri del proponente non si è discusso molto sul lavoro effettuato.\\
-Il proponente ha approvato ciò che è stato mostrato e ci ha detto di continuare con la parte effettiva ad eventi, quando un utente entra nell'area di un punto di interesse vengono inviati all'LLM i dati dell'utente e del punto di interesse per generare l'annuncio.
+\`E stata presentata la dashboard Grafana, nella quale si sono aggiunti le provision e i connettori per far lavorare assieme Kafka, Flink e ClickHouse.\\
+Successivamente è stato esposto il prompt per il messaggio da inviare all'LLM e riferito a voce alcuni risultati ottenuti con esso.\\
+Visto la presenza di solo uno dei tre membri del proponente non si è discusso molto nel dettaglio sul lavoro effettuato.\\
+Il proponente ha approvato ciò che è stato mostrato ed ha riferito di continuare con la parte effettiva ad eventi, quando un utente entra nell'area di un punto di interesse vengono inviati all'LLM i dati dell'utente e del punto di interesse per generare l'annuncio.
 
 \subsubsection{Analisi dei Requisiti}
-Il 2024-12-03 è stato inviato al proponente il documento di Analisi di Requisiti, come richiesto, ed ha riferito che, per come sta procedendo, il documento va bene.\\
-Il proponente ha riscontrato solo alcuni dettagli che non ha menzionato esplicitamente durante il SAL, ma ci farà sapere tramite email.
+Il 2024-12-03 è stato inviato al proponente il documento di Analisi di Requisiti, come richiesto, ed ha riferito che, per come sta procedendo, il documento è approvato.\\
+Il proponente ha riscontrato solo alcuni dettagli che non ha menzionato esplicitamente durante il SAL, ma che saranno comunicati tramite email.
 
 \subsubsection{Pyflink API}
 \`E stata fatta una discussione sull'utilizzo della table API di pyflink per ottenere i dati batch dell'utente.\\
-Essendo che la versione python di flink ha dei problemi con le dipendenze del connettore JDBC(nativo JAVA) il gruppo ha proposto di utilizzare le normali REST API di clickhouse per ottenere questi dati.\\
+Essendo che la versione python di flink ha dei problemi con le dipendenze del connettore JDBC (nativo JAVA) il gruppo ha proposto di utilizzare le normali REST API di clickhouse per ottenere questi dati.\\
 Flink viene sfruttato tramite la Datastream API ,per ottenere i dati posizionali dal topic Kafka, elaborarli con la funzione di mapping, infine per la pubblicazione nel topic Kafka MessageElaborated.\\
 Il proponente ha detto che il problema è irrilevante ed è d'accordo per l'utilizzo delle normali REST API.
 
 \subsubsection{Chiavi Kafka}
-Il proponente ci ha suggerito di indagare ed utilizzare le chiavi di Kafka, che porterebbero alcuni vantaggi.
+Il proponente suggerisce di indagare e, preferibilmente, utilizzare le chiavi di Kafka, che porterebbero alcuni vantaggi.
 
 \subsubsection{Clickhouse FOREIGN KEY}
 Si è discusso col proponente dell'assenza di FOREIGN KEY in Clickhouse, vista la strutturazione della tecnologia.\\
-Il proponente ha detto che si deve documentare sulle bestpractice per risolvere il problema, comunque ha suggerito di fare un controllo in input per assicurarsi che gli id dell'utente e del punto di interesse siano validi quando si immette il messaggio nel DB.
+Il proponente ha detto che si documenterà sulle bestpractice per risolvere il problema, ha suggerito di effettuare un controllo in input per assicurarsi che gli id dell'utente e del punto di interesse siano validi quando si immette l'annuncio nel DB.
 
 \subsubsection{Decisioni prese}
-Col proponente si è deciso di documentarsi maggiormente sulle chiavi Kafka che sono state menzionate durante il SAL. di continuare con la redazione dei vari documenti e di unire le due parti di PoC mostrate durante la riunione.\\
-Non è ancora stata fissata una data effettiva per il prossimo SAL e fine terzo sprint, il proponente ha detto che riuscirà a farci sapere entro il 2024-12-13.
+Col proponente si è deciso di documentarsi sulle chiavi Kafka, menzionate durante il SAL, di continuare con la redazione dei documenti per la fase di RTB e di unire le due parti di PoC mostrate durante la riunione.\\
+Non è stata fissata una data effettiva per il prossimo SAL e fine terzo sprint, il proponente ha detto che ci farà sapere entro il 2024-12-13.
 \newpage
 \subsection{Obiettivi prossimo SAL}
-Come obiettivi per il prossimo SAL si è deciso con il proponente di:
+Come obiettivi per il prossimo SAL sono stati decisi con il proponente di:
 \begin{itemize}
 \item Documentarsi sulle chiavi di Kafka e, preferibilmente, implementarle nel codice;
 \item Integrazione delle due parti del PoC mostrate durante il SAL;
-  \item Controllo se l'utente entra nell'area di un punto di interesse e avvio l'evento di creazione dell'annuncio con l'LLM.
+  \item Implementare il controllo dell'evento di entrata dell'utente nell'area di un punto di interesse e avvio della creazione dell'annuncio con l'LLM.
 \end{itemize}
 
 \begin{center}
