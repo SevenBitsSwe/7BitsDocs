@@ -14,6 +14,7 @@
 \usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
 \usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
 
+%\graphicspath{{../images/}}
 \graphicspath{{images/}}
 
 \setcounter{secnumdepth}{4}
@@ -87,21 +88,23 @@
 \setcounter{page}{1}
 
 
-
-\centering\textbf{Registro modifiche}\\
+\begin{center}
+\textbf{Registro modifiche}\\
 \vspace{2mm}
-\begin{tabular}{|l|l|l|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sezione Qualità di prodotto \ref{qpd}\\
+\hline
 0.1.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Inizio redazione del documento\\
 \hline
-\end{tabular}
+\end{tabularx}
+\end{center}
 \newpage
 \tableofcontents
 \listoffigures %elenco delle figure sarà da usare per ogni immagine
-%degli use cases , utilizzando begin figures, caption ecc..
-
+\listoftables %lista delle tabelle presenti nel docuemnto
 \newpage
 \begin{justify}
     
@@ -174,17 +177,88 @@ Smart custom advertising platform\\
 \subsubsection{Processi Organizzativi}
 \paragraph{Pianificazione}\mbox{}\\
 
-\subsection{Qualità di prodotto}
+\subsection{Qualità di prodotto}\label{qpd}
 La qualità di prodotto è intesa come valutazione del software. Più precisamente per la determinazione del grado di conformità alle attese.\\
 Si rivolge l'attenzione su aspetti come Usabilità, Affidabilità e Manutenibilità, ma più in generale alla qualità esterna (funzionale) ed interna (strutturale) del prodotto software.\\
 Quindi non basta che il software implementi le funzionalità volute dal proponente, ma le esegua secondo specifici standard di qualità.\\
 In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per la qualità del prodotto software.
 \subsubsection{Funzionalità}
+\begin{table}[!h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Requisiti Obbligatori Soddisfatti & 100\% & 100\%\\
+  \hline
+  & Requisiti Opzionali Soddisfatti & $\geq$0\% & ? \\
+  \hline
+\end{tabular}
+\caption{Funzionalità - Qualità di prodotto}
+\label{tab:funzionalità}
+\end{table}
+
 \subsubsection{Affidabilità}
+\begin{table}[!h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Test Passati & $\geq$80\% & 100\%\\
+  \hline
+\end{tabular}
+\caption{Affidabilità - Qualità di prodotto}
+\label{tab:affidabilità}
+\end{table}
+
 \subsubsection{Efficienza}
+\begin{table}[!h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+\end{tabular}
+\caption{Efficienza - Qualità di prodotto}
+\label{tab:efficienza}
+\end{table}
+
 \subsubsection{Usabilità}
+\begin{table}[!h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+\end{tabular}
+\caption{Usabilità - Qualità di prodotto}
+\label{tab:usabilità}
+\end{table}
+
 \subsubsection{Manutenibilità}
+\begin{table}[!h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+\end{tabular}
+\caption{Manutenibilità - Qualità di prodotto}
+\label{tab:manutenibilità}
+\end{table}
+
 \subsubsection{Portabilità}
+\begin{table}[!h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+\end{tabular}
+\caption{Portabilità - Qualità di prodotto}
+\label{tab:portabilità}
+\end{table}
 
 
 
