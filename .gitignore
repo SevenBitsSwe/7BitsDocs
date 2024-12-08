@@ -9,3 +9,6 @@
 
 ##Python
 *.py~
+
+##Others
+*.notes
