@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{tabularx}
@@ -14,7 +14,7 @@
 \usepackage{eso-pic} 
 \usepackage{float}
 
-\newcommand\version{0.4.0} %aggiunta versione come variabile
+\newcommand\version{0.4.1} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -90,7 +90,9 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
-0.4.0 & 2024-12-02 & Federico Pivetta & Leonardo Trolese & Stesura iniziale della sezione \ref{analisi-rischi}, completa della sottosezione \ref{introduzione-analisi} e aggiunta RT1\\
+0.4.1 & 2024-12-10 & Federico Pivetta & Alfredo Rubino & Aggiunta di RT2, RC1, RC2, RC3, RP1 e RP2\\
+\hline
+0.4.0 & 2024-12-02 & Federico Pivetta & Leonardo Trolese & Stesura iniziale della sezione \ref{analisi-rischi}, completa della sottosezione \ref{introduzione-analisi} e aggiunta di RT1\\
 \hline
 0.3.2 & 2024-11-28 & Manuel Gusella & Giovanni Cristellon & Fine stesura primo sprint$_G$ \ref{primo-sprint$_G$} e aggiunta immagini\\
 \hline
@@ -196,27 +198,57 @@ Slide del corso di Ingegneria del Software:
         \item \textbf{Descrizione}: Il progetto richiede l'utilizzo di tecnologie poco conosciute o con cui il gruppo ha un'esperienza limitata. Di conseguenza l'apprendimento e l'adattamento a queste nuove tecnologie richiede del tempo, che potrebbe comportare rallentamenti nel progresso del progetto;
         \item \textbf{Gravità}: Alta;
         \item \textbf{Occorrenza}: Alta;
-        \item \textbf{Possibili Attenuazioni}: Per affrontare la complessità delle nuove tecnologie, verranno adottate diverse strategie. L'azienda proponente si è resa disponibile ad organizzare incontri focalizzati su tecnologie specifiche, per risolvere eventuali dubbi. Inoltre, i membri del gruppo collaboreranno attivamente, condividendo le proprie informazioni al fine di raggiungere un livello condiviso di conoscenze. Infine, verrà dedicato del tempo alla fase di apprendimento, consentendo al gruppo di esplorare diverse tecnologie, identificare i punti di forza e le criticità, così da accelerare l'apprendimento e prevenire errori futuri;
+        \item \textbf{Possibili Soluzioni}: Per affrontare la complessità delle nuove tecnologie, verranno adottate diverse strategie. L'azienda proponente si è resa disponibile ad organizzare incontri focalizzati su tecnologie specifiche, per risolvere eventuali dubbi. Inoltre, i membri del gruppo collaboreranno attivamente, condividendo le proprie informazioni al fine di raggiungere un livello condiviso di conoscenze. Infine, verrà dedicato del tempo alla fase di apprendimento, consentendo al gruppo di esplorare diverse tecnologie, identificare i punti di forza e le criticità, così da accelerare l'apprendimento e prevenire errori futuri;
     \end{itemize}
 
-    \subsubsection{RT2 - }
+    \subsubsection{RT2 - Carenza di documentazione sulle tecnologie}
+    \begin{itemize}
+        \item \textbf{Descrizione}: L'apprendimento di nuove tecnologie necessarie allo sviluppo del progetto richiede un significativo investimento di tempo. Quando queste tecnologie sono carenti di una documentazione adeguata, il processo di apprendimento diventa ancora più complesso e impegnativo;
+        \item \textbf{Gravità}: Alta;
+        \item \textbf{Occorrenza}: Media;
+        \item \textbf{Possibili Soluzioni}: Una possibile soluzione consiste nell'organizzare una fase iniziale durante la quale il gruppo possa familiarizzare con la tecnologia. In questa fase, la proponente potrebbe offrire un supporto, eventualmente coinvolgendo esperti con esperienza nella tecnologia, se disponibili. Qualora la tecnologia non risulti strettamente indispensabile per il progetto, si potrebbe considerare l'adozione di una soluzione alternativa con una documentazione più completa;
+    \end{itemize}
 
 \subsection{Rischi di Comunicazione}
-    \subsubsection{RC1 - }
+    \subsubsection{RC1 - Comunicazione interna non ottimale}
     \begin{itemize}
-        \item \textbf{Descrizione}:
-        \item \textbf{Gravità}:
-        \item \textbf{Occorrenza}:
-        \item \textbf{Possibili Attenuazioni}:
+        \item \textbf{Descrizione}: Una comunicazione interna non ottimale può causare fraintendimenti, confusione o ritardi, compromettendo l’intero sviluppo del progetto. Questo problema è spesso causato dalla carenza di indicazioni precise o dalla mancanza di canali dedicati alla trasmissione delle informazioni all’interno del gruppo;
+        \item \textbf{Gravità}: Alta;
+        \item \textbf{Occorrenza}: Media;
+        \item \textbf{Possibili Soluzioni}: Per prevenire questo rischio, è necessario organizzare e definire la comunicazione interna attraverso l’utilizzo di canali dedicati per ogni tipologia di messaggi, come le discussioni generali, la condivisione di risorse e la raccolta di idee. In caso di situazioni urgenti, è possibile organizzare incontri straordinari per prendere decisioni tempestive, anche senza la partecipazione completa del gruppo. È fondamentale garantire che la comunicazione rimanga sempre trasparente e attiva;
+    \end{itemize}
+
+    \subsubsection{RC2 - Conflitti interni}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Possono emergere conflitti interni al gruppo in presenza di divergenze di opinioni, soluzioni o possibili incomprensioni. Tali conflitti possono compromettere l'efficacia del lavoro;
+        \item \textbf{Gravità}: Bassa;
+        \item \textbf{Occorrenza}: Bassa;
+        \item \textbf{Possibili Soluzioni}: Per gestire questi conflitti, è fondamentale una comunicazione aperta e trasparente, che favorisca il dialogo e il confronto costruttivo tra i membri del gruppo. In caso di conflitti più gravi, potrebbe essere necessario coinvolgere i docenti;
+    \end{itemize}
+
+    \subsubsection{RC3 - Cambio dei ruoli}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Il passaggio da un ruolo ad un altro comporta la necessità di adattarsi rapidamente a nuove responsabilità e di comprendere a fondo le attività svolte dal membro del gruppo ricopriva precedentemente quel ruolo;
+        \item \textbf{Gravità}: Bassa;
+        \item \textbf{Occorrenza}: Media;
+        \item \textbf{Possibili Soluzioni}: Per evitare che la transizione da un ruolo ad un altro comprometta lo sviluppo del progetto, la persona che ha precedentemente ricoperto quel ruolo può fornire supporto a chi lo ha appena assunto. Inoltre, mantenere la documentazione chiara e aggiornata, facilita notevolmente questo passaggio;
     \end{itemize}
     
 \subsection{Rischi di Pianificazione}
-    \subsubsection{RP1 - }
+    \subsubsection{RP1 - Impegni al di fuori del progetto}
     \begin{itemize}
-        \item \textbf{Descrizione}:
-        \item \textbf{Gravità}:
-        \item \textbf{Occorrenza}:
-        \item \textbf{Possibili Attenuazioni}:
+        \item \textbf{Descrizione}: Può accadere che i membri del gruppo siano coinvolti in attività esterne, le quali potrebbero interferire con le attività che sono inerenti al progetto. Questi impegni riducono il tempo e le risorse disponibili per il progetto, mettendo a rischio le scadenze e la qualità del lavoro;
+        \item \textbf{Gravità}: Media;
+        \item \textbf{Occorrenza}: Bassa;
+        \item \textbf{Possibili Soluzioni}: Quando si pianificano delle attività da svolgere, è importante considerare gli impegni esterni dei membri del gruppo. Definire chiaramente per ogni attività, la priorità e la scadenza, facilita la loro assegnazione. In alcuni casi, può essere necessario delegare o redistribuire i compiti in modo da non ostacolare il progresso del progetto;
+    \end{itemize}
+
+    \subsubsection{RP2 - Incertezza nella stima delle attività}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Durante lo sviluppo del progetto, è molto probabile che vengano svolte delle attività mai affrontate prima. Questo può portare ad una pianificazione imprecisa, dovuta alla mancata conoscenza dei requisiti, alla sottostima o sovrastima delle risorse e del tempo necessari al suo completamento o alla scarsa esperienza dei membri del gruppo;
+        \item \textbf{Gravità}: Alta;
+        \item \textbf{Occorrenza}: Alta;
+        \item \textbf{Possibili Soluzioni}: La pianificazione delle attività deve essere flessibile, prevedendo margini di tempo e risorse per gestire eventuali imprevisti. È inoltre fondamentale monitorare costantemente il progresso del progetto utilizzando strumenti come Google Sheets, che consente di tracciare le ore produttive impiegate rispetto a quelle disponibili per ogni sprint; la Board di GitHub, che permette di capire in ogni momento quali issue devono essere completate e a chi sono assegnate; e la vista Gantt, anch'essa disponibile su GitHub, che consente di visualizzare la pianificazione temporale e individuare eventuali variazioni o sovrapposizioni nelle attività;
     \end{itemize}
 
 \subsection{Riepilogo}
@@ -229,6 +261,18 @@ I rischi identificati vengono riportati in una tabella, insieme alla loro gravit
 \textbf{Rischio} & \textbf{Gravità} & \textbf{Occorrenza} \\
 \hline
 RT1 - Complessità delle nuove tecnologie & Alta & Alta\\
+\hline
+RT2 - Carenza di documentazione sulle tecnologie & Alta & Media\\
+\hline
+RC1 - Comunicazione interna non ottimale & Alta & Media\\
+\hline
+RC2 - Conflitti interni & Bassa & Bassa\\
+\hline
+RC3 - Cambio dei ruoli & Bassa & Media\\
+\hline
+RP1 - Impegni al di fuori del progetto & Media & Bassa\\
+\hline
+RP2 - Incertezza nella stima delle attività & Alta & Alta\\
 \hline
 \end{tabular}
 \caption{Riepilogo dei rischi}
