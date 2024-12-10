@@ -1,0 +1,462 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{array}  
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{anyfontsize}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx, etoolbox}
+\usepackage{eso-pic}
+
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+%ebdfc7
+\definecolor{colorePie}{HTML}{ebdfc7}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+    }
+\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.5}
+    }
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
+
+\renewcommand*\contentsname{Indice}
+
+\begin{document}
+
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    
+    % Titolo
+     {\fontsize{40}{40}\bfseries Glossario}\selectfont \\[3.9em]
+    
+    % Sottotitolo
+    % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    % Spazio per il logo dell'università
+    \hfill
+        
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+        
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+        
+\vfill 
+
+\end{titlepage}
+\newpage
+\clearpage
+\setcounter{page}{1}
+
+\begin{center}
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\hline
+0.2.5 & 2024-12-04 & Manuel Gusella & Giovanni Cristellon & Aggiunta di framework, feedback e proponente\\
+\hline
+0.2.4 & 2024-12-04 & Federico Pivetta & Giovanni Cristellon & Aggiunta di alcuni termini\\
+\hline
+0.2.3 & 2024-11-14  & Manuel Gusella & Riccardo Piva  & Aggiunta di alcuni termini e modifica struttura tabella del Registro modifiche\\
+\hline
+0.2.2 & 2024-11-14  & Federico Pivetta & Riccardo Piva  & Aggiunta di alcuni termini ed inserimento del link all'Indice\\
+\hline
+0.2.1 & 2024-11-14  & Uncas Peruzzi & Federico Pivetta  & Modifica design front page e aggiunto header \\
+\hline
+0.2.0 & 2024-11-13  & Federico Pivetta & Riccardo Piva  & Modifica alla struttura ed inserimento dei primi termini\\
+\hline
+0.1.0 & 2024-10-23  & Federico Pivetta & Riccardo Piva  & Creazione del documento\\
+\hline
+
+\end{tabularx}
+\end{center}
+\newpage
+\hypertarget{indice}{}
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+Questo documento ha lo scopo di fornire una raccolta di termini specifici e delle loro definizioni. Il glossario è stato pensato per facilitare la comprensione dei concetti chiave utilizzati nei vari documenti redatti. Per questa ragione ogni termine elencato viene accompagnato da una definizione chiara e concisa.\\
+
+\section{Struttura del glossario}
+Questo glossario è strutturato come una raccolta di semplici tabelle caratterizzate da due colonne: Termini e Definizioni. I termini sono elencati in ordine alfabetico nella prima colonna, ciascuno accompagnato da una definizione dettagliata nella colonna accanto. \newline
+Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tabella. Questo sistema rende il glossario più ordinato e facilmente consultabile, aiutando il fruitore a trovare velocemente le definizioni di cui ha bisogno.\\
+
+\newpage
+\section{Tabelle Glossario}
+
+\vspace{2mm}
+\renewcommand{\arraystretch}{1.5} % gestisce altezza delle righe
+\setlength{\tabcolsep}{10pt} % padding orizzontale alle celle
+
+% Aggiungi il pulsante "Torna su" in basso a destra solo a partire dalla pagina 4
+\AddToShipoutPictureBG{
+    \ifnum\value{page}>3 % Appare a partire dalla pagina 4
+    \begin{tikzpicture}[overlay, remember picture]
+        \node[anchor=south east, xshift=-10mm, yshift=10mm] at (current page.south east) {
+            \hyperlink{indice}{\textbf{\underline{Torna all'indice}}}
+        };
+    \end{tikzpicture}
+    \fi
+}
+
+\subsection{A} % LETTERA A
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Analisi dei Requisiti & Processo fondamentale dello sviluppo di un prodotto software, durante il quale vengono identificati e definiti in dettaglio i requisiti che il sistema deve soddisfare.\newline È molto importante questa analisi per assicurarsi che i requisiti individuatisiano completi e corretti, riducendo così possibili errori nelle fasi successive del progetto.\\
+\hline
+Attore & Entità esterna al sistema che interagisce con esso per raggiungere un scopo specifico. Gli attori possono essere principali (comunica attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi).\\
+\hline
+& \\
+\hline
+\end{tabularx}
+
+\subsection{B} % LETTERA B
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Baseline & Versione approvata di un prodotto di lavoro che può essere modificato solo attraverso delle procedure formali. Una baseline funge da punto di riferimento per monitorare e confrontare i progressi o le modifiche del progetto nel tempo.\\
+\hline
+Best Practices & Insieme di metodi o procedure considerate le più efficaci e affidabili per raggiungere determinati obiettivi in un determinato contesto.\\
+\hline
+Branch & Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{C} % LETTERA C
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla sua concezione iniziale fino all'uso ed eventualmente alla sua dismissione. \'E compito di un progetto far progredire lo stato di avanzamento di un software lungo il suo ciclo di vita.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{D} % LETTERA D
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Dashboard & Interfaccia grafica che raccoglie e presenta in modo chiaro e sintetico delle informazioni attraverso vari elementi visivi come grafici, tabelle e indicatori.\\
+\hline
+Documentazione & Insieme di documenti, manuali e guide che descrivono un prodotto, un sistema o un processo. Ha lo scopo di fornire istruzioni, spiegazioni e dettagli utili per l'uso, la manutenzione e lo sviluppo di un prodotto.\\
+\hline
+Docker & Piattaforma che consente di creare, distribuire e eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{E} % LETTERA E
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Efficacia & Misura la capacità di raggiungere un obiettivo o un risultato desiderato, indipendentemente dalle risorse utilizzate.\\
+\hline
+Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato desiderato, impiegando le risorse minime indispensabili.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{F} % LETTERA F
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Framework & Architettura logica di supporto sulla quale un software può essere progettato e realizzato.\\
+\hline
+Feedback & Riscontro, positivo o negativo, dato per influenzare il comportamento futuro.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{G} % LETTERA G
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{H} % LETTERA H
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{I} % LETTERA I
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+IA & Acronimo di "Intelligenza arificiale" ed è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l’apprendimento, la pianificazione e la creatività.\\
+\hline
+Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, bug, richieste di funzionalità o altre attività relative ad un progetto. Le issue permettono di descrivere, assegnare e discutere vari aspetti di un progetto come ad esempio errori o nuove funzionalità con l'aiuto di alcuni strumenti come i commenti, le etichette e le milestone.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{J} % LETTERA J
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{K} % LETTERA K
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{L} % LETTERA L
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+LaTeX & Linguaggio di marcatura basato su comandi che permettono di formattare il testo e produrre documenti. Viene spesso utilizzato in ambito accademico, scientifico e tecnico per la scrittura di articoli, libri, tesi e presentazioni.\\
+\hline
+LLM & Abbreviazione di large language model è un tipo di modello linguistico notevole per essere in grado di ottenere la comprensione e la generazione di linguaggio di ambito generale. Gli LLM acquisiscono questa capacità adoperando enormi quantità di dati per apprendere miliardi di parametri nell'addestramento.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+ 
+\subsection{M} % LETTERA M
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Merge & Operazione in un sistema di versionamentobranches che combina le modifiche provenienti da diversi rami (branches) di sviluppo in un unico ramo, unificando il codice o la documentazione, senza perdere il lavoro svolto separatamente.\\
+\hline
+Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel tempo all'interno di un progetto. Viene utilizzata per monitorare i progressi e assicurare che il progetto rispetti la pianificazione stabilita. Il raggiungimento degli obiettivi associati ad una milestone viene sostanziato attraverso lo sviluppo di una baseline.\\
+\hline
+MVP & Acronimo di "Minimal Viable Product", è una versione di un prodotto software che include solo le funzionalità essenziali per soddisfare i bisogni principali degli utenti. L'obiettivo di un MVP è quello di testare il prodotto, raccogliendo feedback degli utenti per migliorarlo e svilupparlo ulteriormente.\\
+\hline
+& \\
+\hline
+\end{tabularx}
+
+\subsection{N} % LETTERA N
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{O} % LETTERA O
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{P} % LETTERA P
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+PoC & Acronimo di "Proof of Concept", è un prototipo iniziale realizzato per dimostrare la fattibilità tecnologica di un prodotto atteso, permettendo di delineare il suo potenziale di realizzazione.\\
+\hline
+Progetto & Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Hanno una data d'inizio e una data di fine fissate.\\
+\hline
+PR & Acronimo di "Pull Request", è una proposta di modifica in un progetto gestito tramite un sistema di versionamento. Consente ad uno sviluppatore di proporre una revisione e integrazione di alcune modifiche. Altri membri del team possono esaminare, commentare e testare le modifiche prima di approvare la pull request ed concludere la proposta con un merge.\\
+\hline
+Proponente & Chi propone, nel nostro caso SyncLab.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{Q} % LETTERA Q
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{R} % LETTERA R
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Repository & Archivio digitale centralizzato utilizzato per conservare, organizzare e gestire file, dati o codice sorgente. Facilita la condivisione, il controllo delle versioni e l'accesso collaborativo, ottimizzando la gestione e lo sviluppo di un progetto.\\
+\hline
+RTB & Acronimo di "Requirement and Technology Retrospective", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
+\hline
+& \\
+\hline
+\end{tabularx}
+
+\subsection{S} % LETTERA S
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+SAL & Acronimo di "Stato Avanzamento Lavori", è un incontro in cui il team si riunisce per controllare il progresso degli obiettivi pianificati.\newline Durante questo incontro, si discute cosa è stato completato, cosa è ancora in corso ed cosa potrebbe ostacolare il progetto.\\
+\hline
+Sprint & Periodo di tempo dalle 2 alle 4 settimane, in cui un team di sviluppo si concentra sul completamento di un insieme ristretto di attività. Ogni sprint è seguito da una review per verificare il progresso raggiunto e da una retrospettiva per adottare ulteriori miglioramenti.\\
+\hline
+Sprint Retrospective & Incontro che si tiene alla fine di ogni sprint, subito dopo la review. Durante questa riunione, il team di sviluppo riflette sullo sprint appena concluso, discutendo cosa è andato bene, cosa potrebbe essere migliorato e quali azioni concrete debbano essere adottate per migliorare i successivi sprint.\\
+\hline
+Sprint Review & Incontro che si tiene alla fine di uno sprint, in cui il team di sviluppo presenta il lavoro completato. Durante questa sessione, il team mostra le funzionalità sviluppate e raccoglie feedback per verificare se i requisiti sono stati soddisfatti e se ci sono modifiche da apportare.\\
+\hline
+Stakeholder & Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori.\\
+\hline
+SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale che realizza prodotti e soluzioni per diversi mercati quali: Sanità, Industria, Energia, Telco, Finanza e Trasporti \& Logistica. Offre anche consulenze per diversi temi come: GDPR, Big Data, Cloud Computing, IoT, Mobile e Cyber Security.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{T} % LETTERA T
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Teamwork & Collaborazione tra membri di un gruppo per raggiungere obiettivi comuni, in modo efficace ed efficiente. Richiede il rispetto di regole condivise e l'adozione di best practices per ottimizzare il lavoro, come la condivisione dei rischi, l'assunzione di responsabilità o la comunicazione aperta e trasparente.\\
+\hline
+& \\
+\hline
+\end{tabularx}
+
+\subsection{U} % LETTERA U
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+User story & Descrizione concisa di una funzionalità o di un requisito del sistema, espressa dal punto di vista dell'utente. Viene utilizzata per definire i requisiti di un prodotto in modo semplice e comprensibile, per questo è solitamente scritta in linguaggio naturale.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{V} % LETTERA V
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{W} % LETTERA W
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei comportamenti che devono essere adottati da un team o un'organizzazione per svolgere le proprie attività allo stato dell'arte.\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{X} % LETTERA X
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{Y} % LETTERA Y
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\subsection{Z} % LETTERA Z
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}l|X|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\hline
+ & \\
+\hline
+\end{tabularx}
+
+\end{document}
