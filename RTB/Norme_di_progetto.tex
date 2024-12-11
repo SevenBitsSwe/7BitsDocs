@@ -103,6 +103,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
     \hline
+    0.4.2 & 2024-12-11 & Leonardo Trolese & Manuel Gusella & Scrittura sezione 6 relativa allo Standard ISO/IEC:25010 e correzione errori di battitura\\
+    \hline
     0.4.1 & 2024-12-06 & Alfredo Rubino & Giovanni Cristellon & Aggiunte generali e correzioni\\
     \hline
     0.4.0 & 2024-12-06 & Federico Pivetta & Alfredo Rubino & Inizio stesura sottosezione "Gestione Organizzativa" e abbandono impostazione in sottodocumenti\\
@@ -146,8 +148,8 @@
 
 \section{Introduzione}
     \subsection{Scopo del documento}
-    Il presente documento è stato realizzato ai fini di definire e raccogliere le best practices e il way of working a cui ogni componente del gruppo Seven Bits dovrà aderire per l'intera realizzazione del progetto, al fine di garantire l'adozione di un metodo di lavoro completamente omogeno.\\
-    La formulaziome delle norme di progetto avviene in maniera progressiva, permettendo al gruppo di apportare continui aggiornamenti ad esse in risposta alle esigenze che il team dovrà affrontare durante lo svolgimento del progetto stesso.\\ 
+    Il presente documento è stato realizzato ai fini di definire e raccogliere le best practices e il way of working a cui ogni componente del gruppo Seven Bits dovrà aderire per l'intera realizzazione del progetto, al fine di garantire l'adozione di un metodo di lavoro completamente omogeneo.\\
+    La formulazione delle norme di progetto avviene in maniera progressiva, permettendo al gruppo di apportare continui aggiornamenti ad esse in risposta alle esigenze che il team dovrà affrontare durante lo svolgimento del progetto stesso.\\ 
 
     \subsection{Scopo del prodotto}
     Ogni giorno, le persone vengono sommerse da una miriade di annunci generici che spesso non rispecchiano i loro reali interessi o il contesto in cui si trovano. Questa separazione tra il messaggio e il destinatario porta ad una bassa interazione con gli utenti e una riduzione delle conversioni per i brand.\\
@@ -176,7 +178,7 @@
     \subsection{Fornitura}
 
     \subsubsection{Descrizione e Scopo}
-    Come stabilito dallo standard ISO/IEC 12207:1995, il processo di fornitura definisce un insieme di linee guida necessario per una buona comunicazione tra fornitore e proponente. Il processo di fornitura si occupa di controllare e coordinare tutte le attività svolte dal gruppo, dalla comprensione dei requisiti fino alla consegna, per garantire che il prodotto finale soddisfi le esigenze concordate con la propontente.\\
+    Come stabilito dallo standard ISO/IEC 12207:1995, il processo di fornitura definisce un insieme di linee guida necessario per una buona comunicazione tra fornitore e proponente. Il processo di fornitura si occupa di controllare e coordinare tutte le attività svolte dal gruppo, dalla comprensione dei requisiti fino alla consegna, per garantire che il prodotto finale soddisfi le esigenze concordate con la proponente.\\
 
     \subsubsection{Attività}
     Il processo di fornitura, come stabilito dallo standard ISO/IEC 12207:1995, si compone delle seguenti attività :
@@ -470,7 +472,7 @@
     \subsubsection{Codifica}
 
         \paragraph{Descrizione e scopo} 
-        L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, mantenibilità e coerenza nell’intero progetto.\\
+        L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, manutenibilità e coerenza nell'intero progetto.\\
         L’obiettivo principale della codifica è quindi creare un prodotto software che soddisfi le esigenze del proponente e rispetti gli accordi contrattuali. Le aspettative del codice sviluppato includono:
         \begin{itemize}
             \item \textbf{Conformità alle specifiche}: Garantire che il codice traduca fedelmente i requisiti e le funzionalità richieste;
@@ -702,7 +704,7 @@
         \begin{itemize}
             \item Determinare le tecnologie, i linguaggi e i framework da utilizzare;
             \item Progettare l'architettura del sistema, definendo componenti, moduli e interazioni;
-            \item Gestiore eventuali rischi che possono sorgere durante lo sviluppo;
+            \item Gestire eventuali rischi che possono sorgere durante lo sviluppo;
             \item Supervisionare lo sviluppo per garantire la conformità all'architettura;
         \end{itemize}
         
@@ -737,7 +739,7 @@
     \subsubsection{Procedure comunicative}
 
 \newpage
-\section{Standard ISO/IEC:25010 "System and software quality models"}
+\section{Standard ISO/IEC:25010 "System & software quality models"}
 Lo standard ISO/IEC:25010 appartiene alla famiglia di standard SQuaRE, ed è stato sviluppato e pubblicato nel 2011 congiuntamente 
 dalla ISO e dalla IEC. Trattasi di un modello internazionale che definisce in maniera chiara un quadro di riferimento per la valutazione
 e la misurazione della qualità di un prodotto software. Lo scopo è di garantire che il prodotto realizzato soddisfi i requisiti 
@@ -747,40 +749,89 @@ Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il 
     \subsection{Qualità del prodotto software}
     Lo standard ISO/IEC:25010 definisce 8 caratteristiche centrali che influenzano la qualità di un software:
     \begin{itemize}
-        \item Idoneità funzionale
-        \item Affidabilità
-        \item Usabilità
-        \item Efficienza
-        \item Manutenibilità
-        \item Portabilità
-        \item Compatibilità
-        \item Sicurezza
+        \item Functional suitability
+        \item Reliability
+        \item Usability
+        \item Performance Efficiency
+        \item Maintainability
+        \item Portability
+        \item Compatibility
+        \item Security
     \end{itemize}
 
-        \subsubsection{Idoneità funzionale}
+        \subsubsection{Functional suitability}
         Misura quanto il software soddisfa i requisiti funzionali espliciti e impliciti. Include tre sotto-caratteristiche:
         \begin{itemize}
-            \item Completezza funzionale - il software deve mettere a disposizione tutte le funzionalità necessarie;
-            \item correttezza funzionale - il software deve eseguire le sue funzionalità correttamente e nel modo previsto;
-            \item Adeguatezza funzionale - il software deve offrire funzionalità appropriate agli obiettivi;
+            \item Functional Completeness - il software deve mettere a disposizione tutte le funzionalità necessarie;
+            \item Functional Correctness - il software deve eseguire le sue funzionalità correttamente e nel modo previsto;
+            \item Functional Appropriateness - il software deve offrire funzionalità appropriate agli obiettivi;
         \end{itemize}
 
-        \subsubsection{Affidabilità}
+        \subsubsection{Reliability}
         Misura la consistenza con cui il software svolge i suoi compiti senza andare incontro a fallimento. Include quattro sotto-caratteristiche:
         \begin{itemize}
-            \item Maturità - un software maturo è stato testato a fondo, pertanto molti bug sono stati individuati e risolti;
-            \item Disponibilità - misura la frequenza con la quale il software è "up-and-running";
-            \item Tolleranza agli errori - rappresenta la capacità del software di funzionare anche in presenza di errori;
-            \item Recuperabilità - rappresenta la capacita del software di recuperare da un failure riprendendo le sue funzioni;
+            \item Maturity - un software maturo è stato testato a fondo, pertanto molti bug sono stati individuati e risolti;
+            \item Availability - misura la frequenza con la quale il software è "up-and-running";
+            \item Fault Tolerance - rappresenta la capacità del software di funzionare anche in presenza di errori;
+            \item Recoverability - rappresenta la capacita del software di recuperare da un failure riprendendo le sue funzioni;
         \end{itemize}
 
-        \subsubsection{Usabilità}
-        Misura quanto intuitivo, soddisfacente da usare e user-friendly è un software. Include quattro sotto-caratteristiche:
+        \subsubsection{Usability}
+        Misura quanto intuitivo, soddisfacente da usare e user-friendly è un software. Si compone di cinque sotto-caratteristiche:
         \begin{itemize}
-            \item Understandability - rappresenta la facilità con cui gli utenti possono capire le funzionalità di un software e farne uso;
+            \item Understandability - rappresenta la facilità con cui gli utenti possono capire le funzionalità offerte da un software;
             \item Learnability - misura quanto facilmente un nuovo utente può imparare a fare uso di un software;
             \item Operability - indica quanto controllo l'utente ha sul software stesso;
             \item Attractiveness - misura l'attrattiva estetica che l'interfaccia del software esercita sull'utente;
+            \item Accessibility - indica la facilità di uso del sistema da parte di utenti con disabilità;
+        \end{itemize}
+
+        \subsubsection{Performance Efficiency}
+        Misura le performance del sistema relativamente al quantitativo di risorse usate in determinate condizioni. L'efficienza tiene conto sia della velocità
+        del sistema software che del suo uso delle risorse fisiche disponibili. Questo aspetto si puù ulteriormente dividere in tre sotto-caratteristiche:
+        \begin{itemize}
+            \item Time behavior - è indicatore di quanto velocemente un sistema puù eseguire un compito o processare una richiesta;
+            \item Resource utilization - misura quanto efficientemente un software utilizza le risorse fisiche dell'hardware sottostante;
+            \item Capacity - misura la capacità del sistema di gestire determinati carichi di lavoro;
+        \end{itemize}
+
+        \subsubsection{Maintainability}
+        Rappresenta la predisposizione di un prodotto software a essere modificato ai fini di migliorarne le performance, renderlo adeguato a un ambiente in evoluzione
+        o aggiungere o modificare funzionalità. Un software mantenibile consente di rispondere efficacemente alle necessità degli utenti, a bug o problemi rilevati o 
+        all'evoluzione del panorama tecnologico che circonda il software stesso. Si suddivide in:
+        \begin{itemize}
+            \item Modularity - indica il grado di suddivisione in componenti fra loro indipendenti del sistema;
+            \item Reusability - indica la capacità di riutilizzare componenti software;
+            \item Analyzability - rappresenta la facilità con cui è possibile diagnosticare problemi del software;
+            \item Modifiability - indica la facilità con cui è possibile effettuare dei cambiamenti;
+            \item Testability - rappresenta la facilità con cui è possibile testare il software modificato o prodotto;
+        \end{itemize}
+
+        \subsubsection{Portability}
+        Misura la facilità con cui il software si può adattare a un ambiente hardware o software differente da quello originale. La portabilità di un sistema si 
+        traduce nella sua flessibilità o adattabilità. Accorpa le seguenti sotto-categorie:
+        \begin{itemize}
+            \item Adaptability - rappresenta la capacità del sistema di adattarsi a diversi ambienti;
+            \item Installability - indica la facilità di installazione del software;
+            \item Replaceability - rappresenta la capacità del sistema di sostituire altri software;
+        \end{itemize}
+
+        \subsubsection{Compatibility}
+        Misura la capacità del software di funzionare in un ambiente condiviso o in coordinamento con altri sistemi. Include due sotto-categorie:
+        \begin{itemize}
+            \item Co-Existence - è indicatore della capacità del software di coesistere senza conflitti con altri sistemi;
+            \item Interoperability - misura la capacità del software di scambiare informazioni con altri sistemi;
+        \end{itemize}
+
+        \subsubsection{Security}
+        Indica la capacità di un prodotto software di proteggere informazioni o dati, così che tutti coloro che interagiscono con tale prodotto (sia persone che altri 
+        software) abbiano accesso alle sole informazioni che è loro consentito visualizzare secondo il livello di autorizzazione che possiedono. Include:
+        \begin{itemize}
+            \item Confidentiality - rappresenta la protezione dei dati da accessi non autorizzati;
+            \item Integrity - rappresenta la prevenzione della modifica non autorizzata di dati;
+            \item Authenticity - indica la verifica dell'identità degli utenti;
+            \item Accountability - rappresenta il tracciamento delle azioni degli utenti;
+            \item Non-repudiation - rappresenta la capacità di garantire che un'azione non possa essere negata;
         \end{itemize}
 
 \section{Metriche per la qualità}
