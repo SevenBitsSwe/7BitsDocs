@@ -26,7 +26,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
     }
-\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.5}
+\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.6}
     }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -81,6 +81,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\hline
+0.2.6 & 2024-12-11 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
 \hline
 0.2.5 & 2024-12-04 & Manuel Gusella & Giovanni Cristellon & Aggiunta di framework, feedback e proponente\\
 \hline
@@ -137,6 +139,8 @@ Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tab
 \hline
 Analisi dei Requisiti & Processo fondamentale dello sviluppo di un prodotto software, durante il quale vengono identificati e definiti in dettaglio i requisiti che il sistema deve soddisfare.\newline È molto importante questa analisi per assicurarsi che i requisiti individuatisiano completi e corretti, riducendo così possibili errori nelle fasi successive del progetto.\\
 \hline
+Agile & Insieme di principi e metodologie per la gestione e lo sviluppo di progetti, focalizzato sull'adattabilità e la collaborazione. Basato sul Manifesto Agile, enfatizza la flessibilità nei processi, il coinvolgimento continuo degli stakeholder e la capacità di rispondere rapidamente ai cambiamenti, garantendo prodotti di alta qualità e una soddisfazione costante del cliente.\\
+\hline
 Attore & Entità esterna al sistema che interagisce con esso per raggiungere un scopo specifico. Gli attori possono essere principali (comunica attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi).\\
 \hline
 & \\
@@ -155,6 +159,8 @@ Best Practices & Insieme di metodi o procedure considerate le più efficaci e af
 \hline
 Branch & Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività.\\
 \hline
+Build & Il processo che compone ogni sottoprodotto (eseguibili, documenti, ecc.) a partire da un insieme di parti, come il codice sorgente e le risorse necessarie. Durante questo processo, il codice viene compilato e assemblato per generare una versione eseguibile o distribuita del prodotto, che può essere testata o distribuita. La build include anche la gestione delle dipendenze e, in alcuni casi, l’esecuzione di test automatici per garantire la correttezza e il funzionamento del software.\\
+\hline
  & \\
 \hline
 \end{tabularx}
@@ -165,7 +171,15 @@ Branch & Linea parallela di sviluppo in un sistema di versionamento, che permett
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+Capitolato & Documento che definisce le specifiche, i requisiti e le condizioni di un progetto o di un appalto. Fornisce una base solida per la pianificazione e l’esecuzione di un progetto, garantendo che tutte le parti coinvolte comprendano chiaramente le aspettative e i bisogni a cui il progetto deve rispondere, offrendo così una guida chiara per la realizzazione della soluzione.\\
+\hline
+Caso d'Uso & Rappresenta un'interazione tra il sistema e gli attori, descrivendo le modalità con cui il sistema viene utilizzato e le funzionalità che offre. Si articola in una serie di scenari o sequenze di azioni che condividono un obiettivo finale, permettendo agli utenti di raggiungere uno scopo specifico attraverso l'interazione con il sistema.\\
+\hline
 Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla sua concezione iniziale fino all'uso ed eventualmente alla sua dismissione. \'E compito di un progetto far progredire lo stato di avanzamento di un software lungo il suo ciclo di vita.\\
+\hline
+ClickHouse & Database open-source progettato per l'elaborazione rapida e scalabile di grandi quantità di dati. Utilizza un'architettura column-oriented, ottimizzata per query analitiche ad alta velocità e compressione efficiente dei dati. Questo lo rende ideale per applicazioni che richiedono analisi in tempo reale su grandi dataset.\\
+\hline
+Cruscotto & Traduzione italiana del termine inglese "Dashboard".\\
 \hline
  & \\
 \hline
@@ -177,7 +191,7 @@ Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla su
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-Dashboard & Interfaccia grafica che raccoglie e presenta in modo chiaro e sintetico delle informazioni attraverso vari elementi visivi come grafici, tabelle e indicatori.\\
+Dashboard & Interfaccia utente grafica che raccoglie e presenta in modo chiaro e sintetico le informazioni più rilevanti per un utente o un processo specifico. La Dashboard fornisce una panoramica rapida delle metriche e delle prestazioni, utilizzando vari elementi visivi come grafici, tabelle e indicatori.\\
 \hline
 Documentazione & Insieme di documenti, manuali e guide che descrivono un prodotto, un sistema o un processo. Ha lo scopo di fornire istruzioni, spiegazioni e dettagli utili per l'uso, la manutenzione e lo sviluppo di un prodotto.\\
 \hline
@@ -221,6 +235,10 @@ Feedback & Riscontro, positivo o negativo, dato per influenzare il comportamento
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+Git & Sistema di controllo versione distribuito (DVCS) progettato per tracciare le modifiche nel codice sorgente durante lo sviluppo del software. È uno strumento essenziale per la gestione delle versioni, che consente ai team di sviluppo di lavorare in modo collaborativo, monitorare le revisioni del codice e gestire le modifiche apportate nel tempo. Git facilita anche il ripristino a versioni precedenti del software, garantendo un controllo preciso delle modifiche.\\
+\hline
+GitHub & Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l’organizzazione e la collaborazione all’interno dei team di sviluppo.\\
+\hline
  & \\
 \hline
 \end{tabularx}
@@ -241,9 +259,11 @@ Feedback & Riscontro, positivo o negativo, dato per influenzare il comportamento
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-IA & Acronimo di "Intelligenza arificiale" ed è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l’apprendimento, la pianificazione e la creatività.\\
+IA & Acronimo italiano di "Intelligenza arificiale" ed è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l’apprendimento, la pianificazione e la creatività.\\
 \hline
 Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, bug, richieste di funzionalità o altre attività relative ad un progetto. Le issue permettono di descrivere, assegnare e discutere vari aspetti di un progetto come ad esempio errori o nuove funzionalità con l'aiuto di alcuni strumenti come i commenti, le etichette e le milestone.\\
+\hline
+ITS & Acronimo di "Issue Tracking System", sono dei software utilizzati per gestire e tenere traccia di problemi, bug, richieste di funzionalità e altre attività correlate nel ciclo di sviluppo del software. Questi sistemi forniscono un'infrastruttura organizzativa che supporta la gestione delle problematiche, permettendo a sviluppatori, team di supporto e stakeholder di documentare e risolvere le questioni che emergono durante lo sviluppo del progetto.\\
 \hline
  & \\
 \hline
@@ -275,9 +295,9 @@ Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, b
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-LaTeX & Linguaggio di marcatura basato su comandi che permettono di formattare il testo e produrre documenti. Viene spesso utilizzato in ambito accademico, scientifico e tecnico per la scrittura di articoli, libri, tesi e presentazioni.\\
+\LaTeX & Linguaggio di marcatura basato su comandi che permettono di formattare il testo e produrre documenti. Viene spesso utilizzato in ambito accademico, scientifico e tecnico per la scrittura di articoli, libri, tesi e presentazioni.\\
 \hline
-LLM & Abbreviazione di large language model è un tipo di modello linguistico notevole per essere in grado di ottenere la comprensione e la generazione di linguaggio di ambito generale. Gli LLM acquisiscono questa capacità adoperando enormi quantità di dati per apprendere miliardi di parametri nell'addestramento.\\
+LLM & Acronimo di "Large Language Model", è un tipo di modello linguistico notevole per essere in grado di ottenere la comprensione e la generazione di linguaggio di ambito generale. Gli LLM acquisiscono questa capacità adoperando enormi quantità di dati per apprendere miliardi di parametri nell'addestramento.\\
 \hline
  & \\
 \hline
@@ -293,7 +313,7 @@ Merge & Operazione in un sistema di versionamentobranches che combina le modific
 \hline
 Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel tempo all'interno di un progetto. Viene utilizzata per monitorare i progressi e assicurare che il progetto rispetti la pianificazione stabilita. Il raggiungimento degli obiettivi associati ad una milestone viene sostanziato attraverso lo sviluppo di una baseline.\\
 \hline
-MVP & Acronimo di "Minimal Viable Product", è una versione di un prodotto software che include solo le funzionalità essenziali per soddisfare i bisogni principali degli utenti. L'obiettivo di un MVP è quello di testare il prodotto, raccogliendo feedback degli utenti per migliorarlo e svilupparlo ulteriormente.\\
+MVP & Acronimo di "Minimum Viable Product", è una versione di un prodotto software che include solo le funzionalità essenziali per soddisfare i bisogni principali degli utenti. L'obiettivo di un MVP è quello di testare il prodotto, raccogliendo feedback degli utenti per migliorarlo e svilupparlo ulteriormente.\\
 \hline
 & \\
 \hline
@@ -305,6 +325,8 @@ MVP & Acronimo di "Minimal Viable Product", è una versione di un prodotto softw
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+Norme & Insieme di regole, linee guida o standard che stabiliscono comportamenti e procedure da seguire in un determinato contesto o settore. Il loro scopo principale è garantire la sicurezza, la qualità, l'efficienza e l'efficacia delle attività svolte, assicurando che vengano rispettati determinati criteri e pratiche operative.\\
+\hline
  & \\
 \hline
 \end{tabularx}
@@ -314,6 +336,8 @@ MVP & Acronimo di "Minimal Viable Product", è una versione di un prodotto softw
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+Overleaf & Piattaforma online per la scrittura collaborativa di documenti in \LaTeX. Essa offre un ambiente basato sul web che permette a più utenti di lavorare contemporaneamente sugli stessi documenti, facilitando la collaborazione in tempo reale e la revisione, senza la necessità di configurare software locali.\\
 \hline
  & \\
 \hline
@@ -329,9 +353,11 @@ PoC & Acronimo di "Proof of Concept", è un prototipo iniziale realizzato per di
 \hline
 Progetto & Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Hanno una data d'inizio e una data di fine fissate.\\
 \hline
-PR & Acronimo di "Pull Request", è una proposta di modifica in un progetto gestito tramite un sistema di versionamento. Consente ad uno sviluppatore di proporre una revisione e integrazione di alcune modifiche. Altri membri del team possono esaminare, commentare e testare le modifiche prima di approvare la pull request ed concludere la proposta con un merge.\\
+PR & Acronimo di "Pull Request", è una richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma di hosting come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le pull request sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge.\\
 \hline
 Proponente & Chi propone, nel nostro caso SyncLab.\\
+\hline
+Protocollo & In informatica, un insieme di regole o procedure per la trasmissione di dati tra dispositivi. Affinché i computer possano scambiarsi informazioni, deve esistere un accordo preesistente su come le informazioni saranno strutturate e su come ciascuna parte le invierà e le riceverà.\\
 \hline
  & \\
 \hline
@@ -369,6 +395,8 @@ RTB & Acronimo di "Requirement and Technology Retrospective", è la prima revisi
 \hline
 SAL & Acronimo di "Stato Avanzamento Lavori", è un incontro in cui il team si riunisce per controllare il progresso degli obiettivi pianificati.\newline Durante questo incontro, si discute cosa è stato completato, cosa è ancora in corso ed cosa potrebbe ostacolare il progetto.\\
 \hline
+Scrum & Framework per la gestione dei progetti che promuove il lavoro di squadra e il progresso iterativo verso obiettivi definiti. Basato sull'adattabilità, Scrum incoraggia a partire da ciò che è noto, monitorare continuamente i progressi e apportare modifiche in base alle necessità, garantendo flessibilità e miglioramento continuo durante il ciclo di sviluppo. Comprende quattro eventi chiave, usati per pianificare e porre in retrospettiva il team di sviluppo: Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.\\
+\hline
 Sprint & Periodo di tempo dalle 2 alle 4 settimane, in cui un team di sviluppo si concentra sul completamento di un insieme ristretto di attività. Ogni sprint è seguito da una review per verificare il progresso raggiunto e da una retrospettiva per adottare ulteriori miglioramenti.\\
 \hline
 Sprint Retrospective & Incontro che si tiene alla fine di ogni sprint, subito dopo la review. Durante questa riunione, il team di sviluppo riflette sullo sprint appena concluso, discutendo cosa è andato bene, cosa potrebbe essere migliorato e quali azioni concrete debbano essere adottate per migliorare i successivi sprint.\\
@@ -400,6 +428,8 @@ Teamwork & Collaborazione tra membri di un gruppo per raggiungere obiettivi comu
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+UML & Acronimo di "Unified Modeling Language", è un linguaggio di modellazione visuale utilizzato per analizzare, progettare e documentare sistemi software complessi. Consente di rappresentare in modo chiaro e standardizzato la struttura del sistema, il comportamento delle sue componenti e le interazioni tra gli attori e il sistema stesso, facilitando la comunicazione tra i membri del team di sviluppo e gli stakeholder.\\
 \hline
 User story & Descrizione concisa di una funzionalità o di un requisito del sistema, espressa dal punto di vista dell'utente. Viene utilizzata per definire i requisiti di un prodotto in modo semplice e comprensibile, per questo è solitamente scritta in linguaggio naturale.\\
 \hline
