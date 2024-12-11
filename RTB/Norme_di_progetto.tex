@@ -16,6 +16,8 @@
 \usepackage{titlesec}
 \usepackage{float}
 
+\newcommand\version{0.4.3} %aggiunta versione come variabile
+
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
 
@@ -50,7 +52,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ NORME DI PROGETTO v0.4.1}
+\rhead{\textcolor[HTML]{9e978a}{ NORME DI PROGETTO v\version}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -103,11 +105,13 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
     \hline
+    0.4.3 & 2024-12-11 & Federico Pivetta & Manuel Gusella & Completata sottosezione "Gestione dei processi"\\
+    \hline
     0.4.2 & 2024-12-11 & Leonardo Trolese & Manuel Gusella & Scrittura sezione 6 relativa allo Standard ISO/IEC:25010 e correzione errori di battitura\\
     \hline
     0.4.1 & 2024-12-06 & Alfredo Rubino & Giovanni Cristellon & Aggiunte generali e correzioni\\
     \hline
-    0.4.0 & 2024-12-06 & Federico Pivetta & Alfredo Rubino & Inizio stesura sottosezione "Gestione Organizzativa" e abbandono impostazione in sottodocumenti\\
+    0.4.0 & 2024-12-06 & Federico Pivetta & Alfredo Rubino & Inizio stesura sottosezione "Gestione dei processi" e abbandono impostazione in sottodocumenti\\
     \hline
     0.3.9 & 2024-12-05 & Alfredo Rubino & Leonardo Trolese & Completata sezione "Processi Primari"\\
     \hline
@@ -174,7 +178,7 @@
         \end{itemize}
         
 \newpage
-\section{Processi Primari}
+\section{Processi primari}
     \subsection{Fornitura}
 
     \subsubsection{Descrizione e Scopo}
@@ -654,13 +658,26 @@
     \end{itemize}
 
 \newpage
-\section{Processi Organizzativi}
-    \subsection{Gestione Organizzativa}
+\section{Processi organizzativi}
+    \subsection{Gestione dei processi}
 
-    \subsubsection{Decisioni}
+    \subsubsection{Descrizione e Scopo}
+    Come stabilito dallo standard ISO/IEC 12207:1997, il processo di gestione comprende tutte le attività necessarie per completare un progetto software, in modo tale da garantire il raggiungimento degli obiettivi prefissati nel rispetto dei requisiti, dei tempi e dei costi. Per conseguire questo obiettivo, questo processo si compone di una pianificazione dettagliata, un monitoraggio continuo dei progressi e l'adozione tempestiva di azioni correttive, quando necessario.
+    
+    \subsubsection{Attività}
+    Il processo di gestione, come stabilito dallo standard ISO/IEC 12207:1997, si compone delle seguenti attività:
+    \begin{enumerate}
+        \item \textbf{Pianificazione}: Composta dall'identificazione degli obiettivi da raggiungere, dalla stima delle risorse necessarie, dalla definizione dei ruoli coinvolti e dalle scadenze da rispettare;
+        \item \textbf{Monitoraggio e controllo}: Composto dalla verifica continua dello stato di avanzamento rispetto alla pianificazione, con un'analisi degli eventuali scostamenti su tempi, costi e risorse. Se necessario, vengono attuate azioni correttive per riallineare il progetto agli obiettivi;
+        \item \textbf{Gestione dei rischi}: Composta dall'identificazione dei potenziali rischi, dalla valutazione del loro impatto e della probabilità di occorrenza, e dallo sviluppo ed implementazione di piani di attenuazione per ridurre al minimo gli effetti negativi che potrebbero derivarne;
+        \item \textbf{Gestione delle comunicazioni}: Composta dalla gestione delle comunicazioni per garantire un flusso costante di informazioni tra tutte le parti interessate, sia interne al gruppo che esterne come l'azienda proponente, assicurando che le comunicazioni siano chiare e tempestive;
+        \item \textbf{Gestione delle modifiche}: Composta dal riconoscimento e dall'approvazione delle richieste di modifica, dalla valutazione del loro impatto sui tempi e sui costi, e dall'aggiornamento della pianificazione per integrare le modifiche approvate;
+        \item \textbf{Revisione e chiusura}: Composta dalla valutazione complessiva del progetto al termine delle attività, dall'identificazione delle nozioni apprese e dalla formalizzazione della chiusura del progetto con la consegna dei risultati finali;
+    \end{enumerate}
 
-    \subsubsection{Pianificazione}
-
+    \subsubsection{Pianificazione degli sprint}
+    Include la durata di ogni sprint e una lista degli obiettivi da raggiungere entro la sua conclusione. Se si verificano dei rischi, viene aggiunta una sezione che descrive come il gruppo li ha gestiti e l’impatto che hanno avuto sulle attività pianificate. Inoltre, la pianificazione contiene una tabella con i ruoli assegnati ai membri del gruppo e due sezioni separate: una per il preventivo, che indica le ore e i costi stimati per lo sprint, e una per il consuntivo, che riporta le ore e i costi effettivi per lo stesso periodo;
+    
     \subsubsection{Ruoli di progetto}
     Durante l'intero sviluppo del progetto, ciascun membro del gruppo assume sei ruoli distinti, ciascuno con responsabilità ben definite che riguardano specifiche attività di specifici processi.
     Ogni ruolo contribuisce al raggiungimento degli obiettivi del progetto, risultando essenziale per completare tutte le attività necessarie alla creazione di un prodotto finale di qualità.\\
@@ -728,15 +745,94 @@
         \end{itemize}
 
     \subsubsection{Cambio dei ruoli}
-    Per garantire che ogni membro ricopra tutti i ruoli essenziali al completamento del progetto, il gruppo si impegna a ruotarli all'inizio di ogni nuovo sprint, della durata di due settimane.\\
+    Per garantire che ogni membro ricopra tutti i ruoli essenziali al completamento del progetto, il gruppo si impegna a ruotarli all'inizio di ogni nuovo sprint, della durata di due settimane.
 
-    \subsubsection{Tracciamento}
+    \subsubsection{Tracciamento delle ore}
+    Per tracciare il tempo impiegato nei diversi ruoli durante il progetto, viene utilizzato uno spreadsheet dedicato, disponibile su Google Drive. Al termine di ogni sprint, viene utilizzato per generare il consuntivo dello sprint appena concluso e il preventivo di quello appena iniziato, infine il membro con il ruolo di Responsabile ha il compito di inserire questi elementi all'interno del documento \textit{Piano\_di\_Progetto.pdf}.
+       
+        \paragraph{Preventivo}
+        Il preventivo delle ore è presentato sotto forma di tabella, che dettaglia le ore stimate per ogni membro del gruppo, suddivise per ruolo e riferite al singolo sprint. Inoltre, è incluso un diagramma circolare che mostra la ripartizione delle ore stimate per ciascun ruolo, offrendo una visione chiara e immediata delle risorse che si pensa di allocate per quello specifico sprint.
 
-    \subsubsection{Gestione strumenti coordinamento}
+        \paragraph{Consuntivo}
+        Il consuntivo delle ore è presentato sotto forma di tabella, che dettaglia le ore effettive registrate per ogni membro del gruppo, suddivise per ruolo e riferite al singolo sprint. Inoltre, è incluso un diagramma circolare che mostra la ripartizione delle ore effettive per ciascun ruolo, fornendo una visione chiara e immediata delle risorse effettivamente allocate durante lo sprint.
 
-    \subsubsection{Gestione dei rischi}
+    \subsubsection{Ticketing}
+    Il gruppo utilizza il sistema di Issue Tracking (ITS) integrato di GitHub per la gestione delle attività. Questo strumento offre una gestione semplice e chiara dei compiti da svolgere, grazie alla possibilità di creare e chiudere le issue in modo rapido ed efficiente. Lo stato di avanzamento delle attività è visualizzabile attraverso la project board integrata di GitHub, che garantisce una panoramica chiara e aggiornata del progresso del lavoro.\\
+    Le issue sono composte da:
+    \begin{itemize}
+        \item \textbf{Titolo}: identifica in modo univoco il compito da svolgere;  
+        \item \textbf{Descrizione}: fornisce informazioni dettagliate e utili per il completamento del compito; 
+        \item \textbf{Assegnatario}: specifica il membro del gruppo incaricato di svolgere il compito; 
+        \item \textbf{Etichetta}: classifica la tipologia del compito, agevolando l'organizzazione delle issue;
+        \item \textbf{Board}: indica a quale project board appartiene la issue e permette di specificare ulteriori campi, tra cui:  
+        \begin{itemize}
+            \item \textbf{Stato}: rappresenta l'avanzamento del compito (Todo, In Progress, Done);
+            \item \textbf{Priorità}: assegna un livello di urgenza o importanza alla issue (Urgente, Importante, Moderato, Secondario);
+            \item \textbf{Grandezza}: stima la complessità o il livello di sforzo richiesto per completare il compito (XS, S, M, L, XL);  
+            \item \textbf{Iterazione}: specifica a quale sprint la issue è assegnata;  
+        \end{itemize}  
+        \item \textbf{Milestone}: identifica il traguardo o obiettivo specifico a cui la issue è associata;
+    \end{itemize}
+    Ogni volta che è necessario completare un compito, si segue la procedura descritta di seguito:
+    \begin{enumerate}
+        \item Il Responsabile crea la issue su GitHub, definendone i dettagli principali; 
+        \item La issue viene assegnata ad un membro del gruppo, che si occuperà del compito;  
+        \item La issue viene associata alla milestone dello sprint attuale;  
+        \item Il membro incaricato sposta la issue nello stato “In Progress” quando inizia a lavorarci;
+        \item Al completamento del compito, il Verificatore designato viene informato per procedere al controllo;
+        \item Il Verificatore esamina il lavoro svolto e comunica l’esito della verifica; 
+        \item Se la verifica ha esito positivo, la issue viene chiusa e spostata nello stato "Done";  
+    \end{enumerate}
 
-    \subsubsection{Procedure comunicative}
+    \subsubsection{Rischi}
+    La gestione dei rischi è un processo volto a identificare, valutare e affrontare le situazioni avverse che potrebbero influire sul successo del progetto. Questo approccio prevede l'individuazione dei rischi, la valutazione della loro gravità e occorrenza, la definizione di strategie per mitigarli, ed infine un monitoraggio costante per rilevare la possibile comparsa di nuovi rischi.\\
+    I rischi vengono suddivisi in tre diverse categorie:
+    \begin{itemize}
+        \item [-] Rischi Tecnologici;
+        \item [-] Rischi di Organizzazione;
+        \item [-] Rischi di Pianificazione;
+    \end{itemize}
+    Ogni rischio viene classificato seguendo il formato:
+    \begin{quote}
+         \textbf{R[Tipo][Indice] - [Nome]}
+    \end{quote}
+    dove:
+    \begin{itemize}
+        \item \textbf{R}: Abbreviazione di "Rischio";
+        \item \textbf{Tipo}: Categoria del rischio (T per Tecnologico, O per Organizzazione, P per Pianificazione);
+        \item \textbf{Indice}: Identifica univocamente ciascun rischio;
+        \item \textbf{Nome}: Nome del rischio;
+    \end{itemize}
+
+    \subsubsection{Coordinamento}
+    Questa attività comprende la gestione delle comunicazioni e degli incontri tra tutte le parti coinvolte nel progetto, inclusi i membri del gruppo, la proponente e i committenti.
+
+    \subsubsection{Comunicazioni}
+    Le comunicazioni sono fondamentali per mantenere un flusso costante di informazioni tra le parti coinvolte, garantendo efficienza e coordinamento nel progetto, e supportando il buon andamento delle attività e il raggiungimento degli obiettivi prefissati.\\ 
+    Le comunicazioni si suddividono in:
+    
+        \paragraph{Comunicazioni interne}
+        Le comunicazioni interne avverranno attraverso due canali principali: Telegram e Discord. Telegram, un servizio di messaggistica istantanea, sarà utilizzato per le conversazioni rapide e informali, mentre Discord, una piattaforma che supporta chat e videochiamate, sarà impiegato per le riunioni a distanza e le discussioni più complesse.\\
+        Le attività quotidiane e le comunicazioni generali si svolgeranno su Telegram, mentre le questioni critiche saranno affrontate durante degli incontri su Discord. Inoltre, su Discord è presente una sezione testuale dedicata alle comunicazioni rapide con la proponente.
+        
+        \paragraph{Comunicazioni esterne}
+        Le comunicazioni esterne avverranno tramite scambio di email, utilizzando l'indirizzo sevenbits.swe.unipd@gmail.com. Questo canale sarà utilizzato per organizzare incontri con la proponente, inviare documenti da visionare o firmare, e per risolvere eventuali dubbi.
+
+    \subsubsection{Riunioni}
+    Le riunioni sono fondamentali per il progresso del progetto, poiché offrono l'opportunità di confrontarsi, prendere decisioni e risolvere eventuali problematiche. Servono anche per monitorare lo stato delle attività e garantire il raggiungimento degli obiettivi prefissati.
+    Al termine di ogni riunione, viene redatto un verbale per documentare gli argomenti trattati e le decisioni prese, garantendo così la tracciabilità e la condivisione delle informazioni. Dopo ogni incontro, il Responsabile redige il verbale, includendo tutte le informazioni rilevanti discusse, lo fa verificare e infine il Verificatore richiede l'approvazione tramite un’ulteriore verifica da parte di un altro membro. Nel caso dei verbali esterni, è prevista anche la firma della proponente.\\
+    Le riunioni si distinguono in:
+    
+        \paragraph{Riunioni interne}
+        Le riunioni interne sono pianificate settimanalmente ogni mercoledì alle ore 16:00 o, in alternativa, subito dopo le riunioni esterne. In caso di necessità, possono essere richieste riunioni straordinarie durante la settimana, organizzate tramite un sondaggio sul canale Telegram. Tutte le riunioni si terranno sul canale Discord. I membri del gruppo si impegnano a partecipare attivamente, cercando di garantire la loro presenza. In caso di impossibilità a partecipare, ogni membro potrà recuperare la sintesi delle discussioni e le decisioni prese leggendo il verbale della riunione.
+
+        \paragraph{Riunioni esterne}
+        Le riunioni esterne coinvolgono i membri del gruppo, la proponente e i committenti. Gli incontri con la proponente si terranno sulla piattaforma Google Meet, con l'indirizzo comunicato al gruppo dall'azienda. I membri del gruppo si impegnano a partecipare attivamente, cercando di garantire la loro presenza. In caso di impossibilità a partecipare, ogni membro potrà recuperare la sintesi delle discussioni e le decisioni prese leggendo il verbale della riunione.
+
+    \subsection{Miglioramento}
+
+    \subsection{Formazione}
+
 
 \newpage
 \section{Standard ISO/IEC:25010 "System \& software quality models"}
