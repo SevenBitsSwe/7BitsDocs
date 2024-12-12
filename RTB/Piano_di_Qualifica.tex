@@ -1,18 +1,19 @@
 \documentclass[11pt]{article}
 
+\usepackage[table,xcdraw]{xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage{tabularx}
 \usepackage{hyperref}
-\usepackage{array}  
+\usepackage{array}
 \usepackage{graphicx} % Per inserire immagini (loghi)
 \usepackage{geometry} % Per personalizzare i margini
 \usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
 \usepackage{tikz}
 \usepackage{ragged2e}
 \usepackage{anyfontsize}
-\usepackage[table,xcdraw]{xcolor}
 \usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
 \usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
+\usepackage{float}
 
 %\graphicspath{{../images/}}
 \graphicspath{{images/}}
@@ -48,29 +49,29 @@
     \setcounter{page}{0}
     \centering
     % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
-    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
-    
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm]
+
     % Titolo
      {\fontsize{40}{40}\bfseries Piano di Qualifica}\selectfont \\[3.9em]
-    
+
     % Sottotitolo
     {\huge NearYou\\ \vspace{3mm }Smart custom advertising platform} \\[2.7em]
-    
+
     % Email del gruppo
     {\large sevenbits.swe.unipd@gmail.com} \\[3em]
-    
+
     % Spazio per il logo dell'università
     \hfill
-    
-        
+
+
     \AddToShipoutPictureBG{ % Imposta il triangolo con logo
         \ifnum\value{page}=0
         \begin{tikzpicture}[overlay]
-        
+
             % Definisce un triangolo blu in basso a destra
-            \fill[colorePie] 
+            \fill[colorePie]
                 (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
-            
+
             % Inserisce il logo all'interno del triangolo
             \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
                 \includegraphics[width=4.5cm]{LogoUnipd.png}
@@ -78,8 +79,8 @@
         \end{tikzpicture}
         \fi
     }
-        
-    
+
+
 
     \vfill % Aggiunge spazio verticale per centrare il contenuto
 \end{titlepage}
@@ -95,6 +96,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.3.0 & 2024-12-06 & Riccardo Piva & Alfredo Rubino & Arricchimento sezioni Qualità di processo, Qualità di prodotto e inizio redazione modalità testing \\
+\hline
 0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sezione Qualità di prodotto \ref{qpd}\\
 \hline
 0.1.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Inizio redazione del documento\\
@@ -104,10 +107,10 @@
 \newpage
 \tableofcontents
 \listoffigures %elenco delle figure sarà da usare per ogni immagine
-\listoftables %lista delle tabelle presenti nel docuemnto
+\listoftables %lista delle tabelle presenti nel documento
 \newpage
 \begin{justify}
-    
+
 
 \section{Introduzione}
 
@@ -130,19 +133,19 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario v1.0.0}
 \begin{itemize}
     \item[-] Norme di Progetto v1.0.0\\
     \textcolor{blue}{\texttt{\url{linkdamettere.com}}}
-    
+
     \item[-] Regolamento del progetto didattico  \\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}}}
-    
+
 \end{itemize}
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item[-] Capitolato C4 - NearYou - 
+    \item[-] Capitolato C4 - NearYou -
 Smart custom advertising platform\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}
-    \item[-] Standard ISO/IEC 9126\\
+    \item[-] Standard ISO/IEC 9126 e 25010:2011 \label{ISO 9126 25010} \\
     \textcolor{blue}{\texttt{\url{https://en.wikipedia.org/wiki/ISO/IEC_9126}}}
-    \item[-] Standard ISO/IEC/IEEE 12207:1995\\
+    \item[-] Standard ISO/IEC/IEEE 12207:1995 \label{ISO 12207:1995}\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}}}
     \item[-] Qualità di prodotto\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T07.pdf}}}
@@ -152,38 +155,24 @@ Smart custom advertising platform\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T09.pdf}}}\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T10.pdf}}}\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T11.pdf}}}
-    
-    
+
+
 
 \end{itemize}
+\newpage
 
 \section{Obiettivi metrici di qualità}
-\subsection{Qualità di processo}
-
-
-\subsubsection{Processi Primari}
-\paragraph{Analisi dei requisiti}\mbox{}\\
-\paragraph{Progettazione}\mbox{}\\
-\paragraph{Fornitura}\mbox{}\\
-\paragraph{Codifica}\mbox{}\\
-
-
-\subsubsection{Processi di Supporto}
-\paragraph{Documentazione}\mbox{}\\
-\paragraph{Verifica}\mbox{}\\
-\paragraph{Gestione della qualità}\mbox{}\\
-
-
-\subsubsection{Processi Organizzativi}
-\paragraph{Pianificazione}\mbox{}\\
+Per far sì che un prodotto raggiunga uno standard qualitativo, è necessario definire delle metriche precise che permettano di monitorare e indicare il grado di qualità del prodotto e che quindi permettano di definire questo standard.
+Queste metriche vengono definite nel documento \textit{Norme di Progetto v1.0.0}.
+Questa sezione si occuperà di definire i parametri di queste metriche, queste metriche potranno essere accettabili o ottimali in base alla rigidità del parametro.\\
 
 \subsection{Qualità di prodotto}\label{qpd}
 La qualità di prodotto è intesa come valutazione del software. Più precisamente per la determinazione del grado di conformità alle attese.\\
 Si rivolge l'attenzione su aspetti come Usabilità, Affidabilità e Manutenibilità, ma più in generale alla qualità esterna (funzionale) ed interna (strutturale) del prodotto software.\\
 Quindi non basta che il software implementi le funzionalità volute dal proponente, ma le esegua secondo specifici standard di qualità.\\
-In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per la qualità del prodotto software.
+In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126 25010]{standard ISO/IEC 25010} che il gruppo si impegna a soddisfare per la qualità del prodotto software.
 \subsubsection{Funzionalità}
-\begin{table}[!h]
+\begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -191,7 +180,9 @@ In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per l
   \hline
   & Requisiti Obbligatori Soddisfatti & 100\% & 100\%\\
   \hline
-  & Requisiti Opzionali Soddisfatti & $\geq$0\% & ? \\
+  & Requisiti desiderabili soddisfatti  & $\geq$0\% & 100\% \\
+  \hline
+  & Requisiti Opzionali Soddisfatti & $\geq$0\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Funzionalità - Qualità di prodotto}
@@ -199,13 +190,23 @@ In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per l
 \end{table}
 
 \subsubsection{Affidabilità}
-\begin{table}[!h]
+\begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Test Passati & $\geq$80\% & 100\%\\
+  & Code coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Statement coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Branch coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Condition coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
+  \hline
+  & Correttezza ortografica & 0 errori & 0 errori \\
   \hline
 \end{tabular}
 \caption{Affidabilità - Qualità di prodotto}
@@ -213,11 +214,15 @@ In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per l
 \end{table}
 
 \subsubsection{Efficienza}
-\begin{table}[!h]
+\begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Utilizzo risorse & $\geq$80\% & 100\% \\
+  \hline
+  & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
   \hline
 \end{tabular}
 \caption{Efficienza - Qualità di prodotto}
@@ -225,11 +230,15 @@ In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per l
 \end{table}
 
 \subsubsection{Usabilità}
-\begin{table}[!h]
+\begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Facilità utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
+  \hline
+  & Tempo medio apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
   \hline
 \end{tabular}
 \caption{Usabilità - Qualità di prodotto}
@@ -237,11 +246,21 @@ In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per l
 \end{table}
 
 \subsubsection{Manutenibilità}
-\begin{table}[!h]
+\begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Complessità ciclomatica & $\geq$20 & $\geq$10 \\
+  \hline
+  & Coefficente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
+  \hline
+  & Linee di codice per metodo & $\geq$50 & $\geq$25 \\
+  \hline
+  & Parametri per metodo & $\geq$7 & $\geq$4 \\
+  \hline
+  & Attributi per classe & $\geq$7 & $\geq$5 \\
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -249,11 +268,13 @@ In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per l
 \end{table}
 
 \subsubsection{Portabilità}
-\begin{table}[!h]
+\begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Versioni browser supportati & $\geq$80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Portabilità - Qualità di prodotto}
@@ -261,12 +282,222 @@ In seguito sono presenti le metriche che il gruppo si impegna a soddisfare per l
 \end{table}
 
 
+\subsection{Qualità di processo}
+La qualità di processo è intesa come valutazione delle attività svolte per la realizzazione del prodotto.\\
+Seguendo delle buone pratiche e delle linee guida nello sviluppo software, si può garantire che il prodotto finale avrà rispettato a sua volta degli standard qualitativi rendendolo così un prodotto di qualità.\\
+Qui sotto divideremo le metriche di qualità di processo seguendo lo \hyperref[ISO 12207:1995]{standard ISO/IEC 12207:1995} in tre categorie: Processi primari, Processi di supporto e Processi organizzativi.\\
+\subsubsection{Processi Primari}
+I processi primari si possono dividere in parti primarie e una parte primaria è quella che inizia o esegue lo sviluppo, l'operazione o la manutenzione di prodotti software.\\
+
+\newpage
+
+\paragraph{Analisi dei requisiti}\mbox{}\\
+L'analisi dei requisiti è il processo che si occupa di raccogliere, analizzare e definire i requisiti del sistema che si intende sviluppare.\\
+Serve per capire le esigenze degli stakeholder e tradurle in requisiti dettagliati e comprensibili per il team di sviluppo.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Requisiti Obbligatori Soddisfatti & 100\% & 100\%\\
+  \hline
+  & Requisiti desiderabili soddisfatti  & $\geq$0\% & 100\% \\
+  \hline
+  & Requisiti Opzionali Soddisfatti & $\geq$0\% & 100\% \\
+  \hline
+\end{tabular}
+\caption{Processi primari - Analisi dei requisiti}
+\label{tab:analisi dei requisiti}
+\end{table}
+\paragraph{Progettazione}\mbox{}\\
+La progettazione è il processo che si occupa di definire l'architettura del sistema.\\
+Serve per definire come il sistema sarà implementato e come le varie parti del sistema interagiranno tra di loro.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Coefficente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
+  \hline
+  & Facilità utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
+  \hline
+  & Tempo medio apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
+  \hline
+\end{tabular}
+\caption{Processi primari - Progettazione}
+\label{tab:progettazione}
+\end{table}
+
+\paragraph{Fornitura}\mbox{}\\
+La fornitura è il processo che si occupa di consegnare il prodotto software al cliente.\\
+Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi definiti con il cliente.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|p{1.5cm}|p{5cm}|p{4cm}|p{5cm}|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Estimated at completion (EAC) & \textpm5\% rispetto al preventivo & Come dichiarato da preventivo\\
+  \hline
+  & Estimate to complete (ETC) & $\geq$0\% & $\leq$EAC\(_G\) \\
+  \hline
+  & Actual cost (AC) & $\geq$0 & $\leq$EAC\(_G\) \\
+  \hline
+  & Earned value (EV) & $\geq$0 & $\leq$EAC\(_G\) \\
+  \hline
+  & Planned value (PV) & $\geq$0 & $\leq$ Budget at completion (BAC)\(_G\) \\
+  \hline
+\end{tabular}
+\caption{Processi primari - Fornitura}
+\label{tab:fornitura}
+\end{table}
+
+\newpage
+
+\paragraph{Codifica}\mbox{}\\
+La codifica è il processo riguardante la scrittura del codice del prodotto software.\\
+Serve per implementare le funzionalità del software e garantire che il software rispetti gli standard di qualità.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
+  \hline
+  & Parametri per metodo & $\leq$7 & $\leq$4 \\
+  \hline
+  & Attributi per classe & $\leq$7 & $\leq$5 \\
+  \hline
+  & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
+  \hline
+  & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
+  \hline
+  & Versioni browser supportati & $\geq$80\% & 100\% \\
+  \hline
+\end{tabular}
+\caption{Processi primari - Codifica}
+\label{tab:codifica}
+\end{table}
+
+
+\subsubsection{Processi di Supporto}
+Un processo di supporto è un processo che supporta un altro processo come parte integrante con uno scopo distinto e contribuisce al successo e alla qualità del progetto software.\\
+Un processo di supporto è impiegato ed eseguito, se necessario, da un altro processo.\\
+\paragraph{Documentazione}\mbox{}\\
+La documentazione è essenziale per la comprensione del prodotto e per la sua manutenzione.\\
+Di conseguenza è essenziale che questa sia chiara, comprensibile e corretta.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
+  \hline
+  & Correttezza ortografica & 0 errori & 0 errori \\
+  \hline
+\end{tabular}
+\caption{Processi di supporto - Documentazione}
+\label{tab:documentazione}
+\end{table}
+
+\paragraph{Verifica}\mbox{}\\
+La verifica serve a garantire che il prodotto software sia conforme alle specifiche e non contenga errori.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Code coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Statement coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Branch coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Condition coverage & $\geq$80\% & 100\% \\
+  \hline
+  & Passed test cases percentage & $\geq$80\% & 100\% \\
+  \hline
+\end{tabular}
+\caption{Processi di supporto - Verifica}
+\label{tab:verifica}
+\end{table}
+
+\newpage
+
+\paragraph{Gestione della qualità}\mbox{}\\
+La gestione della qualità è necessaria per garantire che tutte le metriche di qualità vengano effettivamente soddisfatte.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Metriche di qualità soddisfate & $\geq$85\% & 100\% \\
+  \hline
+\end{tabular}
+\caption{Processi di supporto - Gestione della qualità}
+\label{tab:gestione della qualità}
+\end{table}
+
+\subsubsection{Processi Organizzativi}
+I processi organizzativi servono per creare un sottostruttura per il ciclo di vita e
+per garantire che i processi principali e i loro processi di supporto siano ben strutturati e vengano continuamente migliorati.\\
+\paragraph{Gestione dei processi}\mbox{}\\
+La gestione dei processi indica come vengono gestiti i processi all'interno del progetto.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Rischi non previsti & $\geq$3 & 0 \\
+  \hline
+  & Efficienza temporale & $\geq$3 & $\geq$1 \\
+  \hline
+\end{tabular}
+\caption{Processi organizzativi - Gestione dei processi}
+\label{tab:gestione dei processi}
+\end{table}
+\paragraph{Pianificazione}\mbox{}\\
+La pianificazione è un indispensabile per far si che che i parametri rientrino siano i più vicini possibili a quelli del preventivo.\\
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  & Schedule variance (CV) & $\geq$ -10\% & $\geq$0\% \\
+  \hline
+  & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
+  \hline
+\end{tabular}
+\caption{Processi organizzativi - Pianificazione}
+\label{tab:pianificazione}
+\end{table}
 
 \section{Modalità di Testing}
+Qui sotto sono elencati i vari test che vengono eseguiti automaticamente sul prodotto software.\\
+Questo serve a garantire che il prodotto soddisfi i requisiti e le aspettative indicate nel documento \textit{Analisi dei requisiti v1.0.0}.\\
+I test sono divisi in quattro categorie: Test di unità, Test di sistema, Test di integrazione e Test di accettazione.\\
+E per indicare lo stato come indicato in \textit{Norme di progetto v1.0.0} vengono utilizzate le seguenti abbreviazioni:
+\begin{itemize}
+\item \textbf{P}: Passato
+\item \textbf{NP}: Non Passato
+\item \textbf{NI}: Non Implementato
+\end{itemize}
 \subsection{Test di unità}
+I test di unità servono a verificare che ogni singola unità del software funzioni correttamente.\\
 \subsection{Test di sistema}
+I test di sistema servono a verificare che il sistema software funzioni correttamente.\\
 \subsection{Test di integrazione}
-\subsection{Tesr di accettazione}
+I test di integrazione servono a verificare che le varie parti del software funzionino correttamente insieme.\\
+\subsection{Test di accettazione}
+I test di accettazione servono a verificare che il prodotto soddisfi i requisiti del proponente.\\
 
 
 \section{Cruscotto di valutazione delle qualità}

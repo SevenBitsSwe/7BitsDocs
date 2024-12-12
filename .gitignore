@@ -4,4 +4,7 @@
 *.toc
 *.synctex.gz
 *.out
+*.lof
+*.lot
 .DS_Store
+RTB/images
