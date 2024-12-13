@@ -82,6 +82,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
+0.2.7 & 2024-12-13 & Alfredo Rubino & Manuel Gusella & Aggiunta e correzione di alcuni termini\\
+\hline
 0.2.6 & 2024-12-11 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
 \hline
 0.2.5 & 2024-12-04 & Manuel Gusella & Giovanni Cristellon & Aggiunta di framework, feedback e proponente\\
@@ -137,9 +139,11 @@ Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tab
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-Analisi dei Requisiti & Processo fondamentale dello sviluppo di un prodotto software, durante il quale vengono identificati e definiti in dettaglio i requisiti che il sistema deve soddisfare.\newline È molto importante questa analisi per assicurarsi che i requisiti individuatisiano completi e corretti, riducendo così possibili errori nelle fasi successive del progetto.\\
+Analisi dei Requisiti & Processo fondamentale nello sviluppo di un prodotto software, durante il quale vengono identificati e definiti in dettaglio i requisiti che il sistema deve soddisfare. Sebbene non definisca soluzioni tecniche specifiche, tiene conto della fattibilità tecnologica per garantire che i requisiti siano realizzabili. Questo processo è essenziale per ridurre errori nelle fasi successive e per assicurare che il prodotto finale soddisfi le aspettative del proponente.\\
 \hline
 Agile & Insieme di principi e metodologie per la gestione e lo sviluppo di progetti, focalizzato sull'adattabilità e la collaborazione. Basato sul Manifesto Agile, enfatizza la flessibilità nei processi, il coinvolgimento continuo degli stakeholder e la capacità di rispondere rapidamente ai cambiamenti, garantendo prodotti di alta qualità e una soddisfazione costante del cliente.\\
+\hline
+API &Acronimo di Application Programming Interface, è un insieme di regole e protocolli che consente a diversi software di comunicare e interagire tra loro. Agisce come un ponte, definendo metodi e strutture dati standardizzati per lo scambio di informazioni e funzionalità. Le API permettono alle applicazioni di collaborare in modo efficiente, facilitando l'integrazione e la connessione tra sistemi diversi.\\
 \hline
 Attore & Entità esterna al sistema che interagisce con esso per raggiungere un scopo specifico. Gli attori possono essere principali (comunica attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi).\\
 \hline
@@ -152,6 +156,8 @@ Attore & Entità esterna al sistema che interagisce con esso per raggiungere un 
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+BAC & Budget At Completion, è il budget complessivo preventivato all'inizio di un progetto, che rappresenta il costo totale stimato per completare tutte le attività e consegnare il prodotto finale.\\
 \hline
 Baseline & Versione approvata di un prodotto di lavoro che può essere modificato solo attraverso delle procedure formali. Una baseline funge da punto di riferimento per monitorare e confrontare i progressi o le modifiche del progetto nel tempo.\\
 \hline
@@ -179,7 +185,13 @@ Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla su
 \hline
 ClickHouse & Database open-source progettato per l'elaborazione rapida e scalabile di grandi quantità di dati. Utilizza un'architettura column-oriented, ottimizzata per query analitiche ad alta velocità e compressione efficiente dei dati. Questo lo rende ideale per applicazioni che richiedono analisi in tempo reale su grandi dataset.\\
 \hline
+Committente & Parte esterna che assegna l'esecuzione di un progetto a un esecutore, definendo i termini contrattuali e le condizioni relative alla sua realizzazione. Nel nostro caso, il prof. Vardanega.\\
+\hline
+Container & Unità di software che include un'applicazione e tutte le sue dipendenze, come file di sistema, librerie e configurazioni, per eseguirla in un ambiente isolato e autonomo. Nel contesto di strumenti come Docker, i container garantiscono portabilità e consistenza, permettendo all'applicazione di funzionare in modo uniforme su diversi sistemi e piattaforme.\\
+\hline
 Cruscotto & Traduzione italiana del termine inglese "Dashboard".\\
+\hline
+Continuous Integration & Abbreviata come CI, è una pratica di sviluppo software che prevede l'integrazione frequente e automatica delle modifiche al codice sorgente in un repository condiviso. Ogni modifica viene validata attraverso test automatici per garantire la stabilità e l'integrità del software.La CI consente di identificare e risolvere rapidamente conflitti o errori di integrazione, riducendo il rischio di difetti nel prodotto finale.\\
 \hline
  & \\
 \hline
@@ -192,6 +204,10 @@ Cruscotto & Traduzione italiana del termine inglese "Dashboard".\\
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
 Dashboard & Interfaccia utente grafica che raccoglie e presenta in modo chiaro e sintetico le informazioni più rilevanti per un utente o un processo specifico. La Dashboard fornisce una panoramica rapida delle metriche e delle prestazioni, utilizzando vari elementi visivi come grafici, tabelle e indicatori.\\
+\hline
+Database & Sistema organizzato per raccogliere e gestire dati strutturati, con l'obiettivo di consentire un accesso, e un'elaborazione efficienti. Grazie alla sua struttura, un database facilita la gestione di grandi quantità di informazioni, rendendole facilmente recuperabili e utilizzabili per vari scopi dagli utenti.\\
+\hline
+DBMS & Acronimo di DataBase Management System, è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro.\\
 \hline
 Documentazione & Insieme di documenti, manuali e guide che descrivono un prodotto, un sistema o un processo. Ha lo scopo di fornire istruzioni, spiegazioni e dettagli utili per l'uso, la manutenzione e lo sviluppo di un prodotto.\\
 \hline
@@ -207,9 +223,13 @@ Docker & Piattaforma che consente di creare, distribuire e eseguire applicazioni
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
+EAC & Acronimo di Estimated at Completion, è un termine utilizzato nella gestione dei progetti per stimare il costo totale che sarà necessario per il completamento. Viene calcolato durante il corso del progetto per fornire una previsione aggiornata dei costi, tenendo conto delle performance reali rispetto a quanto pianificato inizialmente. Questo valore aiuta il team a monitorare il progresso del progetto e a prendere decisioni ponderate riguardo alla gestione del budget e alle risorse necessarie.\\
+\hline
 Efficacia & Misura la capacità di raggiungere un obiettivo o un risultato desiderato, indipendentemente dalle risorse utilizzate.\\
 \hline
 Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato desiderato, impiegando le risorse minime indispensabili.\\
+\hline
+ETC & Acronimo di Estimate to Complete, è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. L'ETC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento.\\
 \hline
  & \\
 \hline
@@ -220,6 +240,8 @@ Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato des
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
+\hline
+Faker & Libreria Python progettata per generare dati falsi in modo casuale, come ad esempio nomi, indirizzi, numeri di telefono e altre informazioni. Viene utilizzata per creare set di dati che simulano la struttura e la variabilità dei dati reali, evitando l'uso di informazioni sensibili durante lo sviluppo e il testing del software.\\
 \hline
 Framework & Architettura logica di supporto sulla quale un software può essere progettato e realizzato.\\
 \hline
