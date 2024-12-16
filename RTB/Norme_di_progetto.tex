@@ -16,7 +16,7 @@
 \usepackage{titlesec}
 \usepackage{float}
 
-\newcommand\version{0.4.3} %aggiunta versione come variabile
+\newcommand\version{0.5.0} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -104,6 +104,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+    \hline
+    0.5.0 & 2024-12-16 & Alfredo Rubino & Manuel Gusella & Aggiunta sezione "Metriche per la qualità" e inizio stesura\\
     \hline
     0.4.3 & 2024-12-11 & Federico Pivetta & Manuel Gusella & Completata sottosezione "Gestione dei processi"\\
     \hline
@@ -930,10 +932,168 @@ Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il 
             \item Non-repudiation - rappresenta la capacità di garantire che un'azione non possa essere negata;
         \end{itemize}
 
+\newpage
+
 \section{Metriche per la qualità}
 
-        
-        
+\subsection{Metriche di Qualità del Prodotto}
+L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche di qualità del Prodotto}.
+
+\subsubsection{Funzionalità}
+\begin{itemize}
+    \item \textbf{MPD01 - Requisiti Obbligatori Soddisfatti (ROS)}:
+    \[
+    ROS = \frac{ROC}{TRO} \cdot 100
+    \]
+    Dove:
+    \begin{itemize}
+        \item $ROC$: requisiti obbligatori coperti;
+        \item $TRO$: requisiti obbligatori totali.
+    \end{itemize}
+    \item \textbf{MPD02 - Requisiti Desiderabili Soddisfatti (RDS)}:
+    \[
+    RDS = \frac{RDC}{TRD} \cdot 100
+    \]
+    Dove:
+    \begin{itemize}
+        \item $RDC$: requisiti desiderabili coperti;
+        \item $TRD$: requisiti desiderabili totali.
+    \end{itemize}
+    \item \textbf{MPD03 - Requisiti Opzionali Soddisfatti (RPS)}:
+    \[
+    RPS = \frac{RPC}{TRP} \cdot 100
+    \]
+    Dove:
+    \begin{itemize}
+        \item $RPC$: requisiti opzionali coperti;
+        \item $TRP$: requisiti opzionali totali.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Affidabilità}
+\begin{itemize}
+    \item \textbf{MPD04 - Code Coverage}: percentuale di codice testato.
+    \item \textbf{MPD05 - Statement Coverage}: percentuale di istruzioni eseguite durante i test.
+    \item \textbf{MPD06 - Branch Coverage}: percentuale di rami decisionali testati.
+    \item \textbf{MPD07 - Condition coverage}: .
+    \item \textbf{MPD08 - Indice Gulpease}: .
+    \item \textbf{MPD09 - Correttezza ortografica}: .
+\end{itemize}
+
+\subsubsection{Efficienza}
+\begin{itemize}
+    \item \textbf{MPD10 - Utilizzo Risorse}: efficienza nell'uso delle risorse.
+    \item \textbf{MPD11 - Tempo medio di risposta}: .
+\end{itemize}
+
+\subsubsection{Usabilità}
+\begin{itemize}
+    \item \textbf{MPD12 - Facilità di utilizzo}: facilità con cui gli utenti possono utilizzare il sistema.
+    \item \textbf{MPD13 - Tempo medio di apprendimento}: tempo necessario agli utenti per apprendere l'uso del sistema.
+\end{itemize}
+
+\subsubsection{Manutenibilità}
+\begin{itemize}
+    \item \textbf{MPD14 - Complessità ciclomatica}: misura della complessità del codice.
+    \item \textbf{MPD15 - Coefficiente di accoppiamento fra classi}: .
+    \item \textbf{MPD16 - Linee di codice per metodo}: .
+    \item \textbf{MPD17 - Parametri per metodo}: .
+    \item \textbf{MPD18 - Attributi per classe}: .
+\end{itemize}
+
+\subsubsection{Portabilità}
+\begin{itemize}
+    \item \textbf{MPD19 - Versioni browser supportati}: .
+\end{itemize}
+
+\subsection{Qualità di Processo}
+L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche di qualità del Processo}.
+
+\subsubsection{Processi Primari}
+\paragraph{Analisi dei requisiti}
+\begin{itemize}
+    \item \textbf{MPC01 - Requisiti Obbligatori Soddisfatti (ROS)}: .
+    \item \textbf{MPC02 - Requisiti Desiderabili Soddisfatti (RDS)}: .
+    \item \textbf{MPC03 - Requisiti Opzionali Soddisfatti (RPS)}: .
+\end{itemize}
+
+\paragraph{Progettazione}
+\begin{itemize}
+    \item \textbf{MPC04 - Coefficiente di accoppiamento fra classi}: .
+    \item \textbf{MPC05 - Facilità di utilizzo}: .
+    \item \textbf{MPC06 - Tempo medio di apprendimento}: .
+\end{itemize}
+
+\paragraph{Fornitura}
+\begin{itemize}
+    \item \textbf{MPC07 - Estimated at Completion (EAC)}: stima il costo totale del progetto basandosi sul rendimento attuale:
+    \[
+    EAC = AC + ETC
+    \]
+    \item \textbf{MPC08 - Estimate to Complete (ETC)}: stima dei costi rimanenti per completare il progetto:
+    \[
+    ETC = BAC - EV
+    \]
+    \item \textbf{MPC09 - Actual Cost (AC)}: indica il costo effettivamente sostenuto per completare il lavoro fino a un certo momento.
+    \item \textbf{MPC10 - Earned Value (EV)}: misura il valore del lavoro effettivamente completato rispetto al valore pianificato.
+    \item \textbf{MPC11 - Planned Value (PV)}: rappresenta il valore pianificato del lavoro da completare in un determinato momento.
+\end{itemize}
+
+\paragraph{Codifica}
+\begin{itemize}
+    \item \textbf{MPC12 - Complessità ciclomatica}: misura della complessità del codice.
+    \item \textbf{MPC13 - Parametri per metodo}: .
+    \item \textbf{MPC14 - Attributi per classe}: .
+    \item \textbf{MPC15 - Linee di codice per metodo}: .
+    \item \textbf{MPC16 - Tempo medio di risposta}: .
+    \item \textbf{MPC17 - Versioni browser supportati}: .
+\end{itemize}
+
+\subsubsection{Processi di Supporto}
+\paragraph{Documentazione}
+\begin{itemize}
+    \item \textbf{MPC18 - Indice Gulpease}: misura la leggibilità di un documento in italiano:
+    \[
+    IG = 89 + \frac{300 \cdot N_f - 10 \cdot N_l}{N_p}
+    \]
+    Dove:
+    \begin{itemize}
+        \item $N_f$: numero di frasi;
+        \item $N_l$: numero di lettere;
+        \item $N_p$: numero di parole.
+    \end{itemize}
+    \item \textbf{MPC19 - Correttezza ortografica}: numero di errori ortografici in un documento.
+\end{itemize}
+
+\paragraph{Verifica}
+\begin{itemize}
+    \item \textbf{MPC20 - Code coverage}: percentuale di codice testato.
+    \item \textbf{MPC21 - Statement coverage}: .
+    \item \textbf{MPC22 - Branch coverage}: .
+    \item \textbf{MPC23 - Condition coverage}: .
+    \item \textbf{MPC24 - Passed test cases percentage}: percentuale di test superati.
+\end{itemize}
+
+\paragraph{Gestione della Qualità}
+\begin{itemize}
+    \item \textbf{MPC25 - Metriche di qualità soddisfatte}: grado di soddisfacimento delle metriche di qualità stabilite.
+\end{itemize}
+
+\subsubsection{Processi Organizzativi}
+\paragraph{Gestione dei Processi}
+\begin{itemize}
+    \item \textbf{MPC26 - Rischi non previsti}: monitoraggio dei rischi non inclusi nelle stime.
+    \item \textbf{MPC27 - Efficienza Temporale (ET)}: rapporto tra ore produttive ($O_p$) e ore totali ($O_o$):
+    \[
+    ET = \frac{O_p}{O_o}
+    \]
+\end{itemize}
+
+\paragraph{Pianificazione}
+\begin{itemize}
+    \item \textbf{MPC28 - Schedule variance (SV)}: .
+    \item \textbf{MPC29 - Cost variance (CV)}: .
+\end{itemize}
 
 \end{justify}
 \end{document}
