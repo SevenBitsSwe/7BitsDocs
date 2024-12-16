@@ -31,7 +31,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ PIANO DI QUALIFICA v0.1.0}
+\rhead{\textcolor[HTML]{9e978a}{ PIANO DI QUALIFICA v0.3.2}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -95,6 +95,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.3.2 & 2024-12-16 & Alfredo Rubino & Manuel Gusella & Aggiunta acronimi metriche e correzioni minori\\
 \hline
 0.3.1 & 2024-12-13 & Riccardo Piva & Alfredo Rubino & Correzione standard IEEE \\
 \hline
@@ -180,11 +182,11 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Requisiti Obbligatori Soddisfatti & 100\% & 100\%\\
+  MPD01 & Requisiti Obbligatori Soddisfatti & 100\% & 100\%\\
   \hline
-  & Requisiti desiderabili soddisfatti  & $\geq$0\% & 100\% \\
+  MPD02 & Requisiti Desiderabili Soddisfatti  & $\geq$0\% & 100\% \\
   \hline
-  & Requisiti Opzionali Soddisfatti & $\geq$0\% & 100\% \\
+  MPD03 & Requisiti Opzionali Soddisfatti & $\geq$0\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Funzionalità - Qualità di prodotto}
@@ -198,17 +200,17 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Code coverage & $\geq$80\% & 100\% \\
+  MPD04 & Code coverage & $\geq$80\% & 100\% \\
   \hline
-  & Statement coverage & $\geq$80\% & 100\% \\
+  MPD05 & Statement coverage & $\geq$80\% & 100\% \\
   \hline
-  & Branch coverage & $\geq$80\% & 100\% \\
+  MPD06 & Branch coverage & $\geq$80\% & 100\% \\
   \hline
-  & Condition coverage & $\geq$80\% & 100\% \\
+  MPD07 & Condition coverage & $\geq$80\% & 100\% \\
   \hline
-  & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
+  MPD08 & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
   \hline
-  & Correttezza ortografica & 0 errori & 0 errori \\
+  MPD09 & Correttezza ortografica & 0 errori & 0 errori \\
   \hline
 \end{tabular}
 \caption{Affidabilità - Qualità di prodotto}
@@ -222,9 +224,9 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Utilizzo risorse & $\geq$80\% & 100\% \\
+  MPD10 & Utilizzo risorse & $\geq$80\% & 100\% \\
   \hline
-  & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
+  MPD11 & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
   \hline
 \end{tabular}
 \caption{Efficienza - Qualità di prodotto}
@@ -238,9 +240,9 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Facilità utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
+  MPD12 & Facilità di utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
   \hline
-  & Tempo medio apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
+  MPD13 & Tempo medio di apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
   \hline
 \end{tabular}
 \caption{Usabilità - Qualità di prodotto}
@@ -254,15 +256,15 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Complessità ciclomatica & $\geq$20 & $\geq$10 \\
+  MPD14 & Complessità ciclomatica & $\geq$20 & $\geq$10 \\
   \hline
-  & Coefficente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
+  MPD15 & Coefficiente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
   \hline
-  & Linee di codice per metodo & $\geq$50 & $\geq$25 \\
+  MPD16 & Linee di codice per metodo & $\geq$50 & $\geq$25 \\
   \hline
-  & Parametri per metodo & $\geq$7 & $\geq$4 \\
+  MPD17 & Parametri per metodo & $\geq$7 & $\geq$4 \\
   \hline
-  & Attributi per classe & $\geq$7 & $\geq$5 \\
+  MPD18 & Attributi per classe & $\geq$7 & $\geq$5 \\
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -276,7 +278,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Versioni browser supportati & $\geq$80\% & 100\% \\
+  MPD19 & Versioni browser supportati & $\geq$80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Portabilità - Qualità di prodotto}
@@ -302,11 +304,11 @@ Serve per capire le esigenze degli stakeholder e tradurle in requisiti dettaglia
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Requisiti Obbligatori Soddisfatti & 100\% & 100\%\\
+  MPC01 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
   \hline
-  & Requisiti desiderabili soddisfatti  & $\geq$0\% & 100\% \\
+  MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
   \hline
-  & Requisiti Opzionali Soddisfatti & $\geq$0\% & 100\% \\
+  MPC03 & Requisiti Opzionali Soddisfatti (RPS) & $\geq$0\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi primari - Analisi dei requisiti}
@@ -321,11 +323,11 @@ Serve per definire come il sistema sarà implementato e come le varie parti del 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Coefficente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
+  MPC04 & Coefficiente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
   \hline
-  & Facilità utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
+  MPC05 & Facilità di utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
   \hline
-  & Tempo medio apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
+  MPC06 & Tempo medio di apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
   \hline
 \end{tabular}
 \caption{Processi primari - Progettazione}
@@ -341,15 +343,15 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Estimated at completion (EAC) & \textpm5\% rispetto al preventivo & Come dichiarato da preventivo\\
+  MPC07 & Estimated at completion (EAC) & \textpm5\% rispetto al preventivo & Come dichiarato da preventivo\\
   \hline
-  & Estimate to complete (ETC) & $\geq$0\% & $\leq$EAC\(_G\) \\
+  MPC08 & Estimate to complete (ETC) & $\geq$0\% & $\leq$EAC\(_G\) \\
   \hline
-  & Actual cost (AC) & $\geq$0 & $\leq$EAC\(_G\) \\
+  MPC09 & Actual cost (AC) & $\geq$0 & $\leq$EAC\(_G\) \\
   \hline
-  & Earned value (EV) & $\geq$0 & $\leq$EAC\(_G\) \\
+  MPC10 & Earned value (EV) & $\geq$0 & $\leq$EAC\(_G\) \\
   \hline
-  & Planned value (PV) & $\geq$0 & $\leq$ Budget at completion (BAC)\(_G\) \\
+  MPC11 & Planned value (PV) & $\geq$0 & $\leq$ Budget at completion (BAC)\(_G\) \\
   \hline
 \end{tabular}
 \caption{Processi primari - Fornitura}
@@ -367,17 +369,17 @@ Serve per implementare le funzionalità del software e garantire che il software
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
+  MPC12 & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
   \hline
-  & Parametri per metodo & $\leq$7 & $\leq$4 \\
+  MPC13 & Parametri per metodo & $\leq$7 & $\leq$4 \\
   \hline
-  & Attributi per classe & $\leq$7 & $\leq$5 \\
+  MPC14 & Attributi per classe & $\leq$7 & $\leq$5 \\
   \hline
-  & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
+  MPC15 & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
   \hline
-  & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
+  MPC16 & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
   \hline
-  & Versioni browser supportati & $\geq$80\% & 100\% \\
+  MPC17 & Versioni browser supportati & $\geq$80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi primari - Codifica}
@@ -397,9 +399,9 @@ Di conseguenza è essenziale che questa sia chiara, comprensibile e corretta.\\
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
+  MPC18 & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
   \hline
-  & Correttezza ortografica & 0 errori & 0 errori \\
+  MPC19 & Correttezza ortografica & 0 errori & 0 errori \\
   \hline
 \end{tabular}
 \caption{Processi di supporto - Documentazione}
@@ -414,15 +416,15 @@ La verifica serve a garantire che il prodotto software sia conforme alle specifi
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Code coverage & $\geq$80\% & 100\% \\
+  MPC20 & Code coverage & $\geq$80\% & 100\% \\
   \hline
-  & Statement coverage & $\geq$80\% & 100\% \\
+  MPC21 & Statement coverage & $\geq$80\% & 100\% \\
   \hline
-  & Branch coverage & $\geq$80\% & 100\% \\
+  MPC22 & Branch coverage & $\geq$80\% & 100\% \\
   \hline
-  & Condition coverage & $\geq$80\% & 100\% \\
+  MPC23 & Condition coverage & $\geq$80\% & 100\% \\
   \hline
-  & Passed test cases percentage & $\geq$80\% & 100\% \\
+  MPC24 & Passed test cases percentage & $\geq$80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi di supporto - Verifica}
@@ -439,7 +441,7 @@ La gestione della qualità è necessaria per garantire che tutte le metriche di 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Metriche di qualità soddisfate & $\geq$85\% & 100\% \\
+  MPC25 & Metriche di qualità soddisfate & $\geq$85\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi di supporto - Gestione della qualità}
@@ -457,9 +459,9 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Rischi non previsti & $\geq$3 & 0 \\
+  MPC26 & Rischi non previsti & $\geq$3 & 0 \\
   \hline
-  & Efficienza temporale & $\geq$3 & $\geq$1 \\
+  MPC27 & Efficienza temporale (ET) & $\geq$3 & $\geq$1 \\
   \hline
 \end{tabular}
 \caption{Processi organizzativi - Gestione dei processi}
@@ -473,9 +475,9 @@ La pianificazione è un indispensabile per far si che che i parametri rientrino 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  & Schedule variance (CV) & $\geq$ -10\% & $\geq$0\% \\
+  MPC28 & Schedule variance (SV) & $\geq$ -10\% & $\geq$0\% \\
   \hline
-  & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
+  MPC29 & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
   \hline
 \end{tabular}
 \caption{Processi organizzativi - Pianificazione}
