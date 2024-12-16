@@ -16,7 +16,7 @@
 \usepackage{titlesec}
 \usepackage{float}
 
-\newcommand\version{0.5.0} %aggiunta versione come variabile
+\newcommand\version{0.5.1} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -104,6 +104,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+    \hline
+    0.5.1 & 2024-12-16 & Manuel Gusella & Alfredo Rubino & Stesura iniziale della sottosezione \hyperref[verifica]{Verifica}\\
     \hline
     0.5.0 & 2024-12-16 & Alfredo Rubino & Manuel Gusella & Aggiunta sezione "Metriche per la qualità" e inizio stesura\\
     \hline
@@ -658,6 +660,31 @@
         \item \textbf{\LaTeX}: Linguaggio scelto per la redazione dei documenti, spesso utilizzato in ambito accademico, scientifico e tecnico;
         \item \textbf{Overleaf}: Servizio utilizzato dal gruppo per la creazione e modifica sincrona da parte di due o più componenti di file .tex usati per produrre documentazione;
     \end{itemize}
+
+    \subsection{Gestione della configurazione}
+
+    \subsection{Verifica}
+    \label{verifica}
+    \subsubsection{Descrizione}
+    La verifica è un processo essenziale che deve essere applicato a tutti gli altri processi per poterli considerare completati. Il suo scopo principale è quello di assicurarsi che i prodotti siano corretti ed aderiscano ai vincoli individuati ed elencati nel documento \textit{Piano di Qualifica}. Le attività di verifica sono assegnate ai verificatori, che si impegnano a far rispettare i vincoli di qualità, presenti nel \textit{Piano di Qualifica}, correggendo e/o segnalando quando sono presenti modifiche non conformi agli standard.
+    \subsubsection{Strumenti}
+    Gli strumenti utilizzati per agevolare il processo di verifica sono i seguenti:
+    \paragraph{GitHub}
+    GitHub fornisce un servizio di review all'interno del meccanismo di PR, permettendo al verificatore di visualizzare le ultime modifiche. Il verificatore una volta verificato il documento può inserire commenti specifici, con all'interno correzioni o migliorie da apportare, inviando una richiesta di modifica nella PR o approvare la PR e procedere con la verifica di altri prodotti presenti in repository in attesa di verifica. La review di GitHub consente all'intero team di poter tracciare le modifiche effettuate all'interno della repository.\\
+    Possono essere assegnate regole alle PR di GitHub per accertarsi che avvenga la verifica di almeno 2 verificatori per poter effettuare la merge nel branch main.
+    
+    \subsubsection{Analisi statica}
+    Effettuata sul prodotto software o sulla documentazione senza dover eseguire il sistema software. Serve ad accertare la conformità a regole adottate, l'assenza di difett e la presenza di proprietà desiderate, garantendo un livello ottimale di qualità. Le due principali tecniche sono Inspection e Walkthrough. Il gruppo preferisce l'approccio ad Inspection, così da ridurre il tempo di verifica e poter lasciare concentrare l'autore sulla stesura di altri documenti o codice.
+    \paragraph{Inspection}
+    Il verificatore segue una sequenza di passaggi prestabiliti per verificare che si stiano rispettando le regole presenti nel \textit{Piano di Qualifica}
+    \paragraph{Walkthrough}
+    Il verificatore e l'autore del codice/documento da verificare discutono sulle modifiche da apportare. Questo processo richiede la presenza e la collaborazione di entrambi i ruoli.Viene effettuato un controllo ad ampio spettro dell'oggetto, senza avere un'idea precisa di cosa andare a verificare.
+    
+
+    \subsubsection{Analisi dinamica}
+    \subsubsection{Classificazione dei test}
+
+    \subsection{Gestione della qualità}
 
 \newpage
 \section{Processi organizzativi}
