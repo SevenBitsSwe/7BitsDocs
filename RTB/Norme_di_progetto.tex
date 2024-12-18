@@ -16,7 +16,7 @@
 \usepackage{titlesec}
 \usepackage{float}
 
-\newcommand\version{0.5.1} %aggiunta versione come variabile
+\newcommand\version{0.5.2} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -104,6 +104,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+    \hline
+    0.5.2 & 2024-12-18 & Manuel Gusella & Alfredo Rubino & Continuazione sottosezione \hyperref[verifica]{Verifica}\\
     \hline
     0.5.1 & 2024-12-16 & Manuel Gusella & Alfredo Rubino & Stesura iniziale della sottosezione \hyperref[verifica]{Verifica}\\
     \hline
@@ -682,7 +684,54 @@
     
 
     \subsubsection{Analisi dinamica}
+    Effettuata esclusivamente sul prodotto software tramite l'esecuzione effettiva di esso. L'analisi dinamica si divide in test. Ogni test è una esecuzione di un programma e provano il comportamento di singole parti di codice su un insieme finito di casi di prova.\\
+    Questa procedura misura la qualità del prodotto e assicura che esegua correttamente il suo scopo. I test effettuati devono essere ripetibili nel tempo per assicurare funzionamento persistente durante tutto lo svolgimento del prodotto software.
     \subsubsection{Classificazione dei test}
+    Tutti i test che verranno eseguiti sono presenti nel documento \textit{Piano di Qualifica} ed il Verificatore è tenuto ad eseguirli riportandone gli esiti all'interno del \textit{Piano di Qualifica}.\\
+    Ad ogni test devono essere attribuiti:
+    \begin{itemize}
+    \item \textbf{Stato iniziale}: Parametri del software al momento dell'esecuzione del test;
+    \item \textbf{Input}: dati forniti in entrata per l'esecuzione del test;
+    \item \textbf{Output}: risultati attesi in uscita dato uno specifico input.
+    \end{itemize}
+    Inoltre i test sono divisi in varie categorie:
+    \begin{itemize}
+    \item Test di unità;
+    \item Test di integrazione;
+    \item Test di sistema;
+    \item Test di regressione;
+    \item Test di accettazione.
+    \end{itemize}
+
+    \paragraph{Test di unità}
+    Test eseguiti su singole unità del software, come funzioni o metodi, in modo indipendente dal resto del sistema. L'obiettivo è assicurare che ogni unità di codice funzioni correttamente.Devono essere eseguiti per primi visto che le unità garantiscono il corretto funzionamento dei singoli metodi che poi verranno integrati tra di loro.\\
+    Sono presenti due tipi di test di unità:
+    \begin{itemize}
+    \item \textbf{Funzionale}: verificano che ogni unità esegue le funzione specificate nel design, facendo riferimento solo alla specifica input-output dell'oggetto di verifica;
+    \item \textbf{Strutturale}: verificano la logica interna dell'oggetto di verifica esaminando il codice sorgente dell'unità.
+    \end{itemize}
+
+    \paragraph{Test di integrazione}
+    Test eseguiti per controllare la corretta interazione tra le varie unità del software. Questo tipo di test vengono eseguiti dopo la conferma che tutti i test di unità sono passati con successo.\\
+    Vi sono due tipi di integrazione:
+    \begin{itemize}
+      \item \textbf{Bottom-up}: l'integrazione parte dalle componenti di sistema con minori dipendenze e un maggiore valore interno. Richiede pochi mock ma ritarda la messa a disposizione di funzionalità visibili all'utente.
+      \item \textbf{Top-down}: l'integrazione parte dalle componenti di sistema con maggiori dipendenze e un maggiore valore esterno. Richiede molti mock ma integra prima le funzionalità visibili all'utente.
+    \end{itemize}
+    
+    \paragraph{Test di sistema}
+    Test eseguiti per controllare che i requisiti specificati nell'Analisi dei requisiti siano rispettati, garantendo che tutte le componenti siano integrate correttamente.\\
+    L'obiettivo di questo test è di accertarsi che l'intero sistema lavori come entità unica, verificando che tutte le singole componenti funzionino insieme. Viene eseguita al completamento dei test di integrazione.
+
+    \paragraph{Test di regressione}
+    Garantiscono che le modifiche apportate al codice non introducano nuovi difetti o danneggino il sistema precedentemente funzionante.\\
+    Consiste nella ripetizione selettiva delle tipologie dei test elencati precedentemente e devono essere eseguiti ogni volta che si effettuano modifiche al codice.
+
+    \paragraph{Test di accettazione}
+    Test da passare prima del rilascio del software. Serve a garantire che il prodotto finale soddisfi le aspettative del proponente e degli utenti finali.
+
+    \paragraph{Classificazione dei test}
+    \paragraph{Stato dei test}
 
     \subsection{Gestione della qualità}
 
