@@ -16,7 +16,7 @@
 \usepackage{titlesec}
 \usepackage{float}
 
-\newcommand\version{0.5.2} %aggiunta versione come variabile
+\newcommand\version{0.5.3} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -104,6 +104,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+    \hline
+    0.5.3 & 2024-12-19 & Manuel Gusella & Alfredo Rubino & Fine stesura sottosezione \hyperref[verifica]{Verifica}\\
     \hline
     0.5.2 & 2024-12-18 & Manuel Gusella & Alfredo Rubino & Continuazione sottosezione \hyperref[verifica]{Verifica}\\
     \hline
@@ -731,7 +733,22 @@
     Test da passare prima del rilascio del software. Serve a garantire che il prodotto finale soddisfi le aspettative del proponente e degli utenti finali.
 
     \paragraph{Classificazione dei test}
+    I test vengono identificati in base alla loro tipologia e tramite un codice numerico, specifico all'interno della categoria. I test devono avere la seguente forma: \textbf{T[Tipologia Test][Codice]}\\
+    Tipologia:
+    \begin{itemize}
+    \item \textbf{U}: Unità;
+    \item \textbf{I}: Integrazione;
+    \item \textbf{S}: Sistema;
+    \item \textbf{A}: Accettazione.
+    \end{itemize}
+
     \paragraph{Stato dei test}
+    Nel \textit{Piano di Qualifica} ogni test viene seguito dal suo stato:
+    \begin{itemize}
+    \item \textbf{NI}: Il test non è stato implementato;
+    \item \textbf{NP}: il test non è stato passato, con esito negativo;
+    \item \textbf{P}: il test è stato passato, con esito positivo.
+    \end{itemize}
 
     \subsection{Gestione della qualità}
 
