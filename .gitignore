@@ -5,3 +5,7 @@
 *.synctex.gz
 *.out
 .DS_Store
+
+##Others
+*.notes
+.vscode/
