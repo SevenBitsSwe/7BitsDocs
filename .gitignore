@@ -4,4 +4,11 @@
 *.toc
 *.synctex.gz
 *.out
+*.lof
 .DS_Store
+
+##Python
+*.py~
+
+##Others
+*.notes
