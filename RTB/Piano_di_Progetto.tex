@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{tabularx}
@@ -17,7 +17,7 @@
 \usepackage{setspace}
 
 
-\newcommand\version{0.4.2} %aggiunta versione come variabile
+\newcommand\version{0.4.3} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -101,7 +101,9 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \hline
-0.4.2 & 2024-12-11 & Peruzzi Uncas & Alfredo Rubino & Redazione secondo sprint\\
+0.4.3 & 2024-12-19 & Federico Pivetta & Peruzzi Uncas & Redazione terzo sprint \ref{terzo-sprint$_G$}\\
+\hline
+0.4.2 & 2024-12-11 & Peruzzi Uncas & Alfredo Rubino & Redazione secondo sprint \ref{secondo-sprint$_G$}\\
 \hline
 0.4.2 & 2024-12-10 & Peruzzi Uncas & Alfredo Rubino & Refactoring stile analisi rischi e aggiunta sezione identificazione\\
 \hline
@@ -362,33 +364,6 @@ Slide del corso di Ingegneria del Software:
     \end{tabularx}
 
 
-% \subsection{Riepilogo}
-% I rischi identificati vengono riportati in una tabella, insieme alla loro gravità e probabilità di occorrenza.
-% \begin{table}[H]
-% \centering
-% \renewcommand{\arraystretch}{1.5}
-% \begin{tabular}{|>{\centering\arraybackslash}m{10cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|}
-% \hline
-% \textbf{Rischio} & \textbf{Gravità} & \textbf{Occorrenza} \\
-% \hline
-% RT1 - Complessità delle nuove tecnologie & Alta & Alta\\
-% \hline
-% RT2 - Carenza di documentazione sulle tecnologie & Alta & Media\\
-% \hline
-% RC1 - Comunicazione interna non ottimale & Alta & Media\\
-% \hline
-% RC2 - Conflitti interni & Bassa & Bassa\\
-% \hline
-% RC3 - Cambio dei ruoli & Bassa & Media\\
-% \hline
-% RP1 - Impegni al di fuori del progetto & Media & Bassa\\
-% \hline
-% RP2 - Incertezza nella stima delle attività & Alta & Alta\\
-% \hline
-% \end{tabular}
-% \caption{Riepilogo dei rischi}
-% \end{table}
-
 \newpage
 \section{Modello di sviluppo, preventivo e consuntivo} 
 \label{modello-sviluppo}
@@ -505,6 +480,10 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
 \label{pianificazione}
 
 \subsection{Requirements and Technology Baseline - RTB$_G$}
+
+%%%%%%%%%%
+%%%%% Primo sprint
+%%%%%%%%%%%
 
 \subsubsection{Primo sprint$_G$}
 \label{primo-sprint$_G$}
@@ -651,12 +630,14 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \paragraph{Retrospettiva}\mbox{}\vspace{0.4em}
 
     Durante il primo periodo di lavoro, ci si è accorti quanto è fondamentale avere un way of working ben definito, da seguire per l'intero progetto. Inoltre si è preso atto della difficoltà nel scrivere documentazione esterna di qualità, seguendo normative, pertanto è probabile che i documenti subiscano numerose modifiche che riguardano stile e gergo.\\ Lo studio delle tecnologie richiedere un ammontare di ore (non produttive) leggermente superiore a quanto previsto, pertanto è necessario chiarire i dubbi all'inizio per procedere successivamente in maniera lineare con l'implementazione delle varie librerie.\\Le task sono state distribuite in maniera abbastanza corretta, le attività sono state comunque terminate entro il tempo limite, sebbene a volte i verificatori hanno fatto notare qualche imprecisione nella qualità di documentazione.
+
 %%%%%%%%%%
-%%%%%secondo sprint
+%%%%% Secondo sprint
 %%%%%%%%%%%
+
 \newpage
 \subsubsection{Secondo sprint$_G$}
-\label{primo-sprint$_G$}
+\label{secondo-sprint$_G$}
     
     \paragraph{Durata sprint}\mbox{}\\
     \vspace{-1.5em}
@@ -664,8 +645,8 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \renewcommand{\arraystretch}{1.2}  
     \begin{tabular}{ l l }
         Inizio: & 2024-11-26 \\
-        Fine Prevista: & 2024-12-5 \\
-        Fine Effettiva: & 2024-12-5 \\
+        Fine Prevista: & 2024-12-05 \\
+        Fine Effettiva: & 2024-12-05 \\
         Giorni di ritardo: & 0 \\
     \end{tabular}
     \end{table}
@@ -691,7 +672,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \paragraph{Gestione Rischi}\mbox{}
     \vspace{-1em}
     \subparagraph*{Rischi Attesi}\mbox{}
-
+    
     Essendo nella fase più iniziale del progetto, i rischi in cui si aspetta di imbattersi sono vari. Fra tutti, sono stati selezionati:
     \vspace{-0.5em}
     \begin{itemize}
@@ -704,14 +685,13 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \end{itemize}
 
     \subparagraph*{Rischi Incontrati}\mbox{}
-
-    Il secondo periodo il gruppo si è scontrato in particolare con il rischio dell'indisponibilità individuale \hyperref[RP1]{RP1}. Come era stato comunicato durante il primo SAL, il tempo di questo sprint è stato dimezzato a causa indisponibilità del responsabile della proponente. Questo ha comportato un investimento del monte ore molto maggiore rispetto ad una normale settimana di sprint, al fine di produrre qualcosa di significativamente presentabile durante il successivo SAL. Inoltre durante la settimana un membro del team, a causa di motivi di salute, è stato impossibilitato a lavorare, e questo spiega il basso numero di ore produttive. Questo rischio è stato mitigato grazie ad altri membri del team che si sono occupati di ricoprire le task pendenti. Come nel primo sprint, ci si è imbattuti in problemi con la documentazione di alcune tecnologie che risultava poco chiara (\hyperref[RT2]{RT2}). Questi sono stati limitati grazie ad una sessione di peer programming che ha permesso di individuare ed eliminare alcuni bug nel PoC. Infine, a causa del cambio dei ruoli (\hyperref[RC3]{RC3}), i nuovi analisti di questo sprint hanno avuto dei dubbi in ambito di redazione degli use cases, risolti in aula grazie a delle delucidazioni del docente. 
+    
+    Durante il secondo periodo il gruppo si è scontrato in particolare con il rischio dell'indisponibilità individuale \hyperref[RP1]{RP1}. Come era stato comunicato durante il primo SAL, il tempo di questo sprint è stato dimezzato a causa indisponibilità del responsabile della proponente. Questo ha comportato un investimento del monte ore molto maggiore rispetto ad una normale settimana di sprint, al fine di produrre qualcosa di significativamente presentabile durante il successivo SAL. Inoltre durante la settimana un membro del team, a causa di motivi di salute, è stato impossibilitato a lavorare, e questo spiega il basso numero di ore produttive. Questo rischio è stato mitigato grazie ad altri membri del team che si sono occupati di ricoprire le task pendenti. Come nel primo sprint, ci si è imbattuti in problemi con la documentazione di alcune tecnologie che risultava poco chiara (\hyperref[RT2]{RT2}). Questi sono stati limitati grazie ad una sessione di peer programming che ha permesso di individuare ed eliminare alcuni bug nel PoC. Infine, a causa del cambio dei ruoli (\hyperref[RC3]{RC3}), i nuovi analisti di questo sprint hanno avuto dei dubbi in ambito di redazione degli use cases, risolti in aula grazie a delle delucidazioni del docente. 
 
     
     \paragraph{Definizione ruoli}\mbox{}\vspace{0.4em}
-
-    Questi sono i ruoli assegnati per membro in questo primo sprint$_G$.\\
     
+    Questi sono i ruoli assegnati per membro in questo secondo sprint$_G$.\\
     \begin{table}[H]
         \centering
         \begin{tabular}{|c|c|}
@@ -740,7 +720,6 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \end{table}
 
     \paragraph{Preventivo orario}\mbox{}\vspace{0.4em}
-
     \begin{figure}[ht]
     	\centering
     	\includegraphics[width=0.6\linewidth]{preventivoOreSecondoSprint.png}
@@ -763,7 +742,6 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \end{figure}
     
     \paragraph{Consuntivo orario}\mbox{}\vspace{0.4em}
-
     \begin{figure}[ht]
     	\centering
     	\includegraphics[width=0.6\linewidth]{consuntivoOreSecondoSprint.png}
@@ -785,11 +763,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
         \label{fig:Diagramma circolare della partizione delle ore consuntive per ruolo - secondo sprint$_G$}
     \end{figure}
 
-
-
     \paragraph{Rendicontazione delle risorse economiche restanti}\mbox{}\vspace{0.4em}
-
-    
     \begin{figure}[H]
     	\centering
     	\includegraphics[width=0.6\linewidth]{oreCostiSecondoSprint.png}
@@ -798,11 +772,159 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \end{figure}
     
     \paragraph{Retrospettiva}\mbox{}\vspace{0.4em}
-
+    
     Il secondo sprint è stato molto importante, in quanto ha permesso al team di capire come essere il più produttivi possibile in tempi ristretti a causa di indisponibilità di uno o più membri. Oltre a ciò, si è visto anche quanto la comunicazione sia importante tra i membri del team, in caso di ridistribuzione di task varie.\\ 
-    \'E stato sicuramente notato quanto sia comodo ed efficente avere un ambiente di sviluppo e di deployment solido e privo di bug.\\ 
-    \'E stato inoltre rilevato un buon approcio da parte dei verificatori, che hanno rilevato errori e imprecisioni in alcuni documenti permettendo la modifica tempestiva.\\ 
+    \'E stato sicuramente notato quanto sia comodo ed efficiente avere un ambiente di sviluppo e di deployment solido e privo di bug.\\ 
+    \'E stato inoltre rilevato un buon approccio da parte dei verificatori, che hanno rilevato errori e imprecisioni in alcuni documenti permettendo la modifica tempestiva.\\ 
     Il secondo SAL è servito per garantirci la corretta e solida base del documento di Analisi dei Requisiti e l'approvazione del prototipo del PoC, con alcuni miglioramenti in termini di prestazione e performance del software.\\ 
     L'incontro intermedio con l'azienda, sebbene di breve durata, è risultato utile per chiarire alcune incertezze, mentre il SAL ha permesso di capire in che modo vanno presentati i progressi conseguiti, in modo da permettere alla proponente di essere sincronizzata sul programma del team.
     
+%%%%%%%%%%
+%%%%% Terzo sprint
+%%%%%%%%%%%
+
+\newpage
+\subsubsection{Terzo sprint$_G$}
+\label{terzo-sprint$_G$}
+    
+    \paragraph{Durata sprint}\mbox{}\\
+    \vspace{-1.5em}
+    \begin{table}[h] 
+    \renewcommand{\arraystretch}{1.2}  
+    \begin{tabular}{ l l }
+        Inizio: & 2024-12-06 \\
+        Fine Prevista: & 2024-12-20 \\
+        Fine Effettiva: & 2024-12-20 \\
+        Giorni di ritardo: & 0 \\
+    \end{tabular}
+    \end{table}
+    \vspace{-2em}
+    {\renewcommand{\arraystretch}{1.5}%
+    
+    \paragraph{Panoramica generale e obiettivi}\mbox{}\vspace{0.4em}
+
+    Nel corso del terzo sprint, il gruppo si propone di proseguire la redazione e il perfezionamento della documentazione prodotta fino a questo momento, avviare la stesura del documento \textit{Piano\_di\_Qualifica.pdf} e approfondire ulteriormente il prototipo del PoC presentato alla proponente durante lo sprint precedente. Questo approfondimento include l'implementazione delle chiavi Kafka, la generazione di un numero consistente di punti di interesse,il miglioramento del messaggio generato e l'integrazione delle due parti del PoC precedentemente sviluppate in un unico modulo. Inoltre, prima dell'inizio del quarto sprint, è stato deciso di organizzare un incontro con il committente, Professor Cardin, al fine di chiarire alcuni dubbi sugli use case.\\
+    Seguono le attività nel backlog per questo periodo:
+    \vspace{-0.5em}
+    \begin{itemize}
+    \setlength\itemsep{-0.2em}
+    \item [-] Studio e implementazioni chiavi Kafka;
+    \item [-] Approfondimento del messaggio generato dall'LLM;
+    \item [-] Studio e generazione dei punti di interesse sulla dashboard;
+    \item [-] Consuntivo secondo sprint nel Piano di Progetto;
+    \item [-] Continuazione redazione delle Norme di Progetto;
+    \item [-] Inizio stesura Piano di Qualifica;
+    \item [-] Integrazione di nuovi termini nel Glossario.
+    \end{itemize}
+
+    \paragraph{Gestione Rischi}\mbox{}
+    \vspace{-1em}
+    \subparagraph*{Rischi Attesi}\mbox{}
+    Essendo iniziata la fase intermedia del progetto, i rischi in cui si aspetta di imbattersi sono vari. Fra tutti, sono stati selezionati:
+    \vspace{-0.5em}
+    \begin{itemize}
+    \setlength\itemsep{-0.2em}
+    \item [-] \hyperref[RT1]{RT1} - Complessità delle nuove tecnologie;
+    \item [-] \hyperref[RT3]{RT3} - Produzione di codice confuso o con errori;
+    \item [-] \hyperref[RP2]{RP2} - Incertezza sulla stime delle attività.
+    \end{itemize}
+
+    \subparagraph*{Rischi Incontrati}\mbox{}
+
+    Durante il terzo periodo, il gruppo ha affrontato i rischi precedentemente identificati. Analogamente agli sprint passati, sono emerse difficoltà nell'utilizzo di alcune tecnologie (\hyperref[RT1]{RT1}) necessarie per affrontare le criticità e migliorare gli aspetti evidenziati nel SAL precedente. Nel tentativo di individuare la soluzione più idonea a soddisfare le ultime richieste relative al PoC, è stato prodotto codice inizialmente confuso (\hyperref[RT3]{RT3}). Tuttavia, grazie a una comunicazione attiva e chiara tra i membri del gruppo, è stato possibile risolvere questo problema.
+    Infine, durante la stesura asincrona di nuove sezioni della documentazione, soprattutto a causa della loro natura complessa, sono emerse difficoltà legate alla stima delle attività (\hyperref[RP2]{RP2}). Tali difficoltà sono state successivamente risolte attraverso un utilizzo sistematico ed esaustivo delle issue, che ha consentito un'organizzazione e una gestione delle task più efficiente.
+    
+    \paragraph{Definizione ruoli}\mbox{}\vspace{0.4em}
+    
+    Questi sono i ruoli assegnati per membro in questo terzo sprint$_G$.\\
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!25}
+        \textbf{Ruolo} & \textbf{Membro}\\
+        \hline
+        Responsabile & Federico Pivetta\\
+        \hline
+        Amministratore & Leonardo Trolese\\ 
+        \hline
+        Analista & Uncas Peruzzi\\
+        & Riccardo Piva\\
+        \hline
+        Progettista & / \\
+        \hline
+        Programmatore & Giovanni Cristellon \\
+        \hline
+        Verificatore & Manuel Gusella\\
+        & Alfredo Rubino\\
+        \hline
+        \end{tabular}
+        \caption{Tabella dei ruoli - Terzo Sprint}
+        %\label{tab:my_label}
+    \end{table}
+
+    \paragraph{Preventivo orario}\mbox{}\vspace{0.4em}
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{preventivoOreTerzoSprint.PNG}
+    	\caption{Preventivo orario per membro - Terzo sprint$_G$}
+    	\label{fig:Preventivo orario per membro - Terzo sprint$_G$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[
+                text=pin,
+                hide number,
+                color={responsabile, amministratore, analista, programmatore, verificatore}, 
+                radius=1.5
+            ]{7/Responsabile - 7\%, 10/Amministratore - 10\%, 31/Analista - 31\% , 21/Programmatore - 20\%, 31/Verificatore - 31\%}
+        \end{tikzpicture}
+        \caption{Diagramma circolare della partizione delle ore preventive per ruolo - Terzo sprint$_G$ }
+        \label{fig:Diagramma circolare della partizione delle ore preventive per ruolo - Terzo sprint$_G$}
+    \end{figure}
+    
+    \paragraph{Consuntivo orario}\mbox{}\vspace{0.4em}
+    \begin{figure}[ht]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{consuntivoOreTerzoSprint.PNG}
+    	\caption{Consuntivo orario per membro - Terzo sprint$_G$}
+    	\label{fig:Consuntivo orario per membro - terzo sprint$_G$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[
+                text=pin,
+                hide number,
+                color={responsabile, amministratore, analista, programmatore, verificatore}, 
+                radius=1.5
+            ]{7/Responsabile - 7\%, 9/Amministratore - 9\%, 30/Analista - 30\% , 28/Programmatore - 28\%, 26/Verificatore - 26\%}
+        \end{tikzpicture}
+        \caption{Diagramma circolare della partizione delle ore consuntive per ruolo - Terzo sprint$_G$ }
+        \label{fig:Diagramma circolare della partizione delle ore consuntive per ruolo - terzo sprint$_G$}
+    \end{figure}
+
+    \paragraph{Rendicontazione delle risorse economiche restanti}\mbox{}\vspace{0.4em}
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{oreCostiTerzoSprint.PNG}
+    	\caption{Consuntivo orario e costi per ruolo - Terzo sprint$_G$}
+    	\label{fig:Consuntivo orario e costi per ruolo - Terzo sprint$_G$}
+    \end{figure}
+    
+    \paragraph{Retrospettiva}\mbox{}\vspace{0.4em}
+
+    Il terzo sprint ha consentito al gruppo di acquisire una maggiore familiarità con le nuove tecnologie, analizzandone sia i vantaggi sia gli svantaggi associati ad ognuna di esse.\\
+    Il processo di verifica è stato ulteriormente perfezionato, garantendo una segnalazione più immediata delle eventuali correzioni da apportare direttamente tramite GitHub.\\
+    L'incontro intermedio con la proponente si è rivelato utile per chiarire alcune incertezze, mentre il terzo SAL ha fornito un feedback sul prototipo del PoC sviluppato fino a quel momento, evidenziando i punti su cui concentrare il lavoro una volta superata la revisione RTB.\\
+    Il ricevimento con il professor Riccardo Cardin è stato determinante per comprendere come redigere un documento di analisi dei requisiti il più corretto possibile e in grado di apportare un valore aggiunto al progetto; inoltre, ha permesso di risolvere un dubbio relativo agli attori nei casi d'uso.\\
+    Questo sprint ha ulteriormente evidenziato l'importanza di una documentazione accurata e di un'organizzazione consolidata, indispensabili per garantire lo svolgimento efficace ed efficiente di un progetto collaborativo.
+
+%%%%%%%%%%
+%%%%% Quarto sprint
+%%%%%%%%%%%
+
 \end{document}
