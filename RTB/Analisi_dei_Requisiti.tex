@@ -31,7 +31,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.8}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.9}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -89,6 +89,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.2.9 & 2024-12-24 & Manuel Gusella & Uncas Peruzzi & Aggiunta di \hyperref[UC1.1.1]{UC 1.1.1} e RF12, cambiamento \hyperref[UC1.1]{UC1.1} \\
 \hline
 0.2.8 & 2024-12-24 & Manuel Gusella & Riccardo Piva & Aggiunta di \hyperref[UC1.2.1]{UC 1.2.1} e RF11, aggiustamento \hyperref[UC1.3.2]{UC1.3.2} \\
 \hline
@@ -331,7 +333,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato accede alla piattaforma di visualizzazione della dashboard.
-            \item Il sistema mette a disposizioni tutte le informazioni storicizzate e ricevute dai sensori, distribuiti su una mappa tramite marker.
+            \item Il sistema mette a disposizione tutte le informazioni storicizzate e ricevute dai sensori, distribuiti su una mappa tramite marker.
         \end{enumerate}
     \item \textbf{User story associata:} Come utente privilegiato, voglio accedere alla dashboard per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS), i punti di interesse che usufruiscono di questo servizio e le inserzioni che vengono generate per gli utenti che hanno effettuato il noleggio.
 \end{itemize}
@@ -342,28 +344,64 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \label{fig:UC1}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1 - Visualizzazione dettagli dei marker sulla mappa}}
+\subsubsection{\textbf{UC1.1 - Visualizzazione dashboard singolo utente}}
+\label{UC1.1}
 \begin{itemize}
      \item \textbf{Attore Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
     		\item L'utente privilegiato ha effettuato l'accesso e sta      visualizzando la dashboard (UC3 e UC1).
+    	        \item L'utente privilegiato ha selezionato un marker presente sulla mappa.
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate dell'utente selezionando il marker visibile sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del marker selezionato tramite una dashboard apposita.
      \item \textbf{Scenario Principale:}
         \begin{itemize}
-            \item L'utente privilegiato ha accesso alla dashboard con la mappa interattiva (UC3 e UC1).
-            \item L'utente privilegiato seleziona un marker per vederne le informazioni più dettagliate.
-            \item Il sistema mette a disposizione il dato più recententemente archiviato per quel marker.
+            \item L'utente privilegiato ha accesso alla dashboard con la mappa interattiva (UC3 e UC1);
+            \item L'utente privilegiato seleziona un marker per vederne la dashboard specifica;
+            \item Il sistema mette a disposizione lo storico dei dati archiviati per quel marker.
         \end{itemize}
      \item \textbf{User story associata:}
-     Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa, in modo da vedere i dettagli sulla posizione e sull'utente che sta utilizzando il mezzo.
+     Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa, in modo da visualizzare una dashboard. Questa dashboard permette di vedere i dettagli sullo storico completo delle posizioni e sull'utente che sta utilizzando il mezzo.
 \end{itemize}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1.1image.png}
-    \caption{UC1.1 - Visualizzazione dettagli dei marker sulla mappa}
+    \caption{UC1.1 - Visualizzazione dashboard singolo utente}
     \label{fig:UC1.1}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC1.1.1 - Visualizzazione dettagli dei marker sulla mappa}}
+\label{UC1.1.1}
+\begin{itemize}
+     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+        \item L'utente privilegiato ha selezionato un marker, raffigurante un singolo utente, e sta visualizzando la dashboard di singolo utente (UC1.1);
+          \item L'utente privilegiato ha selezionato un marker presente nella mappa di singolo utente.
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni del marker selezionato in forma tabellare. La tabella conterrà la posizione, espressa in latitudine e longitudine,l'istante di rilevamento e i dati dell'utente che sta utilizzando il mezzo. I dati dell'utente presenti in tabella saranno:
+        \begin{itemize}
+        \item Nome;
+        \item Cognome;
+        \item Email;
+        \item Genere;
+        \item Data di nascita;
+        \item Stato civile.
+        \end{itemize}
+      \item \textbf{Scenario Principale:}
+        \begin{itemize}
+            \item L'utente privilegiato ha accesso alla dashboard di un singolo utente(UC1.1);
+            \item L'utente privilegiato seleziona un marker presente sulla mappa di un singolo utente;
+            \item Il sistema riporta le informazioni del marker in forma tabellare.
+        \end{itemize}
+     \item \textbf{User story associata:}
+       Come utente privilegiato voglio selezionare i marker, che indicano le posizioni di un singolo utente, presenti sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche di ogni istante.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC1.1.1image.png}
+    \caption{UC1.1.1 - Visualizzazione dettagli dei marker sulla mappa}
+    \label{fig:UC1.1.1}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.2 - Visualizzazione annunci sulla mappa}}
@@ -374,7 +412,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
          \item Il sistema è operativo e accessibile.
     	\item L'utente privilegiato ha effettuato l'accesso e sta          visualizzando la dashboard (UC3 e UC1).
         \end{itemize}
-    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto. 
+    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un marker che rappresenta un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto. 
     \item \textbf{Scenario Principale:} 
         \begin{itemize}
     	\item Un utente, mentre si muove sulla mappa, passa nell'area      di un punto di interesse.
@@ -561,7 +599,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \hline
  RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la dashboard composta da una mappa interattiva con i vari marker e punti di interesse su di essa. &  Capitolato, UC1\\
 \hline
-RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker. & Interna, UC1.1\\
+RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare una dashboard relativa ad un singolo utente quando seleziona un marker. & Interna, UC1.1\\
 \hline
 RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & Capitolato, UC1.2\\
 \hline
@@ -580,6 +618,8 @@ RF09 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati in t
 RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo punto di interesse. & Capitolato, UC1.3.2\\
 \hline
 RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo annuncio. & Capitolato, UC1.2.1\\
+\hline
+RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker presente nella dashboard di un singolo utente. & Interna, UC1.1.1\\
 \hline
 \end{tabular}
 \caption{Requisiti funzionali}
@@ -674,7 +714,7 @@ RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità do dato in I
 \hline
 \textbf{Fonte} & \textbf{Id. Requisiti}\\
 \hline
-Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
+Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RF12 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
 \hline
 Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
@@ -691,7 +731,7 @@ Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV01 \linebreak RV02 \
 \hline
 \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\
 \hline
-Funzionali & 8 & - & 2 & 10\\
+Funzionali & 9 & - & 2 & 11\\
 \hline
 Di qualità & 6 & - & - & 6 \\
 \hline
@@ -699,7 +739,7 @@ Di vincolo & 5 & - & - & 5 \\
 \hline
 Prestazionali & 2 & - & - & 2 \\
 \hline
-Totale & 21 & - & 2 & 23 \\
+Totale & 22 & - & 2 & 24 \\
 \hline
 \end{tabular}
 \caption{Riepilogo}
