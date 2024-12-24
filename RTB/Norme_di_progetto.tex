@@ -16,7 +16,7 @@
 \usepackage{titlesec}
 \usepackage{float}
 
-\newcommand\version{0.5.3} %aggiunta versione come variabile
+\newcommand\version{0.5.5} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -68,21 +68,21 @@
     \setcounter{page}{0}
     \centering
     % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
-    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm]
     % Titolo
      {\fontsize{40}{40}\bfseries Norme di Progetto}\selectfont \\[3.9em]
     % Sottotitolo
         % Email del gruppo
     {\large sevenbits.swe.unipd@gmail.com} \\[3em]
-    
+
     \hfill % Spazio per il logo dell'università
     \AddToShipoutPictureBG{ % Imposta il triangolo con logo
         \ifnum\value{page}=0
         \begin{tikzpicture}[overlay]
             % Definisce un triangolo blu in basso a destra
-            \fill[colorePie] 
+            \fill[colorePie]
                 (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
-            
+
             % Inserisce il logo all'interno del triangolo
             \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
                 \includegraphics[width=4.5cm]{LogoUnipd.png}
@@ -104,6 +104,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+    \hline
+    0.5.5 & 2024-12-24 & Riccardo Piva & Uncas Peruzzi & Ulteriore continuazione \hyperref[metriche_qualita]{stesura metriche}\\
     \hline
     0.5.4 & 2024-12-24 & Leonardo Trolese & Riccardo Piva & Continuazione stesura sezione metriche\\
     \hline
@@ -163,13 +165,13 @@
 \section{Introduzione}
     \subsection{Scopo del documento}
     Il presente documento è stato realizzato ai fini di definire e raccogliere le best practices e il way of working a cui ogni componente del gruppo Seven Bits dovrà aderire per l'intera realizzazione del progetto, al fine di garantire l'adozione di un metodo di lavoro completamente omogeneo.\\
-    La formulazione delle norme di progetto avviene in maniera progressiva, permettendo al gruppo di apportare continui aggiornamenti ad esse in risposta alle esigenze che il team dovrà affrontare durante lo svolgimento del progetto stesso.\\ 
+    La formulazione delle norme di progetto avviene in maniera progressiva, permettendo al gruppo di apportare continui aggiornamenti ad esse in risposta alle esigenze che il team dovrà affrontare durante lo svolgimento del progetto stesso.\\
 
     \subsection{Scopo del prodotto}
     Ogni giorno, le persone vengono sommerse da una miriade di annunci generici che spesso non rispecchiano i loro reali interessi o il contesto in cui si trovano. Questa separazione tra il messaggio e il destinatario porta ad una bassa interazione con gli utenti e una riduzione delle conversioni per i brand.\\
     Il progetto “Near You” si concentra sulla creazione di una dashboard composta principalmente da una mappa, sulla quale verranno visualizzate in tempo reale le posizioni degli utenti. Mediante un popup o una finestra a parte, verranno visualizzati messaggi personalizzati solo in prossimità dei punti di interesse.\\
     L'obiettivo finale è generare annunci pubblicitari in base agli interessi del cliente e alla sua posizione in quel momento.\\
-    
+
     \subsection{Glossario}
     Ai fini di garantire l'adesione dei membri del gruppo ad un vocabolario comune e condiviso, che non lasci spazio ad ambiguità, dubbi o imprecisioni; il gruppo ha definito un documento denominato Glossario, nel quale sono presenti tutti i termini tecnici adottati dal gruppo per l'intera durata della realizzazione del progetto. Tali termini saranno contrassegnati con una $_G$ a pedice. Nel caso di termini composti, essi saranno uniti da un trattino (es. Analisi-dei-requisiti$_G$)
 
@@ -186,7 +188,7 @@
             \item Documentazione \LaTeX: \href{https://www.latex-project.org/help/documentation/}{https://www.latex-project.org/help/documentation/}
             \item Documentazione Python: \href{https://www.python.org/doc/}{https://www.python.org/doc/}
         \end{itemize}
-        
+
 \newpage
 \section{Processi primari}
     \subsection{Fornitura}
@@ -277,8 +279,8 @@
             - Come [utente], desidero poter [funzionalità] per [valore aggiunto]. -
         \end{itemize}
 
-        \paragraph{Diagrammi dei casi d'uso} 
-        I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionalità del sistema dal punto di vista dell'utente. Mostrano come gli attori esterni (utenti, dispositivi, altri sistemi) interagiscono con il sistema, senza entrare nei dettagli tecnici. Il loro obiettivo principale è descrivere le interazioni tra attori e sistema, facilitando la comprensione dei requisiti funzionali e la comunicazione tra gli stakeholder.\\ 
+        \paragraph{Diagrammi dei casi d'uso}
+        I diagrammi dei casi d'uso sono strumenti visivi che rappresentano le funzionalità del sistema dal punto di vista dell'utente. Mostrano come gli attori esterni (utenti, dispositivi, altri sistemi) interagiscono con il sistema, senza entrare nei dettagli tecnici. Il loro obiettivo principale è descrivere le interazioni tra attori e sistema, facilitando la comprensione dei requisiti funzionali e la comunicazione tra gli stakeholder.\\
         Ogni caso d'uso descrive una sequenza di azioni che un attore compie per raggiungere un obiettivo specifico. Questi casi sono interconnessi e rappresentano i flussi di lavoro principali, evidenziando come l'utente interagisce con il sistema. I diagrammi non trattano i dettagli implementativi, ma si concentrano sulle funzionalità, trattando il sistema come un "black box" esterno.\\
         Di seguito sono elencati i principali componenti di un diagramma dei casi d’uso:
         \begin{itemize}
@@ -403,13 +405,13 @@
 
     \subsubsection{Progettazione}
 
-        \paragraph{Descrizione e Scopo}     
+        \paragraph{Descrizione e Scopo}
         La progettazione, o design, è un'altra fase cruciale del processo di sviluppo software che ha l'obiettivo di tradurre i requisiti individuati durante la fase di analisi in una struttura architetturale definita. Questa attività definisce in dettaglio i vincoli e le caratteristiche del prodotto semplificando la pianificazione e la suddivisione delle attività di codifica.\\
         Prima di avviare la progettazione vera e propria, si intraprende una fase preliminare che prevede la creazione di un PoC (Proof of Concept), un prototipo preliminare "usa e getta" realizzato per dimostrare la fattibilità tecnologica del prodotto previsto. Questa fase serve a confermare le tecnologie da adottare e a definire insieme alla proponente le componenti principali che costituiranno l'MVP (Minimum Viable Product).\\
-    
+
         \paragraph{Diagrammi delle classi}
         Sono una tipologia di diagramma UML utile a rappresentare la struttura statica di un sistema software orientato agli oggetti. Questi diagrammi visualizzano le classi del sistema con i loro attributi e metodi insieme alle relazioni tra di esse.\\
-        Le classi sono rappresentate tramite rettangoli suddivisi in tre sezioni: 
+        Le classi sono rappresentate tramite rettangoli suddivisi in tre sezioni:
         \begin{enumerate}
             \item \textbf{Nome}: Contiene il nome della classe in grassetto, se la classe è astratta allora viene scritto anche in corsivo;
             \item \textbf{Attributi}:
@@ -423,7 +425,7 @@
                 \item [-] \textbf{Molteplicità}: Quante istanze dell’elemento possono esistere in relazione ad altri elementi;
                 \item [-] \textbf{Default}: Se configurato, indica il valore predefinito per l’elemento;
             \end{itemize}
-        
+
             \item \textbf{Metodi}:
             \begin{quote}
                 \textbf{Visibilità nome (lista-parametri) : tipo-ritorno}
@@ -440,7 +442,7 @@
         \includegraphics[width=0.25\textwidth]{classe.png}
         \caption{Rappresentazione di una classe.}
         \end{figure}
-        
+
         \vspace{2mm}
         Di seguito vengono elencate tutte le possibili relazioni:
         \begin{itemize}
@@ -450,28 +452,28 @@
             \includegraphics[width=0.5\textwidth]{DipendenzaClasse.png}
             \caption{Rappresentazione della relazione di dipendenza.}
             \end{figure}
-        
+
             \item \textbf{Aggregazione}: La relazione di aggregazione rappresenta un legame di tipo "part of" tra due classi, in cui una classe è associata ad un'altra ma può esistere anche indipendentemente da essa. Questa relazione viene utilizzata quando una classe A (contenitore) contiene un riferimento ad un oggetto di tipo B (contenuto). L'aggregazione è rappresentata graficamente con una linea che collega le due classi, con un rombo vuoto posto vicino alla classe che rappresenta il contenitore;
             \begin{figure}[H]
             \centering
             \includegraphics[width=0.5\textwidth]{AggregazioneClasse.png}
             \caption{Rappresentazione della relazione di aggregazione.}
             \end{figure}
-        
+
             \item \textbf{Composizione}: La relazione di composizione si verifica quando una classe A contiene un oggetto di tipo B e ne ha la responsabilità di crearne e gestirne l'esistenza. La vita di B (contenuto) è vincolata a quella di A (contenitore): se A viene eliminata, anche B viene distrutta. La composizione è rappresentata graficamente con un rombo pieno vicino alla classe che rappresenta il contenitore e una linea che collega le due classi;
             \begin{figure}[H]
             \centering
             \includegraphics[width=0.5\textwidth]{ComposizioneClasse.png}
             \caption{Rappresentazione della relazione di composizione.}
             \end{figure}
-        
+
             \item \textbf{Associazione}: La relazione di associazione si verifica quando una classe può contenere riferimenti o istanze di un’altra classe senza implicare una stretta dipendenza. L'associazione è rappresentata graficamente con una linea che collega le classi, spesso accompagnata da valori di molteplicità. Per indicare il senso della relazione, può essere utilizzata una freccia posizionata su uno dei due estremi;
             \begin{figure}[H]
             \centering
             \includegraphics[width=0.5\textwidth]{AssociazioneClasse.png}
             \caption{Rappresentazione della relazione di associazione.}
             \end{figure}
-        
+
             \item \textbf{Generalizzazione}: La relazione di generalizzazione si verifica quando una classe eredita attributi, comportamenti e relazioni dalla classe genitore. Nello specifico ogni istanza della classe figlia è anche un'istanza della classe genitore, ma con caratteristiche o dettagli aggiuntivi specifici. La generalizzazione è rappresentata graficamente con una freccia vuota che collega la classe figlia (B) alla classe genitore (A);
             \begin{figure}[H]
             \centering
@@ -479,13 +481,13 @@
             \caption{Rappresentazione della relazione di generalizzazione.}
             \end{figure}
         \end{itemize}
-    
+
         \paragraph{Metriche}
         %da completare e inserire tabella%
 
     \subsubsection{Codifica}
 
-        \paragraph{Descrizione e scopo} 
+        \paragraph{Descrizione e scopo}
         L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, manutenibilità e coerenza nell'intero progetto.\\
         L’obiettivo principale della codifica è quindi creare un prodotto software che soddisfi le esigenze del proponente e rispetti gli accordi contrattuali. Le aspettative del codice sviluppato includono:
         \begin{itemize}
@@ -494,7 +496,7 @@
             \item \textbf{Ottimizzazione delle prestazioni}: Assicurare che il codice sia efficiente e scalabile;
             \item \textbf{Testabilità}: Integrare test di unità e di integrazione per verificare la correttezza e l’affidabilità;
         \end{itemize}
-    
+
         \paragraph{Norme di codifica}
         Per garantire uno sviluppo del codice coerente e di alta qualità, i Programmatori adottano le seguenti regole:
         \begin{itemize}
@@ -502,7 +504,7 @@
             \item \textbf{Indentazione}: Applicare uno schema di formattazione uniforme per migliorare la leggibilità del codice. Ogni livello di annidamento deve essere chiaramente separato con un tab o spazi coerenti;
             \item \textbf{Lunghezza dei metodi}: I metodi devono essere brevi e focalizzati su una singola responsabilità, per favorire test di unità efficaci;
         \end{itemize}
-    
+
         \paragraph{Strumenti utilizzati}
         Il team di sviluppo utilizza strumenti che supportano la scrittura di codice leggibile, mantenibile e conforme agli standard. Tra questi:
         \begin{itemize}
@@ -510,18 +512,18 @@
         \end{itemize}
 
         \paragraph{Integrazione}
-        Durante la fase di integrazione le diverse componenti, moduli o servizi del progetto vengono combinati e testati per creare un sistema coeso e funzionante.\\ 
-        L'obiettivo principale dell'integrazione è garantire che tutte le parti del sistema interagiscano correttamente e rispettino i requisiti funzionali e di prestazione definiti. 
+        Durante la fase di integrazione le diverse componenti, moduli o servizi del progetto vengono combinati e testati per creare un sistema coeso e funzionante.\\
+        L'obiettivo principale dell'integrazione è garantire che tutte le parti del sistema interagiscano correttamente e rispettino i requisiti funzionali e di prestazione definiti.
         Sin dalle prime fasi di sviluppo è necessario integrare le componenti del prodotto adottando un approccio solido ma flessibile, essenziale per garantire che le soluzioni esplorate durante la fase di Proof of Concept (PoC) siano utili una volta che il progetto entra nella fase di sviluppo del Minimum Viable Product (MVP).\\
         Questa fase è supportata da test di integrazione che verificano che i moduli lavorino correttamente insieme. L'integrazione continua, supportata da strumenti automatizzati come CI/CD (Continuous Integration/Continuous Delivery), permette di garantire che ogni nuova modifica non comprometta l'affidabilità del sistema, mantenendo un flusso di lavoro agile e risolvendo eventuali problemi o incompatibilità prima che si presentino nel sistema finale.\\
 
         \paragraph{Verifica}
         La verifica è una fase cruciale del ciclo di vita del software, durante la quale si controlla che il codice sviluppato rispetti le specifiche e soddisfi i requisiti stabiliti. Questo processo garantisce che il prodotto sia conforme agli standard di qualità, riducendo al minimo la presenza di errori e assicurando un’implementazione efficiente e mantenibile.\\
         Il processo di verifica comprende sia un’analisi statica del codice, per rilevare eventuali errori o problemi di formattazione, sia l’esecuzione di test mirati per validare le funzionalità implementate.\\
-    
+
         \paragraph{Metriche}
         %da completare e inserire tabella%
-        
+
 \newpage
 \section{Processi di supporto}
     \subsection{Documentazione}
@@ -551,7 +553,7 @@
             \item "x" indica la versione maggiore, incrementata per cambiamenti incompatibili con versioni precedenti;
             \item "y" rappresenta la versione minore, usata per aggiungere informazioni compatibili;
             \item "z" è la versione di patch, aggiornata per correzioni di errori poco significativi e retrocompatibili.
-        \end{itemize} 
+        \end{itemize}
         Questo sistema aiuta il team a comprendere velocemente l'impatto di un aggiornamento fatto ad un documento prodotto.\\
 
         \paragraph{Workflow verbali}
@@ -560,15 +562,15 @@
             \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno (la versione iniziale del documento corrisponde a \textit{0.1.0});
             \item Compilazione dei campi della sezione \textit{Registro modifiche};
             \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
-            \item Nella sezione \textit{Decisioni prese} si compila una 
+            \item Nella sezione \textit{Decisioni prese} si compila una
             tabella in cui ciascuna azione da intraprendere viene associata ad una issue corrispondente;
             \item Creazione di una pull-request (PR) dal branch Verbali al branch Main;
-            \item Verifica del verbale prodotto da parte del verificatore 
+            \item Verifica del verbale prodotto da parte del verificatore
             indicato nel \textit{Registro modifiche} del documento stesso;
             \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate a loro volta nella sezione \textit{Registro modifiche} per poi essere verificate;
             \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare. \\
             Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab perché venga firmato;
-            \item Quando il documento è completo l'ultimo verificatore 
+            \item Quando il documento è completo l'ultimo verificatore
             chiude la pull-request ed esegue il merge nel branch Main;
         \end{enumerate}
 
@@ -583,7 +585,7 @@
             \item Verifica della documentazione prodotta da parte del verificatore indicato nel \textit{Registro modifiche} e associato alle modifiche effettuate in quella seduta di lavoro;
             \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate a loro volta nella sezione \textit{Registro modifiche} per poi essere verificate a loro volta;
             \item Si ripetono le operazioni indicate dal punto \textit{3} al punto \textit{6} fino a quando il documento non è stato completato;
-            \item Quando il documento è completo l'ultimo verificatore 
+            \item Quando il documento è completo l'ultimo verificatore
             chiude la draft pull request ed esegue il merge nel branch Main, dopodiché si procede ad eliminare il branch$_G$ dedicato;
         \end{enumerate}
 
@@ -678,14 +680,14 @@
     \paragraph{GitHub}
     GitHub fornisce un servizio di review all'interno del meccanismo di PR, permettendo al verificatore di visualizzare le ultime modifiche. Il verificatore una volta verificato il documento può inserire commenti specifici, con all'interno correzioni o migliorie da apportare, inviando una richiesta di modifica nella PR o approvare la PR e procedere con la verifica di altri prodotti presenti in repository in attesa di verifica. La review di GitHub consente all'intero team di poter tracciare le modifiche effettuate all'interno della repository.\\
     Possono essere assegnate regole alle PR di GitHub per accertarsi che avvenga la verifica di almeno 2 verificatori per poter effettuare la merge nel branch main.
-    
+
     \subsubsection{Analisi statica}
     Effettuata sul prodotto software o sulla documentazione senza dover eseguire il sistema software. Serve ad accertare la conformità a regole adottate, l'assenza di difett e la presenza di proprietà desiderate, garantendo un livello ottimale di qualità. Le due principali tecniche sono Inspection e Walkthrough. Il gruppo preferisce l'approccio ad Inspection, così da ridurre il tempo di verifica e poter lasciare concentrare l'autore sulla stesura di altri documenti o codice.
     \paragraph{Inspection}
     Il verificatore segue una sequenza di passaggi prestabiliti per verificare che si stiano rispettando le regole presenti nel \textit{Piano di Qualifica}
     \paragraph{Walkthrough}
     Il verificatore e l'autore del codice/documento da verificare discutono sulle modifiche da apportare. Questo processo richiede la presenza e la collaborazione di entrambi i ruoli.Viene effettuato un controllo ad ampio spettro dell'oggetto, senza avere un'idea precisa di cosa andare a verificare.
-    
+
 
     \subsubsection{Analisi dinamica}
     Effettuata esclusivamente sul prodotto software tramite l'esecuzione effettiva di esso. L'analisi dinamica si divide in test. Ogni test è una esecuzione di un programma e provano il comportamento di singole parti di codice su un insieme finito di casi di prova.\\
@@ -722,7 +724,7 @@
       \item \textbf{Bottom-up}: l'integrazione parte dalle componenti di sistema con minori dipendenze e un maggiore valore interno. Richiede pochi mock ma ritarda la messa a disposizione di funzionalità visibili all'utente.
       \item \textbf{Top-down}: l'integrazione parte dalle componenti di sistema con maggiori dipendenze e un maggiore valore esterno. Richiede molti mock ma integra prima le funzionalità visibili all'utente.
     \end{itemize}
-    
+
     \paragraph{Test di sistema}
     Test eseguiti per controllare che i requisiti specificati nell'Analisi dei requisiti siano rispettati, garantendo che tutte le componenti siano integrate correttamente.\\
     L'obiettivo di questo test è di accertarsi che l'intero sistema lavori come entità unica, verificando che tutte le singole componenti funzionino insieme. Viene eseguita al completamento dei test di integrazione.
@@ -760,7 +762,7 @@
 
     \subsubsection{Descrizione e Scopo}
     Come stabilito dallo standard ISO/IEC 12207:1997, il processo di gestione comprende tutte le attività necessarie per completare un progetto software, in modo tale da garantire il raggiungimento degli obiettivi prefissati nel rispetto dei requisiti, dei tempi e dei costi. Per conseguire questo obiettivo, questo processo si compone di una pianificazione dettagliata, un monitoraggio continuo dei progressi e l'adozione tempestiva di azioni correttive, quando necessario.
-    
+
     \subsubsection{Attività}
     Il processo di gestione, come stabilito dallo standard ISO/IEC 12207:1997, si compone delle seguenti attività:
     \begin{enumerate}
@@ -774,12 +776,12 @@
 
     \subsubsection{Pianificazione degli sprint}
     Include la durata di ogni sprint e una lista degli obiettivi da raggiungere entro la sua conclusione. Se si verificano dei rischi, viene aggiunta una sezione che descrive come il gruppo li ha gestiti e l’impatto che hanno avuto sulle attività pianificate. Inoltre, la pianificazione contiene una tabella con i ruoli assegnati ai membri del gruppo e due sezioni separate: una per il preventivo, che indica le ore e i costi stimati per lo sprint, e una per il consuntivo, che riporta le ore e i costi effettivi per lo stesso periodo;
-    
+
     \subsubsection{Ruoli di progetto}
     Durante l'intero sviluppo del progetto, ciascun membro del gruppo assume sei ruoli distinti, ciascuno con responsabilità ben definite che riguardano specifiche attività di specifici processi.
     Ogni ruolo contribuisce al raggiungimento degli obiettivi del progetto, risultando essenziale per completare tutte le attività necessarie alla creazione di un prodotto finale di qualità.\\
     I ruoli assunti a rotazione da ciascun membro del gruppo sono i seguenti:
-    
+
         \paragraph{Responsabile}
         Figura incaricata di supervisionare e coordinare le attività del gruppo, assicurandosi il raggiungimento degli obiettivi del progetto nei tempi e nei modi previsti. Si occupa di garantire una comunicazione efficace tra il gruppo e la proponente, pianifica e gestisce le risorse e valuta eventuali scelte e rischi che ne derivano.\\
         I suoi compiti sono:
@@ -811,7 +813,7 @@
             \item Stesura del documento Analisi dei Requisiti;
             \item Studiare i requisiti definendo la loro complessità;
         \end{itemize}
-    
+
         \paragraph{Progettista}
         Figura specializzata nella progettazione architetturale e strutturale di sistemi software. Si occupa di tradurre i requisiti identificati dagli Analisti in un'architettura dettagliata, inoltre determina le scelte realizzative del progetto e supervisiona lo sviluppo, senza occuparsi direttamente della manutenzione.\\
         I suoi compiti sono:
@@ -821,7 +823,7 @@
             \item Gestire eventuali rischi che possono sorgere durante lo sviluppo;
             \item Supervisionare lo sviluppo per garantire la conformità all'architettura;
         \end{itemize}
-        
+
         \paragraph{Programmatore}
         Figura incaricata di trasformare l’architettura proposta dai Progettisti in un sistema software funzionante. Si occupa dello sviluppo delle componenti principali e di supporto, seguendo specifiche tecniche e garantendo l’aderenza agli standard di qualità e alle linee guida del progetto.\\
         I suoi compiti sono:
@@ -846,7 +848,7 @@
 
     \subsubsection{Tracciamento delle ore}
     Per tracciare il tempo impiegato nei diversi ruoli durante il progetto, viene utilizzato uno spreadsheet dedicato, disponibile su Google Drive. Al termine di ogni sprint, viene utilizzato per generare il consuntivo dello sprint appena concluso e il preventivo di quello appena iniziato, infine il membro con il ruolo di Responsabile ha il compito di inserire questi elementi all'interno del documento \textit{Piano\_di\_Progetto.pdf}.
-       
+
         \paragraph{Preventivo}
         Il preventivo delle ore è presentato sotto forma di tabella, che dettaglia le ore stimate per ogni membro del gruppo, suddivise per ruolo e riferite al singolo sprint. Inoltre, è incluso un diagramma circolare che mostra la ripartizione delle ore stimate per ciascun ruolo, offrendo una visione chiara e immediata delle risorse che si pensa di allocare per quello specifico sprint.
 
@@ -857,28 +859,28 @@
     Il gruppo utilizza il sistema di Issue Tracking (ITS) integrato di GitHub per la gestione delle attività. Questo strumento offre una gestione semplice e chiara dei compiti da svolgere, grazie alla possibilità di creare e chiudere le issue in modo rapido ed efficiente. Lo stato di avanzamento delle attività è visualizzabile attraverso la project board integrata di GitHub, che garantisce una panoramica chiara e aggiornata del progresso del lavoro.\\
     Le issue sono composte da:
     \begin{itemize}
-        \item \textbf{Titolo}: identifica in modo univoco il compito da svolgere;  
-        \item \textbf{Descrizione}: fornisce informazioni dettagliate e utili per il completamento del compito; 
-        \item \textbf{Assegnatario}: specifica il membro del gruppo incaricato di svolgere il compito; 
+        \item \textbf{Titolo}: identifica in modo univoco il compito da svolgere;
+        \item \textbf{Descrizione}: fornisce informazioni dettagliate e utili per il completamento del compito;
+        \item \textbf{Assegnatario}: specifica il membro del gruppo incaricato di svolgere il compito;
         \item \textbf{Etichetta}: classifica la tipologia del compito, agevolando l'organizzazione delle issue;
-        \item \textbf{Board}: indica a quale project board appartiene la issue e permette di specificare ulteriori campi, tra cui:  
+        \item \textbf{Board}: indica a quale project board appartiene la issue e permette di specificare ulteriori campi, tra cui:
         \begin{itemize}
             \item \textbf{Stato}: rappresenta l'avanzamento del compito (Todo, In Progress, Done);
             \item \textbf{Priorità}: assegna un livello di urgenza o importanza alla issue (Urgente, Importante, Moderato, Secondario);
-            \item \textbf{Grandezza}: stima la complessità o il livello di sforzo richiesto per completare il compito (XS, S, M, L, XL);  
-            \item \textbf{Iterazione}: specifica a quale sprint la issue è assegnata;  
-        \end{itemize}  
+            \item \textbf{Grandezza}: stima la complessità o il livello di sforzo richiesto per completare il compito (XS, S, M, L, XL);
+            \item \textbf{Iterazione}: specifica a quale sprint la issue è assegnata;
+        \end{itemize}
         \item \textbf{Milestone}: identifica il traguardo o obiettivo specifico a cui la issue è associata;
     \end{itemize}
     Ogni volta che è necessario completare un compito, si segue la procedura descritta di seguito:
     \begin{enumerate}
-        \item Il Responsabile crea la issue su GitHub, definendone i dettagli principali; 
-        \item La issue viene assegnata ad un membro del gruppo, che si occuperà del compito;  
-        \item La issue viene associata all'iterazione dello sprint attuale;  
+        \item Il Responsabile crea la issue su GitHub, definendone i dettagli principali;
+        \item La issue viene assegnata ad un membro del gruppo, che si occuperà del compito;
+        \item La issue viene associata all'iterazione dello sprint attuale;
         \item Il membro incaricato sposta la issue nello stato “In Progress” quando inizia a lavorarci;
         \item Al completamento del compito, il Verificatore designato viene informato per procedere al controllo;
-        \item Il Verificatore esamina il lavoro svolto e comunica l’esito della verifica tramite GitHub; 
-        \item Se la verifica ha esito positivo, la issue viene chiusa e spostata nello stato "Done";  
+        \item Il Verificatore esamina il lavoro svolto e comunica l’esito della verifica tramite GitHub;
+        \item Se la verifica ha esito positivo, la issue viene chiusa e spostata nello stato "Done";
     \end{enumerate}
 
     \subsubsection{Rischi}
@@ -905,13 +907,13 @@
     Questa attività comprende la gestione delle comunicazioni e degli incontri tra tutte le parti coinvolte nel progetto, ossia i  membri del gruppo, la proponente e i committenti.
 
     \subsubsection{Comunicazioni}
-    Le comunicazioni sono fondamentali per mantenere un flusso costante di informazioni tra le parti coinvolte, garantendo efficienza e coordinamento nel progetto, supportando il buon andamento delle attività e il raggiungimento degli obiettivi prefissati.\\ 
+    Le comunicazioni sono fondamentali per mantenere un flusso costante di informazioni tra le parti coinvolte, garantendo efficienza e coordinamento nel progetto, supportando il buon andamento delle attività e il raggiungimento degli obiettivi prefissati.\\
     Le comunicazioni si suddividono in:
-    
+
         \paragraph{Comunicazioni interne}
         Le comunicazioni interne avverranno attraverso due canali principali: Telegram e Discord. Telegram, un servizio di messaggistica istantanea, sarà utilizzato per le conversazioni rapide e informali, mentre Discord, una piattaforma che supporta chat e videochiamate, sarà impiegato per le riunioni a distanza e le discussioni più complesse.\\
         Le attività quotidiane e le comunicazioni generali si svolgeranno su Telegram, mentre le questioni critiche saranno affrontate durante degli incontri su Discord.
-        
+
         \paragraph{Comunicazioni esterne}
         Le comunicazioni esterne avverranno tramite scambio di email, utilizzando l'indirizzo sevenbits.swe.unipd@gmail.com. Questo canale sarà utilizzato per organizzare incontri con la proponente, inviare documenti da visionare o firmare. Inoltre, su Discord è presente una sezione testuale dedicata alle comunicazioni rapide o dubbi con la proponente.
 
@@ -919,7 +921,7 @@
     Le riunioni sono fondamentali per il progresso del progetto, poiché offrono l'opportunità di confrontarsi, prendere decisioni e risolvere eventuali problematiche. Servono anche per monitorare lo stato di avanzamento delle attività e garantire il raggiungimento degli obiettivi prefissati.
     Al termine di ogni riunione, viene redatto un verbale per documentare gli argomenti trattati e le decisioni prese, garantendo così la tracciabilità e la condivisione delle informazioni. Dopo ogni incontro, il Responsabile redige il verbale, includendo tutte le informazioni rilevanti discusse, lo fa verificare e infine il Verificatore richiede l'approvazione tramite un’ulteriore verifica da parte di un altro membro. Nel caso dei verbali esterni, è prevista anche la firma della proponente.\\
     Le riunioni si distinguono in:
-    
+
         \paragraph{Riunioni interne}
         Le riunioni interne sono pianificate settimanalmente ogni mercoledì alle ore 16:00 o, in alternativa, subito dopo le riunioni esterne. In caso di necessità, possono essere richieste riunioni straordinarie durante la settimana, organizzate tramite un sondaggio sul canale Telegram. Tutte le riunioni si terranno sul canale Discord del gruppo. I membri del gruppo si impegnano a partecipare attivamente, cercando di garantire la loro presenza. In caso di impossibilità a partecipare, ogni membro potrà recuperare la sintesi delle discussioni e le decisioni prese leggendo il verbale della riunione.
 
@@ -933,9 +935,9 @@
 
 \newpage
 \section{Standard ISO/IEC:25010 "System \& software quality models"}
-Lo standard ISO/IEC:25010 appartiene alla famiglia di standard SQuaRE, ed è stato sviluppato e pubblicato nel 2011 congiuntamente 
+Lo standard ISO/IEC:25010 appartiene alla famiglia di standard SQuaRE, ed è stato sviluppato e pubblicato nel 2011 congiuntamente
 dalla ISO e dalla IEC. Trattasi di un modello internazionale che definisce in maniera chiara un quadro di riferimento per la valutazione
-e la misurazione della qualità di un prodotto software. Lo scopo è di garantire che il prodotto realizzato soddisfi i requisiti 
+e la misurazione della qualità di un prodotto software. Lo scopo è di garantire che il prodotto realizzato soddisfi i requisiti
 di utenti, di proponenti e di committenti garantendo al contempo sicurezza e funzionalità.
 Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il "come" opera nel contesto della qualità.
 
@@ -990,7 +992,7 @@ Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il 
 
         \subsubsection{Maintainability}
         Rappresenta la predisposizione di un prodotto software a essere modificato ai fini di migliorarne le performance, renderlo adeguato a un ambiente in evoluzione
-        o aggiungere o modificare funzionalità. Un software mantenibile consente di rispondere efficacemente alle necessità degli utenti, a bug o problemi rilevati o 
+        o aggiungere o modificare funzionalità. Un software mantenibile consente di rispondere efficacemente alle necessità degli utenti, a bug o problemi rilevati o
         all'evoluzione del panorama tecnologico che circonda il software stesso. Si suddivide in:
         \begin{itemize}
             \item Modularity - indica il grado di suddivisione in componenti fra loro indipendenti del sistema;
@@ -1001,7 +1003,7 @@ Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il 
         \end{itemize}
 
         \subsubsection{Portability}
-        Misura la facilità con cui il software si può adattare a un ambiente hardware o software differente da quello originale. La portabilità di un sistema si 
+        Misura la facilità con cui il software si può adattare a un ambiente hardware o software differente da quello originale. La portabilità di un sistema si
         traduce nella sua flessibilità o adattabilità. Accorpa le seguenti sotto-categorie:
         \begin{itemize}
             \item Adaptability - rappresenta la capacità del sistema di adattarsi a diversi ambienti;
@@ -1017,7 +1019,7 @@ Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il 
         \end{itemize}
 
         \subsubsection{Security}
-        Indica la capacità di un prodotto software di proteggere informazioni o dati, così che tutti coloro che interagiscono con tale prodotto (sia persone che altri 
+        Indica la capacità di un prodotto software di proteggere informazioni o dati, così che tutti coloro che interagiscono con tale prodotto (sia persone che altri
         software) di avere accesso alle informazioni che è loro consentito visualizzare secondo il livello di autorizzazione che possiedono. Include:
         \begin{itemize}
             \item Confidentiality - rappresenta la protezione dei dati da accessi non autorizzati;
@@ -1030,7 +1032,7 @@ Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il 
 \newpage
 
 \section{Metriche per la qualità}
-
+\label{metriche_qualita}
 \subsection{Metriche di Qualità del Prodotto}
 L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche di qualità del Prodotto}.
 
@@ -1038,40 +1040,40 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 \begin{itemize}
     \item   \textbf{MPD01 - Requisiti Obbligatori Soddisfatti (ROS)}:
             \begin{itemize}
-                \item   \textbf{Descrizione:} metrica che valuta quanti dei requisiti obbligatori definiti in fase di analisi dei requisiti sono stati soddisfatti
-                \item   \textbf{Formula:} 
+                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti obbligatori definiti in fase di analisi dei requisiti sono stati soddisfatti.
+                \item   \textbf{Formula:}
                         \[
                         ROS = \frac{ROC}{TRO} \cdot 100
                         \]
                         Dove:
                         \begin{itemize}
-                            \item $ROC$: requisiti obbligatori coperti;
+                            \item $ROC$: requisiti obbligatori coperti.
                             \item $TRO$: requisiti obbligatori totali.
                         \end{itemize}
             \end{itemize}
     \item   \textbf{MPD02 - Requisiti Desiderabili Soddisfatti (RDS)}:
             \begin{itemize}
-                \item   \textbf{Descrizione:} metrica che valuta quanti dei requisiti desiderabili definiti in fase di analisi dei requisiti sono stati soddisfatti
-                \item   \textbf{Formula:} 
+                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti desiderabili definiti in fase di analisi dei requisiti sono stati soddisfatti.
+                \item   \textbf{Formula:}
                         \[
                         ROS = \frac{RDC}{TRD} \cdot 100
                         \]
                         Dove:
                         \begin{itemize}
-                            \item $RDC$: requisiti desiderabili coperti;
+                            \item $RDC$: requisiti desiderabili coperti.
                             \item $TRD$: requisiti desiderabili totali.
                         \end{itemize}
             \end{itemize}
     \item   \textbf{MPD03 - Requisiti Opzionali Soddisfatti (RPS)}:
             \begin{itemize}
-                \item   \textbf{Descrizione:} metrica che valuta quanti dei requisiti opzionali definiti in fase di analisi dei requisiti sono stati soddisfatti
-                \item   \textbf{Formula:} 
+                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti opzionali definiti in fase di analisi dei requisiti sono stati soddisfatti.
+                \item   \textbf{Formula:}
                         \[
                         ROS = \frac{RPC}{TRP} \cdot 100
                         \]
                         Dove:
                         \begin{itemize}
-                            \item $RPC$: requisiti opzionali coperti;
+                            \item $RPC$: requisiti opzionali coperti.
                             \item $TRP$: requisiti opzionali totali.
                         \end{itemize}
             \end{itemize}
@@ -1079,57 +1081,132 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Affidabilità}
 \begin{itemize}
-    %\item \textbf{MPD04 - Code Coverage}: percentuale di codice testato.
-    \item   \textbf{MPD05 - Statement Coverage}:
+    \item \textbf{MPD04 - Code Coverage}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: percentuale di codice coperto da test.
+    \end{itemize}
+    \item \textbf{MPD05 - Statement Coverage}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test.
+        \item   \textbf{Formula:}
+                \[
+                SC = \frac{IST}{NTIS} \cdot 100
+                \]
+                Dove:
+                \begin{itemize}
+                    \item $IST$: istruzioni testate.
+                    \item $NTIST$: numero totale istruzioni.
+                \end{itemize}
+    \end{itemize}
+
+    \item \textbf{MPD06 - Branch Coverage}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: percentuale di rami decisionali testati.
+        \item   \textbf{Formula:}
+            \[
+            BC = \frac{RDT}{NTR} \cdot 100
+            \]
+            Dove:
             \begin{itemize}
-                \item   \textbf{Descrizione:} percentuale di istruzioni eseguite durante l'esecuzione dei test
-                \item   \textbf{Formula:}
-                        \[
-                        Statement\ coverage(\%) = \frac{Numero\ di\ istruzioni\ eseguite}{Numero\ totale\ di\ istruzioni} \cdot 100
-                        \]
+                \item $RDT$: rami decisionali testati.
+                \item $NTR$: numero totale rami decisionali.
             \end{itemize}
-    \item   \textbf{MPD06 - Branch Coverage}: percentuale di rami decisionali testati.
+    \end{itemize}
+
+    \item \textbf{MPD07 - Condition coverage}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
+        \item   \textbf{Formula:}
+            \[
+            CC = \frac{CLT}{NTCL} \cdot 100
+            \]
+            Dove:
             \begin{itemize}
-                \item   \textbf{Descrizione:} percentuale di rami decisionali percorsi l'esecuzione dei test
-                \item   \textbf{Formula:}
-                        \[
-                        Branch\ coverage(\%) = \frac{Numero\ di\ rami\ eseguiti}{Numero\ totale\ di\ rami} \cdot 100
-                        \]
+                \item $CLT$: condizioni logiche testate.
+                \item $NTCL$: numero totale condizioni logiche.
             \end{itemize}
-    \item   \textbf{MPD07 - Condition coverage}:
+    \end{itemize}
+
+    \item \textbf{MPD08 - Indice Gulpease}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: indice di leggibilità di un testo in lingua italiana. Il risultato è in percentuale e cresce al crescere della facilità di comprensione del testo:
             \begin{itemize}
-                \item   \textbf{Descrizione:} percentuale del numero di condizioni booleane testate in entrambi i valori durante l'esecuzione dei test
-                \item   \textbf{Formula:}
-                        \[
-                        Condition\ coverage(\%) = \frac{Numero\ di\ condizioni\ booleane\ testate\ in\ entrambi\ i\ valori}{Numero\ totale\ di\ condizioni\ booleane} \cdot 100
-                        \]
+                \item $< 80$: difficile da leggere per persone con la licenza elementare.
+                \item $< 60$: difficile da leggere per persone con la licenza media.
+                \item $< 40$: difficile da leggere per persone con la licenza superiore.
             \end{itemize}
+        \item \textbf{Formula:}
+        \[
+        IG = 89 + \frac{300 \cdot N_f - 10 \cdot N_l}{N_p}
+        \]
+        Dove:
+        \begin{itemize}
+            \item $N_f$: numero totale di frasi nel testo.
+            \item $N_l$: numero totale di lettere nel testo.
+            \item $N_p$: numero totale di parole nel testo.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{MPD09 - Correttezza ortografica}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: metrica che misura il numero di errori ortografici presenti all'interno di un documento.
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{Efficienza}
 \begin{itemize}
-    \item \textbf{MPD10 - Utilizzo Risorse}: efficienza nell'uso delle risorse.
-    \item \textbf{MPD11 - Tempo medio di risposta}: .
+    \item \textbf{MPD10 - Utilizzo Risorse}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: efficienza del sistema nell'uso delle risorse.
+    \end{itemize}
+    \item \textbf{MPD11 - Tempo medio di risposta}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: misura l'efficienza del sistema in termini di reattività.
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{Usabilità}
 \begin{itemize}
-    \item \textbf{MPD12 - Facilità di utilizzo}: facilità con cui gli utenti possono utilizzare il sistema.
-    \item \textbf{MPD13 - Tempo medio di apprendimento}: tempo necessario agli utenti per apprendere l'uso del sistema.
+    \item \textbf{MPD12 - Facilità di utilizzo}:
+        \begin{itemize}
+            \item \textbf{Descrizione}:  misura la facilità con cui gli utenti possono utilizzare il sistema.
+        \end{itemize}
+    \item \textbf{MPD13 - Tempo medio di apprendimento}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema.
+        \end{itemize}
 \end{itemize}
 
 \subsubsection{Manutenibilità}
 \begin{itemize}
-    \item \textbf{MPD14 - Complessità ciclomatica}: misura della complessità del codice.
-    \item \textbf{MPD15 - Coefficiente di accoppiamento fra classi}: .
-    \item \textbf{MPD16 - Linee di codice per metodo}: .
-    \item \textbf{MPD17 - Parametri per metodo}: .
-    \item \textbf{MPD18 - Attributi per classe}: .
+    \item \textbf{MPD14 - Complessità ciclomatica}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: misura il numero di cammini linearmente indipendenti calcolato utilizzando il grafo di controllo di flusso del metodo.
+    \end{itemize}
+    \item \textbf{MPD15 - Coefficiente di accoppiamento fra classi}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
+    \end{itemize}
+    \item \textbf{MPD16 - Linee di codice per metodo}:
+      \begin{itemize}
+        \item \textbf{Descrizione}: massimo numero di linee di codice consentito per singolo metodo.
+      \end{itemize}
+    \item \textbf{MPD17 - Parametri per metodo}:
+      \begin{itemize}
+        \item \textbf{Descrizione}: massimo numero di parametri consentito per singolo metodo.
+      \end{itemize}
+    \item \textbf{MPD18 - Attributi per classe}:
+      \begin{itemize}
+        \item \textbf{Descrizione}: massimo numero di attributi consentito per singola classe.
+      \end{itemize}
 \end{itemize}
 
 \subsubsection{Portabilità}
-\begin{itemize}
-    \item \textbf{MPD19 - Versioni browser supportati}: .
+  \begin{itemize}
+    \item \textbf{MPD19 - Versioni browser supportati}:
+      \begin{itemize}
+        \item \textbf{Descrizione}: percentuale delle versioni di browser supportate rispetto al totale delle versioni disponibili.
+      \end{itemize}
 \end{itemize}
 
 \subsection{Qualità di Processo}
@@ -1138,99 +1215,249 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
 \subsubsection{Processi Primari}
 \paragraph{Analisi dei requisiti}
 \begin{itemize}
-    \item \textbf{MPC01 - Requisiti Obbligatori Soddisfatti (ROS)}: .
-    \item \textbf{MPC02 - Requisiti Desiderabili Soddisfatti (RDS)}: .
-    \item \textbf{MPC03 - Requisiti Opzionali Soddisfatti (RPS)}: .
+    \item   \textbf{MPC01 - Requisiti Obbligatori Soddisfatti (ROS)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti obbligatori definiti in fase di analisi dei requisiti sono stati soddisfatti.
+                \item   \textbf{Formula:}
+                        \[
+                        ROS = \frac{ROC}{TRO} \cdot 100
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $ROC$: requisiti obbligatori coperti.
+                            \item $TRO$: requisiti obbligatori totali.
+                        \end{itemize}
+            \end{itemize}
+    \item   \textbf{MPC02 - Requisiti Desiderabili Soddisfatti (RDS)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti desiderabili definiti in fase di analisi dei requisiti sono stati soddisfatti.
+                \item   \textbf{Formula:}
+                        \[
+                        ROS = \frac{RDC}{TRD} \cdot 100
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $RDC$: requisiti desiderabili coperti.
+                            \item $TRD$: requisiti desiderabili totali.
+                        \end{itemize}
+            \end{itemize}
+    \item   \textbf{MPC03 - Requisiti Opzionali Soddisfatti (RPS)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti opzionali definiti in fase di analisi dei requisiti sono stati soddisfatti.
+                \item   \textbf{Formula:}
+                        \[
+                        ROS = \frac{RPC}{TRP} \cdot 100
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $RPC$: requisiti opzionali coperti.
+                            \item $TRP$: requisiti opzionali totali.
+                        \end{itemize}
+            \end{itemize}
 \end{itemize}
 
 \paragraph{Progettazione}
 \begin{itemize}
-    \item \textbf{MPC04 - Coefficiente di accoppiamento fra classi}: .
-    \item \textbf{MPC05 - Facilità di utilizzo}: .
-    \item \textbf{MPC06 - Tempo medio di apprendimento}: .
+    \item \textbf{MPC04 - Coefficiente di accoppiamento fra classi}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
+        \end{itemize}
+    \item \textbf{MPC05 - Facilità di utilizzo}:
+        \begin{itemize}
+            \item \textbf{Descrzione}: misura la facilità con cui gli utenti possono utilizzare il sistema.
+        \end{itemize}
+    \item \textbf{MPC06 - Tempo medio di apprendimento}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema.
+        \end{itemize}
 \end{itemize}
 
 \paragraph{Fornitura}
 \begin{itemize}
-    \item \textbf{MPC07 - Estimated at Completion (EAC)}: stima il costo totale del progetto basandosi sul rendimento attuale:
-    \[
-    EAC = AC + ETC
-    \]
-    \item \textbf{MPC08 - Estimate to Complete (ETC)}: stima dei costi rimanenti per completare il progetto:
-    \[
-    ETC = BAC - EV
-    \]
-    \item \textbf{MPC09 - Actual Cost (AC)}: indica il costo effettivamente sostenuto per completare il lavoro fino a un certo momento.
-    \item \textbf{MPC10 - Earned Value (EV)}: misura il valore del lavoro effettivamente completato rispetto al valore pianificato.
-    \item \textbf{MPC11 - Planned Value (PV)}: rappresenta il valore pianificato del lavoro da completare in un determinato momento.
+    \item \textbf{MPC07 - Estimated at Completion (EAC)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: stima il costo totale del progetto basandosi sul rendimento attuale.
+        \item   \textbf{Formula:}
+                \[
+                EAC = AC + ETC
+                \]
+    \end{itemize}
+    \item \textbf{MPC08 - Estimate to Complete (ETC)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: stima dei costi rimanenti per completare il progetto.
+        \item   \textbf{Formula:}
+                \[
+                ETC = BAC - EV
+                \]
+    \end{itemize}
+    \item \textbf{MPC09 - Actual Cost (AC)}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: indica il costo effettivamente sostenuto per completare il lavoro fino a un certo momento.
+    \end{itemize}
+    \item \textbf{MPC10 - Earned Value (EV)}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: misura il valore del lavoro effettivamente completato rispetto al valore pianificato.
+        \end{itemize}
+    \item \textbf{MPC11 - Planned Value (PV)}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: rappresenta il valore pianificato del lavoro da completare in un determinato momento.
+        \end{itemize}
 \end{itemize}
 
 \paragraph{Codifica}
 \begin{itemize}
-    \item \textbf{MPC12 - Complessità ciclomatica}: misura della complessità del codice.
-    \item \textbf{MPC13 - Parametri per metodo}: .
-    \item \textbf{MPC14 - Attributi per classe}: .
-    \item \textbf{MPC15 - Linee di codice per metodo}: .
-    \item \textbf{MPC16 - Tempo medio di risposta}: .
-    \item \textbf{MPC17 - Versioni browser supportati}: .
+    \item \textbf{MPC12 - Complessità ciclomatica}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: il numero di cammini linearmente indipendenti calcolato utilizzando il grafo di controllo di flusso del metodo.
+        \end{itemize}
+    \item \textbf{MPC13 - Parametri per metodo}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: numero di parametri consentito per singolo metodo.
+        \end{itemize}
+    \item \textbf{MPC14 - Attributi per classe}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: numero di attributi consentito per singola classe.
+        \end{itemize}
+    \item \textbf{MPC15 - Linee di codice per metodo}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: numero di linee di codice consentito per singolo metodo.
+        \end{itemize}
+    \item \textbf{MPC16 - Tempo medio di risposta}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: l'efficienza del sistema in termini di reattività.
+        \end{itemize}
+    \item \textbf{MPC17 - Versioni browser supportati}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: delle versioni di browser supportate rispetto al totale delle versioni disponibili.
+        \end{itemize}
 \end{itemize}
 
 \subsubsection{Processi di Supporto}
 \paragraph{Documentazione}
 \begin{itemize}
-    \item   \textbf{MPC18 - Indice Gulpease}:
+    \item \textbf{MPC18 - Indice Gulpease}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: indice di leggibilità di un testo in lingua italiana. Il risultato è in percentuale e cresce al crescere della facilità di comprensione del testo:
             \begin{itemize}
-                \item   \textbf{Descrizione:} indice di leggibilità di un testo in lingua italiana. Il risultato è in percentuale e cresce al crescere della facilità di comprensione del testo:
-                        \begin{itemize}
-                            \item $< 80$: difficile da leggere per persone con la licenza elementare
-                            \item $< 60$: difficile da leggere per persone con la licenza media
-                            \item $< 40$: difficile da leggere per persone con la licenza superiore
-                        \end{itemize}
-                \item   \textbf{Formula:}
-                        \[
-                        G = 89 - \frac{(300 \cdot N_{frasi}) \cdot (10 \cdot N_{lettere})}{N_{parole}}
-                        \]
-                        Dove:
-                        \begin{itemize}
-                            \item $N_{frasi}$ = numero totale di frasi nel testo
-                            \item $N_{lettere}$ = numero totale di lettere nel testo
-                            \item $N_{parole}$ = numero totale di parole nel testo
-                        \end{itemize}
+                \item $< 80$: difficile da leggere per persone con la licenza elementare.
+                \item $< 60$: difficile da leggere per persone con la licenza media.
+                \item $< 40$: difficile da leggere per persone con la licenza superiore.
             \end{itemize}
-    \item   \textbf{MPC19 - Correttezza ortografica}:
-            \begin{itemize}
-                \item \textbf{Descrizione:} trattasi di un numero che rappresenta la quantità di errori ortografici all'interno del documento considerato
-            \end{itemize}
+        \item \textbf{Formula:}
+        \[
+        IG = 89 + \frac{300 \cdot N_f - 10 \cdot N_l}{N_p}
+        \]
+        Dove:
+        \begin{itemize}
+            \item $N_f$: numero totale di frasi nel testo.
+            \item $N_l$: numero totale di lettere nel testo.
+            \item $N_p$: numero totale di parole nel testo.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{MPC19 - Correttezza ortografica}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: metrica che misura il numero di errori ortografici presenti all'interno di un documento.
+    \end{itemize}
 \end{itemize}
 
 \paragraph{Verifica}
 \begin{itemize}
-    \item \textbf{MPC20 - Code coverage}: percentuale di codice testato.
-    \item \textbf{MPC21 - Statement coverage}: .
-    \item \textbf{MPC22 - Branch coverage}: .
-    \item \textbf{MPC23 - Condition coverage}: .
-    \item \textbf{MPC24 - Passed test cases percentage}: percentuale di test superati.
+    \item \textbf{MPC20 - Code Coverage}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: percentuale di codice coperto da test.
+    \end{itemize}
+    \item \textbf{MPC21 - Statement Coverage}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test.
+        \item   \textbf{Formula:}
+                \[
+                SC = \frac{IST}{NTIS} \cdot 100
+                \]
+                Dove:
+                \begin{itemize}
+                    \item $IST$: istruzioni testate
+                    \item $NTIST$: numero totale istruzioni.
+                \end{itemize}
+    \end{itemize}
+    \item \textbf{MPC22 - Branch Coverage}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: percentuale di rami decisionali testati.
+        \item   \textbf{Formula:}
+            \[
+            BC = \frac{RDT}{NTR} \cdot 100
+            \]
+            Dove:
+            \begin{itemize}
+                \item $RDT$: rami decisionali testati.
+                \item $NTR$: numero totale rami decisionali.
+            \end{itemize}
+    \end{itemize}
+
+    \item \textbf{MPC23 - Condition coverage}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
+        \item   \textbf{Formula:}
+            \[
+            CC = \frac{CLT}{NTCL} \cdot 100
+            \]
+            Dove:
+            \begin{itemize}
+                \item $CLT$: condizioni logiche testate.
+                \item $NTCL$: numero totale condizioni logiche.
+            \end{itemize}
+    \end{itemize}
+    \item \textbf{MPC24 - Passed test cases percentage}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: percentuale di test superati.
+        \end{itemize}
 \end{itemize}
 
 \paragraph{Gestione della Qualità}
 \begin{itemize}
-    \item \textbf{MPC25 - Metriche di qualità soddisfatte}: grado di soddisfacimento delle metriche di qualità stabilite.
+ \item \textbf{MPC25 - Metriche di qualità soddisfatte}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: di soddisfacimento delle metriche di qualità stabilite.
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{Processi Organizzativi}
 \paragraph{Gestione dei Processi}
 \begin{itemize}
-    \item \textbf{MPC26 - Rischi non previsti}: monitoraggio dei rischi non inclusi nelle stime.
-    \item \textbf{MPC27 - Efficienza Temporale (ET)}: rapporto tra ore produttive ($O_p$) e ore totali ($O_o$):
-    \[
-    ET = \frac{O_p}{O_o}
-    \]
+    \item \textbf{MPC26 - Rischi non previsti}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: dei rischi non inclusi nelle stime.
+        \end{itemize}
+    \item \textbf{MPC27 - Efficienza Temporale (ET)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: rapporto tra ore produttive ($O_p$) e ore totali ($O_o$).
+        \item   \textbf{Formula:}
+            \[
+            ET = \frac{O_p}{O_o}
+            \]
+    \end{itemize}
 \end{itemize}
 
 \paragraph{Pianificazione}
 \begin{itemize}
-    \item \textbf{MPC28 - Schedule variance (SV)}: .
-    \item \textbf{MPC29 - Cost variance (CV)}: .
+    \item \textbf{MPC28 - Schedule variance (SV)}:
+
+    \begin{itemize}
+        \item   \textbf{Descrizione}: indica se si è in ritardo o in anticipo rispetto al valore pianificato. Un valore negativo indica che si è in ritardo.
+        \item   \textbf{Formula:}
+            \[
+            SV = EV - PV
+            \]
+    \end{itemize}
+    \item \textbf{MPC29 - Cost variance (CV)}:
+
+    \begin{itemize}
+        \item   \textbf{Descrizione}: indica se il costo attuale sta superando o meno il budget. Un valore negativo indica che si ha superato il budget.
+        \item   \textbf{Formula:}
+            \[
+            CV = EV - AC
+            \]
+    \end{itemize}
 \end{itemize}
 
 \end{justify}
