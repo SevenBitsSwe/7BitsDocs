@@ -2,6 +2,11 @@
 *.aux
 *.log
 *.toc
+*.lof
 *.synctex.gz
 *.out
+##Others
 .DS_Store
+*.notes
+.vscode/
+RTB/images
