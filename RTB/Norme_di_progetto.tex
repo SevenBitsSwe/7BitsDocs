@@ -105,6 +105,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
     \hline
+    0.5.4 & 2024-12-24 & Leonardo Trolese & Riccardo Piva & Continuazione stesura sezione metriche\\
+    \hline
     0.5.3 & 2024-12-19 & Manuel Gusella & Alfredo Rubino & Fine stesura sottosezione \hyperref[verifica]{Verifica}\\
     \hline
     0.5.2 & 2024-12-18 & Manuel Gusella & Alfredo Rubino & Continuazione sottosezione \hyperref[verifica]{Verifica}\\
@@ -1034,43 +1036,74 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Funzionalità}
 \begin{itemize}
-    \item \textbf{MPD01 - Requisiti Obbligatori Soddisfatti (ROS)}:
-    \[
-    ROS = \frac{ROC}{TRO} \cdot 100
-    \]
-    Dove:
-    \begin{itemize}
-        \item $ROC$: requisiti obbligatori coperti;
-        \item $TRO$: requisiti obbligatori totali.
-    \end{itemize}
-    \item \textbf{MPD02 - Requisiti Desiderabili Soddisfatti (RDS)}:
-    \[
-    RDS = \frac{RDC}{TRD} \cdot 100
-    \]
-    Dove:
-    \begin{itemize}
-        \item $RDC$: requisiti desiderabili coperti;
-        \item $TRD$: requisiti desiderabili totali.
-    \end{itemize}
-    \item \textbf{MPD03 - Requisiti Opzionali Soddisfatti (RPS)}:
-    \[
-    RPS = \frac{RPC}{TRP} \cdot 100
-    \]
-    Dove:
-    \begin{itemize}
-        \item $RPC$: requisiti opzionali coperti;
-        \item $TRP$: requisiti opzionali totali.
-    \end{itemize}
+    \item   \textbf{MPD01 - Requisiti Obbligatori Soddisfatti (ROS)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione:} metrica che valuta quanti dei requisiti obbligatori definiti in fase di analisi dei requisiti sono stati soddisfatti
+                \item   \textbf{Formula:} 
+                        \[
+                        ROS = \frac{ROC}{TRO} \cdot 100
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $ROC$: requisiti obbligatori coperti;
+                            \item $TRO$: requisiti obbligatori totali.
+                        \end{itemize}
+            \end{itemize}
+    \item   \textbf{MPD02 - Requisiti Desiderabili Soddisfatti (RDS)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione:} metrica che valuta quanti dei requisiti desiderabili definiti in fase di analisi dei requisiti sono stati soddisfatti
+                \item   \textbf{Formula:} 
+                        \[
+                        ROS = \frac{RDC}{TRD} \cdot 100
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $RDC$: requisiti desiderabili coperti;
+                            \item $TRD$: requisiti desiderabili totali.
+                        \end{itemize}
+            \end{itemize}
+    \item   \textbf{MPD03 - Requisiti Opzionali Soddisfatti (RPS)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione:} metrica che valuta quanti dei requisiti opzionali definiti in fase di analisi dei requisiti sono stati soddisfatti
+                \item   \textbf{Formula:} 
+                        \[
+                        ROS = \frac{RPC}{TRP} \cdot 100
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $RPC$: requisiti opzionali coperti;
+                            \item $TRP$: requisiti opzionali totali.
+                        \end{itemize}
+            \end{itemize}
 \end{itemize}
 
 \subsubsection{Affidabilità}
 \begin{itemize}
-    \item \textbf{MPD04 - Code Coverage}: percentuale di codice testato.
-    \item \textbf{MPD05 - Statement Coverage}: percentuale di istruzioni eseguite durante i test.
-    \item \textbf{MPD06 - Branch Coverage}: percentuale di rami decisionali testati.
-    \item \textbf{MPD07 - Condition coverage}: .
-    \item \textbf{MPD08 - Indice Gulpease}: .
-    \item \textbf{MPD09 - Correttezza ortografica}: .
+    %\item \textbf{MPD04 - Code Coverage}: percentuale di codice testato.
+    \item   \textbf{MPD05 - Statement Coverage}:
+            \begin{itemize}
+                \item   \textbf{Descrizione:} percentuale di istruzioni eseguite durante l'esecuzione dei test
+                \item   \textbf{Formula:}
+                        \[
+                        Statement\ coverage(\%) = \frac{Numero\ di\ istruzioni\ eseguite}{Numero\ totale\ di\ istruzioni} \cdot 100
+                        \]
+            \end{itemize}
+    \item   \textbf{MPD06 - Branch Coverage}: percentuale di rami decisionali testati.
+            \begin{itemize}
+                \item   \textbf{Descrizione:} percentuale di rami decisionali percorsi l'esecuzione dei test
+                \item   \textbf{Formula:}
+                        \[
+                        Branch\ coverage(\%) = \frac{Numero\ di\ rami\ eseguiti}{Numero\ totale\ di\ rami} \cdot 100
+                        \]
+            \end{itemize}
+    \item   \textbf{MPD07 - Condition coverage}:
+            \begin{itemize}
+                \item   \textbf{Descrizione:} percentuale del numero di condizioni booleane testate in entrambi i valori durante l'esecuzione dei test
+                \item   \textbf{Formula:}
+                        \[
+                        Condition\ coverage(\%) = \frac{Numero\ di\ condizioni\ booleane\ testate\ in\ entrambi\ i\ valori}{Numero\ totale\ di\ condizioni\ booleane} \cdot 100
+                        \]
+            \end{itemize}
 \end{itemize}
 
 \subsubsection{Efficienza}
@@ -1145,17 +1178,29 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
 \subsubsection{Processi di Supporto}
 \paragraph{Documentazione}
 \begin{itemize}
-    \item \textbf{MPC18 - Indice Gulpease}: misura la leggibilità di un documento in italiano:
-    \[
-    IG = 89 + \frac{300 \cdot N_f - 10 \cdot N_l}{N_p}
-    \]
-    Dove:
-    \begin{itemize}
-        \item $N_f$: numero di frasi;
-        \item $N_l$: numero di lettere;
-        \item $N_p$: numero di parole.
-    \end{itemize}
-    \item \textbf{MPC19 - Correttezza ortografica}: numero di errori ortografici in un documento.
+    \item   \textbf{MPC18 - Indice Gulpease}:
+            \begin{itemize}
+                \item   \textbf{Descrizione:} indice di leggibilità di un testo in lingua italiana. Il risultato è in percentuale e cresce al crescere della facilità di comprensione del testo:
+                        \begin{itemize}
+                            \item $< 80$: difficile da leggere per persone con la licenza elementare
+                            \item $< 60$: difficile da leggere per persone con la licenza media
+                            \item $< 40$: difficile da leggere per persone con la licenza superiore
+                        \end{itemize}
+                \item   \textbf{Formula:}
+                        \[
+                        G = 89 - \frac{(300 \cdot N_{frasi}) \cdot (10 \cdot N_{lettere})}{N_{parole}}
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $N_{frasi}$ = numero totale di frasi nel testo
+                            \item $N_{lettere}$ = numero totale di lettere nel testo
+                            \item $N_{parole}$ = numero totale di parole nel testo
+                        \end{itemize}
+            \end{itemize}
+    \item   \textbf{MPC19 - Correttezza ortografica}:
+            \begin{itemize}
+                \item \textbf{Descrizione:} trattasi di un numero che rappresenta la quantità di errori ortografici all'interno del documento considerato
+            \end{itemize}
 \end{itemize}
 
 \paragraph{Verifica}
