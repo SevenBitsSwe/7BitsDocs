@@ -14,6 +14,7 @@
 \usepackage{tabularx, etoolbox} 
 \usepackage{eso-pic}
 \usepackage{float}
+\usepackage{longtable}
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -589,13 +590,14 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 % Definisci una nuova colonna centrata con larghezza fissa
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
 
-\begin{table}[H]
-\centering
+\begin{center}
 \renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
+\begin{longtable}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
 %\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
 \textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\endhead
+
 \hline
  RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la dashboard composta da una mappa interattiva con i vari marker e punti di interesse su di essa. &  Capitolato, UC1\\
 \hline
@@ -621,9 +623,10 @@ RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazi
 \hline
 RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker presente nella dashboard di un singolo utente. & Interna, UC1.1.1\\
 \hline
-\end{tabular}
+
 \caption{Requisiti funzionali}
-\end{table}
+\end{longtable}
+\end{center}
 
 %---------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
