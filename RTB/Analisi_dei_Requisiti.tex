@@ -31,7 +31,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.7}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.2.8}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -89,6 +89,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.2.8 & 2024-12-24 & Manuel Gusella & Riccardo Piva & Aggiunta di \hyperref[UC1.2.1]{UC 1.2.1} e RF11, aggiustamento \hyperref[UC1.3.2]{UC1.3.2} \\
 \hline
 0.2.7 & 2024-12-02 & Manuel Gusella & Giovanni Cristellon & Aggiunta di UC1.3.2 e RF10 \\
 \hline
@@ -262,7 +264,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      Come utente privilegiato voglio poter accedere alla dashboard della web-app per monitorare lo spostamento degli utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi invio la richiesta. Se le credenziali sono corrette voglio accedere alla visualizzazione della dashboard, 
      altrimenti voglio visualizzare un messaggio di errore generico e poter inserire nuovamente le credenziali.
 \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC3-UC4image.png}
     \caption{UC3 - Autenticazione | UC4 - Visualizzazione errore autenticazione}
@@ -333,7 +335,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{enumerate}
     \item \textbf{User story associata:} Come utente privilegiato, voglio accedere alla dashboard per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS), i punti di interesse che usufruiscono di questo servizio e le inserzioni che vengono generate per gli utenti che hanno effettuato il noleggio.
 \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1image.png}
     \caption{UC1 - Visualizzazione Dashboard}
@@ -357,7 +359,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{User story associata:}
      Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa, in modo da vedere i dettagli sulla posizione e sull'utente che sta utilizzando il mezzo.
 \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1.1image.png}
     \caption{UC1.1 - Visualizzazione dettagli dei marker sulla mappa}
@@ -369,21 +371,47 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Attore Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
+         \item Il sistema è operativo e accessibile.
     	\item L'utente privilegiato ha effettuato l'accesso e sta          visualizzando la dashboard (UC3 e UC1).
         \end{itemize}
-    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto.
+    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto. 
     \item \textbf{Scenario Principale:} 
         \begin{itemize}
     	\item Un utente, mentre si muove sulla mappa, passa nell'area      di un punto di interesse.
-    	\item Il sistema elabora le informazioni dell'utente e del         punto di interesse per generare il testo dell'eventuale            annuncio.
+    	\item Il sistema elabora le informazioni dell'utente e del         punto di interesse per generare il testo dell'eventuale            annuncio;
+        \item Il sistema fa visualizzare un marker sulla mappa, che rappresenta l'annuncio generato.
 	\end{itemize}
-    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare gli annunci pubblicitari che arrivano ai vari utenti.
+    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari che arrivano ai vari utenti.
 \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1.2image.png}
     \caption{UC1.2 - Visualizzazione annunci sulla mappa}
     \label{fig:UC1.2}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC1.2.1 - Visualizzazione informazioni dell'annuncio}}
+\label{UC1.2.1}
+\begin{itemize}
+    \item \textbf{Attore Principale:} Utente privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item L'utente privilegiato sta visualizzando un annuncio sulla mappa (UC1.2);
+    	\item L'utente privilegiato ha selezionato un annuncio comparso sulla mappa.
+        \end{itemize}
+    \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni dell'annuncio selezionato in forma tabellare. La tabella conterrà i nomi dell'utente e del punto di interesse coinvolti e il contenuto effettivo dell'annuncio.
+    \item \textbf{Scenario Principale:} 
+        \begin{itemize}
+          \item L'utente privilegiato ha selezionato un annuncio presente sulla mappa;
+            \item Il sistema riporta le informazioni dell'annuncio selezionato e le mostra nella dashboard in forma tabellare.
+	\end{itemize}
+    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare le informazioni relative ad un annuncio pubblicitario creato.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC1.2.1image.png}
+    \caption{UC1.2.1 - Visualizzazione informazioni dell'annuncio}
+    \label{fig:UC1.2.1}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.3 - Visualizzazione dettagli dei punti di interesse sulla mappa}}
@@ -402,7 +430,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{User story associata:}
      Come utente privilegiato voglio selezionare i vari punti di interesse presenti sulla mappa, in modo da vederne i dettagli.
 \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1.3image.png}
     \caption{UC1.3 - Visualizzazione dettagli punti di interesse sulla mappa}
@@ -433,6 +461,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  \subsubsection{\textbf{UC1.3.2 - Visualizzazione informazioni del punto di interesse}}
+ \label{UC1.3.2}
  \begin{itemize}
      \item \textbf{Attore Principale:} Utente Privilegiato
      \item \textbf{Precondizioni:}
@@ -440,14 +469,22 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la dashboard (UC3 e UC1).
             \item L'utente privilegiato ha selezionato un punto di interesse (UC1.3).
        \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare le informazioni specifiche del punto di interesse selezionato.
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente una tabella, che esprime le informazioni specifiche del punto di interesse selezionato. Tali informazioni sono:
+       \begin{itemize}
+       \item il nome;
+       \item la posizione espressa in latitudine e longitudine;
+       \item l'indirizzo;
+       \item la tipologia, cioè di che ambito si occupa il punto di interesse;
+       \item la descrizione.
+       \end{itemize}
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item Il sistema riporta le informazioni del punto di interesse selezionato e li mostra nella dashboard.
+          \item L'utente privilegiato ha selezionato un punto di interesse presente sulla mappa;
+            \item Il sistema riporta le informazioni del punto di interesse selezionato e le mostra nella dashboard in forma tabellare.
         \end{enumerate}
      \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare le informazioni di un punto di interesse presente sulla mappa. 
  \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1.3.1-UC1.3.2image.png}
     \caption{UC1.3.1 - Visualizzazione area del punto di interesse -- UC1.3.2 - Visualizzazione informazioni del punto di interesse}
@@ -462,16 +499,16 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     	\item Il sistema è operativo e accessibile.
     	\item Un utente entra nell'area di un punto di interesse.
         \end{itemize}
-    \item \textbf{Postcondizioni:} L'Utente visualizzerà un eventuale messaggio contenente un annuncio personalizzato in base ai suoi dati personali e al punto di interesse.
+    \item \textbf{Postcondizioni:} L'Utente visualizzerà un messaggio contenente un annuncio personalizzato in base ai suoi dati personali e al punto di interesse.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-            \item Un utente, mentre si muove sulla mappa, passa    nell'area di un punto di interesse.
+            \item Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse.
             \item Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio.
             \item Il sistema invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
         \end{enumerate}
     \item \textbf{User story associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
 \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC2image.png}
     \caption{UC2 - Visualizzazione annuncio}
@@ -495,7 +532,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{User story associata:} Come Sensore GPS, desidero trasmettere i rilevamenti di posizione al sistema.
 
 \end{itemize}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC5image.png}
     \caption{UC5 - Trasmissione dati geoposizionali}
@@ -540,7 +577,9 @@ RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio
 \hline
 RF09 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati in tempo reale al sistema. & Capitolato, UC5\\
 \hline
-RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo punto di interesse & Capitolato, UC1.3.2\\
+RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo punto di interesse. & Capitolato, UC1.3.2\\
+\hline
+RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo annuncio. & Capitolato, UC1.2.1\\
 \hline
 \end{tabular}
 \caption{Requisiti funzionali}
@@ -635,7 +674,7 @@ RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità do dato in I
 \hline
 \textbf{Fonte} & \textbf{Id. Requisiti}\\
 \hline
-Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04 \\
+Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
 \hline
 Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
@@ -652,7 +691,7 @@ Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV01 \linebreak RV02 \
 \hline
 \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\
 \hline
-Funzionali & 7 & - & 2 & 9\\
+Funzionali & 8 & - & 2 & 10\\
 \hline
 Di qualità & 6 & - & - & 6 \\
 \hline
@@ -660,7 +699,7 @@ Di vincolo & 5 & - & - & 5 \\
 \hline
 Prestazionali & 2 & - & - & 2 \\
 \hline
-Totale & 20 & - & 2 & 22 \\
+Totale & 21 & - & 2 & 23 \\
 \hline
 \end{tabular}
 \caption{Riepilogo}
