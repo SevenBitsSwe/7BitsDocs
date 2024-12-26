@@ -16,7 +16,7 @@
 \usepackage{titlesec}
 \usepackage{float}
 
-\newcommand\version{0.5.5} %aggiunta versione come variabile
+\newcommand\version{0.5.6} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -104,6 +104,8 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+    \hline
+    0.5.6 & 2024-12-26 & Alfredo Rubino & Riccardo Piva & Stesura della sottosezione "Gestione della qualità"\\
     \hline
     0.5.5 & 2024-12-24 & Riccardo Piva & Uncas Peruzzi & Ulteriore continuazione \hyperref[metriche_qualita]{stesura metriche}\\
     \hline
@@ -754,7 +756,53 @@
     \item \textbf{P}: il test è stato passato, con esito positivo.
     \end{itemize}
 
-    \subsection{Gestione della qualità}
+\subsection{Gestione della Qualità}
+
+    \subsubsection{Descrizione e Scopo}
+     La qualità viene assicurata tramite processi di verifica e validazione, che permettono di monitorare l’aderenza agli standard definiti. Una volta stabiliti i criteri qualitativi nel Piano di Qualifica, il gruppo si impegna a seguire le best practices per ogni fase del progetto, dai processi di sviluppo alla produzione degli artefatti. La responsabilità di garantire l’applicazione degli standard è delegata ai Verificatori, che certificano la conformità dei prodotti e dei processi agli obiettivi qualitativi.Il processo di gestione della qualità ha come obiettivo primario garantire che il software e i processi del ciclo di vita del progetto rispettino i requisiti specificati e siano allineati ai piani stabiliti. Attraverso l'adozione di standard qualitativi ben definiti, si mira a creare un prodotto affidabile ed efficiente, conforme alle aspettative e agli obiettivi concordati con il proponente.
+    
+    \subsubsection{Aspettative}
+    Ci si attende che:
+    \begin{itemize}
+        \item Il gruppo rispetti gli standard qualitativi definiti di comune accordo;
+        \item La documentazione prodotta sia chiara, coerente e conforme agli obiettivi del progetto;
+        \item I prodotti software sviluppati soddisfino i requisiti funzionali e non funzionali concordati;
+        \item Le pratiche di verifica e validazione siano eseguite regolarmente e con accuratezza.
+    \end{itemize}
+    
+    \subsubsection{Metriche e Strumenti}
+    Per monitorare e valutare la qualità, vengono utilizzate specifiche metriche, adattate ai diversi processi coinvolti. Queste metriche forniscono uno strumento oggettivo per analizzare il lavoro svolto e identificare eventuali criticità. Le metriche sono descritte nel dettaglio nel Piano di Qualifica e includono:
+    \begin{itemize}
+        \item \textbf{Metriche di processo}: utilizzate per valutare l’efficienza e l’efficacia dei processi produttivi e organizzativi;
+        \item \textbf{Metriche di prodotto}: impiegate per analizzare la qualità degli artefatti e dei prodotti finali.
+    \end{itemize}
+    
+\subsubsection{Struttura e identificazione delle metriche}
+
+Le metriche adottate nel progetto sono identificate e descritte secondo una struttura standardizzata che ne facilita il riconoscimento e l’utilizzo. Ogni metrica è caratterizzata dai seguenti elementi:
+
+\begin{itemize}
+    \item \textbf{Codice}: identificativo univoco della metrica, definito nel formato:
+    \begin{quote}
+        \textbf{M[abbreviazione][numero]}
+    \end{quote}
+    Dove:
+    \begin{itemize}
+        \item \textbf{[abbreviazione]}: PC se si tratta di qualità di processo, PD se si tratta di qualità di prodotto.
+        \item \textbf{[numero]}: numero progressivo univoco per ciascuna metrica;
+    \end{itemize}
+    
+    \item \textbf{Nome}: il nome completo della metrica.
+    \item \textbf{Descrizione}: breve descrizione della funzionalità e dell’ambito di applicazione della metrica.
+\end{itemize}
+
+Eventualmente, le metriche possono includere:
+\begin{itemize}
+    \item \textbf{Formula}: modalità di calcolo della metrica.
+\end{itemize}
+    
+    \subsubsection{Documentazione della Qualità}
+    La gestione della qualità è documentata nel \textit{Piano di Qualifica}, che definisce le metriche e le soglie accettabili per i vari processi e prodotti. Eventuali modifiche agli standard o agli strumenti vengono tracciate e aggiornate in modo continuo per garantire un processo di miglioramento costante.
 
 \newpage
 \section{Processi organizzativi}
