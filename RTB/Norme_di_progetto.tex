@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.5.7} %aggiunta versione come variabile
+\newcommand\version{0.5.9} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -107,7 +107,9 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
-\hline
+    \hline
+    0.5.9 & 2024-12-27 & Federico Pivetta & Riccardo Piva & Completate sottosezioni \hyperref[miglioramento]{"Miglioramento"} e \hyperref[formazione]{"Formazione"}\\
+    \hline
     0.5.8 & 2024-12-27 & Leonardo Trolese & Uncas Peruzzi & Aggiornamento della sezione \hyperref[standard_qualità]{"Standard ISO/IEC:9126"}\\
     \hline
     0.5.7 & 2024-12-27 & Federico Pivetta & Uncas Peruzzi & Completata sottosezione \hyperref[gestione-configurazione]{"Gestione della configurazione"}\\
@@ -680,8 +682,8 @@
     \subsection{Gestione della configurazione}
     \label{gestione-configurazione}
     \subsubsection{Descrizione e Scopo}
-    Il processo di gestione della configurazione identifica le norme che sono state adottate durante lo svolgimento del progetto al fine di garantire la tracciabilità, la coerenza e la comprensibilità del codice e della documentazione prodotta dal gruppo.
-    Il suo scopo è quello di gestire e organizzare ogni modifica sul codice o sulla documentazione supportando con delle motivazioni alla base dei cambiamenti effettuati e con gli autori relativi
+    Il processo di gestione della configurazione identifica le norme che sono state adottate durante lo svolgimento del progetto al fine di garantire la tracciabilità, la coerenza e la comprensibilità del codice e della documentazione prodotta dal gruppo.\\
+    Il suo scopo è gestire e organizzare le modifiche al codice o alla documentazione, garantendo che siano accompagnate dalle motivazioni alla base dei cambiamenti effettuati e dai relativi autori.
 
     \subsubsection{Project Board}
     Per la gestione delle attività viene utilizzata la board di GitHub, che offre una struttura organizzativa chiara ed efficiente. All'interno della board sono presenti diverse corsie di stato, ognuna delle quali descrive il progresso delle attività e sono suddivise come segue:
@@ -1014,9 +1016,26 @@ Eventualmente, le metriche possono includere:
         Le riunioni esterne coinvolgono i membri del gruppo, la proponente e i committenti. Gli incontri con la proponente si terranno sulla piattaforma Google Meet, con l'indirizzo comunicato al gruppo dall'azienda. I membri del gruppo si impegnano a partecipare attivamente, cercando di garantire la loro presenza. In caso di impossibilità a partecipare, ogni membro potrà recuperare la sintesi delle discussioni e le decisioni prese leggendo il verbale della riunione.
 
     \subsection{Miglioramento}
+    \label{miglioramento}
+    \subsubsection{Descrizione e Scopo}
+    Il miglioramento è un processo finalizzato a valutare, misurare, controllare e ottimizzare il ciclo di vita del software. Il suo scopo principale è garantire che il prodotto soddisfi tutte le aspettative, mantenendo al contempo elevati standard di qualità ed efficienza.
+    Adottando un approccio ciclico, è previsto che ogni fase venga periodicamente rivisitata e perfezionata, permettendo così di identificare e implementare modifiche mirate per un miglioramento continuo del prodotto.\\ 
+
+    \subsubsection{Ciclo di miglioramento continuo}
+    Il miglioramento si compone di tre fasi fondamentali. La prima prevede l’identificazione dei processi organizzativi da applicare alle diverse attività di progetto durante l’intero ciclo di vita del software. Tali processi devono essere adeguatamente documentati e supportati da un sistema di controllo che permetta di svilupparli, monitorarli e migliorarli nel tempo. La seconda fase prevede la valutazione dei processi, che basata sugli obiettivi predefiniti, le metriche adottate e l’analisi dei dati raccolti. Inoltre, pianificare ed effettuare revisioni periodiche garantisce la loro continua idoneità ed efficacia.
+    Infine, la terza fase prevede l'implementazione dei miglioramenti identificati nella fase precedente. È fondamentale che la documentazione venga aggiornata per riflettere le modifiche apportate, mentre i dati storici, tecnici e di valutazione devono essere raccolti e analizzati per garantire un progresso continuo e il consolidamento dei miglioramenti ottenuti. In questo modo, il miglioramento favorisce un progresso continuo, evitando il rischio di regressioni e assicurando l'evoluzione costante dei processi.
 
     \subsection{Formazione}
+    \label{formazione}
+    \subsubsection{Descrizione e Scopo}
+    La formazione assicura che ogni membro del gruppo sviluppi le competenze necessarie per affrontare con consapevolezza tutte le sfide che potrebbero emergere durante lo svolgimento del progetto.\\
+    Il percorso di apprendimento si basa su un'analisi dettagliata delle esigenze espresse dalla proponente, seguita dall’identificazione delle risorse più adeguate per il raggiungimento degli obiettivi stabiliti.
+    Attraverso questo processo si realizza un progressivo arricchimento delle conoscenze del gruppo, supportato dal consolidamento della comprensione degli strumenti e delle tecnologie adottate.\\
+    La formazione risulta un pilastro fondamentale per il successo del progetto, offrendo al contempo un'opportunità di crescita professionale per tutti i partecipanti.
 
+    \subsubsection{Formazione individuale}
+    Durante lo svolgimento del progetto, ogni membro del gruppo è tenuto ad approfondire autonomamente le tecnologie necessarie per lo sviluppo del prodotto. Il processo di apprendimento è facilitato dalla condivisione di conoscenze tra i membri, grazie al contributo di coloro che possiedono maggiore esperienza e competenza.
+    Questo approccio consente al gruppo di raggiungere un livello uniforme di conoscenze, adeguato al conseguimento degli obiettivi, e favorisce lo sviluppo complessivo del progetto.
 
 \newpage
 \section{Standard ISO/IEC:9126}
@@ -1024,7 +1043,7 @@ Eventualmente, le metriche possono includere:
 Lo standard ISO/IEC:9126 individua una serie di linee guida e normative, sviluppate dall'ISO (Organizzazione 
 internazionale per la normazione) in collaborazione con l'IEC (Commissione Elettrotecnica Internazionale), finalizzate 
 a descrivere un modello univoco e globalmente riconosciuto di qualità del software. Il modello nasce dalla necessità di
-fornire alle società di software un'approccio organizzato che faciliti e migliori la produzione di software e conseguentemente 
+fornire alle società di software un approccio organizzato che faciliti e migliori la produzione di software e conseguentemente 
 anche la qualità dello stesso.
 
     \subsection{Qualità del prodotto software}
@@ -1039,13 +1058,13 @@ anche la qualità dello stesso.
     \end{itemize}
 
         \subsubsection{Funzionalità}
-        Misura quanto il software soddisfa i requisiti funzionali espliciti e impliciti. Include cinque sotto-caratteristiche:
+        Valuta quanto il software soddisfi i requisiti funzionali espliciti e impliciti. Include cinque sotto-caratteristiche:
         \begin{itemize}
             \item Accuratezza - rappresenta la capacità del software di fornire i risultati concordati;
             \item Appropriatezza - il software deve offrire un appropriato insieme di funzionalità coerenti con il raggiungimento degli obiettivi prefissati all'utente;
             \item Conformità - rappresenta la capacità del prodotto di aderire agli standard e i regolamenti rilevanti nel settore in cui si opera;
             \item Interoperabilità - è la capacità del prodotto software di interagire e cooperare con uno o più sistemi esterni;
-            \item Sicurezza - indica la capacità di un prodotto software di proteggere informazioni o dati, così che tutti coloro che interagiscono con tale prodotto (sia persone che altri
+            \item Sicurezza - indica la capacità di un prodotto software di proteggere informazioni e dati, garantendo che tutti coloro che interagiscono con tale prodotto (sia persone che altri
             software) abbiano accesso alle sole informazioni che è loro consentito visualizzare secondo il livello di autorizzazione che possiedono;
         \end{itemize}
 
@@ -1058,7 +1077,7 @@ anche la qualità dello stesso.
             \item Recuperabilità - rappresenta la capacita del software di ripristinare un livello adeguato di prestazioni e di recuperare dati rilevanti a seguito di un malfunzionamento;
         \end{itemize}
 
-        \subsubsection{Usabilita}
+        \subsubsection{Usabilità}
         Misura quanto intuitivo, soddisfacente e facile da usare è un software. Si compone di cinque sotto-caratteristiche:
         \begin{itemize}
             \item Apprendibilità - misura quanto facilmente un nuovo utente può imparare a fare uso di un software;
@@ -1077,7 +1096,7 @@ anche la qualità dello stesso.
             \item Utilizzo delle risorse - misura quanto efficientemente un software utilizza le risorse fisiche dell'hardware sottostante;
         \end{itemize}
 
-        \subsubsection{Mnutenibilità}
+        \subsubsection{Manutenibilità}
         Rappresenta la predisposizione di un prodotto software a essere modificato ai fini di migliorarne le performance, renderlo adeguato a un ambiente in evoluzione
         o aggiungere o modificare funzionalità. Un software mantenibile consente di rispondere efficacemente alle necessità degli utenti, a bug o problemi rilevati o
         all'evoluzione del panorama tecnologico che circonda il software stesso. Si suddivide in:
