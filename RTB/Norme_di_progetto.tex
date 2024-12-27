@@ -982,99 +982,82 @@ Eventualmente, le metriche possono includere:
 
 
 \newpage
-\section{Standard ISO/IEC:25010 "System \& software quality models"}
-Lo standard ISO/IEC:25010 appartiene alla famiglia di standard SQuaRE, ed è stato sviluppato e pubblicato nel 2011 congiuntamente
-dalla ISO e dalla IEC. Trattasi di un modello internazionale che definisce in maniera chiara un quadro di riferimento per la valutazione
-e la misurazione della qualità di un prodotto software. Lo scopo è di garantire che il prodotto realizzato soddisfi i requisiti
-di utenti, di proponenti e di committenti garantendo al contempo sicurezza e funzionalità.
-Lo standard non entra mai nel merito del "cosa" fa il software, ma definisce il "come" opera nel contesto della qualità.
+\section{Standard ISO/IEC:9126}
+Lo standard ISO/IEC:9126 individua una serie di linee guida e normative, sviluppate dall'ISO (Organizzazione 
+internazionale per la normazione) in collaborazione con l'IEC (Commissione Elettrotecnica Internazionale), finalizzate 
+a descrivere un modello univoco e globalmente riconosciuto di qualità del software. Il modello nasce dalla necessità di
+fornire alle società di software un'approccio organizzato che faciliti e migliori la produzione di software e conseguentemente 
+anche la qualità dello stesso.
 
     \subsection{Qualità del prodotto software}
-    Lo standard ISO/IEC:25010 definisce 8 caratteristiche centrali che influenzano la qualità di un software:
+    Lo standard ISO/IEC:9126 definisce 6 caratteristiche centrali che influenzano la qualità di un software:
     \begin{itemize}
-        \item Functional suitability
-        \item Reliability
-        \item Usability
-        \item Performance Efficiency
-        \item Maintainability
-        \item Portability
-        \item Compatibility
-        \item Security
+        \item Funzionalità
+        \item Affidabilità
+        \item Usabilità
+        \item Efficienza
+        \item Manutenibilità
+        \item Portabilità
     \end{itemize}
 
-        \subsubsection{Functional suitability}
-        Misura quanto il software soddisfa i requisiti funzionali espliciti e impliciti. Include tre sotto-caratteristiche:
+        \subsubsection{Funzionalità}
+        Misura quanto il software soddisfa i requisiti funzionali espliciti e impliciti. Include cinque sotto-caratteristiche:
         \begin{itemize}
-            \item Functional Completeness - il software deve mettere a disposizione tutte le funzionalità necessarie;
-            \item Functional Correctness - il software deve eseguire le sue funzionalità correttamente e nel modo previsto;
-            \item Functional Appropriateness - il software deve offrire funzionalità appropriate agli obiettivi;
+            \item Accuratezza - rappresenta la capacità del software di fornire i risultati concordati;
+            \item Appropriatezza - il software deve offrire un appropriato insieme di funzionalità coerenti con il raggiungimento degli obiettivi prefissati all'utente;
+            \item Conformità - rappresenta la capacità del prodotto di aderire agli standard e i regolamenti rilevanti nel settore in cui si opera;
+            \item Interoperabilità - è la capacità del prodotto software di interagire e cooperare con uno o più sistemi esterni;
+            \item Sicurezza - indica la capacità di un prodotto software di proteggere informazioni o dati, così che tutti coloro che interagiscono con tale prodotto (sia persone che altri
+            software) abbiano accesso alle sole informazioni che è loro consentito visualizzare secondo il livello di autorizzazione che possiedono;
         \end{itemize}
 
-        \subsubsection{Reliability}
-        Misura la consistenza con cui il software svolge i suoi compiti senza andare incontro a fallimento. Include quattro sotto-caratteristiche:
+        \subsubsection{Affidabilità}
+        Misura la consistenza con cui il software svolge i suoi compiti mantenendo un certo livello di prestazioni e senza andare incontro a fallimento. Include quattro sotto-caratteristiche:
         \begin{itemize}
-            \item Maturity - un software maturo è stato testato a fondo, pertanto molti bug sono stati individuati e risolti;
-            \item Availability - misura la frequenza con la quale il software è "up-and-running";
-            \item Fault Tolerance - rappresenta la capacità del software di funzionare anche in presenza di errori;
-            \item Recoverability - rappresenta la capacita del software di recuperare da un failure riprendendo le sue funzioni;
+            \item Aderenza - misura la frequenza con la quale il software è "up-and-running";
+            \item Maturità - un software maturo è stato testato a fondo, pertanto molti bug sono stati individuati e risolti;
+            \item Tolleranza agli errori - rappresenta la capacità del software di funzionare mantenendo determinati livelli prestazionali anche in presenza di errori;
+            \item Recuperabilità - rappresenta la capacita del software di ripristinare un livello adeguato di prestazioni e di recuperare dati rilevanti a seguito di un malfunzionamento;
         \end{itemize}
 
-        \subsubsection{Usability}
+        \subsubsection{Usabilita}
         Misura quanto intuitivo, soddisfacente e facile da usare è un software. Si compone di cinque sotto-caratteristiche:
         \begin{itemize}
-            \item Understandability - rappresenta la facilità con cui gli utenti possono capire le funzionalità offerte da un software;
-            \item Learnability - misura quanto facilmente un nuovo utente può imparare a fare uso di un software;
-            \item Operability - indica quanto controllo l'utente ha sul software stesso;
-            \item Attractiveness - misura l'attrattiva estetica che l'interfaccia del software esercita sull'utente;
-            \item Accessibility - indica la facilità di uso del sistema da parte di utenti con disabilità;
+            \item Apprendibilità - misura quanto facilmente un nuovo utente può imparare a fare uso di un software;
+            \item Attrattiva - misura la capacità del software di essere piacevole da usare per l'utente;
+            \item Comprensibilità - rappresenta la facilità con cui gli utenti possono capire le funzionalità offerte da un software;
+            \item Conformità - indica la capacità del prodotto di aderire a standard e convenzioni relativi all'usabilità;
+            \item Operabilità - indica quanto controllo l'utente ha sul software stesso;
         \end{itemize}
 
-        \subsubsection{Performance Efficiency}
+        \subsubsection{Efficienza}
         Misura le performance del sistema relativamente al quantitativo di risorse usate in determinate condizioni. L'efficienza tiene conto sia della velocità
         del sistema software che del suo uso delle risorse fisiche disponibili. Questo aspetto si può ulteriormente dividere in tre sotto-caratteristiche:
         \begin{itemize}
-            \item Time behavior - è indicatore di quanto velocemente un sistema può eseguire un compito o processare una richiesta;
-            \item Resource utilization - misura quanto efficientemente un software utilizza le risorse fisiche dell'hardware sottostante;
-            \item Capacity - misura la capacità del sistema di gestire determinati carichi di lavoro;
+            \item Comportamento rispetto al tempo - è indicatore di quanto velocemente un sistema può eseguire un compito o processare una richiesta;
+            \item Conformità - rappresenta la capacità del software di aderire a standard e specifiche richieste in termini di efficienza;
+            \item Utilizzo delle risorse - misura quanto efficientemente un software utilizza le risorse fisiche dell'hardware sottostante;
         \end{itemize}
 
-        \subsubsection{Maintainability}
+        \subsubsection{Mnutenibilità}
         Rappresenta la predisposizione di un prodotto software a essere modificato ai fini di migliorarne le performance, renderlo adeguato a un ambiente in evoluzione
         o aggiungere o modificare funzionalità. Un software mantenibile consente di rispondere efficacemente alle necessità degli utenti, a bug o problemi rilevati o
         all'evoluzione del panorama tecnologico che circonda il software stesso. Si suddivide in:
         \begin{itemize}
-            \item Modularity - indica il grado di suddivisione in componenti fra loro indipendenti del sistema;
-            \item Reusability - indica la capacità di riutilizzare componenti software;
-            \item Analyzability - rappresenta la facilità con cui è possibile diagnosticare problemi del software;
-            \item Modifiability - indica la facilità con cui è possibile effettuare dei cambiamenti;
-            \item Testability - rappresenta la facilità con cui è possibile testare il software modificato o prodotto;
+            \item Analizzabilità - rappresenta la facilità con cui è possibile diagnosticare problemi del software;
+            \item Modificabilità - indica la facilità con cui è possibile effettuare dei cambiamenti;
+            \item Stabilità - rappresenta la robustezza del codice del software nell'evitare effetti inaspettati dovuti a modifiche errate;
+            \item Testabilità - rappresenta la facilità con cui è possibile testare il software modificato o prodotto;
         \end{itemize}
 
-        \subsubsection{Portability}
+        \subsubsection{Portabilità}
         Misura la facilità con cui il software si può adattare a un ambiente hardware o software differente da quello originale. La portabilità di un sistema si
         traduce nella sua flessibilità o adattabilità. Accorpa le seguenti sotto-categorie:
         \begin{itemize}
-            \item Adaptability - rappresenta la capacità del sistema di adattarsi a diversi ambienti;
-            \item Installability - indica la facilità di installazione del software;
-            \item Replaceability - rappresenta la capacità del sistema di sostituire altri software;
-        \end{itemize}
-
-        \subsubsection{Compatibility}
-        Misura la capacità del software di funzionare in un ambiente condiviso o in coordinamento con altri sistemi. Include due sotto-categorie:
-        \begin{itemize}
-            \item Co-Existence - è indicatore della capacità del software di coesistere senza conflitti con altri sistemi;
-            \item Interoperability - misura la capacità del software di scambiare informazioni con altri sistemi;
-        \end{itemize}
-
-        \subsubsection{Security}
-        Indica la capacità di un prodotto software di proteggere informazioni o dati, così che tutti coloro che interagiscono con tale prodotto (sia persone che altri
-        software) di avere accesso alle informazioni che è loro consentito visualizzare secondo il livello di autorizzazione che possiedono. Include:
-        \begin{itemize}
-            \item Confidentiality - rappresenta la protezione dei dati da accessi non autorizzati;
-            \item Integrity - rappresenta la prevenzione della modifica non autorizzata di dati;
-            \item Authenticity - indica la verifica dell'identità degli utenti;
-            \item Accountability - rappresenta il tracciamento delle azioni degli utenti;
-            \item Non-repudiation - rappresenta la capacità di garantire che un'azione non possa essere negata;
+            \item Adattabilità - rappresenta la capacità del sistema di adattarsi a diversi ambienti operativi senza dover apportare modifiche;
+            \item Conformità - è la capacità del prodotto software di aderire a standard e convenzioni relative alla portabilità;
+            \item Installabilità - indica la facilità di installazione del software in uno specifico ambiente;
+            \item Sostituibilità - rappresenta la capacità del sistema di sostituire altri software che svolgono gli stessi compiti nel medesimo ambiente;
         \end{itemize}
 
 \newpage
@@ -1465,7 +1448,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
 \begin{itemize}
  \item \textbf{MPC25 - Metriche di qualità soddisfatte}:
     \begin{itemize}
-        \item \textbf{Descrizione}: di soddisfacimento delle metriche di qualità stabilite.
+        \item \textbf{Descrizione}: percentuale di soddisfacimento delle metriche di qualità stabilite.
     \end{itemize}
 \end{itemize}
 
@@ -1474,7 +1457,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
 \begin{itemize}
     \item \textbf{MPC26 - Rischi non previsti}:
         \begin{itemize}
-            \item \textbf{Descrizione}: dei rischi non inclusi nelle stime.
+            \item \textbf{Descrizione}: numero di rischi non inclusi nelle stime incontrati durante lo svolgimento del progetto.
         \end{itemize}
     \item \textbf{MPC27 - Efficienza Temporale (ET)}:
     \begin{itemize}
