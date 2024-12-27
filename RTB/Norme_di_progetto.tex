@@ -15,8 +15,9 @@
 \usepackage{eso-pic}
 \usepackage{titlesec}
 \usepackage{float}
+\usepackage{longtable}
 
-\newcommand\version{0.5.6} %aggiunta versione come variabile
+\newcommand\version{0.5.7} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -97,13 +98,17 @@
 \setcounter{page}{1}
 
 % Registro Modifiche
-\begin{center}
-\textbf{Registro modifiche}\\
-\vspace{2mm}
+\centering\textbf{Registro modifiche}\\
 
-\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alle righe del registro
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\endhead
+\hline
+    0.5.7 & 2024-12-27 & Federico Pivetta & Uncas Peruzzi & Completata sottosezione \hyperref[gestione-configurazione]{"Gestione della configurazione"}\\
     \hline
     0.5.6 & 2024-12-26 & Alfredo Rubino & Riccardo Piva & Stesura della sottosezione "Gestione della qualità"\\
     \hline
@@ -153,8 +158,7 @@
     \hline
     0.1.0 & 2024-11-11 & Leonardo Trolese & Federico Pivetta & Creazione del documento secondo la struttura definita dal gruppo\\
     \hline
-\end{tabularx}
-\end{center}
+\end{longtable}
 
 \newpage
 \tableofcontents
@@ -489,7 +493,7 @@
 
     \subsubsection{Codifica}
 
-        \paragraph{Descrizione e scopo}
+        \paragraph{Descrizione e Scopo}
         L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, manutenibilità e coerenza nell'intero progetto.\\
         L’obiettivo principale della codifica è quindi creare un prodotto software che soddisfi le esigenze del proponente e rispetti gli accordi contrattuali. Le aspettative del codice sviluppato includono:
         \begin{itemize}
@@ -672,50 +676,77 @@
     \end{itemize}
 
     \subsection{Gestione della configurazione}
+    \label{gestione-configurazione}
+    \subsubsection{Descrizione e Scopo}
+    Il processo di gestione della configurazione identifica le norme che sono state adottate durante lo svolgimento del progetto al fine di garantire la tracciabilità, la coerenza e la comprensibilità del codice e della documentazione prodotta dal gruppo.
+    Il suo scopo è quello di gestire e organizzare ogni modifica sul codice o sulla documentazione supportando con delle motivazioni alla base dei cambiamenti effettuati e con gli autori relativi
+
+    \subsubsection{Project Board}
+    Per la gestione delle attività viene utilizzata la board di GitHub, che offre una struttura organizzativa chiara ed efficiente. All'interno della board sono presenti diverse corsie di stato, ognuna delle quali descrive il progresso delle attività e sono suddivise come segue:
+    \begin{enumerate}
+        \item \textbf{ToDo}: attività identificate e pianificate ma ancora da avviare;
+        \item \textbf{In Progress}: attività in corso, assegnate ad uno o più membri del gruppo;
+        \item \textbf{Done}: attività completate, in attesa di verifica.
+    \end{enumerate}
+    Per le attività di verifica vengono create delle issue specifiche che seguono il procedimento descritto in precedenza.
+
+    \subsubsection{Repository}
+    Il gruppo utilizza due repository all'interno della propria organizzazione GitHub:
+    \begin{itemize}
+        \item \href{https://github.com/SevenBitsSwe/7BitsDocs}{https://github.com/SevenBitsSwe/7BitsDocs}: questa repository è utilizzata per revisionare e mantenere aggiornati i documenti redatti, permettendo ai membri del gruppo di gestire in modo efficiente la documentazione;
+        \item \href{https://github.com/SevenBitsSwe/PoC}{https://github.com/SevenBitsSwe/PoC}: questa repository è dedicata alla condivisione e revisione del codice sorgente relativo al prodotto software realizzato per la revisione RTB. Viene utilizzata dal team per lavorare sul codice del prodotto, consentendo una gestione centralizzata dello sviluppo e delle modifiche apportate al software.
+    \end{itemize}
+
+        \paragraph{Struttura della repository 7BitsDocs}
+        Per ogni documento è stato creato un branch dedicato, al fine di lavorare in modo efficace ed efficiente, evitando di generare conflitti e prevenendo il caricamento sulla pagina web di documenti non ancora approvati, ossia con una versione precedente alla 1.0.0. Per questo motivo, è stato adottato un modello git-flow semplificato, che prevede l'uso di più branch di lavoro separati. Di conseguenza, nessuno dei branch dedicati deve essere eliminato.\\
+        Ogni branch, derivante direttamente dal branch principale main, contiene diverse cartelle relative alle fasi del progetto: una per la Candidatura e una per la RTB, ciascuna contenente i documenti redatti per quella specifica fase. Inoltre, sono presenti una cartella per le immagini utilizzate nei documenti, due cartelle per la gestione della pagina web e i file di supporto (README, templates, ecc.).
+
+        \paragraph{Struttura della repository PoC}
+        Per quanto riguarda il prodotto software sviluppato per la revisione RTB, sono stati creati diversi branch, ognuno derivante direttamente dal main, e ciascuno utilizzato per esplorare e approfondire una specifica tecnologia. Solo una volta presa la decisione di implementare una determinata tecnologia, viene effettuato un merge in un branch specifico che include l'intero prodotto. Solo quest'ultimo può successivamente confluire nel branch "main" attraverso una Pull Request, a condizione che ogni modifica sia stata verificata e approvata.
+    
+    \subsubsection{Pagina web} 
+    La pagina web, accessibile al link \href{https://sevenbitsswe.github.io/7BitsDocs/}{https://sevenbitsswe.github.io/7BitsDocs/}, è stata progettata per offrire un’esperienza chiara e intuitiva, organizzando la documentazione in base alle diverse fasi per cui è stata redatta. Grazie all’integrazione di una GitHub Action, la pagina si aggiorna automaticamente ad ogni modifica apportata nel branch “main” del repository, garantendo che siano visibili soltanto i documenti approvati.
+
+    \subsubsection{Controllo dei termini del glossario}
+    È stato sviluppato uno script in Python per verificare la presenza dei termini definiti nel Glossario all'interno dei vari documenti. Lo script utilizza espressioni regolari per identificare i termini nei documenti e confrontarli con quelli inclusi nella lista predefinita, formattandoli secondo lo standard del Glossario. Quando rileva un termine della lista non correttamente formattato, lo script aggiunge automaticamente una $_G$ a pedice per garantirne la conformità.\\
+    Tutti i termini inclusi nel Glossario devono essere formattati correttamente ogni volta che compaiono nel documento, e non solo alla loro prima occorrenza. Questa regola semplifica la consultazione e favorisce una migliore comprensione dei termini chiave all'interno della documentazione.
 
     \subsection{Verifica}
     \label{verifica}
-    \subsubsection{Descrizione}
-    La verifica è un processo essenziale che deve essere applicato a tutti gli altri processi per poterli considerare completati. Il suo scopo principale è quello di assicurarsi che i prodotti siano corretti ed aderiscano ai vincoli individuati ed elencati nel documento \textit{Piano di Qualifica}. Le attività di verifica sono assegnate ai verificatori, che si impegnano a far rispettare i vincoli di qualità, presenti nel \textit{Piano di Qualifica}, correggendo e/o segnalando quando sono presenti modifiche non conformi agli standard.
+    \subsubsection{Descrizione e Scopo} 
+    La verifica è un processo essenziale che deve essere applicato a tutti gli altri processi per poterli considerare completati. Il suo scopo principale è quello di assicurare che i prodotti siano corretti e che aderiscano ai vincoli individuati ed elencati nel documento \textit{Piano di Qualifica}. Le attività di verifica sono assegnate ai verificatori, che si impegnano a far rispettare i vincoli di qualità presenti nel \textit{Piano di Qualifica}, correggendo e/o segnalando qualora siano presenti contenuti non conformi agli standard.
     \subsubsection{Strumenti}
     Gli strumenti utilizzati per agevolare il processo di verifica sono i seguenti:
     \paragraph{GitHub}
-    GitHub fornisce un servizio di review all'interno del meccanismo di PR, permettendo al verificatore di visualizzare le ultime modifiche. Il verificatore una volta verificato il documento può inserire commenti specifici, con all'interno correzioni o migliorie da apportare, inviando una richiesta di modifica nella PR o approvare la PR e procedere con la verifica di altri prodotti presenti in repository in attesa di verifica. La review di GitHub consente all'intero team di poter tracciare le modifiche effettuate all'interno della repository.\\
+    GitHub fornisce un servizio di review all'interno del meccanismo di PR, permettendo al verificatore di visualizzare le ultime modifiche. Una volta completata la verifica del documento, il verificatore può inserire commenti specifici con correzioni o suggerimenti per migliorie e inviare una richiesta di modifica nella PR. In alternativa, può approvare la PR e passare all'eventuale verifica di altri prodotti in attesa di revisione presenti nel repository. La review di GitHub consente all'intero team di poter tracciare le modifiche effettuate all'interno della repository.\\
     Possono essere assegnate regole alle PR di GitHub per accertarsi che avvenga la verifica di almeno 2 verificatori per poter effettuare la merge nel branch main.
 
     \subsubsection{Analisi statica}
-    Effettuata sul prodotto software o sulla documentazione senza dover eseguire il sistema software. Serve ad accertare la conformità a regole adottate, l'assenza di difett e la presenza di proprietà desiderate, garantendo un livello ottimale di qualità. Le due principali tecniche sono Inspection e Walkthrough. Il gruppo preferisce l'approccio ad Inspection, così da ridurre il tempo di verifica e poter lasciare concentrare l'autore sulla stesura di altri documenti o codice.
+    L'analisi statica è un tipo di analisi che viene effettuata sul prodotto software o sulla documentazione senza dover eseguire il sistema software. Serve ad accertare la conformità con le regole adottate, verificare l'assenza di difetti e la presenza di proprietà desiderate, garantendo un livello ottimale di qualità. Le due principali tecniche sono Inspection e Walkthrough. Il gruppo preferisce l'approccio ad Inspection, così da ridurre il tempo di verifica affinché l'autore possa dedicarsi alla stesura di altri documenti o codice.
     \paragraph{Inspection}
     Il verificatore segue una sequenza di passaggi prestabiliti per verificare che si stiano rispettando le regole presenti nel \textit{Piano di Qualifica}
     \paragraph{Walkthrough}
-    Il verificatore e l'autore del codice/documento da verificare discutono sulle modifiche da apportare. Questo processo richiede la presenza e la collaborazione di entrambi i ruoli.Viene effettuato un controllo ad ampio spettro dell'oggetto, senza avere un'idea precisa di cosa andare a verificare.
+    Il verificatore e l'autore del prodotto da verificare discutono sulle modifiche da apportare. Questo processo richiede la presenza sincrona e la collaborazione di entrambi i ruoli, dunque risulta più complessa dell'Inspection in termini organizzativi. Viene effettuato un controllo ad ampio spettro dell'oggetto, senza avere un'idea precisa di cosa andare a verificare.
 
 
     \subsubsection{Analisi dinamica}
-    Effettuata esclusivamente sul prodotto software tramite l'esecuzione effettiva di esso. L'analisi dinamica si divide in test. Ogni test è una esecuzione di un programma e provano il comportamento di singole parti di codice su un insieme finito di casi di prova.\\
-    Questa procedura misura la qualità del prodotto e assicura che esegua correttamente il suo scopo. I test effettuati devono essere ripetibili nel tempo per assicurare funzionamento persistente durante tutto lo svolgimento del prodotto software.
+    L'analisi dinamica viene condotta direttamente sul prodotto software attraverso la sua esecuzione effettiva. Questo tipo di analisi si suddivide in diverse tipologie di test, ciascuna finalizzata a verificare aspetti specifici del funzionamento software. Ogni test corrisponde all'esecuzione di un programma, e simula il comportamento di singole parti di codice su un insieme finito di casi di prova.\\
+    Questa procedura misura la qualità del prodotto e assicura che esso raggiunga correttamente il suo scopo. I test effettuati devono essere ripetibili nel tempo per assicurare un funzionamento persistente durante tutto lo svolgimento del prodotto software.
     \subsubsection{Classificazione dei test}
     Tutti i test che verranno eseguiti sono presenti nel documento \textit{Piano di Qualifica} ed il Verificatore è tenuto ad eseguirli riportandone gli esiti all'interno del \textit{Piano di Qualifica}.\\
     Ad ogni test devono essere attribuiti:
     \begin{itemize}
-    \item \textbf{Stato iniziale}: Parametri del software al momento dell'esecuzione del test;
+    \item \textbf{Stato iniziale}: parametri del software al momento dell'esecuzione del test;
     \item \textbf{Input}: dati forniti in entrata per l'esecuzione del test;
-    \item \textbf{Output}: risultati attesi in uscita dato uno specifico input.
+    \item \textbf{Output}: risultati attesi in uscita, dato uno specifico input.
     \end{itemize}
     Inoltre i test sono divisi in varie categorie:
-    \begin{itemize}
-    \item Test di unità;
-    \item Test di integrazione;
-    \item Test di sistema;
-    \item Test di regressione;
-    \item Test di accettazione.
-    \end{itemize}
 
     \paragraph{Test di unità}
-    Test eseguiti su singole unità del software, come funzioni o metodi, in modo indipendente dal resto del sistema. L'obiettivo è assicurare che ogni unità di codice funzioni correttamente.Devono essere eseguiti per primi visto che le unità garantiscono il corretto funzionamento dei singoli metodi che poi verranno integrati tra di loro.\\
+    Test eseguiti su singole unità del software, come funzioni o metodi, in modo indipendente dal resto del sistema. L'obiettivo è assicurare che ogni unità di codice funzioni correttamente. Devono essere eseguiti per primi visto che le unità garantiscono il corretto funzionamento dei singoli metodi che poi verranno integrati tra di loro.\\
     Sono presenti due tipi di test di unità:
     \begin{itemize}
-    \item \textbf{Funzionale}: verificano che ogni unità esegue le funzione specificate nel design, facendo riferimento solo alla specifica input-output dell'oggetto di verifica;
+    \item \textbf{Funzionale}: verificano che ogni unità esegua le funzioni specificate nel design, facendo riferimento solo alla specifica input-output dell'oggetto di verifica;
     \item \textbf{Strutturale}: verificano la logica interna dell'oggetto di verifica esaminando il codice sorgente dell'unità.
     \end{itemize}
 
@@ -729,23 +760,27 @@
 
     \paragraph{Test di sistema}
     Test eseguiti per controllare che i requisiti specificati nell'Analisi dei requisiti siano rispettati, garantendo che tutte le componenti siano integrate correttamente.\\
-    L'obiettivo di questo test è di accertarsi che l'intero sistema lavori come entità unica, verificando che tutte le singole componenti funzionino insieme. Viene eseguita al completamento dei test di integrazione.
+    L'obiettivo di questo test è di accertarsi che l'intero sistema lavori come entità unica, verificando che tutte le singole componenti funzionino insieme. Viene eseguito al completamento dei test di integrazione.
 
     \paragraph{Test di regressione}
     Garantiscono che le modifiche apportate al codice non introducano nuovi difetti o danneggino il sistema precedentemente funzionante.\\
-    Consiste nella ripetizione selettiva delle tipologie dei test elencati precedentemente e devono essere eseguiti ogni volta che si effettuano modifiche al codice.
+    Consistono nella ripetizione selettiva delle tipologie dei test elencati precedentemente e devono essere eseguiti ogni volta che si effettuano modifiche al codice.
 
     \paragraph{Test di accettazione}
-    Test da passare prima del rilascio del software. Serve a garantire che il prodotto finale soddisfi le aspettative del proponente e degli utenti finali.
+    Sono gli ultimi test da passare prima del rilascio del software. Servono a garantire che il prodotto finale soddisfi le aspettative del proponente e degli utenti finali.
 
     \paragraph{Classificazione dei test}
-    I test vengono identificati in base alla loro tipologia e tramite un codice numerico, specifico all'interno della categoria. I test devono avere la seguente forma: \textbf{T[Tipologia Test][Codice]}\\
-    Tipologia:
+    I test vengono identificati in base alla loro tipologia e tramite un codice numerico, specifico all'interno della categoria. I test devono avere la seguente forma:
+    \begin{quote}
+    \textbf{T[Tipologia Test][Codice]}\\
+    \end{quote}
+    Dove:
+    \item [-] \textbf{Tipologia}:
     \begin{itemize}
-    \item \textbf{U}: Unità;
-    \item \textbf{I}: Integrazione;
-    \item \textbf{S}: Sistema;
-    \item \textbf{A}: Accettazione.
+        \item [*] \textbf{U}: Unità;
+        \item [*] \textbf{I}: Integrazione;
+        \item [*] \textbf{S}: Sistema;
+        \item [*] \textbf{A}: Accettazione;
     \end{itemize}
 
     \paragraph{Stato dei test}
