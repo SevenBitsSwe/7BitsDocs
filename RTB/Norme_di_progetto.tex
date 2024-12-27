@@ -15,8 +15,9 @@
 \usepackage{eso-pic}
 \usepackage{titlesec}
 \usepackage{float}
+\usepackage{longtable}
 
-\newcommand\version{0.5.6} %aggiunta versione come variabile
+\newcommand\version{0.5.7} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -97,13 +98,17 @@
 \setcounter{page}{1}
 
 % Registro Modifiche
-\begin{center}
-\textbf{Registro modifiche}\\
-\vspace{2mm}
+\centering\textbf{Registro modifiche}\\
 
-\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alle righe del registro
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\endhead
+\hline
+    0.5.7 & 2024-12-27 & Federico Pivetta & Uncas Peruzzi & Completata sottosezione \hyperref[gestione-configurazione]{"Gestione della configurazione"}\\
     \hline
     0.5.6 & 2024-12-26 & Alfredo Rubino & Riccardo Piva & Stesura della sottosezione "Gestione della qualità"\\
     \hline
@@ -153,8 +158,7 @@
     \hline
     0.1.0 & 2024-11-11 & Leonardo Trolese & Federico Pivetta & Creazione del documento secondo la struttura definita dal gruppo\\
     \hline
-\end{tabularx}
-\end{center}
+\end{longtable}
 
 \newpage
 \tableofcontents
@@ -672,6 +676,40 @@
     \end{itemize}
 
     \subsection{Gestione della configurazione}
+    \label{gestione-configurazione}
+    \subsubsection{Descrizione e Scopo}
+    Il processo di gestione della configurazione identifica le norme che sono state adottate durante lo svolgimento del progetto al fine di garantire la tracciabilità, la coerenza e la comprensibilità del codice e della documentazione prodotta dal gruppo.
+    Il suo scopo è quello di gestire e organizzare ogni modifica sul codice o sulla documentazione supportando con delle motivazioni alla base dei cambiamenti effettuati e con gli autori relativi
+
+    \subsubsection{Project Board}
+    Per la gestione delle attività viene utilizzata la board di GitHub, che offre una struttura organizzativa chiara ed efficiente. All'interno della board sono presenti diverse corsie di stato, ognuna delle quali descrive il progresso delle attività e sono suddivise come segue:
+    \begin{enumerate}
+        \item \textbf{ToDo}: attività identificate e pianificate ma ancora da avviare;
+        \item \textbf{In Progress}: attività in corso, assegnate ad uno o più membri del gruppo;
+        \item \textbf{Done}: attività completate, in attesa di verifica.
+    \end{enumerate}
+    Per le attività di verifica vengono create delle issue specifiche che seguono il procedimento descritto in precedenza.
+
+    \subsubsection{Repository}
+    Il gruppo utilizza due repository all'interno della propria organizzazione GitHub:
+    \begin{itemize}
+        \item \href{https://github.com/SevenBitsSwe/7BitsDocs}{https://github.com/SevenBitsSwe/7BitsDocs}: questa repository è utilizzata per revisionare e mantenere aggiornati i documenti redatti, permettendo ai membri del gruppo di gestire in modo efficiente la documentazione;
+        \item \href{https://github.com/SevenBitsSwe/PoC}{https://github.com/SevenBitsSwe/PoC}: questa repository è dedicata alla condivisione e revisione del codice sorgente relativo al prodotto software realizzato per la revisione RTB. Viene utilizzata dal team per lavorare sul codice del prodotto, consentendo una gestione centralizzata dello sviluppo e delle modifiche apportate al software.
+    \end{itemize}
+
+        \paragraph{Struttura della repository 7BitsDocs}
+        Per ogni documento è stato creato un branch dedicato, al fine di lavorare in modo efficace ed efficiente, evitando di generare conflitti e prevenendo il caricamento sulla pagina web di documenti non ancora approvati, ossia con una versione precedente alla 1.0.0. Per questo motivo, è stato adottato un modello git-flow semplificato, che prevede l'uso di più branch di lavoro separati. Di conseguenza, nessuno dei branch dedicati deve essere eliminato.\\
+        Ogni branch, derivante direttamente dal branch principale main, contiene diverse cartelle relative alle fasi del progetto: una per la Candidatura e una per la RTB, ciascuna contenente i documenti redatti per quella specifica fase. Inoltre, sono presenti una cartella per le immagini utilizzate nei documenti, due cartelle per la gestione della pagina web e i file di supporto (README, templates, ecc.).
+
+        \paragraph{Struttura della repository PoC}
+        Per quanto riguarda il prodotto software sviluppato per la revisione RTB, sono stati creati diversi branch, ognuno derivante direttamente dal main, e ciascuno utilizzato per esplorare e approfondire una specifica tecnologia. Solo una volta presa la decisione di implementare una determinata tecnologia, viene effettuato un merge in un branch specifico che include l'intero prodotto. Solo quest'ultimo può successivamente confluire nel branch "main" attraverso una Pull Request, a condizione che ogni modifica sia stata verificata e approvata.
+    
+    \subsubsection{Pagina web} 
+    La pagina web, accessibile al link \href{https://sevenbitsswe.github.io/7BitsDocs/}{https://sevenbitsswe.github.io/7BitsDocs/}, è stata progettata per offrire un’esperienza chiara e intuitiva, organizzando la documentazione in base alle diverse fasi per cui è stata redatta. Grazie all’integrazione di una GitHub Action, la pagina si aggiorna automaticamente ad ogni modifica apportata nel branch “main” del repository, garantendo che siano visibili soltanto i documenti approvati.
+
+    \subsubsection{Controllo dei termini del glossario}
+    È stato sviluppato uno script in Python per verificare la presenza dei termini definiti nel Glossario all'interno dei vari documenti. Lo script utilizza espressioni regolari per identificare i termini nei documenti e confrontarli con quelli inclusi nella lista predefinita, formattandoli secondo lo standard del Glossario. Quando rileva un termine della lista non correttamente formattato, lo script aggiunge automaticamente una $_G$ a pedice per garantirne la conformità.\\
+    Tutti i termini inclusi nel Glossario devono essere formattati correttamente ogni volta che compaiono nel documento, e non solo alla loro prima occorrenza. Questa regola semplifica la consultazione e favorisce una migliore comprensione dei termini chiave all'interno della documentazione.
 
     \subsection{Verifica}
     \label{verifica}
