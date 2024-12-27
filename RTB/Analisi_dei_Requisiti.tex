@@ -91,7 +91,7 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
-0.2.10 & 2024-12-27 & Manuel Gusella & Riccardo Piva & Fine stesura \hyperref[UC1.1]{UC 1.1} e cambiamenti marginali agli \hyperref[UC1.2]{UC 1.2} e \hyperref[UC1.3]{UC 1.3}\\
+0.2.10 & 2024-12-27 & Manuel Gusella & Riccardo Piva & Fine stesura \hyperref[UC1.1]{UC 1.1}, cambiamenti marginali agli \hyperref[UC1.2]{UC 1.2} e \hyperref[UC1.3]{UC 1.3} e stesura \hyperref[UC6]{UC 6} e RF13\\
 \hline
 0.2.9 & 2024-12-24 & Manuel Gusella & Uncas Peruzzi & Aggiunta di \hyperref[UC1.1.1]{UC 1.1.1} e RF12, cambiamento \hyperref[UC1.1]{UC1.1} \\
 \hline
@@ -331,7 +331,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC1 - Visualizzazione dashboard}}
 \begin{itemize}
     \item \textbf{Attore Principale:} Utente privilegiato.
-    \item \textbf{Precondizioni:} Il sistema è operativo e accessibile.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+            \item L'utente privilegiato ha effettuato l'accesso (UC3).
+        \end{itemize}
     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale (marker), i vari punti di interesse e le pubblicità offerte agli utenti.
     \item \textbf{Scenario Principale:}
         \begin{enumerate}
@@ -358,11 +362,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del marker selezionato tramite una dashboard apposita.
      \item \textbf{Scenario Principale:}
-        \begin{itemize}
+        \begin{enumerate}
             \item L'utente privilegiato ha accesso alla dashboard con la mappa interattiva (UC3 e UC1);
             \item L'utente privilegiato seleziona un marker per vederne la dashboard specifica;
             \item Il sistema mette a disposizione lo storico deelle posizioni e dei messaggi archiviati per quel marker.
-        \end{itemize}
+        \end{enumerate}
      \item \textbf{User story associata:}
      Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa, in modo da visualizzare una dashboard contenente le informazioni relative ad un singolo utente. Questa dashboard permette di visualizzare i dettagli sullo storico completo delle posizioni e sull'utente che sta utilizzando il mezzo. Inoltre permette di poter vedere tutti gli annunci inviati a quell'utente durante la stessa giornata.
 \end{itemize}
@@ -392,11 +396,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \item Stato civile.
         \end{itemize}
       \item \textbf{Scenario Principale:}
-        \begin{itemize}
+        \begin{enumerate}
             \item L'utente privilegiato ha accesso alla dashboard di un singolo utente(UC1.1);
             \item L'utente privilegiato seleziona un marker presente sulla mappa di un singolo utente;
             \item Il sistema riporta le informazioni del marker in forma tabellare.
-        \end{itemize}
+        \end{enumerate}
      \item \textbf{User story associata:}
        Come utente privilegiato voglio selezionare i marker, che indicano le posizioni di un singolo utente, presenti sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche di ogni istante.
 \end{itemize}
@@ -418,11 +422,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{itemize}
     \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un marker che rappresenta un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto. 
     \item \textbf{Scenario Principale:} 
-        \begin{itemize}
+        \begin{enumerate}
     	\item Un utente, mentre si muove sulla mappa, passa nell'area      di un punto di interesse.
     	\item Il sistema elabora le informazioni dell'utente e del         punto di interesse per generare il testo dell'eventuale            annuncio;
         \item Il sistema fa visualizzare un marker sulla mappa, che rappresenta l'annuncio generato.
-	\end{itemize}
+	\end{enumerate}
     \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari che arrivano ai vari utenti.
 \end{itemize}
 \begin{figure}[H]
@@ -443,10 +447,10 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{itemize}
     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni dell'annuncio selezionato in forma tabellare. La tabella conterrà i nomi dell'utente e del punto di interesse coinvolti e il contenuto effettivo dell'annuncio.
     \item \textbf{Scenario Principale:} 
-        \begin{itemize}
+        \begin{enumerate}
           \item L'utente privilegiato ha selezionato un annuncio presente sulla mappa;
             \item Il sistema riporta le informazioni dell'annuncio selezionato e le mostra nella dashboard in forma tabellare.
-	\end{itemize}
+	\end{enumerate}
     \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare le informazioni relative ad un annuncio pubblicitario creato.
 \end{itemize}
 \begin{figure}[H]
@@ -466,10 +470,10 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate selezionando il punto di interesse visibile sulla mappa.
      \item \textbf{Scenario Principale:}
-        \begin{itemize}
+        \begin{enumerate}
             \item L'utente privilegiato seleziona un punto di interesse per vederne le informazioni più dettagliate.
             \item Il sistema mette a disposizione il dato più recententemente archiviato per quel punto di interesse.
-        \end{itemize}
+        \end{enumerate}
      \item \textbf{User story associata:}
      Come utente privilegiato voglio selezionare i vari punti di interesse presenti sulla mappa, in modo da vederne i dettagli.
 \end{itemize}
@@ -581,6 +585,38 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \label{fig:UC5}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC6 - Visualizzazione tabella dei PoI}}
+\label{UC6}
+\begin{itemize}
+    \item \textbf{Attore Principale:} Utente Privilegiato
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+            \item L'utente privilegiato ha effettuato l'accesso (UC3).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente è in grado di visualizzare una tabella contenenti i dati dei singoli PoI ordinati per la quantità di messaggi inviati in questo mese.\\
+        Altre informazioni dei PoI presenti in tabella sono:
+        \begin{itemize}
+       \item il nome;
+       \item l'indirizzo;
+       \item la tipologia, cioè di che ambito si occupa il punto di interesse;
+       \item la descrizione;
+         \item numero di messaggi inviati durante il mese.
+        \end{itemize}
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+        \item L'utente privilegiato accede alla piattaforma e seleziona la visualizzazione della tabella dei PoI;
+          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare.
+        \end{enumerate}
+    \item \textbf{User Story associata:} Come utente privilegiato, voglio accedere alla tabella dei PoI per poter visualizzare quale PoI sta inviando più messaggi in quel mese e poter visionare facilmente le informazioni di ogni singolo PoI.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{UC6image.png}
+    \caption{UC6 - Visualizzazione tabella dei PoI}
+    \label{fig:UC6}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -625,6 +661,8 @@ RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazi
 RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo annuncio. & Capitolato, UC1.2.1\\
 \hline
 RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker presente nella dashboard di un singolo utente. & Interna, UC1.1.1\\
+\hline
+RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & Interna, UC6\\
 \hline
 
 \caption{Requisiti funzionali}
@@ -720,9 +758,9 @@ RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità do dato in I
 \hline
 \textbf{Fonte} & \textbf{Id. Requisiti}\\
 \hline
-Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RF12 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
+Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
 \hline
-Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
+Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RF12 \linebreak RF13 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
 \end{tabular}
 \caption{Tracciamento Fonte-Requisiti}
@@ -737,7 +775,7 @@ Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RV01 \linebreak RV02 \
 \hline
 \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\
 \hline
-Funzionali & 9 & - & 2 & 11\\
+Funzionali & 11 & - & 2 & 13\\
 \hline
 Di qualità & 6 & - & - & 6 \\
 \hline
@@ -745,7 +783,7 @@ Di vincolo & 5 & - & - & 5 \\
 \hline
 Prestazionali & 2 & - & - & 2 \\
 \hline
-Totale & 22 & - & 2 & 24 \\
+Totale & 24 & - & 2 & 26 \\
 \hline
 \end{tabular}
 \caption{Riepilogo}
