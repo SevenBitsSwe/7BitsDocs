@@ -101,9 +101,9 @@
 \hline
 0.2.6 & 2024-11-30 & Federico Pivetta & Giovanni Cristellon & Aggiunta di RQ05, RQ06, RV05, RP02, indice tabelle e nuovo stile tabelle \\
 \hline
-0.2.5 & 2024-11-29 & Uncas Peruzzi & Leonardo Trolese & Aggiunta di UC5, aggiornati requisiti di qualità, vincolo e tabella \\
+0.2.5 & 2024-11-29 & Uncas Peruzzi & Leonardo Trolese & Aggiunta di UC5, aggiornati Requisiti$_G$ di qualità, vincolo e tabella \\
 \hline
-0.2.4 & 2024-11-28 & Federico Pivetta & Leonardo Trolese & Aggiunta di UC1.3, UC1.3.1, RF02, RF04 e RF05, correzione tabella requisiti funzionali \\
+0.2.4 & 2024-11-28 & Federico Pivetta & Leonardo Trolese & Aggiunta di UC1.3, UC1.3.1, RF02, RF04 e RF05, correzione tabella Requisiti$_G$ funzionali \\
 \hline
 0.2.3 & 2024-11-26 & Leonardo Trolese  & Federico Pivetta & Correzioni minori grammaticali e di contenuto \\
 \hline
@@ -134,12 +134,12 @@
 
 \subsection{Scopo del documento}
 
-Il seguente documento ha l'obiettivo di fornire una descrizione accurata dei casi d'uso e dei requisiti riguardanti il progetto \textit{"NearYou - 
-Smart custom advertising platform"} concernenti il Capitolato C4 proposto dall'azienda Synclab$_G$ e aggiudicato al gruppo dal committente.
+Il seguente documento ha l'obiettivo di fornire una descrizione accurata dei Casi-d'uso$_G$ e dei Requisiti$_G$ riguardanti il Progetto$_G$ \textit{"NearYou - 
+Smart custom advertising platform"} concernenti il Capitolato$_G$ C4 proposto dall'azienda Synclab$_G$ e aggiudicato al gruppo dal Committente$_G$.
 
 
 \subsection{Glossario}
-Con l'intendo di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un Glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del progetto. I termini presenti nel glossario sono contrasegnati con una \textit{G} a pedice : Termine$_G$.\\
+Con l'intendo di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un Glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del Progetto$_G$. I termini presenti nel glossario sono contrasegnati con una \textit{G} a pedice : Termine$_G$.\\
 Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf}
 
 
@@ -148,17 +148,17 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf}
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
     \item[-] ISO/IEC/IEEE 29148:2018(E) \\
-    \textcolor{blue}{\texttt{\url{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8559686}}}
+    \textcolor{blue}{\texttt{\url{https://ieeexplore.IEEE.org/stamp/stamp.jsp?tp=&arnumber=8559686}}}
     
-    \item[-] Regolamento del progetto didattico  \\
+    \item[-] Regolamento del Progetto$_G$ didattico  \\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}}}
     
 \end{itemize}
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item[-] Capitolato C4 - NearYou - Smart custom advertising platform\\
-    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}
-    \item[-] Analisi dei Requisiti - SWE 2024-25\\
+    \item[-] Capitolato$_G$ C4 - NearYou - Smart custom advertising platform\\
+    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto$_G$/C4p.pdf}}}
+    \item[-] Analisi-dei-Requisiti$_G$ - SWE 2024-25\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T05.pdf}}}
     \item[-] Analisi e descrizione delle funzionalità: Use Case e relativi diagammi - SWE 2024-25\\    
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi\%20Use\%20Case.pdf}}}
@@ -187,15 +187,15 @@ Smart custom advertising platform}, è focalizzato su una serie di clienti che o
 In questa sezione vengono elencate tutte le interfacce di sistema che possono interagire con il prodotto \textit{Near You}.
 
 \paragraph{Interfacce utente}\mbox{}\\
-\textit{Near You} è un prodotto che genera messaggi pubblicitari personalizzati per l'utente. Questi messaggi sono pensati per essere visualizzati mediante un'interfaccia utilizzabile su display touchscreen, con la quale l'utente può interagire visivamente e fisicamente; tuttavia con la proponente è stato stabilito che tale interfaccia utente 
-è un requisito opzionale poichè può essere facilmente ottenuta a partire dalla dashboard dell'utente privilegiato mediante un semplice filtro.\\
+\textit{Near You} è un prodotto che genera messaggi pubblicitari personalizzati per l'utente. Questi messaggi sono pensati per essere visualizzati mediante un'interfaccia utilizzabile su display touchscreen, con la quale l'utente può interagire visivamente e fisicamente; tuttavia con la Proponente$_G$ è stato stabilito che tale interfaccia utente 
+è un Requisito$_G$ opzionale poichè può essere facilmente ottenuta a partire dalla Dashboard$_G$ dell'utente privilegiato mediante un semplice filtro.\\
 In ogni caso, nell'ambiente di sviluppo del prodotto, il display è emulato tramite una web-app che presenta una mappa interattiva sulla quale vengono visualizzate pubblicità associate ai punti di interesse. Per l'utente 
-privilegiato, che offre il servizio di renting, è invece presente, come accenato prima, una dashboard nella quale è possibile visualizzare la mappa, con tutte le posizioni live dei mezzi e i vari punti di interesse, 
+privilegiato, che offre il servizio di renting, è invece presente, come accenato prima, una Dashboard$_G$ nella quale è possibile visualizzare la mappa, con tutte le posizioni live dei mezzi e i vari punti di interesse, 
 generati dal software sottostante.
 
 \paragraph{Interfacce hardware}\mbox{}\\
 Il prodotto sviluppato sfrutta i dati monitorati e acquisiti da sensori, nel contesto di sviluppo saranno dati generati attraverso simulazioni reali. Il display touchscreen, corrisponderà a una web-app accessibile da un web browser.\\
-Come risultato di quanto detto lo sviluppo del progetto non avviene con elementi hardware fisici.
+Come risultato di quanto detto lo sviluppo del Progetto$_G$ non avviene con elementi hardware fisici.
 
 \subsubsection{Funzionalità del prodotto}
 Il prodotto software dovrà garantire le seguenti caratteristiche:
@@ -204,69 +204,69 @@ Il prodotto software dovrà garantire le seguenti caratteristiche:
     \item [-] simulazione dati provenienti dai sensori GPS, nel caso del percorso effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
     \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, facilitando di fatto la gestione delle informazioni tra i diversi componenti del sistema.
     \item [-] individuazione dei punti di interesse specifici, sfruttando LLM$_G$, che prende in input i dati di profilazione e posizione simulati.
-    \item [-] serializzazione dei dati precedentemente menzionati, in un database adatto alla tipizzazione degli input e performante in tale contesto.
-    \item [-] acquisizione e elaborazione dei dati dei sensori per mezzo di uno strumento adatto allo stream processing, per fornirli in pasto al framework di generative AI.
-    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente (opzionale) che utente privilegiato. per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati, per il secondo una dashboard interattiva.
+    \item [-] serializzazione dei dati precedentemente menzionati, in un Database$_G$ adatto alla tipizzazione degli input e performante in tale contesto.
+    \item [-] acquisizione e elaborazione dei dati dei sensori per mezzo di uno strumento adatto allo stream processing, per fornirli in pasto al framework$_G$ di generative AI.
+    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente (opzionale) che utente privilegiato. per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati, per il secondo una Dashboard$_G$ interattiva.
 \end{itemize}
 
 \subsubsection{Caratteristiche degli utenti}
-Gli utenti si possono distinguere in utente privilegiato, il quale offre il servizio di renting del mezzo e il noleggiatore designato come un normale utente. L'utente privilegiato, deve poter accedere a una dashboard per visualizzare il tracking gps dei vari mezzi di trasporto, e gli ultimi punti di interesse generati per essi. L'utente tipico di \textit{Near You} è un individuo a bordo di un veicolo, dotato di display, che fornisce, durante il tragitto, eventuali annunci personalizzati affini a punti di interesse generati ad hoc.
+Gli utenti si possono distinguere in utente privilegiato, il quale offre il servizio di renting del mezzo e il noleggiatore designato come un normale utente. L'utente privilegiato, deve poter accedere a una Dashboard$_G$ per visualizzare il tracking gps dei vari mezzi di trasporto, e gli ultimi punti di interesse generati per essi. L'utente tipico di \textit{Near You} è un individuo a bordo di un veicolo, dotato di display, che fornisce, durante il tragitto, eventuali annunci personalizzati affini a punti di interesse generati ad hoc.
 
 \subsubsection{Limitazioni}
-Non è stata segnalata da parte del proponente, alcuna limitazione o problematica relativa alla privacy nella raccolta dati dell'utente poichè quest'ultima viene simulata mediante la generazione di dati ad hoc. Lo stesso vale per la fase di sviluppo del prodotto.\\
-Sono invece note nel documento \textit{Piano\_di\_Progetto.pdf} restrizioni, che riguardano il tempo a disposizione e il budget allocato per lo sviluppo del progetto. 
+Non è stata segnalata da parte del Proponente$_G$, alcuna limitazione o problematica relativa alla privacy nella raccolta dati dell'utente poichè quest'ultima viene simulata mediante la generazione di dati ad hoc. Lo stesso vale per la fase di sviluppo del prodotto.\\
+Sono invece note nel documento \textit{Piano\_di\_Progetto.pdf} restrizioni, che riguardano il tempo a disposizione e il budget allocato per lo sviluppo del Progetto$_G$. 
 
 \newpage
-\section{Casi d'uso}
+\section{Casi-d'uso$_G$}
 \label{sec:casi-uso}
 
 \subsection{Finalità e specifiche}
-Questa sezione espone una serie di casi d'uso come risultato di un'analisi dei requisiti continuativa del capitolato, dal confronto con la proponente e dalle riflessioni degli Analisiti del team. La specifica di ogni caso d'uso segue gli standard descritti in maniera dettagliata nel documento \textit{Norme\_di\_Progetto.pdf}.
+Questa sezione espone una serie di Casi-d'uso$_G$ come risultato di un'Analisi-dei-Requisiti$_G$ continuativa del Capitolato$_G$, dal confronto con la Proponente$_G$ e dalle riflessioni degli Analisiti del team. La specifica di ogni Caso-d'uso$_G$ segue gli standard descritti in maniera dettagliata nel documento \textit{Norme$_G$\_di\_Progetto.pdf}.
 %---------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Attori}
 Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{itemize}
-    \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il nolleggiatore dei mezzi di trasporto, che deve poter accedere alla dashboard con il tracciamento dei propri mezzi, previa autenticazione;
+    \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il nolleggiatore dei mezzi di trasporto, che deve poter accedere alla Dashboard$_G$ con il tracciamento dei propri mezzi, previa autenticazione;
     \item \textbf{Utente}: è il soggetto utilizzatore del servizio di renting, che visualizza la mappa con gli eventuali punti di interesse;
     \item \textbf{Sensore}: è un dispositivo che raccoglie dati di posizione geografica, che sono letti e utilizzati dal sistema;
 \end{itemize}
 
-\subsection{Elenco dei casi d'uso}
+\subsection{Elenco dei Casi-d'uso$_G$}
 %modello da seguire copia incolla
-% \subsubsection{\textbf{UC1.0 - Visualizzazione Dashboard}}
+% \subsubsection{\textbf{UC1.0 - Visualizzazione Dashboard$_G$}}
 % \begin{itemize}
-%     \item \textbf{Attore Principale:}
+%     \item \textbf{Attore$_G$ Principale:}
 %     \item \textbf{Precondizioni:}
 %     \item \textbf{Postcondizioni:}
 %     \item \textbf{Scenario Principale:}
 %     \item \textbf{Estensioni:}
-%     \item \textbf{User story associata:}
+%     \item \textbf{User-Story$_G$ associata:}
 % \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3 - Autenticazione}}
 \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
             \item Il sistema è operativo e accessibile.
-            \item L'utente privilegiato possiede le credenziali di accesso alla dashboard.
+            \item L'utente privilegiato possiede le credenziali di accesso alla Dashboard$_G$.
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato ha accesso alla dashboard.
+     \item \textbf{Postcondizioni:} L'utente privilegiato ha accesso alla Dashboard$_G$.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato entra nell'applicazione web e visualizza un'interfaccia di accesso che richiede l'inserimento di username e password.
             \item L'utente privilegiato inserisce username (UC3.1) e password (UC3.2) e procede con il tentativo di accesso.
             \item Il sistema invia le credenziali di accesso a Grafana.
-            \item Se le credenziali inserite sono corrette Grafana autentica l’utente privilegiato e lo reindirizza alla dashboard.
+            \item Se le credenziali inserite sono corrette Grafana autentica l’utente privilegiato e lo reindirizza alla Dashboard$_G$.
             \item Se le credenziali inserite sono errate, mostra un messaggio di errore per informare l’utente (UC4).
         \end{enumerate}
      \item \textbf{Estensioni:}
         \begin{itemize}
             \item UC4 - Visualizzazione errore autenticazione.
         \end{itemize}
-     \item \textbf{User story associata:}
-     Come utente privilegiato voglio poter accedere alla dashboard della web-app per monitorare lo spostamento degli utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi invio la richiesta. Se le credenziali sono corrette voglio accedere alla visualizzazione della dashboard, 
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter accedere alla Dashboard$_G$ della web-app per monitorare lo spostamento degli utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi invio la richiesta. Se le credenziali sono corrette voglio accedere alla visualizzazione della Dashboard$_G$, 
      altrimenti voglio visualizzare un messaggio di errore generico e poter inserire nuovamente le credenziali.
 \end{itemize}
 \begin{figure}[H]
@@ -278,7 +278,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3.1 - Inserimento username}}
 \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:} 
             \begin{itemize}
                 \item L'utente privilegiato sta eseguendo l'autenticazione (UC3).
@@ -288,12 +288,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato inserisce il suo username nell'apposito campo dati.
         \end{enumerate}
-     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire lo username al fine di eseguire l'accesso.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio poter inserire lo username al fine di eseguire l'accesso.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3.2 - Inserimento password}}
 \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:} 
         \begin{itemize}
             \item L'utente privilegiato sta eseguendo l'autenticazione (UC3).
@@ -303,12 +303,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato inserisce la sua password nell'apposito campo dati.
         \end{enumerate}
-     \item \textbf{User story associata:} Come utente privilegiato voglio poter inserire la password al fine di eseguire l'accesso.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio poter inserire la password al fine di eseguire l'accesso.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC4 - Visualizzazione errore autenticazione}}
 \begin{itemize}
-    \item \textbf{Attore Principale:} Utente privilegiato.
+    \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:}
         \begin{itemize}
             \item Il sistema è operativo e accessibile.
@@ -325,12 +325,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item L'utente privilegiato inserisce le credenziali e effettua l'accesso.
             \item Il sistema verifica la credenziali inserite e se una delle due o entrambe non sono valide fa visualizzare un messaggio di errore.
         \end{enumerate}
-    \item \textbf{User story associata:} Come utente privilegiato, voglio poter visualizzare un messaggio di errore nel caso avessi inserito le credenziali errate.
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare un messaggio di errore nel caso avessi inserito le credenziali errate.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1 - Visualizzazione dashboard}}
+\subsubsection{\textbf{UC1 - Visualizzazione Dashboard$_G$}}
 \begin{itemize}
-    \item \textbf{Attore Principale:} Utente privilegiato.
+    \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
@@ -339,51 +339,51 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale (marker), i vari punti di interesse e le pubblicità offerte agli utenti.
     \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato accede alla piattaforma di visualizzazione della dashboard.
+            \item L'utente privilegiato accede alla piattaforma di visualizzazione della Dashboard$_G$.
             \item Il sistema mette a disposizione tutte le informazioni storicizzate e ricevute dai sensori, distribuiti su una mappa tramite marker.
         \end{enumerate}
-    \item \textbf{User story associata:} Come utente privilegiato, voglio accedere alla dashboard per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS), i punti di interesse che usufruiscono di questo servizio e le inserzioni che vengono generate per gli utenti che hanno effettuato il noleggio.
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio accedere alla Dashboard$_G$ per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS), i punti di interesse che usufruiscono di questo servizio e le inserzioni che vengono generate per gli utenti che hanno effettuato il noleggio.
 \end{itemize}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1image.png}
-    \caption{UC1 - Visualizzazione Dashboard}
+    \caption{UC1 - Visualizzazione Dashboard$_G$}
     \label{fig:UC1}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1 - Visualizzazione dashboard singolo utente}}
+\subsubsection{\textbf{UC1.1 - Visualizzazione Dashboard$_G$ singolo utente}}
 \label{UC1.1}
 \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-    		\item L'utente privilegiato ha effettuato l'accesso e sta      visualizzando la dashboard (UC3 e UC1).
+    		\item L'utente privilegiato ha effettuato l'accesso e sta      visualizzando la Dashboard$_G$ (UC3 e UC1).
     	        \item L'utente privilegiato ha selezionato un marker presente sulla mappa.
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del marker selezionato tramite una dashboard apposita.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del marker selezionato tramite una Dashboard$_G$ apposita.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla dashboard con la mappa interattiva (UC3 e UC1);
-            \item L'utente privilegiato seleziona un marker per vederne la dashboard specifica;
-            \item Il sistema mette a disposizione lo storico deelle posizioni e dei messaggi archiviati per quel marker.
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ con la mappa interattiva (UC3 e UC1);
+            \item L'utente privilegiato seleziona un marker per vederne la Dashboard$_G$ specifica;
+            \item Il sistema mette a disposizione lo storico delle posizioni e dei messaggi archiviati per quel marker.
         \end{enumerate}
-     \item \textbf{User story associata:}
-     Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa, in modo da visualizzare una dashboard contenente le informazioni relative ad un singolo utente. Questa dashboard permette di visualizzare i dettagli sullo storico completo delle posizioni e sull'utente che sta utilizzando il mezzo. Inoltre permette di poter vedere tutti gli annunci inviati a quell'utente durante la stessa giornata.
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa, in modo da visualizzare una Dashboard$_G$ contenente le informazioni relative ad un singolo utente. Questa Dashboard$_G$ permette di visualizzare i dettagli sullo storico completo delle posizioni e sull'utente che sta utilizzando il mezzo. Inoltre permette di poter vedere tutti gli annunci inviati a quell'utente durante la stessa giornata.
 \end{itemize}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{UC1.1image.png}
-    \caption{UC1.1 - Visualizzazione dashboard singolo utente}
+    \caption{UC1.1 - Visualizzazione Dashboard$_G$ singolo utente}
     \label{fig:UC1.1}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.1.1 - Visualizzazione dettagli dei marker sulla mappa}}
 \label{UC1.1.1}
 \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-        \item L'utente privilegiato ha selezionato un marker, raffigurante un singolo utente, e sta visualizzando la dashboard di singolo utente (UC1.1);
+        \item L'utente privilegiato ha selezionato un marker, raffigurante un singolo utente, e sta visualizzando la Dashboard$_G$ di singolo utente (UC1.1);
           \item L'utente privilegiato ha selezionato un marker presente nella mappa di singolo utente.
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni del marker selezionato in forma tabellare. La tabella conterrà la posizione, espressa in latitudine e longitudine,l'istante di rilevamento e i dati dell'utente che sta utilizzando il mezzo. I dati dell'utente presenti in tabella saranno:
@@ -397,11 +397,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{itemize}
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla dashboard di un singolo utente(UC1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1);
             \item L'utente privilegiato seleziona un marker presente sulla mappa di un singolo utente;
             \item Il sistema riporta le informazioni del marker in forma tabellare.
         \end{enumerate}
-     \item \textbf{User story associata:}
+     \item \textbf{User-Story$_G$ associata:}
        Come utente privilegiato voglio selezionare i marker, che indicano le posizioni di un singolo utente, presenti sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche di ogni istante.
 \end{itemize}
 \begin{figure}[H]
@@ -414,11 +414,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC1.2 - Visualizzazione annunci sulla mappa}}
 \label{UC1.2}
 \begin{itemize}
-    \item \textbf{Attore Principale:} Utente privilegiato.
+    \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
          \item Il sistema è operativo e accessibile.
-    	\item L'utente privilegiato ha effettuato l'accesso e sta          visualizzando la dashboard principale (UC3 e UC1) o la dashboard singolo utente(UC1.1).
+    	\item L'utente privilegiato ha effettuato l'accesso e sta          visualizzando la Dashboard$_G$ principale (UC3 e UC1) o la Dashboard$_G$ singolo utente(UC1.1).
         \end{itemize}
     \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un marker che rappresenta un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto. 
     \item \textbf{Scenario Principale:} 
@@ -427,7 +427,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     	\item Il sistema elabora le informazioni dell'utente e del         punto di interesse per generare il testo dell'eventuale            annuncio;
         \item Il sistema fa visualizzare un marker sulla mappa, che rappresenta l'annuncio generato.
 	\end{enumerate}
-    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari che arrivano ai vari utenti.
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari che arrivano ai vari utenti.
 \end{itemize}
 \begin{figure}[H]
     \centering
@@ -439,7 +439,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC1.2.1 - Visualizzazione informazioni dell'annuncio}}
 \label{UC1.2.1}
 \begin{itemize}
-    \item \textbf{Attore Principale:} Utente privilegiato.
+    \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item L'utente privilegiato sta visualizzando un annuncio sulla mappa (UC1.2);
@@ -449,9 +449,9 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
           \item L'utente privilegiato ha selezionato un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio selezionato e le mostra nella dashboard in forma tabellare.
+            \item Il sistema riporta le informazioni dell'annuncio selezionato e le mostra nella Dashboard$_G$ in forma tabellare.
 	\end{enumerate}
-    \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare le informazioni relative ad un annuncio pubblicitario creato.
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare le informazioni relative ad un annuncio pubblicitario creato.
 \end{itemize}
 \begin{figure}[H]
     \centering
@@ -463,10 +463,10 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC1.3 - Visualizzazione dettagli dei punti di interesse sulla mappa}}
 \label{UC1.3}
 \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-    		\item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la dashboard principale (UC3 e UC1) o la dashboard singolo utente(UC1.1).
+    		\item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la Dashboard$_G$ principale (UC3 e UC1) o la Dashboard$_G$ singolo utente(UC1.1).
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate selezionando il punto di interesse visibile sulla mappa.
      \item \textbf{Scenario Principale:}
@@ -474,7 +474,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item L'utente privilegiato seleziona un punto di interesse per vederne le informazioni più dettagliate.
             \item Il sistema mette a disposizione il dato più recententemente archiviato per quel punto di interesse.
         \end{enumerate}
-     \item \textbf{User story associata:}
+     \item \textbf{User-Story$_G$ associata:}
      Come utente privilegiato voglio selezionare i vari punti di interesse presenti sulla mappa, in modo da vederne i dettagli.
 \end{itemize}
 \begin{figure}[H]
@@ -486,7 +486,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.3.1 - Visualizzazione area del punto di interesse}}
 \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato.
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
             \item L'utente privilegiato ha selezionato un punto di interesse (UC1.3).
@@ -496,7 +496,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{enumerate}
             \item Il sistema genera l'area di influenza del punto di interesse selezionato e la mostra sulla mappa.
         \end{enumerate}
-     \item \textbf{User story associata:}
+     \item \textbf{User-Story$_G$ associata:}
      Come utente privilegiato voglio vedere l'area di influenza di ogni punto di interesse presente sulla mappa.
 \end{itemize}
 %\begin{figure}[ht]
@@ -509,10 +509,10 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
  \subsubsection{\textbf{UC1.3.2 - Visualizzazione informazioni del punto di interesse}}
  \label{UC1.3.2}
  \begin{itemize}
-     \item \textbf{Attore Principale:} Utente Privilegiato
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato
      \item \textbf{Precondizioni:}
        \begin{itemize}
-            \item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la dashboard (UC3 e UC1).
+            \item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la Dashboard$_G$ (UC3 e UC1).
             \item L'utente privilegiato ha selezionato un punto di interesse (UC1.3).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente una tabella, che esprime le informazioni specifiche del punto di interesse selezionato. Tali informazioni sono:
@@ -526,9 +526,9 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
           \item L'utente privilegiato ha selezionato un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse selezionato e le mostra nella dashboard in forma tabellare.
+            \item Il sistema riporta le informazioni del punto di interesse selezionato e le mostra nella Dashboard$_G$ in forma tabellare.
         \end{enumerate}
-     \item \textbf{User story associata:} Come utente privilegiato voglio visualizzare le informazioni di un punto di interesse presente sulla mappa. 
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare le informazioni di un punto di interesse presente sulla mappa. 
  \end{itemize}
 \begin{figure}[H]
     \centering
@@ -539,7 +539,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC2 - Visualizzazione annuncio}}
 \begin{itemize}
-    \item \textbf{Attore Principale:} Utente
+    \item \textbf{Attore$_G$ Principale:} Utente
     \item \textbf{Precondizioni:} 
         \begin{itemize}
     	\item Il sistema è operativo e accessibile.
@@ -552,7 +552,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio.
             \item Il sistema invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
         \end{enumerate}
-    \item \textbf{User story associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
+    \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
 \end{itemize}
 \begin{figure}[H]
     \centering
@@ -563,7 +563,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC5 - Trasmissione dati geoposizionali}}
 \begin{itemize}
-    \item \textbf{Attore Principale:} Sensore
+    \item \textbf{Attore$_G$ Principale:} Sensore
     \item \textbf{Precondizioni:} 
         \begin{itemize}
     	\item Il sensore è attivo e connesso al sistema.
@@ -574,7 +574,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine.
             \item Il sensore GPS invia i dati posizionali al sistema back-end.
         \end{enumerate}
-    \item \textbf{User story associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema back-end.
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema back-end.
 
 \end{itemize}
 \begin{figure}[H]
@@ -587,7 +587,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC6 - Visualizzazione tabella dei PoI}}
 \label{UC6}
 \begin{itemize}
-    \item \textbf{Attore Principale:} Utente Privilegiato
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
@@ -607,7 +607,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \item L'utente privilegiato accede alla piattaforma e seleziona la visualizzazione della tabella dei PoI;
           \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare.
         \end{enumerate}
-    \item \textbf{User Story associata:} Come utente privilegiato, voglio accedere alla tabella dei PoI per poter visualizzare quale PoI sta inviando più messaggi in quel mese e poter visionare facilmente le informazioni di ogni singolo PoI.
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio accedere alla tabella dei PoI per poter visualizzare quale PoI sta inviando più messaggi in quel mese e poter visionare facilmente le informazioni di ogni singolo PoI.
 \end{itemize}
 \begin{figure}[H]
     \centering
@@ -620,10 +620,10 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
-\section{Requisiti}
+\section{Requisiti$_G$}
 %sicuramente da suddividere intenamente tra obbligatori, desiderabilli e opzionali
 
-\subsection{Requisiti funzionali}
+\subsection{Requisiti$_G$ funzionali}
 
 % Definisci una nuova colonna centrata con larghezza fissa
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
@@ -633,44 +633,44 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{longtable}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
 %\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
-\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\textbf{Id. Requisito$_G$} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \endhead
 
 \hline
- RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la dashboard composta da una mappa interattiva con i vari marker e punti di interesse su di essa. &  Capitolato, UC1\\
+ RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari marker e punti di interesse su di essa. &  Capitolato$_G$, UC1\\
 \hline
-RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare una dashboard relativa ad un singolo utente quando seleziona un marker. & Interna, UC1.1\\
+RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare una Dashboard$_G$ relativa ad un singolo utente quando seleziona un marker. & Interna, UC1.1\\
 \hline
-RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & Capitolato, UC1.2\\
+RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & Capitolato$_G$, UC1.2\\
 \hline
 RF04 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato punto di interesse. & Interna, UC1.3\\
 \hline
 RF05 & Opzionale & L'utente privilegiato deve poter visualizzare l'area di influenza di un punto di interesse selezionato. & Interna, UC1.3.1\\
 \hline
-RF06 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & Capitolato, UC2\\
+RF06 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & Capitolato$_G$, UC2\\
 \hline
-RF07 & Obbligatorio & L'utente privilegiato deve poter effetturare l'accesso per visualizzare la dashboard. & Capitolato, UC3, UC3.1, UC3.2\\
+RF07 & Obbligatorio & L'utente privilegiato deve poter effetturare l'accesso per visualizzare la Dashboard$_G$. & Capitolato$_G$, UC3, UC3.1, UC3.2\\
 \hline
-RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & Capitolato, UC4\\
+RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & Capitolato$_G$, UC4\\
 \hline
-RF09 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati in tempo reale al sistema. & Capitolato, UC5\\
+RF09 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati in tempo reale al sistema. & Capitolato$_G$, UC5\\
 \hline
-RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo punto di interesse. & Capitolato, UC1.3.2\\
+RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo punto di interesse. & Capitolato$_G$, UC1.3.2\\
 \hline
-RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo annuncio. & Capitolato, UC1.2.1\\
+RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni del singolo annuncio. & Capitolato$_G$, UC1.2.1\\
 \hline
-RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker presente nella dashboard di un singolo utente. & Interna, UC1.1.1\\
+RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli provenienti da un determinato marker presente nella Dashboard$_G$ di un singolo utente. & Interna, UC1.1.1\\
 \hline
 RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & Interna, UC6\\
 \hline
 
-\caption{Requisiti funzionali}
+\caption{Requisiti$_G$ funzionali}
 \end{longtable}
 \end{center}
 
 %---------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
-\subsection{Requisiti di qualità}
+\subsection{Requisiti$_G$ di qualità}
 
 \begin{table}[H]
 \centering
@@ -678,27 +678,27 @@ RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella 
 \begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
 %\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
-\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\textbf{Id. Requisito$_G$} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
-RQ01 & Obbligatorio & Presentare documento di analisi dei requisiti d'analisi contenente i diagrami UML relativi ai casi d'uso. & Capitolato\\
+RQ01 & Obbligatorio & Presentare documento di Analisi-dei-Requisiti$_G$ d'analisi contenente i diagrami UML$_G$ relativi ai Casi-d'uso$_G$. & Capitolato$_G$\\
 \hline
-RQ02 & Obbligatorio & Devono essere rispettate tutte le norme definite nel documento \textit{Norme\_di\_Progetto.pdf}, nell'apposita sezione Analisi dei Requisiti. & Interna\\
+RQ02 & Obbligatorio & Devono essere rispettate tutte le Norme$_G$ definite nel documento \textit{Norme$_G$\_di\_Progetto.pdf}, nell'apposita sezione Analisi-dei-Requisiti$_G$. & Interna\\
 \hline
-RQ03 & Obbligatorio & Deve essere fornita documentazione riguardante le scelte di design del prodotto, con la motivazione delle scelte implementative e tecnologiche. & Capitolato, Verbale Esterno 2024-11-25\\
+RQ03 & Obbligatorio & Deve essere fornita Documentazione$_G$ riguardante le scelte di design del prodotto, con la motivazione delle scelte implementative e tecnologiche. & Capitolato$_G$, Verbale Esterno 2024-11-25\\
 \hline
-RQ04 & Obbligatorio & È necessaria la realizzazione di test che dimostrino il corretto funzionamento dei servizi e delle funzionalità previste, con una copertura minima dell'80\% e documentata tramite un report.  & Capitolato\\
+RQ04 & Obbligatorio & È necessaria la realizzazione di Test$_G$ che dimostrino il corretto funzionamento dei servizi e delle funzionalità previste, con una copertura minima dell'80\% e documentata tramite un report.  & Capitolato$_G$\\
 \hline
-RQ05 & Obbligatorio & È richiesto che il sistema venga testato nella sua interezza tramite test end-to-end, anche non automatizzati.  & Capitolato\\
+RQ05 & Obbligatorio & È richiesto che il sistema venga testato nella sua interezza tramite Test$_G$ end-to-end, anche non automatizzati.  & Capitolato$_G$\\
 \hline
-RQ06 & Obbligatorio & La documentazione dovrà riguardare anche problemi aperti ed eventuali possibili soluzioni da approfondire in futuro.  & Capitolato\\
+RQ06 & Obbligatorio & La Documentazione$_G$ dovrà riguardare anche problemi aperti ed eventuali possibili soluzioni da approfondire in futuro.  & Capitolato$_G$\\
 \hline
 \end{tabular}
-\caption{Requisiti di qualità}
+\caption{Requisiti$_G$ di qualità}
 \end{table}
 
 %---------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
-\subsection{Requisiti di vincolo}
+\subsection{Requisiti$_G$ di vincolo}
 
 \begin{table}[H]
 \centering
@@ -706,28 +706,28 @@ RQ06 & Obbligatorio & La documentazione dovrà riguardare anche problemi aperti 
 \begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
 %\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
-\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\textbf{Id. Requisito$_G$} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
-RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python. & Interna\\
+RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il linguaggio Python$_G$. & Interna\\
 \hline 
-RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare docker$_G$ Compose. & Capitolato, Interna\\
+RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare docker$_G$ Compose. & Capitolato$_G$, Interna\\
 \hline
 RV03 & Obbligatorio & I rilevamenti dei sensori geoposizionali
-devono essere memorizzati nel corretto formato in un time series database, nel nostro sistema sarà Clickhouse. & Capitolato, Interna \\
+devono essere memorizzati nel corretto formato in un time series Database$_G$, nel nostro sistema sarà ClickHouse$_G$. & Capitolato$_G$, Interna \\
 \hline
-RV04 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di dashboard interattiva, come Grafana. & Capitolato, Interna\\
+RV04 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di Dashboard$_G$ interattiva, come Grafana. & Capitolato$_G$, Interna\\
 \hline
-RV05 & Obbligatorio & Le coordinate generate per la simulazione di un utente che segue un percorso devono essere realistiche. & Capitolato\\
+RV05 & Obbligatorio & Le coordinate generate per la simulazione di un utente che segue un percorso devono essere realistiche. & Capitolato$_G$\\
 \hline
 \end{tabular}
 
-\caption{Requisiti di vincolo}
+\caption{Requisiti$_G$ di vincolo}
 \end{table}
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
-\subsection{Requisiti prestazionali}
+\subsection{Requisiti$_G$ prestazionali}
 
 \begin{table}[H]
 \centering
@@ -735,29 +735,29 @@ RV05 & Obbligatorio & Le coordinate generate per la simulazione di un utente che
 \begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
 %\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}m{6cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.1cm}<{\vspace{5pt}}|}
 \hline
-\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+\textbf{Id. Requisito$_G$} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
-RP01 & Obbligatorio &  Il sistema deve gestire inizialmente la generazione di un dato geoposizionale ogni 5 secondi e un utente noleggiatore del mezzo & Capitolato\\
+RP01 & Obbligatorio &  Il sistema deve gestire inizialmente la generazione di un dato geoposizionale ogni 5 secondi e un utente noleggiatore del mezzo & Capitolato$_G$\\
 \hline
-RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità do dato in INSERT & Capitolato\\
+RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità do dato in INSERT & Capitolato$_G$\\
 \hline
 \end{tabular}
-\caption{Requisiti prestazionali}
+\caption{Requisiti$_G$ prestazionali}
 \end{table}
 
 %---------------------------------------------------------------------------------------------------------------------------------------------
 
 
 \newpage
-\section{Tracciamento Requisiti}
+\section{Tracciamento Requisiti$_G$}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|}
 \hline
-\textbf{Fonte} & \textbf{Id. Requisiti}\\
+\textbf{Fonte} & \textbf{Id. Requisiti$_G$}\\
 \hline
-Capitolato & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
+Capitolato$_G$ & RF01 \linebreak RF03 \linebreak RF06 \linebreak RF07 \linebreak RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
 \hline
 Interna & RF02 \linebreak RF04 \linebreak RF05 \linebreak RF12 \linebreak RF13 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
