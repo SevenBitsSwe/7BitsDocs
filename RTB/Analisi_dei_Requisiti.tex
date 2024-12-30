@@ -568,14 +568,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{itemize}
     	\item Il sensore è attivo e connesso al sistema.
         \end{itemize}
-    \item \textbf{Postcondizioni:} Il sistema memorizza ed elabora i dati ricevuti dal sensore.
+    \item \textbf{Postcondizioni:} Il sensore invia i dati posizionali del mezzo al sistema back-end.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente(latitudine e longitudine).
-            \item Il sensore GPS formatta il messaggio da trasmettere al sistema contenente l’identificativo dell'utente e le coordinate geografiche individuate.
-            \item Il sensore GPS emette il messaggio al sistema.
+            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine.
+            \item Il sensore GPS invia i dati posizionali al sistema back-end.
         \end{enumerate}
-    \item \textbf{User story associata:} Come Sensore GPS, desidero trasmettere i rilevamenti di posizione al sistema.
+    \item \textbf{User story associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema back-end.
 
 \end{itemize}
 \begin{figure}[H]
