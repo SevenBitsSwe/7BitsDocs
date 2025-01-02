@@ -8,3 +8,7 @@
 *.lot
 .DS_Store
 RTB/images
+
+##Others
+*.notes
+.vscode
