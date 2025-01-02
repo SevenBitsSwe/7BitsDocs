@@ -108,9 +108,11 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    0.6.1 & 2024-12-27 & Leonardo Trolese & Uncas Peruzzi & Scrittura della sezione \hyperref[standard_12207]{"Standard ISO/IEC 12207"}\\
+    0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metrica Function Point e correzioni minori\\
     \hline
-    0.6.0 & 2024-12-27 & Leonardo Trolese & Uncas Peruzzi & Aggiunta immagine descrittiva nella sezione \hyperref[standard_9126]{"Standard ISO/IEC 9126"}\\
+    0.5.11 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Scrittura della sezione \hyperref[standard_12207]{"Standard ISO/IEC 12207"}\\
+    \hline
+    0.5.10 & 2024-12-27 & Leonardo Trolese & Uncas Peruzzi & Aggiunta immagine descrittiva nella sezione \hyperref[standard_9126]{"Standard ISO/IEC 9126"}\\
     \hline
     0.5.9 & 2024-12-27 & Federico Pivetta & Riccardo Piva & Completate sottosezioni \hyperref[miglioramento]{"Miglioramento"} e \hyperref[formazione]{"Formazione"}\\
     \hline
@@ -201,6 +203,16 @@
             \item Documentazione GitHub: \href{https://docs.github.com/en}{https://docs.github.com/en}
             \item Documentazione \LaTeX: \href{https://www.latex-project.org/help/documentation/}{https://www.latex-project.org/help/documentation/}
             \item Documentazione Python: \href{https://www.python.org/doc/}{https://www.python.org/doc/}
+        \end{itemize}
+        \subsubsection{Riferimenti informativi}
+        \begin{itemize}
+            \item Riferimenti per le metriche: 
+            \begin{itemize}
+                \item \href{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}
+                \item \href{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}
+                \item \href{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}
+                \item \href{https://youtu.be/CXgDazM0DWA?feature=shared}{https://youtu.be/CXgDazM0DWA?feature=shared}
+            \end{itemize}
         \end{itemize}
 
 \newpage
@@ -1033,7 +1045,7 @@ Eventualmente, le metriche possono includere:
     \label{formazione}
     \subsubsection{Descrizione e Scopo}
     La formazione assicura che ogni membro del gruppo sviluppi le competenze necessarie per affrontare con consapevolezza tutte le sfide che potrebbero emergere durante lo svolgimento del progetto.\\
-    Il percorso di apprendimento si basa su un'analisi dettagliata delle esigenze espresse dalla proponente, seguita dall’identificazione delle risorse più adeguate per il raggiungimento degli obiettivi stabiliti.
+    Il percorso di apprendimento si basa su un'analisi dettagliata delle esigenze espresse dalla proponente, seguita dall'identificazione delle risorse più adeguate per il raggiungimento degli obiettivi stabiliti.
     Attraverso questo processo si realizza un progressivo arricchimento delle conoscenze del gruppo, supportato dal consolidamento della comprensione degli strumenti e delle tecnologie adottate.\\
     La formazione risulta un pilastro fondamentale per il successo del progetto, offrendo al contempo un'opportunità di crescita professionale per tutti i partecipanti.
 
@@ -1205,11 +1217,33 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
                             \item $TRP$: requisiti opzionali totali.
                         \end{itemize}
             \end{itemize}
+    \item   \textbf{MPD04 - Function Point (FP)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione}: metrica utilizzata usualmente per misurare la dimensione funzionale di un prodotto software. Si basa sulle funzionalità 
+                        offerte dal sistema agli utenti finali, e pertanto tiene conto di elementi quali input, output, interfacce, file e query interne.
+                        Il calcolo di tale metrica segue uno schema standardizzato che fa riferimento al IFPUG (International Function Point Users Group), e include 
+                        cinque componenti principali:
+                        \begin{enumerate}
+                            \item Ingressi esterni (EI)
+                            \item Uscite esterne (EO)
+                            \item Query esterne (EQ)
+                            \item File logici interni (ILF)
+                            \item File di interfaccia esterni (EIF)
+                        \end{enumerate}
+                        Il numero totale di function points viene ponderato sulla base della complessità (alta, media o bassa) relativa a ciascuno di questi elementi.
+
+                        \begin{figure}[H]
+                        \centering
+                        \includegraphics[width=0.7\textwidth]{FunctionPointFigure.png}
+                        \caption{Schema riassuntivo della metrica Function Point}
+                        \end{figure}
+
+            \end{itemize}
 \end{itemize}
 
 \subsubsection{Affidabilità}
 \begin{itemize}
-    \item \textbf{MPD04 - Code Coverage}:
+    \item \textbf{MPD05 - Code Coverage}:
     \begin{itemize}
         \item \textbf{Descrizione}: percentuale di codice coperto da test.
     \end{itemize}
@@ -1337,7 +1371,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
       \end{itemize}
 \end{itemize}
 
-\subsection{Qualità di Processo}
+\subsection{Metriche di qualità di Processo}
 L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche di qualità del Processo}.
 
 \subsubsection{Processi Primari}
@@ -1392,7 +1426,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
         \end{itemize}
     \item \textbf{MPC05 - Facilità di utilizzo}:
         \begin{itemize}
-            \item \textbf{Descrzione}: misura la facilità con cui gli utenti possono utilizzare il sistema.
+            \item \textbf{Descrizione}: misura la facilità con cui gli utenti possono utilizzare il sistema.
         \end{itemize}
     \item \textbf{MPC06 - Tempo medio di apprendimento}:
         \begin{itemize}
