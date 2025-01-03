@@ -96,6 +96,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.3.3 & 2025-1-3 & Riccardo Piva & Uncas Peruzzi & Correzioni minori generali \\
+\hline
 0.3.2 & 2024-12-16 & Alfredo Rubino & Manuel Gusella & Aggiunta acronimi metriche e correzioni minori\\
 \hline
 0.3.1 & 2024-12-13 & Riccardo Piva & Alfredo Rubino & Correzione standard IEEE \\
@@ -240,9 +242,9 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD12 & Facilità di utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
+  MPD12 & Facilità di utilizzo & $\leq$5 errori nell'interagire & $\leq$3 errori nell'interagire  \\
   \hline
-  MPD13 & Tempo medio di apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
+  MPD13 & Tempo medio di apprendimento & $\leq$15 secondi & $\leq$5 secondi \\
   \hline
 \end{tabular}
 \caption{Usabilità - Qualità di prodotto}
@@ -255,16 +257,16 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  % \hline
+  % MPD14 & Complessità ciclomatica & $\leq$20 & $\;leq$10 \\
+  % \hline
+  % MPD15 & Coefficiente di accoppiamento fra classi & $\leq$10 & $\leq$5 \\
   \hline
-  MPD14 & Complessità ciclomatica & $\geq$20 & $\geq$10 \\
+  MPD16 & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
   \hline
-  MPD15 & Coefficiente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
-  \hline
-  MPD16 & Linee di codice per metodo & $\geq$50 & $\geq$25 \\
-  \hline
-  MPD17 & Parametri per metodo & $\geq$7 & $\geq$4 \\
-  \hline
-  MPD18 & Attributi per classe & $\geq$7 & $\geq$5 \\
+  MPD17 & Parametri per metodo & $\leq$7 & $\leq$4 \\
+  % \hline
+  % MPD18 & Attributi per classe & $\leq$7 & $\leq$5 \\
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -322,12 +324,12 @@ Serve per definire come il sistema sarà implementato e come le varie parti del 
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  % \hline
+  % MPC04 & Coefficiente di accoppiamento fra classi & $\leq$10 & $\leq$5 \\
   \hline
-  MPC04 & Coefficiente di accoppiamento fra classi & $\geq$10 & $\geq$5 \\
+  MPC05 & Facilità di utilizzo & $\leq$5 errori nell'interagire & $\leq$3 errori nell'interagire  \\
   \hline
-  MPC05 & Facilità di utilizzo & $\geq$5 errori nell'interagire & $\geq$3 errori nell'interagire  \\
-  \hline
-  MPC06 & Tempo medio di apprendimento & $\geq$15 secondi & $\geq$5 secondi \\
+  MPC06 & Tempo medio di apprendimento & $\leq$15 secondi & $\leq$5 secondi \\
   \hline
 \end{tabular}
 \caption{Processi primari - Progettazione}
@@ -368,12 +370,12 @@ Serve per implementare le funzionalità del software e garantire che il software
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-  \hline
-  MPC12 & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
+  % \hline
+  % MPC12 & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
   \hline
   MPC13 & Parametri per metodo & $\leq$7 & $\leq$4 \\
-  \hline
-  MPC14 & Attributi per classe & $\leq$7 & $\leq$5 \\
+  % \hline
+  % MPC14 & Attributi per classe & $\leq$7 & $\leq$5 \\
   \hline
   MPC15 & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
   \hline
@@ -459,9 +461,9 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC26 & Rischi non previsti & $\geq$3 & 0 \\
+  MPC26 & Rischi non previsti & $\leq$3 & 0 \\
   \hline
-  MPC27 & Efficienza temporale (ET) & $\geq$3 & $\geq$1 \\
+  MPC27 & Efficienza temporale (ET) & $\leq$3 & $\leq$1 \\
   \hline
 \end{tabular}
 \caption{Processi organizzativi - Gestione dei processi}
