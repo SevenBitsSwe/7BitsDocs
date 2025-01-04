@@ -12,6 +12,9 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{tabularx, etoolbox}
 \usepackage{eso-pic}
+\usepackage{longtable}
+
+\newcommand\version{0.2.9} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 
@@ -26,7 +29,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
     }
-\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v0.2.8}
+\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v\version}
     }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -75,36 +78,44 @@
 \clearpage
 \setcounter{page}{1}
 
+% Registro Modifiche
 \begin{center}
-\textbf{Registro modifiche}\\
-\vspace{2mm}
-\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+ \textbf{Registro modifiche}\\   
+\end{center}
+
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alternato alle righe
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
-\hline
-0.2.8 & 2024-12-19 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
-\hline
-0.2.7 & 2024-12-13 & Alfredo Rubino & Manuel Gusella & Aggiunta e correzione di alcuni termini\\
-\hline
-0.2.6 & 2024-12-11 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
-\hline
-0.2.5 & 2024-12-04 & Manuel Gusella & Giovanni Cristellon & Aggiunta di framework, feedback e proponente\\
-\hline
-0.2.4 & 2024-12-04 & Federico Pivetta & Giovanni Cristellon & Aggiunta di alcuni termini\\
-\hline
-0.2.3 & 2024-11-14  & Manuel Gusella & Riccardo Piva  & Aggiunta di alcuni termini e modifica struttura tabella del Registro modifiche\\
-\hline
-0.2.2 & 2024-11-14  & Federico Pivetta & Riccardo Piva  & Aggiunta di alcuni termini ed inserimento del link all'Indice\\
-\hline
-0.2.1 & 2024-11-14  & Uncas Peruzzi & Federico Pivetta  & Modifica design front page e aggiunto header \\
-\hline
-0.2.0 & 2024-11-13  & Federico Pivetta & Riccardo Piva  & Modifica alla struttura ed inserimento dei primi termini\\
-\hline
-0.1.0 & 2024-10-23  & Federico Pivetta & Riccardo Piva  & Creazione del documento\\
-\hline
+\endhead
+    \hline
+    0.2.9 & 2024-01-04 & Federico Pivetta & Riccardo Piva & Aggiunta di alcuni termini\\
+    \hline
+    0.2.8 & 2024-12-19 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
+    \hline
+    0.2.7 & 2024-12-13 & Alfredo Rubino & Manuel Gusella & Aggiunta e correzione di alcuni termini\\
+    \hline
+    0.2.6 & 2024-12-11 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
+    \hline
+    0.2.5 & 2024-12-04 & Manuel Gusella & Giovanni Cristellon & Aggiunta di framework, feedback e proponente\\
+    \hline
+    0.2.4 & 2024-12-04 & Federico Pivetta & Giovanni Cristellon & Aggiunta di alcuni termini\\
+    \hline
+    0.2.3 & 2024-11-14  & Manuel Gusella & Riccardo Piva  & Aggiunta di alcuni termini e modifica struttura tabella del Registro modifiche\\
+    \hline
+    0.2.2 & 2024-11-14  & Federico Pivetta & Riccardo Piva  & Aggiunta di alcuni termini ed inserimento del link all'Indice\\
+    \hline
+    0.2.1 & 2024-11-14  & Uncas Peruzzi & Federico Pivetta  & Modifica design front page e aggiunto header \\
+    \hline
+    0.2.0 & 2024-11-13  & Federico Pivetta & Riccardo Piva  & Modifica alla struttura ed inserimento dei primi termini\\
+    \hline
+    0.1.0 & 2024-10-23  & Federico Pivetta & Riccardo Piva  & Creazione del documento\\
+    \hline
+\end{longtable}
+\rowcolors{0}{}{} % Riporta le righe alla colorazione originale
 
-\end{tabularx}
-\end{center}
 \newpage
 \hypertarget{indice}{}
 \tableofcontents
@@ -124,7 +135,7 @@ Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tab
 \renewcommand{\arraystretch}{1.5} % gestisce altezza delle righe
 \setlength{\tabcolsep}{10pt} % padding orizzontale alle celle
 
-% Aggiungi il pulsante "Torna su" in basso a destra solo a partire dalla pagina 4
+% Aggiungi il pulsante "Torna su" solo a partire dalla pagina 4
 \AddToShipoutPictureBG{
     \ifnum\value{page}>3 % Appare a partire dalla pagina 4
     \begin{tikzpicture}[overlay, remember picture]
@@ -145,11 +156,9 @@ Analisi dei Requisiti & Processo fondamentale nello sviluppo di un prodotto soft
 \hline
 Agile & Insieme di principi e metodologie per la gestione e lo sviluppo di progetti, focalizzato sull'adattabilità e la collaborazione. Basato sul Manifesto Agile, enfatizza la flessibilità nei processi, il coinvolgimento continuo degli stakeholder e la capacità di rispondere rapidamente ai cambiamenti, garantendo prodotti di alta qualità e una soddisfazione costante del cliente.\\
 \hline
-API &Acronimo di Application Programming Interface, è un insieme di regole e protocolli che consente a diversi software di comunicare e interagire tra loro. Agisce come un ponte, definendo metodi e strutture dati standardizzati per lo scambio di informazioni e funzionalità. Le API permettono alle applicazioni di collaborare in modo efficiente, facilitando l'integrazione e la connessione tra sistemi diversi.\\
+API & Acronimo di "Application Programming Interface", è un insieme di regole e protocolli che consente a diversi software di comunicare e interagire tra loro. Agisce come un ponte, definendo metodi e strutture dati standardizzati per lo scambio di informazioni e funzionalità. Le API permettono alle applicazioni di collaborare in modo efficiente, facilitando l'integrazione e la connessione tra sistemi diversi.\\
 \hline
 Attore & Entità esterna al sistema che interagisce con esso per raggiungere un scopo specifico. Gli attori possono essere principali (comunica attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi).\\
-\hline
-& \\
 \hline
 \end{tabularx}
 
@@ -167,9 +176,9 @@ Best Practices & Insieme di metodi o procedure considerate le più efficaci e af
 \hline
 Branch & Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività.\\
 \hline
-Build & Il processo che compone ogni sottoprodotto (eseguibili, documenti, ecc.) a partire da un insieme di parti, come il codice sorgente e le risorse necessarie. Durante questo processo, il codice viene compilato e assemblato per generare una versione eseguibile o distribuita del prodotto, che può essere testata o distribuita. La build include anche la gestione delle dipendenze e, in alcuni casi, l’esecuzione di test automatici per garantire la correttezza e il funzionamento del software.\\
+Bug & Un errore o malfunzionamento nel codice del software che provoca un comportamento inatteso, indesiderato o errato. I bug possono derivare da errori di programmazione, progettazione o implementazione.\\
 \hline
- & \\
+Build & Il processo che compone ogni sottoprodotto (eseguibili, documenti, ecc.) a partire da un insieme di parti, come il codice sorgente e le risorse necessarie. Durante questo processo, il codice viene compilato e assemblato per generare una versione eseguibile o distribuita del prodotto, che può essere testata o distribuita. La build include anche la gestione delle dipendenze e, in alcuni casi, l’esecuzione di test automatici per garantire la correttezza e il funzionamento del software.\\
 \hline
 \end{tabularx}
 
@@ -195,8 +204,6 @@ Cruscotto & Traduzione italiana del termine inglese "Dashboard".\\
 \hline
 Continuous Integration & Abbreviata come CI, è una pratica di sviluppo software che prevede l'integrazione frequente e automatica delle modifiche al codice sorgente in un repository condiviso. Ogni modifica viene validata attraverso test automatici per garantire la stabilità e l'integrità del software.La CI consente di identificare e risolvere rapidamente conflitti o errori di integrazione, riducendo il rischio di difetti nel prodotto finale.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{D} % LETTERA D
@@ -215,7 +222,7 @@ Documentazione & Insieme di documenti, manuali e guide che descrivono un prodott
 \hline
 Docker & Piattaforma che consente di creare, distribuire e eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione.\\
 \hline
- & \\
+Docker Compose & Strumento che consente di definire e gestire applicazioni multi-container Docker. Permette di configurare un’applicazione complessa con più servizi e le relative dipendenze in un unico file.\\
 \hline
 \end{tabularx}
 
@@ -233,8 +240,6 @@ Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato des
 \hline
 ETC & Acronimo di Estimate to Complete, è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. L'ETC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{F} % LETTERA F
@@ -249,8 +254,6 @@ Framework & Architettura logica di supporto sulla quale un software può essere 
 \hline
 Feedback & Riscontro, positivo o negativo, dato per influenzare il comportamento futuro.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{G} % LETTERA G
@@ -263,7 +266,7 @@ Git & Sistema di controllo versione distribuito (DVCS) progettato per tracciare 
 \hline
 GitHub & Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l’organizzazione e la collaborazione all’interno dei team di sviluppo.\\
 \hline
- & \\
+Grafana & Piattaforma open-source per la visualizzazione e il monitoraggio dei dati. Permette di creare dashboard interattive e personalizzabili, report e grafici utilizzando dati provenienti da diverse fonti.\\
 \hline
 \end{tabularx}
 
@@ -291,8 +294,6 @@ Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, b
 \hline
 ITS & Acronimo di "Issue Tracking System", sono dei software utilizzati per gestire e tenere traccia di problemi, bug, richieste di funzionalità e altre attività correlate nel ciclo di sviluppo del software. Questi sistemi forniscono un'infrastruttura organizzativa che supporta la gestione delle problematiche, permettendo a sviluppatori, team di supporto e stakeholder di documentare e risolvere le questioni che emergono durante lo sviluppo del progetto.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{J} % LETTERA J
@@ -313,8 +314,6 @@ ITS & Acronimo di "Issue Tracking System", sono dei software utilizzati per gest
 \hline
 Kafka & Piattaforma distribuita open-source, progettata per la gestione di flussi di dati in tempo reale. Utilizza un'architettura basata su messaggi pubblicati e sottoscritti (pub-sub), consentendo la raccolta e l'elaborazione di grandi quantità di dati. È comunemente usata per applicazioni di streaming, analisi di eventi e integrazione tra sistemi.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{L} % LETTERA L
@@ -327,8 +326,6 @@ Kafka & Piattaforma distribuita open-source, progettata per la gestione di fluss
 \hline
 LLM & Acronimo di "Large Language Model", è un tipo di modello linguistico notevole per essere in grado di ottenere la comprensione e la generazione di linguaggio di ambito generale. Gli LLM acquisiscono questa capacità adoperando enormi quantità di dati per apprendere miliardi di parametri nell'addestramento.\\
 \hline
- & \\
-\hline
 \end{tabularx}
  
 \subsection{M} % LETTERA M
@@ -339,11 +336,11 @@ LLM & Acronimo di "Large Language Model", è un tipo di modello linguistico note
 \hline
 Merge & Operazione in un sistema di versionamentobranches che combina le modifiche provenienti da diversi rami (branches) di sviluppo in un unico ramo, unificando il codice o la documentazione, senza perdere il lavoro svolto separatamente.\\
 \hline
+Microservizio & Un approccio per sviluppare e organizzare l’architettura dei software secondo cui quest’ultimi sono composti di servizi indipendenti di piccole dimensioni che comunicano tra loro tramite API ben definite. Le architetture basate su microservizi permettono di scalare e sviluppare le applicazioni in modo più semplice e rapido, facilitando eventuali cambiamenti e miglioramenti.\\
+\hline
 Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel tempo all'interno di un progetto. Viene utilizzata per monitorare i progressi e assicurare che il progetto rispetti la pianificazione stabilita. Il raggiungimento degli obiettivi associati ad una milestone viene sostanziato attraverso lo sviluppo di una baseline.\\
 \hline
 MVP & Acronimo di "Minimum Viable Product", è una versione di un prodotto software che include solo le funzionalità essenziali per soddisfare i bisogni principali degli utenti. L'obiettivo di un MVP è quello di testare il prodotto, raccogliendo feedback degli utenti per migliorarlo e svilupparlo ulteriormente.\\
-\hline
-& \\
 \hline
 \end{tabularx}
 
@@ -355,8 +352,6 @@ MVP & Acronimo di "Minimum Viable Product", è una versione di un prodotto softw
 \hline
 Norme & Insieme di regole, linee guida o standard che stabiliscono comportamenti e procedure da seguire in un determinato contesto o settore. Il loro scopo principale è garantire la sicurezza, la qualità, l'efficienza e l'efficacia delle attività svolte, assicurando che vengano rispettati determinati criteri e pratiche operative.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{O} % LETTERA O
@@ -366,8 +361,6 @@ Norme & Insieme di regole, linee guida o standard che stabiliscono comportamenti
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
 Overleaf & Piattaforma online per la scrittura collaborativa di documenti in \LaTeX. Essa offre un ambiente basato sul web che permette a più utenti di lavorare contemporaneamente sugli stessi documenti, facilitando la collaborazione in tempo reale e la revisione, senza la necessità di configurare software locali.\\
-\hline
- & \\
 \hline
 \end{tabularx}
 
@@ -381,17 +374,17 @@ PB & Acronimo di "Product Baseline", è una tappa chiave nello sviluppo di un pr
 \hline
 PoC & Acronimo di "Proof of Concept", è un prototipo iniziale realizzato per dimostrare la fattibilità tecnologica di un prodotto atteso, permettendo di delineare il suo potenziale di realizzazione.\\
 \hline
-Progetto & Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Hanno una data d'inizio e una data di fine fissate.\\
+Processo & Insieme di attività collegate tra loro, finalizzate al raggiungimento di un obiettivo specifico, utilizzando risorse e seguendo regole prestabilite. Deve essere condotto in modo sistematico, disciplinato e misurabile.\\
 \hline
-PR & Acronimo di "Pull Request", è una richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma di hosting come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le pull request sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge.\\
+Progetto & Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Hanno una data d'inizio e una data di fine fissate.\\
 \hline
 Proponente & L'entità che avanza una proposta per la realizzazione di un progetto. Il proponente definisce i requisiti e gli obiettivi finali del progetto, garantendo che il risultato finale risponda alle sue necessità. Nel caso del nostro progetto, il proponente è l'azienda SyncLab.\\
 \hline
 Protocollo &  Insieme di regole e convenzioni che definiscono come deve avvenire la comunicazione o l'interazione tra due o più entità, siano esse dispositivi, software o persone. I protocolli garantiscono che lo scambio di informazioni avvenga in modo standardizzato, sicuro ed efficiente, evitando malintesi o incompatibilità.\\
 \hline
-Python & Linguaggio di programmazione ad alto livello, versatile e orientato agli oggetti. Grazie alla sua sintassi semplice viene utilizzato in una vasta gamma di applicazioni, tra cui sviluppo software, automazione, analisi dei dati e intelligenza artificiale.\\
+Pull Request & Richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma di hosting come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le pull request sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge.\\
 \hline
- & \\
+Python & Linguaggio di programmazione ad alto livello, versatile e orientato agli oggetti. Grazie alla sua sintassi semplice viene utilizzato in una vasta gamma di applicazioni, tra cui sviluppo software, automazione, analisi dei dati e intelligenza artificiale.\\
 \hline
 \end{tabularx}
 
@@ -402,8 +395,6 @@ Python & Linguaggio di programmazione ad alto livello, versatile e orientato agl
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
 Query & Istruzione formale utilizzata per interagire con i sistemi di gestione dei database. Solitamente scritta in linguaggi come SQL, è uno strumento fondamentale per gestire e analizzare grandi quantità di informazioni in modo strutturato.\\
-\hline
- & \\
 \hline
 \end{tabularx}
 
@@ -417,9 +408,9 @@ Repository & Archivio digitale centralizzato utilizzato per conservare, organizz
 \hline
 Requisito & Doppio significato: la competenza necessaria per un utente affinché possa risolvere un problema o raggiungere un obiettivo (lato bisogno), ma anche la capacità che un sistema deve possedere per soddisfare un'aspettativa (lato soluzione).\\
 \hline
-RTB & Acronimo di "Requirement and Technology Retrospective", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
+Rischio & Problema che potrebbe causare perdite o minacciare l'avanzamento del progetto, influendo sui costi o sul successo tecnico. L'Analisi dei Rischi identifica e gestisce tali rischi, prevenendo le perdite e definendo misure per mitigare eventuali danni.\\
 \hline
-& \\
+RTB & Acronimo di "Requirement and Technology Retrospective", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
 \hline
 \end{tabularx}
 
@@ -433,6 +424,8 @@ SAL & Acronimo di "Stato Avanzamento Lavori", è un incontro in cui il team si r
 \hline
 Scrum & Framework per la gestione dei progetti che promuove il lavoro di squadra e il progresso iterativo verso obiettivi definiti. Basato sull'adattabilità, Scrum incoraggia a partire da ciò che è noto, monitorare continuamente i progressi e apportare modifiche in base alle necessità, garantendo flessibilità e miglioramento continuo durante il ciclo di sviluppo. Comprende quattro eventi chiave, usati per pianificare e porre in retrospettiva il team di sviluppo: Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.\\
 \hline
+Sistema & Insieme organizzato di componenti interconnesse e interagenti, che lavorano insieme per raggiungere un obiettivo comune o eseguire specifiche funzioni.\\
+\hline
 Sprint & Periodo di tempo dalle 2 alle 4 settimane, in cui un team di sviluppo si concentra sul completamento di un insieme ristretto di attività. Ogni sprint è seguito da una review per verificare il progresso raggiunto e da una retrospettiva per adottare ulteriori miglioramenti.\\
 \hline
 Sprint Retrospective & Incontro che si tiene alla fine di ogni sprint, subito dopo la review. Durante questa riunione, il team di sviluppo riflette sullo sprint appena concluso, discutendo cosa è andato bene, cosa potrebbe essere migliorato e quali azioni concrete debbano essere adottate per migliorare i successivi sprint.\\
@@ -444,8 +437,6 @@ SQL & Acronimo di "Structured Query Language", è un linguaggio di programmazion
 Stakeholder & Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori.\\
 \hline
 SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale che realizza prodotti e soluzioni per diversi mercati quali: Sanità, Industria, Energia, Telco, Finanza e Trasporti \& Logistica. Offre anche consulenze per diversi temi come: GDPR, Big Data, Cloud Computing, IoT, Mobile e Cyber Security.\\
-\hline
- & \\
 \hline
 \end{tabularx}
 
@@ -459,7 +450,7 @@ Teamwork & Collaborazione tra membri di un gruppo per raggiungere obiettivi comu
 \hline
 Test & Un processo o un'attività finalizzata a verificare il funzionamento di un software o di un sistema informatico, con lo scopo di identificare eventuali difetti o problemi. Esistono diverse tipologie di test, ciascuna con un obiettivo specifico.\\
 \hline
-& \\
+Topic & In Apache Kafka, è una categoria che consente di organizzare e suddividere i flussi di messaggi. I topic sono essenziali nel modello di pubblicazione/sottoscrizione di Kafka, dove i produttori inviano messaggi a specifici topic e i consumatori si sottoscrivono a tali topic per ricevere i messaggi di loro interesse.\\
 \hline
 \end{tabularx}
 
@@ -473,8 +464,6 @@ UML & Acronimo di "Unified Modeling Language", è un linguaggio di modellazione 
 \hline
 User story & Descrizione concisa di una funzionalità o di un requisito del sistema, espressa dal punto di vista dell'utente. Viene utilizzata per definire i requisiti di un prodotto in modo semplice e comprensibile, per questo è solitamente scritta in linguaggio naturale.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{V} % LETTERA V
@@ -485,8 +474,6 @@ User story & Descrizione concisa di una funzionalità o di un requisito del sist
 \hline
 Versionamento & Il processo di "version control" consente di stabilire la storia cronologica delle azioni eseguite per una certa attività, tracciando tutti i cambiamenti effettuati e fornendo la possibilità di ritornare a uno stadio precedente se necessario. Il versionamento è fondamentale per mantenere il controllo sulle modifiche, evitare perdite di dati e permettere una gestione efficace delle versioni in progetti complessi.\\
 \hline
- & \\
-\hline
 \end{tabularx}
 
 \subsection{W} % LETTERA W
@@ -495,9 +482,9 @@ Versionamento & Il processo di "version control" consente di stabilire la storia
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \hline
-Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei comportamenti che devono essere adottati da un team o un'organizzazione per svolgere le proprie attività allo stato dell'arte.\\
+Walkthrough & Tecnica di verifica di un documento o di un codice in modo approfondito e senza l'uso di una checklist predefinita. Durante questa revisione, l'attenzione è focalizzata sul contenuto per individuare e correggere errori, evidenziando aspetti critici e identificando potenziali problematiche, senza aderire a parametri di valutazione rigidi.\\
 \hline
- & \\
+Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei comportamenti che devono essere adottati da un team o un'organizzazione per svolgere le proprie attività allo stato dell'arte.\\
 \hline
 \end{tabularx}
 
