@@ -673,6 +673,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{enumerate}
         \item Il sistema di stream processing invia una tupla contente l'identificativo univoco di un utente e dati posizionali dello stesso
         \item Il sistema verifica che il tempo trascorso dal ultimo annuncio non sia inferiore al cooldown minimo
+        \item Il sistema ottiene i dati del utente e dei punti di ineresse prossimi dal database
         \item Il sistema genera una richiesta al servizio LLM
         \item Il servizio LLM risponde con un annuncio inerente agli interessi del utente ed i punti di interesse prossimi
         \item Il sistema inserisce l'annuncio nel database
@@ -683,11 +684,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \begin{enumerate}
                 la richiesta del servizio di stream processing viene ignorata
             \end{enumerate}
-        \item 4a il sistema LLM non ha inserito "NO MATCH" nella risposta
+        \item 5a il sistema LLM non ha inserito "NO MATCH" nella risposta
             \begin{enumerate}
                 la richiesta del servizio di stream processing viene ignorata
             \end{enumerate}
-        \item 4a il sistema LLM genera una risposta mal formata o con elementi non ammessi
+        \item 5b il sistema LLM genera una risposta mal formata o con elementi non ammessi
             \begin{enumerate}
                 la richiesta del servizio di stream processing viene ignorata
                 viene generato un log del evento nel database
