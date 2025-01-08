@@ -96,6 +96,10 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.4.1 & 2025-1-8 & Riccardo Piva & Uncas Peruzzi & Refactor generale sezione qualità processo e qualità prodotto \\
+\hline
+0.4 & 2025-1-7 & Riccardo Piva & Uncas Peruzzi & Creazione cruscotto \\
+\hline
 0.3.3 & 2025-1-3 & Riccardo Piva & Uncas Peruzzi & Correzioni minori generali \\
 \hline
 0.3.2 & 2024-12-16 & Alfredo Rubino & Manuel Gusella & Aggiunta acronimi metriche e correzioni minori\\
@@ -195,14 +199,21 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
 \label{tab:funzionalità}
 \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ATTENZIONE DA RIVEDERE NOMENCLATURA METRICHE, DATO IL GRANDE REFACTOR ANDRANNO MODIFICATE IN BASE ALL'ORDINE FINALE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Affidabilità}
 \begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-  \hline
-  MPD04 & Code coverage & $\geq$80\% & 100\% \\
+  % \hline
+  % MPD04 & Code coverage & $\geq$80\% & 100\% \\
+  %% Code coverage rimossa perché è una metrica generale
+  %% Quindi a parere mio è preferibile tenere quelle più specifiche
+  %% E lasciare la code coverage per la sezione per i processi
   \hline
   MPD05 & Statement coverage & $\geq$80\% & 100\% \\
   \hline
@@ -259,6 +270,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   % \hline
   % MPD14 & Complessità ciclomatica & $\leq$20 & $\;leq$10 \\
+  %% Complessità ciclomatica è stata rimossa perché non è stata ritenuta utile
   % \hline
   % MPD15 & Coefficiente di accoppiamento fra classi & $\leq$10 & $\leq$5 \\
   \hline
@@ -267,6 +279,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   MPD17 & Parametri per metodo & $\leq$7 & $\leq$4 \\
   % \hline
   % MPD18 & Attributi per classe & $\leq$7 & $\leq$5 \\
+  %% Dubbio sulle due metriche riguardanti le classi se tenere o meno
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -297,44 +310,53 @@ I processi primari si possono dividere in parti primarie e una parte primaria è
 
 \newpage
 
-\paragraph{Analisi dei requisiti}\mbox{}\\
-L'analisi dei requisiti è il processo che si occupa di raccogliere, analizzare e definire i requisiti del sistema che si intende sviluppare.\\
-Serve per capire le esigenze degli stakeholder e tradurle in requisiti dettagliati e comprensibili per il team di sviluppo.\\
-\begin{table}[H]
-  \centering
-\begin{tabular}{|c|c|c|c|}
-  \hline
-  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-  \hline
-  MPC01 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
-  \hline
-  MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
-  \hline
-  MPC03 & Requisiti Opzionali Soddisfatti (RPS) & $\geq$0\% & 100\% \\
-  \hline
-\end{tabular}
-\caption{Processi primari - Analisi dei requisiti}
-\label{tab:analisi dei requisiti}
-\end{table}
-\paragraph{Progettazione}\mbox{}\\
-La progettazione è il processo che si occupa di definire l'architettura del sistema.\\
-Serve per definire come il sistema sarà implementato e come le varie parti del sistema interagiranno tra di loro.\\
-\begin{table}[H]
-  \centering
-\begin{tabular}{|c|c|c|c|}
-  \hline
-  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-  % \hline
-  % MPC04 & Coefficiente di accoppiamento fra classi & $\leq$10 & $\leq$5 \\
-  \hline
-  MPC05 & Facilità di utilizzo & $\leq$5 errori nell'interagire & $\leq$3 errori nell'interagire  \\
-  \hline
-  MPC06 & Tempo medio di apprendimento & $\leq$15 secondi & $\leq$5 secondi \\
-  \hline
-\end{tabular}
-\caption{Processi primari - Progettazione}
-\label{tab:progettazione}
-\end{table}
+%%
+%% Questo volendo si puo integrare in sviluppo
+%%
+
+% \paragraph{Analisi dei requisiti}\mbox{}\\
+% L'analisi dei requisiti è il processo che si occupa di raccogliere, analizzare e definire i requisiti del sistema che si intende sviluppare.\\
+% Serve per capire le esigenze degli stakeholder e tradurle in requisiti dettagliati e comprensibili per il team di sviluppo.\\
+% \begin{table}[H]
+%   \centering
+% \begin{tabular}{|c|c|c|c|}
+%   \hline
+%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+%   \hline
+%   MPC01 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
+%   \hline
+%   MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
+%   \hline
+%   MPC03 & Requisiti Opzionali Soddisfatti (RPS) & $\geq$0\% & 100\% \\
+%   \hline
+% \end{tabular}
+% \caption{Processi primari - Analisi dei requisiti}
+% \label{tab:analisi dei requisiti}
+% \end{table}
+
+%%
+%% Questa sezione la vedo piú da qualità di prodotto e in piú è poco comune come processo
+%%
+
+% \paragraph{Progettazione}\mbox{}\\
+% La progettazione è il processo che si occupa di definire l'architettura del sistema.\\
+% Serve per definire come il sistema sarà implementato e come le varie parti del sistema interagiranno tra di loro.\\
+% \begin{table}[H]
+%   \centering
+% \begin{tabular}{|c|c|c|c|}
+%   \hline
+%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+%   % \hline
+%   % MPC04 & Coefficiente di accoppiamento fra classi & $\leq$10 & $\leq$5 \\
+%   \hline
+%   MPC05 & Facilità di utilizzo & $\leq$5 errori nell'interagire & $\leq$3 errori nell'interagire  \\
+%   \hline
+%   MPC06 & Tempo medio di apprendimento & $\leq$15 secondi & $\leq$5 secondi \\
+%   \hline
+% \end{tabular}
+% \caption{Processi primari - Progettazione}
+% \label{tab:progettazione}
+% \end{table}
 
 \paragraph{Fornitura}\mbox{}\\
 La fornitura è il processo che si occupa di consegnare il prodotto software al cliente.\\
@@ -354,7 +376,18 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
   MPC10 & Earned value (EV) & $\geq$0 & $\leq$EAC\(_G\) \\
   \hline
   MPC11 & Planned value (PV) & $\geq$0 & $\leq$ Budget at completion (BAC)\(_G\) \\
+  %% Queste metriche qui sotto arrivano dalla sezione di pianificazione sotto processi organizzativi
   \hline
+  MPC28 & Schedule variance (SV) & $\geq$ -10\% & $\geq$0\% \\
+  \hline
+  MPC29 & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
+  \hline
+  %% Queste due sotto sono nuove, non sono ancora state scritte in norme di progetto
+  MPC30 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
+  \hline
+  %% Questo può essere messo in sviluppo
+  % MPC31 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
+  % \hline
 \end{tabular}
 \caption{Processi primari - Fornitura}
 \label{tab:fornitura}
@@ -362,26 +395,60 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
 
 \newpage
 
-\paragraph{Codifica}\mbox{}\\
-La codifica è il processo riguardante la scrittura del codice del prodotto software.\\
-Serve per implementare le funzionalità del software e garantire che il software rispetti gli standard di qualità.\\
+
+%%
+%% Questa non so se tenerla dopotutto è più parte della qualità di prodotto
+%%
+
+% \paragraph{Codifica}\mbox{}\\
+% La codifica è il processo riguardante la scrittura del codice del prodotto software.\\
+% Serve per implementare le funzionalità del software e garantire che il software rispetti gli standard di qualità.\\
+% \begin{table}[H]
+%   \centering
+% \begin{tabular}{|c|c|c|c|}
+%   \hline
+%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+%   % Questa era stata rimossa a priori perché poco utile
+%   % \hline
+%   % MPC12 & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
+%   \hline
+%   MPC13 & Parametri per metodo & $\leq$7 & $\leq$4 \\
+%   % \hline
+%   % MPC14 & Attributi per classe & $\leq$7 & $\leq$5 \\
+%   \hline
+%   MPC15 & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
+%   \hline
+%   MPC16 & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
+%   \hline
+%   MPC17 & Versioni browser supportati & $\geq$80\% & 100\% \\
+%   \hline
+% \end{tabular}
+% \caption{Processi primari - Codifica}
+% \label{tab:codifica}
+% \end{table}
+
+%%
+%% Un eventuale alternativa è la sezione sviluppo, molto simile
+%%
+
+\paragraph{Sviluppo}\mbox{}\\
+Lo sviluppoè  il processo riguardante la scrittura del codice del prodotto software.\\
+Questa metrica serve a garantire che il software rispetti le richieste del cliente e che la codifica avvenga in modo efficiente\\
 \begin{table}[H]
   \centering
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+  \hline
+  MPC01 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
+  \hline
+  %% Questi due sotto potrebbero essere messi peró sono poco comunim, quello essenziale è quello sopra
+  %% È essenziale se si mette sviluppo altrimenti se si mette Analisi dei requisiti diventano essenziali tutti e tre a mio parere
+  % MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
   % \hline
-  % MPC12 & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
-  \hline
-  MPC13 & Parametri per metodo & $\leq$7 & $\leq$4 \\
+  % MPC03 & Requisiti Opzionali Soddisfatti (RPS) & $\geq$0\% & 100\% \\
   % \hline
-  % MPC14 & Attributi per classe & $\leq$7 & $\leq$5 \\
-  \hline
-  MPC15 & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
-  \hline
-  MPC16 & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
-  \hline
-  MPC17 & Versioni browser supportati & $\geq$80\% & 100\% \\
+  MPC31 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi primari - Codifica}
@@ -419,13 +486,14 @@ La verifica serve a garantire che il prodotto software sia conforme alle specifi
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
   MPC20 & Code coverage & $\geq$80\% & 100\% \\
+  % \hline
+  % MPC21 & Statement coverage & $\geq$80\% & 100\% \\
+  % \hline
+  % MPC22 & Branch coverage & $\geq$80\% & 100\% \\
+  % \hline
+  % MPC23 & Condition coverage & $\geq$80\% & 100\% \\
   \hline
-  MPC21 & Statement coverage & $\geq$80\% & 100\% \\
-  \hline
-  MPC22 & Branch coverage & $\geq$80\% & 100\% \\
-  \hline
-  MPC23 & Condition coverage & $\geq$80\% & 100\% \\
-  \hline
+  % Questo qui sopra sono state raggruppate in code coverage
   MPC24 & Passed test cases percentage & $\geq$80\% & 100\% \\
   \hline
 \end{tabular}
@@ -434,6 +502,10 @@ La verifica serve a garantire che il prodotto software sia conforme alle specifi
 \end{table}
 
 \newpage
+
+%%
+%% Questa si potrebbe inglobare sulla sezione sopra ma è separata perché più corretto
+%%
 
 \paragraph{Gestione della qualità}\mbox{}\\
 La gestione della qualità è necessaria per garantire che tutte le metriche di qualità vengano effettivamente soddisfatte.\\
@@ -469,22 +541,29 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
 \caption{Processi organizzativi - Gestione dei processi}
 \label{tab:gestione dei processi}
 \end{table}
-\paragraph{Pianificazione}\mbox{}\\
-La pianificazione è un indispensabile per far si che che i parametri rientrino siano i più vicini possibili a quelli del preventivo.\\
-\begin{table}[H]
-  \centering
-\begin{tabular}{|c|c|c|c|}
-  \hline
-  \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-  \hline
-  MPC28 & Schedule variance (SV) & $\geq$ -10\% & $\geq$0\% \\
-  \hline
-  MPC29 & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
-  \hline
-\end{tabular}
-\caption{Processi organizzativi - Pianificazione}
-\label{tab:pianificazione}
-\end{table}
+
+% I componenti di questa sezione sono stati spostati fra i processi primari sotto fornitura e sviluppo
+% \paragraph{Pianificazione}\mbox{}\\
+% La pianificazione è un indispensabile per far si che che i parametri rientrino siano i più vicini possibili a quelli del preventivo.\\
+% \begin{table}[H]
+%   \centering
+% \begin{tabular}{|c|c|c|c|}
+%   \hline
+%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
+%   \hline
+%   MPC28 & Schedule variance (SV) & $\geq$ -10\% & $\geq$0\% \\
+%   \hline
+%   MPC29 & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
+%   \hline
+%   %% Queste due sotto sono nuove, non sono ancora state scritte in norme di progetto
+%   MPC30 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
+%   \hline
+%   MPC31 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
+%   \hline
+% \end{tabular}
+% \caption{Processi organizzativi - Pianificazione}
+% \label{tab:pianificazione}
+% \end{table}
 
 \section{Modalità di Testing}
 Qui sotto sono elencati i vari test che vengono eseguiti automaticamente sul prodotto software.\\
@@ -508,9 +587,76 @@ I test di accettazione servono a verificare che il prodotto soddisfi i requisiti
 
 \section{Cruscotto di valutazione delle qualità}
 \subsection{Qualità di processo - fornitura}
+\subsubsection{MPC01 - Estimated at completion (EAC)}
+% Inserire grafico
+% completare con valori effettivi e spiegazione più accurata
+\textbf{RTB}: Il grafico mostra l'andamento del costo totale del progetto rispetto al budget preventivato. Questo valore è quindi influenzato dalla quantità di lavoro del team e dai ruoli ricoperti ogni periodo. Quindi in certi periodi la stima risulta in linea con il budget preventivato mentre in altri periodi possiamo essere sopra di molto o sotto di molto. Ad esempio nel periodo 2 e 3 siamo sopra il budget preventivato, questo è dovuto al fatto che in questi periodi il team ha lavorato di più rispetto a quanto preventivato. Mentre nel periodo 5 siamo sotto il budget preventivato, questo è dovuto al fatto che in questo periodo il team ha lavorato di meno rispetto a quanto preventivato a causa del periodo natalizio.\\
+\subsubsection{MPC01 - Planned Value (PV) \& MPC01 - Earned Value (EV)}
+% Inserire grafico
+% Controllare testo (anche se mi pare ok)
+\textbf{RTB}: Il grafico mostra che le curve del valore guadagnato (Earned Value) e del valore pianificato (Planned Value) si sovrappongono, questo indica che il lavoro effetivamente svolto è conforme alla pianificazione. Questa sovrapposizione dimostra un avanzamento positivo rispetto alla pianificazione del progetto.
+\subsubsection{MPC01 - Actual Cost (AC) \& MPC01 - Estimate to Complete (ETC)}
+% Inserire grafico
+% Rivedere testo se piace
+\textbf{RTB}: Il grafico rappresenta l'Actual Cost (AC), ovvero i costi sostenuti per portare il progetto al suo stato corrente, e l'Estimate to Complete (ETCG), cioè la stima del costo da sostenere per completare il progetto durante i vari periodi. \\
+Ovviamente L'ETC tende a diminuire, dato che il progetto si avvicina alla sua conclusione, mentre l'AC mostra una crescita proporzionale alla velocità con cui l'ETC decresce.
+\subsection{Qualità di processo - Pianificazione}
+\subsubsection{MPC01 - Cost Variance (CV) \& MPC01 - Schedule Variance (SV)}
+% Inserire grafico
+% Rivedere testo in generale e periodi discrepanze tempo e costi
+\textbf{RTB}: Il grafico rappresenta la differenza in percentuale tra Cost Variance (CV) e la Schedule Variance (SV), che a loro volta rappresentano rispettivamente: la differenza tra il valore guadagnato (EV) e i costi sostenuti (AC) e la differenza tra il valore guadagnato (EV) e il valore pianificato (PV). La Budget Variance non è molto stabile, abbiamo sforato anche se di poco il limite accettabile apparte nel primo periodo e nel periodo pre-natalizio dove abbiamo avuto un valore molto vicino a zero. La diminuzione della Budget Variance è dovuta ai ruoli che sono stati svolti in questi due periodi che erano meno costosi. Per quanto riguarda la Schedule Variance risulta anch'essa altalenante questo è dovuto al fatto che inizialmente il team ha impiegato parecchio tempo nell'apprendimento delle tecnologie e in alcuni periodi più liberi il team ha lavorato di più recuperando così il tempo perso che dopo andava a perdere di nuovo dopo gli incontri con la proponente dove si presentavano eventuali cambiamenti da implementare il che portava a un rallentamento del lavoro. Anche se con la continuazione del progetto il team è stato capace di migliorare la Schedule Variance, mantenendola al di sotto del limite accettabile.
+\subsection{Qualità di processo - Gestione dei processi}
+\subsubsection{MPC01 - Rischi non previsti}
+% Inserire grafico
+% assolutamente da rivedere aggiungendo gli effettivi rischi incontrati e il loro impatto
+\textbf{RTB}: Nel corso del progetto, sono stati riscontrati alcuni rischi non previsti. Tuttavia, il team è riuscito a gestirli in modo efficace, riducendo al minimo il loro impatto sul progetto.
+\subsubsection{MPC01 - Efficienza temporale}
+% Inserire grafico
+\textbf{RTB}: La metrica dell'efficienza temporale oscilla molto nel corso del progetto. Questo è dovuto alla necessità del gruppo di apprendere le nuove tecnologie, non solo legate al capitolato. Anche se non abbiamo scartato del tutto il nostro way of working, ha ricevuto comunque molte revisioni soprattutto nel periodo iniziale. Tuttavia, il team negli ultimi sprint, dopo che la situazione iniziale si è stabilizzata, è stato in grado di mantenere l'efficienza temporale al di sotto del limite accettabile.
 \subsection{Qualità di processo - documentazione}
-\subsection{Qualità di processo - analisi dei requisiti}
-\subsection{Qualità di processo - verifica}
+\subsubsection{MPC01 - Errori ortografici}
+% Inserire grafico
+\textbf{RTB}: Inizialmente, la documentazione presentava alcuni errori ortografici. Tuttavia, con il tempo, il team ha migliorato il processo di verifica e correzione dei documenti, riducendo il numero di errori ortografici drasticamente.
+\subsubsection{MPC01 - Indice Gulpease}
+% Inserire grafico
+\textbf{RTB}: Inizialmente, l'indice Gulpease superava già il limite accettabile. Tuttavia, con il tempo, il team ha imparato a rispettarlo e a mantenerlo costante, migliorandone di poco a poco il punteggio. Questo è stato ottenuto rendendo tutti i documenti più leggibili, limitando l'uso di termini tecnici non necessari, soprattutto nei documenti più specifici o tecnici.
+\subsection{Qualità di processo - Gestione della qualità}
+\subsubsection{MPC01 - Metriche di qualità soddisfatte}
+% Inserire grafico
+\textbf{RTB}: Sul subito tutte le metriche inizialmente stabilite venivano applicate, anche se magari non perfettamente. Grazie al loro numero limitato il team è riuscito ad applicarle ma data l'inesperienza all'inizio ci sono state delle difficoltà. Con il tempo però, l'aggiunta di ulteriori metriche (alcune delle quali sconosciute ai membri del team) ha aumentato ulteriormente la difficoltà. Ma dopo un primo periodo di apprendimento e adeguamento a queste metriche abbiamo superato il limite inferiore.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Queste metriche vanno posizionato sotto la sezione finale in cui si decide di metterli (probabilmente rispettivamente in fornitura e sviluppo)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Questa metrica è il rapporto fra il valore del lavoro effettivamente svolto e il costo sostenuto per realizzarlo
+%% Il Cost Performance Index (CPI) è un indice che misura l'efficienza del progetto. Un valore maggiore di 1 indica
+%% che il progetto sta utilizzando le risorse in modo efficiente, mentre un valore minore di 1 indica che il progetto
+%% sta utilizzando le risorse in modo inefficiente.
+%% CPI = EV / AC
+\subsubsection{MPC01 - Cost performance index (CPI)}
+% Inserire grafico
+\textbf{RTB}: Il grafico mostra che il CPI è prossimo ad 1 ma con un leggero calo nel periodo 3. Questo è dovuto al fatto che in questo periodo il team ha ricoperto ruoli più onerosi. Questo ha portato a un aumento dei costi e quindi a un calo del CPI. Questo calo è comunque accettabile e non preoccupante dato che nel periodo 3 dato il calo di lavoro e avendo ricoperto ruoli più economici c'è stato un bilanciamento.
+
+%% Questa metrica la percentuale di requisiti svolti in percentuale di periodo in periodo
+%% Questo dovrebbe valutare la stabilità dei requisiti nel tempo
+%% Quindi ogni periodo si raggiunge una percentuale di requisiti svolti
+%% E alla consenga della baseline RTB si raggiunge il 100%, poi per la PB si raggiunge il 100% di nuovo.
+%% Si va ad obbiettivi, o così l'ho interpretato io
+% RSI = 100 − {[(RA+RC+RR) / TR] * 100}
+% RA: numero di requisiti aggiunti nel periodo considerato;
+% RC: numero di requisiti cambiati nel periodo considerato;
+% RR: numero di requisiti rimossi nel periodo considerato;
+% TR: numero totale di requisiti al momento dell’analisi.
+\subsubsection{MPC01 - Requirements stability index (RSI)}
+% Inserire grafico
+\textbf{RTB}: Questo grafico serve a mostrare l'avanzamento del progresso dei requisiti svolti nel tempo, indicando anche la stabilità nel progresso dei requisiti in percentuale. Inizialmente ovviamente nel primo perio era a 0. La maggior parte dei progressi sono stati fatti nel 3 periodo con l'analisi dei requisiti e le norme di progetto e nel 5 periodo con la finalizzazione della documentazione citata precedentemente e il completamento del PoC. Il 4 periodo ha segnato un calo dovuto alle festività natalizie, mentre il 6 periodo ha segnato un calo dovuto alla persante revisione della documentazione. Questo indice è molto importante per valutare la stabilità dei requisiti nel tempo e per valutare l'efficienza del team nel soddisfare i requisiti.
+
+% Le due sezioni sottostanti saranno da completare per la PB
+% \subsection{Qualità di processo - analisi dei requisiti}
+% \subsection{Qualità di processo - verifica}
+
+%% Ci sarebbero altre metriche come il code smell e la densità di errori ma non le ho ritenute utili o particolarmente interessanti
 
 \end{justify}
 \end{document}
