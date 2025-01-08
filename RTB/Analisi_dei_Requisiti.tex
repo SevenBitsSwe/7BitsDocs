@@ -648,167 +648,50 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\textbf{UC7 - Filtraggio e parsing dei dati ricevuti}}
+\subsubsection{\textbf{UC7 - Creazione annuncio}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC789image.png}
-    \caption{UC7 - Filtraggio e parsing dei dati ricevuti \newline UC8 - Mapping dei dati validati
-    \newline UC9 - Storicizzazione dei dati elaborati}
-    \label{fig:UC789}
+    \includegraphics[width=0.7\linewidth]{UC7image.png}
+    \caption{UC7 - Creazione annuncio}
+    \label{fig:UC7}
 \end{figure}
 \label{UC7}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-            \item Il sistema di Stream Processing è attivo e sta ricevendo dati.
-        \end{itemize}
-      \item \textbf{Postcondizioni:} I dati ricevuti dal sistema di Stream Processing, vengono filtrati per identificare dei dati validi ed infine viene effettuato un parsing per facilitarne l'elaborazione\\
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item Il sistema di stream processing è attivo e sta ricevendo dati in ingresso
-        \item Il sistema filtra i dati, in modo da scartare dati non validi o non consistenti
-        \item Il sistema fa un parsing dei dati, distinguendo i diversi tipi e campi dato.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sistema di Stream Processing voglio poter filtrare i dati ricevuti in ingresso secondo le linee guida, per poi validare e interpretare la struttura (parsing)
-\end{itemize}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC8 - Mapping dei dati validati}}
-
-\label{UC8}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing
+    \item \textbf{Attore$_G$ Secondario:} Database
     \item \textbf{Attore$_G$ Secondario:} LLM
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-            \item Il sistema di Stream Processing è attivo e ha validato i dati che costantemente riceve in input.
+          \item Il Database è operativo e accessibile;
+          \item Il sistema di Stream Processing è attivo e ha validato i dati che costantemente riceve in input.
         \end{itemize}
-      \item \textbf{Postcondizioni:} I dati ricevuti e validati dal sistema di Stream Processing, vengono elaborati tramite richiesta ad un LLM, che fornira la risposta valida per il sistema\\
+      \item \textbf{Postcondizioni:} \\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item Il sistema di stream processing è attivo e sta ricevendo dati in ingresso
-        \item Il sistema ha filtrato ed effettuato il parsing dei dati (UC7)
-        \item Il sistema fa un mapping dei dati tramite richiesta ad un LLM.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sistema di Stream Processing voglio poter elaborare i dati validati. Per fare ciò richiedo che parte dell'elaborazione sia effettuata da un sistema esterno di LLM per ottenere una risposta rilevante per il mio ssitema.
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC9 - Storicizzazione dei dati elaborati}}
-
-\label{UC9}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing
-    \item \textbf{Attore$_G$ Secondario:} Database
-    \item \textbf{Precondizioni:} 
+        \item Il sistema di stream processing invia una tupla contente l'identificativo univoco di un utente e dati posizionali dello stesso
+        \item Il sistema verifica che il tempo trascorso dal ultimo annuncio non sia inferiore al cooldown minimo
+        \item Il sistema genera una richiesta al servizio LLM
+        \item Il servizio LLM risponde con un annuncio inerente agli interessi del utente ed i punti di interesse prossimi
+        \item Il sistema inserisce l'annuncio nel database
+    \end{enumerate}
+    \item \textbf{Scenari alternativi:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-            \item Il sistema di Stream Processing è attivo e ha elaborato i dati ricevuti in input (UC8)
+        \item 2a: il tempo dal ultimo annuncio è inferiore al cooldown
+            \begin{enumerate}
+                la richiesta del servizio di stream processing viene ignorata
+            \end{enumerate}
+        \item 4a il sistema LLM non ha inserito "NO MATCH" nella risposta
+            \begin{enumerate}
+                la richiesta del servizio di stream processing viene ignorata
+            \end{enumerate}
+        \item 4a il sistema LLM genera una risposta mal formata o con elementi non ammessi
+            \begin{enumerate}
+                la richiesta del servizio di stream processing viene ignorata
+                viene generato un log del evento nel database
+            \end{enumerate}
         \end{itemize}
-      \item \textbf{Postcondizioni:} I dati ricevuti, validati ed elaborati dal sistema di Stream Processing, vengono storicizzati in un database per garantirne la trasparenza e integrità.\\
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item Il sistema di stream processing è attivo e sta ricevendo dati in ingresso
-        \item Il sistema ha filtrato ed effettuato l'elaborazione dei dati.
-        \item Il sistema serializza i dati su un database. 
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sistema di Stream Processing voglio poter storicizzare i dati validati ed elaborati, affinchè siano facilemente recuperabili o per effettuarne delle analisi in futuro.
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC10 - Selezione del PoI più adeguato per l'utente}}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{UC101112image.png}
-    \caption{UC10 - SSelezione del PoI più adeguato per l'utente\newline UC11 - Generazione messaggio custom per utente \newline UC12 - Nessun messaggio generato}
-    \label{fig:UC101112}
-\end{figure}
-\label{UC10}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM
-    \item \textbf{Attori$_G$ Secondari:} 
-    \begin{itemize}
-        \item Database
-        \item Sistema di Stream Processing
-    \end{itemize}
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-            \item Il database statico è aggiornato con i dati dei punti di interesse rilevanti per il sistema;
-            \item Il sistema di Stream Processing fornisce le posizioni dell'utente in tempo reale dopo una validazione e parsing;
-        \end{itemize}
-      \item \textbf{Postcondizioni:} L'obiettivo è selezionare i punti di interesse (POI) più rilevanti alla profilazione del singolo utente in base alla sua posizione attuale, che viene acquisita tramite un sistema di stream processing. Il modello LLM utilizza informazioni contenute nel database statico che contiene i Point of Interest per fare una selezione personalizzata dei luoghi di interesse, in base alla posizione in tempo reale dell'utente e ai suoi eventuali interessi.\\
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item Il LLM riceve i dati di posizione dall'utente e invia una richiesta al database statico per ottenere l'elenco dei POI nelle vicinanze dell'utente, con informazioni pertinenti come tipo di POI e altre caratteristiche
-        \item Il LLM utilizza i dati di posizione per filtrare i POI che si trovano in un raggio geografico predefinito. Il LLM applica inoltre un filtro basato su altre variabili, come le preferenze personali dell'utente.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come LLM voglio identificare e selezionare i Punti di Interesse più rilevanti per l'utente in base alla sua posizione e alla sua profilazione.
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC11 - Generazione messaggio custom per utente}}
-
-\label{UC11}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM
-    \item \textbf{Attori$_G$ Secondari:} 
-    \begin{itemize}
-        \item Static Database
-        \item Sistema di Processing
-    \end{itemize}
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il database statico è aggiornato con i dati degli utenti registrati nel sistema;
-            \item Il servizio di LLM ha idenficato e serializzato in locale il punto di interesse più adeguato per l'utente;
-        \end{itemize}
-      \item \textbf{Postcondizioni:} Lo scopo è generare un annuncio personalizzato testuale da proporre all'utente durante il suo percorso con il mezzo di trasporto. Questo messaggio tiene conto della selezione del punto di interesse (PoI) più rilevante alla profilazione del singolo utente (presente nel database) e della sua posizione attuale, che viene acquisita tramite un sistema di stream processing. Infine il dato deve essere storicizzato nel database e inviato in un altra partizione del sistema di stream processing .\\
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item Il LLM ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e il profilo.
-        \item Il LLM utilizza tutti i dettagli del PoI e del profilo utente per generare un annuncio testuale personalizzato. L'annuncio sarà proposto all'utente durante il percorso con il mezzo quindi dovrà rispettare determinate caratteristiche note al servizio.
-        \end{enumerate}
-    \item \textbf{Estensioni: } 
-    \begin{itemize}
-        \item UC12 - Nessun messaggio generato
-    \end{itemize}
-    \item \textbf{User-Story$_G$ associata:} Come LLM voglio generare un messaggio custom per l'utente basato sulla sua profilazione e su un PoI adeguato nel raggio della sua posizione in tempo reale
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC12 - Nessun messaggio generato}}
-
-\label{UC12}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM
-    \item \textbf{Attori$_G$ Secondari:} 
-    \begin{itemize}
-        \item Static Database
-        \item Sistema di Processing
-    \end{itemize}
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il database statico è aggiornato con i dati degli utenti registrati nel sistema;
-          \item Il servizio di LLM non ha idenficato il punto di interesse più adeguato per l'utente (condition);
-        \end{itemize}
-      \item \textbf{Postcondizioni:} Nessun messaggio personalizzato per l'utente viene generato durante l'elaborazione dell'ultima posizione inviata al sistema di Stream Processsing\\
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item Il LLM non ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e il profilo.
-        \item Il LLM omette per l'ultima rilevazione GPS, la generazione di un messaggio pubblicitario per l'utente
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come LLM voglio evitare di effettuare una richiesta al modello di AI, nel caso nessun punto di interesse sia stato selezionato per questa rilevazione GPS.
+    \item \textbf{User-Story$_G$ associata:} Come sistema di Stream Processing voglio effettuare una richiesta per la creazione di un annuncio inerente agli interessi del utente e i punti di interesse prossimi ad egli
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
