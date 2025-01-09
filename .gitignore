@@ -5,3 +5,8 @@
 *.synctex.gz
 *.out
 .DS_Store
+src-esterni
+
+##Others
+.vscode
+*.notes
