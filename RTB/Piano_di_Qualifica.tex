@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
 \usepackage[table,xcdraw]{xcolor}
 \usepackage[utf8]{inputenc}
@@ -11,9 +11,12 @@
 \usepackage{tikz}
 \usepackage{ragged2e}
 \usepackage{anyfontsize}
-\usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
+\usepackage{tabularx, etoolbox}
 \usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
 \usepackage{float}
+\usepackage{longtable}
+
+\newcommand\version{0.4.2} %aggiunta versione come variabile
 
 %\graphicspath{{../images/}}
 \graphicspath{{images/}}
@@ -31,13 +34,10 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ PIANO DI QUALIFICA v0.3.2}
+\rhead{\textcolor[HTML]{9e978a}{ PIANO DI QUALIFICA v\version}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
-
-
-
 
 \renewcommand*\contentsname{Indice}
 \renewcommand{\listfigurename}{Elenco delle figure}
@@ -63,7 +63,6 @@
     % Spazio per il logo dell'università
     \hfill
 
-
     \AddToShipoutPictureBG{ % Imposta il triangolo con logo
         \ifnum\value{page}=0
         \begin{tikzpicture}[overlay]
@@ -80,40 +79,46 @@
         \fi
     }
 
-
-
-    \vfill % Aggiunge spazio verticale per centrare il contenuto
+\vfill % Aggiunge spazio verticale per centrare il contenuto
 \end{titlepage}
 \newpage
 \clearpage
 \setcounter{page}{1}
 
-
+% Registro Modifiche
 \begin{center}
-\textbf{Registro modifiche}\\
-\vspace{2mm}
-\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
-\hline
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
-\hline
-0.4.1 & 2025-1-8 & Riccardo Piva & Uncas Peruzzi & Refactor generale sezione qualità processo e qualità prodotto \\
-\hline
-0.4 & 2025-1-7 & Riccardo Piva & Uncas Peruzzi & Creazione cruscotto \\
-\hline
-0.3.3 & 2025-1-3 & Riccardo Piva & Uncas Peruzzi & Correzioni minori generali \\
-\hline
-0.3.2 & 2024-12-16 & Alfredo Rubino & Manuel Gusella & Aggiunta acronimi metriche e correzioni minori\\
-\hline
-0.3.1 & 2024-12-13 & Riccardo Piva & Alfredo Rubino & Correzione standard IEEE \\
-\hline
-0.3.0 & 2024-12-12 & Riccardo Piva & Alfredo Rubino & Arricchimento sezioni Qualità di processo, Qualità di prodotto e inizio redazione modalità testing \\
-\hline
-0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sezione Qualità di prodotto \ref{qpd}\\
-\hline
-0.1.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Inizio redazione del documento\\
-\hline
-\end{tabularx}
+ \textbf{Registro modifiche}\\   
 \end{center}
+
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alternato alle righe
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\endhead
+    \hline
+    0.4.2 & 2025-01-10 & Federico Pivetta & Leonardo Trolese & Aggiunta dei test di sistema e dei test di accettazione\\
+    \hline
+    0.4.1 & 2025-01-08 & Riccardo Piva & Uncas Peruzzi & Refactor generale sezione qualità processo e qualità prodotto \\
+    \hline
+    0.4.0 & 2025-01-07 & Riccardo Piva & Uncas Peruzzi & Creazione cruscotto\\
+    \hline
+    0.3.3 & 2025-01-03 & Riccardo Piva & Uncas Peruzzi & Correzioni minori generali \\
+    \hline
+    0.3.2 & 2024-12-16 & Alfredo Rubino & Manuel Gusella & Aggiunta acronimi metriche e correzioni minori\\
+    \hline
+    0.3.1 & 2024-12-13 & Riccardo Piva & Alfredo Rubino & Correzione standard IEEE \\
+    \hline
+    0.3.0 & 2024-12-12 & Riccardo Piva & Alfredo Rubino & Arricchimento sezioni Qualità di processo, Qualità di prodotto e inizio redazione modalità testing \\
+    \hline
+    0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sezione Qualità di prodotto \ref{qpd}\\
+    \hline
+    0.1.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Inizio redazione del documento\\
+    \hline
+\end{longtable}
+\rowcolors{0}{}{} % Riporta le righe alla colorazione originale
+
 \newpage
 \tableofcontents
 \listoffigures %elenco delle figure sarà da usare per ogni immagine
@@ -121,18 +126,15 @@
 \newpage
 \begin{justify}
 
-
 \section{Introduzione}
 
-
 \subsection{Scopo del documento}
-
 Il seguente documento ha l'obiettivo di garantire la qualità del prodotto e dei processi coinvolti nell'intero progetto. Al fine di assicurare che il prodotto soddisfi le qualità attese, il documento
 verrà aggiornato nel tempo per riflettere eventuali modifiche, integrazioni e i risultati delle verifiche effettuate.
 
 
 \subsection{Glossario}
-Con l'intento di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un Glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del progetto. I termini presenti nel glossario sono contrassegnati con una \textit{G} a pedice : Termine\(_G\).\\
+Con l'intento di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un Glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del progetto. I termini presenti nel glossario sono contrassegnati con una $_G$ a pedice : Termine$_G$.\\
 Le definizioni sono presenti nell'apposito documento \textit{Glossario v1.0.0}
 
 
@@ -165,9 +167,6 @@ Smart custom advertising platform\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T09.pdf}}}\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T10.pdf}}}\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T11.pdf}}}
-
-
-
 \end{itemize}
 \newpage
 
@@ -442,7 +441,7 @@ Questa metrica serve a garantire che il software rispetti le richieste del clien
   \hline
   MPC01 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
   \hline
-  %% Questi due sotto potrebbero essere messi peró sono poco comunim, quello essenziale è quello sopra
+  %% Questi due sotto potrebbero essere messi peró sono poco comuni, quello essenziale è quello sopra
   %% È essenziale se si mette sviluppo altrimenti se si mette Analisi dei requisiti diventano essenziali tutti e tre a mio parere
   % MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
   % \hline
@@ -575,14 +574,110 @@ E per indicare lo stato come indicato in \textit{Norme di progetto v1.0.0} vengo
 \item \textbf{NP}: Non Passato
 \item \textbf{NI}: Non Implementato
 \end{itemize}
+
 \subsection{Test di unità}
 I test di unità servono a verificare che ogni singola unità del software funzioni correttamente.\\
-\subsection{Test di sistema}
+
+\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+\endhead
+\hline
+ & & \\
+\hline
+\caption{Test di unità}\\
+\end{longtable}
+
+\subsection{Test di sistema} % Manca TS relativo al requisto funzionale UC1.2
 I test di sistema servono a verificare che il sistema software funzioni correttamente.\\
+
+\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato}\\
+\endhead
+\hline
+TS1 & Verificare che l'utente privilegiato possa visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari marker e punti di interesse su di essa. & RF01 & NI\\
+\hline
+TS2 & Verificare che l'utente privilegiato possa visualizzare una Dashboard$_G$ che rappresenti i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema. & RF02 & NI\\
+\hline
+TS3 & Verificare che l'utente privilegiato possa visualizzare una Dashboard$_G$ relativa ad un singolo utente quando seleziona un marker. & RF03 & NI\\
+\hline
+TS4 & Verificare che l'utente privilegiato possa visualizzare i dettagli del marker riguardante una singola posizione di un utente nella rispettiva dashboard. & RF04 & NI\\
+\hline
+TS5 & Verificare che l'utente privilegiato possa visualizzare l'area di influenza di un punto di interesse selezionato. & RF05 & NI\\
+\hline
+TS6 & Verificare che l'utente privilegiato possa visualizzare le informazioni dettagliate di un punto di interesse quando selezionato. & RF06 & NI\\
+\hline
+TS7 & Verificare che l'utente privilegiato possa visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & RF07 & NI\\
+\hline
+TS8 & Verificare che l'utente privilegiato possa visualizzare i dettagli dell'annuncio generato. & RF08 & NI\\
+\hline
+TS9 & Verificare che l'utente possa visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & RF09 & NI\\
+\hline
+TS10 & Verificare che l'utente privilegiato possa effettuare l'accesso per visualizzare la Dashboard$_G$. & RF10 & NI\\
+\hline
+TS11 & Verificare che l'utente privilegiato possa visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & RF11 & NI\\
+\hline
+TS12 & Verificare che l'utente privilegiato possa visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & RF12 & NI\\
+\hline
+TS13 & Verificare che il sensore sia in grado di trasmettere i dati rilevati in tempo reale al sistema di Stream Processing. & RF13 & NI\\
+\hline
+TS14 & Verificare che i dati ricevuti dal sensore siano filtrati e validati dal sistema di Stream Processing. & RF14 & NI\\
+\hline
+TS15 & Verificare che i dati validati dal sistema di Stream Processing siano elaborati tramite un servizio di LLM. & RF15 & NI\\
+\hline
+TS16 & Verificare che i dati elaborati dal sistema di Stream Processing siano storicizzati su un database adeguato. & RF16 & NI\\
+\hline
+TS17 & Verificare che il servizio LLM sia in grado di selezionare il punto di interesse più rilevante per l'utente in base alla profilazione e alla posizione in tempo reale. & RF17 & NI\\
+\hline
+TS18 & Verificare che il servizio LLM sia in grado di generare un messaggio custom per l'utente in base al suo profilo e al punto di interesse selezionato in tempo reale. & RF18 & NI\\
+\hline
+TS19 & Verificare che il servizio LLM sia in grado di omettere la generazione di un messaggio custom per l'utente nel caso non sia presente alcun punto di interesse adatto per la specifica rilevazione. & RF19 & NI\\
+\hline
+\caption{Test di sistema}\\
+\end{longtable}
+
 \subsection{Test di integrazione}
 I test di integrazione servono a verificare che le varie parti del software funzionino correttamente insieme.\\
+
+\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+\endhead
+\hline
+ & & \\
+\hline
+\caption{Test di integrazione}\\
+\end{longtable}
+
 \subsection{Test di accettazione}
 I test di accettazione servono a verificare che il prodotto soddisfi i requisiti del proponente.\\
+
+\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
+\hline
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+\endhead
+\hline
+TA1 & Verificare che l'utente privilegiato possa usufruire dell'applicazione solamente a seguito di un'autenticazione avvenuta con successo. & NI \\
+\hline
+TA2 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare una dashboard$_G$ contenente una mappa che mostri i PoI, i vari utenti presenti nel sistema con i percorsi effettuati in tempo reale, e l'ultimo annuncio generato per ogni utente. & NI \\
+\hline
+TA3 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando uno specifico utente, accedere ad una dashboard dedicata con informazioni dettagliate su tale utente, tra cui nome, cognome, email, genere, data di nascita e stato civile. & NI \\
+\hline
+TA4 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un PoI, accedere alle informazioni dettagliate relative al punto di interesse, tra cui nome, posizione, indirizzo, tipologia e descrizione.. & NI \\
+\hline
+TA5 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un annuncio, accedere ai dettagli specifici di tale annuncio. & NI \\
+\hline
+TA6 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare una tabella contenente le informazioni relative ai singoli PoI, inclusa la quantità di messaggi inviati nel mese corrente. & NI \\
+\hline
+TA7 & Verificare che il sensore, una volta connesso al sistema, possa trasmettere i dati rilevati in tempo reale al sistema di stream processing. & NI \\
+\hline
+TA8 & Verificare che il sistema di stream processing, una volta ricevuti i dati dal sensore, possa filtrare e validare tali dati e, se necessario, elaborarli tramite un modello LLM, per poi storicizzarli in un database adeguato. & NI \\
+\hline
+TA9 & Verificare che il servizio LLM possa selezionare il punto di interesse (PoI) più rilevante per l'utente in base alla sua profilazione e posizione in tempo reale e, di conseguenza, generare un messaggio personalizzato utilizzando sia i dati del PoI scelto sia quelli dell'utente. & NI \\
+\hline
+\caption{Test di accettazione}\\
+\end{longtable}
 
 
 \section{Cruscotto di valutazione delle qualità}
