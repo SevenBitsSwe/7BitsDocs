@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.5.9} %aggiunta versione come variabile
+\newcommand\version{0.5.13} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -107,6 +107,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    0.5.13 & 2025-01-11 & Manuel Gusella & Leonardo Trolese & Aggiunte tabelle delle metriche per le sezioni \hyperref[codifica]{Codifica}, \hyperref[progettazione]{Progettazione} e \hyperref[analisi]{Analisi dei Requisiti}\\
     \hline
     0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metrica Function Point e correzioni minori\\
     \hline
@@ -209,7 +211,7 @@
             \item Riferimenti per le metriche: 
             \begin{itemize}
                 \item \href{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}
-                \item \href{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}
+                \item \url{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}
                 \item \href{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}
                 \item \href{https://youtu.be/CXgDazM0DWA?feature=shared}{https://youtu.be/CXgDazM0DWA?feature=shared}
             \end{itemize}
@@ -274,6 +276,7 @@
     L'obiettivo è consegnare un prodotto software di alta qualità, che soddisfi le esigenze richieste, rispettando le tempistiche e garantendo il successo del progetto.\\
 
     \subsubsection{Analisi dei Requisiti}
+    \label{analisi}
         \paragraph{Descrizione e Scopo}
         L’Analisi-dei-Requisiti$_G$ è la prima fase cruciale del processo di sviluppo software. Lo scopo principale di questa fase è definire con chiarezza le funzionalità e le caratteristiche che il sistema dovrà offrire, in base alle necessità degli utenti. Per raggiungere tale obiettivo, è essenziale stabilire una comunicazione efficace con la proponente, assicurandosi che tutte le esigenze siano documentate e validate. Questo processo permette di chiarire gli obiettivi del prodotto, identificare i vincoli operativi e fornire ai Progettisti le informazioni necessarie per sviluppare un’architettura coerente e un design adeguato. Il risultato di questa attività è formalizzato nel documento \textit{Analisi\_dei\_Requisiti.pdf}, redatto dagli Analisti, che contiene una descrizione dettagliata degli obiettivi del prodotto, delle funzionalità previste, delle caratteristiche degli utenti e delle tecnologie coinvolte. Include inoltre una sezione dedicata ai casi d’uso, che descrivono le interazioni tra gli attori esterni e il sistema.\\
         Infine, l’Analisi-dei-Requisiti contribuisce a migliorare la comunicazione tra tutti gli stakeholder, agevola la pianificazione del progetto in termini di tempistiche e costi e fornisce un riferimento chiaro per le attività di verifica e test.\\
@@ -427,10 +430,24 @@
         \end{itemize}
 
         \paragraph{Metriche}
-        %da completare e inserire tabella%
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|c|c|}
+            \hline
+            \textbf{Metrica} & \textbf{Descrizione} \\
+            \hline
+            MPD01 & Requisiti Obbligatori Soddisfatti\\
+            \hline
+            MPD01 & Requisiti Desiderabili Soddisfatti\\
+            \hline
+            MPD01 & Requisiti Opzionali Soddisfatti\\
+            \hline
+          \end{tabular}
+          \caption{Metriche relative all'attività di analisi dei requisiti}
+        \end{table}
 
     \subsubsection{Progettazione}
-
+    \label{progettazione}
         \paragraph{Descrizione e Scopo}
         La progettazione, o design, è un'altra fase cruciale del processo di sviluppo software che ha l'obiettivo di tradurre i requisiti individuati durante la fase di analisi in una struttura architetturale definita. Questa attività definisce in dettaglio i vincoli e le caratteristiche del prodotto semplificando la pianificazione e la suddivisione delle attività di codifica.\\
         Prima di avviare la progettazione vera e propria, si intraprende una fase preliminare che prevede la creazione di un PoC (Proof of Concept), un prototipo preliminare "usa e getta" realizzato per dimostrare la fattibilità tecnologica del prodotto previsto. Questa fase serve a confermare le tecnologie da adottare e a definire insieme alla proponente le componenti principali che costituiranno l'MVP (Minimum Viable Product).\\
@@ -509,10 +526,28 @@
         \end{itemize}
 
         \paragraph{Metriche}
-        %da completare e inserire tabella%
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|c|c|}
+            \hline
+            \textbf{Metrica} & \textbf{Descrizione} \\
+            \hline
+            MPD01 & Utilizzo risorse\\
+            \hline
+            MPD01 & Tempo medio di risposta\\
+            \hline
+            MPD01 & Facilità di utilizzo\\
+            \hline
+            MPD01 & Tempo medio di apprendimento\\
+            \hline
+            MPD01 & Versioni browser supportati\\
+            \hline
+          \end{tabular}
+          \caption{Metriche relative all'attività di progettazione}
+        \end{table}
 
     \subsubsection{Codifica}
-
+    \label{codifica}
         \paragraph{Descrizione e Scopo}
         L’attività di codifica rappresenta la fase cruciale in cui le funzionalità richieste dal proponente vengono tradotte in istruzioni eseguibili. I Programmatori, incaricati di questa attività, hanno il compito di implementare il design concettuale definito dai Progettisti, seguendo scrupolosamente le linee guida e le norme stabilite. Questo metodo di lavoro garantisce che il codice segua accuratamente le specifiche, promuovendo qualità, manutenibilità e coerenza nell'intero progetto.\\
         L’obiettivo principale della codifica è quindi creare un prodotto software che soddisfi le esigenze del proponente e rispetti gli accordi contrattuali. Le aspettative del codice sviluppato includono:
@@ -548,7 +583,25 @@
         Il processo di verifica comprende sia un’analisi statica del codice, per rilevare eventuali errori o problemi di formattazione, sia l’esecuzione di test mirati per validare le funzionalità implementate.\\
 
         \paragraph{Metriche}
-        %da completare e inserire tabella%
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|c|c|}
+            \hline
+            \textbf{Metrica} & \textbf{Descrizione} \\
+            \hline
+            MPD01 & Statement coverage\\
+            \hline
+            MPD01 & Branch coverage\\
+            \hline
+            MPD01 & Condition coverage\\
+            \hline
+            MPD01 & Linee di codice per metodo\\
+            \hline
+            MPD01 & Parametri per metodo\\
+            \hline
+          \end{tabular}
+          \caption{Metriche relative all'attività di codifica}
+        \end{table}
 
 \newpage
 \section{Processi di supporto}
