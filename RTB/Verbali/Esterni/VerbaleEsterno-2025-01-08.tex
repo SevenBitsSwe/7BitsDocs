@@ -1,0 +1,151 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.1.1 & 2025-01-10 & Leonardo Trolese & Alfredo Rubino & Correzioni strutturali e grammaticali minori \\
+\hline
+0.1.0 & 2025-01-09 & Leonardo Trolese & Alfredo Rubino & Redazione del verbale \\
+\hline
+\end{tabularx}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+\section{2025-01-08}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 17:00 - 17:25;
+\item Partecipanti: 	
+	\begin{itemize}
+	\item 	SevenBits:
+			\begin{itemize}
+				\item Gusella Manuel
+				\item Peruzzi Uncas
+				\item Piva Riccardo
+				\item Pivetta Federico
+				\item Rubino Alfredo
+				\item Cristellon Giovanni
+				\item Trolese Leonardo
+			\end{itemize}
+	\item 	SyncLab:
+			\begin{itemize}
+				\item Dorigo Andrea
+				\item Pallaro Fabio
+				\item Zorzi Daniele
+			\end{itemize}
+	\end{itemize}
+\item Piattaforma: Google meet (online)
+\end{itemize}
+\subsection{Oggetto}
+Quarto SAL con Dorigo Andrea, Pallaro Fabio e Zorzi Daniele di SyncLab.
+
+\subsection{Sintesi}
+Durante il quarto SAL il proponente è stato messo al corrente dello stato del progetto: sono state esposte le novità implementate nel PoC
+ed è stato esposto quanto prodotto dal punto di vista della documentazione fino ad ora. Relativamente al Proof of Concept il gruppo ha
+esposto un problema rilevato alla creazione dei topic Kafka e la relativa soluzione adottata; il team ha infine confermato di avere 
+completato l'implementazione del PoC in vista della RTB.
+Nella fase finale della riunione  è stato discusso un dubbio emerso durante il colloquio del gruppo con il professor Cardin relativo 
+alla sicurezza del software in produzione.
+
+\subsubsection{Domande}
+E' stato posto un unico dubbio:
+\begin{enumerate}
+	\item E' necessario adottare una soluzione che mitighi o risolva il problema di sicurezza del potenziale Kafka Poisoning, ovvero
+	del possibile invio di dati nocivi per il sistema attraverso Kafka?
+\end{enumerate}
+
+\subsubsection{Risposte}
+\begin{enumerate}
+	\item Il focus del progetto è la generazione di messaggi pubblicitari personalizzati mediante IA, pertanto, sebbene il problema esposto
+	andrebbe sicuramente affrontato e risolto in un contesto reale, non è necessario che ciò venga fatto nel contesto del progetto in questione.
+	Si suggerisce comunque al gruppo di studiare autonomamente il problema e le possibili soluzioni ad esso, valutando la fattibilità
+	dell'adozione di ognuna di esse rispetto al tempo a disposizione per il completamento del progetto. Se il gruppo valutasse accettabile
+	l'impegno orario dato dall'adozione di una di queste soluzioni allora il proponente acconsentirebbe alla sua implementazione. 
+\end{enumerate}
+
+\subsubsection{Considerazioni sulla sicurezza}
+A seguito della domanda sul potenziale Kafka Poisoning il proponente ha esposto tre possibili soluzioni al problema da approfondire per il gruppo:
+\begin{itemize}
+	\item Encryption: crittografia dei dati in transito per proteggere il sistema da attacchi del tipo man-in-the-middle, oppure a risposo
+	per proteggere i dati anche da attaccanti che hanno accesso ai dati salvati. Si possono configurare i broker Kafka per richiedere connessioni
+	sicure tramite SSL/TLS.
+	\item Authentication: limitare l'accesso al servizio ai soli client autorizzati. Si può realizzare attraverso SASL o MSA. 
+	\item Access Control: definire dei permessi specifici garantendo che anche un client compromesso non possa causare danni al sistema.
+\end{itemize}
+Il proponente ha quindi suggerito la possibilità di introdurre uno strato di controllo che si limiti a verificare la validità dai dat ricevuti
+dai sensori, garantendo la loro coerenza. Questa funzionalità non è da considerasi però una soluzione per il Kafka Poisoning, che non può 
+essere prevenuto così facilmente.
+
+\subsubsection{Decisioni prese}
+E' stato deciso di terminare la redazione degli ultimi dettagli dei documenti, e di fissare quanto prima la revisione RTB con il committente,
+è stato dato il compito al gruppo di studiare le possibili soluzioni per i problemi di sicurezza in preparazione a una discussione su di esse
+che avverrà nel successivo SAL, e infine è si è scelto di non fissare una data precisa per il prossimo incontro per via delle incertezze
+relative a quando si svolgerà la consegna RTB.
+
+\section{Obiettivi prossimo SAL}
+Gli obiettivi stabiliti per il prossimo SAL sono:
+\begin{itemize}
+	\item Studio soluzioni per il Kafka Poisoning
+	\item Conclusione documentazione per RTB
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+		\hline
+		\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+			\hline
+				\href{https://github.com/SevenBitsSwe/PoC/issues/18}{Issue \#18} & Studio delle possibili soluzioni del Kafka Poisining\\
+			\hline
+				\href{https://github.com/SevenBitsSwe/PoC/issues/19}{Issue \#19} & Studio encryption dei dati in transito\\
+			\hline
+				\href{https://github.com/SevenBitsSwe/PoC/issues/20}{Issue \#20} & Studio access control dei client\\
+			\hline
+				\href{https://github.com/SevenBitsSwe/PoC/issues/21}{Issue \#21} & Studio authentication dei client\\
+			\hline
+				\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/111}{Issue \#111} & Redazione verbale esterno 2025-01-08\\
+			\hline
+	\end{tabular}
+	\end{center}
+
+%parte di firma
+\vfill
+\begin{minipage}{10cm}
+Firma: \hrulefill \\
+\vspace{2mm}
+Data: \dotfill
+\end{minipage}
+
+\end{document}
