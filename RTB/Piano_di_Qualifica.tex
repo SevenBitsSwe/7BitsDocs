@@ -596,43 +596,45 @@ I test di sistema servono a verificare che il sistema software funzioni corretta
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato}\\
 \endhead
 \hline
-TS1 & Verificare che l'utente privilegiato possa visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari marker e punti di interesse su di essa. & RF01 & NI\\
+TS1 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ composta da una mappa interattiva con i vari marker e punti di interesse su di essa. & RF01 & NI\\
 \hline
-TS2 & Verificare che l'utente privilegiato possa visualizzare una Dashboard$_G$ che rappresenti i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema. & RF02 & NI\\
+TS2 & Verificare che l'utente privilegiato possa visualizzare una dashboard$_G$ che rappresenti i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema. & RF02 & NI\\
 \hline
-TS3 & Verificare che l'utente privilegiato possa visualizzare una Dashboard$_G$ relativa ad un singolo utente quando seleziona un marker. & RF03 & NI\\
+TS3 & Verificare che l'utente privilegiato possa visualizzare una dashboard$_G$ relativa ad un singolo utente quando seleziona un marker. & RF03 & NI\\
 \hline
 TS4 & Verificare che l'utente privilegiato possa visualizzare i dettagli del marker riguardante una singola posizione di un utente nella rispettiva dashboard. & RF04 & NI\\
 \hline
-TS5 & Verificare che l'utente privilegiato possa visualizzare l'area di influenza di un punto di interesse selezionato. & RF05 & NI\\
+TS5 & Verificare che l'utente privilegiato possa visualizzare tutti i punti di interesse riconosciuti dal sistema. & RF05 & NI\\
 \hline
-TS6 & Verificare che l'utente privilegiato possa visualizzare le informazioni dettagliate di un punto di interesse quando selezionato. & RF06 & NI\\
+TS6 & Verificare che l'utente privilegiato possa visualizzare l'area di influenza di un punto di interesse selezionato. & RF06 & NI\\
 \hline
-TS7 & Verificare che l'utente privilegiato possa visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & RF07 & NI\\
+TS7 & Verificare che l'utente privilegiato possa visualizzare le informazioni dettagliate di un punto di interesse quando selezionato. & RF07 & NI\\
 \hline
-TS8 & Verificare che l'utente privilegiato possa visualizzare i dettagli dell'annuncio generato. & RF08 & NI\\
+TS8 & Verificare che l'utente privilegiato possa visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & RF08 & NI\\
 \hline
-TS9 & Verificare che l'utente possa visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & RF09 & NI\\
+TS9 & Verificare che l'utente privilegiato possa visualizzare i dettagli dell'annuncio generato. & RF09 & NI\\
 \hline
-TS10 & Verificare che l'utente privilegiato possa effettuare l'accesso per visualizzare la Dashboard$_G$. & RF10 & NI\\
+TS10 & Verificare che l'utente possa visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & RF10 & NI\\
 \hline
-TS11 & Verificare che l'utente privilegiato possa visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & RF11 & NI\\
+TS11 & Verificare che l'utente privilegiato possa effettuare l'accesso per visualizzare la dashboard$_G$. & RF11 & NI\\
 \hline
-TS12 & Verificare che l'utente privilegiato possa visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & RF12 & NI\\
+TS12 & Verificare che l'utente privilegiato possa visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & RF12 & NI\\
 \hline
-TS13 & Verificare che il sensore sia in grado di trasmettere i dati rilevati in tempo reale al sistema di Stream Processing. & RF13 & NI\\
+TS13 & Verificare che l'utente privilegiato possa visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & RF13 & NI\\
 \hline
-TS14 & Verificare che i dati ricevuti dal sensore siano filtrati e validati dal sistema di Stream Processing. & RF14 & NI\\
+TS14 & Verificare che il sensore sia in grado di trasmettere i dati rilevati in tempo reale al sistema di Stream Processing. & RF14 & NI\\
 \hline
-TS15 & Verificare che i dati validati dal sistema di Stream Processing siano elaborati tramite un servizio di LLM. & RF15 & NI\\
+TS15 & Verificare che i dati ricevuti dal sensore siano filtrati e validati dal sistema di Stream Processing. & RF15 & NI\\
 \hline
-TS16 & Verificare che i dati elaborati dal sistema di Stream Processing siano storicizzati su un database adeguato. & RF16 & NI\\
+TS16 & Verificare che i dati validati dal sistema di Stream Processing siano elaborati tramite un servizio LLM. & RF16 & NI\\
 \hline
-TS17 & Verificare che il servizio LLM sia in grado di selezionare il punto di interesse più rilevante per l'utente in base alla profilazione e alla posizione in tempo reale. & RF17 & NI\\
+TS17 & Verificare che i dati elaborati dal sistema di Stream Processing siano storicizzati su un database adeguato. & RF17 & NI\\
 \hline
-TS18 & Verificare che il servizio LLM sia in grado di generare un messaggio custom per l'utente in base al suo profilo e al punto di interesse selezionato in tempo reale. & RF18 & NI\\
+TS18 & Verificare che il servizio LLM sia in grado di selezionare il punto di interesse più rilevante per l'utente in base alla profilazione e alla posizione in tempo reale. & RF18 & NI\\
 \hline
-TS19 & Verificare che il servizio LLM sia in grado di omettere la generazione di un messaggio custom per l'utente nel caso non sia presente alcun punto di interesse adatto per la specifica rilevazione. & RF19 & NI\\
+TS19 & Verificare che il servizio LLM sia in grado di generare un messaggio custom per l'utente in base al suo profilo e al punto di interesse selezionato in tempo reale. & RF19 & NI\\
+\hline
+TS20 & Verificare che il servizio LLM sia in grado di omettere la generazione di un messaggio custom per l'utente nel caso non sia presente alcun punto di interesse adatto per la specifica rilevazione. & RF20 & NI\\
 \hline
 \caption{Test di sistema}\\
 \end{longtable}
@@ -664,11 +666,11 @@ TA2 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato poss
 \hline
 TA3 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando uno specifico utente, accedere ad una dashboard dedicata con informazioni dettagliate su tale utente, tra cui nome, cognome, email, genere, data di nascita e stato civile. & NI \\
 \hline
-TA4 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un PoI, accedere alle informazioni dettagliate relative al punto di interesse, tra cui nome, posizione, indirizzo, tipologia e descrizione.. & NI \\
+TA4 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un PoI, accedere alle informazioni dettagliate relative al punto di interesse, tra cui nome, posizione, indirizzo, tipologia e descrizione. & NI \\
 \hline
 TA5 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un annuncio, accedere ai dettagli specifici di tale annuncio. & NI \\
 \hline
-TA6 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare una tabella contenente le informazioni relative ai singoli PoI, inclusa la quantità di messaggi inviati nel mese corrente. & NI \\
+TA6 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare una tabella contenente le informazioni relative ai singoli PoI, inclusa la quantità di messaggi inviati nel mese corrente per ognuno di essi. & NI \\
 \hline
 TA7 & Verificare che il sensore, una volta connesso al sistema, possa trasmettere i dati rilevati in tempo reale al sistema di stream processing. & NI \\
 \hline
