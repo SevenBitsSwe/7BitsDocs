@@ -98,6 +98,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.4.3 & 2025-01-10 & Leonardo Trolese & Uncas Peruzzi & Aggiunta dei test di integrazione\\
+    \hline
     0.4.2 & 2025-01-10 & Federico Pivetta & Leonardo Trolese & Aggiunta dei test di sistema e dei test di accettazione\\
     \hline
     0.4.1 & 2025-01-08 & Riccardo Piva & Uncas Peruzzi & Refactor generale sezione qualità processo e qualità prodotto \\
@@ -588,8 +590,8 @@ I test di unità servono a verificare che ogni singola unità del software funzi
 \caption{Test di unità}\\
 \end{longtable}
 
-\subsection{Test di sistema} % Manca TS relativo al requisto funzionale UC1.2
-I test di sistema servono a verificare che il sistema software funzioni correttamente.\\
+\subsection{Test di sistema} % Manca TS relativo al requisito funzionale UC1.2
+I test di sistema servono a verificare la completa copertura dei requisiti concordati nel documento Analisi dei Requisiti.\\
 
 \begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
 \hline
@@ -640,20 +642,34 @@ TS20 & Verificare che il servizio LLM sia in grado di omettere la generazione di
 \end{longtable}
 
 \subsection{Test di integrazione}
-I test di integrazione servono a verificare che le varie parti del software funzionino correttamente insieme.\\
+I test di integrazione servono a verificare che le componenti del sistema si integrino correttamente e in maniera efficace. L'obiettivo dei test
+è identificare eventuali problemi di interoperabilità e integrazione fra le componenti del software.\\
 
 \begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
 \hline
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
 \endhead
 \hline
- & & \\
+TI1 & Verificare che i dati simulati vengano correttamente pubblicati sul broker di messaggi & NI\\
+\hline
+TI2 & Assicurarsi che il modulo di stream processing elabori correttamente i dati ricevuti dal broker e li invii al motore di generative AI & NI\\
+\hline
+TI3 & Verificare che il motore LLM generi messaggi pubblicitari coerenti e contestualizzati in base ai dati forniti & NI\\
+\hline
+TI4 & Controllare che i messaggi generati vengano correttamente salvati nella piattaforma di storage & NI\\
+\hline
+TI5 & Controllare che i dati posizionali generati vengano correttamente salvati nella piattaforma di storage & NI\\
+\hline
+TI6 & Verificare che i dati geospaziali vengano aggiornati in tempo reale sulla dashboard contente la mappa & NI\\
+\hline
+TI7 & Assicurarsi che i messaggi generati dal motore LLM siano correttamente visualizzati nella dashboard & NI\\
 \hline
 \caption{Test di integrazione}\\
 \end{longtable}
 
 \subsection{Test di accettazione}
-I test di accettazione servono a verificare che il prodotto soddisfi i requisiti del proponente.\\
+I test di accettazione sono finalizzati a verificare che tutte le esigenze concordate con il proponente siano soddisfatte, e di conseguenza saranno
+svolti al termine del progetto dai membri del gruppo in coordinazione con i componenti dell'azienda SyncLab.\\
 
 \begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
 \hline
