@@ -740,13 +740,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-            \item Il database statico è aggiornato con i dati dei punti di interesse rilevanti per il sistema;
+            \item Il database è aggiornato con i dati dei punti di interesse rilevanti per il sistema;
             \item Il sistema di Stream Processing fornisce le posizioni dell'utente in tempo reale dopo una validazione e parsing.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'obiettivo è selezionare i punti di interesse (POI) più rilevanti alla profilazione del singolo utente in base alla sua posizione attuale, che viene acquisita tramite un sistema di stream processing. Il modello LLM utilizza informazioni contenute nel database statico che contiene i Point of Interest per fare una selezione personalizzata dei luoghi di interesse, in base alla posizione in tempo reale dell'utente e ai suoi eventuali interessi.\\
+      \item \textbf{Postcondizioni:} L'obiettivo è selezionare i punti di interesse (POI) più rilevanti alla profilazione del singolo utente in base alla sua posizione attuale, che viene acquisita tramite un sistema di stream processing. Il modello LLM utilizza informazioni contenute nel database che contiene i Point of Interest per fare una selezione personalizzata dei luoghi di interesse, in base alla posizione in tempo reale dell'utente e ai suoi eventuali interessi.\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item L' LLM riceve i dati di posizione dall'utente e invia una richiesta al database statico per ottenere l'elenco dei POI nelle vicinanze dell'utente, con informazioni pertinenti come tipo di POI e altre caratteristiche;
+        \item L' LLM riceve i dati di posizione dall'utente e invia una richiesta al database per ottenere l'elenco dei POI nelle vicinanze dell'utente, con informazioni pertinenti come tipo di POI e altre caratteristiche;
         \item L' LLM utilizza i dati di posizione per filtrare i POI che si trovano in un raggio geografico predefinito. L' LLM applica inoltre un filtro basato su altre variabili, come le preferenze personali dell'utente.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come LLM voglio identificare e selezionare i Punti di Interesse più rilevanti per l'utente in base alla sua posizione e alla sua profilazione.
@@ -761,13 +761,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} LLM
     \item \textbf{Attori$_G$ Secondari:} 
     \begin{itemize}
-        \item Static Database
-        \item Sistema di Processing
+        \item Database
+        \item Sistema di Stream Processing
     \end{itemize}
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-          \item Il database statico è aggiornato con i dati degli utenti registrati nel sistema;
+          \item Il database è aggiornato con i dati degli utenti registrati nel sistema;
             \item Il servizio di LLM ha identificato e serializzato in locale il punto di interesse più adeguato per l'utente.
         \end{itemize}
       \item \textbf{Postcondizioni:} Lo scopo è generare un annuncio personalizzato testuale da proporre all'utente durante il suo percorso con il mezzo di trasporto. Questo messaggio tiene conto della selezione del punto di interesse (PoI) più rilevante alla profilazione del singolo utente (presente nel database) e della sua posizione attuale, che viene acquisita tramite un sistema di stream processing. Infine il dato deve essere storicizzato nel database e inviato in un altra partizione del sistema di stream processing .\\
@@ -792,13 +792,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} LLM
     \item \textbf{Attori$_G$ Secondari:} 
     \begin{itemize}
-        \item Static Database
-        \item Sistema di Processing
+        \item Database
+        \item Sistema di Stream Processing
     \end{itemize}
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-          \item Il database statico è aggiornato con i dati degli utenti registrati nel sistema;
+          \item Il database è aggiornato con i dati degli utenti registrati nel sistema;
           \item Il servizio di LLM non ha identificato il punto di interesse più adeguato per l'utente (condition).
         \end{itemize}
       \item \textbf{Postcondizioni:} Nessun messaggio personalizzato per l'utente viene generato durante l'elaborazione dell'ultima posizione inviata al sistema di Stream Processsing.\\
