@@ -6,6 +6,7 @@
 *.out
 *.lof
 .DS_Store
+src-esterni
 
 ##Python
 *.py~
