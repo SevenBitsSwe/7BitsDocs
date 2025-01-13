@@ -1,0 +1,126 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data 2024-01-08}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.1.1 & 2025-01-10 & Leonardo Trolese & Alfredo Rubino & Correzione dettagli \\
+\hline
+0.1.0 & 2025-01-10 & Leonardo Trolese & Giovanni Cristellon & Redazione del verbale \\
+\hline
+\end{tabularx}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+\section{2025-01-08}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 17:30 - 18:40;
+\item Partecipanti: 	
+	\begin{itemize}
+		\item Gusella Manuel;
+		\item Peruzzi Uncas;
+		\item Piva Riccardo;
+		\item Pivetta Federico;
+		\item Rubino Alfredo;
+		\item Cristellon Giovanni;
+		\item Trolese Leonardo.
+	\end{itemize}
+\item Piattaforma: Discord (online)
+\end{itemize}
+
+\subsection{Sintesi}
+Il gruppo si è riunito per pianificare e discutere lo sprint successivo (quinto). Nel corso della riunione è stato analizzato il consuntivo
+del periodo precedente, sono stati stabiliti i ruoli per l'iterazione a venire e ne è stato stimato il preventivo. È seguita poi una discussione
+sulle attività da svolgere nel quinto sprint, con particolare attenzione al completamento del Piano di Qualifica.
+
+\subsubsection{Assegnazione ruoli}
+Il gruppo ha deciso di assegnare i nuovi ruoli evitando che lo stesso membro ricoprisse nuovamente un ruolo già precedentemente assegnato.
+È stata inoltre presa la decisione di concentrare gli sforzi del gruppo nell'ambito di analisi e verifica, poiché, in vista della consegna RTB,
+è necessario rivedere e verificare nuovamente i documenti completati e terminare la redazione di alcuni documenti ancora incompleti.
+
+\subsubsection{Preventivo e Consuntivo delle ore}
+Durante la riunione il gruppo ha confermato il consuntivo delle ore relative allo svolgimento del quarto sprint e ha quindi formulato il 
+preventivo orario dell'imminente quinto periodo del progetto. Entrambi sono consultabili nel documento Piano di Progetto nelle sezioni
+corrispondenti.
+
+\subsubsection{Retrospettiva}
+Dopo aver confermato il consuntivo orario della quarta iterazione, i componenti hanno anche condiviso quanto realizzato durante tale periodo
+con il resto del gruppo. Si è discusso degli aspetti positivi e negativi dello sprint appena concluso ed è stato stabilito quali strategie e
+miglioramenti adottare per l'iterazione successiva. In particolare, è emersa la mancata conclusione della documentazione per la RTB, 
+originariamente prevista per il quarto sprint, che il gruppo si impegna a completare entro il quinto sprint con gli ultimi dettagli mancanti.
+
+\subsubsection{Issue}
+Durante l'incontro sono state definite delle issue da completare nello sprint successivo, con particolare attenzione al completamento
+di tutta la documentazione necessaria per la RTB.
+
+\subsection{Decisioni Prese}
+Segue un elenco delle decisioni prese durante la riunione:
+\begin{itemize}
+    \item   Assegnazione dei ruoli per il quinto sprint:\\
+            Responsabile: Riccardo Piva;\\
+            Amministratore: Manuel Gusella;\\
+            Analisti: Federico Pivetta, Leonardo Trolese;\\
+            Verificatori: Alfredo Rubino, Giovanni Cristellon, Uncas Peruzzi, Leonardo Trolese.\\
+    \item Aggiungere i test da implementare al documento Piano di Qualifica;
+    \item Concludere il cruscotto delle metriche nel documento Piano di Qualifica;
+    \item Associare ad ogni processo le metriche relative nel documento Norme di Progetto;
+    \item Terminare e verificare la documentazione in vista della RTB.
+\end{itemize}
+\begin{center}
+\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+	\hline
+	    \textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+	\hline
+		\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/102}{Issue \#102} & Aggiungere sottosezioni relative alle metriche nelle sezioni delle NdP\\
+	\hline
+        \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/104}{Issue \#104} & Terminare redazione cruscotto metriche del PdQ\\
+	\hline
+        \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/114}{Issue \#114} & Aggiungere test nel PdQ\\
+	\hline
+        \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/105}{Issue \#105} & Verifica finale Analisi dei Requisiti\\
+	\hline
+        \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/106}{Issue \#106} & Verifica finale Piano di Progetto\\
+	\hline
+        \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/107}{Issue \#107} & Verifica finale Norme di Progetto\\
+	\hline
+        \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/108}{Issue \#108} & Verifica finale Glossario\\
+	\hline
+        \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/109}{Issue \#109} & Verifica finale Piano di Qualifica\\
+	\hline
+\end{tabular}
+\end{center}
+\end{document}
