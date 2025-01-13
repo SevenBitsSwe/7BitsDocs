@@ -8,8 +8,3 @@
 *.lot
 .DS_Store
 RTB/images
-src-esterni
-
-##Others
-*.notes
-.vscode
