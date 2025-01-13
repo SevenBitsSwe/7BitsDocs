@@ -16,8 +16,8 @@
 \usepackage{float}
 \usepackage{longtable}
 
-%\graphicspath{{images}}
-\graphicspath{{../images/}}
+\graphicspath{{images}}
+%\graphicspath{{../images/}}
 
 \setcounter{secnumdepth}{4}
 
@@ -236,7 +236,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Utente}: è il soggetto utilizzatore del servizio di renting, che visualizza la mappa con gli eventuali punti di interesse;
     \item \textbf{Sensore}: è un dispositivo che raccoglie dati di posizione geografica, che sono letti e utilizzati dal sistema;
     \item \textbf{LLM} : rappresenta un modello di linguaggio di grandi dimensioni, che fornisce risposte o elabora dati tramite l'interazione in linguaggio naturale. Viene utilizzato per la generazione degli annunci pubblicitari personalizzati;
-    \item \textbf{Sistema di Stream Processing} : rappresenta .
+    \item \textbf{Sistema di Stream Processing} : rappresenta il motore di elaborazione distribuita su flussi di dati.
 \end{itemize}
 
 \subsection{Elenco dei Casi-d'uso$_G$}
@@ -742,16 +742,35 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-            \item Il database è aggiornato con i dati dei punti di interesse rilevanti per il sistema;
-            \item Il sistema di Stream Processing fornisce le posizioni dell'utente in tempo reale dopo una validazione e parsing.
+            \item Il database è aggiornato con i dati personali dell'utente e i suoi eventuali interessi;
+            \item Il database è aggiornato con i dati dei punti di interesse rilevanti per l'utente in quell'istante;
+            \item Il sistema di Stream Processing fornisce la posizione dell'utente in tempo reale dopo una validazione e parsing (UC7-8).
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'obiettivo è selezionare i punti di interesse (POI) più rilevanti alla profilazione del singolo utente in base alla sua posizione attuale, che viene acquisita tramite un sistema di stream processing. Il modello LLM utilizza informazioni contenute nel database che contiene i Point of Interest per fare una selezione personalizzata dei luoghi di interesse, in base alla posizione in tempo reale dell'utente e ai suoi eventuali interessi.\\
+      \item \textbf{Postcondizioni:} L'obiettivo è selezionare il punto di interesse (POI) più rilevante secondo gli interessi dell'utente. Il modello LLM utilizza le informazioni dei punti di interesse (Tipologia) e dell'utente (Interessi) passate tramite Database per fare una selezione tra i punti di interesse proposti.\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item L' LLM riceve i dati di posizione dall'utente e invia una richiesta al database per ottenere l'elenco dei POI nelle vicinanze dell'utente, con informazioni pertinenti come tipo di POI e altre caratteristiche;
-        \item L' LLM utilizza i dati di posizione per filtrare i POI che si trovano in un raggio geografico predefinito. L' LLM applica inoltre un filtro basato su altre variabili, come le preferenze personali dell'utente.
+        \item L' LLM riceve i dati personali dell'utente:
+          \begin{itemize}
+          \item Nome;
+          \item Cognome;
+          \item Email;
+          \item Genere;
+          \item Data di nascita;
+          \item Stato civile;
+          \item Elenco di interessi dell'utente.
+          \end{itemize}
+          e quelli dei punti di interesse presenti nelle vicinanze dell'utente:
+          \begin{itemize}
+          \item Nome;
+          \item Posizione espressa in latitudine e longitudine;
+          \item Indirizzo;
+          \item Tipologia, cioè di che ambito si occupa il punto di interesse;
+          \item Descrizione.
+          \end{itemize}
+        \item L' LLM utilizza questi dati per filtrare i POI ricevuti sulla base degli interessi e profilazione utente;
+        \item L' LLM ritorna il PoI più pertinente. 
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come LLM voglio identificare e selezionare i Punti di Interesse più rilevanti per l'utente in base alla sua posizione e alla sua profilazione.
+    \item \textbf{User-Story$_G$ associata:} Come LLM voglio identificare e selezionare il Punto di Interesse più rilevante per l'utente in base alla sua profilazione e alle sue preferenze.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -770,13 +789,14 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
           \item Il database è aggiornato con i dati degli utenti registrati nel sistema;
-            \item Il servizio di LLM ha identificato e serializzato in locale il punto di interesse più adeguato per l'utente.
+            \item Il servizio di LLM ha identificato e serializzato in locale il punto di interesse più adeguato per l'utente (UC10).
         \end{itemize}
-      \item \textbf{Postcondizioni:} Lo scopo è generare un annuncio personalizzato testuale da proporre all'utente durante il suo percorso con il mezzo di trasporto. Questo messaggio tiene conto della selezione del punto di interesse (PoI) più rilevante alla profilazione del singolo utente (presente nel database) e della sua posizione attuale, che viene acquisita tramite un sistema di stream processing. Infine il dato deve essere storicizzato nel database e inviato in un altra partizione del sistema di stream processing .\\
+      \item \textbf{Postcondizioni:} Lo scopo è generare un annuncio personalizzato testuale da proporre all'utente durante il suo percorso con il mezzo di trasporto. Questo messaggio tiene conto della selezione del punto di interesse (PoI) (UC10) più rilevante alla profilazione del singolo utente (presente nel database). Infine il dato deve essere storicizzato nel database e inviato in un altra partizione del sistema di stream processing .\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item L' LLM ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e il profilo;
-        \item L' LLM utilizza tutti i dettagli del PoI e del profilo utente per generare un annuncio testuale personalizzato. L'annuncio sarà proposto all'utente durante il percorso con il mezzo quindi dovrà rispettare determinate caratteristiche note al servizio.
+        \item L' LLM ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e il profilo (UC10);
+        \item L' LLM utilizza le informazioni del PoI (nome, indirizzo, tipologia e descrizione) e del profilo utente (nome, cognome, genere, data di nascita e stato civile) per generare un annuncio testuale personalizzato;
+        \item L' LLM invia al Sistema di Stream Processing il messaggio che verrà poi storicizzato nel Database e inviato all'utente.
         \end{enumerate}
     \item \textbf{Estensioni: } 
     \begin{itemize}
@@ -807,7 +827,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L' LLM non ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e il profilo;
-        \item L' LLM omette per l'ultima rilevazione GPS, la generazione di un messaggio pubblicitario per l'utente.
+        \item L' LLM omette, per l'ultima rilevazione GPS, la generazione di un messaggio pubblicitario per l'utente.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come LLM voglio evitare di effettuare una richiesta al modello di AI, nel caso nessun punto di interesse sia stato selezionato per questa rilevazione GPS.
 \end{itemize}
