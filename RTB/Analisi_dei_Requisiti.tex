@@ -91,7 +91,9 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
-0.5.1 & 2025-01-13 & Manuel Gusella & Alfredo Rubino & Modifica di \hyperref[UC7]{UC7},\hyperref[UC8]{UC8},\hyperref[UC9]{UC9}, \hyperref[UC10]{UC10} e \hyperref[UC11]{UC11} e RF02\\
+0.5.2 & 2025-01-14 & Manuel Gusella & Alfredo Rubino & Modifica RF18 e RF19 dopo modifica\\
+\hline
+0.5.1 & 2025-01-13 & Manuel Gusella & Federico Pivetta & Modifica di \hyperref[UC7]{UC7},\hyperref[UC8]{UC8},\hyperref[UC9]{UC9}, \hyperref[UC10]{UC10} e \hyperref[UC11]{UC11} e RF02\\
 \hline
 0.5.0 & 2025-01-6 & Uncas Peruzzi & Riccardo Piva & Aggiunta di \hyperref[UC10]{UC10}, \hyperref[UC11]{UC11} e \hyperref[UC12]{UC 12}\\
 \hline
@@ -748,7 +750,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item Il database è aggiornato con i dati dei punti di interesse rilevanti per l'utente in quell'istante;
             \item Il sistema di Stream Processing fornisce la posizione dell'utente in tempo reale dopo una validazione e parsing (UC7-8).
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'obiettivo è selezionare il punto di interesse (POI) più rilevante secondo gli interessi dell'utente. Il modello LLM utilizza le informazioni dei punti di interesse (Tipologia) e dell'utente (Interessi) passate tramite Database per fare una selezione tra i punti di interesse proposti.\\
+      \item \textbf{Postcondizioni:} L'obiettivo è selezionare il punto di interesse (POI) più rilevante secondo gli interessi dell'utente. Il modello LLM utilizza le informazioni dei punti di interesse (Tipologia) e dell'utente (Interessi) presenti all'interno del Database per fare una selezione tra i punti di interesse proposti.\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L' LLM riceve i dati personali dell'utente:
@@ -856,7 +858,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \endhead
 
 \hline
- RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari marker e punti di interesse su di essa. &  Capitolato$_G$, UC1\\
+ RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari marker su di essa. &  Capitolato$_G$, UC1\\
 \hline
 RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei marker che rappresentano i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema & Interna, UC1.1\\
 \hline
@@ -890,9 +892,9 @@ RF16 & Obbligatorio & I dati validati dal sistema di Stream Processing devono es
 \hline
 RF17 & Obbligatorio & I dati elaborati dal sistema di Stream Processing devono essere storicizzati su un database adeguato & Capitolato, UC9\\
 \hline
-RF18 & Obbligatorio & Il servizio LLM deve essere in grado di selezionare il Punto di interesse più rilevante per l'utente in base alla profilazione e alla posizione in tempo reale & Capitolato, UC10\\
+RF18 & Obbligatorio & Il servizio LLM deve essere in grado di selezionare il Punto di Interesse più rilevante per l'utente in base alle informazioni dei punti di interesse e dell'utente & Capitolato, UC10\\
 \hline
-RF19 & Obbligatorio & Il servizio LLM deve essere in grado di generare un messaggio custom per l'utente in base al suo profilo e al punto di interesse selezionato in tempo reale & Capitolato, UC11\\
+RF19 & Obbligatorio & Il servizio LLM deve essere in grado di generare un messaggio custom per l'utente in base al suo profilo e alle infromazioni del Punto di Interesse selezionato in tempo reale & Capitolato, UC11\\
 \hline
 RF20 & Obbligatorio & Il servizio LLM deve essere in grado di omettere la generazione di un messaggio custom per l'utente nel caso non sia presente alcun punto di interesse adatto per la specifica rilevazione & Interna, UC12\\
 \hline
