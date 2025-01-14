@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.4.2} %aggiunta versione come variabile
+\newcommand\version{0.4.4} %aggiunta versione come variabile
 
 %\graphicspath{{../images/}}
 \graphicspath{{images/}}
@@ -41,6 +41,7 @@
 
 \renewcommand*\contentsname{Indice}
 \renewcommand{\listfigurename}{Elenco delle figure}
+\renewcommand{\listtablename}{Elenco delle tabelle}
 
 \begin{document}
 
@@ -98,6 +99,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.4.4 & 2025-01-14 & Federico Pivetta & Leonardo Trolese & Riorganizzazione delle metriche di qualità e correzione ad alcuni test di sistema\\
+    \hline
     0.4.3 & 2025-01-10 & Leonardo Trolese & Uncas Peruzzi & Aggiunta dei test di integrazione\\
     \hline
     0.4.2 & 2025-01-10 & Federico Pivetta & Leonardo Trolese & Aggiunta dei test di sistema e dei test di accettazione\\
@@ -123,7 +126,9 @@
 
 \newpage
 \tableofcontents
+\newpage
 \listoffigures %elenco delle figure sarà da usare per ogni immagine
+\newpage
 \listoftables %lista delle tabelle presenti nel documento
 \newpage
 \begin{justify}
@@ -191,9 +196,12 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   MPD01 & Requisiti Obbligatori Soddisfatti & 100\% & 100\%\\
   \hline
-  MPD02 & Requisiti Desiderabili Soddisfatti  & $\geq$0\% & 100\% \\
+  MPD02 & Requisiti Desiderabili Soddisfatti  & $\geq$ 0\% & 100\% \\
   \hline
-  MPD03 & Requisiti Opzionali Soddisfatti & $\geq$0\% & 100\% \\
+  MPD03 & Requisiti Opzionali Soddisfatti & $\geq$ 0\% & 100\% \\
+  \hline
+  MPD04 & Function Point & da determinare & da determinare \\ 
+  % da vedere se modificare i valori !!
   \hline
 \end{tabular}
 \caption{Funzionalità - Qualità di prodotto}
@@ -210,22 +218,19 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-  % \hline
-  % MPD04 & Code coverage & $\geq$80\% & 100\% \\
-  %% Code coverage rimossa perché è una metrica generale
-  %% Quindi a parere mio è preferibile tenere quelle più specifiche
-  %% E lasciare la code coverage per la sezione per i processi
   \hline
-  MPD05 & Statement coverage & $\geq$80\% & 100\% \\
+  MPD05 & Code coverage & $\geq$ 80\% & 100\% \\
   \hline
-  MPD06 & Branch coverage & $\geq$80\% & 100\% \\
+  MPD06 & Statement coverage & $\geq$ 80\% & 100\% \\
   \hline
-  MPD07 & Condition coverage & $\geq$80\% & 100\% \\
+  MPD07 & Branch coverage & $\geq$ 80\% & 100\% \\
   \hline
-  MPD08 & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
+  MPD08 & Condition coverage & $\geq$ 80\% & 100\% \\
   \hline
-  MPD09 & Correttezza ortografica & 0 errori & 0 errori \\
-  \hline
+  %MPD08 & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
+  %\hline
+  %MPD09 & Correttezza ortografica & 0 errori & 0 errori \\
+  %\hline
 \end{tabular}
 \caption{Affidabilità - Qualità di prodotto}
 \label{tab:affidabilità}
@@ -238,9 +243,10 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD10 & Utilizzo risorse & $\geq$80\% & 100\% \\
-  \hline
-  MPD11 & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
+  %MPD10 & Utilizzo risorse & $\geq$80\% & 100\% \\
+  %\hline
+  MPD09 & Tempo medio di risposta & $\leq$ 10 secondi & $\leq$ 4 secondi \\
+  % da vedere se modificare i valori !!
   \hline
 \end{tabular}
 \caption{Efficienza - Qualità di prodotto}
@@ -254,9 +260,9 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD12 & Facilità di utilizzo & $\leq$5 errori nell'interagire & $\leq$3 errori nell'interagire  \\
+  MPD10 & Facilità di utilizzo & $\leq$ 7 click & $\leq$ 5 click\\
   \hline
-  MPD13 & Tempo medio di apprendimento & $\leq$15 secondi & $\leq$5 secondi \\
+  MPD11 & Tempo medio di apprendimento & $\leq$ 5 minuti & $\leq$ 2 minuti \\
   \hline
 \end{tabular}
 \caption{Usabilità - Qualità di prodotto}
@@ -272,15 +278,18 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   % \hline
   % MPD14 & Complessità ciclomatica & $\leq$20 & $\;leq$10 \\
   %% Complessità ciclomatica è stata rimossa perché non è stata ritenuta utile
-  % \hline
-  % MPD15 & Coefficiente di accoppiamento fra classi & $\leq$10 & $\leq$5 \\
   \hline
-  MPD16 & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
+  MPD12 & Coefficiente di accoppiamento fra classi & $\leq$ 4 & $\leq$ 2 \\
   \hline
-  MPD17 & Parametri per metodo & $\leq$7 & $\leq$4 \\
-  % \hline
-  % MPD18 & Attributi per classe & $\leq$7 & $\leq$5 \\
-  %% Dubbio sulle due metriche riguardanti le classi se tenere o meno
+  MPD13 & Linee di codice per metodo & $\leq$ 50 & $\leq$ 25 \\
+  \hline
+  MPD14 & Parametri per metodo & $\leq$ 7 & $\leq$ 4 \\
+  \hline
+  MPD15 & Attributi per classe & $\leq$ 7 & $\leq$ 5 \\
+  \hline
+  MPD16 & Structure Fan IN & - & va massimizzato \\
+  \hline
+  MPD17 & Structure Fan OUT & - & va minimizzato \\
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -294,7 +303,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD19 & Versioni browser supportati & $\geq$80\% & 100\% \\
+  MPD18 & Versioni browser supportati & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Portabilità - Qualità di prodotto}
@@ -308,8 +317,6 @@ Seguendo delle buone pratiche e delle linee guida nello sviluppo software, si pu
 Qui sotto divideremo le metriche di qualità di processo seguendo lo \hyperref[ISO 12207:1995]{standard ISO/IEC 12207:1995} in tre categorie: Processi primari, Processi di supporto e Processi organizzativi.\\
 \subsubsection{Processi Primari}
 I processi primari si possono dividere in parti primarie e una parte primaria è quella che inizia o esegue lo sviluppo, l'operazione o la manutenzione di prodotti software.\\
-
-\newpage
 
 %%
 %% Questo volendo si puo integrare in sviluppo
@@ -363,28 +370,28 @@ I processi primari si possono dividere in parti primarie e una parte primaria è
 La fornitura è il processo che si occupa di consegnare il prodotto software al cliente.\\
 Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi definiti con il cliente.\\
 \begin{table}[H]
-  \centering
-\begin{tabular}{|p{1.5cm}|p{5cm}|p{4cm}|p{5cm}|}
+\centering
+\begin{tabular}{|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{3.7cm}|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC07 & Estimated at completion (EAC) & \textpm5\% rispetto al preventivo & Come dichiarato da preventivo\\
+  MPC01 & Estimated at completion (EAC) & \textpm5\% rispetto al preventivo & Come dichiarato da preventivo\\
   \hline
-  MPC08 & Estimate to complete (ETC) & $\geq$0\% & $\leq$EAC\(_G\) \\
+  MPC02 & Estimate to complete (ETC) & $\geq$ 0\% & $\leq$ EAC\(_G\) \\
   \hline
-  MPC09 & Actual cost (AC) & $\geq$0 & $\leq$EAC\(_G\) \\
+  MPC03 & Actual cost (AC) & $\geq$ 0 & $\leq$ EAC\(_G\) \\
   \hline
-  MPC10 & Earned value (EV) & $\geq$0 & $\leq$EAC\(_G\) \\
+  MPC04 & Earned value (EV) & $\geq$ 0 & $\leq$ EAC\(_G\) \\
   \hline
-  MPC11 & Planned value (PV) & $\geq$0 & $\leq$ Budget at completion (BAC)\(_G\) \\
+  MPC05 & Planned value (PV) & $\geq$ 0 & $\leq$ Budget at completion (BAC)\(_G\) \\
   %% Queste metriche qui sotto arrivano dalla sezione di pianificazione sotto processi organizzativi
   \hline
-  MPC28 & Schedule variance (SV) & $\geq$ -10\% & $\geq$0\% \\
+  MPC06 & Schedule variance (SV) & $\geq$ -10\% & $\geq$ 0\% \\
   \hline
-  MPC29 & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
+  MPC07 & Cost variance (CV) & $\geq$ -10\% & $\geq$ 0\% \\
   \hline
   %% Queste due sotto sono nuove, non sono ancora state scritte in norme di progetto
-  MPC30 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
+  MPC08 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
   \hline
   %% Questo può essere messo in sviluppo
   % MPC31 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
@@ -393,8 +400,6 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
 \caption{Processi primari - Fornitura}
 \label{tab:fornitura}
 \end{table}
-
-\newpage
 
 
 %%
@@ -433,7 +438,7 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
 %%
 
 \paragraph{Sviluppo}\mbox{}\\
-Lo sviluppoè  il processo riguardante la scrittura del codice del prodotto software.\\
+Lo sviluppo è il processo riguardante la scrittura del codice del prodotto software.\\
 Questa metrica serve a garantire che il software rispetti le richieste del cliente e che la codifica avvenga in modo efficiente\\
 \begin{table}[H]
   \centering
@@ -441,7 +446,7 @@ Questa metrica serve a garantire che il software rispetti le richieste del clien
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC01 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
+  MPC09 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
   \hline
   %% Questi due sotto potrebbero essere messi peró sono poco comuni, quello essenziale è quello sopra
   %% È essenziale se si mette sviluppo altrimenti se si mette Analisi dei requisiti diventano essenziali tutti e tre a mio parere
@@ -449,7 +454,7 @@ Questa metrica serve a garantire che il software rispetti le richieste del clien
   % \hline
   % MPC03 & Requisiti Opzionali Soddisfatti (RPS) & $\geq$0\% & 100\% \\
   % \hline
-  MPC31 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
+  MPC10 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi primari - Codifica}
@@ -469,9 +474,9 @@ Di conseguenza è essenziale che questa sia chiara, comprensibile e corretta.\\
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC18 & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
+  MPC11 & Indice Gulpease & $\geq$ 40\% & $\geq$ 60\% \\
   \hline
-  MPC19 & Correttezza ortografica & 0 errori & 0 errori \\
+  MPC12 & Correttezza ortografica & 0 errori & 0 errori \\
   \hline
 \end{tabular}
 \caption{Processi di supporto - Documentazione}
@@ -486,7 +491,7 @@ La verifica serve a garantire che il prodotto software sia conforme alle specifi
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC20 & Code coverage & $\geq$80\% & 100\% \\
+  MPC13 & Code coverage & $\geq$ 80\% & 100\% \\
   % \hline
   % MPC21 & Statement coverage & $\geq$80\% & 100\% \\
   % \hline
@@ -495,14 +500,12 @@ La verifica serve a garantire che il prodotto software sia conforme alle specifi
   % MPC23 & Condition coverage & $\geq$80\% & 100\% \\
   \hline
   % Questo qui sopra sono state raggruppate in code coverage
-  MPC24 & Passed test cases percentage & $\geq$80\% & 100\% \\
+  MPC14 & Passed test cases percentage & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi di supporto - Verifica}
 \label{tab:verifica}
 \end{table}
-
-\newpage
 
 %%
 %% Questa si potrebbe inglobare sulla sezione sopra ma è separata perché più corretto
@@ -516,7 +519,7 @@ La gestione della qualità è necessaria per garantire che tutte le metriche di 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC25 & Metriche di qualità soddisfate & $\geq$85\% & 100\% \\
+  MPC15 & Metriche di qualità soddisfate & $\geq$ 85\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi di supporto - Gestione della qualità}
@@ -534,9 +537,9 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC26 & Rischi non previsti & $\leq$3 & 0 \\
+  MPC16 & Rischi non previsti & $\leq$ 4 & 0 \\
   \hline
-  MPC27 & Efficienza temporale (ET) & $\leq$3 & $\leq$1 \\
+  MPC17 & Efficienza temporale (ET) & $\leq$ 3 & $\leq$ 1 \\
   \hline
 \end{tabular}
 \caption{Processi organizzativi - Gestione dei processi}
@@ -566,6 +569,8 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
 % \label{tab:pianificazione}
 % \end{table}
 
+\newpage
+
 \section{Modalità di Testing}
 Qui sotto sono elencati i vari test che vengono eseguiti automaticamente sul prodotto software.\\
 Questo serve a garantire che il prodotto soddisfi i requisiti e le aspettative indicate nel documento \textit{Analisi dei requisiti v1.0.0}.\\
@@ -580,15 +585,15 @@ E per indicare lo stato come indicato in \textit{Norme di progetto v1.0.0} vengo
 \subsection{Test di unità}
 I test di unità servono a verificare che ogni singola unità del software funzioni correttamente.\\
 
-\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
-\hline
-\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
-\endhead
-\hline
- & & \\
-\hline
-\caption{Test di unità}\\
-\end{longtable}
+%\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
+%\hline
+%\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+%\endhead
+%\hline
+% & & \\
+%\hline
+%\caption{Test di unità}\\
+%\end{longtable}
 
 \subsection{Test di sistema} % Manca TS relativo al requisito funzionale UC1.2
 I test di sistema servono a verificare la completa copertura dei requisiti concordati nel documento Analisi dei Requisiti.\\
@@ -598,11 +603,11 @@ I test di sistema servono a verificare la completa copertura dei requisiti conco
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato}\\
 \endhead
 \hline
-TS1 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ composta da una mappa interattiva con i vari marker e punti di interesse su di essa. & RF01 & NI\\
+TS1 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ composta da una mappa interattiva con i vari marker su di essa. & RF01 & NI\\
 \hline
-TS2 & Verificare che l'utente privilegiato possa visualizzare una dashboard$_G$ che rappresenti i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema. & RF02 & NI\\
+TS2 & Verificare che l'utente privilegiato possa visualizzare dei marker che rappresentino i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema. & RF02 & NI\\
 \hline
-TS3 & Verificare che l'utente privilegiato possa visualizzare una dashboard$_G$ relativa ad un singolo utente quando seleziona un marker. & RF03 & NI\\
+TS3 & Verificare che l'utente privilegiato possa visualizzare una dashboard$_G$ relativa ad un singolo utente quando seleziona un marker utente. & RF03 & NI\\
 \hline
 TS4 & Verificare che l'utente privilegiato possa visualizzare i dettagli del marker riguardante una singola posizione di un utente nella rispettiva dashboard. & RF04 & NI\\
 \hline
@@ -632,9 +637,9 @@ TS16 & Verificare che i dati validati dal sistema di Stream Processing siano ela
 \hline
 TS17 & Verificare che i dati elaborati dal sistema di Stream Processing siano storicizzati su un database adeguato. & RF17 & NI\\
 \hline
-TS18 & Verificare che il servizio LLM sia in grado di selezionare il punto di interesse più rilevante per l'utente in base alla profilazione e alla posizione in tempo reale. & RF18 & NI\\
+TS18 & Verificare che il servizio LLM sia in grado di selezionare il punto di interesse più rilevante per l'utente in base alle informazione dei punti di interesse e dell'utente. & RF18 & NI\\
 \hline
-TS19 & Verificare che il servizio LLM sia in grado di generare un messaggio custom per l'utente in base al suo profilo e al punto di interesse selezionato in tempo reale. & RF19 & NI\\
+TS19 & Verificare che il servizio LLM sia in grado di generare un messaggio custom per l'utente in base al suo profilo e alle informazioni del punto di interesse selezionato in tempo reale. & RF19 & NI\\
 \hline
 TS20 & Verificare che il servizio LLM sia in grado di omettere la generazione di un messaggio custom per l'utente nel caso non sia presente alcun punto di interesse adatto per la specifica rilevazione. & RF20 & NI\\
 \hline
@@ -692,7 +697,7 @@ TA7 & Verificare che il sensore, una volta connesso al sistema, possa trasmetter
 \hline
 TA8 & Verificare che il sistema di stream processing, una volta ricevuti i dati dal sensore, possa filtrare e validare tali dati e, se necessario, elaborarli tramite un modello LLM, per poi storicizzarli in un database adeguato. & NI \\
 \hline
-TA9 & Verificare che il servizio LLM possa selezionare il punto di interesse (PoI) più rilevante per l'utente in base alla sua profilazione e posizione in tempo reale e, di conseguenza, generare un messaggio personalizzato utilizzando sia i dati del PoI scelto sia quelli dell'utente. & NI \\
+TA9 & Verificare che il servizio LLM possa selezionare il punto di interesse (PoI) più rilevante per l'utente in base alla sua profilazione alle informazioni dei punti di interessi e, di conseguenza, generare un messaggio personalizzato utilizzando sia i dati del PoI scelto sia quelli dell'utente. & NI \\
 \hline
 \caption{Test di accettazione}\\
 \end{longtable}
@@ -703,7 +708,7 @@ TA9 & Verificare che il servizio LLM possa selezionare il punto di interesse (Po
 \subsubsection{MPC01 - Estimated at completion (EAC)}
 % Inserire grafico
 % completare con valori effettivi e spiegazione più accurata
-\textbf{RTB}: Il grafico mostra l'andamento del costo totale del progetto rispetto al budget preventivato. Questo valore è quindi influenzato dalla quantità di lavoro del team e dai ruoli ricoperti ogni periodo. Quindi in certi periodi la stima risulta in linea con il budget preventivato mentre in altri periodi possiamo essere sopra di molto o sotto di molto. Ad esempio nel periodo 2 e 3 siamo sopra il budget preventivato, questo è dovuto al fatto che in questi periodi il team ha lavorato di più rispetto a quanto preventivato. Mentre nel periodo 5 siamo sotto il budget preventivato, questo è dovuto al fatto che in questo periodo il team ha lavorato di meno rispetto a quanto preventivato a causa del periodo natalizio.\\
+\textbf{RTB}: Il grafico rappresenta la stima aggiornata del costo totale del progetto al completamento. Questo valore è quindi influenzato dalla quantità di lavoro del team e dai ruoli ricoperti ogni periodo. Quindi in certi periodi la stima risulta in linea con il budget preventivato mentre in altri periodi possiamo essere sopra di molto o sotto di molto. Ad esempio nel periodo 2 e 3 siamo sopra il budget preventivato, questo è dovuto al fatto che in questi periodi il team ha lavorato di più rispetto a quanto preventivato. Mentre nel periodo 5 siamo sotto il budget preventivato, questo è dovuto al fatto che in questo periodo il team ha lavorato di meno rispetto a quanto preventivato a causa del periodo natalizio.\\
 \subsubsection{MPC01 - Planned Value (PV) \& MPC01 - Earned Value (EV)}
 % Inserire grafico
 % Controllare testo (anche se mi pare ok)
