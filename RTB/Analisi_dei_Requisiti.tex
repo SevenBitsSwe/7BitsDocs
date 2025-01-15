@@ -517,7 +517,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
  \subsubsection{\textbf{UC1.2.2 - Visualizzazione informazioni del punto di interesse}}
  \label{UC1.2.2}
  \begin{itemize}
-     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
             \item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la Dashboard$_G$ (UC3 e UC1).
@@ -577,17 +577,17 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \label{fig:UC2}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Utente
+    \item \textbf{Attore$_G$ Principale:} Utente.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-    	\item Il sistema è operativo e accessibile.
+    	\item Il sistema è operativo e accessibile;
     	\item Un utente entra nell'area di un punto di interesse.
         \end{itemize}
     \item \textbf{Postcondizioni:} L'Utente visualizzerà un messaggio contenente un annuncio personalizzato in base ai suoi dati personali e al punto di interesse.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-            \item Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse.
-            \item Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio.
+            \item Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
+            \item Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio;
             \item Il sistema invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
@@ -602,7 +602,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{figure}
 \label{UC5}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
@@ -635,8 +635,8 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{figure}
 \label{UC6}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sensore
-    \item \textbf{Attore$_G$ Secondario:} Sistema di Stream Processing
+    \item \textbf{Attore$_G$ Principale:} Sensore.
+    \item \textbf{Attore$_G$ Secondario:} Sistema di Stream Processing.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
     	\item Il sensore è attivo e connesso al sistema.
@@ -662,7 +662,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{figure}
 \label{UC7}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing
+    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
@@ -686,14 +686,14 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \label{UC8}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing
-    \item \textbf{Attore$_G$ Secondario:} LLM
+    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing.
+    \item \textbf{Attore$_G$ Secondario:} LLM.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
             \item Il sistema di Stream Processing è attivo e ha validato i dati che costantemente riceve in input (UC7).
         \end{itemize}
-      \item \textbf{Postcondizioni:} I dati ricevuti vengono elaborati tramite richiesta ad un LLM, che fornirà la risposta valida per il sistema\\
+      \item \textbf{Postcondizioni:} I dati ricevuti vengono elaborati tramite richiesta ad un LLM, che fornirà la risposta valida per il sistema.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item Il sistema di stream processing è attivo e sta ricevendo i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento;
@@ -737,11 +737,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{figure}
 \label{UC10}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM
+    \item \textbf{Attore$_G$ Principale:} LLM.
     \item \textbf{Attori$_G$ Secondari:} 
     \begin{itemize}
-        \item Database
-        \item Sistema di Stream Processing
+        \item Database;
+        \item Sistema di Stream Processing.
     \end{itemize}
     \item \textbf{Precondizioni:} 
         \begin{itemize}
@@ -783,11 +783,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \label{UC11}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM
+    \item \textbf{Attore$_G$ Principale:} LLM.
     \item \textbf{Attori$_G$ Secondari:} 
     \begin{itemize}
-        \item Database
-        \item Sistema di Stream Processing
+        \item Database;
+        \item Sistema di Stream Processing.
     \end{itemize}
     \item \textbf{Precondizioni:} 
         \begin{itemize}
@@ -815,11 +815,11 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \label{UC12}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM
+    \item \textbf{Attore$_G$ Principale:} LLM.
     \item \textbf{Attori$_G$ Secondari:} 
     \begin{itemize}
-        \item Database
-        \item Sistema di Stream Processing
+        \item Database;
+        \item Sistema di Stream Processing.
     \end{itemize}
     \item \textbf{Precondizioni:} 
         \begin{itemize}
@@ -830,7 +830,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
       \item \textbf{Postcondizioni:} Nessun messaggio personalizzato per l'utente viene generato durante l'elaborazione dell'ultima posizione inviata al sistema di Stream Processsing.\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item L' LLM non ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e il profilo;
+        \item L' LLM non ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e al profilo;
         \item L' LLM omette, per l'ultima rilevazione GPS, la generazione di un messaggio pubblicitario per l'utente.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come LLM voglio evitare di effettuare una richiesta al modello di AI, nel caso nessun punto di interesse sia stato selezionato per questa rilevazione GPS.
@@ -916,7 +916,7 @@ RF20 & Obbligatorio & Il servizio LLM deve essere in grado di omettere la genera
 \hline
 \textbf{Id. Requisito$_G$} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
-RQ01 & Obbligatorio & Presentare documento di Analisi-dei-Requisiti$_G$ contenente i diagrami UML$_G$ relativi ai Casi-d'uso$_G$. & Capitolato$_G$\\
+RQ01 & Obbligatorio & Presentare documento di Analisi-dei-Requisiti$_G$ contenente i diagrammi UML$_G$ relativi ai Casi-d'uso$_G$. & Capitolato$_G$\\
 \hline
 RQ02 & Obbligatorio & Devono essere rispettate tutte le Norme$_G$ definite nel documento \textit{Norme$_G$\_di\_Progetto.pdf}, nell'apposita sezione Analisi-dei-Requisiti$_G$. & Interna\\
 \hline
