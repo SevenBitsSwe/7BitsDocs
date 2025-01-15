@@ -108,6 +108,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.5.14 & 2025-01-15 & Leonardo Trolese & Alfredo Rubino & Aggiunta delle metriche Fan IN e Fan OUT nella sezione delle \hyperref[metriche_qualita]{metriche}\\
+    \hline
     0.5.13 & 2025-01-11 & Manuel Gusella & Leonardo Trolese & Aggiunte tabelle delle metriche per le sezioni \hyperref[codifica]{Codifica}, \hyperref[progettazione]{Progettazione} e \hyperref[analisi]{Analisi dei Requisiti}\\
     \hline
     0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metrica Function Point e correzioni minori\\
@@ -1300,7 +1302,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
     \begin{itemize}
         \item \textbf{Descrizione}: percentuale di codice coperto da test.
     \end{itemize}
-    \item \textbf{MPD05 - Statement Coverage}:
+    \item \textbf{MPD06 - Statement Coverage}:
     \begin{itemize}
         \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test.
         \item   \textbf{Formula:}
@@ -1314,7 +1316,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
                 \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPD06 - Branch Coverage}:
+    \item \textbf{MPD07 - Branch Coverage}:
     \begin{itemize}
         \item   \textbf{Descrizione}: percentuale di rami decisionali testati.
         \item   \textbf{Formula:}
@@ -1328,7 +1330,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
             \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPD07 - Condition coverage}:
+    \item \textbf{MPD08 - Condition coverage}:
     \begin{itemize}
         \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
         \item   \textbf{Formula:}
@@ -1342,7 +1344,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
             \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPD08 - Indice Gulpease}:
+    \item \textbf{MPD09 - Indice Gulpease}:
     \begin{itemize}
         \item \textbf{Descrizione}: indice di leggibilità di un testo in lingua italiana. Il risultato è in percentuale e cresce al crescere della facilità di comprensione del testo:
             \begin{itemize}
@@ -1362,7 +1364,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
         \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPD09 - Correttezza ortografica}:
+    \item \textbf{MPD10 - Correttezza ortografica}:
     \begin{itemize}
         \item \textbf{Descrizione}: metrica che misura il numero di errori ortografici presenti all'interno di un documento.
     \end{itemize}
@@ -1370,11 +1372,11 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Efficienza}
 \begin{itemize}
-    \item \textbf{MPD10 - Utilizzo Risorse}:
+    \item \textbf{MPD11 - Utilizzo Risorse}:
     \begin{itemize}
         \item \textbf{Descrizione}: efficienza del sistema nell'uso delle risorse.
     \end{itemize}
-    \item \textbf{MPD11 - Tempo medio di risposta}:
+    \item \textbf{MPD12 - Tempo medio di risposta}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura l'efficienza del sistema in termini di reattività.
     \end{itemize}
@@ -1382,11 +1384,11 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Usabilità}
 \begin{itemize}
-    \item \textbf{MPD12 - Facilità di utilizzo}:
+    \item \textbf{MPD13 - Facilità di utilizzo}:
         \begin{itemize}
             \item \textbf{Descrizione}:  misura la facilità con cui gli utenti possono utilizzare il sistema.
         \end{itemize}
-    \item \textbf{MPD13 - Tempo medio di apprendimento}:
+    \item \textbf{MPD14 - Tempo medio di apprendimento}:
         \begin{itemize}
             \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema.
         \end{itemize}
@@ -1394,31 +1396,39 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Manutenibilità}
 \begin{itemize}
-    \item \textbf{MPD14 - Complessità ciclomatica}:
+    \item \textbf{MPD15 - Complessità ciclomatica}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura il numero di cammini linearmente indipendenti calcolato utilizzando il grafo di controllo di flusso del metodo.
     \end{itemize}
-    \item \textbf{MPD15 - Coefficiente di accoppiamento fra classi}:
+    \item \textbf{MPD16 - Coefficiente di accoppiamento fra classi}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
     \end{itemize}
-    \item \textbf{MPD16 - Linee di codice per metodo}:
+    \item \textbf{MPD17 - Linee di codice per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di linee di codice consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD17 - Parametri per metodo}:
+    \item \textbf{MPD18 - Parametri per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di parametri consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD18 - Attributi per classe}:
+    \item \textbf{MPD19 - Attributi per classe}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di attributi consentito per singola classe.
+      \end{itemize}
+    \item \textbf{MPD20 - Structure Fan IN}:
+      \begin{itemize}
+        \item \textbf{Descrizione}: rappresenta il numero di moduli, funzioni o classi che chiamano o utilizzano una specifica funzione o modulo, indicando quanto è riutilizzato.
+      \end{itemize}
+    \item \textbf{MPD21 - Structure Fan OUT}:
+      \begin{itemize}
+        \item \textbf{Descrizione}: misura il numero di moduli, funzioni o classi che una specifica funzione o modulo utilizza o chiama, evidenziando le sue dipendenze.
       \end{itemize}
 \end{itemize}
 
 \subsubsection{Portabilità}
   \begin{itemize}
-    \item \textbf{MPD19 - Versioni browser supportati}:
+    \item \textbf{MPD22 - Versioni browser supportati}:
       \begin{itemize}
         \item \textbf{Descrizione}: percentuale delle versioni di browser supportate rispetto al totale delle versioni disponibili.
       \end{itemize}
