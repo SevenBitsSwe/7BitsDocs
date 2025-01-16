@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.5.13} %aggiunta versione come variabile
+\newcommand\version{0.5.15} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -107,6 +107,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    0.5.15 & 2025-01-16 & Manuel Gusella & Leonardo Trolese & Rimozione metriche non utilizzate e cambiamento dei codici delle metriche nella sezione \hyperref[metriche_qualita]{Metriche per la qualità}\\
     \hline
     0.5.14 & 2025-01-15 & Leonardo Trolese & Alfredo Rubino & Aggiunta delle metriche Fan IN e Fan OUT nella sezione delle \hyperref[metriche_qualita]{metriche}\\
     \hline
@@ -1354,39 +1356,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
             \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPD09 - Indice Gulpease}:
-    \begin{itemize}
-        \item \textbf{Descrizione}: indice di leggibilità di un testo in lingua italiana. Il risultato è in percentuale e cresce al crescere della facilità di comprensione del testo:
-            \begin{itemize}
-                \item $< 80$: difficile da leggere per persone con la licenza elementare.
-                \item $< 60$: difficile da leggere per persone con la licenza media.
-                \item $< 40$: difficile da leggere per persone con la licenza superiore.
-            \end{itemize}
-        \item \textbf{Formula:}
-        \[
-        IG = 89 + \frac{300 \cdot N_f - 10 \cdot N_l}{N_p}
-        \]
-        Dove:
-        \begin{itemize}
-            \item $N_f$: numero totale di frasi nel testo.
-            \item $N_l$: numero totale di lettere nel testo.
-            \item $N_p$: numero totale di parole nel testo.
-        \end{itemize}
-    \end{itemize}
-
-    \item \textbf{MPD10 - Correttezza ortografica}:
-    \begin{itemize}
-        \item \textbf{Descrizione}: metrica che misura il numero di errori ortografici presenti all'interno di un documento.
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Efficienza}
-\begin{itemize}
-    \item \textbf{MPD11 - Utilizzo Risorse}:
-    \begin{itemize}
-        \item \textbf{Descrizione}: efficienza del sistema nell'uso delle risorse.
-    \end{itemize}
-    \item \textbf{MPD12 - Tempo medio di risposta}:
+    \item \textbf{MPD09 - Tempo medio di risposta}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura l'efficienza del sistema in termini di reattività.
     \end{itemize}
@@ -1394,11 +1364,11 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Usabilità}
 \begin{itemize}
-    \item \textbf{MPD13 - Facilità di utilizzo}:
+    \item \textbf{MPD10 - Facilità di utilizzo}:
         \begin{itemize}
             \item \textbf{Descrizione}:  misura la facilità con cui gli utenti possono utilizzare il sistema.
         \end{itemize}
-    \item \textbf{MPD14 - Tempo medio di apprendimento}:
+    \item \textbf{MPD11 - Tempo medio di apprendimento}:
         \begin{itemize}
             \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema.
         \end{itemize}
@@ -1406,31 +1376,27 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Manutenibilità}
 \begin{itemize}
-    \item \textbf{MPD15 - Complessità ciclomatica}:
-    \begin{itemize}
-        \item \textbf{Descrizione}: misura il numero di cammini linearmente indipendenti calcolato utilizzando il grafo di controllo di flusso del metodo.
-    \end{itemize}
-    \item \textbf{MPD16 - Coefficiente di accoppiamento fra classi}:
+    \item \textbf{MPD12 - Coefficiente di accoppiamento fra classi}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
     \end{itemize}
-    \item \textbf{MPD17 - Linee di codice per metodo}:
+    \item \textbf{MPD13 - Linee di codice per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di linee di codice consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD18 - Parametri per metodo}:
+    \item \textbf{MPD14 - Parametri per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di parametri consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD19 - Attributi per classe}:
+    \item \textbf{MPD15 - Attributi per classe}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di attributi consentito per singola classe.
       \end{itemize}
-    \item \textbf{MPD20 - Structure Fan IN}:
+    \item \textbf{MPD16 - Structure Fan IN}:
       \begin{itemize}
         \item \textbf{Descrizione}: rappresenta il numero di moduli, funzioni o classi che chiamano o utilizzano una specifica funzione o modulo, indicando quanto è riutilizzato.
       \end{itemize}
-    \item \textbf{MPD21 - Structure Fan OUT}:
+    \item \textbf{MPD17 - Structure Fan OUT}:
       \begin{itemize}
         \item \textbf{Descrizione}: misura il numero di moduli, funzioni o classi che una specifica funzione o modulo utilizza o chiama, evidenziando le sue dipendenze.
       \end{itemize}
@@ -1438,7 +1404,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 
 \subsubsection{Portabilità}
   \begin{itemize}
-    \item \textbf{MPD22 - Versioni browser supportati}:
+    \item \textbf{MPD18 - Versioni browser supportati}:
       \begin{itemize}
         \item \textbf{Descrizione}: percentuale delle versioni di browser supportate rispetto al totale delle versioni disponibili.
       \end{itemize}
@@ -1448,9 +1414,58 @@ L'acronimo principale utilizzato in questa sezione è MPD, da \textit{Metriche d
 L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche di qualità del Processo}.
 
 \subsubsection{Processi Primari}
-\paragraph{Analisi dei requisiti}
+\paragraph{Fornitura}
 \begin{itemize}
-    \item   \textbf{MPC01 - Requisiti Obbligatori Soddisfatti (ROS)}:
+    \item \textbf{MPC01 - Estimated at Completion (EAC)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: stima il costo totale del progetto basandosi sul rendimento attuale.
+        \item   \textbf{Formula:}
+                \[
+                EAC = AC + ETC
+                \]
+    \end{itemize}
+    \item \textbf{MPC02 - Estimate to Complete (ETC)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: stima dei costi rimanenti per completare il progetto.
+        \item   \textbf{Formula:}
+                \[
+                ETC = BAC - EV
+                \]
+    \end{itemize}
+    \item \textbf{MPC03 - Actual Cost (AC)}:
+    \begin{itemize}
+        \item \textbf{Descrizione}: indica il costo effettivamente sostenuto per completare il lavoro fino a un certo momento.
+    \end{itemize}
+    \item \textbf{MPC04 - Earned Value (EV)}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: misura il valore del lavoro effettivamente completato rispetto al valore pianificato.
+        \end{itemize}
+    \item \textbf{MPC05 - Planned Value (PV)}:
+        \begin{itemize}
+            \item \textbf{Descrizione}: rappresenta il valore pianificato del lavoro da completare in un determinato momento.
+        \end{itemize}
+    \item \textbf{MPC06 - Schedule variance (SV)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: indica se si è in ritardo o in anticipo rispetto al valore pianificato. Un valore negativo indica che si è in ritardo.
+        \item   \textbf{Formula:}
+            \[
+            SV = EV - PV
+            \]
+    \end{itemize}
+    \item \textbf{MPC07 - Cost variance (CV)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: indica se il costo attuale sta superando o meno il budget. Un valore negativo indica che si ha superato il budget.
+        \item   \textbf{Formula:}
+            \[
+            CV = EV - AC
+            \]
+    \end{itemize}
+    \item \textbf{MPC08 - Cost Performance Index (CPI)}:
+\end{itemize}
+
+\paragraph{Sviluppo}
+\begin{itemize}
+\item   \textbf{MPC09 - Requisiti Obbligatori Soddisfatti (ROS)}:
             \begin{itemize}
                 \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti obbligatori definiti in fase di analisi dei requisiti sono stati soddisfatti.
                 \item   \textbf{Formula:}
@@ -1463,114 +1478,14 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
                             \item $TRO$: requisiti obbligatori totali.
                         \end{itemize}
             \end{itemize}
-    \item   \textbf{MPC02 - Requisiti Desiderabili Soddisfatti (RDS)}:
-            \begin{itemize}
-                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti desiderabili definiti in fase di analisi dei requisiti sono stati soddisfatti.
-                \item   \textbf{Formula:}
-                        \[
-                        ROS = \frac{RDC}{TRD} \cdot 100
-                        \]
-                        Dove:
-                        \begin{itemize}
-                            \item $RDC$: requisiti desiderabili coperti.
-                            \item $TRD$: requisiti desiderabili totali.
-                        \end{itemize}
-            \end{itemize}
-    \item   \textbf{MPC03 - Requisiti Opzionali Soddisfatti (RPS)}:
-            \begin{itemize}
-                \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti opzionali definiti in fase di analisi dei requisiti sono stati soddisfatti.
-                \item   \textbf{Formula:}
-                        \[
-                        ROS = \frac{RPC}{TRP} \cdot 100
-                        \]
-                        Dove:
-                        \begin{itemize}
-                            \item $RPC$: requisiti opzionali coperti.
-                            \item $TRP$: requisiti opzionali totali.
-                        \end{itemize}
-            \end{itemize}
-\end{itemize}
-
-\paragraph{Progettazione}
-\begin{itemize}
-    \item \textbf{MPC04 - Coefficiente di accoppiamento fra classi}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
-        \end{itemize}
-    \item \textbf{MPC05 - Facilità di utilizzo}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: misura la facilità con cui gli utenti possono utilizzare il sistema.
-        \end{itemize}
-    \item \textbf{MPC06 - Tempo medio di apprendimento}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema.
-        \end{itemize}
-\end{itemize}
-
-\paragraph{Fornitura}
-\begin{itemize}
-    \item \textbf{MPC07 - Estimated at Completion (EAC)}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: stima il costo totale del progetto basandosi sul rendimento attuale.
-        \item   \textbf{Formula:}
-                \[
-                EAC = AC + ETC
-                \]
-    \end{itemize}
-    \item \textbf{MPC08 - Estimate to Complete (ETC)}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: stima dei costi rimanenti per completare il progetto.
-        \item   \textbf{Formula:}
-                \[
-                ETC = BAC - EV
-                \]
-    \end{itemize}
-    \item \textbf{MPC09 - Actual Cost (AC)}:
-    \begin{itemize}
-        \item \textbf{Descrizione}: indica il costo effettivamente sostenuto per completare il lavoro fino a un certo momento.
-    \end{itemize}
-    \item \textbf{MPC10 - Earned Value (EV)}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: misura il valore del lavoro effettivamente completato rispetto al valore pianificato.
-        \end{itemize}
-    \item \textbf{MPC11 - Planned Value (PV)}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: rappresenta il valore pianificato del lavoro da completare in un determinato momento.
-        \end{itemize}
-\end{itemize}
-
-\paragraph{Codifica}
-\begin{itemize}
-    \item \textbf{MPC12 - Complessità ciclomatica}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: il numero di cammini linearmente indipendenti calcolato utilizzando il grafo di controllo di flusso del metodo.
-        \end{itemize}
-    \item \textbf{MPC13 - Parametri per metodo}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: numero di parametri consentito per singolo metodo.
-        \end{itemize}
-    \item \textbf{MPC14 - Attributi per classe}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: numero di attributi consentito per singola classe.
-        \end{itemize}
-    \item \textbf{MPC15 - Linee di codice per metodo}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: numero di linee di codice consentito per singolo metodo.
-        \end{itemize}
-    \item \textbf{MPC16 - Tempo medio di risposta}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: l'efficienza del sistema in termini di reattività.
-        \end{itemize}
-    \item \textbf{MPC17 - Versioni browser supportati}:
-        \begin{itemize}
-            \item \textbf{Descrizione}: delle versioni di browser supportate rispetto al totale delle versioni disponibili.
-        \end{itemize}
+\item \textbf{MPC10 - Requirements Stability Index(RSI)}:
+            
 \end{itemize}
 
 \subsubsection{Processi di Supporto}
 \paragraph{Documentazione}
 \begin{itemize}
-    \item \textbf{MPC18 - Indice Gulpease}:
+    \item \textbf{MPC11 - Indice Gulpease}:
     \begin{itemize}
         \item \textbf{Descrizione}: indice di leggibilità di un testo in lingua italiana. Il risultato è in percentuale e cresce al crescere della facilità di comprensione del testo:
             \begin{itemize}
@@ -1590,7 +1505,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
         \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPC19 - Correttezza ortografica}:
+    \item \textbf{MPC12 - Correttezza ortografica}:
     \begin{itemize}
         \item \textbf{Descrizione}: metrica che misura il numero di errori ortografici presenti all'interno di un documento.
     \end{itemize}
@@ -1598,51 +1513,11 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
 
 \paragraph{Verifica}
 \begin{itemize}
-    \item \textbf{MPC20 - Code Coverage}:
+    \item \textbf{MPC13 - Code Coverage}:
     \begin{itemize}
         \item \textbf{Descrizione}: percentuale di codice coperto da test.
     \end{itemize}
-    \item \textbf{MPC21 - Statement Coverage}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test.
-        \item   \textbf{Formula:}
-                \[
-                SC = \frac{IST}{NTIS} \cdot 100
-                \]
-                Dove:
-                \begin{itemize}
-                    \item $IST$: istruzioni testate
-                    \item $NTIST$: numero totale istruzioni.
-                \end{itemize}
-    \end{itemize}
-    \item \textbf{MPC22 - Branch Coverage}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: percentuale di rami decisionali testati.
-        \item   \textbf{Formula:}
-            \[
-            BC = \frac{RDT}{NTR} \cdot 100
-            \]
-            Dove:
-            \begin{itemize}
-                \item $RDT$: rami decisionali testati.
-                \item $NTR$: numero totale rami decisionali.
-            \end{itemize}
-    \end{itemize}
-
-    \item \textbf{MPC23 - Condition coverage}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
-        \item   \textbf{Formula:}
-            \[
-            CC = \frac{CLT}{NTCL} \cdot 100
-            \]
-            Dove:
-            \begin{itemize}
-                \item $CLT$: condizioni logiche testate.
-                \item $NTCL$: numero totale condizioni logiche.
-            \end{itemize}
-    \end{itemize}
-    \item \textbf{MPC24 - Passed test cases percentage}:
+    \item \textbf{MPC14 - Passed test cases percentage}:
         \begin{itemize}
             \item \textbf{Descrizione}: percentuale di test superati.
         \end{itemize}
@@ -1650,7 +1525,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
 
 \paragraph{Gestione della Qualità}
 \begin{itemize}
- \item \textbf{MPC25 - Metriche di qualità soddisfatte}:
+ \item \textbf{MPC15 - Metriche di qualità soddisfatte}:
     \begin{itemize}
         \item \textbf{Descrizione}: percentuale di soddisfacimento delle metriche di qualità stabilite.
     \end{itemize}
@@ -1659,38 +1534,16 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
 \subsubsection{Processi Organizzativi}
 \paragraph{Gestione dei Processi}
 \begin{itemize}
-    \item \textbf{MPC26 - Rischi non previsti}:
+    \item \textbf{MPC16 - Rischi non previsti}:
         \begin{itemize}
             \item \textbf{Descrizione}: numero di rischi non inclusi nelle stime incontrati durante lo svolgimento del progetto.
         \end{itemize}
-    \item \textbf{MPC27 - Efficienza Temporale (ET)}:
+    \item \textbf{MPC17 - Efficienza Temporale (ET)}:
     \begin{itemize}
         \item   \textbf{Descrizione}: rapporto tra ore produttive ($O_p$) e ore totali ($O_o$).
         \item   \textbf{Formula:}
             \[
             ET = \frac{O_p}{O_o}
-            \]
-    \end{itemize}
-\end{itemize}
-
-\paragraph{Pianificazione}
-\begin{itemize}
-    \item \textbf{MPC28 - Schedule variance (SV)}:
-
-    \begin{itemize}
-        \item   \textbf{Descrizione}: indica se si è in ritardo o in anticipo rispetto al valore pianificato. Un valore negativo indica che si è in ritardo.
-        \item   \textbf{Formula:}
-            \[
-            SV = EV - PV
-            \]
-    \end{itemize}
-    \item \textbf{MPC29 - Cost variance (CV)}:
-
-    \begin{itemize}
-        \item   \textbf{Descrizione}: indica se il costo attuale sta superando o meno il budget. Un valore negativo indica che si ha superato il budget.
-        \item   \textbf{Formula:}
-            \[
-            CV = EV - AC
             \]
     \end{itemize}
 \end{itemize}
