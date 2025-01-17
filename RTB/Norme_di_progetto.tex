@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.5.15} %aggiunta versione come variabile
+\newcommand\version{0.5.16} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -108,7 +108,9 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    0.5.15 & 2025-01-16 & Manuel Gusella & Leonardo Trolese & Rimozione metriche non utilizzate e cambiamento dei codici delle metriche nella sezione \hyperref[metriche_qualita]{Metriche per la qualità}\\
+    0.5.16 & 2025-01-17 & Manuel Gusella & Uncas Peruzzi & Stesura metriche RSI e CPI nella sezione \hyperref[metriche_qualita]{Metriche per la qualità}\\
+    \hline
+    0.5.15 & 2025-01-16 & Manuel Gusella & Alfredo Rubino & Rimozione metriche non utilizzate e cambiamento dei codici delle metriche nella sezione \hyperref[metriche_qualita]{Metriche per la qualità}\\
     \hline
     0.5.14 & 2025-01-15 & Leonardo Trolese & Alfredo Rubino & Aggiunta delle metriche Fan IN e Fan OUT nella sezione delle \hyperref[metriche_qualita]{metriche}\\
     \hline
@@ -1461,6 +1463,13 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
             \]
     \end{itemize}
     \item \textbf{MPC08 - Cost Performance Index (CPI)}:
+    \begin{itemize}
+        \item   \textbf{Descrizione}: indica quanti obiettivi sono stati raggiunti rispetto al costo sostenuto in determinato periodo di tempo. Un valore negativo indica che il progetto è in ritardo rispetto al budget in quanto i costi sostenuti sono superiori al valore del lavoro completato.
+        \item   \textbf{Formula:}
+            \[
+            CV = \frac{EV}{AC}
+            \]
+    \end{itemize}
 \end{itemize}
 
 \paragraph{Sviluppo}
@@ -1470,15 +1479,29 @@ L'acronimo principale utilizzato in questa sezione è MPC, da \textit{Metriche d
                 \item   \textbf{Descrizione}: metrica che valuta quanti dei requisiti obbligatori definiti in fase di analisi dei requisiti sono stati soddisfatti.
                 \item   \textbf{Formula:}
                         \[
-                        ROS = \frac{ROC}{TRO} \cdot 100
+                        ROS = \frac{ROC}{ROT} \cdot 100
                         \]
                         Dove:
                         \begin{itemize}
                             \item $ROC$: requisiti obbligatori coperti.
-                            \item $TRO$: requisiti obbligatori totali.
+                            \item $ROT$: requisiti obbligatori totali.
                         \end{itemize}
             \end{itemize}
 \item \textbf{MPC10 - Requirements Stability Index(RSI)}:
+            \begin{itemize}
+                \item   \textbf{Descrizione}: misura la stabilità dei requisiti nel ciclo di vita di un progetto. Un RSI basso indica che sono stati effettuati molti cambiamenti ai requisiti.
+                \item   \textbf{Formula:}
+                        \[
+                        RSI = \frac{RM}{RIT+RA-RC}
+                        \]
+                        Dove:
+                        \begin{itemize}
+                            \item $RM$: requisiti non modificati.
+                            \item $RA$: requisiti aggiunti.
+                            \item $RC$: requisiti cancellati.
+                            \item $RIT$: requisiti iniziali totali.
+                        \end{itemize}
+            \end{itemize}
             
 \end{itemize}
 
