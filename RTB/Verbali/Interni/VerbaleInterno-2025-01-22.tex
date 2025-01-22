@@ -1,0 +1,97 @@
+
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data 2025-01-22}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.1.0 & 2025-01-22 & Riccardo Piva & Peruzzi Uncas & Redazione del verbale \\
+\hline
+\end{tabularx}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+\section{2025-01-22}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 15:00 - 16:00;
+\item Partecipanti:
+	\begin{itemize}
+    	\item Giovanni Cristellon;
+		\item Gusella Manuel;
+		\item Peruzzi Uncas;
+		\item Piva Riccardo;
+		\item Pivetta Federico;
+		\item Rubino Alfredo;
+		\item Trolese Leonardo.
+	\end{itemize}
+\item Piattaforma: Discord (online)
+\end{itemize}
+
+\subsection{Sintesi}
+Il gruppo si è riunito dopo la riunione con il professor Cardin, per organizzarsi riguardo le modifiche da apportare all'analisi dei requisiti.
+Nel corso della riunione il team ha discusso l'insieme di modifiche da apportare all'analisi dei requisiti, il calcolo delle metriche nel cruscotto, la gestione della continuazione dello sprint e la richiesta di un incontro con la proponente.
+
+\subsubsection{Issue}
+Durante l'incontro sono state create cinque issue riguardanti alcune modifiche da apportare all'analisi dei requisiti e dei termini da inserire nel glossario.
+
+\subsection{Decisioni Prese}
+Segue un elenco delle decisioni prese durante la riunione:
+\begin{itemize}
+    \item Nuova riunione con la proponente per chiarimenti riguardanti modifiche UC Analisi Dei Requisiti.
+    \item Lo sprint viene prolungato di una settimana dato il periodo degli esami e la prossimità alla consegna RTB ma anche nell'attesa dell'incontro con la proponente.
+    \item Aggiungere termini poco chiari al glossario, per spiegarne il significato specifico in questo contesto.
+    \item Togliere gli attori secondari che si sono rivelati errati dall'Analisi Dei Requisiti.
+    \item Sistemazione di vari UC spostando le informazioni dalle postcondizioni a degli UC specifici.
+\end{itemize}
+\begin{center}
+\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+	\hline
+	    \textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+	\hline
+		\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/125}{Issue \#125} & Aggiungere termini "marker" e "percorso" al glossario\\
+	\hline
+		\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/126}{Issue \#126} & Rimuovere attori secondari da UC3, UC6, UC9, UC10, UC11\\
+	\hline
+		\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/127}{Issue \#127} & Sistemare UC 1.1.1.1\\
+	\hline
+		\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/128}{Issue \#128} & Sistemare UC 1.2.2\\
+	\hline
+		\href{https://github.com/SevenBitsSwe/7BitsDocs/issues/129}{Issue \#129} & Sistemare UC 1.3.1\\
+	\hline
+\end{tabular}
+\end{center}
+\end{document}
