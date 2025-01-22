@@ -1,0 +1,90 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Analis delle strategie di mitigazione kafka poisoning}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.9.0 & 2025-01-20 & Giovanni Cristellon &  & Stesura iniziale\\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+\section{Introduzione}
+\subsection{Descrizione del problema}
+Il sistema di stream processing kafka risulta potenzialmente vulnerabile ad un attaccante che inserisca
+dati falsi o malformati al fine di alterare il comportamento del sistema pertanto è necessario applicare delle strategie
+di mitigazione che verifichino origine e correttezza dei dati e limitino i potenziali danni
+\subsection{Possibili soluzioni}
+alcune delle possibili soluzioni per la mitigazione di questa tipologia di attacchi sono le seguenti:
+	\begin{itemize}
+	\item Uso del protocollo TLS per la comunicazione sensori-sistema;
+	\item utenticazione sensoi mediante SASL
+	\item Definizione policies di access control
+	\end{itemize}
+\section{Strategie di mitigazione in Dettaglio}
+    \subsection{Uso del protocollo TLS per la comunicazione sensori-sistema}
+        \subsubsection{Descrizione}
+        Il protocollo TLS fornisce una modalita di comunicazione tra client e server prottetta da cifratura
+        ingrado di autenticare il server ed garantire l'integrità e riservatezza dei dati in transito.
+        Il protocollo utilizza una chiave di cifratura assimmetrica certificata per stabilire la comunicazione iniziale
+        per poi utilizzare cifratura simmetrica per il resto della sessione.
+        apache kafka dispone in oltre della possibilità di applicare 2 way TLS per introdure un ultteriore autenticazione del client
+        \subsubsection{Requisiti implementazione}
+        il protocollo TLS è gia implementato all'interno di apach kafka è pertanto semplicemente necessario abilitarlo ed insere i certificati richiesti,
+        e possibile adottare sia certifica interni che certificati garantiti da una Certification Autority
+        \subsubsection{Analisi efficacia}
+        l'uso del protocollo TLS in modalita 2 way TLS risulta altamente efficace a negare in modo pressochè completo la possibilità di attacchi remoti
+        in quanto il sistema sarà in grado di identifichare e bloccare ogni messaggio la cui provenienza non sia un sensore registrato nel sistema
+    \subsection{Autenticazione sensori mediante SASL}
+        \subsubsection{Descrizione}
+        Il protocollo SASL fornisce la possibilità di integrare un ampio spettro di metodologie per l'Autenticazione di messagi in ingresso basata su sfide e risposte e puo anche essere integrato con
+        protocolli di trasporto che garantiscano riservatezza del messaggio
+        \subsubsection{Requisiti implementazione}
+        il protocollo SASL è gia implementato all'interno di apach kafka è pertanto semplicemente necessario abilitarlo ed insere i certificati richiesti,
+        e possibile adottare sia certifica interni che certificati garantiti da una Certification Autority
+        \subsubsection{Analisi efficacia}
+        l'uso del protocollo SASL in combinazione con un protocollo di trasporto come TLS risulta altamente efficace a negare in modo pressochè completo la possibilità di attacchi remoti
+        in quanto il sistema sarà in grado di identifichare e bloccare ogni messaggio la cui provenienza non sia un sensore registrato nel sistema
+    \subsection{Policies di access control}
+        \subsubsection{Descrizione}
+        L'uso di access control lists permette di definire un insieme di regole volto a limitare la possibilità che un client compromesso abbia accesso ad informazioni sensibili o sia in grado di manomettere il sistema,
+        ogni regola definische per un client o gruppo di client se questi sia autorizzato o meno a produrre o consumare elementi di un topic.
+        \subsubsection{Requisiti implementazione}
+        apache kafka dispone di un siste integrato di gestione dei permessi ed e quindi semplicemente necessario definire un file di configurazione che elenchi le policies che si intende adottare
+        \subsubsection{Analisi efficacia}
+        l'uso di access control lists permette di ridurre significatamente la potenziale superficie di attacco ed i possibili inquanto permette di ridurre l'accesso dei clients alle funzionalità minime necessarie alle loro funzionalità
+\end{document}
