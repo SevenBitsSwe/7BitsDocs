@@ -261,7 +261,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato non autenticato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-            \item Il sistema è operativo e accessibile.
+            \item Il sistema di visualizzazione dati è operativo e accessibile.
             \item L'utente privilegiato non autenticato possiede le credenziali di accesso alla Dashboard$_G$.
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato effettua l'autenticazione al sistema di visualizzazione dati ed ha accesso alla Dashboard$_G$.
@@ -269,7 +269,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato non autenticato entra nell'applicazione web e visualizza un'interfaccia di accesso che richiede l'inserimento di username e password.
             \item L'utente privilegiato inserisce username (UC3.1) e password (UC3.2) e procede con il tentativo di accesso.
-            \item Il sistema invia le credenziali di accesso al Sistema di visualizzazione dati.
             \item Se le credenziali inserite sono corrette,il sistema di visualizzazione dati autentica l’utente privilegiato e lo reindirizza alla Dashboard$_G$.
             \item Se le credenziali inserite sono errate, mostra un messaggio di errore per informare l’utente (UC4).
         \end{enumerate}
@@ -278,7 +277,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item UC4 - Visualizzazione errore autenticazione.
         \end{itemize}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter accedere alla Dashboard$_G$ della web-app per monitorare lo spostamento degli utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi invio la richiesta al sistema di visualizzazione dati. Se le credenziali sono corrette voglio accedere alla visualizzazione della Dashboard$_G$, 
+     Come utente privilegiato voglio poter accedere alla Dashboard$_G$ della web-app per monitorare lo spostamento degli utenti del software. Perchè questo avvenga inserisco le credenziali di accesso (username e password) e quindi invio la richiesta di accesso. Se le credenziali sono corrette voglio accedere alla visualizzazione della Dashboard$_G$, 
      altrimenti voglio visualizzare un messaggio di errore generico e poter inserire nuovamente le credenziali.
 \end{itemize}
 \begin{figure}[H]
@@ -324,7 +323,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Utente privilegiato non autenticato.
     \item \textbf{Precondizioni:}
         \begin{itemize}
-            \item Il sistema è operativo e accessibile.
+            \item Il sistema di visualizzazione dati è operativo e accessibile.
             \item L'utente privilegiato non autenticato ha inserito una combinazione non valida di username e password.
             \item L'autenticazione (UC3) è fallita.
         \end{itemize}
@@ -336,7 +335,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato non autenticato inserisce le credenziali e effettua l'accesso.
-            \item Il sistema verifica le credenziali inserite e se una delle due o entrambe non sono valide fa visualizzare un messaggio di errore.
+            \item Il sistema di visualizzazione dati verifica le credenziali inserite e se una delle due o entrambe non sono valide fa visualizzare un messaggio di errore.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato non autenticato, voglio poter visualizzare un messaggio di errore nel caso avessi inserito le credenziali errate.
 \end{itemize}
