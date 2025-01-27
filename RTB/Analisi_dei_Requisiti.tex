@@ -688,14 +688,14 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema di Stream Processing è operativo e accessibile;
-            \item Il sistema di Stream Processing è attivo e ha validato i dati che costantemente riceve in input (UC7).
+            \item Il sistema di Stream Processing ha validato i dati che costantemente riceve in input (UC7).
         \end{itemize}
       \item \textbf{Postcondizioni:} I dati ricevuti vengono elaborati tramite richiesta ad un LLM, che fornirà la risposta valida per il sistema.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item Il sistema di stream processing è attivo e sta ricevendo i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento dal sensore (UC6);
-        \item Il sistema ha filtrato ed effettuato il parsing dei dati (UC7);
-        \item Il sistema fa un'elaborazione dei dati tramite richiesta ad un LLM.
+        \item Il sistema di Stream Processing è attivo e sta ricevendo i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento dal sensore (UC6);
+        \item Il sistema di Stream Processing ha filtrato ed effettuato il parsing dei dati (UC7);
+        \item Il sistema di Stream Processing fa un'elaborazione dei dati tramite richiesta ad un LLM.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come sensore voglio che i miei dati siano validati. Per fare ciò richiedo che parte dell'elaborazione sia effettuata da un sistema esterno di LLM per ottenere una risposta rilevante per il mio sistema.
 \end{itemize}
@@ -706,20 +706,20 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \label{UC9}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing
+    \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-            \item Il sistema di Stream Processing è attivo e ha elaborato i dati ricevuti in input (UC8).
+          \item Il sistema di Stream Processing è operativo e accessibile;
+            \item Il sistema di Stream Processing ha elaborato i dati ricevuti in input (UC8).
         \end{itemize}
-      \item \textbf{Postcondizioni:} I dati elaborati dal sistema di Stream Processing, vengono storicizzati in un database per garantirne la trasparenza e integrità.\\
+      \item \textbf{Postcondizioni:} I dati elaborati dal sistema di Stream Processing, vengono storicizzati per garantirne la trasparenza e integrità.\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item Il sistema di stream processing è attivo e sta ricevendo dati in ingresso;
-        \item Il sistema ha filtrato ed effettuato l'elaborazione dei dati;
-        \item Il sistema serializza i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento in un database. 
+        \item Il sistema di Stream Processing è attivo e sta ricevendo dati dal Sensore (UC6);
+        \item Il sistema di Stream Processing ha filtrato ed effettuato l'elaborazione dei dati;
+        \item Il sistema di Stream Processing serializza i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento in un database. 
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sistema di Stream Processing voglio poter storicizzare i dati validati ed elaborati, affinchè siano facilemente recuperabili o per effettuarne delle analisi in futuro.
+    \item \textbf{User-Story$_G$ associata:} Come sensore voglio poter storicizzare i dati validati ed elaborati, affinchè siano facilemente recuperabili o per effettuarne delle analisi in futuro.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
