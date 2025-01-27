@@ -683,21 +683,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \label{UC8}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing.
+    \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Attore$_G$ Secondario:} LLM.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
+          \item Il sistema di Stream Processing è operativo e accessibile;
             \item Il sistema di Stream Processing è attivo e ha validato i dati che costantemente riceve in input (UC7).
         \end{itemize}
       \item \textbf{Postcondizioni:} I dati ricevuti vengono elaborati tramite richiesta ad un LLM, che fornirà la risposta valida per il sistema.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item Il sistema di stream processing è attivo e sta ricevendo i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento;
+        \item Il sistema di stream processing è attivo e sta ricevendo i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento dal sensore (UC6);
         \item Il sistema ha filtrato ed effettuato il parsing dei dati (UC7);
         \item Il sistema fa un'elaborazione dei dati tramite richiesta ad un LLM.
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sistema di Stream Processing voglio poter elaborare i dati validati. Per fare ciò richiedo che parte dell'elaborazione sia effettuata da un sistema esterno di LLM per ottenere una risposta rilevante per il mio sistema.
+    \item \textbf{User-Story$_G$ associata:} Come sensore voglio che i miei dati siano validati. Per fare ciò richiedo che parte dell'elaborazione sia effettuata da un sistema esterno di LLM per ottenere una risposta rilevante per il mio sistema.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
