@@ -627,24 +627,24 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC6 - Trasmissione dati geoposizionali}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC6image.png}
-    \caption{UC6 - Trasmissione dati geoposizionali}
-    \label{fig:UC6}
+    \includegraphics[width=0.7\linewidth]{UC6-7-8-9image.png}
+    \caption{UC6 - Trasmissione dati geoposizionali -- UC7 - Filtraggio e parsing dei dati ricevuti -- UC8 - Mapping dei dati validati -- UC9 - Storicizzazione dei dati elaborati}
+    \label{fig:UC6789}
 \end{figure}
 \label{UC6}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-    	\item Il sensore è attivo e connesso al sistema.
+    	\item Il sensore è attivo e connesso al sistema di Stream Processing.
         \end{itemize}
     \item \textbf{Postcondizioni:} Il sensore invia i dati posizionali del mezzo al sistema di stream processing.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
             \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
-            \item Il sensore GPS invia i dati posizionali al sistema di stream processing.
+            \item Il sensore GPS invia i dati posizionali al sistema di Stream Processing.
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema di stream processing.
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema di Stream Processing.
 
 \end{itemize}
 
