@@ -460,7 +460,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC1.1.1.1 - Visualizzazione dettagli dei marker utente sulla mappa}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC1.1.1.1image.png}
+    \includegraphics[width=0.7\linewidth]{UC1.1.1.1imageNew.png}
     \caption{UC1.1.1.1 - Visualizzazione dettagli dei marker utente sulla mappa}
     \label{fig:UC1.1.1.1}
 \end{figure}
@@ -490,6 +490,48 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
        Come utente privilegiato voglio selezionare i marker, che indicano le posizioni di un singolo utente, presenti sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche di ogni istante.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC1.1.1.1.1 - Visualizzazione latitudine dell'utente}}
+\label{UC1.1.1.1.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la latitudine rispettiva al marker utente selezionato. 
+      \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item La tabella conterrà la latitudine del marker utente selezionato.
+     \item \textbf{User-Story$_G$ associata:}
+       Come utente privilegiato voglio visualizzare la latitudine del marker selezionato.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC1.1.1.1.2 - Visualizzazione longitudine dell'utente}}
+\label{UC1.1.1.1.2}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la longitudine rispettiva al marker utente selezionato. 
+      \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item La tabella conterrà la longitudine del marker utente selezionato.
+     \item \textbf{User-Story$_G$ associata:}
+       Come utente privilegiato voglio visualizzare la longitudine del marker selezionato.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
