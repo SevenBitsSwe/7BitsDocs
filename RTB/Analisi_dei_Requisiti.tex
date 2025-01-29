@@ -32,7 +32,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.5.0}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.5.4}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -90,6 +90,10 @@
 \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.5.4 & 2025-01-29 & Manuel Gusella & Alfredo Rubino & Modifica \hyperref[UC1.1.1.1]{UC 1.1.1.1}\\
+\hline
+0.5.3 & 2025-01-27 & Manuel Gusella & Alfredo Rubino & Modifica \hyperref[UC3]{UC3}, \hyperref[UC6]{UC6}, \hyperref[UC8]{UC8}, \hyperref[UC9]{UC9} e \hyperref[UC10]{UC10}\\
 \hline
 0.5.2 & 2025-01-14 & Manuel Gusella & Alfredo Rubino & Modifica RF18 e RF19 dopo modifica\\
 \hline
@@ -468,20 +472,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \item L'utente privilegiato ha selezionato un marker, raffigurante un percorso di un singolo utente, e sta visualizzando la Dashboard$_G$ di singolo utente (UC1.1.1);
           \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni del marker utente selezionato in forma tabellare. La tabella conterrà la posizione, espressa in latitudine e longitudine,l'istante di rilevamento e i dati dell'utente che sta utilizzando il mezzo. I dati dell'utente presenti in tabella saranno:
-        \begin{itemize}
-        \item Nome;
-        \item Cognome;
-        \item Email;
-        \item Genere;
-        \item Data di nascita;
-        \item Stato civile.
-        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni del marker utente selezionato in forma tabellare. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
             \item Il sistema riporta le informazioni del marker in forma tabellare.
+            \item La tabella conterrà la posizione, espressa in latitudine e longitudine,l'istante di rilevamento e i dati dell'utente che sta utilizzando il mezzo. I dati dell'utente presenti in tabella saranno:
+              \begin{itemize}
+              \item Nome;
+              \item Cognome;
+              \item Email;
+              \item Genere;
+              \item Data di nascita;
+              \item Stato civile.
+              \end{itemize}
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
        Come utente privilegiato voglio selezionare i marker, che indicano le posizioni di un singolo utente, presenti sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche di ogni istante.
