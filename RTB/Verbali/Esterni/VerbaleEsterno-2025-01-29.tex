@@ -1,0 +1,105 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+%path per quando caricare in repo
+\graphicspath{{images/}}
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+\title{Verbale Interno del meeting in data}
+\date{A.A 2024/2025}
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+0.1.0 & 2025-01-29 & Riccardo Piva & Alfredo Rubino & Redazione del verbale \\
+\hline
+\end{tabularx}
+\end{center}
+\newpage
+\tableofcontents
+\newpage
+\section{2025-01-29}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 11:00 - 11:15;
+\item Partecipanti: 	
+	\begin{itemize}
+	\item 	SevenBits:
+			\begin{itemize}
+				\item Gusella Manuel
+				\item Peruzzi Uncas
+				\item Piva Riccardo
+				\item Pivetta Federico
+				\item Rubino Alfredo
+				\item Cristellon Giovanni
+				\item Trolese Leonardo
+			\end{itemize}
+	\item 	SyncLab:
+			\begin{itemize}
+				\item Dorigo Andrea
+				\item Pallaro Fabio
+			\end{itemize}
+	\end{itemize}
+\item Piattaforma: Google meet (online)
+\end{itemize}
+\subsection{Oggetto}
+Quinto SAL con Dorigo Andrea e Pallaro Fabio di SyncLab.
+
+\subsection{Sintesi}
+Durante questo SAL il gruppo ha aggiornato il proponente sullo stato del progetto, esponendo delle domande sorte in seguito alla riunione avuta con il committente e ulteriori modifiche apportate in seguito alla stessa.
+
+\subsubsection{Domande}
+\begin{enumerate}
+  \item Il database è ritenuto interno o esterno?
+  \item È neccessaria la differenziazione fra utente non autenticato e utente autenticato dato che grafana non è sviluppato dal gruppo ma viene solo utilizzato per l'interfaccia?
+\end{enumerate}
+
+\subsubsection{Risposte}
+\begin{enumerate}
+  \item Dopo una breve discussione si è giunti alla conclusione che il database è interno. Gli unici attori esterni al stistema sono LLM, senori, utente e utente privilegiato.
+  \item Si è scelto di non differenziare gli utenti autenticati da quelli non autenticati in quanto non è necessario ai fini del progetto.
+\end{enumerate}
+
+\subsubsection{Decisioni prese}
+Il gruppo adeguerà l'analisi dei requisiti in base alle risposte ricevute durante la riunione.
+
+\section{Obiettivi prossimo SAL}
+Gli obiettivi stabiliti per il prossimo SAL sono:
+\begin{itemize}
+	\item Fine redazione e modifica dei documenti in vista della consegna RTB
+  \item Consegnare i documenti una volta terminati al proponente per una revisione
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+		\hline
+		\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+			\hline
+				\href{https://github.com/SevenBitsSwe/PoC/issues/123}{Issue \#123} & Sistemare usecase\\
+			\hline
+	\end{tabular}
+	\end{center}
+%parte di firma
+\vfill
+\begin{minipage}{10cm}
+Firma: \hrulefill \\
+\vspace{2mm}
+Data: \dotfill
+\end{minipage}
+\end{document}
