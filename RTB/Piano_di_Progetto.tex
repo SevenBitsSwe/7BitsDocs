@@ -15,6 +15,7 @@
 \usepackage{eso-pic} 
 \usepackage{float}
 \usepackage{setspace}
+\usepackage{longtable}
 
 
 \newcommand\version{0.4.3} %aggiunta versione come variabile
@@ -96,20 +97,23 @@
 \begin{center}
 \textbf{Registro modifiche}\\
 \vspace{2mm}
-\rowcolors{0}{gray!11}{white}
-\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alle righe del registro
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\endhead
 \hline
-0.4.4 & 2025-01-11 & Leonardo Trolese & Peruzzi Uncas & Redazione quarto sprint \ref{quarto-sprint$_G$}\\
+0.4.6 & 2025-01-29 & Riccardo Piva & Federico Pivetta & Redazione quinto sprint \ref{quinto-sprint$_G$}\\
 \hline
-0.4.3 & 2024-12-19 & Federico Pivetta & Peruzzi Uncas & Redazione terzo sprint \ref{terzo-sprint$_G$}\\
+0.4.5 & 2025-01-11 & Leonardo Trolese & Peruzzi Uncas & Redazione quarto sprint \ref{quarto-sprint$_G$}\\
 \hline
-0.4.2 & 2024-12-11 & Peruzzi Uncas & Alfredo Rubino & Redazione secondo sprint \ref{secondo-sprint$_G$}\\
+0.4.4 & 2024-12-19 & Federico Pivetta & Peruzzi Uncas & Redazione terzo sprint \ref{terzo-sprint$_G$}\\
+\hline
+0.4.3 & 2024-12-11 & Peruzzi Uncas & Alfredo Rubino & Redazione secondo sprint \ref{secondo-sprint$_G$}\\
 \hline
 0.4.2 & 2024-12-10 & Peruzzi Uncas & Alfredo Rubino & Refactoring stile analisi rischi e aggiunta sezione identificazione\\
-\hline
-0.4.1 & 2024-12-10 & Federico Pivetta & Alfredo Rubino & Aggiunta di RT2, RC1, RC2, RC3, RP1 e RP2\\
 \hline
 0.4.1 & 2024-12-10 & Federico Pivetta & Alfredo Rubino & Aggiunta di RT2, RC1, RC2, RC3, RP1 e RP2\\
 \hline
@@ -127,9 +131,10 @@
 \hline
 0.1.0 & 2024-11-14  & Manuel Gusella & Riccardo Piva & Stesura sezione \ref{introduzione}\\
 \hline
-
-\end{tabularx}   
+\end{longtable}
 \end{center}
+
+
 \newpage
 \tableofcontents
 \newpage
@@ -334,9 +339,9 @@ Slide del corso di Ingegneria del Software:
     \hline
     Codice & RP1 \\
     \hline
-    Descrizione &  Può accadere che i membri del gruppo siano coinvolti in attività esterne o siano impossibilitati a lavorare a causa di condizioni di salute sfavorevoli, le quali potrebbero interferire con le attività che sono inerenti al progetto. Questi impegni riducono il tempo e le risorse disponibili per il progetto, mettendo a rischio le scadenze e la qualità del lavoro. \\
+    Descrizione &  Può accadere che i membri del gruppo siano coinvolti in attività esterne, periodo di esami universitari oppure siano impossibilitati a lavorare a causa di condizioni di salute sfavorevoli, le quali potrebbero interferire con le attività che sono inerenti al progetto. Questi impegni riducono il tempo e le risorse disponibili per il progetto, mettendo a rischio le scadenze e la qualità del lavoro. \\
     \hline
-    Identificazione & Il rischio si presenta quanto viene sengnalato al responsabile il periodo di indisponibilità, fornendo una stima della durata di esso. \\
+    Identificazione & Il rischio si presenta quanto viene segnalato al responsabile il periodo di indisponibilità, fornendo una stima della durata di esso. \\
     \hline
     Possibili Attenuazioni &  Quando si pianificano delle attività da svolgere, è importante considerare gli impegni esterni dei membri del gruppo. Definire chiaramente per ogni attività, la priorità e la scadenza, facilita la loro assegnazione. Nei casi di assenza improvvisa, può essere necessario delegare o redistribuire i compiti in modo da non ostacolare il progresso del progetto. \\
     \hline
@@ -362,6 +367,25 @@ Slide del corso di Ingegneria del Software:
     Probabilità Occorrenza &  Alta \\
     \hline
     Pericolosità & Alta \\ 
+    \hline
+    \end{tabularx}
+
+
+    \subsubsection{RP3 - Cambiamenti improvvisi a ridosso della consegna}
+    \label{RP3}
+    \begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    Codice & RP3 \\
+    \hline
+    Descrizione &  A ridosso della consegna, a seguito della revisione di un documento si possono presentare degli errori che richiedono dei cambiamenti e una revisione delle attività già svolte che comportano un aumento di ore di lavoro, mettendo a rischio il rispetto delle scadenze. \\
+    \hline
+    Identificazione &  Il rischio si manifesta quando dopo una revisione si evidenziano delle criticità che richiedono delle correzioni. \\
+    \hline
+    Possibili Attenuazioni &  Per mitigare questo rischio, è necessario mantenere un costante dialogo con la proponente ed effettuare più incontri con il committente, in modo da anticipare eventuali modifiche e valutare insieme le possibili soluzioni. Inoltre, è importante mantenere un margine di tempo e risorse per gestire eventuali modifiche dell'ultimo minuto. \\
+    \hline
+    Probabilità Occorrenza &  Media \\
+    \hline
+    Pericolosità & Alta \\
     \hline
     \end{tabularx}
 
@@ -1085,5 +1109,164 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     stati in gran parte completati, l'obiettivo non è stato pienamente raggiunto; si è pertanto deciso di concludere la stesura dei documenti,
     insieme alla loro verifica conclusiva, nel corso del periodo a venire.
 
+
+%%%%%%%%%%
+%%%%% Quinto sprint
+%%%%%%%%%%%
+
+\newpage
+\subsubsection{Quinto sprint$_G$}
+\label{quinto-sprint$_G$}
+    
+    \paragraph{Durata sprint}\mbox{}\\
+    \vspace{-1.5em}
+    \begin{table}[h] 
+    \renewcommand{\arraystretch}{1.2}  
+    \begin{tabular}{ l l }
+        Inizio: & 2025-01-09 \\
+        Fine Prevista: & 2025-01-29 \\
+        Fine Effettiva: & 2025-01-29 \\
+        Giorni di ritardo: & 0 \\
+    \end{tabular}
+    \end{table}
+    \vspace{-2em}
+    {\renewcommand{\arraystretch}{1.5}%
+    
+    \paragraph{Panoramica generale e obiettivi}\mbox{}\vspace{0.4em}
+
+    Nel corso del quinto sprint il gruppo si propone di ultimare la redazione della documentazione per la consegna RTB prevista inizialmente per il periodo 2025-01-22 - 2025-01-24.
+    In particolare si prevede il completamente di documenti come il piano di qualifica e l'analisi dei requisiti.\\
+    Inoltre il gruppo:
+    \begin{itemize}
+        \item Programmerà un incontro con il professor Cardin per discutere del lavoro svolto e per ricevere eventuali feedback;
+        \item Invierà i documenti all'azienda per ricevere una revisione.
+    \end{itemize}
+    Le attività previste sono poche e molto concentrate, inoltre questo sprint sarà quello più colpito dal periodo di esami universitari e di conseguenza sarà anche più lungo.\\
+
+    Seguono le attività inserite nel backlog per questo periodo:
+    \vspace{-0.5em}
+    \begin{itemize}
+    \setlength\itemsep{-0.2em}
+    \item [-] Aggiunta di ulteriori UC al documento di analisi dei requisiti in seguito al primo ricevimento con il professor Cardin;
+    \item [-] Analisi tecnologie per contrastare il kafka poisoning;
+    \item [-] Correzione del documento di analisi dei requisiti a seguito delle indicazioni ricevuti nel secondo ricevimento con il professor Cardin;
+    \item [-] Redazione sezione test di sistema, test d'integrazione e test di accettazione nel piano di qualifica;
+    \item [-] Redazione cruscotto nel piano di qualifica;
+    \item [-] Calcolo e generazione dei grafici da inserire nel cruscotto del piano di qualifica;
+    \item [-] Consuntivo quarto sprint nel Piano di Progetto;
+    \item [-] Integrazione di nuovi termini nel Glossario.
+    \end{itemize}
+
+    \paragraph{Gestione Rischi}\mbox{}
+    \vspace{-1em}
+    \subparagraph*{Rischi Attesi}\mbox{}
+    Relativamente alla quinta iterazione sono stati identificati dei potenziali rischi in cui potrebbe imbattersi il gruppo:
+    \vspace{-0.5em}
+    \begin{itemize}
+    \setlength\itemsep{-0.2em}
+    \item [-] \hyperref[RP2]{RP2} - Incertezza sulle stime delle attività;
+    \item [-] \hyperref[RC3]{RC3} - Cambio dei ruoli;
+    \item [-] \hyperref[RP3]{RP3} - Rischio cambiamenti improvvisi a ridosso della consegna;
+    \end{itemize}
+
+    \subparagraph*{Rischi Incontrati}\mbox{}
+
+    Nel corso del quinto periodo il gruppo ha riscontrato e affrontato positivamente una parte dei rischi previsti per questa iterazione.
+    Questo sprint è avvenuto durante il periodo degli esami universitari e questo ha comportato un rallentamento nella redazione della documentazione.
+    Di conseguenza il gruppo, data la riduzione di produttività ha deciso di allungare lo sprint di una settimana e posticipare la consegna RTB al prossimo sprint.
+
+    \paragraph{Definizione ruoli}\mbox{}\vspace{0.4em}
+    
+    Questi sono i ruoli assegnati per membro in questo quinto sprint$_G$.\\
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!25}
+        \textbf{Ruolo} & \textbf{Membro}\\
+        \hline
+        Responsabile & Riccardo Piva\\
+        \hline
+        Amministratore & Manuel Gusella \\ 
+        \hline
+        Analista & Giovanni Cristellon \\
+        & Federico Pivetta \\
+        \hline
+        Progettista & / \\
+        \hline
+        Programmatore & / \\
+        \hline
+        Verificatore & Leonardo Trolese \\
+        & Alfredo Rubino \\
+        & Uncas Peruzzi \\
+        \hline
+        \end{tabular}
+        \caption{Tabella dei ruoli - Quinto Sprint}
+    \end{table}
+
+    \paragraph{Preventivo orario}\mbox{}\vspace{0.4em}
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{preventivoOreQuintoSprint.PNG}
+    	\caption{Preventivo orario per membro - Quinto sprint$_G$}
+    	\label{fig:Preventivo orario per membro - Quinto sprint$_G$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[
+                text=pin,
+                hide number,
+                color={responsabile, amministratore, analista, verificatore}, 
+                radius=1.5
+            ]{12/Responsabile - 12\%, 6/Amministratore - 6\%, 33/Analista - 33\% , 49/Verificatore - 49\%}
+        \end{tikzpicture}
+        \caption{Diagramma circolare della partizione delle ore preventive per ruolo - Quinto sprint$_G$ }
+        \label{fig:Diagramma circolare della partizione delle ore preventive per ruolo - Quinto sprint$_G$}
+    \end{figure}
+    
+    \paragraph{Consuntivo orario}\mbox{}\vspace{0.4em}
+    \begin{figure}[ht]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{consuntivoOreQuartoSprint.png}
+    	\caption{Consuntivo orario per membro - Quinto sprint$_G$}
+    	\label{fig:Consuntivo orario per membro - quinto sprint$_G$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[
+                text=pin,
+                hide number,
+                color={responsabile, amministratore, analista, verificatore}, 
+                radius=1.5
+            ]{12/Responsabile - 12\%, 6/Amministratore - 6\%, 33/Analista - 33\% , 49/Verificatore - 49\%}
+        \end{tikzpicture}
+        \caption{Diagramma circolare della partizione delle ore consuntive per ruolo - Quinto sprint$_G$ }
+        \label{fig:Diagramma circolare della partizione delle ore consuntive per ruolo - quinto sprint$_G$}
+    \end{figure}
+
+    \paragraph{Rendicontazione delle risorse economiche restanti}\mbox{}\vspace{0.4em}
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{oreCostiQuartoSprint.png}
+    	\caption{Consuntivo orario e costi per ruolo - Quinto sprint$_G$}
+    	\label{fig:Consuntivo orario e costi per ruolo - Quinto sprint$_G$}
+    \end{figure}
+    
+    \paragraph{Retrospettiva}\mbox{}\vspace{0.4em}
+
+    Il quinto sprint ha evidenziato diverse difficoltà, principalmente legate alla conclusione dei documenti necessari per la consegna RTB. La fase di redazione è stata particolarmente impegnativa a causa dei numerosi cambiamenti richiesti.
+    Durante la prima riunione con il professor Cardin erano emerse alcune criticità legate alla separazione dei sistemi all'interno dell'analisi dei requisiti, che hanno richiesto le creazione di alcuni UC per chiarire meglio il funzionamento del sistema. 
+    Inoltre è emersa anche una potenziale vulnerabilità legata al kafka poisoning, per cui c'è stato un confronto con l'azienda e di conseguenza un'analisi per trovare un'eventuale soluzione adeguata.
+    Durante questo sprint sono stati redatte numerose sezioni del piano di qualifica, tra cui la sezione dei test e  il cruscotto, con conseguente calcolo delle metriche da inserire.
+    Durante una seconda riunione con il professor Cardin, sono emerse ulteriori modifiche da apportare al documento di analisi dei requisiti, il che ha reso necessario posticipare la consegna RTB. 
+    La riunione è stata fondamentale per chiarire alcuni aspetti critici, ma ha anche comportato un ulteriore carico di lavoro per il team.
+    Inoltre, il periodo degli esami universitari ha significativamente ridotto la disponibilità dei membri del gruppo, rallentando il progresso complessivo. 
+    Nonostante ciò, il team ha cercato di mantenere un ritmo costante, ma la pressione degli esami ha inevitabilmente influito sulla produttività.
+    Infine, una riunione conclusiva con l'azienda ha permesso di fare il punto della situazione e di pianificare le attività rimanenti. L'incontro è stato utile per allineare le aspettative e definire chiaramente gli obiettivi per il prossimo sprint. 
+    In sintesi, il quinto sprint ha rappresentato una fase di consolidamento e revisione, con l'obiettivo di terminare tutti i documenti e presentare l'RTB nel prossimo sprint, auspicabilmente senza ulteriori ritardi.
 
 \end{document}
