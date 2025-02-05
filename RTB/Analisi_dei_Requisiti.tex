@@ -849,20 +849,23 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UCY - Visualizzazione area del punto di interesse}}
+\subsubsection{\textbf{UC5 - Visualizzazione area del punto di interesse}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC1.2.12image.png}
-    \caption{UC1.2.1 - Visualizzazione area del punto di interesse -- UC1.2.2 - Visualizzazione informazioni del punto di interesse}
-    \label{fig:UC1.2.1-UC1.2.2}
+    \includegraphics[width=0.7\linewidth]{UC5image.png}
+    \caption{UC5 - Visualizzazione area del punto di interesse}
+    \label{fig:UC5}
 \end{figure}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1);
+    	        \item L'utente privilegiato sta visualizzando i punti di interesse presenti sulla mappa (UC1.2);
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1).
             \item L'utente privilegiato ha selezionato un punto di interesse (UC1.2).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare l'area di influenza di un punto di interesse visibile sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare l'area di influenza del punto di interesse selezionato sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item Il sistema genera l'area di influenza del punto di interesse selezionato e la mostra sulla mappa.
@@ -872,26 +875,33 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \subsubsection{\textbf{UCZ - Visualizzazione informazioni del punto di interesse}}
+ \subsubsection{\textbf{UC6 - Visualizzazione informazioni del punto di interesse}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{UC6image.png}
+    \caption{UC6 - Visualizzazione informazioni del punto di interesse}
+    \label{fig:UC6}
+\end{figure}
  \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-       \item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
-       \item L'utente privilegiato ha selezionato un punto di interesse (UC1.2).
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1);
+    	        \item L'utente privilegiato sta visualizzando i punti di interesse presenti sulla mappa (UC1.2);
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1).
        \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente una tabella, che esprime le informazioni specifiche del punto di interesse selezionato. Tali informazioni sono:
-       \begin{itemize}
-       \item il nome;
-       \item la posizione espressa in latitudine e longitudine;
-       \item l'indirizzo;
-       \item la tipologia, cioè di che ambito si occupa il punto di interesse;
-       \item la descrizione.
-       \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente una tabella, che esprime le informazioni specifiche del punto di interesse selezionato.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
           \item L'utente privilegiato ha selezionato un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse selezionato e le mostra nella Dashboard$_G$ in forma tabellare.
+            \item Il sistema riporta le informazioni del punto di interesse selezionato e le mostra nella Dashboard$_G$ in forma tabellare. Tali informazioni sono:
+       \begin{itemize}
+       \item Il nome;
+       \item La posizione espressa in latitudine e longitudine;
+       \item L'indirizzo;
+       \item La tipologia, cioè di che ambito si occupa il punto di interesse;
+       \item La descrizione.
+       \end{itemize}
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare le informazioni di un punto di interesse presente sulla mappa. 
  \end{itemize}
