@@ -415,6 +415,30 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti erano presenti.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC2 - Visualizzazione annuncio}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{UC2image.png}
+    \caption{UC2 - Visualizzazione annuncio}
+    \label{fig:UC2}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+    	\item Il sistema è operativo e accessibile;
+    	\item Un utente entra nell'area di un punto di interesse.
+        \end{itemize}
+    \item \textbf{Postcondizioni:} L'Utente visualizzerà un messaggio contenente un annuncio personalizzato in base ai suoi dati personali e al punto di interesse.
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+            \item Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
+            \item Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio;
+            \item Il sistema invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3 - Visualizzazione mappa singolo utente}}
 \begin{figure}[H]
     \centering
@@ -901,30 +925,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC2 - Visualizzazione annuncio}}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{UC2image.png}
-    \caption{UC2 - Visualizzazione annuncio}
-    \label{fig:UC2}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Utente.
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-    	\item Il sistema è operativo e accessibile;
-    	\item Un utente entra nell'area di un punto di interesse.
-        \end{itemize}
-    \item \textbf{Postcondizioni:} L'Utente visualizzerà un messaggio contenente un annuncio personalizzato in base ai suoi dati personali e al punto di interesse.
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-            \item Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
-            \item Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio;
-            \item Il sistema invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
-\end{itemize}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC7 - Visualizzazione tabella dei PoI}}
 \begin{figure}[H]
     \centering
@@ -1077,7 +1077,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare il numero di messaggi inviati da un singolo PoI.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC6 - Trasmissione dati geoposizionali}}
+\subsubsection{\textbf{UC - Trasmissione dati geoposizionali}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC6-7-8-9image.png}
