@@ -91,9 +91,11 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
 \hline
+0.5.5 & 2025-02-05 & Manuel Gusella &  & Rimozione UC per autenticazione\\
+\hline
 0.5.4 & 2025-01-29 & Manuel Gusella & Leonardo Trolese & Modifica \hyperref[UC1.1.1.1]{UC 1.1.1.1} e aggiunta di \hyperref[UC1.1.1.1.1]{UC 1.1.1.1.1}, \hyperref[UC1.1.1.1.2]{UC 1.1.1.1.2}, \hyperref[UC1.1.1.1.3]{UC 1.1.1.1.3}, \hyperref[UC1.1.1.1.4]{UC 1.1.1.1.4}, \hyperref[UC1.1.1.1.5]{UC 1.1.1.1.5}, \hyperref[UC1.1.1.1.6]{UC 1.1.1.1.6}, \hyperref[UC1.1.1.1.7]{UC 1.1.1.1.7}, \hyperref[UC1.1.1.1.8]{UC 1.1.1.1.8} e \hyperref[UC1.1.1.1.9]{UC 1.1.1.1.9}\\
 \hline
-0.5.3 & 2025-01-27 & Manuel Gusella & Alfredo Rubino & Modifica \hyperref[UC3]{UC3}, \hyperref[UC6]{UC6}, \hyperref[UC8]{UC8}, \hyperref[UC9]{UC9} e \hyperref[UC10]{UC10}\\
+0.5.3 & 2025-01-27 & Manuel Gusella & Alfredo Rubino & Modifica UC3, \hyperref[UC6]{UC6}, \hyperref[UC8]{UC8}, \hyperref[UC9]{UC9} e \hyperref[UC10]{UC10}\\
 \hline
 0.5.2 & 2025-01-14 & Manuel Gusella & Alfredo Rubino & Modifica RF18 e RF19 dopo modifica\\
 \hline
@@ -271,7 +273,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-            \item L'utente privilegiato ha effettuato l'accesso (UC3).
         \end{itemize}
     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale (percorsi degli utenti), i vari punti di interesse e le pubblicità offerte agli utenti.
     \item \textbf{Scenario Principale:}
@@ -296,12 +297,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-    		\item L'utente privilegiato ha effettuato l'accesso e sta      visualizzando la Dashboard$_G$ (UC3 e UC1).
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare i percorsi degli utenti differenziati dai marker presenti sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ con la mappa interattiva (UC3 e UC1);
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
             \item L'utente privilegiato visualizza i percorsi di tutti gli utenti attivi nel sistema;
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -314,12 +315,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-    		\item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la Dashboard$_G$ principale (UC3 e UC1) o la Dashboard$_G$ singolo utente(UC1.1.1).
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1) o la Dashboard$_G$ singolo utente(UC1.1.1).
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare tutti i punti di interesse riconosciuti dal sistema tramite dei marker sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ con la mappa interattiva (UC3 e UC1)
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
             \item Il sistema mette a disposizione tutti i punti di interesse attivi in quel momento.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -333,12 +334,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
          \item Il sistema è operativo e accessibile.
-    	\item L'utente privilegiato ha effettuato l'accesso e sta          visualizzando la Dashboard$_G$ principale (UC3 e UC1) o la Dashboard$_G$ singolo utente(UC1.1.1).
+    	\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1) o la Dashboard$_G$ singolo utente(UC1.1.1).
         \end{itemize}
     \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un marker che rappresenta un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto. 
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-    	\item Un utente, mentre si muove sulla mappa, passa nell'area      di un punto di interesse.
+    	\item Un utente, mentre si muove sulla mappa, passa nell'area      di un punto di interesse;
     	\item Il sistema elabora le informazioni dell'utente e del         punto di interesse per generare il testo dell'eventuale            annuncio;
         \item Il sistema fa visualizzare un marker sulla mappa, che rappresenta l'annuncio generato.
 	\end{enumerate}
@@ -357,13 +358,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-    		\item L'utente privilegiato ha effettuato l'accesso e sta      visualizzando la Dashboard$_G$ (UC3 e UC1).
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
     	        \item L'utente privilegiato ha selezionato un marker  presente sulla mappa dei percorsi(UC1.1).
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del marker selezionato tramite una Dashboard$_G$ apposita.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ con la mappa interattiva (UC3 e UC1);
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
             \item L'utente privilegiato seleziona un marker di un determinato percorso per visualizzarne la Dashboard$_G$ specifica;
             \item Il sistema mette a disposizione lo storico delle posizioni e dei messaggi archiviati per quel marker.
         \end{enumerate}
@@ -636,8 +637,8 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-            \item L'utente privilegiato ha effettuato l'accesso e sta visualizzando la Dashboard$_G$ (UC3 e UC1).
-            \item L'utente privilegiato ha selezionato un punto di interesse (UC1.2).
+       \item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
+       \item L'utente privilegiato ha selezionato un punto di interesse (UC1.2).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente una tabella, che esprime le informazioni specifiche del punto di interesse selezionato. Tali informazioni sono:
        \begin{itemize}
@@ -722,7 +723,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-            \item L'utente privilegiato ha effettuato l'accesso (UC3).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente è in grado di visualizzare una tabella contenenti i dati dei singoli PoI ordinati per la quantità di messaggi inviati in questo mese.\\
         Altre informazioni dei PoI presenti in tabella sono:
@@ -735,7 +735,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{itemize}
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item L'utente privilegiato accede alla piattaforma e seleziona la visualizzazione della tabella dei PoI;
+        \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
           \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio accedere alla tabella dei PoI per poter visualizzare quale PoI sta inviando più messaggi in quel mese e poter visionare facilmente le informazioni di ogni singolo PoI.
@@ -977,10 +977,6 @@ RF09 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli d
 \hline
 RF10 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & Capitolato$_G$, UC2\\
 \hline
-RF11 & Obbligatorio & L'utente privilegiato deve poter effettuare l'accesso per visualizzare la Dashboard$_G$. & Capitolato$_G$, UC3, UC3.1, UC3.2\\
-\hline
-RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare un messaggio di errore nel caso le credenziali inserite durante l'accesso non siano riconosciute. & Capitolato$_G$, UC4\\
-\hline
 RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & Interna, UC5\\
 \hline
 RF14 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati rilevati in tempo reale al sistema di Stream Processing. & Capitolato$_G$, UC6\\
@@ -1092,7 +1088,7 @@ RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità di dati in I
 \hline
 \textbf{Fonte} & \textbf{Id. Requisiti$_G$}\\
 \hline
-Capitolato$_G$ & RF01 \linebreak RF08  \linebreak RF10 \linebreak RF11 \linebreak RF12 \linebreak RF14 \linebreak RF16 \linebreak RF17 \linebreak RF18 \linebreak RF19 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
+Capitolato$_G$ & RF01 \linebreak RF08  \linebreak RF10 \linebreak RF14 \linebreak RF16 \linebreak RF17 \linebreak RF18 \linebreak RF19 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
 \hline
 Interna & RF02 \linebreak RF03 \linebreak RF04 \linebreak RF05 \linebreak RF06 \linebreak RF07 \linebreak RF09 \linebreak RF13 \linebreak RF15 \linebreak RF20 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
@@ -1109,7 +1105,7 @@ Interna & RF02 \linebreak RF03 \linebreak RF04 \linebreak RF05 \linebreak RF06 \
 \hline
 \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\
 \hline
-Funzionali & 18 & - & 2 & 20\\
+Funzionali & 16 & - & 2 & 18\\
 \hline
 Di qualità & 6 & - & - & 6 \\
 \hline
@@ -1117,7 +1113,7 @@ Di vincolo & 5 & - & - & 5 \\
 \hline
 Prestazionali & 2 & - & - & 2 \\
 \hline
-Totale & 31 & - & 2 & 33 \\
+Totale & 29 & - & 2 & 31 \\
 \hline
 \end{tabular}
 \caption{Riepilogo}
