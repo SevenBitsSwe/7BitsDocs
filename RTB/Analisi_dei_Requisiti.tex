@@ -295,13 +295,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\textbf{UC1.1 - Visualizzazione percorsi sulla mappa}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC1.123image.png}
     \caption{ UC1.1 - Visualizzazione percorsi sulla mappa -- UC1.2 - Visualizzazione punti di interesse sulla mappa -- UC1.3 - Visualizzazione annunci sulla mappa}
     \label{fig:UC1.1}
 \end{figure}
+\subsubsection{\textbf{UC1.1 - Visualizzazione percorsi sulla mappa}}
 \label{UC1.1}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
@@ -434,13 +434,139 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso per visualizzarne la Dashboard$_G$ specifica;
+            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica;
             \item Il sistema mette a disposizione lo storico delle posizioni e dei messaggi archiviati per quel marker.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
      Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa dei percorsi, in modo da visualizzare una Dashboard$_G$ contenente le informazioni relative ad un singolo utente. Questa Dashboard$_G$ permette di visualizzare i dettagli sullo storico completo delle posizioni e sull'utente che sta utilizzando il mezzo. Inoltre permette di poter vedere tutti gli annunci inviati a quell'utente durante la stessa giornata.
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{UC3.123image.png}
+    \caption{ UC3.1 -- UC3.2 -- UC3.3 -- UC3.1.1 -- UC3.2.1 -- UC3.3.1}
+    \label{fig:UC3.1}
+\end{figure}
+\subsubsection{\textbf{UC3.1 - Visualizzazione storico posizioni GPS}}
+\label{UC3.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare lo storico delle posizioni dell'utente differenziati da marker presenti sulla mappa.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item Il sistema mette a disposizione lo storico delle posizioni, distinte da marker, per l'utente selezionato.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare lo storico delle posizioni di un utente. Questa Dashboard$_G$ permette di tenere traccia delle posizioni di un singolo utente tramite dei marker.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC3.2 - Visualizzazione punti di interesse sulla mappa singolo utente}}
+\label{UC3.2}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare tutti i punti di interesse riconosciuti dal sistema tramite dei marker sulla mappa.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item Il sistema mette a disposizione tutti i punti di interesse attivi in quel momento.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare tutti i punti di interesse presenti sulla mappa.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC3.3 - Visualizzazione storico annunci generati per l'utente}}
+\label{UC3.3}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare lo storico degli annunci generati dal sistema per l'utente tramite dei marker sulla mappa.
+    \item \textbf{Scenario Principale:} 
+      \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item Il sistema mette a disposizione lo storico di tutti gli annunci generati, distinti da marker, per l'utente selezionato.
+	\end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa lo storico degli annunci pubblicitari generati per l'utente selezionato.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC3.1.1 - Visualizzazione singola posizione rilevata dal sensore GPS}}
+\label{UC3.1.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
+    		\item L'utente privilegiato sta visualizzando lo storico delle posizioni sulla Dashboard$_G$ singolo utente (UC3.1).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare sulla mappa un marker raffigurante la posizione dell'utente in un determinato istante.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item L'utente privilegiato visualizza lo storico delle posizioni, distinte da marker, per l'utente selezionato (UC3.1);
+            \item L'utente privilegiato visualizza nella mappa la posizione dell'utente in un determinato istante, tramite un marker.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare una singola posizione di un utente rilevata dal sensore GPS. Questa Dashboard$_G$ permette di tenere traccia delle singole posizioni di un utente tramite un marker.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC3.2.1 - Visualizzazione singolo punto di interesse sulla mappa}}
+\label{UC3.2.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
+    		\item L'utente privilegiato sta visualizzando i punti di interesse sulla Dashboard$_G$ singolo utente (UC3.2).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante la posizione di un singolo punto di interesse presente sulla mappa singolo utente.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item L'utente privilegiato visualizza tutti i punti di interesse attivi nel sistema(UC3.2);
+            \item L'utente privilegiato visualizza un punto di interesse attivo nel sistema.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare un singolo punto di interesse. Questa Dashboard$_G$ permette di tenere traccia del singolo punto di interesse, tramite un marker che rappresenta la posizione GPS salvata nel sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC3.3.1 - Visualizzazione singolo annuncio generato per l'utente}}
+\label{UC3.3.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
+    		\item L'utente privilegiato sta visualizzando lo storico degli annunci generati per l'utente sulla Dashboard$_G$ singolo utente (UC3.3).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante un singolo annuncio generato per l'utente presente sulla mappa.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item L'utente privilegiato visualizza lo storico degli annunci, distinti da marker, generati dal sistema per l'utente selezionato (UC3.3);
+            \item L'utente privilegiato visualizza nella mappa, tramite un marker, un annuncio generato per l'utente.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema per l'utente. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti erano presenti.
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.1.1.1 - Visualizzazione dettagli dei marker utente sulla mappa}}
 \begin{figure}[H]
