@@ -879,7 +879,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC6image.png}
-    \caption{UC6 - Visualizzazione informazioni del punto di interesse}
+    \caption{UC6 -- UC6.1 -- UC6.2 -- UC6.3 -- UC6.4 -- UC6.5 -- UC6.6}
     \label{fig:UC6}
 \end{figure}
  \begin{itemize}
@@ -887,8 +887,8 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Precondizioni:}
        \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1);
-    	        \item L'utente privilegiato sta visualizzando i punti di interesse presenti sulla mappa (UC1.2);
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1).
+    	        \item L'utente privilegiato sta visualizzando i punti di interesse presenti sulla mappa (UC1.2/UC3.2);
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente una tabella, che esprime le informazioni specifiche del punto di interesse selezionato.
      \item \textbf{Scenario Principale:}
@@ -905,7 +905,114 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare le informazioni di un punto di interesse presente sulla mappa. 
  \end{itemize}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsubsection{\textbf{UC6.1 - Visualizzazione latitudine del PoI}}
+ \begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+       \begin{itemize}
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
+       \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la latitudine del punto di interesse selezionato.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
+            \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
+            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item La tabella conterrà la latitudine del punto di interesse selezionato.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la latitudine del punto di interesse selezionato. 
+ \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsubsection{\textbf{UC6.2 - Visualizzazione longitudine del PoI}}
+ \begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+       \begin{itemize}
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
+       \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la longitudine del punto di interesse selezionato.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
+            \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
+            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item La tabella conterrà la longitudine del punto di interesse selezionato.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la longitudine del punto di interesse selezionato. 
+ \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsubsection{\textbf{UC6.3 - Visualizzazione nome del PoI}}
+ \begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+       \begin{itemize}
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
+       \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il nome del punto di interesse selezionato.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
+            \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
+            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item La tabella conterrà il nome del punto di interesse selezionato.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare il nome del punto di interesse selezionato. 
+ \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsubsection{\textbf{UC6.4 - Visualizzazione indirizzo del PoI}}
+ \begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+       \begin{itemize}
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
+       \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza l'indirizzo del punto di interesse selezionato.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
+            \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
+            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item La tabella conterrà l'indirizzo del punto di interesse selezionato.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare l'indirizzo del punto di interesse selezionato. 
+ \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsubsection{\textbf{UC6.5 - Visualizzazione tipologia del PoI}}
+ \begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+       \begin{itemize}
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
+       \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la tipologia del punto di interesse selezionato.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
+            \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
+            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item La tabella conterrà la tipologia del punto di interesse selezionato.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la tipologia del punto di interesse selezionato. 
+ \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsubsection{\textbf{UC6.6 - Visualizzazione descrizione del PoI}}
+ \begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+       \begin{itemize}
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
+       \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la descrizione del punto di interesse selezionato.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
+            \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
+            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item La tabella conterrà la descrizione del punto di interesse selezionato.
+     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la descrizione del punto di interesse selezionato. 
+ \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
