@@ -295,13 +295,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{\textbf{UC1.1 - Visualizzazione percorsi sulla mappa}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC1.123image.png}
-    \caption{ UC1.1 - Visualizzazione percorsi sulla mappa -- UC1.2 - Visualizzazione punti di interesse sulla mappa -- UC1.3 - Visualizzazione annunci sulla mappa}
+    \caption{ UC1.1 -- UC1.2 -- UC1.3 -- UC1.1.1 -- UC1.2.1 -- UC1.3.1}
     \label{fig:UC1.1}
 \end{figure}
-\subsubsection{\textbf{UC1.1 - Visualizzazione percorsi sulla mappa}}
 \label{UC1.1}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
@@ -443,13 +443,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{\textbf{UC3.1 - Visualizzazione storico posizioni GPS}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC3.123image.png}
     \caption{ UC3.1 -- UC3.2 -- UC3.3 -- UC3.1.1 -- UC3.2.1 -- UC3.3.1}
     \label{fig:UC3.1}
 \end{figure}
-\subsubsection{\textbf{UC3.1 - Visualizzazione storico posizioni GPS}}
 \label{UC3.1}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
@@ -568,25 +568,26 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema per l'utente. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti erano presenti.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1 - Visualizzazione dettagli dei marker utente sulla mappa}}
+\subsubsection{\textbf{UC4 - Visualizzazione dettagli dei marker utente sulla mappa}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC1.1.1.1imageNew.png}
-    \caption{UC1.1.1.1 - Visualizzazione dettagli dei marker utente sulla mappa}
-    \label{fig:UC1.1.1.1}
+    \includegraphics[width=0.7\linewidth]{UC4image.png}
+    \caption{UC4 - Visualizzazione dettagli dei marker utente sulla mappa}
+    \label{fig:UC4}
 \end{figure}
-\label{UC1.1.1.1}
+\label{UC4}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-        \item L'utente privilegiato ha selezionato un marker, raffigurante un percorso di un singolo utente, e sta visualizzando la Dashboard$_G$ di singolo utente (UC1.1.1);
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente.
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
+    		\item L'utente privilegiato sta visualizzando lo storico delle posizioni sulla Dashboard$_G$ singolo utente (UC3.1).
+          \item L'utente privilegiato ha selezionato un marker, raffigurante la posizione dell'utente ad un determinato istante, presente nella mappa di singolo utente.
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni del marker utente selezionato in forma tabellare. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
             \item Il sistema riporta le informazioni del marker in forma tabellare.
             \item La tabella conterrà la posizione, espressa in latitudine e longitudine,l'istante di rilevamento e i dati dell'utente che sta utilizzando il mezzo. I dati dell'utente presenti in tabella saranno:
@@ -600,25 +601,25 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
               \end{itemize}
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-       Come utente privilegiato voglio selezionare i marker, che indicano le posizioni di un singolo utente, presenti sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche di ogni istante.
+       Come utente privilegiato voglio selezionare un marker, che indica la posizione dell'utente, presente sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche del marker selezionato.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.1 - Visualizzazione latitudine dell'utente}}
-\label{UC1.1.1.1.1}
+\subsubsection{\textbf{UC4.1 - Visualizzazione latitudine dell'utente}}
+\label{UC4.1}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la latitudine rispettiva al marker utente selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà la latitudine del marker utente selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -626,21 +627,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.2 - Visualizzazione longitudine dell'utente}}
-\label{UC1.1.1.1.2}
+\subsubsection{\textbf{UC4.2 - Visualizzazione longitudine dell'utente}}
+\label{UC4.2}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la longitudine rispettiva al marker utente selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà la longitudine del marker utente selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -648,21 +649,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.3 - Visualizzazione istante di rilevamento dell'utente}}
-\label{UC1.1.1.1.3}
+\subsubsection{\textbf{UC4.3 - Visualizzazione istante di rilevamento dell'utente}}
+\label{UC4.3}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza l'istante di rilevamento rispettivo al marker utente selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà l'istante di rilevamento del marker utente selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -670,21 +671,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.4 - Visualizzazione nome dell'utente}}
-\label{UC1.1.1.1.4}
+\subsubsection{\textbf{UC4.4 - Visualizzazione nome dell'utente}}
+\label{UC4.4}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il nome dell'utente del marker selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà il nome dell'utente del marker selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -692,21 +693,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.5 - Visualizzazione cognome dell'utente}}
-\label{UC1.1.1.1.5}
+\subsubsection{\textbf{UC4.5 - Visualizzazione cognome dell'utente}}
+\label{UC4.5}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il cognome dell'utente del marker selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà il cognome dell'utente del marker selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -714,21 +715,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.6 - Visualizzazione email dell'utente}}
-\label{UC1.1.1.1.6}
+\subsubsection{\textbf{UC4.6 - Visualizzazione email dell'utente}}
+\label{UC4.6}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza l'email dell'utente del marker selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà l'email dell'utente del marker selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -736,21 +737,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.7 - Visualizzazione genere dell'utente}}
-\label{UC1.1.1.1.7}
+\subsubsection{\textbf{UC4.7 - Visualizzazione genere dell'utente}}
+\label{UC4.7}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il genere dell'utente del marker selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà il genere dell'utente del marker selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -758,21 +759,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.8 - Visualizzazione data di nascita dell'utente}}
-\label{UC1.1.1.1.8}
+\subsubsection{\textbf{UC4.8 - Visualizzazione data di nascita dell'utente}}
+\label{UC4.8}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la data di nascita dell'utente del marker selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà la data di nascita dell'utente del marker selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -780,21 +781,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1.1.9 - Visualizzazione stato civile dell'utente}}
-\label{UC1.1.1.1.9}
+\subsubsection{\textbf{UC4.9 - Visualizzazione stato civile dell'utente}}
+\label{UC4.9}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente presente nella mappa di singolo utente (UC1.1.1).
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC1.1.1.1).
+          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato visualizza lo stato civile dell'utente del marker selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC1.1.1);
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
             \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC 1.1.1.1).
+            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
             \item La tabella conterrà lo stato civile dell'utente del marker selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
