@@ -325,7 +325,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1) o la Dashboard$_G$ singolo utente(UC1.1.1).
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1).
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare tutti i punti di interesse riconosciuti dal sistema tramite dei marker sulla mappa.
      \item \textbf{Scenario Principale:}
@@ -343,27 +343,85 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-         \item Il sistema è operativo e accessibile.
-    	\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1) o la Dashboard$_G$ singolo utente(UC1.1.1).
+    	\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1).
         \end{itemize}
-    \item \textbf{Postcondizioni:} L'Utente privilegiato visualizzerà un marker che rappresenta un annuncio personalizzato del punto di interesse in base ai dati dell'utente che passa vicino a quel punto. 
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare gli annunci generati dal sistema tramite dei marker sulla mappa.
     \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-    	\item Un utente, mentre si muove sulla mappa, passa nell'area      di un punto di interesse;
-    	\item Il sistema elabora le informazioni dell'utente e del         punto di interesse per generare il testo dell'eventuale            annuncio;
-        \item Il sistema fa visualizzare un marker sulla mappa, che rappresenta l'annuncio generato.
+      \begin{enumerate}
+      \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item Il sistema mette a disposizione tutti gli annunci attivi in quel momento.
 	\end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari che arrivano ai vari utenti.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1 - Visualizzazione mappa singolo utente}}
+\subsubsection{\textbf{UC1.1.1 - Visualizzazione singolo percorso sulla mappa}}
+\label{UC1.1.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
+    		\item L'utente privilegiato sta visualizzando i percorsi sulla Dashboard$_G$ (UC1.1).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante la posizione di un singolo utente presente sulla mappa.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato visualizza i percorsi di tutti gli utenti attivi nel sistema(UC1.1);
+            \item L'utente privilegiato visualizza un percorso di un utente attivo nel sistema.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare un singolo percorso effettuato da un utente. Questa Dashboard$_G$ permette di tenere traccia del singolo percorso, tramite un marker che rappresenta la più recente posizione GPS tracciata dal sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC1.2.1 - Visualizzazione singolo punto di interesse sulla mappa}}
+\label{UC1.2.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
+    		\item L'utente privilegiato sta visualizzando i punti di interesse sulla Dashboard$_G$ (UC1.2).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante la posizione di un singolo punto di interesse presente sulla mappa.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato visualizza tutti i punti di interesse attivi nel sistema(UC1.2);
+            \item L'utente privilegiato visualizza un punto di interesse attivo nel sistema.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare un singolo punto di interesse. Questa Dashboard$_G$ permette di tenere traccia del singolo punto di interesse, tramite un marker che rappresenta la posizione GPS salvata nel sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC1.3.1 - Visualizzazione singolo annuncio sulla mappa}}
+\label{UC1.3.1}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+        \item Il sistema è operativo e accessibile.
+    	\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
+    	\item L'utente privilegiato sta visualizzando gli annunci sulla Dashboard$_G$ (UC1.3).
+        \end{itemize}
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante un singolo annuncio presente sulla mappa.
+     \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
+            \item L'utente privilegiato visualizza gli annunci attivi nel sistema(UC1.3);
+            \item L'utente privilegiato visualizza un annuncio attivo nel sistema.
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti erano presenti.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UCX - Visualizzazione mappa singolo utente}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC1.1.1image.png}
-    \caption{UC1.1.1 - Visualizzazione mappa singolo utente}
+    \caption{UCX - Visualizzazione mappa singolo utente}
     \label{fig:UC1.1.1}
 \end{figure}
-\label{UC1.1.1}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
@@ -618,7 +676,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.2.1 - Visualizzazione area del punto di interesse}}
+\subsubsection{\textbf{UCY - Visualizzazione area del punto di interesse}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC1.2.12image.png}
@@ -641,8 +699,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \subsubsection{\textbf{UC1.2.2 - Visualizzazione informazioni del punto di interesse}}
- \label{UC1.2.2}
+ \subsubsection{\textbf{UCZ - Visualizzazione informazioni del punto di interesse}}
  \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
@@ -669,14 +726,13 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\textbf{UC1.3.1 - Visualizzazione informazioni dell'annuncio}}
+\subsubsection{\textbf{UCW - Visualizzazione informazioni dell'annuncio}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC1.3.1image.png}
     \caption{UC1.3.1 - Visualizzazione informazioni dell'annuncio}
     \label{fig:UC1.3.1}
 \end{figure}
-\label{UC1.3.1}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} 
