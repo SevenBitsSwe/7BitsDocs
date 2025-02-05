@@ -427,8 +427,9 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
-    	        \item L'utente privilegiato ha selezionato un marker  presente sulla mappa dei percorsi(UC1.1).
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1);
+    	        \item L'utente privilegiato sta visualizzando i percorsi presenti sulla mappa (UC1.1);
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo utente (UC1.1.1).
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del marker selezionato tramite una Dashboard$_G$ apposita.
      \item \textbf{Scenario Principale:}
@@ -446,8 +447,8 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \subsubsection{\textbf{UC3.1 - Visualizzazione storico posizioni GPS}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC3.123image.png}
-    \caption{ UC3.1 -- UC3.2 -- UC3.3 -- UC3.1.1 -- UC3.2.1 -- UC3.3.1}
+    \includegraphics[width=0.7\linewidth]{UC3.1234image.png}
+    \caption{ UC3.1 -- UC3.2 -- UC3.3 -- UC3.4 -- UC3.1.1 -- UC3.2.1 -- UC3.3.1}
     \label{fig:UC3.1}
 \end{figure}
 \label{UC3.1}
@@ -504,6 +505,35 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 	\end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa lo storico degli annunci pubblicitari generati per l'utente selezionato.
 \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC3.4 - Visualizzazione dettagli dei marker utente sulla mappa}}
+\label{UC3.4}
+\begin{itemize}
+     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+     \item \textbf{Precondizioni:}
+        \begin{itemize}
+    		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni dell'utente, a cui è riferita la Dashboard, in forma tabellare. 
+      \item \textbf{Scenario Principale:}
+        \begin{enumerate}
+            \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
+            \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
+            \item Il sistema riporta le informazioni del marker in forma tabellare.
+            \item La tabella conterrà la posizione, espressa in latitudine e longitudine,l'istante di rilevamento e i dati dell'utente che sta utilizzando il mezzo. I dati dell'utente presenti in tabella saranno:
+              \begin{itemize}
+              \item Nome;
+              \item Cognome;
+              \item Email;
+              \item Genere;
+              \item Data di nascita;
+              \item Stato civile.
+              \end{itemize}
+        \end{enumerate}
+     \item \textbf{User-Story$_G$ associata:}
+       Come utente privilegiato voglio selezionare un marker, che indica la posizione dell'utente, presente sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche del marker selezionato.
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3.1.1 - Visualizzazione singola posizione rilevata dal sensore GPS}}
 \label{UC3.1.1}
@@ -904,29 +934,21 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC5 - Visualizzazione tabella dei PoI}}
+\subsubsection{\textbf{UC7 - Visualizzazione tabella dei PoI}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC5image.png}
-    \caption{UC5 - Visualizzazione tabella dei PoI}
-    \label{fig:UC5}
+    \includegraphics[width=0.7\linewidth]{UC7image.png}
+    \caption{UC7 - Visualizzazione tabella dei PoI}
+    \label{fig:UC7}
 \end{figure}
-\label{UC5}
+\label{UC7}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
+          \item Il sistema è operativo e accessibile.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'utente è in grado di visualizzare una tabella contenenti i dati dei singoli PoI ordinati per la quantità di messaggi inviati in questo mese.\\
-        Altre informazioni dei PoI presenti in tabella sono:
-        \begin{itemize}
-       \item il nome;
-       \item l'indirizzo;
-       \item la tipologia, cioè di che ambito si occupa il punto di interesse;
-       \item la descrizione;
-         \item numero di messaggi inviati durante il mese.
-        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare una tabella contenenti i dati dei singoli PoI ordinati per la quantità di messaggi inviati in questo mese.\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
@@ -935,6 +957,134 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio accedere alla tabella dei PoI per poter visualizzare quale PoI sta inviando più messaggi in quel mese e poter visionare facilmente le informazioni di ogni singolo PoI.
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC7.1 - Visualizzazione singolo PoI nella tabella dei PoI}}
+\label{UC7.1}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+            \item L'utente privilegiato sta visualizzando la tabella dei PoI (UC5).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare le informazioni di un singolo PoI.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+        \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
+          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella. Tali informazioni sono:
+        \begin{itemize}
+       \item Il nome;
+       \item L'indirizzo;
+       \item La tipologia, cioè di che ambito si occupa il punto di interesse;
+       \item La descrizione;
+         \item Numero di messaggi inviati durante il mese.
+        \end{itemize}
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare le informazioni di un singolo PoI.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC7.1.1 - Visualizzazione nome del PoI}}
+\label{UC7.1.1}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item L'utente privilegiato sta visualizzando la tabella dei PoI (UC5);
+            \item L'utente privilegiato sta visualizzando un singolo PoI nella tabella (UC5.1).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare il nome del singolo PoI.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+        \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
+          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
+            \item L'utente privilegiato è in grado di visualizzare il nome di un singolo PoI.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare il nome di un singolo PoI.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC7.1.2 - Visualizzazione indirizzo del PoI}}
+\label{UC7.1.2}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item L'utente privilegiato sta visualizzando la tabella dei PoI (UC5);
+            \item L'utente privilegiato sta visualizzando un singolo PoI nella tabella (UC5.1).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare l'indirizzo del singolo PoI.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+        \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
+          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
+            \item L'utente privilegiato è in grado di visualizzare l'indirizzo di un singolo PoI.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare l'indirizzo di un singolo PoI.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC7.1.3 - Visualizzazione tipologia del PoI}}
+\label{UC7.1.3}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item L'utente privilegiato sta visualizzando la tabella dei PoI (UC5);
+            \item L'utente privilegiato sta visualizzando un singolo PoI nella tabella (UC5.1).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare la tipologia del singolo PoI.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+        \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
+          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
+            \item L'utente privilegiato è in grado di visualizzare la tipologia di un singolo PoI.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare la tipologia di un singolo PoI.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC7.1.4 - Visualizzazione descrizione del PoI}}
+\label{UC7.1.4}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item L'utente privilegiato sta visualizzando la tabella dei PoI (UC5);
+            \item L'utente privilegiato sta visualizzando un singolo PoI nella tabella (UC5.1).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare la descrizione del singolo PoI.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+        \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
+          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
+            \item L'utente privilegiato è in grado di visualizzare la descrizione di un singolo PoI.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare la descrizione di un singolo PoI.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC7.1.5 - Visualizzazione numero di messaggi inviati del PoI}}
+\label{UC7.1.5}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item L'utente privilegiato sta visualizzando la tabella dei PoI (UC5);
+            \item L'utente privilegiato sta visualizzando un singolo PoI nella tabella (UC5.1).
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare il numero di messaggi inviati dal singolo PoI durante il mese.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+        \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
+          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
+            \item L'utente privilegiato è in grado di visualizzare il numero di messaggi inviati da un singolo PoI durante il mese.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare il numero di messaggi inviati da un singolo PoI.
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC6 - Trasmissione dati geoposizionali}}
 \begin{figure}[H]
@@ -959,35 +1109,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema di Stream Processing.
 
 \end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC7 - Filtraggio e parsing dei dati ricevuti}}
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.7\linewidth]{UC789image.png}
-%    \caption{UC7 - Filtraggio e parsing dei dati ricevuti -- UC8 - Mapping dei dati validati -- UC9 - Storicizzazione dei dati elaborati}
-%    \label{fig:UC789}
-%\end{figure}
-\label{UC7}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sistema di Stream Processing.
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-            \item Il sistema di Stream Processing è attivo e sta ricevendo dati dai sensori (UC6).
-        \end{itemize}
-      \item \textbf{Postcondizioni:} 
-        I dati ricevuti vengono filtrati per definire che siano validi ed infine viene effettuato un parsing per facilitarne l'elaborazione.\\
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item Il sistema di stream processing è attivo e sta ricevendo dati posizionali espressi in latitudine e longitudine in ingresso dai sensori (UC6), id del mezzo e l'istante di invio dei dati dal sensore;
-        \item Il sistema filtra i dati, in modo da scartare dati non validi o non consistenti;
-        \item Il sistema fa un parsing dei dati, distinguendo i diversi tipi e campi dato.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sistema di Stream Processing voglio poter filtrare i dati ricevuti in ingresso secondo le linee guida, per poi validare e interpretare la struttura (parsing)
-\end{itemize}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1171,11 +1292,11 @@ RF09 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli d
 \hline
 RF10 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & Capitolato$_G$, UC2\\
 \hline
-RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & Interna, UC5\\
+RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & Interna, UC7, UC7.1, UC7.1.1, UC7.1.2, UC7.1.3, UC7.1.4 e UC7.1.5\\
 \hline
 RF14 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati rilevati in tempo reale al sistema di Stream Processing. & Capitolato$_G$, UC6\\
 \hline
-RF15 & Obbligatorio & I dati ricevuti dal sensore devono essere filtrati e validati dal sistema di Stream Processing. & Interna, UC7\\
+RF15 & Obbligatorio & I dati ricevuti dal sensore devono essere filtrati e validati dal sistema di Stream Processing. & Interna, UC\\
 \hline
 RF16 & Obbligatorio & I dati validati dal sistema di Stream Processing devono essere elaborati tramite un servizio LLM & Capitolato, UC8\\
 \hline
