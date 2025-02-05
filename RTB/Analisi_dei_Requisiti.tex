@@ -1016,31 +1016,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\textbf{UCW - Visualizzazione informazioni dell'annuncio}}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{UC1.3.1image.png}
-    \caption{UC1.3.1 - Visualizzazione informazioni dell'annuncio}
-    \label{fig:UC1.3.1}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item L'utente privilegiato sta visualizzando un annuncio sulla mappa (UC1.3);
-    	\item L'utente privilegiato ha selezionato un annuncio comparso sulla mappa.
-        \end{itemize}
-    \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni dell'annuncio selezionato in forma tabellare. La tabella conterrà i nomi dell'utente e del punto di interesse coinvolti, la longitudine e latitudine di questi ultimi e il contenuto effettivo dell'annuncio.
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-          \item L'utente privilegiato ha selezionato un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio selezionato e le mostra nella Dashboard$_G$ in forma tabellare.
-	\end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare le informazioni relative ad un annuncio pubblicitario creato.
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC7 - Visualizzazione tabella dei PoI}}
 \begin{figure}[H]
@@ -1194,6 +1169,33 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio poter visualizzare il numero di messaggi inviati da un singolo PoI.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{\textbf{UC8 - Visualizzazione informazioni dell'annuncio}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{UC8image.png}
+    \caption{UC8 -- UC8.1 -- UC8.2 -- UC8.3 -- UC8.4 -- UC8.5 -- UC8.6}
+    \label{fig:UC8}
+\end{figure}
+\label{UC8}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+    	        \item L'utente privilegiato sta visualizzando gli annunci presenti sulla mappa (UC1.3/UC3.3);
+    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+        \end{itemize}
+    \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni dell'annuncio selezionato in forma tabellare. 
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+          \item L'utente privilegiato ha selezionato un annuncio presente sulla mappa;
+          \item Il sistema riporta le informazioni dell'annuncio selezionato e le mostra nella Dashboard$_G$ in forma tabellare;
+          \item La tabella conterrà i nomi dell'utente e del punto di interesse coinvolti, la longitudine e latitudine di questi ultimi, il contenuto effettivo dell'annuncio e l'istante di creazione dell'annuncio.
+	\end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare le informazioni relative ad un annuncio pubblicitario.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC - Trasmissione dati geoposizionali}}
 \begin{figure}[H]
     \centering
@@ -1222,7 +1224,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 \subsubsection{\textbf{UC8 - Elaborazione dei dati validati}}
 
-\label{UC8}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Attore$_G$ Secondario:} LLM.
