@@ -1394,12 +1394,12 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\textbf{UC10 - Selezione del PoI più adeguato per l'utente}}
+\subsubsection{\textbf{UC10 - Ricezione dati utente e PoI}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC101112image.png}
-    \caption{UC10 - Selezione del PoI più adeguato per l'utente -- UC11 - Generazione messaggio custom per utente -- UC12 - Nessun messaggio generato}
-    \label{fig:UC101112}
+    \includegraphics[width=0.7\linewidth]{UC10image.png}
+    \caption{UC10 - Ricezione dati utente e PoI -- UC10.1 - Ricezione dati utente -- UC10.2 - Ricezione dati PoI}
+    \label{fig:UC10}
 \end{figure}
 \label{UC10}
 \begin{itemize}
@@ -1407,9 +1407,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
           \item Il sistema è operativo e accessibile;
-            \item Il database è aggiornato con i dati personali dell'utente e i suoi eventuali interessi;
-            \item Il database è aggiornato con i dati dei punti di interesse rilevanti per l'utente in quell'istante;
-            \item Il sistema di Stream Processing fornisce la posizione dell'utente in tempo reale dopo una validazione e parsing (UC7-8).
+            \item Il sistema fornisce la posizione dell'utente in tempo reale dopo una validazione e parsing (UC7-8).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'obiettivo è selezionare il punto di interesse (POI) più rilevante secondo gli interessi dell'utente. Il modello LLM utilizza le informazioni dei punti di interesse (Tipologia) e dell'utente (Interessi) presenti all'interno del Database per fare una selezione tra i punti di interesse proposti.\\
     \item \textbf{Scenario Principale:} 
@@ -1464,29 +1462,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \end{itemize}
     \item \textbf{User-Story$_G$ associata:} Come LLM voglio generare un messaggio custom per l'utente basato sulla sua profilazione e su un PoI adeguato nel raggio della sua posizione in tempo reale.
 \end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC12 - Nessun messaggio generato}}
-
-\label{UC12}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il database è aggiornato con i dati degli utenti registrati nel sistema;
-          \item Il servizio di LLM non ha identificato il punto di interesse più adeguato per l'utente (condition).
-        \end{itemize}
-      \item \textbf{Postcondizioni:} Nessun messaggio personalizzato per l'utente viene generato durante l'elaborazione dell'ultima posizione inviata al sistema di Stream Processsing.\\
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item L' LLM non ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e al profilo;
-        \item L' LLM omette, per l'ultima rilevazione GPS, la generazione di un messaggio pubblicitario per l'utente.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come LLM voglio evitare di effettuare una richiesta al modello di AI, nel caso nessun punto di interesse sia stato selezionato per questa rilevazione GPS.
-\end{itemize}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
