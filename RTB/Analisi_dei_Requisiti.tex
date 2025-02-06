@@ -1777,31 +1777,69 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 \hline
  RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari marker su di essa. &  Capitolato$_G$, UC1\\
 \hline
-RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei marker che rappresentano i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema & Interna, UC1.1\\
+RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei marker che rappresentano i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema & Capitolato$_G$, UC1.1\\
 \hline
-RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare una Dashboard$_G$ relativa ad un singolo utente quando seleziona un marker. & Interna, UC1.1.1\\
+RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare un marker che rappresenta un percorso effettuato in tempo reale da un utente presente nel sistema & Capitolato$_G$, UC1.1 e UC1.1.1\\
 \hline
-RF04 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli del marker riguardante una singola posizione di un utente nella rispettiva dashboard & Interna, UC1.1.1.1\\
+RF04 & Obbligatorio & L'utente privilegiato deve poter visualizzare tutti i punti di interesse riconosciuti dal sistema. & Capitolato$_G$, UC1.2\\
 \hline
-RF05 & Obbligatorio & L'utente privilegiato deve poter visualizzare tutti i punti di interesse riconosciuti dal sistema. & Interna, UC1.2\\
+RF05 & Obbligatorio & L'utente privilegiato deve poter visualizzare un marker che rappresenta un punto di interesse riconosciuto dal sistema. & Capitolato$_G$, UC1.2 e UC1.2.1\\
 \hline
-RF06 & Opzionale & L'utente privilegiato deve poter visualizzare l'area di influenza di un punto di interesse selezionato. & Interna, UC1.2.1\\
+RF06 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & Capitolato$_G$, UC1.3\\
 \hline
-RF07 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni dettagliate di un punto di interesse quando selezionato. & Interna, UC1.2.2\\
+RF07 & Obbligatorio & L'utente privilegiato deve poter visualizzare un singolo annuncio pubblicitario tramite un marker. & Capitolato$_G$, UC1.3 e UC1.3.1\\
 \hline
-RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & Capitolato$_G$, UC1.3\\
+RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare una Dashboard$_G$ relativa ad un singolo utente quando seleziona un marker utente nella Dashboard principale. & Interna, UC3\\
 \hline
-RF09 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli dell'annuncio generato & Interna, UC1.3.1\\
+RF09 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei marker che rappresentano lo storico delle posizioni dell'utente a cui è riferita la Dashboard di singolo utente. & Interna, UC3.1\\
 \hline
-RF10 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & Capitolato$_G$, UC2\\
+RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare un marker che rappresenta la posizione dell'utente in un determinato istante nella Dashboard di singolo utente. & Interna, UC3.1 e UC3.1.1\\
 \hline
-RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella contenente le informazioni dei singoli PoI e la quantità di messaggi inviati nel mese. & Interna, UC7, UC7.1, UC7.1.1, UC7.1.2, UC7.1.3, UC7.1.4 e UC7.1.5\\
+RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare, nella Dashboard di singolo utente, tutti i punti di interesse riconosciuti dal sistema. & Interna, UC3.2\\
 \hline
-RF14 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati rilevati in tempo reale al sistema di Stream Processing. & Capitolato$_G$, UC6\\
+RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare, nella Dashboard di singolo utente, un marker che rappresenta un punto di interesse riconosciuto dal sistema. & Interna, UC3.2 e UC3.2.1\\
 \hline
-RF18 & Obbligatorio & Il servizio LLM deve essere in grado di selezionare il Punto di Interesse più rilevante per l'utente in base alle informazioni dei punti di interesse e dell'utente & Capitolato, UC10\\
+RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare lo storico degli annunci pubblicitari generati per l'utente a cui è riferita la Dashboard singolo utente. & Interna, UC3.3\\
 \hline
-RF19 & Obbligatorio & Il servizio LLM deve essere in grado di generare un messaggio custom per l'utente in base al suo profilo e alle infromazioni del Punto di Interesse selezionato in tempo reale & Capitolato, UC11\\
+RF14 & Obbligatorio & L'utente privilegiato deve poter visualizzare un singolo annuncio pubblicitario tramite un marker nella Dashboard di singolo utente. & Interna, UC3.3 e UC3.3.1\\
+\hline
+RF15 & Obbligatorio & L'utente privilegiato deve poter visualizzare un pannello apposito contenente le informazioni dell'utente, a cui è riferita la Dashboard di singolo utente, in forma tabellare. & Interna, UC3.4\\
+\hline
+RF16 & Obbligatorio & L'utente privilegiato deve poter visualizzare nel pannello apposito di visualizzazione informazioni dell'utente: il nome, il cognome, l'email, il genere, la data di nascita e lo stato civile. & Interna, UC3.4, UC3.4.1, UC3.4.2, UC3.4.3, UC3.4.4, UC3.4.5, UC3.4.6\\
+\hline
+RF17 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli del marker riguardante una singola posizione di un utente nella rispettiva dashboard & Interna, UC4\\
+\hline
+RF18 & Obbligatorio & L'utente privilegiato quando visualizza i dettagli del marker, riguardante una singola posizione di un utente nella rispettiva dashboard, deve poter vedere la latitudine, la longitudine e l'istante di rilevamento del marker & Interna, UC4, UC4.1, UC4.2 e UC4.3\\
+\hline
+RF19 & Opzionale & L'utente privilegiato deve poter visualizzare l'area di influenza di un punto di interesse selezionato. & Interna, UC5\\
+\hline
+RF20 & Obbligatorio & L'utente privilegiato deve poter visualizzare le informazioni dettagliate di un punto di interesse quando selezionato. & Interna, UC6\\
+\hline
+RF21 & Obbligatorio & L'utente privilegiato quando visualizza le informazioni dettagliate di un punto di interesse deve poter visualizzare la latitudine, la longitudine, il nome, la tipologia e la descrizione del punto di interesse. & Interna, UC6, UC6.1, UC6.2, UC6.3, UC6.4, UC6.5 e UC6.6\\
+\hline
+RF22 & Opzionale & L'utente deve poter visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & Capitolato$_G$, UC2\\
+\hline
+RF23 & Obbligatorio & L'utente privilegiato deve poter visualizzare una tabella contenente le informazioni dei singoli PoI ordinati per la quantità di messaggi inviati nel mese. & Interna, UC7\\
+\hline
+RF24 & Obbligatorio & L'utente privilegiato deve poter visualizzare nella tabella dei PoI un singolo PoI, rappresentato da una riga della tabella. & Interna, UC7 e UC7.1\\
+\hline
+RF25 & Obbligatorio & L'utente privilegiato deve poter visualizzare in ogni riga della tabella dei PoI il nome, l'indirizzo, la tipologia (di che ambito si occupa), la descrizione e il numero di messaggi inviati durante il mese di un singolo PoI. & Interna, UC7, UC7.1, UC7.1.1, UC7.1.2, UC7.1.3, UC7.1.4 e UC7.1.5\\
+\hline
+RF26 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli di un annuncio generato. & Interna, UC8\\
+\hline
+RF27 & Obbligatorio & L'utente privilegiato quando visualizza i dettagli di un annuncio deve poter visualizzare la latidudine, la longitudine, l'istante di creazione, il nome dell'utente coinvolto, il nome del punto di interesse coinvolto e il contenuto dell'annuncio. & Interna, UC8, UC8.1, UC8.2, UC8.3, UC8.4, UC8.5 e UC8.6\\
+\hline
+RF28 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati rilevati in tempo reale al sistema. & Capitolato$_G$, UC9\\
+\hline
+RF29 & Obbligatorio & Il sensore deve essere in grado di trasmettere il proprio id, la sua latitudine e longitudine al sistema. & Interna, UC9, UC9.1, UC9.2 e UC9.3\\
+\hline
+RF30 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere i dati dell'utente e del punto di interesse inviati dal sistema. & Interna, UC10\\
+\hline
+RF31 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere le informazioni dell'utente inviate dal sistema, quali: il nome, il cognome, l'email, il genere, la data di nascita, lo stato civile e i suoi interessi. & Interna, UC10, UC10.1, UC10.1.1, UC10.1.2, UC10.1.3, UC10.1.4, UC10.1.5, UC10.1.6 e UC10.1.7\\
+\hline
+RF32 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere le informazioni del punto di interesse inviate dal sistema, quali: il nome, l'indirizzo, la tipologia, la descrizione e la distanza del PoI dall'utente. & Interna, UC10, UC10.2, UC10.2.1, UC10.2.2, UC10.2.3, UC10.2.4 e UC10.2.5\\
+\hline
+RF33 & Obbligatorio & Il servizio LLM deve essere in grado di trasmettere un messaggio custom, rappresentante il contenuto dell'annuncio per un utente, al sistema. & Capitolato, UC11\\
 \hline
 
 
@@ -1898,9 +1936,9 @@ RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità di dati in I
 \hline
 \textbf{Fonte} & \textbf{Id. Requisiti$_G$}\\
 \hline
-Capitolato$_G$ & RF01 \linebreak RF08  \linebreak RF10 \linebreak RF14 \linebreak RF16 \linebreak RF17 \linebreak RF18 \linebreak RF19 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
+Capitolato$_G$ & RF01 \linebreak RF02 \linebreak RF03 \linebreak RF04 \linebreak RF05 \linebreak RF06 \linebreak RF07 \linebreak RF22 \linebreak RF28 \linebreak RF33 \linebreak RQ01  \linebreak RQ03 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RP01 \linebreak RQ04\\
 \hline
-Interna & RF02 \linebreak RF03 \linebreak RF04 \linebreak RF05 \linebreak RF06 \linebreak RF07 \linebreak RF09 \linebreak RF13 \linebreak RF15 \linebreak RF20 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
+Interna & RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RF12 \linebreak RF13 \linebreak RF14 \linebreak RF15 \linebreak RF16 \linebreak RF17 \linebreak RF18 \linebreak RF19 \linebreak RF20 \linebreak RF21 \linebreak RF23 \linebreak RF24 \linebreak RF25 \linebreak RF26 \linebreak RF27 \linebreak RF29 \linebreak RF30 \linebreak RF31 \linebreak RF32 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
 \end{tabular}
 \caption{Tracciamento Fonte-Requisiti}
@@ -1915,7 +1953,7 @@ Interna & RF02 \linebreak RF03 \linebreak RF04 \linebreak RF05 \linebreak RF06 \
 \hline
 \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\
 \hline
-Funzionali & 16 & - & 2 & 18\\
+Funzionali & 31 & - & 2 & 33\\
 \hline
 Di qualità & 6 & - & - & 6 \\
 \hline
@@ -1923,7 +1961,7 @@ Di vincolo & 5 & - & - & 5 \\
 \hline
 Prestazionali & 2 & - & - & 2 \\
 \hline
-Totale & 29 & - & 2 & 31 \\
+Totale & 44 & - & 2 & 46 \\
 \hline
 \end{tabular}
 \caption{Riepilogo}
