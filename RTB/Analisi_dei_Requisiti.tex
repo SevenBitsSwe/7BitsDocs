@@ -1729,29 +1729,27 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\textbf{UC11 - Generazione messaggio custom per utente}}
-
+\subsubsection{\textbf{UC11 - Trasmissione messaggio custom per l'utente}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{UC11image.png}
+    \caption{UC11 - Trasmissione messaggio custom per l'utente}
+    \label{fig:UC11}
+\end{figure}
 \label{UC11}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} LLM.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il database è aggiornato con i dati degli utenti registrati nel sistema;
-            \item Il servizio di LLM ha identificato e serializzato in locale il punto di interesse più adeguato per l'utente (UC10).
+          \item Il sistema è operativo e accessibile.
         \end{itemize}
-      \item \textbf{Postcondizioni:} Lo scopo è generare un annuncio personalizzato testuale da proporre all'utente durante il suo percorso con il mezzo di trasporto. Questo messaggio tiene conto della selezione del punto di interesse (PoI) (UC10) più rilevante alla profilazione del singolo utente (presente nel database). Infine il dato deve essere storicizzato nel database e inviato in un altra partizione del sistema di stream processing .\\
+      \item \textbf{Postcondizioni:} L'LLM invia il messaggio custom generato al sistema. Il sistema salva l'annuncio generato dall'LLM.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item L' LLM ha selezionato il punto di interesse più adeguato per l'utente in base alla posizione in tempo reale e il profilo (UC10);
-        \item L' LLM utilizza le informazioni del PoI (nome, indirizzo, tipologia e descrizione) e del profilo utente (nome, cognome, genere, data di nascita e stato civile) per generare un annuncio testuale personalizzato;
-        \item L' LLM invia al Sistema di Stream Processing il messaggio che verrà poi storicizzato nel Database e inviato all'utente.
+        \item L'LLM genera un annuncio basato sui dati precedentemente inviati;
+        \item L'LLM invia al sistema il messaggio generato. 
         \end{enumerate}
-    \item \textbf{Estensioni: } 
-    \begin{itemize}
-        \item UC12 - Nessun messaggio generato
-    \end{itemize}
-    \item \textbf{User-Story$_G$ associata:} Come LLM voglio generare un messaggio custom per l'utente basato sulla sua profilazione e su un PoI adeguato nel raggio della sua posizione in tempo reale.
+    \item \textbf{User-Story$_G$ associata:} Come LLM desidero trasmettere un messaggio custom, generato per un utente, al sistema.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
