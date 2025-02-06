@@ -1315,72 +1315,81 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare il contenuto dell'annuncio selezionato. 
  \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC - Trasmissione dati geoposizionali}}
+\subsubsection{\textbf{UC9 - Trasmissione dati geoposizionali}}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{UC6-7-8-9image.png}
-    \caption{UC6 - Trasmissione dati geoposizionali -- UC7 - Filtraggio e parsing dei dati ricevuti -- UC8 - Mapping dei dati validati -- UC9 - Storicizzazione dei dati elaborati}
-    \label{fig:UC6789}
+    \includegraphics[width=0.7\linewidth]{UC9image.png}
+    \caption{UC9 -- UC9.1 -- UC9.2 -- UC9.3}
+    \label{fig:UC9}
 \end{figure}
-\label{UC6}
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sensore.
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-    	\item Il sensore è attivo e connesso al sistema di Stream Processing.
-        \end{itemize}
-    \item \textbf{Postcondizioni:} Il sensore invia i dati posizionali del mezzo al sistema di stream processing.
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
-            \item Il sensore GPS invia i dati posizionali al sistema di Stream Processing.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema di Stream Processing.
-
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC8 - Elaborazione dei dati validati}}
-
-\begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} Sensore.
-    \item \textbf{Attore$_G$ Secondario:} LLM.
-    \item \textbf{Precondizioni:} 
-        \begin{itemize}
-          \item Il sistema di Stream Processing è operativo e accessibile;
-            \item Il sistema di Stream Processing ha validato i dati che costantemente riceve in input (UC7).
-        \end{itemize}
-      \item \textbf{Postcondizioni:} I dati ricevuti vengono elaborati tramite richiesta ad un LLM, che fornirà la risposta valida per il sistema.
-    \item \textbf{Scenario Principale:} 
-        \begin{enumerate}
-        \item Il sistema di Stream Processing è attivo e sta ricevendo i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento dal sensore (UC6);
-        \item Il sistema di Stream Processing ha filtrato ed effettuato il parsing dei dati (UC7);
-        \item Il sistema di Stream Processing fa un'elaborazione dei dati tramite richiesta ad un LLM.
-        \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sensore voglio che i miei dati siano validati. Per fare ciò richiedo che parte dell'elaborazione sia effettuata da un sistema esterno di LLM per ottenere una risposta rilevante per il mio sistema.
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{\textbf{UC9 - Storicizzazione dei dati elaborati}}
-
 \label{UC9}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema di Stream Processing è operativo e accessibile;
-            \item Il sistema di Stream Processing ha elaborato i dati ricevuti in input (UC8).
+    	\item Il sensore è attivo e connesso al sistema.
         \end{itemize}
-      \item \textbf{Postcondizioni:} I dati elaborati dal sistema di Stream Processing, vengono storicizzati per garantirne la trasparenza e integrità.\\
+    \item \textbf{Postcondizioni:} Il sensore invia i dati posizionali del mezzo al sistema. Il sistema salva i dati inviati dal sensore. 
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-        \item Il sistema di Stream Processing è attivo e sta ricevendo dati dal Sensore (UC6);
-        \item Il sistema di Stream Processing ha filtrato ed effettuato l'elaborazione dei dati;
-        \item Il sistema di Stream Processing serializza i dati posizionali (latitudine e longitudine), id del mezzo e l'istante di rilevamento in un database. 
+            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
+            \item Il sensore GPS invia i dati posizionali al sistema.
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come sensore voglio poter storicizzare i dati validati ed elaborati, affinchè siano facilemente recuperabili o per effettuarne delle analisi in futuro.
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC9.1 - Trasmissione id}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Sensore.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+    	\item Il sensore è attivo e connesso al sistema;
+          \item Il sensore ha trasmesso i dati al sistema.
+        \end{itemize}
+    \item \textbf{Postcondizioni:} Il sensore invia il suo id al sistema.
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
+            \item Il sensore GPS invia i dati posizionali al sistema;
+            \item Il sensore GPS invia il proprio id.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere il mio id al sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC9.2 - Trasmissione latitudine}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Sensore.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+    	\item Il sensore è attivo e connesso al sistema;
+          \item Il sensore ha trasmesso i dati al sistema.
+        \end{itemize}
+    \item \textbf{Postcondizioni:} Il sensore invia la sua latitudine al sistema.
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
+            \item Il sensore GPS invia i dati posizionali al sistema;
+            \item Il sensore GPS invia la sua latitudine.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la mia latitudine al sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC9.3 - Trasmissione longitudine}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} Sensore.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+    	\item Il sensore è attivo e connesso al sistema;
+          \item Il sensore ha trasmesso i dati al sistema.
+        \end{itemize}
+    \item \textbf{Postcondizioni:} Il sensore invia la sua longitudine al sistema.
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+            \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
+            \item Il sensore GPS invia i dati posizionali al sistema;
+            \item Il sensore GPS invia la sua longitudine.
+        \end{enumerate}
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la mia longitudine al sistema.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
