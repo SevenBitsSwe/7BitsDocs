@@ -1414,22 +1414,6 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
         \begin{enumerate}
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente.
-          \begin{itemize}
-          \item Nome;
-          \item Cognome;
-          \item Email;
-          \item Genere;
-          \item Data di nascita;
-          \item Stato civile;
-          \item Elenco di interessi dell'utente.
-          \end{itemize}
-          \begin{itemize}
-          \item Nome;
-          \item Posizione espressa in latitudine e longitudine;
-          \item Indirizzo;
-          \item Tipologia, cioè di che ambito si occupa il punto di interesse;
-          \item Descrizione.
-          \end{itemize}
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere i dati dell'utente e del PoI selezionati dal sistema.
         identificare e selezionare il Punto di Interesse più rilevante per l'utente in base alla sua profilazione e alle sue preferenze.
@@ -1440,9 +1424,9 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
     \centering
     \includegraphics[width=0.7\linewidth]{UC10.1image.png}
     \caption{UC10.1.1 -- UC10.1.2 -- UC10.1.3 -- UC10.1.4 -- UC10.1.5 -- UC10.1.6 -- UC10.1.7}
-    \label{fig:UC10}
+    \label{fig:UC10.1}
 \end{figure}
-\label{UC10}
+\label{UC10.1}
 \begin{itemize}
     \item \textbf{Attore$_G$ Principale:} LLM.
     \item \textbf{Precondizioni:} 
@@ -1485,7 +1469,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
-          \item L'LLM riceve il nome dell'utente;
+          \item L'LLM riceve il nome dell'utente.
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il nome dell'utente selezionato dal sistema.
 \end{itemize}
@@ -1505,7 +1489,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
-          \item L'LLM riceve il cognome dell'utente;
+          \item L'LLM riceve il cognome dell'utente.
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il cognome dell'utente selezionato dal sistema.
 \end{itemize}
@@ -1525,7 +1509,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
-          \item L'LLM riceve l'email dell'utente;
+          \item L'LLM riceve l'email dell'utente.
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere l'email dell'utente selezionato dal sistema.
 \end{itemize}
@@ -1545,7 +1529,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
-          \item L'LLM riceve il genere dell'utente;
+          \item L'LLM riceve il genere dell'utente.
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il genere dell'utente selezionato dal sistema.
 \end{itemize}
@@ -1565,7 +1549,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
-          \item L'LLM riceve la data di nascita dell'utente;
+          \item L'LLM riceve la data di nascita dell'utente.
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la data di nascita dell'utente selezionato dal sistema.
 \end{itemize}
@@ -1585,7 +1569,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
-          \item L'LLM riceve lo stato civile dell'utente;
+          \item L'LLM riceve lo stato civile dell'utente.
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere lo stato civile dell'utente selezionato dal sistema.
 \end{itemize}
@@ -1605,9 +1589,142 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
           \item Il sistema invia i dati dell'utente e del PoI all'LLM;
         \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
-          \item L'LLM riceve gli interessi dell'utente;
+          \item L'LLM riceve gli interessi dell'utente.
         \end{enumerate}
       \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere gli interessi dell'utente selezionato dal sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC10.2 - Ricezione dati PoI}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{UC10.2image.png}
+    \caption{UC10.2.1 -- UC10.2.2 -- UC10.2.3 -- UC10.2.4 -- UC10.2.5}
+    \label{fig:UC10.2}
+\end{figure}
+\label{UC10.2}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'LLM riceve i dati del PoI selezionato dal sistema.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
+          \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item L'LLM riceve le informazioni del PoI, quali:
+          \begin{itemize}
+          \item Nome;
+          \item Indirizzo;
+          \item Tipologia, cioè di che ambito si occupa il punto di interesse;
+          \item Descrizione;
+          \item Distanza del PoI dall'utente.
+          \end{itemize}
+        \end{enumerate}
+      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere i dati del PoI selezionato dal sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC10.2.1 - Ricezione nome del PoI}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'LLM riceve il nome del PoI selezionato dal sistema.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item L'LLM riceve le informazioni del PoI;
+          \item L'LLM riceve il nome del PoI.
+        \end{enumerate}
+      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il nome del PoI selezionato dal sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC10.2.2 - Ricezione indirizzo del PoI}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'LLM riceve l'indirizzo del PoI selezionato dal sistema.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item L'LLM riceve le informazioni del PoI;
+          \item L'LLM riceve l'indirizzo del PoI.
+        \end{enumerate}
+      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere l'indirizzo del PoI selezionato dal sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC10.2.3 - Ricezione tipologia del PoI}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'LLM riceve la tipologia del PoI selezionato dal sistema.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item L'LLM riceve le informazioni del PoI;
+          \item L'LLM riceve la tipologia del PoI.
+        \end{enumerate}
+      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la tipologia del PoI selezionato dal sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC10.2.4 - Ricezione descrizione del PoI}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'LLM riceve la descrizione del PoI selezionato dal sistema.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item L'LLM riceve le informazioni del PoI;
+          \item L'LLM riceve la descrizione del PoI.
+        \end{enumerate}
+      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la descrizione del PoI selezionato dal sistema.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{UC10.2.5 - Ricezione distanza del PoI dall'utente}}
+\begin{itemize}
+    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Precondizioni:} 
+        \begin{itemize}
+          \item Il sistema è operativo e accessibile;
+          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+        \end{itemize}
+      \item \textbf{Postcondizioni:} L'LLM riceve la distanza presente dal PoI e dall'utente selezionati dal sistema.\\
+    \item \textbf{Scenario Principale:} 
+        \begin{enumerate}
+          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item L'LLM riceve le informazioni del PoI;
+          \item L'LLM riceve la distanza del PoI dall'utente.
+        \end{enumerate}
+      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la distanza presente dal PoI e dall'utente selezionati dal sistema.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
