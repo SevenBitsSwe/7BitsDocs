@@ -26,7 +26,6 @@
 
 %cambio misure della pagina
 \geometry{a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm}
-%ebdfc7
 \definecolor{colorePie}{HTML}{ebdfc7}
 \pagestyle{fancy}
 \fancyhf{}
@@ -448,7 +447,7 @@ Questa metrica serve a garantire che il software rispetti le richieste del clien
   \hline
   MPC09 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
   \hline
-  %% Questi due sotto potrebbero essere messi peró sono poco comuni, quello essenziale è quello sopra
+  %% Questi due sotto potrebbero essere messi però sono poco comuni, quello essenziale è quello sopra
   %% È essenziale se si mette sviluppo altrimenti se si mette Analisi dei requisiti diventano essenziali tutti e tre a mio parere
   % MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
   % \hline
@@ -708,40 +707,62 @@ TA9 & Verificare che il servizio LLM possa selezionare il punto di interesse (Po
 \subsubsection{MPC01 - Estimated at completion (EAC)}
 % Inserire grafico
 % completare con valori effettivi e spiegazione più accurata
-\textbf{RTB}: Il grafico rappresenta la stima aggiornata del costo totale del progetto al completamento. Questo valore è quindi influenzato dalla quantità di lavoro del team e dai ruoli ricoperti ogni periodo. Quindi in certi periodi la stima risulta in linea con il budget preventivato mentre in altri periodi possiamo essere sopra di molto o sotto di molto. Ad esempio nel periodo 2 e 3 siamo sopra il budget preventivato, questo è dovuto al fatto che in queste iterazioni il team ha lavorato di più rispetto a quanto preventivato. Mentre nel periodo 5 siamo sotto il budget preventivato, questo è dovuto al fatto che in questo sprint il team ha lavorato di meno rispetto a quanto preventivato a causa delle feste natalizie.\\
+\textbf{RTB}: Il grafico rappresenta la stima aggiornata del costo totale del progetto al completamento. Questo valore è quindi determinato dalla somma 
+dei costi sostenuti fino a un certo momento (in termini di ore produttive svolte), e dei costi stimati al completamento (in termini di ore produttive 
+restanti in riferimento al preventivo iniziale del progetto).\\ %Inserire parte che analizza il grafico
 \subsubsection{MPC01 - Planned Value (PV) \& MPC01 - Earned Value (EV)}
 % Inserire grafico
 % Controllare testo (anche se mi pare ok)
-\textbf{RTB}: Il grafico mostra che le curve del valore guadagnato (Earned Value) e del valore pianificato (Planned Value) si sovrappongono, questo indica che il lavoro effetivamente svolto è conforme alla pianificazione. Questa sovrapposizione dimostra un avanzamento positivo rispetto alla pianificazione del progetto.
+\textbf{RTB}: Il grafico mostra che le curve del valore guadagnato (Earned Value) e del valore pianificato (Planned Value) si sovrappongono, questo indica 
+che il lavoro effettivamente svolto è conforme alla pianificazione. Questa sovrapposizione dimostra un avanzamento positivo rispetto alla pianificazione del progetto.
 \subsubsection{MPC01 - Actual Cost (AC) \& MPC01 - Estimate to Complete (ETC)}
 % Inserire grafico
 % Rivedere testo se piace
-\textbf{RTB}: Il grafico rappresenta l'Actual Cost (AC), ovvero i costi sostenuti per portare il progetto al suo stato corrente, e l'Estimate to Complete (ETCG), cioè la stima del costo da sostenere per completare il progetto durante i vari periodi. \\
-Ovviamente L'ETC tende a diminuire, dato che il progetto si avvicina alla sua conclusione, mentre l'AC mostra una crescita proporzionale alla velocità con cui l'ETC decresce.
+\textbf{RTB}: Il grafico rappresenta l'Actual Cost (AC), ovvero i costi sostenuti per portare il progetto al suo stato corrente, e l'Estimate to Complete (ETC), 
+cioè la stima del costo da sostenere per completare il progetto durante i vari periodi. \\
+Ovviamente L'ETC tende a diminuire, dato che il progetto si avvicina alla sua conclusione, mentre l'AC mostra una crescita proporzionale alla velocità con cui 
+l'ETC decresce.
 \subsection{Qualità di processo - Pianificazione}
 \subsubsection{MPC01 - Cost Variance (CV) \& MPC01 - Schedule Variance (SV)}
 % Inserire grafico
 % Rivedere testo in generale e periodi discrepanze tempo e costi
-\textbf{RTB}: Il grafico rappresenta la differenza in percentuale tra Cost Variance (CV) e la Schedule Variance (SV), che a loro volta rappresentano rispettivamente: la differenza tra il valore guadagnato (EV) e i costi sostenuti (AC) e la differenza tra il valore guadagnato (EV) e il valore pianificato (PV). La Budget Variance non è molto stabile, abbiamo sforato anche se di poco il limite accettabile apparte nel primo periodo e nel periodo pre-natalizio dove abbiamo avuto un valore molto vicino a zero. La diminuzione della Budget Variance è dovuta ai ruoli che sono stati svolti in questi due periodi che erano meno costosi. Per quanto riguarda la Schedule Variance risulta anch'essa altalenante questo è dovuto al fatto che inizialmente il team ha impiegato parecchio tempo nell'apprendimento delle tecnologie e in alcuni periodi più liberi il team ha lavorato di più recuperando così il tempo perso che dopo andava a perdere di nuovo dopo gli incontri con la proponente dove si presentavano eventuali cambiamenti da implementare il che portava a un rallentamento del lavoro. Anche se con la continuazione del progetto il team è stato capace di migliorare la Schedule Variance, mantenendola al di sotto del limite accettabile.
+\textbf{RTB}: Il grafico rappresenta la differenza in percentuale tra Cost Variance (CV) e la Schedule Variance (SV), che a loro volta rappresentano rispettivamente: 
+la differenza tra il valore guadagnato (EV) e i costi sostenuti (AC) e la differenza tra il valore guadagnato (EV) e il valore pianificato (PV). La Budget Variance 
+non è molto stabile, abbiamo sforato anche se di poco il limite accettabile a parte nel primo periodo e nel periodo pre-natalizio dove abbiamo avuto un valore molto 
+vicino a zero. La diminuzione della Budget Variance è dovuta ai ruoli che sono stati svolti in questi due periodi che erano meno costosi. Per quanto riguarda la 
+Schedule Variance risulta anch'essa altalenante questo è dovuto al fatto che inizialmente il team ha impiegato parecchio tempo nell'apprendimento delle tecnologie e 
+in alcuni periodi più liberi il team ha lavorato di più recuperando così il tempo perso che dopo andava a perdere di nuovo dopo gli incontri con la proponente dove 
+si presentavano eventuali cambiamenti da implementare il che portava a un rallentamento del lavoro. Anche se con la continuazione del progetto il team è stato capace 
+di migliorare la Schedule Variance, mantenendola al di sotto del limite accettabile.
 \subsection{Qualità di processo - Gestione dei processi}
 \subsubsection{MPC01 - Rischi non previsti}
 % Inserire grafico
 % assolutamente da rivedere aggiungendo gli effettivi rischi incontrati e il loro impatto
-\textbf{RTB}: Nel corso del progetto, sono stati riscontrati alcuni rischi non previsti. Tuttavia, il team è riuscito a gestirli in modo efficace, riducendo al minimo il loro impatto sul progetto.
+\textbf{RTB}: Nel corso del progetto, sono stati riscontrati alcuni rischi non previsti. Tuttavia, il team è riuscito a gestirli in modo efficace, riducendo al minimo 
+il loro impatto sul progetto.
 \subsubsection{MPC01 - Efficienza temporale}
 % Inserire grafico
-\textbf{RTB}: La metrica dell'efficienza temporale oscilla molto nel corso del progetto. Questo è dovuto alla necessità del gruppo di apprendere le nuove tecnologie, non solo legate al capitolato. Anche se non abbiamo scartato del tutto il nostro way of working, ha ricevuto comunque molte revisioni soprattutto nel periodo iniziale. Tuttavia, il team negli ultimi sprint, dopo che la situazione iniziale si è stabilizzata, è stato in grado di mantenere l'efficienza temporale al di sotto del limite accettabile.
+\textbf{RTB}: La metrica dell'efficienza temporale oscilla molto nel corso del progetto. Questo è dovuto alla necessità del gruppo di apprendere le nuove tecnologie, 
+non solo legate al capitolato. Anche se non abbiamo scartato del tutto il nostro way of working, ha ricevuto comunque molte revisioni soprattutto nel periodo iniziale. 
+Tuttavia, il team negli ultimi sprint, dopo che la situazione iniziale si è stabilizzata, è stato in grado di mantenere l'efficienza temporale al di sotto del limite 
+accettabile.
 \subsection{Qualità di processo - documentazione}
 \subsubsection{MPC01 - Errori ortografici}
 % Inserire grafico
-\textbf{RTB}: Inizialmente, la documentazione presentava alcuni errori ortografici. Tuttavia, con il tempo, il team ha migliorato il processo di verifica e correzione dei documenti, riducendo il numero di errori ortografici drasticamente.
+\textbf{RTB}: Inizialmente, la documentazione presentava alcuni errori ortografici. Tuttavia, con il tempo, il team ha migliorato il processo di verifica e correzione 
+dei documenti, riducendo il numero di errori ortografici drasticamente.
 \subsubsection{MPC01 - Indice Gulpease}
 % Inserire grafico
-\textbf{RTB}: Inizialmente, l'indice Gulpease superava già il limite accettabile. Tuttavia, con il tempo, il team ha imparato a rispettarlo e a mantenerlo costante, migliorandone di poco a poco il punteggio. Questo è stato ottenuto rendendo tutti i documenti più leggibili, limitando l'uso di termini tecnici non necessari, soprattutto nei documenti più specifici o tecnici.
+\textbf{RTB}: Inizialmente, l'indice Gulpease superava già il limite accettabile. Tuttavia, con il tempo, il team ha imparato a rispettarlo e a mantenerlo costante, 
+migliorandone di poco a poco il punteggio. Questo è stato ottenuto rendendo tutti i documenti più leggibili, limitando l'uso di termini tecnici non necessari, 
+soprattutto nei documenti più specifici o tecnici.
 \subsection{Qualità di processo - Gestione della qualità}
 \subsubsection{MPC01 - Metriche di qualità soddisfatte}
 % Inserire grafico
-\textbf{RTB}: Sul subito tutte le metriche inizialmente stabilite venivano applicate, anche se magari non perfettamente. Grazie al loro numero limitato il team è riuscito ad applicarle ma data l'inesperienza all'inizio ci sono state delle difficoltà. Con il tempo però, l'aggiunta di ulteriori metriche (alcune delle quali sconosciute ai membri del team) ha aumentato ulteriormente la difficoltà. Ma dopo un primo periodo di apprendimento e adeguamento a queste metriche abbiamo superato il limite inferiore.
+\textbf{RTB}: Sul subito tutte le metriche inizialmente stabilite venivano applicate, anche se magari non perfettamente. Grazie al loro numero limitato il team è 
+riuscito ad applicarle ma data l'inesperienza all'inizio ci sono state delle difficoltà. Con il tempo però, l'aggiunta di ulteriori metriche (alcune delle quali 
+sconosciute ai membri del team) ha aumentato ulteriormente la difficoltà. Ma dopo un primo periodo di apprendimento e adeguamento a queste metriche abbiamo superato 
+il limite inferiore.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Queste metriche vanno posizionato sotto la sezione finale in cui si decide di metterli (probabilmente rispettivamente in fornitura e sviluppo)
@@ -754,12 +775,14 @@ Ovviamente L'ETC tende a diminuire, dato che il progetto si avvicina alla sua co
 %% CPI = EV / AC
 \subsubsection{MPC01 - Cost performance index (CPI)}
 % Inserire grafico
-\textbf{RTB}: Il grafico mostra che il CPI è prossimo ad 1 ma con un leggero calo nel periodo 3. Questo è dovuto al fatto che in questo periodo il team ha ricoperto ruoli più onerosi. Questo ha portato a un aumento dei costi e quindi a un calo del CPI. Questo calo è comunque accettabile e non preoccupante dato che nel periodo 3 dato il calo di lavoro e avendo ricoperto ruoli più economici c'è stato un bilanciamento.
+\textbf{RTB}: Il grafico mostra che il CPI è prossimo ad 1 ma con un leggero calo nel periodo 3. Questo è dovuto al fatto che in questo periodo il team ha ricoperto 
+ruoli più onerosi. Questo ha portato a un aumento dei costi e quindi a un calo del CPI. Questo calo è comunque accettabile e non preoccupante dato che nel periodo 
+3 dato il calo di lavoro e avendo ricoperto ruoli più economici c'è stato un bilanciamento.
 
 %% Questa metrica la percentuale di requisiti svolti in percentuale di periodo in periodo
 %% Questo dovrebbe valutare la stabilità dei requisiti nel tempo
 %% Quindi ogni periodo si raggiunge una percentuale di requisiti svolti
-%% E alla consenga della baseline RTB si raggiunge il 100%, poi per la PB si raggiunge il 100% di nuovo.
+%% E alla consegna della baseline RTB si raggiunge il 100%, poi per la PB si raggiunge il 100% di nuovo.
 %% Si va ad obbiettivi, o così l'ho interpretato io
 % RSI = 100 − {[(RA+RC+RR) / TR] * 100}
 % RA: numero di requisiti aggiunti nel periodo considerato;
@@ -768,7 +791,11 @@ Ovviamente L'ETC tende a diminuire, dato che il progetto si avvicina alla sua co
 % TR: numero totale di requisiti al momento dell’analisi.
 \subsubsection{MPC01 - Requirements stability index (RSI)}
 % Inserire grafico
-\textbf{RTB}: Questo grafico serve a mostrare l'avanzamento del progresso dei requisiti svolti nel tempo, indicando anche la stabilità nel progresso dei requisiti in percentuale. Inizialmente ovviamente nel primo perio era a 0. La maggior parte dei progressi sono stati fatti nel 3 periodo con l'analisi dei requisiti e le norme di progetto e nel 5 periodo con la finalizzazione della documentazione citata precedentemente e il completamento del PoC. Il 4 periodo ha segnato un calo dovuto alle festività natalizie, mentre il 6 periodo ha segnato un calo dovuto alla persante revisione della documentazione. Questo indice è molto importante per valutare la stabilità dei requisiti nel tempo e per valutare l'efficienza del team nel soddisfare i requisiti.
+\textbf{RTB}: Questo grafico serve a mostrare l'avanzamento del progresso dei requisiti svolti nel tempo, indicando anche la stabilità nel progresso dei requisiti 
+in percentuale. Inizialmente ovviamente nel primo periodo era a 0. La maggior parte dei progressi sono stati fatti nel 3 periodo con l'analisi dei requisiti e le norme 
+di progetto e nel 5 periodo con la finalizzazione della documentazione citata precedentemente e il completamento del PoC. Il 4 periodo ha segnato un calo dovuto alle 
+festività natalizie, mentre il 6 periodo ha segnato un calo dovuto alla persante revisione della documentazione. Questo indice è molto importante per valutare la 
+stabilità dei requisiti nel tempo e per valutare l'efficienza del team nel soddisfare i requisiti.
 
 % Le due sezioni sottostanti saranno da completare per la PB
 % \subsection{Qualità di processo - analisi dei requisiti}
