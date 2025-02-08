@@ -20,30 +20,32 @@ def add_g_comp(testo,parola):
 
 parole=[
     "Agile","API","Attore",
-    "BAC","Baseline","Branch","Build",
+    "BAC","Baseline","Branch","Bug","Build",
     "Capitolato","ClickHouse","Committente","Container","Cruscotto","CI",
     "Dashboard","Database","DBMS","Documentazione","Docker",
     "EAC","efficacia","efficienza","ETC",
     "faker","framework","feedback",
-    "Git","GitHub",
-    "IA","IEEE","Issue","ITS",
+    "Git","GitHub","Grafana",
+    "IA","IEEE","Inspection","Issue","ITS",
     "Kafka",
     "latex","LLM",
-    "Merge","Milestone","MVP",
+    "Marker","Merge","Microservizio","Microservizi","Milestone","MVP",
     "Norme","Overleaf",
-    "PB","PoC","Progetto","PR","Proponente","Protocollo","Python",
+    "PB","Percorso","Percorsi","PoC","Processo","Processi","Progetto","PR","Proponente","Protocollo","Python",
     "Query",
-    "Repository","Requisito","Requisiti","RTB",
-    "SAL","Scrum","Sprint","SQL","Stakeholder","Synclab",
-    "Teamwork","Test",
+    "Repository","Requisito","Requisiti","Rischio","Rischi","RTB",
+    "SAL","Scrum","Sistema","Sprint","SQL","Stakeholder","Synclab",
+    "Teamwork","Test","Topic",
     "UML",
-    "Versionamento"
+    "Versionamento",
+    "Walkthrough"
 ]
 
 parole_composte=[
     "Analisi dei Requisiti",
     "Best Practices",
     "Caso d'uso","Casi d'uso","Ciclo di vita","Continuous Integration",
+    "Docker Compose",
     "Sprint retrospective","Sprint review",
     "User Story",
     "Way of Working"
