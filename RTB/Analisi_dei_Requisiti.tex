@@ -32,7 +32,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.6.1}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v0.6.2}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -97,6 +97,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+\hline
+0.6.2 & 2025-02-08 & Manuel Gusella & Uncas Peruzzi & Applicazione correzzioni dopo verifica.\\
 \hline
 0.6.1 & 2025-02-06 & Manuel Gusella & Uncas Peruzzi & Modifica di \hyperref[UC9]{UC 9}, \hyperref[UC10]{UC 10}, \hyperref[UC11]{UC 11} e aggiunti relativi sottoUC. Riscrittura dei RF dopo cambiamento degli UC\\
 \hline
@@ -167,8 +169,8 @@ Smart custom advertising platform"} concernenti il Capitolato$_G$ C4 proposto da
 
 
 \subsection{Glossario}
-Con l'intento di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un Glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del Progetto$_G$. I termini presenti nel glossario sono contrasegnati con una \textit{G} a pedice : Termine$_G$.\\
-Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf}
+Con l'intento di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un Glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del Progetto$_G$. I termini presenti nel glossario sono contrassegnati con una \textit{G} a pedice : Termine$_G$.\\
+Le definizioni sono presenti nell'apposito documento \textit{Glossario.pdf v1.0.0}
 
 
 \subsection{Riferimenti}
@@ -228,7 +230,7 @@ Come risultato di quanto detto lo sviluppo del Progetto$_G$ non avviene con elem
 \subsubsection{Funzionalità del prodotto}
 Il prodotto software dovrà garantire le seguenti caratteristiche:
 \begin{itemize}
-    \item [-] generazione e salvataggio di dati personali relativi a utenti fittizi, su cui dimostrare il funzionamento del software.
+    \item [-] generazione e salvataggio di dati personali relativi a utenti fittizi, per dimostrare il funzionamento del software.
     \item [-] simulazione dati provenienti dai sensori GPS, nel caso del percorso effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
     \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, facilitando di fatto la gestione delle informazioni tra i diversi componenti del sistema.
     \item [-] individuazione dei punti di interesse specifici, sfruttando LLM$_G$, che prende in input i dati di profilazione e posizione simulati.
@@ -249,10 +251,10 @@ Sono invece note nel documento \textit{Piano\_di\_Progetto.pdf} restrizioni, che
 \label{sec:casi-uso}
 
 \subsection{Finalità e specifiche}
-Questa sezione espone una serie di Casi-d'uso$_G$ come risultato di un'Analisi-dei-Requisiti$_G$ continuativa del Capitolato$_G$, dal confronto con la Proponente$_G$ e dalle riflessioni degli Analisiti del team. La specifica di ogni Caso-d'uso$_G$ segue gli standard descritti in maniera dettagliata nel documento \textit{Norme$_G$\_di\_Progetto.pdf}.
+Questa sezione espone una serie di Casi-d'uso$_G$ come risultato di un'Analisi-dei-Requisiti$_G$ continuativa del Capitolato$_G$, dal confronto con la Proponente$_G$ e dalle riflessioni degli Analisti del team. La specifica di ogni Caso-d'uso$_G$ segue gli standard descritti in maniera dettagliata nel documento \textit{Norme$_G$\_di\_Progetto.pdf v1.0.0}.
 %---------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Attori}
-Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
+Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
 \begin{itemize}
     \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il noleggiatore dei mezzi di trasporto, che deve poter accedere alla Dashboard$_G$ con il tracciamento dei propri mezzi, previa autenticazione ( se non altrimenti specificato, si presume che l'attore sia già autenticato nel sistema);
     \item \textbf{Utente}: è il soggetto utilizzatore del servizio di renting, che visualizza la mappa con gli eventuali punti di interesse;
@@ -353,7 +355,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
       \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
             \item Il sistema mette a disposizione tutti gli annunci attivi in quel momento.
 	\end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari che arrivano ai vari utenti.
+    \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari riservati ai vari utenti.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.1.1 - Visualizzazione singolo percorso sulla mappa}}
@@ -414,7 +416,7 @@ Di seguito sono elencati gli attori con i quali si intefaccia il sistema:
             \item L'utente privilegiato visualizza un annuncio attivo nel sistema.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti erano presenti.
+     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti sono presenti.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC2 - Visualizzazione annuncio}}
@@ -1841,8 +1843,6 @@ RF32 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere le inform
 \hline
 RF33 & Obbligatorio & Il servizio LLM deve essere in grado di trasmettere un messaggio custom, rappresentante il contenuto dell'annuncio per un utente, al sistema. & Capitolato, UC11\\
 \hline
-
-
 \caption{Requisiti$_G$ funzionali}
 \end{longtable}
 \end{center}
@@ -1930,9 +1930,8 @@ RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità di dati in I
 \newpage
 \section{Tracciamento Requisiti$_G$}
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|}
+\begin{center}
+\begin{longtable}{|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|>{\vspace{5pt}}C{2.7cm}<{\vspace{5pt}}|}
 \hline
 \textbf{Fonte} & \textbf{Id. Requisiti$_G$}\\
 \hline
@@ -1940,9 +1939,9 @@ Capitolato$_G$ & RF01 \linebreak RF02 \linebreak RF03 \linebreak RF04 \linebreak
 \hline
 Interna & RF08 \linebreak RF09 \linebreak RF10 \linebreak RF11 \linebreak RF12 \linebreak RF13 \linebreak RF14 \linebreak RF15 \linebreak RF16 \linebreak RF17 \linebreak RF18 \linebreak RF19 \linebreak RF20 \linebreak RF21 \linebreak RF23 \linebreak RF24 \linebreak RF25 \linebreak RF26 \linebreak RF27 \linebreak RF29 \linebreak RF30 \linebreak RF31 \linebreak RF32 \linebreak RV01 \linebreak RV02 \linebreak RV03 \linebreak RV04 \linebreak RQ02 \\
 \hline
-\end{tabular}
 \caption{Tracciamento Fonte-Requisiti}
-\end{table}
+\end{longtable}
+\end{center}
 
 %---------------------------------------------------------------------------------------------------------------------------------------------
 
