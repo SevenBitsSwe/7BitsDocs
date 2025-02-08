@@ -12,3 +12,7 @@ src-esterni
 ##Others
 norme_di_progetto.notes
 .vscode/
+.vscode
+*.notes
+RTB/Verbali/Interni/images
+RTB/Verbali/Esterni/images

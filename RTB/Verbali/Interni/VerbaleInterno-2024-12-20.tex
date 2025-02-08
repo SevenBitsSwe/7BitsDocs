@@ -1,0 +1,118 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+% \graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data 2024-12-20}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\center 
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+1.0.0 & 2024-12-21 & Riccardo Piva & Uncas Peruzzi & Approvazione del verbale\\
+\hline
+0.1.0 & 2024-12-20 & Federico Pivetta & Riccardo Piva & Stesura del verbale\\
+\hline
+\end{tabular}
+
+\newpage
+\raggedright
+\tableofcontents
+
+\newpage
+\section{2024-12-20}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 9:15 - 11:00;
+\item Partecipanti: 	
+	\begin{itemize}
+	    \item Gusella Manuel;
+            \item Cristellon Giovanni;
+            \item Peruzzi Uncas;
+            \item Piva Riccardo;
+            \item Pivetta Federico;
+            \item Rubino Alfredo;
+            \item Trolese Leonardo.
+	\end{itemize}
+\item Piattaforma: Discord (online)
+\end{itemize}
+
+\subsection{Sintesi}
+Il gruppo si è riunito per pianificare il quarto sprint. Nel corso della riunione sono stati definiti i ruoli di ciascun membro per il prossimo periodo, elaborato il preventivo e redatto il consuntivo delle ore. Inoltre, sono state identificate le issue da completare durante questo nuovo sprint.\\
+Come concordato con la proponente, il quarto sprint terminerà il 2025-01-08 e non è stato fissato un incontro intermedio.
+
+\subsubsection{Assegnazione Ruoli}
+Anche per il quarto sprint, si è deciso di riassegnare i ruoli in modo tale che nessun membro possa ricoprire lo stesso incarico svolto negli sprint precedenti. Sono state previste alcune eccezioni per i ruoli di Analista e Verificatore, in quanto questi ruoli, in ogni sprint concluso fino ad ora, sono stati ricoperti da almeno due membri del gruppo.
+
+\subsubsection{Preventivo e Consuntivo delle ore}
+Nel corso dell'incontro è stato analizzato il numero di ore dedicate a ciascun ruolo durante lo sprint appena concluso. Successivamente, sono stati elaborati il preventivo delle ore per il quarto sprint e il consuntivo delle ore per il terzo sprint, entrambi inseriti nel documento Piano di Progetto.
+
+\subsubsection{Issue}
+Per garantire che ogni membro del gruppo sia informato sulle task da completare durante il quarto sprint e per ottimizzare il lavoro asincrono, sono state create diverse issue che definiscono chiaramente i compiti da svolgere. È stata data particolare priorità al completamento dei documenti da presentare alla revisione RTB e alle correzioni minori da apportare al PoC.
+
+\subsubsection{Analisi dei Requisiti}
+A seguito dell'incontro con il committente, il Professore Cardin Riccardo, il gruppo ha discusso riguardo agli argomenti trattati. È stata presa la decisione di correggere i casi d'uso già individuati, sistemando eventuali errori e specificando le parti ritenute troppo astratte, nonché di introdurre nuovi attori, come il Large Language Model (LLM), il sottosistema che visualizza i dati e il sottosistema che invia/elabora i dati.
+
+\subsubsection{Procedimento di verifica}
+Per facilitare la comunicazione tra il Verificatore e l'autore di un compito, è stata adottata la funzionalità dei suggerimenti fornita da GitHub. Da ora in avanti, il Verificatore comunicherà l'esito della sua ispezione attraverso un commento direttamente dalla Pull Request di GitHub e taggando l'autore. Questo consentirà all'autore di ricevere una notifica via email riguardo l'esito della verifica e di visualizzare le sezioni da modificare, con un suggerimento sulla possibile soluzione da applicare.
+
+\subsection{Decisioni Prese}
+Di seguito vengono riportate le decisioni finali emerse dalle diverse discussioni:
+\begin{itemize}
+    \item Assegnazione dei ruoli per il quarto periodo di sprint:\\
+            \vspace{1mm}
+            Responsabile: Leonardo Trolese;\\
+            Amministratore: Federico Pivetta;\\
+            Analisti: Alfredo Rubino, Giovanni Cristellon, Manuel Gusella;\\
+            Verificatori: Riccardo Piva,Uncas Peruzzi.\\
+    \item Adottare il nuovo procedimento per la verifica;
+    \item Correggere e ampliare il documento Analisi dei Requisiti a seguito del ricevimento effettuato;
+    \item Terminare ogni documento da consegnare alla revisione RTB;
+    \item Apportare le ultime correzioni minori al PoC.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+	\hline
+	\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/82}{Issue \#82} & Sistemare UC su visualizzazione delle informazioni\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/83}{Issue \#83} & Creazione UC per attore secondario LLM\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/84}{Issue \#84} & Aggiungere UC: sistema di visualizzazione\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/85}{Issue \#85} & Aggiungere UC: sistema di invio/elaborazione dei dati\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/86}{Issue \#86} & Sistemazione UC5\\
+        \hline
+\end{tabular}
+\end{center}
+
+\end{document}
