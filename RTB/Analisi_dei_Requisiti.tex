@@ -118,7 +118,7 @@
 \hline
 0.4.0 & 2025-01-5 & Uncas Peruzzi & Riccardo Piva & Aggiunta di \hyperref[UC7]{UC7}, \hyperref[UC8]{UC8} e \hyperref[UC9]{UC 9}\\
 \hline
-0.3.0 & 2025-01-4 & Uncas Peruzzi & Riccardo Piva & Refactoring generale casi d'uso esistenti\\
+0.3.0 & 2025-01-4 & Uncas Peruzzi & Riccardo Piva & Refactoring generale Casi-d'uso$_G$ esistenti\\
 \hline
 0.2.10 & 2024-12-27 & Manuel Gusella & Riccardo Piva & Fine stesura \hyperref[UC1.1]{UC 1.1}, cambiamenti marginali agli \hyperref[UC1.2]{UC 1.2} e \hyperref[UC1.3]{UC 1.3} e stesura \hyperref[UC6]{UC 6} e RF13\\
 \hline
@@ -214,7 +214,7 @@ Smart custom advertising platform}, è focalizzato su una serie di clienti che o
 
 \subsection{Panoramica del prodotto}
 \subsubsection{Prospettiva generale del prodotto} 
-In questa sezione vengono elencate tutte le interfacce di sistema che possono interagire con il prodotto \textit{Near You}.
+In questa sezione vengono elencate tutte le interfacce di Sistema$_G$ che possono interagire con il prodotto \textit{Near You}.
 
 \paragraph{Interfacce utente}\mbox{}\\
 \textit{Near You} è un prodotto che genera messaggi pubblicitari personalizzati per l'utente. Questi messaggi sono pensati per essere visualizzati mediante un'interfaccia utilizzabile su display touchscreen, con la quale l'utente può interagire visivamente e fisicamente; tuttavia con la Proponente$_G$ è stato stabilito che tale interfaccia utente 
@@ -231,12 +231,12 @@ Come risultato di quanto detto lo sviluppo del Progetto$_G$ non avviene con elem
 Il prodotto software dovrà garantire le seguenti caratteristiche:
 \begin{itemize}
     \item [-] generazione e salvataggio di dati personali relativi a utenti fittizi, per dimostrare il funzionamento del software.
-    \item [-] simulazione dati provenienti dai sensori GPS, nel caso del percorso effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
-    \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, facilitando di fatto la gestione delle informazioni tra i diversi componenti del sistema.
+    \item [-] simulazione dati provenienti dai sensori GPS, nel caso del Percorso$_G$ effettuato dall'utente, deve corrispondere a coordinate di itinerari che esistono realmente.
+    \item [-] separazione del flusso di dati generato dai simulatori, tramite l'utilizzo di un broker opportuno, facilitando di fatto la gestione delle informazioni tra i diversi componenti del Sistema$_G$.
     \item [-] individuazione dei punti di interesse specifici, sfruttando LLM$_G$, che prende in input i dati di profilazione e posizione simulati.
     \item [-] serializzazione dei dati precedentemente menzionati, in un Database$_G$ adatto alla tipizzazione degli input e performante in tale contesto.
     \item [-] acquisizione e elaborazione dei dati dei sensori per mezzo di uno strumento adatto allo stream processing, per fornirli in pasto al framework$_G$ di generative AI.
-    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente (opzionale) che utente privilegiato. per il primo sono richiesti percorso e visualizzazione degli annunci personalizzati, per il secondo una Dashboard$_G$ interattiva.
+    \item [-] fornire un'interfaccia di visualizzazione dati, sia lato utente (opzionale) che utente privilegiato. per il primo sono richiesti Percorso$_G$ e visualizzazione degli annunci personalizzati, per il secondo una Dashboard$_G$ interattiva.
 \end{itemize}
 
 \subsubsection{Caratteristiche degli utenti}
@@ -254,11 +254,11 @@ Sono invece note nel documento \textit{Piano\_di\_Progetto.pdf} restrizioni, che
 Questa sezione espone una serie di Casi-d'uso$_G$ come risultato di un'Analisi-dei-Requisiti$_G$ continuativa del Capitolato$_G$, dal confronto con la Proponente$_G$ e dalle riflessioni degli Analisti del team. La specifica di ogni Caso-d'uso$_G$ segue gli standard descritti in maniera dettagliata nel documento \textit{Norme$_G$\_di\_Progetto.pdf v1.0.0}.
 %---------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Attori}
-Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
+Di seguito sono elencati gli attori con i quali si interfaccia il Sistema$_G$:
 \begin{itemize}
-    \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il noleggiatore dei mezzi di trasporto, che deve poter accedere alla Dashboard$_G$ con il tracciamento dei propri mezzi, previa autenticazione ( se non altrimenti specificato, si presume che l'attore sia già autenticato nel sistema);
+    \item \textbf{Utente privilegiato}: nel nostro dominio di sviluppo coincide con il noleggiatore dei mezzi di trasporto, che deve poter accedere alla Dashboard$_G$ con il tracciamento dei propri mezzi, previa autenticazione ( se non altrimenti specificato, si presume che l'attore sia già autenticato nel Sistema$_G$);
     \item \textbf{Utente}: è il soggetto utilizzatore del servizio di renting, che visualizza la mappa con gli eventuali punti di interesse;
-    \item \textbf{Sensore}: è un dispositivo che raccoglie dati di posizione geografica, che sono letti e utilizzati dal sistema;
+    \item \textbf{Sensore}: è un dispositivo che raccoglie dati di posizione geografica, che sono letti e utilizzati dal Sistema$_G$;
     \item \textbf{LLM} : rappresenta un modello di linguaggio di grandi dimensioni, che fornisce risposte o elabora dati tramite l'interazione in linguaggio naturale. Viene utilizzato per la generazione degli annunci pubblicitari personalizzati;
 \end{itemize}
 
@@ -286,20 +286,20 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Utente privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
+          \item Il Sistema$_G$ è operativo e accessibile;
         \end{itemize}
     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare una mappa geografica, con i sensori GPS aggiornati in tempo reale (percorsi degli utenti), i vari punti di interesse e le pubblicità offerte agli utenti.
     \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato accede alla piattaforma di visualizzazione della Dashboard$_G$.
-            \item Il sistema mette a disposizione tutte le informazioni storicizzate e ricevute dai sensori, distribuiti su una mappa tramite marker.
+            \item Il Sistema$_G$ mette a disposizione tutte le informazioni storicizzate e ricevute dai sensori, distribuiti su una mappa tramite Marker$_G$.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio accedere alla Dashboard$_G$ per visualizzare in tempo reale i mezzi che ho messo a noleggio (sensori GPS), i punti di interesse che usufruiscono di questo servizio e le inserzioni che vengono generate per gli utenti che hanno effettuato il noleggio.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\textbf{UC1.1 - Visualizzazione percorsi sulla mappa}}
+\subsubsection{\textbf{UC1.1 - Visualizzazione Percorsi$_G$ sulla mappa}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC1.123image.png}
@@ -313,14 +313,14 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare i percorsi degli utenti differenziati dai marker presenti sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare i Percorsi$_G$ degli utenti differenziati dai Marker$_G$ presenti sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato visualizza i percorsi di tutti gli utenti attivi nel sistema;
+            \item L'utente privilegiato visualizza i Percorsi$_G$ di tutti gli utenti attivi nel Sistema$_G$;
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare i vari percorsi effettuati dagli utenti. Questa Dashboard$_G$ permette di tenere traccia dei percorsi, tramite dei marker che rappresentano le più recenti posizioni GPS tracciate dal sistema.
+     Come utente privilegiato voglio poter visualizzare i vari Percorsi$_G$ effettuati dagli utenti. Questa Dashboard$_G$ permette di tenere traccia dei Percorsi$_G$, tramite dei Marker$_G$ che rappresentano le più recenti posizioni GPS tracciate dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.2 - Visualizzazione punti di interesse sulla mappa}}
@@ -331,11 +331,11 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare tutti i punti di interesse riconosciuti dal sistema tramite dei marker sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare tutti i punti di interesse riconosciuti dal Sistema$_G$ tramite dei Marker$_G$ sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item Il sistema mette a disposizione tutti i punti di interesse attivi in quel momento.
+            \item Il Sistema$_G$ mette a disposizione tutti i punti di interesse attivi in quel momento.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
      Come utente privilegiato voglio poter visualizzare tutti i punti di interesse presenti sulla mappa.
@@ -349,33 +349,33 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     	\item L'utente privilegiato sta visualizzando la Dashboard$_G$ principale (UC1).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare gli annunci generati dal sistema tramite dei marker sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare gli annunci generati dal Sistema$_G$ tramite dei Marker$_G$ sulla mappa.
     \item \textbf{Scenario Principale:} 
       \begin{enumerate}
       \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item Il sistema mette a disposizione tutti gli annunci attivi in quel momento.
+            \item Il Sistema$_G$ mette a disposizione tutti gli annunci attivi in quel momento.
 	\end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa gli annunci pubblicitari riservati ai vari utenti.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC1.1.1 - Visualizzazione singolo percorso sulla mappa}}
+\subsubsection{\textbf{UC1.1.1 - Visualizzazione singolo Percorso$_G$ sulla mappa}}
 \label{UC1.1.1}
 \begin{itemize}
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
-    		\item L'utente privilegiato sta visualizzando i percorsi sulla Dashboard$_G$ (UC1.1).
+    		\item L'utente privilegiato sta visualizzando i Percorsi$_G$ sulla Dashboard$_G$ (UC1.1).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante la posizione di un singolo utente presente sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un Marker$_G$ raffigurante la posizione di un singolo utente presente sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato visualizza i percorsi di tutti gli utenti attivi nel sistema(UC1.1);
-            \item L'utente privilegiato visualizza un percorso di un utente attivo nel sistema.
+            \item L'utente privilegiato visualizza i Percorsi$_G$ di tutti gli utenti attivi nel Sistema$_G$(UC1.1);
+            \item L'utente privilegiato visualizza un Percorso$_G$ di un utente attivo nel Sistema$_G$.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare un singolo percorso effettuato da un utente. Questa Dashboard$_G$ permette di tenere traccia del singolo percorso, tramite un marker che rappresenta la più recente posizione GPS tracciata dal sistema.
+     Come utente privilegiato voglio poter visualizzare un singolo Percorso$_G$ effettuato da un utente. Questa Dashboard$_G$ permette di tenere traccia del singolo Percorso$_G$, tramite un Marker$_G$ che rappresenta la più recente posizione GPS tracciata dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.2.1 - Visualizzazione singolo punto di interesse sulla mappa}}
@@ -387,15 +387,15 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
     		\item L'utente privilegiato sta visualizzando i punti di interesse sulla Dashboard$_G$ (UC1.2).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante la posizione di un singolo punto di interesse presente sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un Marker$_G$ raffigurante la posizione di un singolo punto di interesse presente sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato visualizza tutti i punti di interesse attivi nel sistema(UC1.2);
-            \item L'utente privilegiato visualizza un punto di interesse attivo nel sistema.
+            \item L'utente privilegiato visualizza tutti i punti di interesse attivi nel Sistema$_G$(UC1.2);
+            \item L'utente privilegiato visualizza un punto di interesse attivo nel Sistema$_G$.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare un singolo punto di interesse. Questa Dashboard$_G$ permette di tenere traccia del singolo punto di interesse, tramite un marker che rappresenta la posizione GPS salvata nel sistema.
+     Come utente privilegiato voglio poter visualizzare un singolo punto di interesse. Questa Dashboard$_G$ permette di tenere traccia del singolo punto di interesse, tramite un Marker$_G$ che rappresenta la posizione GPS salvata nel Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC1.3.1 - Visualizzazione singolo annuncio sulla mappa}}
@@ -404,19 +404,19 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-        \item Il sistema è operativo e accessibile.
+        \item Il Sistema$_G$ è operativo e accessibile.
     	\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1).
     	\item L'utente privilegiato sta visualizzando gli annunci sulla Dashboard$_G$ (UC1.3).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante un singolo annuncio presente sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un Marker$_G$ raffigurante un singolo annuncio presente sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato visualizza gli annunci attivi nel sistema(UC1.3);
-            \item L'utente privilegiato visualizza un annuncio attivo nel sistema.
+            \item L'utente privilegiato visualizza gli annunci attivi nel Sistema$_G$(UC1.3);
+            \item L'utente privilegiato visualizza un annuncio attivo nel Sistema$_G$.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti sono presenti.
+     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal Sistema$_G$. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un Marker$_G$ che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti sono presenti.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC2 - Visualizzazione annuncio}}
@@ -430,15 +430,15 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Utente.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-    	\item Il sistema è operativo e accessibile;
+    	\item Il Sistema$_G$ è operativo e accessibile;
     	\item Un utente entra nell'area di un punto di interesse.
         \end{itemize}
     \item \textbf{Postcondizioni:} L'Utente visualizzerà un messaggio contenente un annuncio personalizzato in base ai suoi dati personali e al punto di interesse.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
             \item Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
-            \item Il sistema elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio;
-            \item Il sistema invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
+            \item Il Sistema$_G$ elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio;
+            \item Il Sistema$_G$ invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
 \end{itemize}
@@ -456,18 +456,18 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Precondizioni:}
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1);
-    	        \item L'utente privilegiato sta visualizzando i percorsi presenti sulla mappa (UC1.1);
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo utente (UC1.1.1).
+    	        \item L'utente privilegiato sta visualizzando i Percorsi$_G$ presenti sulla mappa (UC1.1);
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo utente (UC1.1.1).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del marker selezionato tramite una Dashboard$_G$ apposita.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di ottenere informazioni più dettagliate del Marker$_G$ selezionato tramite una Dashboard$_G$ apposita.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica;
-            \item Il sistema mette a disposizione lo storico delle posizioni e dei messaggi archiviati per quel marker.
+            \item L'utente privilegiato seleziona un Marker$_G$ di un determinato Percorso$_G$ (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica;
+            \item Il Sistema$_G$ mette a disposizione lo storico delle posizioni e dei messaggi archiviati per quel Marker$_G$.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio selezionare i vari marker, che indicano i mezzi di trasporto, presenti sulla mappa dei percorsi, in modo da visualizzare una Dashboard$_G$ contenente le informazioni relative ad un singolo utente. Questa Dashboard$_G$ permette di visualizzare i dettagli sullo storico completo delle posizioni e sull'utente che sta utilizzando il mezzo. Inoltre permette di poter vedere tutti gli annunci inviati a quell'utente durante la stessa giornata.
+     Come utente privilegiato voglio selezionare i vari Marker$_G$, che indicano i mezzi di trasporto, presenti sulla mappa dei Percorsi$_G$, in modo da visualizzare una Dashboard$_G$ contenente le informazioni relative ad un singolo utente. Questa Dashboard$_G$ permette di visualizzare i dettagli sullo storico completo delle posizioni e sull'utente che sta utilizzando il mezzo. Inoltre permette di poter vedere tutti gli annunci inviati a quell'utente durante la stessa giornata.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -486,15 +486,15 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare lo storico delle posizioni dell'utente differenziati da marker presenti sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare lo storico delle posizioni dell'utente differenziati da Marker$_G$ presenti sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
-            \item Il sistema mette a disposizione lo storico delle posizioni, distinte da marker, per l'utente selezionato.
+            \item L'utente privilegiato seleziona un Marker$_G$ di un determinato Percorso$_G$ (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item Il Sistema$_G$ mette a disposizione lo storico delle posizioni, distinte da Marker$_G$, per l'utente selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare lo storico delle posizioni di un utente. Questa Dashboard$_G$ permette di tenere traccia delle posizioni di un singolo utente tramite dei marker.
+     Come utente privilegiato voglio poter visualizzare lo storico delle posizioni di un utente. Questa Dashboard$_G$ permette di tenere traccia delle posizioni di un singolo utente tramite dei Marker$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3.2 - Visualizzazione punti di interesse sulla mappa singolo utente}}
@@ -505,12 +505,12 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare tutti i punti di interesse riconosciuti dal sistema tramite dei marker sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare tutti i punti di interesse riconosciuti dal Sistema$_G$ tramite dei Marker$_G$ sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
-            \item Il sistema mette a disposizione tutti i punti di interesse attivi in quel momento.
+            \item L'utente privilegiato seleziona un Marker$_G$ di un determinato Percorso$_G$ (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item Il Sistema$_G$ mette a disposizione tutti i punti di interesse attivi in quel momento.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
      Come utente privilegiato voglio poter visualizzare tutti i punti di interesse presenti sulla mappa.
@@ -524,12 +524,12 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare lo storico degli annunci generati dal sistema per l'utente tramite dei marker sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare lo storico degli annunci generati dal Sistema$_G$ per l'utente tramite dei Marker$_G$ sulla mappa.
     \item \textbf{Scenario Principale:} 
       \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
-            \item Il sistema mette a disposizione lo storico di tutti gli annunci generati, distinti da marker, per l'utente selezionato.
+            \item L'utente privilegiato seleziona un Marker$_G$ di un determinato Percorso$_G$ (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item Il Sistema$_G$ mette a disposizione lo storico di tutti gli annunci generati, distinti da Marker$_G$, per l'utente selezionato.
 	\end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare sulla mappa lo storico degli annunci pubblicitari generati per l'utente selezionato.
 \end{itemize}
@@ -546,7 +546,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item Il sistema riporta  in un panello apposito le informazioni dell'utente in forma tabellare;
+            \item Il Sistema$_G$ riporta  in un panello apposito le informazioni dell'utente in forma tabellare;
             \item La tabella conterrà i dati dell'utente che sta utilizzando il mezzo. I dati dell'utente presenti in tabella saranno:
               \begin{itemize}
               \item Nome;
@@ -571,16 +571,16 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
     		\item L'utente privilegiato sta visualizzando lo storico delle posizioni sulla Dashboard$_G$ singolo utente (UC3.1).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare sulla mappa un marker raffigurante la posizione dell'utente in un determinato istante.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare sulla mappa un Marker$_G$ raffigurante la posizione dell'utente in un determinato istante.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
-            \item L'utente privilegiato visualizza lo storico delle posizioni, distinte da marker, per l'utente selezionato (UC3.1);
-            \item L'utente privilegiato visualizza nella mappa la posizione dell'utente in un determinato istante, tramite un marker.
+            \item L'utente privilegiato seleziona un Marker$_G$ di un determinato Percorso$_G$ (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item L'utente privilegiato visualizza lo storico delle posizioni, distinte da Marker$_G$, per l'utente selezionato (UC3.1);
+            \item L'utente privilegiato visualizza nella mappa la posizione dell'utente in un determinato istante, tramite un Marker$_G$.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare una singola posizione di un utente rilevata dal sensore GPS. Questa Dashboard$_G$ permette di tenere traccia delle singole posizioni di un utente tramite un marker.
+     Come utente privilegiato voglio poter visualizzare una singola posizione di un utente rilevata dal sensore GPS. Questa Dashboard$_G$ permette di tenere traccia delle singole posizioni di un utente tramite un Marker$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3.2.1 - Visualizzazione singolo punto di interesse sulla mappa}}
@@ -592,16 +592,16 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
     		\item L'utente privilegiato sta visualizzando i punti di interesse sulla Dashboard$_G$ singolo utente (UC3.2).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante la posizione di un singolo punto di interesse presente sulla mappa singolo utente.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un Marker$_G$ raffigurante la posizione di un singolo punto di interesse presente sulla mappa singolo utente.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
-            \item L'utente privilegiato visualizza tutti i punti di interesse attivi nel sistema(UC3.2);
-            \item L'utente privilegiato visualizza un punto di interesse attivo nel sistema.
+            \item L'utente privilegiato seleziona un Marker$_G$ di un determinato Percorso$_G$ (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item L'utente privilegiato visualizza tutti i punti di interesse attivi nel Sistema$_G$(UC3.2);
+            \item L'utente privilegiato visualizza un punto di interesse attivo nel Sistema$_G$.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare un singolo punto di interesse. Questa Dashboard$_G$ permette di tenere traccia del singolo punto di interesse, tramite un marker che rappresenta la posizione GPS salvata nel sistema.
+     Come utente privilegiato voglio poter visualizzare un singolo punto di interesse. Questa Dashboard$_G$ permette di tenere traccia del singolo punto di interesse, tramite un Marker$_G$ che rappresenta la posizione GPS salvata nel Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3.3.1 - Visualizzazione singolo annuncio generato per l'utente}}
@@ -613,16 +613,16 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
     		\item L'utente privilegiato sta visualizzando lo storico degli annunci generati per l'utente sulla Dashboard$_G$ singolo utente (UC3.3).
         \end{itemize}
-     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un marker raffigurante un singolo annuncio generato per l'utente presente sulla mappa.
+     \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare un Marker$_G$ raffigurante un singolo annuncio generato per l'utente presente sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato visualizza la Dashboard$_G$ con la mappa interattiva (UC1);
-            \item L'utente privilegiato seleziona un marker di un determinato percorso (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
-            \item L'utente privilegiato visualizza lo storico degli annunci, distinti da marker, generati dal sistema per l'utente selezionato (UC3.3);
-            \item L'utente privilegiato visualizza nella mappa, tramite un marker, un annuncio generato per l'utente.
+            \item L'utente privilegiato seleziona un Marker$_G$ di un determinato Percorso$_G$ (UC1.1.1) per visualizzarne la Dashboard$_G$ specifica (UC3);
+            \item L'utente privilegiato visualizza lo storico degli annunci, distinti da Marker$_G$, generati dal Sistema$_G$ per l'utente selezionato (UC3.3);
+            \item L'utente privilegiato visualizza nella mappa, tramite un Marker$_G$, un annuncio generato per l'utente.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal sistema per l'utente. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un marker che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti erano presenti.
+     Come utente privilegiato voglio poter visualizzare un singolo annuncio generato dal Sistema$_G$ per l'utente. Questa Dashboard$_G$ permette di tenere traccia del singolo annuncio, tramite un Marker$_G$ che rappresenta la posizione in cui l'utente e il punto di interesse coinvolti erano presenti.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -645,7 +645,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item Il sistema riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
+            \item Il Sistema$_G$ riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
             \item La tabella conterrà il nome dell'utente.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -666,7 +666,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item Il sistema riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
+            \item Il Sistema$_G$ riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
             \item La tabella conterrà il cognome dell'utente.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -687,7 +687,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item Il sistema riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
+            \item Il Sistema$_G$ riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
             \item La tabella conterrà l'email dell'utente.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -708,7 +708,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item Il sistema riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
+            \item Il Sistema$_G$ riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
             \item La tabella conterrà il genere dell'utente.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -729,7 +729,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item Il sistema riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
+            \item Il Sistema$_G$ riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
             \item La tabella conterrà la data di nascita dell'utente.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -750,7 +750,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item Il sistema riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
+            \item Il Sistema$_G$ riporta  in un panello apposito le informazioni dell'utente in forma tabellare (UC3.4);
             \item La tabella conterrà lo stato civile dell'utente.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
@@ -758,7 +758,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\textbf{UC4 - Visualizzazione dettagli dei marker utente sulla mappa}}
+\subsubsection{\textbf{UC4 - Visualizzazione dettagli dei Marker$_G$ utente sulla mappa}}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{UC4image.png}
@@ -772,18 +772,18 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ singolo utente (UC3);
     		\item L'utente privilegiato sta visualizzando lo storico delle posizioni sulla Dashboard$_G$ singolo utente (UC3.1).
-          \item L'utente privilegiato ha selezionato un marker, raffigurante la posizione dell'utente ad un determinato istante, presente nella mappa di singolo utente.
+          \item L'utente privilegiato ha selezionato un Marker$_G$, raffigurante la posizione dell'utente ad un determinato istante, presente nella mappa di singolo utente.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni del marker utente selezionato in forma tabellare. 
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni del Marker$_G$ utente selezionato in forma tabellare. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare.
+            \item L'utente privilegiato seleziona un Marker$_G$ utente presente sulla mappa di un singolo utente;
+            \item Il Sistema$_G$ riporta le informazioni del Marker$_G$ in forma tabellare.
             \item La tabella conterrà la posizione, espressa in latitudine e longitudine e l'istante di rilevamento.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-       Come utente privilegiato voglio selezionare un marker, che indica la posizione dell'utente, presente sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche del marker selezionato.
+       Come utente privilegiato voglio selezionare un Marker$_G$, che indica la posizione dell'utente, presente sulla mappa di singolo utente, per poter visualizzare le informazioni specifiche del Marker$_G$ selezionato.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -793,19 +793,19 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
+          \item L'utente privilegiato ha selezionato un Marker$_G$ utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del Marker$_G$ utente selezionato (UC4).
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la latitudine rispettiva al marker utente selezionato. 
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la latitudine rispettiva al Marker$_G$ utente selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
-            \item La tabella conterrà la latitudine del marker utente selezionato.
+            \item L'utente privilegiato seleziona un Marker$_G$ utente presente sulla mappa di un singolo utente;
+            \item Il Sistema$_G$ riporta le informazioni del Marker$_G$ in forma tabellare (UC4);
+            \item La tabella conterrà la latitudine del Marker$_G$ utente selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-       Come utente privilegiato voglio visualizzare la latitudine del marker selezionato.
+       Come utente privilegiato voglio visualizzare la latitudine del Marker$_G$ selezionato.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -815,19 +815,19 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
+          \item L'utente privilegiato ha selezionato un Marker$_G$ utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del Marker$_G$ utente selezionato (UC4).
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la longitudine rispettiva al marker utente selezionato. 
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la longitudine rispettiva al Marker$_G$ utente selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
-            \item La tabella conterrà la longitudine del marker utente selezionato.
+            \item L'utente privilegiato seleziona un Marker$_G$ utente presente sulla mappa di un singolo utente;
+            \item Il Sistema$_G$ riporta le informazioni del Marker$_G$ in forma tabellare (UC4);
+            \item La tabella conterrà la longitudine del Marker$_G$ utente selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-       Come utente privilegiato voglio visualizzare la longitudine del marker selezionato.
+       Come utente privilegiato voglio visualizzare la longitudine del Marker$_G$ selezionato.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -837,19 +837,19 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
         \begin{itemize}
-          \item L'utente privilegiato ha selezionato un marker utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
-          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del marker utente selezionato (UC4).
+          \item L'utente privilegiato ha selezionato un Marker$_G$ utente (UC3.1.1) presente nella mappa di singolo utente (UC3);
+          \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del Marker$_G$ utente selezionato (UC4).
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza l'istante di rilevamento rispettivo al marker utente selezionato. 
+      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza l'istante di rilevamento rispettivo al Marker$_G$ utente selezionato. 
       \item \textbf{Scenario Principale:}
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ di un singolo utente(UC3);
-            \item L'utente privilegiato seleziona un marker utente presente sulla mappa di un singolo utente;
-            \item Il sistema riporta le informazioni del marker in forma tabellare (UC4);
-            \item La tabella conterrà l'istante di rilevamento del marker utente selezionato.
+            \item L'utente privilegiato seleziona un Marker$_G$ utente presente sulla mappa di un singolo utente;
+            \item Il Sistema$_G$ riporta le informazioni del Marker$_G$ in forma tabellare (UC4);
+            \item La tabella conterrà l'istante di rilevamento del Marker$_G$ utente selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
-       Come utente privilegiato voglio visualizzare l'istante di rilevamento del marker selezionato.
+       Come utente privilegiato voglio visualizzare l'istante di rilevamento del Marker$_G$ selezionato.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -866,13 +866,13 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1);
     	        \item L'utente privilegiato sta visualizzando i punti di interesse presenti sulla mappa (UC1.2);
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1).
             \item L'utente privilegiato ha selezionato un punto di interesse (UC1.2).
         \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare l'area di influenza del punto di interesse selezionato sulla mappa.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
-            \item Il sistema genera l'area di influenza del punto di interesse selezionato e la mostra sulla mappa.
+            \item Il Sistema$_G$ genera l'area di influenza del punto di interesse selezionato e la mostra sulla mappa.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:}
      Come utente privilegiato voglio vedere l'area di influenza di ogni punto di interesse presente sulla mappa.
@@ -892,13 +892,13 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
        \begin{itemize}
     		\item L'utente privilegiato sta visualizzando la Dashboard$_G$ (UC1);
     	        \item L'utente privilegiato sta visualizzando i punti di interesse presenti sulla mappa (UC1.2/UC3.2);
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente una tabella, che esprime le informazioni specifiche del punto di interesse selezionato.
      \item \textbf{Scenario Principale:}
         \begin{enumerate}
           \item L'utente privilegiato ha selezionato un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse selezionato e le mostra nella Dashboard$_G$ in forma tabellare. Tali informazioni sono:
+            \item Il Sistema$_G$ riporta le informazioni del punto di interesse selezionato e le mostra nella Dashboard$_G$ in forma tabellare. Tali informazioni sono:
        \begin{itemize}
        \item Il nome;
        \item La posizione espressa in latitudine e longitudine;
@@ -915,7 +915,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la latitudine del punto di interesse selezionato.
@@ -923,7 +923,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item Il Sistema$_G$ riporta le informazioni del punto di interesse in forma tabellare (UC6);
             \item La tabella conterrà la latitudine del punto di interesse selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la latitudine del punto di interesse selezionato. 
@@ -934,7 +934,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la longitudine del punto di interesse selezionato.
@@ -942,7 +942,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item Il Sistema$_G$ riporta le informazioni del punto di interesse in forma tabellare (UC6);
             \item La tabella conterrà la longitudine del punto di interesse selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la longitudine del punto di interesse selezionato. 
@@ -953,7 +953,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il nome del punto di interesse selezionato.
@@ -961,7 +961,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item Il Sistema$_G$ riporta le informazioni del punto di interesse in forma tabellare (UC6);
             \item La tabella conterrà il nome del punto di interesse selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare il nome del punto di interesse selezionato. 
@@ -972,7 +972,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza l'indirizzo del punto di interesse selezionato.
@@ -980,7 +980,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item Il Sistema$_G$ riporta le informazioni del punto di interesse in forma tabellare (UC6);
             \item La tabella conterrà l'indirizzo del punto di interesse selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare l'indirizzo del punto di interesse selezionato. 
@@ -991,7 +991,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la tipologia del punto di interesse selezionato.
@@ -999,7 +999,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item Il Sistema$_G$ riporta le informazioni del punto di interesse in forma tabellare (UC6);
             \item La tabella conterrà la tipologia del punto di interesse selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la tipologia del punto di interesse selezionato. 
@@ -1010,7 +1010,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo punto di interesse (UC1.2.1/3.2.1);
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni del punto di interesse selezionato (UC6).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la descrizione del punto di interesse selezionato.
@@ -1018,7 +1018,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un punto di interesse presente sulla mappa;
-            \item Il sistema riporta le informazioni del punto di interesse in forma tabellare (UC6);
+            \item Il Sistema$_G$ riporta le informazioni del punto di interesse in forma tabellare (UC6);
             \item La tabella conterrà la descrizione del punto di interesse selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la descrizione del punto di interesse selezionato. 
@@ -1039,13 +1039,13 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile.
+          \item Il Sistema$_G$ è operativo e accessibile.
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare una tabella contenenti i dati dei singoli PoI ordinati per la quantità di messaggi inviati in questo mese.\\
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
-          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare.
+          \item Il Sistema$_G$ mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare.
         \end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato, voglio accedere alla tabella dei PoI per poter visualizzare quale PoI sta inviando più messaggi in quel mese e poter visionare facilmente le informazioni di ogni singolo PoI.
 \end{itemize}
@@ -1057,14 +1057,14 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
+          \item Il Sistema$_G$ è operativo e accessibile;
             \item L'utente privilegiato sta visualizzando la tabella dei PoI (UC5).
         \end{itemize}
       \item \textbf{Postcondizioni:} L'utente privilegiato è in grado di visualizzare le informazioni di un singolo PoI.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
-          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item Il Sistema$_G$ mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
           \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella. Tali informazioni sono:
         \begin{itemize}
        \item Il nome;
@@ -1091,7 +1091,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
-          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item Il Sistema$_G$ mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
           \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
             \item L'utente privilegiato è in grado di visualizzare il nome di un singolo PoI.
         \end{enumerate}
@@ -1112,7 +1112,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
-          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item Il Sistema$_G$ mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
           \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
             \item L'utente privilegiato è in grado di visualizzare l'indirizzo di un singolo PoI.
         \end{enumerate}
@@ -1132,7 +1132,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
-          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item Il Sistema$_G$ mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
           \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
             \item L'utente privilegiato è in grado di visualizzare la tipologia di un singolo PoI.
         \end{enumerate}
@@ -1152,7 +1152,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
-          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item Il Sistema$_G$ mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
           \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
             \item L'utente privilegiato è in grado di visualizzare la descrizione di un singolo PoI.
         \end{enumerate}
@@ -1172,7 +1172,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'utente privilegiato seleziona la visualizzazione della tabella dei PoI;
-          \item Il sistema mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
+          \item Il Sistema$_G$ mette a disposizioni le informazioni storicizzate per ogni singolo PoI in forma tabellare (UC5);
           \item L'utente privilegiato visualizza le informazioni di un singolo PoI nella tabella;
             \item L'utente privilegiato è in grado di visualizzare il numero di messaggi inviati da un singolo PoI durante il mese.
         \end{enumerate}
@@ -1193,13 +1193,13 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Precondizioni:} 
         \begin{itemize}
     	        \item L'utente privilegiato sta visualizzando gli annunci presenti sulla mappa (UC1.3/UC3.3);
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
         \end{itemize}
     \item \textbf{Postcondizioni:} L'utente privilegiato visualizza un pannello contenente le informazioni dell'annuncio selezionato in forma tabellare. 
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
           \item L'utente privilegiato ha selezionato un annuncio presente sulla mappa;
-          \item Il sistema riporta le informazioni dell'annuncio selezionato e le mostra nella Dashboard$_G$ in forma tabellare;
+          \item Il Sistema$_G$ riporta le informazioni dell'annuncio selezionato e le mostra nella Dashboard$_G$ in forma tabellare;
           \item La tabella conterrà i nomi dell'utente e del punto di interesse coinvolti, la longitudine e latitudine di questi ultimi, il contenuto effettivo dell'annuncio e l'istante di creazione dell'annuncio.
 	\end{enumerate}
     \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare le informazioni relative ad un annuncio pubblicitario.
@@ -1210,7 +1210,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni dell'annuncio selezionato (UC8).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la latitudine dell'annuncio selezionato.
@@ -1218,7 +1218,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio in forma tabellare (UC8);
+            \item Il Sistema$_G$ riporta le informazioni dell'annuncio in forma tabellare (UC8);
             \item La tabella conterrà la latitudine dell'annuncio selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la latitudine dell'annuncio selezionato. 
@@ -1229,7 +1229,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni dell'annuncio selezionato (UC8).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza la longitudine dell'annuncio selezionato.
@@ -1237,7 +1237,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio in forma tabellare (UC8);
+            \item Il Sistema$_G$ riporta le informazioni dell'annuncio in forma tabellare (UC8);
             \item La tabella conterrà la longitudine dell'annuncio selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare la longitudine dell'annuncio selezionato. 
@@ -1248,7 +1248,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni dell'annuncio selezionato (UC8).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza l'istante di creazione dell'annuncio selezionato.
@@ -1256,7 +1256,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio in forma tabellare (UC8);
+            \item Il Sistema$_G$ riporta le informazioni dell'annuncio in forma tabellare (UC8);
             \item La tabella conterrà l'istante di creazione dell'annuncio selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare l'istante di creazione dell'annuncio selezionato. 
@@ -1267,7 +1267,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni dell'annuncio selezionato (UC8).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il nome dell'utente a cui l'annuncio selezionato è riferito.
@@ -1275,7 +1275,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio in forma tabellare (UC8);
+            \item Il Sistema$_G$ riporta le informazioni dell'annuncio in forma tabellare (UC8);
             \item La tabella conterrà il nome dell'utente a cui l'annuncio selezionato è riferito.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare il nome dell'utente a cui l'annuncio selezionato è riferito. 
@@ -1286,7 +1286,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni dell'annuncio selezionato (UC8).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il nome del PoI a cui l'annuncio selezionato è riferito.
@@ -1294,7 +1294,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio in forma tabellare (UC8);
+            \item Il Sistema$_G$ riporta le informazioni dell'annuncio in forma tabellare (UC8);
             \item La tabella conterrà il nome del PoI a cui l'annuncio selezionato è riferito.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare il nome del PoI a cui l'annuncio selezionato è riferito. 
@@ -1305,7 +1305,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
      \item \textbf{Attore$_G$ Principale:} Utente Privilegiato.
      \item \textbf{Precondizioni:}
        \begin{itemize}
-    	        \item L'utente privilegiato ha selezionato un marker, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
+    	        \item L'utente privilegiato ha selezionato un Marker$_G$, riferito ad un singolo annuncio (UC1.3.1/3.3.1).
           \item L'utente privilegiato sta visualizzando un pannello contenente la tabella delle informazioni dell'annuncio selezionato (UC8).
        \end{itemize}
      \item \textbf{Postcondizioni:} L'utente privilegiato visualizza il contenuto dell'annuncio selezionato.
@@ -1313,7 +1313,7 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
         \begin{enumerate}
             \item L'utente privilegiato ha accesso alla Dashboard$_G$ (UC1);
             \item L'utente privilegiato seleziona un annuncio presente sulla mappa;
-            \item Il sistema riporta le informazioni dell'annuncio in forma tabellare (UC8);
+            \item Il Sistema$_G$ riporta le informazioni dell'annuncio in forma tabellare (UC8);
             \item La tabella conterrà il contenuto dell'annuncio selezionato.
         \end{enumerate}
      \item \textbf{User-Story$_G$ associata:} Come utente privilegiato voglio visualizzare il contenuto dell'annuncio selezionato. 
@@ -1331,15 +1331,15 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-    	\item Il sensore è attivo e connesso al sistema.
+    	\item Il sensore è attivo e connesso al Sistema$_G$.
         \end{itemize}
-    \item \textbf{Postcondizioni:} Il sensore invia i dati posizionali del mezzo al sistema. Il sistema salva i dati inviati dal sensore. 
+    \item \textbf{Postcondizioni:} Il sensore invia i dati posizionali del mezzo al Sistema$_G$. Il Sistema$_G$ salva i dati inviati dal sensore. 
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
             \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
-            \item Il sensore GPS invia i dati posizionali al sistema.
+            \item Il sensore GPS invia i dati posizionali al Sistema$_G$.
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al sistema.
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la posizione espressa in latitudine e longitudine al Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC9.1 - Trasmissione id}}
@@ -1347,17 +1347,17 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-    	\item Il sensore è attivo e connesso al sistema;
-          \item Il sensore ha trasmesso i dati al sistema.
+    	\item Il sensore è attivo e connesso al Sistema$_G$;
+          \item Il sensore ha trasmesso i dati al Sistema$_G$.
         \end{itemize}
-    \item \textbf{Postcondizioni:} Il sensore invia il suo id al sistema.
+    \item \textbf{Postcondizioni:} Il sensore invia il suo id al Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
             \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
-            \item Il sensore GPS invia i dati posizionali al sistema;
+            \item Il sensore GPS invia i dati posizionali al Sistema$_G$;
             \item Il sensore GPS invia il proprio id.
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere il mio id al sistema.
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere il mio id al Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC9.2 - Trasmissione latitudine}}
@@ -1365,17 +1365,17 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-    	\item Il sensore è attivo e connesso al sistema;
-          \item Il sensore ha trasmesso i dati al sistema.
+    	\item Il sensore è attivo e connesso al Sistema$_G$;
+          \item Il sensore ha trasmesso i dati al Sistema$_G$.
         \end{itemize}
-    \item \textbf{Postcondizioni:} Il sensore invia la sua latitudine al sistema.
+    \item \textbf{Postcondizioni:} Il sensore invia la sua latitudine al Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
             \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
-            \item Il sensore GPS invia i dati posizionali al sistema;
+            \item Il sensore GPS invia i dati posizionali al Sistema$_G$;
             \item Il sensore GPS invia la sua latitudine.
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la mia latitudine al sistema.
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la mia latitudine al Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC9.3 - Trasmissione longitudine}}
@@ -1383,17 +1383,17 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
     \item \textbf{Attore$_G$ Principale:} Sensore.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-    	\item Il sensore è attivo e connesso al sistema;
-          \item Il sensore ha trasmesso i dati al sistema.
+    	\item Il sensore è attivo e connesso al Sistema$_G$;
+          \item Il sensore ha trasmesso i dati al Sistema$_G$.
         \end{itemize}
-    \item \textbf{Postcondizioni:} Il sensore invia la sua longitudine al sistema.
+    \item \textbf{Postcondizioni:} Il sensore invia la sua longitudine al Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
             \item Il sensore di tipo GPS effettua un rilevamento della posizione geografica dell'utente espressa in latitudine e longitudine;
-            \item Il sensore GPS invia i dati posizionali al sistema;
+            \item Il sensore GPS invia i dati posizionali al Sistema$_G$;
             \item Il sensore GPS invia la sua longitudine.
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la mia longitudine al sistema.
+    \item \textbf{User-Story$_G$ associata:} Come Sensore GPS, desidero trasmettere la mia longitudine al Sistema$_G$.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1407,19 +1407,19 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
 \end{figure}
 \label{UC10}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-        \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM.
+        \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente.
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere i dati dell'utente e del PoI selezionati dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         identificare e selezionare il Punto di Interesse più rilevante per l'utente in base alla sua profilazione e alle sue preferenze.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1432,18 +1432,18 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
 \end{figure}
 \label{UC10.1}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve i dati dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve i dati dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente, quali:
           \begin{itemize}
           \item Nome;
@@ -1455,147 +1455,147 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
           \item Elenco di interessi dell'utente.
           \end{itemize}
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere i dati dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere i dati dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.1.1 - Ricezione nome dell'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve il nome dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve il nome dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
           \item L'LLM riceve il nome dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il nome dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere il nome dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.1.2 - Ricezione cognome dell'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve il cognome dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve il cognome dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
           \item L'LLM riceve il cognome dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il cognome dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere il cognome dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.1.3 - Ricezione email dell'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve l'email dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve l'email dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
           \item L'LLM riceve l'email dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere l'email dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere l'email dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.1.4 - Ricezione genere dell'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve il genere dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve il genere dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
           \item L'LLM riceve il genere dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il genere dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere il genere dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.1.5 - Ricezione data di nascita dell'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve la data di nascita dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve la data di nascita dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
           \item L'LLM riceve la data di nascita dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la data di nascita dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere la data di nascita dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.1.6 - Ricezione stato civile dell'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve lo stato civile dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve lo stato civile dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
           \item L'LLM riceve lo stato civile dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere lo stato civile dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere lo stato civile dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.1.7 - Ricezione interessi dell'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve gli interessi dell'utente selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve gli interessi dell'utente selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni personali dell'utente;
           \item L'LLM riceve gli interessi dell'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere gli interessi dell'utente selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere gli interessi dell'utente selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.2 - Ricezione dati PoI}}
@@ -1607,18 +1607,18 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
 \end{figure}
 \label{UC10.2}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve i dati del PoI selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve i dati del PoI selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-          \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+          \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni del PoI, quali:
           \begin{itemize}
           \item Nome;
@@ -1628,107 +1628,107 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
           \item Distanza del PoI dall'utente.
           \end{itemize}
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere i dati del PoI selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere i dati del PoI selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.2.1 - Ricezione nome del PoI}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve il nome del PoI selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve il nome del PoI selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni del PoI;
           \item L'LLM riceve il nome del PoI.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere il nome del PoI selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere il nome del PoI selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.2.2 - Ricezione indirizzo del PoI}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve l'indirizzo del PoI selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve l'indirizzo del PoI selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni del PoI;
           \item L'LLM riceve l'indirizzo del PoI.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere l'indirizzo del PoI selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere l'indirizzo del PoI selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.2.3 - Ricezione tipologia del PoI}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve la tipologia del PoI selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve la tipologia del PoI selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni del PoI;
           \item L'LLM riceve la tipologia del PoI.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la tipologia del PoI selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere la tipologia del PoI selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.2.4 - Ricezione descrizione del PoI}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve la descrizione del PoI selezionato dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve la descrizione del PoI selezionato dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni del PoI;
           \item L'LLM riceve la descrizione del PoI.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la descrizione del PoI selezionato dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere la descrizione del PoI selezionato dal Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC10.2.5 - Ricezione distanza del PoI dall'utente}}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile;
-          \item Il sistema invia i dati dell'utente e del PoI selezionati all'LLM;
-            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal sistema.
+          \item Il Sistema$_G$ è operativo e accessibile;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI selezionati all'LLM;
+            \item L'LLM riceve i dati dell'utente e del PoI selezionati dal Sistema$_G$.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM riceve la distanza presente dal PoI e dall'utente selezionati dal sistema.
+      \item \textbf{Postcondizioni:} L'LLM riceve la distanza presente dal PoI e dall'utente selezionati dal Sistema$_G$.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
-          \item Il sistema invia i dati dell'utente e del PoI all'LLM;
-        \item L' LLM riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
+          \item Il Sistema$_G$ invia i dati dell'utente e del PoI all'LLM;
+        \item L' LLM$_G$ riceve i dati personali dell'utente e quelli del punto di interesse presente nelle vicinanze dell'utente;
           \item L'LLM riceve le informazioni del PoI;
           \item L'LLM riceve la distanza del PoI dall'utente.
         \end{enumerate}
-      \item \textbf{User-Story$_G$ associata:} Come LLM voglio ricevere la distanza presente dal PoI e dall'utente selezionati dal sistema.
+      \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ voglio ricevere la distanza presente dal PoI e dall'utente selezionati dal Sistema$_G$.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1742,18 +1742,18 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
 \end{figure}
 \label{UC11}
 \begin{itemize}
-    \item \textbf{Attore$_G$ Principale:} LLM.
+    \item \textbf{Attore$_G$ Principale:} LLM$_G$.
     \item \textbf{Precondizioni:} 
         \begin{itemize}
-          \item Il sistema è operativo e accessibile.
+          \item Il Sistema$_G$ è operativo e accessibile.
         \end{itemize}
-      \item \textbf{Postcondizioni:} L'LLM invia il messaggio custom generato al sistema. Il sistema salva l'annuncio generato dall'LLM.
+      \item \textbf{Postcondizioni:} L'LLM invia il messaggio custom generato al Sistema$_G$. Il Sistema$_G$ salva l'annuncio generato dall'LLM.
     \item \textbf{Scenario Principale:} 
         \begin{enumerate}
         \item L'LLM genera un annuncio basato sui dati precedentemente inviati;
-        \item L'LLM invia al sistema il messaggio generato. 
+        \item L'LLM invia al Sistema$_G$ il messaggio generato. 
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come LLM desidero trasmettere un messaggio custom, generato per un utente, al sistema.
+    \item \textbf{User-Story$_G$ associata:} Come LLM$_G$ desidero trasmettere un messaggio custom, generato per un utente, al Sistema$_G$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1777,41 +1777,41 @@ Di seguito sono elencati gli attori con i quali si interfaccia il sistema:
 \endhead
 
 \hline
- RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari marker su di essa. &  Capitolato$_G$, UC1\\
+ RF01 &  Obbligatorio &  L'utente privilegiato deve poter visualizzare la Dashboard$_G$ composta da una mappa interattiva con i vari Marker$_G$ su di essa. &  Capitolato$_G$, UC1\\
 \hline
-RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei marker che rappresentano i vari percorsi effettuati in tempo reale dagli utenti presenti nel sistema & Capitolato$_G$, UC1.1\\
+RF02 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei Marker$_G$ che rappresentano i vari Percorsi$_G$ effettuati in tempo reale dagli utenti presenti nel Sistema$_G$ & Capitolato$_G$, UC1.1\\
 \hline
-RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare un marker che rappresenta un percorso effettuato in tempo reale da un utente presente nel sistema & Capitolato$_G$, UC1.1 e UC1.1.1\\
+RF03 & Obbligatorio & L'utente privilegiato deve poter visualizzare un Marker$_G$ che rappresenta un Percorso$_G$ effettuato in tempo reale da un utente presente nel Sistema$_G$ & Capitolato$_G$, UC1.1 e UC1.1.1\\
 \hline
-RF04 & Obbligatorio & L'utente privilegiato deve poter visualizzare tutti i punti di interesse riconosciuti dal sistema. & Capitolato$_G$, UC1.2\\
+RF04 & Obbligatorio & L'utente privilegiato deve poter visualizzare tutti i punti di interesse riconosciuti dal Sistema$_G$. & Capitolato$_G$, UC1.2\\
 \hline
-RF05 & Obbligatorio & L'utente privilegiato deve poter visualizzare un marker che rappresenta un punto di interesse riconosciuto dal sistema. & Capitolato$_G$, UC1.2 e UC1.2.1\\
+RF05 & Obbligatorio & L'utente privilegiato deve poter visualizzare un Marker$_G$ che rappresenta un punto di interesse riconosciuto dal Sistema$_G$. & Capitolato$_G$, UC1.2 e UC1.2.1\\
 \hline
 RF06 & Obbligatorio & L'utente privilegiato deve poter visualizzare gli annunci pubblicitari provenienti da un determinato punto di interesse. & Capitolato$_G$, UC1.3\\
 \hline
-RF07 & Obbligatorio & L'utente privilegiato deve poter visualizzare un singolo annuncio pubblicitario tramite un marker. & Capitolato$_G$, UC1.3 e UC1.3.1\\
+RF07 & Obbligatorio & L'utente privilegiato deve poter visualizzare un singolo annuncio pubblicitario tramite un Marker$_G$. & Capitolato$_G$, UC1.3 e UC1.3.1\\
 \hline
-RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare una Dashboard$_G$ relativa ad un singolo utente quando seleziona un marker utente nella Dashboard principale. & Interna, UC3\\
+RF08 & Obbligatorio & L'utente privilegiato deve poter visualizzare una Dashboard$_G$ relativa ad un singolo utente quando seleziona un Marker$_G$ utente nella Dashboard$_G$ principale. & Interna, UC3\\
 \hline
-RF09 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei marker che rappresentano lo storico delle posizioni dell'utente a cui è riferita la Dashboard di singolo utente. & Interna, UC3.1\\
+RF09 & Obbligatorio & L'utente privilegiato deve poter visualizzare dei Marker$_G$ che rappresentano lo storico delle posizioni dell'utente a cui è riferita la Dashboard$_G$ di singolo utente. & Interna, UC3.1\\
 \hline
-RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare un marker che rappresenta la posizione dell'utente in un determinato istante nella Dashboard di singolo utente. & Interna, UC3.1 e UC3.1.1\\
+RF10 & Obbligatorio & L'utente privilegiato deve poter visualizzare un Marker$_G$ che rappresenta la posizione dell'utente in un determinato istante nella Dashboard$_G$ di singolo utente. & Interna, UC3.1 e UC3.1.1\\
 \hline
-RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare, nella Dashboard di singolo utente, tutti i punti di interesse riconosciuti dal sistema. & Interna, UC3.2\\
+RF11 & Obbligatorio & L'utente privilegiato deve poter visualizzare, nella Dashboard$_G$ di singolo utente, tutti i punti di interesse riconosciuti dal Sistema$_G$. & Interna, UC3.2\\
 \hline
-RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare, nella Dashboard di singolo utente, un marker che rappresenta un punto di interesse riconosciuto dal sistema. & Interna, UC3.2 e UC3.2.1\\
+RF12 & Obbligatorio & L'utente privilegiato deve poter visualizzare, nella Dashboard$_G$ di singolo utente, un Marker$_G$ che rappresenta un punto di interesse riconosciuto dal Sistema$_G$. & Interna, UC3.2 e UC3.2.1\\
 \hline
-RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare lo storico degli annunci pubblicitari generati per l'utente a cui è riferita la Dashboard singolo utente. & Interna, UC3.3\\
+RF13 & Obbligatorio & L'utente privilegiato deve poter visualizzare lo storico degli annunci pubblicitari generati per l'utente a cui è riferita la Dashboard$_G$ singolo utente. & Interna, UC3.3\\
 \hline
-RF14 & Obbligatorio & L'utente privilegiato deve poter visualizzare un singolo annuncio pubblicitario tramite un marker nella Dashboard di singolo utente. & Interna, UC3.3 e UC3.3.1\\
+RF14 & Obbligatorio & L'utente privilegiato deve poter visualizzare un singolo annuncio pubblicitario tramite un Marker$_G$ nella Dashboard$_G$ di singolo utente. & Interna, UC3.3 e UC3.3.1\\
 \hline
-RF15 & Obbligatorio & L'utente privilegiato deve poter visualizzare un pannello apposito contenente le informazioni dell'utente, a cui è riferita la Dashboard di singolo utente, in forma tabellare. & Interna, UC3.4\\
+RF15 & Obbligatorio & L'utente privilegiato deve poter visualizzare un pannello apposito contenente le informazioni dell'utente, a cui è riferita la Dashboard$_G$ di singolo utente, in forma tabellare. & Interna, UC3.4\\
 \hline
 RF16 & Obbligatorio & L'utente privilegiato deve poter visualizzare nel pannello apposito di visualizzazione informazioni dell'utente: il nome, il cognome, l'email, il genere, la data di nascita e lo stato civile. & Interna, UC3.4, UC3.4.1, UC3.4.2, UC3.4.3, UC3.4.4, UC3.4.5, UC3.4.6\\
 \hline
-RF17 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli del marker riguardante una singola posizione di un utente nella rispettiva dashboard & Interna, UC4\\
+RF17 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli del Marker$_G$ riguardante una singola posizione di un utente nella rispettiva Dashboard$_G$ & Interna, UC4\\
 \hline
-RF18 & Obbligatorio & L'utente privilegiato quando visualizza i dettagli del marker, riguardante una singola posizione di un utente nella rispettiva dashboard, deve poter vedere la latitudine, la longitudine e l'istante di rilevamento del marker & Interna, UC4, UC4.1, UC4.2 e UC4.3\\
+RF18 & Obbligatorio & L'utente privilegiato quando visualizza i dettagli del Marker$_G$, riguardante una singola posizione di un utente nella rispettiva Dashboard$_G$, deve poter vedere la latitudine, la longitudine e l'istante di rilevamento del Marker$_G$ & Interna, UC4, UC4.1, UC4.2 e UC4.3\\
 \hline
 RF19 & Opzionale & L'utente privilegiato deve poter visualizzare l'area di influenza di un punto di interesse selezionato. & Interna, UC5\\
 \hline
@@ -1831,17 +1831,17 @@ RF26 & Obbligatorio & L'utente privilegiato deve poter visualizzare i dettagli d
 \hline
 RF27 & Obbligatorio & L'utente privilegiato quando visualizza i dettagli di un annuncio deve poter visualizzare la latidudine, la longitudine, l'istante di creazione, il nome dell'utente coinvolto, il nome del punto di interesse coinvolto e il contenuto dell'annuncio. & Interna, UC8, UC8.1, UC8.2, UC8.3, UC8.4, UC8.5 e UC8.6\\
 \hline
-RF28 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati rilevati in tempo reale al sistema. & Capitolato$_G$, UC9\\
+RF28 & Obbligatorio & Il sensore deve essere in grado di trasmettere i dati rilevati in tempo reale al Sistema$_G$. & Capitolato$_G$, UC9\\
 \hline
-RF29 & Obbligatorio & Il sensore deve essere in grado di trasmettere il proprio id, la sua latitudine e longitudine al sistema. & Interna, UC9, UC9.1, UC9.2 e UC9.3\\
+RF29 & Obbligatorio & Il sensore deve essere in grado di trasmettere il proprio id, la sua latitudine e longitudine al Sistema$_G$. & Interna, UC9, UC9.1, UC9.2 e UC9.3\\
 \hline
-RF30 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere i dati dell'utente e del punto di interesse inviati dal sistema. & Interna, UC10\\
+RF30 & Obbligatorio & Il servizio LLM$_G$ deve essere in grado di ricevere i dati dell'utente e del punto di interesse inviati dal Sistema$_G$. & Interna, UC10\\
 \hline
-RF31 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere le informazioni dell'utente inviate dal sistema, quali: il nome, il cognome, l'email, il genere, la data di nascita, lo stato civile e i suoi interessi. & Interna, UC10, UC10.1, UC10.1.1, UC10.1.2, UC10.1.3, UC10.1.4, UC10.1.5, UC10.1.6 e UC10.1.7\\
+RF31 & Obbligatorio & Il servizio LLM$_G$ deve essere in grado di ricevere le informazioni dell'utente inviate dal Sistema$_G$, quali: il nome, il cognome, l'email, il genere, la data di nascita, lo stato civile e i suoi interessi. & Interna, UC10, UC10.1, UC10.1.1, UC10.1.2, UC10.1.3, UC10.1.4, UC10.1.5, UC10.1.6 e UC10.1.7\\
 \hline
-RF32 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere le informazioni del punto di interesse inviate dal sistema, quali: il nome, l'indirizzo, la tipologia, la descrizione e la distanza del PoI dall'utente. & Interna, UC10, UC10.2, UC10.2.1, UC10.2.2, UC10.2.3, UC10.2.4 e UC10.2.5\\
+RF32 & Obbligatorio & Il servizio LLM$_G$ deve essere in grado di ricevere le informazioni del punto di interesse inviate dal Sistema$_G$, quali: il nome, l'indirizzo, la tipologia, la descrizione e la distanza del PoI dall'utente. & Interna, UC10, UC10.2, UC10.2.1, UC10.2.2, UC10.2.3, UC10.2.4 e UC10.2.5\\
 \hline
-RF33 & Obbligatorio & Il servizio LLM deve essere in grado di trasmettere un messaggio custom, rappresentante il contenuto dell'annuncio per un utente, al sistema. & Capitolato, UC11\\
+RF33 & Obbligatorio & Il servizio LLM$_G$ deve essere in grado di trasmettere un messaggio custom, rappresentante il contenuto dell'annuncio per un utente, al Sistema$_G$. & Capitolato$_G$, UC11\\
 \hline
 \caption{Requisiti$_G$ funzionali}
 \end{longtable}
@@ -1867,7 +1867,7 @@ RQ03 & Obbligatorio & Deve essere fornita Documentazione$_G$ riguardante le scel
 \hline
 RQ04 & Obbligatorio & È necessaria la realizzazione di Test$_G$ che dimostrino il corretto funzionamento dei servizi e delle funzionalità previste, con una copertura minima dell'80\% e documentata tramite un report.  & Capitolato$_G$\\
 \hline
-RQ05 & Obbligatorio & È richiesto che il sistema venga testato nella sua interezza tramite Test$_G$ end-to-end, anche non automatizzati.  & Capitolato$_G$\\
+RQ05 & Obbligatorio & È richiesto che il Sistema$_G$ venga testato nella sua interezza tramite Test$_G$ end-to-end, anche non automatizzati.  & Capitolato$_G$\\
 \hline
 RQ06 & Obbligatorio & La Documentazione$_G$ dovrà riguardare anche problemi aperti ed eventuali possibili soluzioni da approfondire in futuro.  & Capitolato$_G$\\
 \hline
@@ -1892,11 +1892,11 @@ RV01 & Obbligatorio &  Per sviluppare il prodotto occorrerà utilizzare il lingu
 RV02 & Obbligatorio & L'ambiente di sviluppo e di deployment deve utilizzare la tecnologia multi-container, in particolare docker$_G$ Compose. & Capitolato$_G$, Interna\\
 \hline
 RV03 & Obbligatorio & I rilevamenti dei sensori geoposizionali
-devono essere memorizzati nel corretto formato in un time series Database$_G$, nel nostro sistema sarà ClickHouse$_G$. & Capitolato$_G$, Interna \\
+devono essere memorizzati nel corretto formato in un time series Database$_G$, nel nostro Sistema$_G$ sarà ClickHouse$_G$. & Capitolato$_G$, Interna \\
 \hline
-RV04 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di Dashboard$_G$ interattiva, come Grafana. & Capitolato$_G$, Interna\\
+RV04 & Obbligatorio & I dati raccolti e processati devono essere visualizzabili su una piattaforma di Dashboard$_G$ interattiva, come Grafana$_G$. & Capitolato$_G$, Interna\\
 \hline
-RV05 & Obbligatorio & Le coordinate generate per la simulazione di un utente che segue un percorso devono essere realistiche. & Capitolato$_G$\\
+RV05 & Obbligatorio & Le coordinate generate per la simulazione di un utente che segue un Percorso$_G$ devono essere realistiche. & Capitolato$_G$\\
 \hline
 \end{tabular}
 
@@ -1916,9 +1916,9 @@ RV05 & Obbligatorio & Le coordinate generate per la simulazione di un utente che
 \hline
 \textbf{Id. Requisito$_G$} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
 \hline
-RP01 & Obbligatorio &  Il sistema deve gestire inizialmente la generazione di un dato geoposizionale ogni 5 secondi e un utente noleggiatore del mezzo & Capitolato$_G$\\
+RP01 & Obbligatorio &  Il Sistema$_G$ deve gestire inizialmente la generazione di un dato geoposizionale ogni 5 secondi e un utente noleggiatore del mezzo & Capitolato$_G$\\
 \hline
-RP02 & Obbligatorio &  Il sistema deve sopportare ingenti quantità di dati in INSERT & Capitolato$_G$\\
+RP02 & Obbligatorio &  Il Sistema$_G$ deve sopportare ingenti quantità di dati in INSERT & Capitolato$_G$\\
 \hline
 \end{tabular}
 \caption{Requisiti$_G$ prestazionali}
