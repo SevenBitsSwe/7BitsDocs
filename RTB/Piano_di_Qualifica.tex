@@ -551,23 +551,21 @@ svolti al termine del progetto dai membri del gruppo in coordinazione con i comp
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
 \endhead
 \hline
-TA1 & Verificare che l'utente privilegiato possa usufruire dell'applicazione solamente a seguito di un'autenticazione avvenuta con successo. & NI \\
+TA1 & Verificare che l'utente privilegiato possa visualizzare una dashboard$_G$ contenente una mappa che mostri i PoI, i vari utenti presenti nel sistema con i percorsi effettuati in tempo reale, e l'ultimo annuncio generato per ogni utente. & NI \\
 \hline
-TA2 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare una dashboard$_G$ contenente una mappa che mostri i PoI, i vari utenti presenti nel sistema con i percorsi effettuati in tempo reale, e l'ultimo annuncio generato per ogni utente. & NI \\
+TA2 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando uno specifico utente, accedere ad una dashboard dedicata con informazioni dettagliate su tale utente, tra cui nome, cognome, email, genere, data di nascita e stato civile. & NI \\
 \hline
-TA3 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando uno specifico utente, accedere ad una dashboard dedicata con informazioni dettagliate su tale utente, tra cui nome, cognome, email, genere, data di nascita e stato civile. & NI \\
+TA3 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un PoI, accedere alle informazioni dettagliate relative al punto di interesse, tra cui nome, posizione, indirizzo, tipologia e descrizione. & NI \\
 \hline
-TA4 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un PoI, accedere alle informazioni dettagliate relative al punto di interesse, tra cui nome, posizione, indirizzo, tipologia e descrizione. & NI \\
+TA4 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un annuncio, accedere ai dettagli specifici di tale annuncio. & NI \\
 \hline
-TA5 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un annuncio, accedere ai dettagli specifici di tale annuncio. & NI \\
+TA5 & Verificare che l'utente privilegiato possa visualizzare una tabella contenente le informazioni relative ai singoli PoI, inclusa la quantità di messaggi inviati nel mese corrente per ognuno di essi. & NI \\
 \hline
-TA6 & Verificare che, una volta effettuato l'accesso, l'utente privilegiato possa visualizzare una tabella contenente le informazioni relative ai singoli PoI, inclusa la quantità di messaggi inviati nel mese corrente per ognuno di essi. & NI \\
+TA6 & Verificare che il sensore, una volta connesso al sistema, possa trasmettere i dati rilevati in tempo reale al sistema di stream processing. & NI \\
 \hline
-TA7 & Verificare che il sensore, una volta connesso al sistema, possa trasmettere i dati rilevati in tempo reale al sistema di stream processing. & NI \\
+TA7 & Verificare che il sistema di stream processing, una volta ricevuti i dati dal sensore, possa filtrare e validare tali dati e, se necessario, elaborarli tramite un modello LLM, per poi storicizzarli in un database adeguato. & NI \\
 \hline
-TA8 & Verificare che il sistema di stream processing, una volta ricevuti i dati dal sensore, possa filtrare e validare tali dati e, se necessario, elaborarli tramite un modello LLM, per poi storicizzarli in un database adeguato. & NI \\
-\hline
-TA9 & Verificare che il servizio LLM possa selezionare il punto di interesse (PoI) più rilevante per l'utente in base alla sua profilazione e alle informazioni dei punti di interesse e, di conseguenza, generare un messaggio personalizzato utilizzando sia i dati del PoI scelto sia quelli dell'utente. & NI \\
+TA8 & Verificare che il servizio LLM possa selezionare il punto di interesse (PoI) più rilevante per l'utente in base alla sua profilazione e alle informazioni dei punti di interesse e, di conseguenza, generare un messaggio personalizzato utilizzando sia i dati del PoI scelto sia quelli dell'utente. & NI \\
 \hline
 \caption{Test di accettazione}\\
 \end{longtable}
