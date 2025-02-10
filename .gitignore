@@ -4,10 +4,14 @@
 *.toc
 *.synctex.gz
 *.out
+*.lof
+*.lot
 .DS_Store
 src-esterni
 
 ##Others
+norme_di_progetto.notes
+.vscode/
 .vscode
 *.notes
 RTB/Verbali/Interni/images
