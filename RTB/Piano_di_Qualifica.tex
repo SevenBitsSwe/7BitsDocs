@@ -200,16 +200,11 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   MPD03 & Requisiti Opzionali Soddisfatti & $\geq$ 0\% & 100\% \\
   \hline
   MPD04 & Function Point & da determinare & da determinare \\ 
-  % da vedere se modificare i valori !!
   \hline
 \end{tabular}
 \caption{Funzionalità - Qualità di prodotto}
 \label{tab:funzionalità}
 \end{table}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% ATTENZIONE DA RIVEDERE NOMENCLATURA METRICHE, DATO IL GRANDE REFACTOR ANDRANNO MODIFICATE IN BASE ALL'ORDINE FINALE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Affidabilità}
 \begin{table}[H]
@@ -226,10 +221,6 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   MPD08 & Condition coverage & $\geq$ 80\% & 100\% \\
   \hline
-  %MPD08 & Indice Gulpease & $\geq$40\% & $\geq$60\% \\
-  %\hline
-  %MPD09 & Correttezza ortografica & 0 errori & 0 errori \\
-  %\hline
 \end{tabular}
 \caption{Affidabilità - Qualità di prodotto}
 \label{tab:affidabilità}
@@ -242,10 +233,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  %MPD10 & Utilizzo risorse & $\geq$80\% & 100\% \\
-  %\hline
   MPD09 & Tempo medio di risposta & $\leq$ 10 secondi & $\leq$ 4 secondi \\
-  % da vedere se modificare i valori !!
   \hline
 \end{tabular}
 \caption{Efficienza - Qualità di prodotto}
@@ -274,9 +262,6 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
 \begin{tabular}{|c|c|c|c|}
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-  % \hline
-  % MPD14 & Complessità ciclomatica & $\leq$20 & $\;leq$10 \\
-  %% Complessità ciclomatica è stata rimossa perché non è stata ritenuta utile
   \hline
   MPD12 & Coefficiente di accoppiamento fra classi & $\leq$ 4 & $\leq$ 2 \\
   \hline
@@ -317,54 +302,6 @@ Qui sotto divideremo le metriche di qualità di processo seguendo lo \hyperref[I
 \subsubsection{Processi Primari}
 I processi primari si possono dividere in parti primarie e una parte primaria è quella che inizia o esegue lo sviluppo, l'operazione o la manutenzione di prodotti software.\\
 
-%%
-%% Questo volendo si puo integrare in sviluppo
-%%
-
-% \paragraph{Analisi dei requisiti}\mbox{}\\
-% L'analisi dei requisiti è il processo che si occupa di raccogliere, analizzare e definire i requisiti del sistema che si intende sviluppare.\\
-% Serve per capire le esigenze degli stakeholder e tradurle in requisiti dettagliati e comprensibili per il team di sviluppo.\\
-% \begin{table}[H]
-%   \centering
-% \begin{tabular}{|c|c|c|c|}
-%   \hline
-%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-%   \hline
-%   MPC01 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
-%   \hline
-%   MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
-%   \hline
-%   MPC03 & Requisiti Opzionali Soddisfatti (RPS) & $\geq$0\% & 100\% \\
-%   \hline
-% \end{tabular}
-% \caption{Processi primari - Analisi dei requisiti}
-% \label{tab:analisi dei requisiti}
-% \end{table}
-
-%%
-%% Questa sezione la vedo piú da qualità di prodotto e in piú è poco comune come processo
-%%
-
-% \paragraph{Progettazione}\mbox{}\\
-% La progettazione è il processo che si occupa di definire l'architettura del sistema.\\
-% Serve per definire come il sistema sarà implementato e come le varie parti del sistema interagiranno tra di loro.\\
-% \begin{table}[H]
-%   \centering
-% \begin{tabular}{|c|c|c|c|}
-%   \hline
-%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-%   % \hline
-%   % MPC04 & Coefficiente di accoppiamento fra classi & $\leq$10 & $\leq$5 \\
-%   \hline
-%   MPC05 & Facilità di utilizzo & $\leq$5 errori nell'interagire & $\leq$3 errori nell'interagire  \\
-%   \hline
-%   MPC06 & Tempo medio di apprendimento & $\leq$15 secondi & $\leq$5 secondi \\
-%   \hline
-% \end{tabular}
-% \caption{Processi primari - Progettazione}
-% \label{tab:progettazione}
-% \end{table}
-
 \paragraph{Fornitura}\mbox{}\\
 La fornitura è il processo che si occupa di consegnare il prodotto software al cliente.\\
 Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi definiti con il cliente.\\
@@ -383,58 +320,17 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
   MPC04 & Earned value (EV) & $\geq$ 0 & $\leq$ EAC\(_G\) \\
   \hline
   MPC05 & Planned value (PV) & $\geq$ 0 & $\leq$ Budget at completion (BAC)\(_G\) \\
-  %% Queste metriche qui sotto arrivano dalla sezione di pianificazione sotto processi organizzativi
   \hline
   MPC06 & Schedule variance (SV) & $\geq$ -10\% & $\geq$ 0\% \\
   \hline
   MPC07 & Cost variance (CV) & $\geq$ -10\% & $\geq$ 0\% \\
   \hline
-  %% Queste due sotto sono nuove, non sono ancora state scritte in norme di progetto
   MPC08 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
   \hline
-  %% Questo può essere messo in sviluppo
-  % MPC31 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
-  % \hline
 \end{tabular}
 \caption{Processi primari - Fornitura}
 \label{tab:fornitura}
 \end{table}
-
-
-%%
-%% Questa non so se tenerla dopotutto è più parte della qualità di prodotto
-%%
-
-% \paragraph{Codifica}\mbox{}\\
-% La codifica è il processo riguardante la scrittura del codice del prodotto software.\\
-% Serve per implementare le funzionalità del software e garantire che il software rispetti gli standard di qualità.\\
-% \begin{table}[H]
-%   \centering
-% \begin{tabular}{|c|c|c|c|}
-%   \hline
-%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-%   % Questa era stata rimossa a priori perché poco utile
-%   % \hline
-%   % MPC12 & Complessità ciclomatica & $\leq$20 & $\leq$10 \\
-%   \hline
-%   MPC13 & Parametri per metodo & $\leq$7 & $\leq$4 \\
-%   % \hline
-%   % MPC14 & Attributi per classe & $\leq$7 & $\leq$5 \\
-%   \hline
-%   MPC15 & Linee di codice per metodo & $\leq$50 & $\leq$25 \\
-%   \hline
-%   MPC16 & Tempo medio di risposta & $\leq$10 secondi & $\leq$4 secondi \\
-%   \hline
-%   MPC17 & Versioni browser supportati & $\geq$80\% & 100\% \\
-%   \hline
-% \end{tabular}
-% \caption{Processi primari - Codifica}
-% \label{tab:codifica}
-% \end{table}
-
-%%
-%% Un eventuale alternativa è la sezione sviluppo, molto simile
-%%
 
 \paragraph{Sviluppo}\mbox{}\\
 Lo sviluppo è il processo riguardante la scrittura del codice del prodotto software.\\
@@ -447,12 +343,6 @@ Questa metrica serve a garantire che il software rispetti le richieste del clien
   \hline
   MPC09 & Requisiti Obbligatori Soddisfatti (ROS) & 100\% & 100\%\\
   \hline
-  %% Questi due sotto potrebbero essere messi però sono poco comuni, quello essenziale è quello sopra
-  %% È essenziale se si mette sviluppo altrimenti se si mette Analisi dei requisiti diventano essenziali tutti e tre a mio parere
-  % MPC02 & Requisiti Desiderabili Soddisfatti (RDS) & $\geq$0\% & 100\% \\
-  % \hline
-  % MPC03 & Requisiti Opzionali Soddisfatti (RPS) & $\geq$0\% & 100\% \\
-  % \hline
   MPC10 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
@@ -491,24 +381,13 @@ La verifica serve a garantire che il prodotto software sia conforme alle specifi
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
   MPC13 & Code coverage & $\geq$ 80\% & 100\% \\
-  % \hline
-  % MPC21 & Statement coverage & $\geq$80\% & 100\% \\
-  % \hline
-  % MPC22 & Branch coverage & $\geq$80\% & 100\% \\
-  % \hline
-  % MPC23 & Condition coverage & $\geq$80\% & 100\% \\
   \hline
-  % Questo qui sopra sono state raggruppate in code coverage
   MPC14 & Passed test cases percentage & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Processi di supporto - Verifica}
 \label{tab:verifica}
 \end{table}
-
-%%
-%% Questa si potrebbe inglobare sulla sezione sopra ma è separata perché più corretto
-%%
 
 \paragraph{Gestione della qualità}\mbox{}\\
 La gestione della qualità è necessaria per garantire che tutte le metriche di qualità vengano effettivamente soddisfatte.\\
@@ -544,30 +423,6 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
 \caption{Processi organizzativi - Gestione dei processi}
 \label{tab:gestione dei processi}
 \end{table}
-
-% I componenti di questa sezione sono stati spostati fra i processi primari sotto fornitura e sviluppo
-% \paragraph{Pianificazione}\mbox{}\\
-% La pianificazione è un indispensabile per far si che che i parametri rientrino siano i più vicini possibili a quelli del preventivo.\\
-% \begin{table}[H]
-%   \centering
-% \begin{tabular}{|c|c|c|c|}
-%   \hline
-%   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
-%   \hline
-%   MPC28 & Schedule variance (SV) & $\geq$ -10\% & $\geq$0\% \\
-%   \hline
-%   MPC29 & Cost variance (CV) & $\geq$ -10\% & $\geq$0\% \\
-%   \hline
-%   %% Queste due sotto sono nuove, non sono ancora state scritte in norme di progetto
-%   MPC30 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
-%   \hline
-%   MPC31 & Requirements Stability Index (RSI) & $\geq$ 80\% & 100\% \\
-%   \hline
-% \end{tabular}
-% \caption{Processi organizzativi - Pianificazione}
-% \label{tab:pianificazione}
-% \end{table}
-
 \newpage
 
 \section{Modalità di Testing}
@@ -583,16 +438,6 @@ E per indicare lo stato come indicato in \textit{Norme di progetto v1.0.0} vengo
 
 \subsection{Test di unità}
 I test di unità servono a verificare che ogni singola unità del software funzioni correttamente.\\
-
-%\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
-%\hline
-%\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
-%\endhead
-%\hline
-% & & \\
-%\hline
-%\caption{Test di unità}\\
-%\end{longtable}
 
 \subsection{Test di sistema} % Manca TS relativo al requisito funzionale UC1.2
 I test di sistema servono a verificare la completa copertura dei requisiti concordati nel documento Analisi dei Requisiti.\\
