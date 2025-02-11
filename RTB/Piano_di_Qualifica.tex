@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.4.4} %aggiunta versione come variabile
+\newcommand\version{0.4.5} %aggiunta versione come variabile
 
 %\graphicspath{{../images/}}
 \graphicspath{{images/}}
@@ -98,7 +98,9 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    0.4.4 & 2025-01-14 & Federico Pivetta & Leonardo Trolese & Riorganizzazione delle metriche di qualità e correzione ad alcuni test di sistema\\
+    0.4.5 & 2025-02-11 & Federico Pivetta & Uncas Peruzzi & Correzione ai test di sistema e di accettazione a seguito delle modifiche all'Analisi dei Requisiti\\
+    \hline
+    0.4.4 & 2025-01-14 & Federico Pivetta & Leonardo Trolese & Riorganizzazione delle metriche di qualità\\
     \hline
     0.4.3 & 2025-01-10 & Leonardo Trolese & Uncas Peruzzi & Aggiunta dei test di integrazione\\
     \hline
@@ -116,7 +118,7 @@
     \hline
     0.3.0 & 2024-12-12 & Riccardo Piva & Alfredo Rubino & Arricchimento sezioni Qualità di processo, Qualità di prodotto e inizio redazione modalità testing \\
     \hline
-    0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sezione Qualità di prodotto \ref{qpd}\\
+    0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sezione Qualità di prodotto\\
     \hline
     0.1.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Inizio redazione del documento\\
     \hline
@@ -181,7 +183,7 @@ Per far sì che un prodotto raggiunga uno standard qualitativo, è necessario de
 Queste metriche vengono definite nel documento \textit{Norme di Progetto v1.0.0}.
 Questa sezione si occuperà di definire i parametri di queste metriche, queste metriche potranno essere accettabili o ottimali in base alla rigidità del parametro.\\
 
-\subsection{Qualità di prodotto}\label{qpd}
+\subsection{Qualità di prodotto}
 La qualità di prodotto è intesa come valutazione del software. Più precisamente per la determinazione del grado di conformità alle attese.\\
 Si rivolge l'attenzione su aspetti come Usabilità, Affidabilità e Manutenibilità, ma più in generale alla qualità esterna (funzionale) ed interna (strutturale) del prodotto software.\\
 Quindi non basta che il software implementi le funzionalità volute dal proponente, ma le esegua secondo specifici standard di qualità.\\
@@ -439,7 +441,7 @@ E per indicare lo stato come indicato in \textit{Norme di progetto v1.0.0} vengo
 \subsection{Test di unità}
 I test di unità servono a verificare che ogni singola unità del software funzioni correttamente.\\
 
-\subsection{Test di sistema} % Manca TS relativo al requisito funzionale UC1.2
+\subsection{Test di sistema}
 I test di sistema servono a verificare la completa copertura dei requisiti concordati nel documento Analisi dei Requisiti.\\
 
 \begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
@@ -479,17 +481,17 @@ TS15 & Verificare che l'utente privilegiato possa visualizzare un pannello appos
 \hline
 TS16 & Verificare che l'utente privilegiato possa visualizzare nel pannello apposito di visualizzazione informazioni dell'utente: il nome, il cognome, l'email, il genere, la data di nascita e lo stato civile. & RF16 & NI \\
 \hline
-TS17 & Verificare che l'utente privilegiato possa visualizzare i dettagli del Marker$_G$ riguardante una singola posizione di un utente nella rispettiva Dashboard$_G$ & RF16 & NI \\
+TS17 & Verificare che l'utente privilegiato possa visualizzare i dettagli del Marker$_G$ riguardante una singola posizione di un utente nella rispettiva Dashboard$_G$ & RF17 & NI \\
 \hline
-TS18 & Verificare che l'utente privilegiato quando visualizza i dettagli del Marker$_G$, riguardante una singola posizione di un utente nella rispettiva Dashboard$_G$, possa vedere la latitudine, la longitudine e l'istante di rilevamento del Marker$_G$ & RF17 & NI \\
+TS18 & Verificare che l'utente privilegiato quando visualizza i dettagli del Marker$_G$, riguardante una singola posizione di un utente nella rispettiva Dashboard$_G$, possa vedere la latitudine, la longitudine e l'istante di rilevamento del Marker$_G$ & RF18 & NI \\
 \hline
-TS19 & Verificare che l'utente privilegiato possa visualizzare l'area di influenza di un punto di interesse selezionato. & RF18 & NI \\
+TS19 & Verificare che l'utente privilegiato possa visualizzare l'area di influenza di un punto di interesse selezionato. & RF19 & NI \\
 \hline
-TS20 & Verificare che l'utente privilegiato possa visualizzare le informazioni dettagliate di un punto di interesse quando selezionato. & RF19 & NI \\
+TS20 & Verificare che l'utente privilegiato possa visualizzare le informazioni dettagliate di un punto di interesse quando selezionato. & RF20 & NI \\
 \hline
 TS21 & Verificare che l'utente privilegiato quando visualizza le informazioni dettagliate di un punto di interesse possa visualizzare la latitudine, la longitudine, il nome, la tipologia e la descrizione del punto di interesse. & RF21 & NI \\
 \hline
-TS22 & Verificare che lente possa visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & RF22 & NI \\
+TS22 & Verificare che l'utente possa visualizzare l'annuncio pubblicitario proveniente dal punto di interesse situato nell'area che sta attraversando. & RF22 & NI \\
 \hline
 TS23 & Verificare che l'utente privilegiato possa visualizzare una tabella contenente le informazioni dei singoli PoI ordinati per la quantità di messaggi inviati nel mese. & RF23 & NI \\
 \hline
@@ -551,21 +553,27 @@ svolti al termine del progetto dai membri del gruppo in coordinazione con i comp
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
 \endhead
 \hline
-TA1 & Verificare che l'utente privilegiato possa visualizzare una dashboard$_G$ contenente una mappa che mostri i PoI, i vari utenti presenti nel sistema con i percorsi effettuati in tempo reale, e l'ultimo annuncio generato per ogni utente. & NI \\
+TA1 & Verificare che l'utente privilegiato possa visualizzare la Dashboard composta da una mappa e interagire con i Marker presenti su di essa. & NI \\
 \hline
-TA2 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando uno specifico utente, accedere ad una dashboard dedicata con informazioni dettagliate su tale utente, tra cui nome, cognome, email, genere, data di nascita e stato civile. & NI \\
+TA2 & Verificare che l'utente privilegiato possa visualizzare sulla mappa tutti i Marker relativi ai Percorsi effettuati in tempo reale dagli utenti, ai punti di interesse riconosciuti dal Sistema e agli annunci pubblicitari associati ai punti di interesse. & NI \\
 \hline
-TA3 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un PoI, accedere alle informazioni dettagliate relative al punto di interesse, tra cui nome, posizione, indirizzo, tipologia e descrizione. & NI \\
+TA3 & Verificare che l'utente privilegiato possa visualizzare una Dashboard relativa ad un singolo utente quando seleziona un Marker utente nella Dashboard principale & NI \\
 \hline
-TA4 & Verificare che l'utente privilegiato possa visualizzare la dashboard$_G$ generale e, selezionando un annuncio, accedere ai dettagli specifici di tale annuncio. & NI \\
+TA4 & Verificare che l'utente privilegiato possa visualizzare, nella Dashboard relativa ad un singolo utente, tutti i punti di interesse riconosciuti dal Sistema, lo storico delle posizioni dell'utente, lo storico degli annunci pubblicitari generati per l'utente, un pannello dedicato con le informazioni dell'utente in forma tabellare e i dettagli relativi a ciascuna posizione. & NI \\
 \hline
-TA5 & Verificare che l'utente privilegiato possa visualizzare una tabella contenente le informazioni relative ai singoli PoI, inclusa la quantità di messaggi inviati nel mese corrente per ognuno di essi. & NI \\
+TA5 & Verificare che l'utente privilegiato possa visualizzare, nella Dashboard relativa a un singolo utente, i dettagli del pannello, inclusi il nome, il cognome, l'email, il genere, la data di nascita e lo stato civile. Inoltre, verificare che siano visibili i dettagli della singola posizione, inclusi la latitudine, la longitudine e l'istante di rilevamento. & NI \\
 \hline
-TA6 & Verificare che il sensore, una volta connesso al sistema, possa trasmettere i dati rilevati in tempo reale al sistema & NI \\
+TA6 & Verificare che l'utente privilegiato possa visualizzare i dettagli di un punto di interesse, inclusi la latitudine, la longitudine, il nome, la tipologia e la descrizione. & NI \\
 \hline
-TA7 & Verificare che il sistema, una volta ricevuti i dati dal sensore, possa filtrare e validare tali dati e, se necessario, elaborarli tramite un modello LLM, per poi storicizzarli in un database adeguato. & NI \\
+TA7 & Verificare che l'utente privilegiato possa visualizzare i dettagli di un annuncio generato, inclusi la latitudine, la longitudine, l'istante di creazione, il nome dell'utente coinvolto, il nome del punto di interesse coinvolto e il contenuto dell'annuncio. & NI \\
 \hline
-TA8 & Verificare che il servizio LLM possa selezionare il punto di interesse (PoI) più rilevante per l'utente in base alla sua profilazione e alle informazioni dei punti di interesse e, di conseguenza, generare un messaggio personalizzato utilizzando sia i dati del PoI scelto sia quelli dell'utente. & NI \\
+TA8 & Verificare che l'utente privilegiato possa visualizzare una tabella contenente l'elenco dei punti di interesse, ordinati per la quantità di messaggi inviati nel mese. Ogni PoI deve essere rappresentato da una riga della tabella, contenente il nome, l'indirizzo, la tipologia, la descrizione e il numero di messaggi inviati. & NI \\
+\hline
+TA9 & Verificare che il sensore possa trasmettere in tempo reale al Sistema$_G$ i dati rilevati, inclusi il proprio id, la latitudine e la longitudine. & NI \\
+\hline
+TA10 & Verificare che il servizio LLM possa ricevere i dati inviati dal Sistema, inclusi le informazioni dell'utente (nome, cognome, email, genere, data di nascita, stato civile, interessi) e le informazioni del punto di interesse (nome, indirizzo, tipologia, descrizione e distanza dal punto di interesse dell'utente). & NI \\
+\hline
+TA11 & Verificare che il servizio LLM possa trasmettere al Sistema un messaggio personalizzato che rappresenti il contenuto dell'annuncio destinato ad un utente. & NI \\
 \hline
 \caption{Test di accettazione}\\
 \end{longtable}
