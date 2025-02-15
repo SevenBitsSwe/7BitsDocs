@@ -98,6 +98,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.5.0 & 2025-02-15 & Trolese Leonardo & Pivetta Federico & Aggiunta grafici sulle metriche di \hyperref[sec:QdP_fornitura]{Qualità di processo - Fornitura}\\ 
+    \hline
     0.4.5 & 2025-02-11 & Federico Pivetta & Uncas Peruzzi & Correzione ai test di sistema e di accettazione a seguito delle modifiche all'Analisi dei Requisiti\\
     \hline
     0.4.4 & 2025-01-14 & Federico Pivetta & Leonardo Trolese & Riorganizzazione delle metriche di qualità\\
@@ -327,7 +329,7 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
   \hline
   MPC07 & Cost variance (CV) & $\geq$ -5\% rispetto al (BAC)\(_G\) & $\geq$ 0\% \\
   \hline
-  MPC08 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
+  MPC08 & Cost Performance Index (CPI) & $\geq$ 0.9 & $\geq$ 1.0 \\
   \hline
 \end{tabular}
 \caption{Processi primari - Fornitura}
@@ -581,14 +583,16 @@ TA11 & Verificare che il servizio LLM possa trasmettere al Sistema un messaggio 
 
 \section{Cruscotto di valutazione delle qualità}
 \subsection{Qualità di processo - fornitura}
+\label{sec:QdP_fornitura}
 \subsubsection{MPC01 - Estimated at completion (EAC)}
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{EAC.png}
+  \includegraphics[width=0.9\linewidth]{EAC.png}
   \caption{Grafico a linee della metrica EAC}
   \label{fig:EACchart}
 \end{figure}
+
 
 \textbf{RTB}: Il grafico rappresenta la stima aggiornata del costo totale del progetto al completamento. Questo valore è quindi determinato dalla somma 
 dei costi sostenuti fino a un certo momento (in termini di ore produttive svolte), e dei costi stimati al completamento (in termini di ore produttive 
@@ -599,9 +603,9 @@ per la metrica. Questo indica che il progetto è sufficientemente in linea con l
 
 \subsubsection{MPC05 - Planned Value (PV) \& MPC04 - Earned Value (EV)}
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{EV-PV.png}
+  \includegraphics[width=0.9\linewidth]{EV-PV.png}
   \caption{Grafico a linee delle metriche EV e PV}
   \label{fig:EV-PVchart}
 \end{figure}
@@ -613,9 +617,9 @@ conforme alla pianificazione. Questa sovrapposizione dimostra un avanzamento pos
 
 \subsubsection{MPC03 - Actual Cost (AC) \& MPC02 - Estimate to Complete (ETC)}
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{AC-ETC.png}
+  \includegraphics[width=0.9\linewidth]{AC-ETC.png}
   \caption{Grafico a linee delle metriche AC e ETC}
   \label{fig:AC-ETCchart}
 \end{figure}
@@ -628,9 +632,9 @@ rispetto all'ETC, in linea con le aspettative economiche del progetto.
 
 \subsubsection{MPC08 - Cost Performance Index (CPI)}
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{CPI.png}
+  \includegraphics[width=0.9\linewidth]{CPI.png}
   \caption{Grafico a linee della metrica CPI}
   \label{fig:CPIchart}
 \end{figure}
@@ -647,9 +651,9 @@ Questo indica che il progetto ha prodotto un valore maggiore rispetto ai costi s
 % si può rimettere aggiungendo però pianificazione anche nei Obiettivi Metrici di qualità, e volendo inserendo in pianificazione anche la metrica proposta sotto a questa:
 \subsubsection{MPC07 - Cost Variance (CV) \& MPC06 - Schedule Variance (SV)}
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{CV-SV.png}
+  \includegraphics[width=0.9\linewidth]{CV-SV.png}
   \caption{Grafico a linee delle metriche CV e SV}
   \label{fig:CV-SVchart}
 \end{figure}
