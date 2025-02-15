@@ -323,9 +323,9 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
   \hline
   MPC05 & Planned value (PV) & $\geq$ 0 & $\leq$ Budget at completion (BAC)\(_G\) \\
   \hline
-  MPC06 & Schedule variance (SV) & $\geq$ -10\% & $\geq$ 0\% \\
+  MPC06 & Schedule variance (SV) & $\geq$ -5\% rispetto al (BAC)\(_G\) & $\geq$ 0\% \\
   \hline
-  MPC07 & Cost variance (CV) & $\geq$ -10\% & $\geq$ 0\% \\
+  MPC07 & Cost variance (CV) & $\geq$ -5\% rispetto al (BAC)\(_G\) & $\geq$ 0\% \\
   \hline
   MPC08 & Cost Performance Index (CPI) & \textpm10\% & 0\% \\
   \hline
@@ -628,17 +628,25 @@ rispetto all'ETC, in linea con le aspettative economiche del progetto.
 
 
 \subsection{Qualità di processo - Pianificazione}
-\subsubsection{MPC01 - Cost Variance (CV) \& MPC01 - Schedule Variance (SV)}
-% Inserire grafico
-% Rivedere testo in generale e periodi discrepanze tempo e costi
-\textbf{RTB}: Il grafico rappresenta la differenza in percentuale tra Cost Variance (CV) e la Schedule Variance (SV), che a loro volta rappresentano rispettivamente: 
-la differenza tra il valore guadagnato (EV) e i costi sostenuti (AC) e la differenza tra il valore guadagnato (EV) e il valore pianificato (PV). La Budget Variance 
-non è molto stabile, abbiamo sforato anche se di poco il limite accettabile a parte nel primo periodo e nel periodo pre-natalizio dove abbiamo avuto un valore molto 
-vicino a zero. La diminuzione della Budget Variance è dovuta ai ruoli che sono stati svolti in questi due periodi che erano meno costosi. Per quanto riguarda la 
-Schedule Variance risulta anch'essa altalenante questo è dovuto al fatto che inizialmente il team ha impiegato parecchio tempo nell'apprendimento delle tecnologie e 
-in alcuni periodi più liberi il team ha lavorato di più recuperando così il tempo perso che dopo andava a perdere di nuovo dopo gli incontri con la proponente dove 
-si presentavano eventuali cambiamenti da implementare il che portava a un rallentamento del lavoro. Anche se con la continuazione del progetto il team è stato capace 
-di migliorare la Schedule Variance, mantenendola al di sotto del limite accettabile.
+\subsubsection{MPC07 - Cost Variance (CV) \& MPC06 - Schedule Variance (SV)}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{CV-SV.png}
+  \caption{Grafico a linee della metriche CV e SV}
+  \label{fig:CV-SVchart}
+\end{figure}
+
+\textbf{RTB}: Il grafico mostra l'andamento  della Cost Variance (CV) e della Schedule Variance (SV), che rappresentano rispettivamente: 
+la differenza tra il valore guadagnato (EV) e i costi sostenuti (AC) e la differenza tra il valore guadagnato (EV) e il valore pianificato (PV).\\
+La CV resta sempre positiva per l'intera durata del progetto fino al sesto sprint, e ciò indica che le spese effettuate sono inferiori rispetto al valore prodotto
+dal team nel corso della prima parte del progetto.\\
+Anche la SV mostra un andamento positivo per tutta la durata del progetto fino alla RTB, e ciò indica che il gruppo ha saputo produrre un valore maggiore di quanto
+pianificato nel corso delle iterazioni effettuate.\\
+Globalmente i due valori si discostano poco l'uno dall'altro e essendo entrambi ampiamente al di sopra del valore accettabile e di quello ideale,  sono dei segnali 
+positivi rispetto all'andamento del progetto.
+
+
 \subsection{Qualità di processo - Gestione dei processi}
 \subsubsection{MPC01 - Rischi non previsti}
 % Inserire grafico
