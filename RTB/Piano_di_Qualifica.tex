@@ -611,13 +611,22 @@ che deve essere inferiore o uguale a BAC. Come si può notare osservando la figu
 conforme alla pianificazione. Questa sovrapposizione dimostra un avanzamento positivo rispetto alla pianificazione del progetto.
 
 
-\subsubsection{MPC01 - Actual Cost (AC) \& MPC01 - Estimate to Complete (ETC)}
-% Inserire grafico
-% Rivedere testo se piace
+\subsubsection{MPC03 - Actual Cost (AC) \& MPC02 - Estimate to Complete (ETC)}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{AC-ETC.png}
+  \caption{Grafico a linee della metriche AC e ETC}
+  \label{fig:AC-ETCchart}
+\end{figure}
+
 \textbf{RTB}: Il grafico rappresenta l'Actual Cost (AC), ovvero i costi sostenuti per portare il progetto al suo stato corrente, e l'Estimate to Complete (ETC), 
-cioè la stima del costo da sostenere per completare il progetto durante i vari periodi. \\
-Ovviamente L'ETC tende a diminuire, dato che il progetto si avvicina alla sua conclusione, mentre l'AC mostra una crescita proporzionale alla velocità con cui 
-l'ETC decresce.
+cioè la stima del costo rimanente da sostenere per completare il progetto per ogni periodo di misurazione (termine sprint). Entrambe le metriche hanno valore ideale
+inferiore all'EAC, che viene rispettato in ogni iterazione.\\
+Ovviamente l'ETC tende a diminuire al progredire del progetto poiché questo si avvicina alla sua conclusione, mentre l'AC mostra una crescita proporzionale e inversa 
+rispetto all'ETC, in linea con le aspettative economiche del progetto.
+
+
 \subsection{Qualità di processo - Pianificazione}
 \subsubsection{MPC01 - Cost Variance (CV) \& MPC01 - Schedule Variance (SV)}
 % Inserire grafico
