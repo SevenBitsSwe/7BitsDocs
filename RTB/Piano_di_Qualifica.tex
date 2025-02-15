@@ -602,7 +602,7 @@ per la metrica. Questo indica che il progetto è sufficientemente in linea con l
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.6\linewidth]{EV-PV.png}
-  \caption{Grafico a linee della metriche EV e PV}
+  \caption{Grafico a linee delle metriche EV e PV}
   \label{fig:EV-PVchart}
 \end{figure}
 
@@ -616,7 +616,7 @@ conforme alla pianificazione. Questa sovrapposizione dimostra un avanzamento pos
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.6\linewidth]{AC-ETC.png}
-  \caption{Grafico a linee della metriche AC e ETC}
+  \caption{Grafico a linee delle metriche AC e ETC}
   \label{fig:AC-ETCchart}
 \end{figure}
 
@@ -626,14 +626,31 @@ inferiore all'EAC, che viene rispettato in ogni iterazione.\\
 Ovviamente l'ETC tende a diminuire al progredire del progetto poiché questo si avvicina alla sua conclusione, mentre l'AC mostra una crescita proporzionale e inversa 
 rispetto all'ETC, in linea con le aspettative economiche del progetto.
 
+\subsubsection{MPC08 - Cost Performance Index (CPI)}
 
-\subsection{Qualità di processo - Pianificazione}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{CPI.png}
+  \caption{Grafico a linee della metrica CPI}
+  \label{fig:CPIchart}
+\end{figure}
+
+\textbf{RTB}: il Cost Performance Index (CPI) è una metrica che indica quanti obiettivi sono stati raggiunti rispetto alle spese sostenute in un certo momento del
+progetto. La metrica è data dal rapporto fra il valore guadagnato (EV) e i costi sostenuti (AC), e infatti il suo valore ideale deve essere maggiore o pari a 1.
+Il valore accettabile invece è stato scelto essere maggiore o uguale a 0.9.\\
+Il grafico mostra che il CPI ha avuto valore strettamente maggiore di 1 per tutto il progetto, assestandosi fra il terzo e il sesto sprint a un valore pari a circa 1.06.
+Questo indica che il progetto ha prodotto un valore maggiore rispetto ai costi sostenuti.
+
+
+% originariamente qui c'era una sottosezione in più di Pianificazione, che non appare però negli Obiettivi Metrici di qualità (sopra):
+% \subsection{Qualità di processo - Pianificazione}
+% si può rimettere aggiungendo però pianificazione anche nei Obiettivi Metrici di qualità, e volendo inserendo in pianificazione anche la metrica proposta sotto a questa:
 \subsubsection{MPC07 - Cost Variance (CV) \& MPC06 - Schedule Variance (SV)}
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.6\linewidth]{CV-SV.png}
-  \caption{Grafico a linee della metriche CV e SV}
+  \caption{Grafico a linee delle metriche CV e SV}
   \label{fig:CV-SVchart}
 \end{figure}
 
@@ -645,6 +662,7 @@ Anche la SV mostra un andamento positivo per tutta la durata del progetto fino a
 pianificato nel corso delle iterazioni effettuate.\\
 Globalmente i due valori si discostano poco l'uno dall'altro e essendo entrambi ampiamente al di sopra del valore accettabile e di quello ideale,  sono dei segnali 
 positivi rispetto all'andamento del progetto.
+% Possibile aggiunta di una metrica PV - AC per mostrare gli errori di pianificazione nei preventivi. Bisognerebbe però aggiungere questa metrica anche nelle NdP
 
 
 \subsection{Qualità di processo - Gestione dei processi}
@@ -653,12 +671,16 @@ positivi rispetto all'andamento del progetto.
 % assolutamente da rivedere aggiungendo gli effettivi rischi incontrati e il loro impatto
 \textbf{RTB}: Nel corso del progetto, sono stati riscontrati alcuni rischi non previsti. Tuttavia, il team è riuscito a gestirli in modo efficace, riducendo al minimo 
 il loro impatto sul progetto.
+
+
 \subsubsection{MPC01 - Efficienza temporale}
 % Inserire grafico
 \textbf{RTB}: La metrica dell'efficienza temporale oscilla molto nel corso del progetto. Questo è dovuto alla necessità del gruppo di apprendere le nuove tecnologie, 
 non solo legate al capitolato. Anche se non abbiamo scartato del tutto il nostro way of working, ha ricevuto comunque molte revisioni soprattutto nel periodo iniziale. 
 Tuttavia, il team negli ultimi sprint, dopo che la situazione iniziale si è stabilizzata, è stato in grado di mantenere l'efficienza temporale al di sotto del limite 
 accettabile.
+
+
 \subsection{Qualità di processo - documentazione}
 \subsubsection{MPC01 - Errori ortografici}
 % Inserire grafico
@@ -669,6 +691,8 @@ dei documenti, riducendo il numero di errori ortografici drasticamente.
 \textbf{RTB}: Inizialmente, l'indice Gulpease superava già il limite accettabile. Tuttavia, con il tempo, il team ha imparato a rispettarlo e a mantenerlo costante, 
 migliorandone di poco a poco il punteggio. Questo è stato ottenuto rendendo tutti i documenti più leggibili, limitando l'uso di termini tecnici non necessari, 
 soprattutto nei documenti più specifici o tecnici.
+
+
 \subsection{Qualità di processo - Gestione della qualità}
 \subsubsection{MPC01 - Metriche di qualità soddisfatte}
 % Inserire grafico
