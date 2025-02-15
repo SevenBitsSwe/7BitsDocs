@@ -313,7 +313,7 @@ Serve per garantire che il prodotto soddisfi i requisiti di tempi e costi defini
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC01 & Estimated at completion (EAC) & \textpm5\% rispetto al preventivo & Come dichiarato da preventivo\\
+  MPC01 & Estimated at completion (EAC) & \textpm5\% rispetto al (BAC)\(_G\) & Budget at completion (BAC)\(_G\)\\
   \hline
   MPC02 & Estimate to complete (ETC) & $\geq$ 0\% & $\leq$ EAC\(_G\) \\
   \hline
@@ -582,16 +582,34 @@ TA11 & Verificare che il servizio LLM possa trasmettere al Sistema un messaggio 
 \section{Cruscotto di valutazione delle qualità}
 \subsection{Qualità di processo - fornitura}
 \subsubsection{MPC01 - Estimated at completion (EAC)}
-% Inserire grafico
-% completare con valori effettivi e spiegazione più accurata
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{EAC.png}
+  \caption{Grafico a linee della metrica EAC}
+  \label{fig:EACchart}
+\end{figure}
+
 \textbf{RTB}: Il grafico rappresenta la stima aggiornata del costo totale del progetto al completamento. Questo valore è quindi determinato dalla somma 
 dei costi sostenuti fino a un certo momento (in termini di ore produttive svolte), e dei costi stimati al completamento (in termini di ore produttive 
-restanti in riferimento al preventivo iniziale del progetto).\\ %Inserire parte che analizza il grafico
-\subsubsection{MPC01 - Planned Value (PV) \& MPC01 - Earned Value (EV)}
-% Inserire grafico
-% Controllare testo (anche se mi pare ok)
+restanti in riferimento al preventivo iniziale del progetto).\\ 
+In questo caso emerge dal grafico che il valore di EAC è poco al di sotto del preventivo iniziale (BAC), e in ogni caso entro i valori accettabili definiti
+per la metrica. Questo indica che il progetto è sufficientemente in linea con le aspettative in termini di costi.
+
+
+\subsubsection{MPC05 - Planned Value (PV) \& MPC04 - Earned Value (EV)}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{EV-PV.png}
+  \caption{Grafico a linee della metriche EV e PV}
+  \label{fig:EV-PVchart}
+\end{figure}
+
 \textbf{RTB}: Il grafico mostra che le curve del valore guadagnato (Earned Value) e del valore pianificato (Planned Value) si sovrappongono, questo indica 
 che il lavoro effettivamente svolto è conforme alla pianificazione. Questa sovrapposizione dimostra un avanzamento positivo rispetto alla pianificazione del progetto.
+
+
 \subsubsection{MPC01 - Actual Cost (AC) \& MPC01 - Estimate to Complete (ETC)}
 % Inserire grafico
 % Rivedere testo se piace
