@@ -421,7 +421,7 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
   \hline
   MPC16 & Rischi non previsti & $\leq$ 3 & 0 \\
   \hline
-  MPC17 & Efficienza temporale (ET) & $\leq$ 3 & $\leq$ 1 \\
+  MPC17 & Efficienza temporale (ET) & $\geq$ 0.3 & $\geq$ 1.0 \\
   \hline
 \end{tabular}
 \caption{Processi organizzativi - Gestione dei processi}
@@ -707,12 +707,23 @@ significativi cambiamenti in caso di esito negativo.\\
 riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.
 
 
-\subsubsection{MPC01 - Efficienza temporale}
-% Inserire grafico
-\textbf{RTB}: La metrica dell'efficienza temporale oscilla molto nel corso del progetto. Questo è dovuto alla necessità del gruppo di apprendere le nuove tecnologie, 
-non solo legate al capitolato. Anche se non abbiamo scartato del tutto il nostro way of working, ha ricevuto comunque molte revisioni soprattutto nel periodo iniziale. 
-Tuttavia, il team negli ultimi sprint, dopo che la situazione iniziale si è stabilizzata, è stato in grado di mantenere l'efficienza temporale al di sotto del limite 
-accettabile.
+\subsubsection{MPC01 - Efficienza temporale (ET)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{ET.png}
+  \caption{Grafico a linee della metrica ET}
+  \label{fig:ETchart}
+\end{figure}
+
+% da modificare NdP aggiungendo il fatto che le ore produttive e totali si riferiscono al singolo sprint e non all'interezza del progetto
+\textbf{RTB}: La metrica di efficienza temporale è data dal rapporto fra il numero di ore produttive e totali per ogni sprint, e indica quante delle ore dedicate al progetto
+sono state effettivamente usate per la produzione di materiale (software o di altra natura), rispetto alle ore effettivamente consumate dai membri del gruppo.\\
+Le ore produttive sono state accuratamente rendicontate per l'intera durata del progetto, mentre quelle totali (che includono anche le produttive), sono state misurate in
+maniera più precisa possibile, ma senza pretese di assoluta esattezza, per via della natura di queste ultime.\\
+Dal grafico emerge che la ET si mantiene, per l'intera durata delle prime sei iterazioni del progetto, al di sopra del valore minimo accettabile (pari a 0.3), ma al di 
+sotto del valore ideale (pari o superiore a 1.0). In particolare si nota un leggero aumento globale del valore della metrica dovuto all'incrementata efficienza del
+team nello svolgimento delle attività di progetto.\\
 
 
 \subsection{Qualità di processo - Documentazione}
