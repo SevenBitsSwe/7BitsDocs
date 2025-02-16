@@ -419,7 +419,7 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC16 & Rischi non previsti & $\leq$ 4 & 0 \\
+  MPC16 & Rischi non previsti & $\leq$ 3 & 0 \\
   \hline
   MPC17 & Efficienza temporale (ET) & $\leq$ 3 & $\leq$ 1 \\
   \hline
@@ -670,6 +670,7 @@ positivi rispetto all'andamento del progetto.
 
 
 \subsection{Qualità di processo - Sviluppo}
+% da modificare formula in NdP seguendo formula indicata sugli spreadsheets
 \subsubsection{MPC10 - Requirements Stability Index (RSI)}  
 
 \begin{figure}[H]
@@ -684,7 +685,7 @@ quanto maggiore è la stabilità dei requisiti, ovvero il valore è alto se poch
 stati modificati, aggiunti o rimossi rispetto all'ultima misurazione.\\
 Come si può evincere dal grafico, l'RSI è partito da valore nullo (in maniera coerente rispetto alla formula usata per il calcolo di tale metrica, poiché nel primo sprint 
 sono stati definiti i primi requisiti); crescendo nella seconda iterazione (mentre il primo tentativo di identificazione dei requisiti era ancora in corso); e ha poi mostrato 
-un andamento altalenante, con picchi di stabilità nel terzo e quinto periodo e cali significativi in corrispondenza della terza e sesta iterazione. In entrambi questi 
+un andamento altalenante, con picchi di stabilità nel terzo e quinto periodo e cali significativi (inferiori al valore accettabile) in corrispondenza della terza e sesta iterazione. In entrambi questi 
 casi il valore basso è seguito a significative modifiche dei requisiti, successive a degli incontri di chiarimento organizzati con il professor Cardin, che  hanno 
 evidenziato degli errori nell'approccio del gruppo all'analisi dei requisiti.\\
 Complessivamente il gruppo si aspetta una maggiore stabilità in futuro, in caso di un buon esito della revisione RTB, mentre potrebbero essere necessari ulteriori
@@ -692,11 +693,18 @@ significativi cambiamenti in caso di esito negativo.\\
 
 
 \subsection{Qualità di processo - Gestione dei processi}
-\subsubsection{MPC01 - Rischi non previsti}
-% Inserire grafico
-% assolutamente da rivedere aggiungendo gli effettivi rischi incontrati e il loro impatto
-\textbf{RTB}: Nel corso del progetto, sono stati riscontrati alcuni rischi non previsti. Tuttavia, il team è riuscito a gestirli in modo efficace, riducendo al minimo 
-il loro impatto sul progetto.
+\subsubsection{MPC16 - Rischi non previsti}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{RNP.png}
+  \caption{Grafico a linee della metrica "Rischi non previsti"}
+  \label{fig:RNPchart}
+\end{figure}
+
+% da rivedere forse. Non so se davvero possiamo dire di non averne incontrati
+\textbf{RTB}: Nel corso del progetto il team ha senz'altro avuto modo di affrontare svariati dei rischi emersi durane l'analisi dei rischi, tuttavia non sono stati
+riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.
 
 
 \subsubsection{MPC01 - Efficienza temporale}
