@@ -14,7 +14,7 @@
 \usepackage{eso-pic}
 \usepackage{longtable}
 
-\newcommand\version{0.2.11} %aggiunta versione come variabile
+\newcommand\version{0.2.12} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 
@@ -90,6 +90,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    0.2.12 & 2025-02-14 & Federico Pivetta & Giovanni Cristellon & Correzione di alcune definizioni\\
     \hline
     0.2.11 & 2025-01-29 & Manuel Gusella & Alfredo Rubino & Aggiunta di alcuni termini\\
     \hline
@@ -199,11 +201,11 @@ Capitolato & Documento che definisce le specifiche, i requisiti e le condizioni 
 \hline
 Caso d'Uso & Rappresenta un'interazione tra il sistema e gli attori, descrivendo le modalità con cui il sistema viene utilizzato e le funzionalità che offre. Si articola in una serie di scenari o sequenze di azioni che condividono un obiettivo finale, permettendo agli utenti di raggiungere uno scopo specifico attraverso l'interazione con il sistema.\\
 \hline
-Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla sua concezione iniziale fino all'uso ed eventualmente alla sua dismissione. \'E compito di un progetto far progredire lo stato di avanzamento di un software lungo il suo ciclo di vita.\\
+Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla sua concezione iniziale fino all'uso ed eventualmente al suo ritiro. \'E compito di un progetto far progredire lo stato di avanzamento di un software lungo il suo ciclo di vita.\\
 \hline
-ClickHouse & Database open-source progettato per l'elaborazione rapida e scalabile di grandi quantità di dati. Utilizza un'architettura column-oriented, ottimizzata per query analitiche ad alta velocità e compressione efficiente dei dati. Questo lo rende ideale per applicazioni che richiedono analisi in tempo reale su grandi dataset.\\
+ClickHouse & DBMS open-source progettato per l'elaborazione rapida e scalabile di grandi quantità di dati. Utilizza un'architettura column-oriented, ottimizzata per query analitiche ad alta velocità e compressione efficiente dei dati. Questo lo rende ideale per applicazioni che richiedono analisi in tempo reale su grandi dataset.\\
 \hline
-Committente & Parte esterna che assegna l'esecuzione di un progetto a un esecutore, definendo i termini contrattuali e le condizioni relative alla sua realizzazione. Nel nostro caso, il prof. Vardanega.\\
+Committente & Parte esterna che assegna l'esecuzione di un progetto ad un esecutore, definendo i termini contrattuali e le condizioni relative alla sua realizzazione. Nel nostro caso, il prof. Vardanega e il prof. Cardin.\\
 \hline
 Container & Unità di software che include un'applicazione e tutte le sue dipendenze, come file di sistema, librerie e configurazioni, per eseguirla in un ambiente isolato e autonomo. Nel contesto di strumenti come Docker, i container garantiscono portabilità e consistenza, permettendo all'applicazione di funzionare in modo uniforme su diversi sistemi e piattaforme.\\
 \hline
@@ -222,15 +224,15 @@ Continuous Integration & Abbreviata come CI, è una pratica di sviluppo software
 \hline
 Dashboard & Interfaccia utente grafica che raccoglie e presenta in modo chiaro e sintetico le informazioni più rilevanti per un utente o un processo specifico. La Dashboard fornisce una panoramica rapida delle metriche e delle prestazioni, utilizzando vari elementi visivi come grafici, tabelle e indicatori.\\
 \hline
-Database & Sistema organizzato per raccogliere e gestire dati strutturati, con l'obiettivo di consentire un accesso, e un'elaborazione efficienti. Grazie alla sua struttura, un database facilita la gestione di grandi quantità di informazioni, rendendole facilmente recuperabili e utilizzabili per vari scopi dagli utenti.\\
+Database & Sistema organizzato per raccogliere e gestire dati strutturati, con l'obiettivo di consentire un accesso ed un'elaborazione efficienti. Grazie alla sua struttura, un database facilita la gestione di grandi quantità di informazioni, rendendole facilmente recuperabili e utilizzabili per vari scopi dagli utenti.\\
 \hline
-DBMS & Acronimo di DataBase Management System, è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro.\\
+DBMS & Acronimo di "DataBase Management System", è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro.\\
 \hline
 Documentazione & Insieme di documenti, manuali e guide che descrivono un prodotto, un sistema o un processo. Ha lo scopo di fornire istruzioni, spiegazioni e dettagli utili per l'uso, la manutenzione e lo sviluppo di un prodotto.\\
 \hline
-Docker & Piattaforma che consente di creare, distribuire e eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione.\\
+Docker & Piattaforma che consente di creare, distribuire ed eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione.\\
 \hline
-Docker Compose & Strumento che consente di definire e gestire applicazioni multi-container Docker. Permette di configurare un’applicazione complessa con più servizi e le relative dipendenze in un unico file.\\
+Docker Compose & Strumento che consente di definire e gestire applicazioni multi-container Docker. Permette di configurare un'applicazione complessa con più servizi e le relative dipendenze in un unico file.\\
 \hline
 \end{longtable}
 
@@ -241,13 +243,13 @@ Docker Compose & Strumento che consente di definire e gestire applicazioni multi
 \textbf{Termine} & \textbf{Definizione}\\
 \endhead
 \hline
-EAC & Acronimo di Estimated at Completion, è un termine utilizzato nella gestione dei progetti per stimare il costo totale che sarà necessario per il completamento. Viene calcolato durante il corso del progetto per fornire una previsione aggiornata dei costi, tenendo conto delle performance reali rispetto a quanto pianificato inizialmente. Questo valore aiuta il team a monitorare il progresso del progetto e a prendere decisioni ponderate riguardo alla gestione del budget e alle risorse necessarie.\\
+EAC & Acronimo di "Estimated at Completion", è un termine utilizzato nella gestione dei progetti per stimare il costo totale che sarà necessario per il completamento. Viene calcolato durante il corso del progetto per fornire una previsione aggiornata dei costi, tenendo conto delle performance reali rispetto a quanto pianificato inizialmente. Questo valore aiuta il team a monitorare il progresso del progetto e a prendere decisioni ponderate riguardo alla gestione del budget e alle risorse necessarie.\\
 \hline
 Efficacia & Misura la capacità di raggiungere un obiettivo o un risultato desiderato, indipendentemente dalle risorse utilizzate.\\
 \hline
 Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato desiderato, impiegando le risorse minime indispensabili.\\
 \hline
-ETC & Acronimo di Estimate to Complete, è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. L'ETC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento.\\
+ETC & Acronimo di "Estimate to Complete", è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. L'ETC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento.\\
 \hline
 \end{longtable}
 
@@ -275,22 +277,22 @@ Feedback & Riscontro, positivo o negativo, dato per influenzare il comportamento
 \hline
 Git & Sistema di controllo versione distribuito (DVCS) progettato per tracciare le modifiche nel codice sorgente durante lo sviluppo del software. È uno strumento essenziale per la gestione delle versioni, che consente ai team di sviluppo di lavorare in modo collaborativo, monitorare le revisioni del codice e gestire le modifiche apportate nel tempo. Git facilita anche il ripristino a versioni precedenti del software, garantendo un controllo preciso delle modifiche.\\
 \hline
-GitHub & Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l’organizzazione e la collaborazione all’interno dei team di sviluppo.\\
+GitHub & Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l'organizzazione e la collaborazione all'interno dei team di sviluppo.\\
 \hline
 Grafana & Piattaforma open-source per la visualizzazione e il monitoraggio dei dati. Permette di creare dashboard interattive e personalizzabili, report e grafici utilizzando dati provenienti da diverse fonti.\\
 \hline
 \end{longtable}
 
-\subsection{H} % LETTERA H
-\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
-\hline
-\rowcolor[gray]{0.8}
-\textbf{Termine} & \textbf{Definizione}\\
-\endhead
-\hline
- & \\
-\hline
-\end{longtable}
+%\subsection{H} % LETTERA H
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
 
 \subsection{I} % LETTERA I
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
@@ -299,11 +301,11 @@ Grafana & Piattaforma open-source per la visualizzazione e il monitoraggio dei d
 \textbf{Termine} & \textbf{Definizione}\\
 \endhead
 \hline
-IA & Acronimo italiano di "Intelligenza artificiale" ed è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l’apprendimento, la pianificazione e la creatività.\\
+IA & Acronimo italiano di "Intelligenza artificiale", è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l'apprendimento, la pianificazione e la creatività.\\
 \hline
-IEEE & Acronimo di Institute of Electrical and Electronics Engineers, è un'organizzazione internazionale dedicata all'avanzamento della tecnologia in diversi ambiti, fra cui l'informatica. L'IEEE è noto per la pubblicazione di standard tecnici che definiscono specifiche e linee guida per garantire interoperabilità, qualità, sicurezza e prestazioni nei dispositivi e nei sistemi.\\
+IEEE & Acronimo di "Institute of Electrical and Electronics Engineers", è un'organizzazione internazionale dedicata all'avanzamento della tecnologia in diversi ambiti, fra cui l'informatica. L'IEEE è noto per la pubblicazione di standard tecnici che definiscono specifiche e linee guida per garantire interoperabilità, qualità, sicurezza e prestazioni nei dispositivi e nei sistemi.\\
 \hline
-Inspection & Tecnica di analisi statica utilizzata per individuare errori attraverso una lettura mirata. Durante l'inspection, il verificatore segue una sequenza di passaggi prestabiliti per assicurare il rispetto delle regole definite nel Piano di Qualifica, garantendo la conformità agli standard e la qualità del prodotto.\\
+Inspection & Tecnica di analisi statica utilizzata per individuare errori attraverso una lettura mirata. Durante l'inspection, il verificatore segue una sequenza di passaggi prestabiliti per assicurare la conformità agli standard e la qualità del prodotto.\\
 \hline
 Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, bug, richieste di funzionalità o altre attività relative a un progetto. Le issue permettono di descrivere, assegnare e discutere vari aspetti di un progetto, come ad esempio errori o nuove funzionalità, con l'aiuto di strumenti come i commenti, le etichette e le milestone.\\
 \hline
@@ -311,16 +313,16 @@ ITS & Acronimo di "Issue Tracking System", sono dei software utilizzati per gest
 \hline
 \end{longtable}
 
-\subsection{J} % LETTERA J
-\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
-\hline
-\rowcolor[gray]{0.8}
-\textbf{Termine} & \textbf{Definizione}\\
-\endhead
-\hline
- & \\
-\hline
-\end{longtable}
+%\subsection{J} % LETTERA J
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
 
 \subsection{K} % LETTERA K
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
@@ -357,7 +359,7 @@ Marker & Un marker identifica una posizione su una mappa tramite un'immagine sta
 \hline
 Merge & Operazione in un sistema di versionamento che combina le modifiche provenienti da diversi rami (branches) di sviluppo in un unico ramo, unificando il codice o la documentazione, senza perdere il lavoro svolto separatamente.\\
 \hline
-Microservizio & Un approccio per sviluppare e organizzare l’architettura dei software secondo cui quest’ultimi sono composti di servizi indipendenti di piccole dimensioni che comunicano tra loro tramite API ben definite. Le architetture basate su microservizi permettono di scalare e sviluppare le applicazioni in modo più semplice e rapido, facilitando eventuali cambiamenti e miglioramenti.\\
+Microservizio & Un approccio per sviluppare e organizzare l'architettura dei software secondo cui questi ultimi sono composti di servizi indipendenti di piccole dimensioni che comunicano tra loro tramite API ben definite. Le architetture basate su microservizi permettono di scalare e sviluppare le applicazioni in modo più semplice e rapido, facilitando eventuali cambiamenti e miglioramenti.\\
 \hline
 Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel tempo all'interno di un progetto. Viene utilizzata per monitorare i progressi e assicurare che il progetto rispetti la pianificazione stabilita. Il raggiungimento degli obiettivi associati a una milestone viene sostanziato attraverso lo sviluppo di una baseline.\\
 \hline
@@ -394,7 +396,7 @@ Overleaf & Piattaforma online per la scrittura collaborativa di documenti in \La
 \textbf{Termine} & \textbf{Definizione}\\
 \endhead
 \hline
-PB & Acronimo di "Product Baseline", è una tappa chiave nello sviluppo di un progetto, durante la quale viene verificata e dimostrata la solidità dell’architettura definita nella fase precedente (RTB). È la seconda revisione di avanzamento del progetto didattico, corrispondente alla presentazione dell'MVP.\\
+PB & Acronimo di "Product Baseline", è una tappa chiave nello sviluppo di un progetto, durante la quale viene verificata e dimostrata la solidità dell'architettura definita nella fase precedente (RTB). È la seconda revisione di avanzamento del progetto didattico, corrispondente alla presentazione dell'MVP.\\
 \hline
 Percorso & Un percorso è lo spostamento che un utente sta compiendo con un mezzo, in questo caso la bicicletta noleggiata.\\
 \hline
@@ -408,7 +410,7 @@ Proponente & L'entità che avanza una proposta per la realizzazione di un proget
 \hline
 Protocollo & Insieme di regole e convenzioni che definiscono come deve avvenire la comunicazione o l'interazione tra due o più entità, siano esse dispositivi, software o persone. I protocolli garantiscono che lo scambio di informazioni avvenga in modo standardizzato, sicuro ed efficiente, evitando malintesi o incompatibilità.\\
 \hline
-Pull Request & Richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le pull request sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge.\\
+Pull Request & Richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le PR sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge.\\
 \hline
 Python & Linguaggio di programmazione ad alto livello, semplice e versatile. Supporta più paradigmi di programmazione, tra cui quello ad oggetti e quello funzionale. Grazie alla sua sintassi, viene utilizzato in una vasta gamma di applicazioni, tra cui sviluppo software, automazione, analisi dei dati e intelligenza artificiale.\\
 \hline
@@ -521,37 +523,37 @@ Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei 
 \hline
 \end{longtable}
 
-\subsection{X} % LETTERA X
-\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
-\hline
-\rowcolor[gray]{0.8}
-\textbf{Termine} & \textbf{Definizione}\\
-\endhead
-\hline
- & \\
-\hline
-\end{longtable}
+%\subsection{X} % LETTERA X
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
 
-\subsection{Y} % LETTERA Y
-\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
-\hline
-\rowcolor[gray]{0.8}
-\textbf{Termine} & \textbf{Definizione}\\
-\endhead
-\hline
- & \\
-\hline
-\end{longtable}
+%\subsection{Y} % LETTERA Y
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
 
-\subsection{Z} % LETTERA Z
-\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
-\hline
-\rowcolor[gray]{0.8}
-\textbf{Termine} & \textbf{Definizione}\\
-\endhead
-\hline
- & \\
-\hline
-\end{longtable}
+%\subsection{Z} % LETTERA Z
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
 
 \end{document}
