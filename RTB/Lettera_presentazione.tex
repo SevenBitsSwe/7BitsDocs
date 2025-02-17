@@ -1,0 +1,133 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{array}  
+\usepackage{graphicx}
+\usepackage{geometry} 
+\usepackage{fancyhdr} 
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{anyfontsize}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx, etoolbox} 
+\usepackage{eso-pic}
+\usepackage{float}
+\usepackage{longtable}
+
+\graphicspath{{images}}
+%\graphicspath{{../images/}}
+
+\setcounter{secnumdepth}{4}
+
+
+%cambio misure della pagina
+\geometry{a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm}
+%ebdfc7
+\definecolor{colorePie}{HTML}{ebdfc7}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+}
+\rhead{\textcolor[HTML]{9e978a}{LETTERA DI PRESENTAZIONE}
+}
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
+
+
+\renewcommand*\contentsname{Indice}
+\renewcommand{\listfigurename}{Elenco delle figure}
+\renewcommand{\listtablename}{Elenco delle tabelle}
+
+\begin{document}
+
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    
+    % Titolo
+     {\fontsize{30}{30}\bfseries Lettera di Presentazione RTB}\selectfont \\[3em]
+    % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    % Sottotitolo
+    {\huge Componenti} \\[2.7em]
+    {\large 
+     \begin{tabular}{l l l}
+       Cristellon & Giovanni & 1216730\\
+       Gusella & Manuel & 2076430\\
+       Peruzzi & Uncas & 2068239\\
+       Piva & Riccardo & 2079241\\
+       Pivetta & Federico & 2009693\\
+       Rubino & Alfredo & 2076435\\
+       Trolese & Leonardo & 2068238\\ 
+     \end{tabular}
+    } \\[3em]
+    
+    % Spazio per il logo dell'università
+    \hfill
+      
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+        
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+        
+\vfill % Aggiunge spazio verticale per centrare il contenuto
+\end{titlepage}
+\newpage
+\noindent
+Egregio prof. Vardanega,\\
+Egregio prof. Cardin,\\
+con la presente lettera il gruppo SevenBits è lieto di comunicarVi la propria candidatura alla revisione di avanzamento Requirements and Technology Baseline, per il capitolato denominato:
+\begin{center}
+\textcolor{blue}{\texttt{\href{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}{C4 - NearYou Smart custom advertising platform}}}\\ (Consultato: 2025-02-17)
+\end{center}
+proposto dall'azienda SyncLab.\\
+Tutta la documentazione riguardante il lavoro svolto è consultabile nel sito web del nostro gruppo:
+\begin{center}
+\textcolor{blue}{\texttt{\url{https://sevenbitsswe.github.io/7BitsDocs/}}}\\ (Consultato: 2025-02-17)
+\end{center}
+All'interno della sezione ``RTB'', oltre alla presente lettera, sono inclusi i seguenti documenti:
+\begin{itemize}
+\item Documentazione esterna:
+  \begin{itemize}
+    \item Analisi dei Requisiti v1.0.0;
+    \item Piano di Progetto v1.0.0;
+    \item Piano di Qualifica v1.0.0;
+    \item Verbali esterni;
+  \end{itemize}
+\item Documentazione interna:
+  \begin{itemize}
+    \item Norme di Progetto v1.0.0;
+    \item Glossario v1.0.0;
+    \item Verbali interni.
+  \end{itemize}
+\end{itemize}
+
+Viene inoltre reso disponibile il codice sorgente del Proof of Concept:
+\begin{center}
+\textcolor{blue}{\texttt{\url{https://github.com/SevenBitsSwe/PoC}}}\\ (Consultato: 2025-02-17)
+\end{center}
+Con la presente lettera desideriamo aggiornarVi sugli impegni presi, confermando il costo finale per la realizzazione del progetto di \textbf{12950 €}. Invece, a causa di impegni accademici, i componenti del gruppo comunicano lo spostamento della data di consegna del progetto dal \textbf{21 marzo 2025} al \textbf{04 aprile 2025}.
+\vspace{2mm}
+\newline
+Cordiali saluti,\\
+Gruppo SevenBits
+\end{document}
