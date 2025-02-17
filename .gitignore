@@ -13,3 +13,4 @@ src-esterni
 ##Others
 *.notes
 .vscode
+gulpease.py
