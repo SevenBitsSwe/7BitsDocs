@@ -1489,14 +1489,14 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
                 \item   \textbf{Descrizione}: misura la stabilità dei requisiti nel ciclo di vita di un progetto. Un RSI basso indica che sono stati effettuati molti cambiamenti ai requisiti.
                 \item   \textbf{Formula:}
                         \[
-                        RSI = \frac{RM}{RIT+RA-RC}
+                        RSI = 100 - \frac{RA+RC+RR}{RT} \cdot 100
                         \]
                         Dove:
                         \begin{itemize}
-                            \item $RM$: requisiti non modificati.
-                            \item $RA$: requisiti aggiunti.
-                            \item $RC$: requisiti cancellati.
-                            \item $RIT$: requisiti iniziali totali.
+                            \item $RA$: requisiti aggiunti dopo l'ultima misurazione.
+                            \item $RC$: requisiti modificati dopo l'ultima misurazione.
+                            \item $RC$: requisiti rimossi dopo l'ultima misurazione.
+                            \item $RT$: requisiti iniziali totali dopo l'ultima misurazione.
                         \end{itemize}
             \end{itemize}
             
