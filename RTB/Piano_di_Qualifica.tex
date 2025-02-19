@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.4.8} %aggiunta versione come variabile
+\newcommand\version{0.4.7} %aggiunta versione come variabile
 
 %\graphicspath{{../images/}}
 \graphicspath{{images/}}
@@ -98,17 +98,17 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    0.4.8 & 2025-02-18 & Trolese Leonardo & Pivetta Federico & Aggiunta ulteriori grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\
+    0.4.7 & 2025-02-18 & Trolese Leonardo & Pivetta Federico & Aggiunta ulteriori grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\
     \hline
-    0.4.7 & 2025-02-16 & Trolese Leonardo & Pivetta Federico & Aggiunta ulteriori grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\
+    0.4.6 & 2025-02-16 & Trolese Leonardo & Pivetta Federico & Aggiunta ulteriori grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\
     \hline
-    0.4.6 & 2025-02-15 & Trolese Leonardo & Pivetta Federico & Aggiunta grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\ 
+    0.4.5 & 2025-02-15 & Trolese Leonardo & Pivetta Federico & Aggiunta grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\ 
     \hline
-    0.4.5 & 2025-02-11 & Federico Pivetta & Uncas Peruzzi & Correzione ai test di sistema e di accettazione a seguito delle modifiche all'Analisi dei Requisiti\\
+    0.4.4 & 2025-02-11 & Federico Pivetta & Uncas Peruzzi & Correzione ai test di sistema e di accettazione a seguito delle modifiche all'Analisi dei Requisiti\\
     \hline
-    0.4.4 & 2025-01-14 & Federico Pivetta & Leonardo Trolese & Riorganizzazione delle metriche di qualità\\
-    \hline
-    0.4.3 & 2025-01-10 & Leonardo Trolese & Uncas Peruzzi & Aggiunta dei test di integrazione\\
+    0.4.3 & 2025-01-14 & Federico Pivetta & Leonardo Trolese & Riorganizzazione delle metriche di qualità\\
+    %\hline
+    %0.4.3 & 2025-01-10 & Leonardo Trolese & Uncas Peruzzi & Aggiunta dei test di integrazione\\
     \hline
     0.4.2 & 2025-01-10 & Federico Pivetta & Leonardo Trolese & Aggiunta dei test di sistema e dei test di accettazione\\
     \hline
@@ -124,7 +124,7 @@
     \hline
     0.3.0 & 2024-12-12 & Riccardo Piva & Alfredo Rubino & Arricchimento sezioni Qualità di processo, Qualità di prodotto e inizio redazione modalità testing \\
     \hline
-    0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sezione Qualità di prodotto\\
+    0.2.0 & 2024-12-06 & Manuel Gusella  & Alfredo Rubino & Inizio redazione sottosezione Qualità di prodotto\\
     \hline
     0.1.0 & 2024-11-21 & Uncas Peruzzi  & Federico Pivetta & Inizio redazione del documento\\
     \hline
@@ -149,7 +149,7 @@ verrà aggiornato nel tempo per riflettere eventuali modifiche, integrazioni e i
 
 \subsection{Glossario}
 Con l'intento di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del progetto. I termini presenti nel glossario sono contrassegnati con una $_G$ a pedice : Termine$_G$.\\
-Le definizioni sono presenti nell'apposito documento \textit{Glossario v1.0.0}
+Le definizioni sono presenti nell'apposito documento \textit{Glossario}
 
 
 \subsection{Riferimenti}
@@ -157,7 +157,7 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario v1.0.0}
 
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
-    \item[-] \textit{Norme di Progetto v1.0.0}\\
+    \item[-] \textit{Norme\_di\_Progetto\_v1.0.0}\\
     \textcolor{blue}{\texttt{\url{linkdamettere.com}}}
 
     \item[-] Regolamento del progetto didattico  \\
@@ -435,9 +435,9 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
 
 \section{Modalità di Testing}
 Qui sotto sono elencati i vari test che vengono eseguiti automaticamente sul prodotto software.\\
-Questo serve a garantire che il prodotto soddisfi i requisiti e le aspettative indicate nel documento \textit{Analisi dei Requisiti v1.0.0}.\\
+Questo serve a garantire che il prodotto soddisfi i requisiti e le aspettative indicate nel documento \textit{Analisi dei Requisiti}.\\
 I test sono divisi in quattro categorie: Test di unità, Test di sistema, Test di integrazione e Test di accettazione.\\
-E per indicare lo stato come indicato in \textit{Norme di Progetto v1.0.0} vengono utilizzate le seguenti abbreviazioni:
+E per indicare lo stato come indicato in \textit{Norme di Progetto} vengono utilizzate le seguenti abbreviazioni:
 \begin{itemize}
 \item \textbf{P}: Passato
 \item \textbf{NP}: Non Passato
@@ -448,7 +448,7 @@ E per indicare lo stato come indicato in \textit{Norme di Progetto v1.0.0} vengo
 I test di unità servono a verificare che ogni singola unità del software funzioni correttamente.\\
 
 \subsection{Test di sistema}
-I test di sistema servono a verificare la completa copertura dei requisiti concordati nel documento \textit{Analisi dei Requisiti v1.0.0}.\\
+I test di sistema servono a verificare la completa copertura dei requisiti concordati nel documento \textit{Analisi dei Requisiti}.\\
 
 \begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
 \hline
@@ -528,27 +528,27 @@ TS33 & Verificare che il servizio LLM$_G$ possa trasmettere un messaggio custom,
 I test di integrazione servono a verificare che le componenti del sistema si integrino correttamente e in maniera efficace. L'obiettivo dei test
 è identificare eventuali problemi di interoperabilità e integrazione fra le componenti del software.\\
 
-\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
-\hline
-\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
-\endhead
-\hline
-TI1 & Verificare che i dati simulati vengano correttamente pubblicati sul broker di messaggi & NI\\
-\hline
-TI2 & Assicurarsi che il modulo di stream processing elabori correttamente i dati ricevuti dal broker e li invii al motore di generative AI & NI\\
-\hline
-TI3 & Verificare che il motore LLM generi messaggi pubblicitari coerenti e contestualizzati in base ai dati forniti & NI\\
-\hline
-TI4 & Controllare che i messaggi generati vengano correttamente salvati nella piattaforma di storage & NI\\
-\hline
-TI5 & Controllare che i dati posizionali generati vengano correttamente salvati nella piattaforma di storage & NI\\
-\hline
-TI6 & Verificare che i dati geospaziali vengano aggiornati in tempo reale sulla dashboard contenente la mappa & NI\\
-\hline
-TI7 & Assicurarsi che i messaggi generati dal motore LLM siano correttamente visualizzati nella dashboard & NI\\
-\hline
-\caption{Test di integrazione}\\
-\end{longtable}
+%\begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|}
+%\hline
+%\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
+%\endhead
+%\hline
+%TI1 & Verificare che i dati simulati vengano correttamente pubblicati sul broker di messaggi & NI\\
+%\hline
+%TI2 & Assicurarsi che il modulo di stream processing elabori correttamente i dati ricevuti dal broker e li invii al motore di generative AI & NI\\
+%\hline
+%TI3 & Verificare che il motore LLM generi messaggi pubblicitari coerenti e contestualizzati in base ai dati forniti & NI\\
+%\hline
+%TI4 & Controllare che i messaggi generati vengano correttamente salvati nella piattaforma di storage & NI\\
+%\hline
+%TI5 & Controllare che i dati posizionali generati vengano correttamente salvati nella piattaforma di storage & NI\\
+%\hline
+%TI6 & Verificare che i dati geospaziali vengano aggiornati in tempo reale sulla dashboard contenente la mappa & NI\\
+%\hline
+%TI7 & Assicurarsi che i messaggi generati dal motore LLM siano correttamente visualizzati nella dashboard & NI\\
+%\hline
+%\caption{Test di integrazione}\\
+%\end{longtable}
 
 \subsection{Test di accettazione}
 I test di accettazione sono finalizzati a verificare che tutte le esigenze concordate con il proponente siano soddisfatte, e di conseguenza saranno
@@ -724,8 +724,7 @@ riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.
 
 % da modificare NdP aggiungendo il fatto che le ore produttive e totali si riferiscono al singolo sprint e non all'interezza del progetto
 \textbf{RTB}: La metrica di efficienza temporale è data dal rapporto fra il numero di ore produttive e totali per ogni sprint, e indica quante delle ore dedicate al progetto
-sono state effettivamente usate per la produzione di materiale (software o di altra natura), rispetto alle ore effettivamente consumate dai membri del gruppo.\\
-Le ore produttive sono state accuratamente rendicontate per l'intera durata del progetto, mentre quelle totali (che includono anche le produttive), sono state misurate in
+sono state effettivamente usate per la produzione di materiale (software o di altra natura), rispetto alle ore effettivamente consumate dai membri del gruppo. Le ore produttive sono state accuratamente rendicontate per l'intera durata del progetto, mentre quelle totali (che includono anche le produttive), sono state misurate in
 maniera più precisa possibile, ma senza pretese di assoluta esattezza, per via della natura di queste ultime.\\
 Dal grafico emerge che la ET si mantiene, per l'intera durata delle prime sei iterazioni del progetto, al di sopra del valore minimo accettabile (pari a 0.3), ma al di 
 sotto del valore ideale (pari o superiore a 1.0).\\
@@ -758,8 +757,7 @@ dei documenti privi di errori ortografici, e ciò è stato raggiunto, dato che a
 \end{figure}
 
 \textbf{RTB}: Emerge da un'analisi del grafico che il valore di accettazione dell'indice di Gulpease (valore ideale $geq$ 60; valore accettabile $geq$ 40), è stato quasi sempre rispettato in tutti i documenti
-redatti per cui si è scelto di misurarlo; con alcune eccezioni per il documento \textit{Analisi dei Requisiti v1.0.0} (nel quarto periodo), e per il documento 
-\textit{Norme di Progetto v1.0.0} (nella prima e nella terza iterazione).\\
+redatti per cui si è scelto di misurarlo; con alcune eccezioni per il documento \textit{Analisi dei Requisiti} (nel quarto periodo), e per il documento \textit{Norme di Progetto} (nella prima e nella terza iterazione).\\
 Appare tuttavia chiaro che il gruppo ha avuto non poche difficoltà a raggiungere il valore ideale per questa metrica, poiché è stata sottovalutata la difficoltà dello 
 scrivere documentazione chiara e con linguaggio semplice.\\
 A questo proposito il gruppo si porrà in futuro l'obiettivo di migliorare il valore di questa metrica, cercando di esprimere i concetti con frasi più brevi e semplici.\\
