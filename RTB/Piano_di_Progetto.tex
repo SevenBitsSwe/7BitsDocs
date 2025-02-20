@@ -18,7 +18,7 @@
 \usepackage{longtable}
 
 
-\newcommand\version{0.4.7} %aggiunta versione come variabile
+\newcommand\version{0.4.8} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -50,6 +50,7 @@
 
 \renewcommand*\contentsname{Indice}
 \renewcommand{\listfigurename}{Elenco delle figure}
+\renewcommand{\listtablename}{Elenco delle tabelle}
 
 \begin{document}
 
@@ -105,6 +106,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
 \hline
+0.4.8 & 2025-02-20 & Alfredo Rubino & Giovanni Cristellon & Redazione sesto sprint e correzioni quinto sprint \ref{quinto-sprint$_G$}\\
+\hline
 0.4.7 & 2025-02-06 & Riccardo Piva & Federico Pivetta & Piccole correzioni quinto sprint \ref{quinto-sprint$_G$}\\
 \hline
 0.4.6 & 2025-01-29 & Riccardo Piva & Federico Pivetta & Redazione quinto sprint \ref{quinto-sprint$_G$}\\
@@ -141,6 +144,8 @@
 \tableofcontents
 \newpage
 \listoffigures
+\newpage
+\listoftables
 
 \newpage
 \section{Introduzione}
@@ -166,23 +171,18 @@ Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno 
 \subsubsection{Informativi}
 Slide del corso di Ingegneria del Software:
 \begin{itemize}
-\item [-] Modelli di sviluppo software:\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T03.pdf}}}\\
-  (Consultato: 2025-02-19).
-    \item [-] Gestione di Progetto:\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T04.pdf}}}\\
-  (Consultato: 2025-02-19).
+  \item [-] Modelli di sviluppo software:\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T03.pdf}}}
+    \item [-] Gestione di Progetto:\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T04.pdf}}}
 \end{itemize}
 
 \subsubsection{Normativi}
 \begin{itemize}
-	\item [-] \textit{Norme\_di\_Progetto\_v1.0.0.pdf}
+	\item [-] \textit{Norme\_di\_Progetto.pdf}
     \item [-] Documento e presentazione del capitolato C4 - NearYou - Smart custom advertising platform:\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}}}\\
-  (Consultato: 2025-02-19).\\
-    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}\\
-  (Consultato: 2025-02-19).
+    \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}
     
-    \item [-] Regolamento del progetto didattico\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}}}\\
-  (Consultato: 2025-02-19).
+    \item [-] Regolamento del progetto didattico\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}}}
 \end{itemize}
 
 \newpage
@@ -982,7 +982,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
 
     Nel corso del quarto sprint il team prevede di continuare la stesura della documentazione e la produzione del PoC. Nello specifico 
     il gruppo si concentrerà proprio sulla documentazione con particolare interesse alla modifica e al perfezionamento del documento di
-    Analisi dei Requisiti, a seguito del confronto avvenuto in data 2024-12-20 con il professor Cardin. Il gruppo si propone nel corso Di
+    Analisi dei Requisiti, a seguito del confronto avvenuto in data 2024-12-20 con il professor Cardin. Il gruppo si propone nel corso di
     questa iterazione di terminare la redazione di tutti i documenti in vista della consegna RTB prevista che il gruppo prevede di
     effettuare entro la prima metà di gennaio 2025. Sebbene presente si prevede meno tempo produttivo da destinare al PoC poiché a seguito
     di un confronto con al proponente quanto fatto fino ad ora è stato ritenuto sufficiente a provare la fattibilità del progetto.\\
@@ -1141,8 +1141,8 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     
     \paragraph{Panoramica generale e obiettivi}\mbox{}\vspace{0.4em}
 
-    Nel corso del quinto sprint il gruppo si propone di ultimare la redazione della documentazione per la consegna RTB, prevista inizialmente per il periodo 2025-01-22 - 2025-01-24.
-    In particolare si prevede il completamento di documenti come il Piano di Qualifica e l'Analisi dei Requisiti.\\
+    Nel corso del quinto sprint il gruppo si propone di procedere e ultimare la redazione della documentazione per la consegna RTB.
+    In particolare si prevede di concentrarsi su documenti come il Piano di Qualifica e l'Analisi dei Requisiti.\\
     Inoltre il gruppo:
     \begin{itemize}
         \item Programmerà un incontro con il professor Cardin per discutere del lavoro svolto e per ricevere eventuali feedback;
@@ -1167,11 +1167,13 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \paragraph{Gestione Rischi}\mbox{}
     \vspace{-1em}
     \subparagraph*{Rischi Attesi}\mbox{}
+    
     Relativamente alla quinta iterazione sono stati identificati dei potenziali rischi in cui potrebbe imbattersi il gruppo:
     \vspace{-0.5em}
     \begin{itemize}
     \setlength\itemsep{-0.2em}
     \item [-] \hyperref[RP2]{RP2} - Incertezza sulle stime delle attività;
+    \item [-] \hyperref[RP1]{RP1} - Impegni al di fuori del progetto o indisponibilità individuale;
     \item [-] \hyperref[RC3]{RC3} - Cambio dei ruoli;
     \item [-] \hyperref[RP3]{RP3} - Rischio cambiamenti improvvisi a ridosso della consegna;
     \end{itemize}
@@ -1236,7 +1238,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \paragraph{Consuntivo orario}\mbox{}\vspace{0.4em}
     \begin{figure}[ht]
     	\centering
-    	\includegraphics[width=0.6\linewidth]{consuntivoOreQuartoSprint.png}
+    	\includegraphics[width=0.6\linewidth]{consuntivoOreQuintoSprint.png}
     	\caption{Consuntivo orario per membro - Quinto sprint$_G$}
     	\label{fig:Consuntivo orario per membro - quinto sprint$_G$}
     \end{figure}
@@ -1249,16 +1251,16 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
                 hide number,
                 color={responsabile, amministratore, analista, verificatore}, 
                 radius=1.5
-            ]{12/Responsabile - 12\%, 6/Amministratore - 6\%, 33/Analista - 33\% , 49/Verificatore - 49\%}
+            ]{12/Responsabile - 12\%, 5/Amministratore - 5\%, 38/Analista - 38\% , 45/Verificatore - 45\%}
         \end{tikzpicture}
         \caption{Diagramma circolare della partizione delle ore consuntive per ruolo - Quinto sprint$_G$ }
-        \label{fig:Diagramma circolare della partizione delle ore consuntive per ruolo - quinto sprint$_G$}
+        \label{fig:Diagramma circolare della partizione delle ore consuntive per ruolo - Quinto sprint$_G$}
     \end{figure}
 
     \paragraph{Rendicontazione delle risorse economiche restanti}\mbox{}\vspace{0.4em}
     \begin{figure}[H]
     	\centering
-    	\includegraphics[width=0.6\linewidth]{oreCostiQuartoSprint.png}
+    	\includegraphics[width=0.6\linewidth]{oreCostiQuintoSprint.png}
     	\caption{Consuntivo orario e costi per ruolo - Quinto sprint$_G$}
     	\label{fig:Consuntivo orario e costi per ruolo - Quinto sprint$_G$}
     \end{figure}
@@ -1276,4 +1278,160 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     Infine, una riunione conclusiva con l'azienda ha permesso di fare il punto della situazione e di pianificare le attività rimanenti. L'incontro è stato utile per allineare le aspettative e definire chiaramente gli obiettivi per il prossimo sprint. 
     In sintesi, il quinto sprint ha rappresentato una fase di consolidamento e revisione, con l'obiettivo di terminare tutti i documenti e presentare l'RTB nel prossimo sprint, auspicabilmente senza ulteriori ritardi.
 
+
+%%%%%%%%%%
+%%%%% Sesto sprint
+%%%%%%%%%%%
+
+\newpage
+\subsubsection{Sesto sprint$_G$}
+\label{sesto-sprint$_G$}
+    
+    \paragraph{Durata sprint}\mbox{}\\
+    \vspace{-1.5em}
+    \begin{table}[h] 
+    \renewcommand{\arraystretch}{1.2}  
+    \begin{tabular}{ l l }
+        Inizio: & 2025-01-30 \\
+        Fine Prevista: & 2025-02-20 \\
+        Fine Effettiva: & 2025-02-20 \\
+        Giorni di ritardo: & 0 \\
+    \end{tabular}
+    \end{table}
+    \vspace{-2em}
+    {\renewcommand{\arraystretch}{1.5}%
+    
+    \paragraph{Panoramica generale e obiettivi}\mbox{}\vspace{0.4em}
+
+    Nel corso del sesto sprint il gruppo si propone di ultimare la redazione della documentazione per la consegna RTB, prevista inizialmente per lo scorso sprint.
+    In particolare si prevede il completamento di documenti come il Piano di Qualifica e l'Analisi dei Requisiti.
+    \\
+    Il gruppo ha in programma di:
+    \begin{itemize}
+        \item Partecipare alla prima parte della revisione RTB, in un incontro con il professor Cardin programmato per lunedì 2025-02-17 dalle 8:30 alle 8:50;
+        \item In caso di semaforo verde, verrà fissato anche l'incontro conclusivo con il professor Vardanega.
+    \end{itemize}
+    Come il precedente, anche questo sprint è probabile che risenta del periodo degli esami universitari.\\
+
+    Seguono le attività inserite nel backlog per questo periodo:
+    \vspace{-0.5em}
+    \begin{itemize}
+    \setlength\itemsep{-0.2em}
+    \item [-] Ristrutturazione del sito web;
+    \item [-] Sistemazione riferimenti normativi e informativi nei vari documenti.
+    \item [-] Terminazione del documento di Analisi dei Requisiti;
+    \item [-] Stesura della lettera di presentazione RTB;
+    \item [-] Consuntivo quinto sprint nel Piano di Progetto;
+
+    \end{itemize}
+
+    \paragraph{Gestione Rischi}\mbox{}
+    \vspace{-1em}
+    \subparagraph*{Rischi Attesi}\mbox{}
+    
+    Relativamente alla sesta iterazione sono stati identificati dei potenziali rischi in cui potrebbe imbattersi il gruppo:
+    \vspace{-0.5em}
+    \begin{itemize}
+    \setlength\itemsep{-0.2em}
+    \item [-] \hyperref[RP2]{RP2} - Incertezza sulle stime delle attività;
+    \item [-] \hyperref[RC3]{RC3} - Cambio dei ruoli;
+    \item [-] \hyperref[RP3]{RP3} - Rischio cambiamenti improvvisi a ridosso della consegna;
+    \item [-] \hyperref[RP1]{RP1} - Impegni al di fuori del progetto o indisponibilità individuale;
+
+    \end{itemize}
+
+    \subparagraph*{Rischi Incontrati}\mbox{}
+    
+    Nel corso del sesto periodo, il gruppo ha nuovamente affrontato alcune difficoltà legate alla concomitanza con la sessione d'esami universitari, così come accaduto nello sprint precedente. Questo ha portato a una riduzione della produttività e a una gestione più attenta delle tempistiche di lavoro.  
+    Nonostante queste difficoltà, il gruppo è riuscito a completare la Revisione Tecnica di Baseline (RTB) secondo i piani, garantendo il rispetto degli obiettivi prefissati. La pianificazione dello sprint ha tenuto conto delle possibili limitazioni, consentendo di distribuire adeguatamente le attività e assicurare la consegna della documentazione richiesta.  
+
+    \paragraph{Definizione ruoli}\mbox{}\vspace{0.4em}
+    
+    Questi sono i ruoli assegnati per membro in questo sesto sprint$_G$.\\
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!25}
+        \textbf{Ruolo} & \textbf{Membro}\\
+        \hline
+        Responsabile & Alfredo Rubino\\
+        \hline
+        Amministratore & Riccardo Piva \\ 
+        \hline
+        Analista & Leonardo Trolese \\
+        & Manuel Gusella \\
+        \hline
+        Progettista & / \\
+        \hline
+        Programmatore & / \\
+        \hline
+        Verificatore & Federico Pivetta \\
+        & Giovanni Cristellon \\
+        & Uncas Peruzzi \\
+        \hline
+        \end{tabular}
+        \caption{Tabella dei ruoli - Sesto Sprint}
+    \end{table}
+
+    \paragraph{Preventivo orario}\mbox{}\vspace{0.4em}
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{preventivoOreSestoSprint.PNG}
+    	\caption{Preventivo orario per membro - Sesto sprint$_G$}
+    	\label{fig:Preventivo orario per membro - Sesto sprint$_G$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[
+                text=pin,
+                hide number,
+                color={responsabile, amministratore, analista, verificatore}, 
+                radius=1.5
+            ]{19/Responsabile - 19\%, 6/Amministratore - 6\%, 28/Analista - 28\% , 47/Verificatore - 47\%}
+        \end{tikzpicture}
+        \caption{Diagramma circolare della partizione delle ore preventive per ruolo - Sesto sprint$_G$ }
+        \label{fig:Diagramma circolare della partizione delle ore preventive per ruolo - Sesto sprint$_G$}
+    \end{figure}
+    
+    \paragraph{Consuntivo orario}\mbox{}\vspace{0.4em}
+    \begin{figure}[ht]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{consuntivoOreSestoSprint.png}
+    	\caption{Consuntivo orario per membro - Sesto sprint$_G$}
+    	\label{fig:Consuntivo orario per membro - Sesto sprint$_G$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[
+                text=pin,
+                hide number,
+                color={responsabile, amministratore, analista, verificatore}, 
+                radius=1.5
+            ]{21/Responsabile - 21\%, 12/Amministratore - 12\%, 23/Analista - 23\% , 44/Verificatore - 44\%}
+        \end{tikzpicture}
+        \caption{Diagramma circolare della partizione delle ore consuntive per ruolo - Sesto sprint$_G$ }
+        \label{fig:Diagramma circolare della partizione delle ore consuntive per ruolo - Sesto sprint$_G$}
+    \end{figure}
+
+    \paragraph{Rendicontazione delle risorse economiche restanti}\mbox{}\vspace{0.4em}
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth]{oreCostiSestoSprint.png}
+    	\caption{Consuntivo orario e costi per ruolo - Sesto sprint$_G$}
+    	\label{fig:Consuntivo orario e costi per ruolo - Sesto sprint$_G$}
+    \end{figure}
+    
+    \paragraph{Retrospettiva}\mbox{}\vspace{0.4em}
+
+    Durante il sesto periodo si è svolta la prima parte della revisione RTB con il professor Cardin, ottenendo un esito positivo e il semaforo verde. A seguito della revisione, il professore ha evidenziato alcune criticità nell’Analisi dei Requisiti, per le quali sono già state avviate le opportune attività correttive.
+    Analogamente al quinto sprint, anche questo periodo è stato influenzato dalla sessione d’esami universitari, che ha ridotto la disponibilità dei membri del gruppo e rallentato il completamento di alcune attività. Nonostante ciò, il team ha mantenuto un impegno costante per concludere la documentazione necessaria e integrare le modifiche richieste.
+    Oltre alla revisione dei documenti, è stato portato avanti il lavoro sulle metriche e sul Piano di Qualifica, con un focus particolare sul cruscotto e sulla validazione dei test. L’analisi dei dati emersi ha permesso di individuare alcuni aspetti migliorabili nella gestione della qualità, che verranno affrontati nei prossimi sprint.
+    Infine, il confronto con l’azienda ha permesso di chiarire alcuni aspetti critici e pianificare le attività rimanenti. L’obiettivo del prossimo sprint sarà consolidare le correzioni richieste e prepararsi alla seconda parte della revisione RTB, garantendo la massima aderenza agli standard qualitativi stabiliti.
+    A seguito del termine della sessione d'esami per tutti i membri del team, il gruppo aumenterà il numero di ore lavorative e, di conseguenza, la produttività nei prossimi sprint. Questo impegno aggiuntivo è finalizzato a rispettare quanto più possibile la nuova data di consegna del progetto, stabilita dal gruppo per il 04-04-2025.
+    
 \end{document}
