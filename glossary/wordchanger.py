@@ -41,7 +41,6 @@ def read_terms(filename):
 
 def process_tex_file(file_path):
     with open(file_path, "r+", encoding='utf-8') as file:
-        contenuto = file.read()
         linee=file.readlines()
         nuovo_contenuto = ""
         
@@ -52,20 +51,20 @@ def process_tex_file(file_path):
             if(linea=="\\end{titlepage}\n"):
                 start=True
                 
-                if(start==True):
-                    # Processiamo prima i termini composti, poi quelli singoli
-                    for parola in compound_terms:
-                        linea = add_g_comp(linea, parola)
-                    for parola in single_terms:
-                        linea = add_g(linea, parola)
-                nuovo_contenuto=nuovo_contenuto+linea
+            if(start==True):
+                # Processiamo prima i termini composti, poi quelli singoli
+                for parola in compound_terms:
+                    linea = add_g_comp(linea, parola)
+                for parola in single_terms:
+                    linea = add_g(linea, parola)
+
+            nuovo_contenuto=nuovo_contenuto+linea
         
         # Se ci sono stati cambiamenti, scriviamo il nuovo contenuto
-        if nuovo_contenuto != contenuto:
-            file.seek(0)
-            file.write(nuovo_contenuto)
-            file.truncate()
-            print(f"Modified: {file_path}")
+        file.seek(0)
+        file.write(nuovo_contenuto)
+        file.truncate()
+        print(f"Modified: {file_path}")
 
 def find_tex_files(base_path):
     tex_files = []
