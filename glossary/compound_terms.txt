@@ -1,0 +1,10 @@
+analisi dei requisiti
+best practices
+caso d'uso
+ciclo di vita
+continuous integration
+docker compose
+sprint retrospective
+sprint review
+user story
+way of working
