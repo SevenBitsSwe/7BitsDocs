@@ -7,14 +7,12 @@
 *.lof
 *.lot
 .DS_Store
-<<<<<<< HEAD
 RTB/images
 src-esterni
 
 ##Others
 *.notes
 .vscode
-=======
 src-esterni
 
 ##Others
@@ -24,4 +22,3 @@ norme_di_progetto.notes
 *.notes
 RTB/Verbali/Interni/images
 RTB/Verbali/Esterni/images
->>>>>>> origin/main
