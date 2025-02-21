@@ -42,13 +42,23 @@ def read_terms(filename):
 def process_tex_file(file_path):
     with open(file_path, "r+", encoding='utf-8') as file:
         contenuto = file.read()
-        nuovo_contenuto = contenuto
+        linee=file.readlines()
+        nuovo_contenuto = ""
         
-        # Processiamo prima i termini composti, poi quelli singoli
-        for parola in compound_terms:
-            nuovo_contenuto = add_g_comp(nuovo_contenuto, parola)
-        for parola in single_terms:
-            nuovo_contenuto = add_g(nuovo_contenuto, parola)
+        #variabile booleana che serve a capire quando iniziare a mettere i G a pedice.
+        #noi vogliamo che li metta dopo la titlepage
+        start=False
+        for linea in linee:
+            if(linea=="\\end{titlepage}\n"):
+                start=True
+                
+                if(start==True):
+                    # Processiamo prima i termini composti, poi quelli singoli
+                    for parola in compound_terms:
+                        linea = add_g_comp(nuovo_contenuto, parola)
+                    for parola in single_terms:
+                        linea = add_g(nuovo_contenuto, parola)
+                nuovo_contenuto=nuovo_contenuto+linea
         
         # Se ci sono stati cambiamenti, scriviamo il nuovo contenuto
         if nuovo_contenuto != contenuto:
