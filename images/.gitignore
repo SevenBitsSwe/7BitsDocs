@@ -1,0 +1,10 @@
+##Tex documents
+*.aux
+*.log
+*.toc
+*.synctex.gz
+*.out
+*.lof
+*.lot
+.DS_Store
+RTB/images

@@ -24,6 +24,12 @@ src-esterni
 RTB/images
 *.lot
 .DS_Store
+RTB/images
+src-esterni
+
+##Others
+*.notes
+.vscode
 src-esterni
 
 ##Others
