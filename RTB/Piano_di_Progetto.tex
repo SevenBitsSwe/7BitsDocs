@@ -18,10 +18,10 @@
 \usepackage{longtable}
 
 
-\newcommand\version{0.4.9} %aggiunta versione come variabile
+\newcommand\version{1.0.0} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
-%\graphicspath{{../images/}}
+\graphicspath{{../images/}}
 
 %cambio misure della pagina
 \geometry{a4paper,left=20mm,right=20mm,top=20mm}
@@ -106,6 +106,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
 \hline
+1.0.0 & 2025-02-21 & Giovanni Cristellon & Manuel Gusella & Approvazione documento per RTB.\\
+\hline
 0.4.9 & 2025-02-21 & Alfredo Rubino & Manuel Gusella & Modifica colori tabelle\\
 \hline
 0.4.8 & 2025-02-20 & Alfredo Rubino & Giovanni Cristellon & Redazione sesto sprint \ref{sesto-sprint$_G$} e correzioni quinto sprint \ref{quinto-sprint$_G$}\\
@@ -155,7 +157,7 @@
 \label{introduzione}
 \subsection{Scopo del documento}
 Questo documento ha lo scopo di definire in modo chiaro le modalità con cui le attività saranno svolte dai membri del gruppo per la realizzazione del progetto.\\
-Saranno trattati in dettagli i seguenti temi:
+Saranno trattati in dettaglio i seguenti temi:
 \begin{itemize}
     \item [-] Analisi dei rischi;
     \item [-] Organizzazione delle attività nei singoli periodi;
@@ -168,7 +170,7 @@ Il capitolato C4 ha come scopo la realizzazione di una dashboard "amministrativa
 La dashboard deve mostrare una mappa con ipotetici utenti generati virtualmente, che poi verranno rappresentati come punti in movimento, e ogni volta che un utente passa per un'area di interesse appare un annuncio generato tramite IA$_G$.
 
 \subsection{Glossario}
-Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno del documento, è presente il \textit{Glossario.pdf}, in cui vengono riportate tutte le definizione delle parole con un significato specifico. Questi termini veranno marcati con una $_G$ a pedice, mentre i termini composti, oltre alla $_G$ a pedice, saranno uniti da un "-" come segue: termine-composto$_G$. 
+Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno del documento, è presente il \textit{Glossario.pdf}, in cui vengono riportate tutte le definizioni delle parole con un significato specifico. Questi termini verranno marcati con una $_G$ a pedice, mentre i termini composti, oltre alla $_G$ a pedice, saranno uniti da un "-" come segue: termine-composto$_G$. 
 
 \subsection{Riferimenti}
 \subsubsection{Informativi}
@@ -285,7 +287,7 @@ Slide del corso di Ingegneria del Software:
     \hline
     Identificazione & Un chiaro indicatore è la presenza di ripetuti colloqui tra componenti del team volti a esplicare il codice che non risulta chiaro. Per quanto riguarda la presenza di bug, può essere intercettata tramite la normale esecuzione del codice o mediante la fase di testing.   \\
     \hline
-    Possibili Attenuazioni & In caso di codice poco leggibile è necessario effetuare un refactoring e continue review del software. In caso di errori, si può chiedere l'aiuto di un membro del team più esperto o organizzare delle brevi sessioni di peer-programming per risolvere il problema. \\
+    Possibili Attenuazioni & In caso di codice poco leggibile è necessario effettuare un refactoring e continue review del software. In caso di errori, si può chiedere l'aiuto di un membro del team più esperto o organizzare delle brevi sessioni di peer-programming per risolvere il problema. \\
     \hline
     Probabilità Occorrenza &  Media \\
     \hline
@@ -383,7 +385,7 @@ Slide del corso di Ingegneria del Software:
     \hline
     Descrizione &  Durante lo sviluppo del progetto, è molto probabile che vengano svolte delle attività mai affrontate prima. Questo può portare ad una pianificazione imprecisa, dovuta alla mancata conoscenza dei requisiti, alla sottostima o sovrastima delle risorse e del tempo necessari al suo completamento o alla scarsa esperienza dei membri del gruppo. \\
     \hline
-    Identificazione &  Viene fatto presente al responsabile in sede di assegnazione delle task, la presenza di attività fino a quel momento sconosciute o visibilemente complesse per le nozioni del membro.\\ 
+    Identificazione &  Viene fatto presente al responsabile in sede di assegnazione delle task, la presenza di attività fino a quel momento sconosciute o visibilmente complesse per le nozioni del membro.\\ 
     \hline
     Possibili Attenuazioni &  La pianificazione delle attività deve essere flessibile, prevedendo margini di tempo e risorse per gestire eventuali imprevisti. È inoltre fondamentale monitorare costantemente il progresso del progetto utilizzando strumenti come Google Sheets, che consente di tracciare le ore produttive impiegate rispetto a quelle disponibili per ogni sprint; la Board di GitHub, che permette di capire in ogni momento quali issue devono essere completate e a chi sono assegnate; e la vista Gantt, anch'essa disponibile su GitHub, che consente di visualizzare la pianificazione temporale e individuare eventuali variazioni o sovrapposizioni nelle attività. \\
     \hline
@@ -440,7 +442,7 @@ Questo confronto ci permette di identificare eventuali scostamenti rispetto al p
 Ogni periodo di avanzamento verrà esposto nella seguente configurazione:
 \begin{enumerate}
  \item \textbf{Durata:} Esprime la durata del periodo di sprint$_G$ scritta in "Dal data-inizio al data-fine" con data-inizio e data-fine espresse in aaaa-mm-gg, saranno eventualmente indicati i giorni di ritardo.
- \item \textbf{Panoramica generale e obiettivi:} Una descrizione generale sui temi prinicipali affrontati nello sprint. Una lista degli obiettivi da raggiungere entro fine sprint$_G$.
+ \item \textbf{Panoramica generale e obiettivi:} Una descrizione generale sui temi principali affrontati nello sprint. Una lista degli obiettivi da raggiungere entro fine sprint$_G$.
  \item \textbf{Rischi incontrati:} Lista di rischi imbattuti durante il periodo. Nel caso  della verifica di eventuali rischi sarà presente anche una sezione di come il team li ha risolti e che impatto hanno avuto sulle attività pianificate. 
  \item \textbf{Ruoli:} Esposizione dei ruoli ricoperti dai componenti del team durante il periodo.
  \item \textbf{Preventivo:} Espone le informazioni di ore e costi preventivati per il periodo di sprint$_G$.
@@ -575,7 +577,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \vspace{-0.5em}
     \begin{itemize}
     \setlength\itemsep{-0.2em}
-    \item [-] \hyperref[RT1]{RT1} - Complessità delle nuove tecnlogie;
+    \item [-] \hyperref[RT1]{RT1} - Complessità delle nuove tecnologie;
     \item [-] \hyperref[RT2]{RT2} - Carenza di documentazione sulle tecnologie;
     \item [-] \hyperref[RC1]{RC1} - Comunicazione interna non ottimale;
     \item [-] \hyperref[RP2]{RP2} - Incertezza nella stima delle attività.
@@ -583,8 +585,8 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
 
     \subparagraph*{Rischi Incontrati}\mbox{}
 
-    Durante questo primo periodo il gruppo ha riscontrato delle leggere difficoltà sulla coordinazione in parallelo della stesura della struttura della documentazione, soprattutto per quanto riguarda le scelte stilistiche. Questo problema forse dovuto ad una mancata comunicazione interna preventiva (\hyperref[RC1]{RC1}) è stato facilmente risolto alla prima riunione interna utile.\newline
-    Numerose difficoltà hanno riguardato lo studio delle tecnologie con le quali la maggior parte dei membri non aveva esperienza regressa (\hyperref[RT1]{RT1}), il che ha comportato delle ore aggiuntive di studio individuale. \'E stata fatta presente alla proponente, la poca chiarezza della documentazione di alcune librerie soprattutto nella fase di gestione delle dipendenze per l'esecuzione dei programmi (\hyperref[RT2]{RT2}). Il problema è stato mitigato con la condivisione da parte della proponente di alcune guide utili e alcune best practises per affrontare al meglio lo studio della tecnologia in questione.
+    Durante questo primo periodo il gruppo ha riscontrato delle leggere difficoltà nella coordinazione in parallelo della stesura della struttura della documentazione, soprattutto per quanto riguarda le scelte stilistiche. Questo problema forse dovuto ad una mancata comunicazione interna preventiva (\hyperref[RC1]{RC1}) è stato facilmente risolto alla prima riunione interna utile.\newline
+    Numerose difficoltà hanno riguardato lo studio delle tecnologie con le quali la maggior parte dei membri non aveva esperienza regressa (\hyperref[RT1]{RT1}), il che ha comportato delle ore aggiuntive di studio individuale. \'E stata fatta presente alla proponente la poca chiarezza della documentazione di alcune librerie soprattutto nella fase di gestione delle dipendenze per l'esecuzione dei programmi (\hyperref[RT2]{RT2}). Il problema è stato mitigato con la condivisione da parte della proponente di alcune guide utili e alcune best practices per affrontare al meglio lo studio della tecnologia in questione.
 
     
     \paragraph{Definizione ruoli}\mbox{}\vspace{0.4em}
@@ -679,7 +681,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
 
     \paragraph{Retrospettiva}\mbox{}\vspace{0.4em}
 
-    Durante il primo periodo di lavoro, ci si è accorti quanto è fondamentale avere un way of working ben definito, da seguire per l'intero progetto. Inoltre si è preso atto della difficoltà nel scrivere documentazione esterna di qualità, seguendo normative, pertanto è probabile che i documenti subiscano numerose modifiche che riguardano stile e gergo.\\ Lo studio delle tecnologie richiedere un ammontare di ore (non produttive) leggermente superiore a quanto previsto, pertanto è necessario chiarire i dubbi all'inizio per procedere successivamente in maniera lineare con l'implementazione delle varie librerie.\\Le task sono state distribuite in maniera abbastanza corretta, le attività sono state comunque terminate entro il tempo limite, sebbene a volte i verificatori hanno fatto notare qualche imprecisione nella qualità di documentazione.
+    Durante il primo periodo di lavoro, ci si è accorti quanto è fondamentale avere un way of working ben definito, da seguire per l'intero progetto. Inoltre si è preso atto della difficoltà nel scrivere documentazione esterna di qualità, seguendo normative, pertanto è probabile che i documenti subiscano numerose modifiche che riguardano stile e gergo.\\ Lo studio delle tecnologie richiede un ammontare di ore (non produttive) leggermente superiore a quanto previsto, pertanto è necessario chiarire i dubbi all'inizio per procedere successivamente in maniera lineare con l'implementazione delle varie librerie.\\Le task sono state distribuite in maniera abbastanza corretta, le attività sono state comunque terminate entro il tempo limite, sebbene a volte i verificatori hanno fatto notare qualche imprecisione nella qualità di documentazione.
 
 %%%%%%%%%%
 %%%%% Secondo sprint
@@ -727,7 +729,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
     \vspace{-0.5em}
     \begin{itemize}
     \setlength\itemsep{-0.2em}
-    \item [-] \hyperref[RT1]{RT1} - Complessità delle nuove tecnlogie;
+    \item [-] \hyperref[RT1]{RT1} - Complessità delle nuove tecnologie;
     \item [-] \hyperref[RT2]{RT2} - Carenza di documentazione sulle tecnologie;
     \item [-] \hyperref[RT3]{RT3} - Produzione di codice confuso o con errori;
     \item [-] \hyperref[RC3]{RC3} - Cambio dei ruoli;
@@ -736,7 +738,7 @@ Il team ha stabilito un calendario di massima del progetto, fissando delle date 
 
     \subparagraph*{Rischi Incontrati}\mbox{}
     
-    Durante il secondo periodo il gruppo si è scontrato in particolare con il rischio dell'indisponibilità individuale \hyperref[RP1]{RP1}. Come era stato comunicato durante il primo SAL, il tempo di questo sprint è stato dimezzato a causa indisponibilità del responsabile della proponente. Questo ha comportato un investimento del monte ore molto maggiore rispetto ad una normale settimana di sprint, al fine di produrre qualcosa di significativamente presentabile durante il successivo SAL. Inoltre durante la settimana un membro del team, a causa di motivi di salute, è stato impossibilitato a lavorare, e questo spiega il basso numero di ore produttive. Questo rischio è stato mitigato grazie ad altri membri del team che si sono occupati di ricoprire le task pendenti. Come nel primo sprint, ci si è imbattuti in problemi con la documentazione di alcune tecnologie che risultava poco chiara (\hyperref[RT2]{RT2}). Questi sono stati limitati grazie ad una sessione di peer programming che ha permesso di individuare ed eliminare alcuni bug nel PoC. Infine, a causa del cambio dei ruoli (\hyperref[RC3]{RC3}), i nuovi analisti di questo sprint hanno avuto dei dubbi in ambito di redazione degli use cases, risolti in aula grazie a delle delucidazioni del docente. 
+    Durante il secondo periodo il gruppo si è scontrato in particolare con il rischio dell'indisponibilità individuale \hyperref[RP1]{RP1}. Come era stato comunicato durante il primo SAL, il tempo di questo sprint è stato dimezzato a causa dell'indisponibilità del responsabile della proponente. Questo ha comportato un investimento del monte ore molto maggiore rispetto ad una normale settimana di sprint, al fine di produrre qualcosa di significativamente presentabile durante il successivo SAL. Inoltre durante la settimana un membro del team, a causa di motivi di salute, è stato impossibilitato a lavorare, e questo spiega il basso numero di ore produttive. Questo rischio è stato mitigato grazie ad altri membri del team che si sono occupati di ricoprire le task pendenti. Come nel primo sprint, ci si è imbattuti in problemi con la documentazione di alcune tecnologie che risultava poco chiara (\hyperref[RT2]{RT2}). Questi sono stati limitati grazie ad una sessione di peer programming che ha permesso di individuare ed eliminare alcuni bug nel PoC. Infine, a causa del cambio dei ruoli (\hyperref[RC3]{RC3}), i nuovi analisti di questo sprint hanno avuto dei dubbi in ambito di redazione degli use cases, risolti in aula grazie a delle delucidazioni del docente. 
 
     
     \paragraph{Definizione ruoli}\mbox{}\vspace{0.4em}
