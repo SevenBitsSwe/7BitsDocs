@@ -14,7 +14,7 @@
 \usepackage{eso-pic}
 \usepackage{longtable}
 
-\newcommand\version{0.2.13} %aggiunta versione come variabile
+\newcommand\version{0.2.14} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 
@@ -91,6 +91,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.2.14 & 2025-02-28 & Leonardo Trolese & Uncas Peruzzi & Aggiunta di alcuni termini\\
+    \hline
     0.2.13 & 2025-02-21 & Manuel Gusella & Riccardo Piva & Correzione ortografica di alcuni definizioni e ordinato i termini in ordine alfabetico all'interno della sezione\\
     \hline
     0.2.12 & 2025-02-14 & Federico Pivetta & Giovanni Cristellon & Correzione di alcune definizioni\\
@@ -161,6 +163,8 @@ Di seguito sono riportate le tabelle per ogni lettera del glossario.
 \textbf{Termine} & \textbf{Definizione}\\
 \endhead
 \hline
+AC & Acronimo di "Actual Cost", trattasi di una metrica che rappresenta il costo in euro sostenuto fino al momento corrente per svolgere le ore produttive rendicontate.\\
+\hline
 Agile & Insieme di principi e metodologie per la gestione e lo sviluppo di progetti, focalizzato sull'adattabilità e la collaborazione. Basato sul Manifesto Agile, enfatizza la flessibilità nei processi, il coinvolgimento continuo degli stakeholder e la capacità di rispondere rapidamente ai cambiamenti, garantendo prodotti di alta qualità e una soddisfazione costante del cliente.\\
 \hline
 Analisi dei Requisiti & Processo fondamentale nello sviluppo di un prodotto software, durante il quale vengono identificati e definiti in dettaglio i requisiti che il sistema deve soddisfare. Sebbene non definisca soluzioni tecniche specifiche, tiene conto della fattibilità tecnologica per garantire che i requisiti siano realizzabili. Questo processo è essenziale per ridurre errori nelle fasi successive e per assicurare che il prodotto finale soddisfi le aspettative del proponente.\\
@@ -178,7 +182,7 @@ Attore & Entità esterna al sistema che interagisce con esso per raggiungere uno
 \textbf{Termine} & \textbf{Definizione}\\
 \endhead
 \hline
-BAC & Budget At Completion, è il budget complessivo preventivato all'inizio di un progetto, che rappresenta il costo totale stimato per completare tutte le attività e consegnare il prodotto finale.\\
+BAC & "Budget At Completion", è il budget complessivo preventivato all'inizio di un progetto, che rappresenta il costo totale stimato per completare tutte le attività e consegnare il prodotto finale.\\
 \hline
 Baseline & Versione approvata di un prodotto di lavoro che può essere modificato solo attraverso delle procedure formali. Una baseline funge da punto di riferimento per monitorare e confrontare i progressi o le modifiche del progetto nel tempo.\\
 \hline
@@ -213,7 +217,11 @@ Container & Unità di software che include un'applicazione e tutte le sue dipend
 \hline
 Continuous Integration & Abbreviata come CI, è una pratica di sviluppo software che prevede l'integrazione frequente e automatica delle modifiche al codice sorgente in un repository condiviso. Ogni modifica viene validata attraverso test automatici per garantire la stabilità e l'integrità del software. La CI consente di identificare e risolvere rapidamente conflitti o errori di integrazione, riducendo il rischio di difetti nel prodotto finale.\\
 \hline
+CPI & Acronimo di "Cost Performance Index", è una metrica che misura l'efficienza del progetto, confrontando il valore guadagnato (EV) con il costo effettivo (AC) sostenuto fino al momento corrente. Il CPI inferiore a 1 indica che il progetto sta superando il budget, mentre un CPI superiore a 1 indica che il progetto sta rispettando il budget.\\
+\hline
 Cruscotto & Traduzione italiana del termine inglese "Dashboard".\\
+\hline
+CV & Acronimo di "Cost Variance", è una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il costo effettivo (AC) sostenuto fino al momento corrente.\\
 \hline
 \end{longtable}
 
@@ -252,6 +260,8 @@ Efficacia & Misura la capacità di raggiungere un obiettivo o un risultato desid
 Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato desiderato, impiegando le risorse minime indispensabili.\\
 \hline
 ETC & Acronimo di "Estimate to Complete", è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. L'ETC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento.\\
+\hline
+EV & Acronimo di "Earned Value", è una metrica che rappresenta il valore in euro delle attività realizzate alla data corrente, ovvero il valore dei deliverable rilasciati fino al momento della misurazione in seguito alle attività svolte.\\
 \hline
 \end{longtable}
 
@@ -412,6 +422,8 @@ Proponente & L'entità che avanza una proposta per la realizzazione di un proget
 \hline
 Protocollo & Insieme di regole e convenzioni che definiscono come deve avvenire la comunicazione o l'interazione tra due o più entità, siano esse dispositivi, software o persone. I protocolli garantiscono che lo scambio di informazioni avvenga in modo standardizzato, sicuro ed efficiente, evitando malintesi o incompatibilità.\\
 \hline
+PV & Acronimo di "Planned Value", è una metrica che rappresenta il valore in euro delle attività pianificate alla data corrente, ovvero il valore dei deliverable che dovrebbero essere stati completati fino al momento della misurazione in base alla pianificazione iniziale.\\
+\hline
 Pull Request & Richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le PR sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge.\\
 \hline
 Python & Linguaggio di programmazione ad alto livello, semplice e versatile. Supporta più paradigmi di programmazione, tra cui quello ad oggetti e quello funzionale. Grazie alla sua sintassi, viene utilizzato in una vasta gamma di applicazioni, tra cui sviluppo software, automazione, analisi dei dati e intelligenza artificiale.\\
@@ -442,6 +454,8 @@ Requisito & Doppio significato: la competenza necessaria per un utente affinché
 \hline
 Rischio & Problema che potrebbe causare perdite o minacciare l'avanzamento del progetto, influendo sui costi o sul successo tecnico. L'Analisi dei Rischi identifica e gestisce tali rischi, prevenendo le perdite e definendo misure per mitigare eventuali danni.\\
 \hline
+RSI & Acronimo di "Requirements Stability Index", è una metrica che  misura la percentuale di stabilità dei requisiti nel ciclo di vita di un progetto.\\
+\hline
 RTB & Acronimo di "Requirements and Technology Baseline", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
 \hline
 \end{longtable}
@@ -468,6 +482,8 @@ Sprint Review & Incontro che si tiene alla fine di uno sprint, in cui il team di
 SQL & Acronimo di "Structured Query Language", è un linguaggio di programmazione specifico utilizzato per gestire e manipolare i dati all'interno di un sistema di gestione di database relazionali (RDBMS).\\
 \hline
 Stakeholder & Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori.\\
+\hline
+SV & Acronimo di "Schedule Variance", trattasi di una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il valore pianificato (PV) fino al momento corrente.\\
 \hline
 SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale che realizza prodotti e soluzioni per diversi mercati quali: Sanità, Industria, Energia, Telco, Finanza e Trasporti \& Logistica. Offre anche consulenze per diversi temi come: GDPR, Big Data, Cloud Computing, IoT, Mobile e Cyber Security.\\
 \hline
