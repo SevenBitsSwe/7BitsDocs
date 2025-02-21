@@ -55,9 +55,9 @@ def process_tex_file(file_path):
                 if(start==True):
                     # Processiamo prima i termini composti, poi quelli singoli
                     for parola in compound_terms:
-                        linea = add_g_comp(nuovo_contenuto, parola)
+                        linea = add_g_comp(linea, parola)
                     for parola in single_terms:
-                        linea = add_g(nuovo_contenuto, parola)
+                        linea = add_g(linea, parola)
                 nuovo_contenuto=nuovo_contenuto+linea
         
         # Se ci sono stati cambiamenti, scriviamo il nuovo contenuto
