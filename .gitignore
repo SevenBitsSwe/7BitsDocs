@@ -2,8 +2,15 @@
 *.aux
 *.log
 *.toc
+*.lof
 *.synctex.gz
 *.out
+src-esterni
+##Others
+.DS_Store
+*.notes
+.vscode/
+RTB/images
 *.lof
 .DS_Store
 src-esterni

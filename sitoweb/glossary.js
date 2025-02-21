@@ -1,4 +1,8 @@
 const glossaryData = {
+  "ac": {
+    "term": "AC",
+    "definition": "Acronimo di \"Actual Cost\", trattasi di una metrica che rappresenta il costo in euro sostenuto fino al momento corrente per svolgere le ore produttive rendicontate."
+  },
   "agile": {
     "term": "Agile",
     "definition": "Insieme di principi e metodologie per la gestione e lo sviluppo di progetti, focalizzato sull'adattabilità e la collaborazione. Basato sul Manifesto Agile, enfatizza la flessibilità nei processi, il coinvolgimento continuo degli stakeholder e la capacità di rispondere rapidamente ai cambiamenti, garantendo prodotti di alta qualità e una soddisfazione costante del cliente."
@@ -13,11 +17,11 @@ const glossaryData = {
   },
   "attore": {
     "term": "Attore",
-    "definition": "Entità esterna al sistema che interagisce con esso per raggiungere un scopo specifico. Gli attori possono essere principali (comunica attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi)."
+    "definition": "Entità esterna al sistema che interagisce con esso per raggiungere uno scopo specifico. Gli attori possono essere principali (comunicano attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi)."
   },
   "bac": {
     "term": "BAC",
-    "definition": "Budget At Completion, è il budget complessivo preventivato all'inizio di un progetto, che rappresenta il costo totale stimato per completare tutte le attività e consegnare il prodotto finale."
+    "definition": "\"Budget At Completion\", è il budget complessivo preventivato all'inizio di un progetto, che rappresenta il costo totale stimato per completare tutte le attività e consegnare il prodotto finale."
   },
   "baseline": {
     "term": "Baseline",
@@ -49,11 +53,11 @@ const glossaryData = {
   },
   "clickhouse": {
     "term": "ClickHouse",
-    "definition": "Database open-source progettato per lélaborazione rapida e scalabile di grandi quantità di dati. Utilizza un'architettura column-oriented, ottimizzata per query analitiche ad alta velocità e compressione efficiente dei dati. Questo lo rende ideale per applicazioni che richiedono analisi in tempo reale su grandi dataset."
+    "definition": "DBMS open-source progettato per lélaborazione rapida e scalabile di grandi quantità di dati. Utilizza un'architettura column-oriented, ottimizzata per query analitiche ad alta velocità e compressione efficiente dei dati. Questo lo rende ideale per applicazioni che richiedono analisi in tempo reale su grandi dataset."
   },
   "committente": {
     "term": "Committente",
-    "definition": "Parte esterna che assegna lésecuzione di un progetto a un esecutore, definendo i termini contrattuali e le condizioni relative alla sua realizzazione. Nel nostro caso, il prof. Vardanega."
+    "definition": "Parte esterna che assegna lésecuzione di un progetto ad un esecutore, definendo i termini contrattuali e le condizioni relative alla sua realizzazione. Nel nostro caso, il prof. Vardanega e il prof. Cardin."
   },
   "container": {
     "term": "Container",
@@ -63,9 +67,17 @@ const glossaryData = {
     "term": "Continuous Integration",
     "definition": "Abbreviata come CI, è una pratica di sviluppo software che prevede l'integrazione frequente e automatica delle modifiche al codice sorgente in un repository condiviso. Ogni modifica viene validata attraverso test automatici per garantire la stabilità e l'integrità del software. La CI consente di identificare e risolvere rapidamente conflitti o errori di integrazione, riducendo il rischio di difetti nel prodotto finale."
   },
+  "cpi": {
+    "term": "CPI",
+    "definition": "Acronimo di \"Cost Performance Index\", è una metrica che misura léfficienza del progetto, confrontando il valore guadagnato (EV) con il costo effettivo (AC) sostenuto fino al momento corrente. Il CPI inferiore a 1 indica che il progetto sta superando il budget, mentre un CPI superiore a 1 indica che il progetto sta rispettando il budget."
+  },
   "cruscotto": {
     "term": "Cruscotto",
     "definition": "Traduzione italiana del termine inglese \"Dashboard\"."
+  },
+  "cv": {
+    "term": "CV",
+    "definition": "Acronimo di \"Cost Variance\", è una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il costo effettivo (AC) sostenuto fino al momento corrente."
   },
   "dashboard": {
     "term": "Dashboard",
@@ -73,19 +85,19 @@ const glossaryData = {
   },
   "database": {
     "term": "Database",
-    "definition": "Sistema organizzato per raccogliere e gestire dati strutturati, con l'obiettivo di consentire un accesso, e unélaborazione efficienti. Grazie alla sua struttura, un database facilita la gestione di grandi quantità di informazioni, rendendole facilmente recuperabili e utilizzabili per vari scopi dagli utenti."
+    "definition": "Sistema organizzato per raccogliere e gestire dati strutturati, con l'obiettivo di consentire un accesso ed unélaborazione efficienti. Grazie alla sua struttura, un database facilita la gestione di grandi quantità di informazioni, rendendole facilmente recuperabili e utilizzabili per vari scopi dagli utenti."
   },
   "dbms": {
     "term": "DBMS",
-    "definition": "Acronimo di DataBase Management System, è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro."
+    "definition": "Acronimo di \"DataBase Management System\", è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro."
   },
   "docker": {
     "term": "Docker",
-    "definition": "Piattaforma che consente di creare, distribuire e eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione."
+    "definition": "Piattaforma che consente di creare, distribuire ed eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione."
   },
   "docker-compose": {
     "term": "Docker Compose",
-    "definition": "Strumento che consente di definire e gestire applicazioni multi-container Docker. Permette di configurare un’applicazione complessa con più servizi e le relative dipendenze in un unico file."
+    "definition": "Strumento che consente di definire e gestire applicazioni multi-container Docker. Permette di configurare un'applicazione complessa con più servizi e le relative dipendenze in un unico file."
   },
   "documentazione": {
     "term": "Documentazione",
@@ -93,7 +105,7 @@ const glossaryData = {
   },
   "eac": {
     "term": "EAC",
-    "definition": "Acronimo di Estimated at Completion, è un termine utilizzato nella gestione dei progetti per stimare il costo totale che sarà necessario per il completamento. Viene calcolato durante il corso del progetto per fornire una previsione aggiornata dei costi, tenendo conto delle performance reali rispetto a quanto pianificato inizialmente. Questo valore aiuta il team a monitorare il progresso del progetto e a prendere decisioni ponderate riguardo alla gestione del budget e alle risorse necessarie."
+    "definition": "Acronimo di \"Estimated at Completion\", è un termine utilizzato nella gestione dei progetti per stimare il costo totale che sarà necessario per il completamento. Viene calcolato durante il corso del progetto per fornire una previsione aggiornata dei costi, tenendo conto delle performance reali rispetto a quanto pianificato inizialmente. Questo valore aiuta il team a monitorare il progresso del progetto e a prendere decisioni ponderate riguardo alla gestione del budget e alle risorse necessarie."
   },
   "efficacia": {
     "term": "Efficacia",
@@ -105,7 +117,11 @@ const glossaryData = {
   },
   "etc": {
     "term": "ETC",
-    "definition": "Acronimo di Estimate to Complete, è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. LÈTC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento."
+    "definition": "Acronimo di \"Estimate to Complete\", è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. LÈTC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento."
+  },
+  "ev": {
+    "term": "EV",
+    "definition": "Acronimo di \"Earned Value\", è una metrica che rappresenta il valore in euro delle attività realizzate alla data corrente, ovvero il valore dei deliverable rilasciati fino al momento della misurazione in seguito alle attività svolte."
   },
   "faker": {
     "term": "Faker",
@@ -125,7 +141,7 @@ const glossaryData = {
   },
   "github": {
     "term": "GitHub",
-    "definition": "Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l’organizzazione e la collaborazione all’interno dei team di sviluppo."
+    "definition": "Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l'organizzazione e la collaborazione all'interno dei team di sviluppo."
   },
   "grafana": {
     "term": "Grafana",
@@ -133,15 +149,15 @@ const glossaryData = {
   },
   "ia": {
     "term": "IA",
-    "definition": "Acronimo italiano di \"Intelligenza artificiale\" ed è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l’apprendimento, la pianificazione e la creatività."
+    "definition": "Acronimo italiano di \"Intelligenza artificiale\", è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l'apprendimento, la pianificazione e la creatività."
   },
   "ieee": {
     "term": "IEEE",
-    "definition": "Acronimo di Institute of Electrical and Electronics Engineers, è un'organizzazione internazionale dedicata all'avanzamento della tecnologia in diversi ambiti, fra cui l'informatica. L'IEEE è noto per la pubblicazione di standard tecnici che definiscono specifiche e linee guida per garantire interoperabilità, qualità, sicurezza e prestazioni nei dispositivi e nei sistemi."
+    "definition": "Acronimo di \"Institute of Electrical and Electronics Engineers\", è un'organizzazione internazionale dedicata all'avanzamento della tecnologia in diversi ambiti, fra cui l'informatica. L'IEEE è noto per la pubblicazione di standard tecnici che definiscono specifiche e linee guida per garantire interoperabilità, qualità, sicurezza e prestazioni nei dispositivi e nei sistemi."
   },
   "inspection": {
     "term": "Inspection",
-    "definition": "Tecnica di analisi statica utilizzata per individuare errori attraverso una lettura mirata. Durante l'inspection, il verificatore segue una sequenza di passaggi prestabiliti per assicurare il rispetto delle regole definite nel Piano di Qualifica, garantendo la conformità agli standard e la qualità del prodotto."
+    "definition": "Tecnica di analisi statica utilizzata per individuare errori attraverso una lettura mirata. Durante l'inspection, il verificatore segue una sequenza di passaggi prestabiliti per assicurare la conformità agli standard e la qualità del prodotto."
   },
   "issue": {
     "term": "Issue",
@@ -173,7 +189,7 @@ const glossaryData = {
   },
   "microservizio": {
     "term": "Microservizio",
-    "definition": "Un approccio per sviluppare e organizzare l’architettura dei software secondo cui quest’ultimi sono composti di servizi indipendenti di piccole dimensioni che comunicano tra loro tramite API ben definite. Le architetture basate su microservizi permettono di scalare e sviluppare le applicazioni in modo più semplice e rapido, facilitando eventuali cambiamenti e miglioramenti."
+    "definition": "Un approccio per sviluppare e organizzare l'architettura dei software secondo cui questi ultimi sono composti di servizi indipendenti di piccole dimensioni che comunicano tra loro tramite API ben definite. Le architetture basate su microservizi permettono di scalare e sviluppare le applicazioni in modo più semplice e rapido, facilitando eventuali cambiamenti e miglioramenti."
   },
   "milestone": {
     "term": "Milestone",
@@ -189,7 +205,7 @@ const glossaryData = {
   },
   "pb": {
     "term": "PB",
-    "definition": "Acronimo di \"Product Baseline\", è una tappa chiave nello sviluppo di un progetto, durante la quale viene verificata e dimostrata la solidità dell’architettura definita nella fase precedente (RTB). È la seconda revisione di avanzamento del progetto didattico, corrispondente alla presentazione dell'MVP."
+    "definition": "Acronimo di \"Product Baseline\", è una tappa chiave nello sviluppo di un progetto, durante la quale viene verificata e dimostrata la solidità dell'architettura definita nella fase precedente (RTB). È la seconda revisione di avanzamento del progetto didattico, corrispondente alla presentazione dell'MVP."
   },
   "percorso": {
     "term": "Percorso",
@@ -217,7 +233,11 @@ const glossaryData = {
   },
   "pull-request": {
     "term": "Pull Request",
-    "definition": "Richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le pull request sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge."
+    "definition": "Richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le PR sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge."
+  },
+  "pv": {
+    "term": "PV",
+    "definition": "Acronimo di \"Planned Value\", è una metrica che rappresenta il valore in euro delle attività pianificate alla data corrente, ovvero il valore dei deliverable che dovrebbero essere stati completati fino al momento della misurazione in base alla pianificazione iniziale."
   },
   "python": {
     "term": "Python",
@@ -239,13 +259,17 @@ const glossaryData = {
     "term": "Rischio",
     "definition": "Problema che potrebbe causare perdite o minacciare l'avanzamento del progetto, influendo sui costi o sul successo tecnico. L'Analisi dei Rischi identifica e gestisce tali rischi, prevenendo le perdite e definendo misure per mitigare eventuali danni."
   },
+  "rsi": {
+    "term": "RSI",
+    "definition": "Acronimo di \"Requirements Stability Index\", è una metrica che misura la percentuale di stabilità dei requisiti nel ciclo di vita di un progetto."
+  },
   "rtb": {
     "term": "RTB",
     "definition": "Acronimo di \"Requirements and Technology Baseline\", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC)."
   },
   "sal": {
     "term": "SAL",
-    "definition": "Acronimo di \"Stato Avanzamento Lavori\", è un incontro in cui il team si riunisce per controllare il progresso degli obiettivi pianificati. Durante questo incontro, si discute cosa è stato completato, cosa è ancora in corso ed cosa potrebbe ostacolare il progetto."
+    "definition": "Acronimo di \"Stato Avanzamento Lavori\", è un incontro in cui il team si riunisce per controllare il progresso degli obiettivi pianificati. Durante questo incontro, si discute cosa è stato completato, cosa è ancora in corso e cosa potrebbe ostacolare il progetto."
   },
   "scrum": {
     "term": "Scrum",
@@ -274,6 +298,10 @@ const glossaryData = {
   "stakeholder": {
     "term": "Stakeholder",
     "definition": "Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori."
+  },
+  "sv": {
+    "term": "SV",
+    "definition": "Acronimo di \"Schedule Variance\", trattasi di una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il valore pianificato (PV) fino al momento corrente."
   },
   "synclab": {
     "term": "synclab",
