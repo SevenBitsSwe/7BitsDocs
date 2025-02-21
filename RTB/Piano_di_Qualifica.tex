@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.4.7} %aggiunta versione come variabile
+\newcommand\version{0.4.8} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -98,6 +98,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.4.8 & 2025-02-21 & Trolese Leonardo & Manuel Gusella & Correzione errori minori\\
+    \hline
     0.4.7 & 2025-02-18 & Trolese Leonardo & Pivetta Federico & Aggiunta ulteriori grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\
     \hline
     0.4.6 & 2025-02-16 & Trolese Leonardo & Pivetta Federico & Aggiunta ulteriori grafici sulle metriche del \hyperref[sec:cruscotto]{cruscotto di valutazione}\\
@@ -143,13 +145,13 @@
 \section{Introduzione}
 
 \subsection{Scopo del documento}
-Il seguente documento ha l'obiettivo di garantire la qualità del prodotto e dei processi coinvolti nell'intero progetto. Al fine di assicurare che il prodotto soddisfi le qualità attese, il documento
+Il seguente documento ha l'obiettivo di garantire la qualità del prodotto e dei processi coinvolti nell'intero progetto. Al fine di assicurare che il prodotto soddisfi le aspettative di qualità attese, il documento
 verrà aggiornato nel tempo per riflettere eventuali modifiche, integrazioni e i risultati delle verifiche effettuate.
 
 
 \subsection{Glossario}
-Con l'intento di evitare ambiguità interpretative del linguaggio utilizzato, viene fornito un glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del progetto. I termini presenti nel glossario sono contrassegnati con una $_G$ a pedice : Termine$_G$.\\
-Le definizioni sono presenti nell'apposito documento \textit{Glossario}
+Con l'intento di evitare ambiguità nell'interpretazione del linguaggio utilizzato, viene fornito un glossario che si occupa di esplicitare il significato dei termini che riguardano il contesto del progetto. I termini presenti nel glossario sono contrassegnati con una $_G$ a pedice : Termine$_G$.\\
+Le definizioni sono contenute nell'apposito documento \textit{Glossario}
 
 
 \subsection{Riferimenti}
@@ -197,12 +199,12 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario}
 \section{Obiettivi metrici di qualità}
 Per far sì che un prodotto raggiunga uno standard qualitativo, è necessario definire delle metriche precise che permettano di monitorare e indicare il grado di qualità del prodotto e che quindi permettano di definire questo standard.
 Queste metriche vengono definite nel documento \textit{Norme di Progetto v1.0.0}.
-Questa sezione si occuperà di definire i parametri delle relative metriche, le quali potranno essere accettabili o ottimali in base alla rigidità del parametro.\\
+Questa sezione si occuperà di definire i parametri di accettazione e ottimalità delle relative metriche.\\
 
 \subsection{Qualità di prodotto}
-La qualità di prodotto è intesa come valutazione del software. Più precisamente per la determinazione del grado di conformità alle attese.\\
+La qualità di prodotto è intesa come valutazione del software, e più precisamente per la determinazione del grado di conformità alle attese.\\
 Si rivolge l'attenzione su aspetti come Usabilità, Affidabilità e Manutenibilità, ma più in generale alla qualità esterna (funzionale) ed interna (strutturale) del prodotto software.\\
-Quindi non basta che il software implementi le funzionalità volute dal proponente, ma le esegua secondo specifici standard di qualità.\\
+Quindi non basta che il software implementi le funzionalità richieste dal proponente, ma le esegua secondo specifici standard di qualità.\\
 In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard ISO/IEC 9126} che il gruppo si impegna a soddisfare per la qualità del prodotto software.
 \subsubsection{Funzionalità}
 \begin{table}[H]
@@ -717,7 +719,7 @@ significativi cambiamenti in caso di esito negativo.\\
 \end{figure}
 
 % da rivedere forse. Non so se davvero possiamo dire di non averne incontrati
-\textbf{RTB}: Nel corso del progetto il team ha senz'altro avuto modo di affrontare svariati dei rischi emersi durane l'analisi dei rischi, tuttavia non sono stati
+\textbf{RTB}: Nel corso del progetto il team ha senz'altro avuto modo di affrontare svariati dei rischi emersi durante l'analisi dei rischi, tuttavia non sono stati
 riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.
 
 
@@ -786,7 +788,7 @@ grafico emerge che il gruppo è sempre riuscito a garantire il rispetto di più 
 un buon lavoro del gruppo dal punto di vista della gestione della qualità.\\
 Detto ciò è però bene notare che il gruppo, in solo uno dei precedenti sei periodi, ha raggiunto il valore ideale (100\%), quindi ci sono comunque importanti margini
 di miglioramento da perseguire.\\
-Un'ultima nota va aggiunta per specificare che il gruppo ha scelto di considerare la metrica relativa all'indice di Gulpease, che sia applica a cinque documenti distinti, come 
+Un'ultima nota va aggiunta per specificare che il gruppo ha scelto di considerare la metrica relativa all'indice di Gulpease, che si applica a cinque documenti distinti, come 
 una metrica unica facendo la media dei cinque valori misurati.\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
