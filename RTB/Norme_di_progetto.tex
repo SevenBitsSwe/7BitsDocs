@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.5.18} %aggiunta versione come variabile
+\newcommand\version{1.0.0} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -110,6 +110,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    1.0.0 & 2025-02-21 & Giovanni Cristellon & Uncas Peruzzi & Approvazione documento per RTB.\\
     \hline
     0.5.18 & 2025-02-17 & Federico Pivetta & Uncas Peruzzi & Correzioni ai nomi dei documenti\\
     \hline
@@ -1432,7 +1434,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
         \item   \textbf{Descrizione}: stima il costo totale del progetto$_G$ basandosi sul rendimento attuale.
         \item   \textbf{Formula:}
                 \[
-                EAC$_G$ = AC$_G$ + ETC$_G$
+                EAC = AC + ETC
                 \]
     \end{itemize}
     \item \textbf{MPC02 - Estimate to Complete (ETC)}:
@@ -1440,7 +1442,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
         \item   \textbf{Descrizione}: stima dei costi rimanenti per completare il progetto$_G$.
         \item   \textbf{Formula:}
                 \[
-                ETC$_G$ = BAC$_G$ - EV$_G$
+                ETC = BAC - EV
                 \]
     \end{itemize}
     \item \textbf{MPC03 - Actual Cost (AC)}:
@@ -1462,7 +1464,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
         \item   \textbf{Descrizione}: indica se si è in ritardo o in anticipo rispetto al valore pianificato. Un valore negativo indica che si è in ritardo.
         \item   \textbf{Formula:}
             \[
-            SV$_G$ = EV$_G$ - PV$_G$
+            SV = EV - PV
             \]
     \end{itemize}
     \item \textbf{MPC07 - Cost variance (CV)}:
@@ -1470,7 +1472,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
         \item   \textbf{Descrizione}: indica se il costo attuale sta superando o meno il budget. Un valore negativo indica che si ha superato il budget.
         \item   \textbf{Formula:}
             \[
-            CV$_G$ = EV$_G$ - AC$_G$
+            CV = EV - AC
             \]
     \end{itemize}
     \item \textbf{MPC08 - Cost Performance Index (CPI)}:
@@ -1478,7 +1480,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
         \item   \textbf{Descrizione}: indica quanti obiettivi sono stati raggiunti rispetto al costo sostenuto in determinato periodo di tempo. Un valore negativo indica che il progetto$_G$ è in ritardo rispetto al budget in quanto i costi sostenuti sono superiori al valore del lavoro completato.
         \item   \textbf{Formula:}
             \[
-            CPI$_G$ = \frac{EV}{AC}
+            CPI = \frac{EV}{AC}
             \]
     \end{itemize}
 \end{itemize}
@@ -1503,7 +1505,7 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
                 \item   \textbf{Descrizione}: misura la stabilità dei requisiti nel ciclo-di-vita$_G$ di un progetto$_G$. Un RSI$_G$ basso indica che sono stati effettuati molti cambiamenti ai requisiti.
                 \item   \textbf{Formula:}
                         \[
-                        RSI$_G$ = 100 - \frac{RA+RC+RR}{RT} \cdot 100
+                        RSI = 100 - \frac{RA+RC+RR}{RT} \cdot 100
                         \]
                         Dove:
                         \begin{itemize}
