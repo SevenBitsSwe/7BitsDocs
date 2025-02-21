@@ -18,7 +18,7 @@
 \usepackage{longtable}
 
 
-\newcommand\version{0.4.8} %aggiunta versione come variabile
+\newcommand\version{0.4.9} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -106,6 +106,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
 \hline
+0.4.9 & 2025-02-21 & Alfredo Rubino & Manuel Gusella & Modifica colori tabelle\\
+\hline
 0.4.8 & 2025-02-20 & Alfredo Rubino & Giovanni Cristellon & Redazione sesto sprint \ref{sesto-sprint$_G$} e correzioni quinto sprint \ref{quinto-sprint$_G$}\\
 \hline
 0.4.7 & 2025-02-06 & Riccardo Piva & Federico Pivetta & Piccole correzioni quinto sprint \ref{quinto-sprint$_G$}\\
@@ -137,6 +139,7 @@
 0.1.0 & 2024-11-14  & Manuel Gusella & Riccardo Piva & Stesura sezione \ref{introduzione}\\
 \hline
 \end{longtable}
+\rowcolors{0}{}{} % Riporta le righe alla colorazione originale
 \end{center}
 
 
@@ -229,13 +232,14 @@ Slide del corso di Ingegneria del Software:
         \end{itemize}
         \item \textbf{Indice}: numero progressivo che identifica univocamente ciascun rischio all'interno della categoria di appartenenza.
     \end{itemize}
-\rowcolors{0}{gray!11}{white}
+\rowcolors{1}{white}{white}
 \subsection{Rischi Tecnologici}
     {\renewcommand{\arraystretch}{1.5}%
     \subsubsection{RT1 - Complessità delle nuove tecnologie}
     \label{RT1}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RT1 \\
     \hline
     Descrizione & Il progetto richiede l'utilizzo di tecnologie poco conosciute o con cui il gruppo ha un'esperienza limitata. Di conseguenza l'apprendimento e l'adattamento a queste nuove tecnologie richiede del tempo, che potrebbe comportare rallentamenti nel progresso del progetto.\\
@@ -255,6 +259,7 @@ Slide del corso di Ingegneria del Software:
     \label{RT2}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RT2 \\
     \hline
     Descrizione & L'apprendimento di nuove tecnologie necessarie allo sviluppo del progetto richiede un significativo investimento di tempo. Quando queste tecnologie sono carenti di una documentazione adeguata, il processo di apprendimento diventa ancora più complesso e impegnativo.\\
@@ -273,6 +278,7 @@ Slide del corso di Ingegneria del Software:
     \label{RT3}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RT3 \\
     \hline
     Descrizione & In fase di sviluppo è piuttosto plausibile la presenza di bug nel codice o di codice non facilmente leggibile e interpretabile da un altro componente del team. Questo è dovuto all'inesperienza del team nella scrittura di codice enterprise per progetti di rilevante dimensione. \\
@@ -292,6 +298,7 @@ Slide del corso di Ingegneria del Software:
     \label{RC1}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RC1 \\
     \hline
     Descrizione & Una comunicazione interna non ottimale può causare fraintendimenti, confusione o ritardi, compromettendo l’intero sviluppo del progetto. Questo problema è spesso causato dalla carenza di indicazioni precise o dalla mancanza di canali dedicati alla trasmissione delle informazioni all’interno del gruppo. \\
@@ -310,6 +317,7 @@ Slide del corso di Ingegneria del Software:
     \label{RC2}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RC2 \\
     \hline
     Descrizione & Possono emergere conflitti interni al gruppo in presenza di divergenze di opinioni, soluzioni o possibili incomprensioni. Tali conflitti possono compromettere l'efficacia del lavoro. \\
@@ -329,6 +337,7 @@ Slide del corso di Ingegneria del Software:
     \label{RC3}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RC3 \\
     \hline
     Descrizione &  Il passaggio da un ruolo ad un altro comporta la necessità di adattarsi rapidamente a nuove responsabilità e di comprendere a fondo le attività svolte dal membro del gruppo ricopriva precedentemente quel ruolo. \\
@@ -349,6 +358,7 @@ Slide del corso di Ingegneria del Software:
     \label{RP1}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RP1 \\
     \hline
     Descrizione &  Può accadere che i membri del gruppo siano coinvolti in attività esterne, periodo di esami universitari oppure siano impossibilitati a lavorare a causa di condizioni di salute sfavorevoli, le quali potrebbero interferire con le attività che sono inerenti al progetto. Questi impegni riducono il tempo e le risorse disponibili per il progetto, mettendo a rischio le scadenze e la qualità del lavoro. \\
@@ -368,6 +378,7 @@ Slide del corso di Ingegneria del Software:
     \label{RP2}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RP2 \\
     \hline
     Descrizione &  Durante lo sviluppo del progetto, è molto probabile che vengano svolte delle attività mai affrontate prima. Questo può portare ad una pianificazione imprecisa, dovuta alla mancata conoscenza dei requisiti, alla sottostima o sovrastima delle risorse e del tempo necessari al suo completamento o alla scarsa esperienza dei membri del gruppo. \\
@@ -387,6 +398,7 @@ Slide del corso di Ingegneria del Software:
     \label{RP3}
     \begin{tabularx}{\textwidth}{|l|X|}
     \hline
+    \rowcolor{gray!25}
     Codice & RP3 \\
     \hline
     Descrizione &  A ridosso della consegna, a seguito della revisione di un documento si possono presentare degli errori che richiedono dei cambiamenti e una revisione delle attività già svolte che comportano un aumento di ore di lavoro, mettendo a rischio il rispetto delle scadenze. \\
