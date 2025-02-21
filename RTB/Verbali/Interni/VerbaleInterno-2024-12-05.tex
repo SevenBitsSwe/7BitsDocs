@@ -1,0 +1,122 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data 2024-12-05}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\textbf{Registro modifiche}\\
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
+\hline
+1.0.0 & 2024-12-09 & Manuel Gusella &  & Verifica del verbale\\
+\hline
+0.1.0 & 2024-12-05 & Federico Pivetta & Manuel Gusella & Stesura del verbale\\
+\hline
+\end{tabularx}
+\end{center}
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{2024-12-05}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora:17:35 - 18:30;
+\item Partecipanti: 	
+	\begin{itemize}
+	    \item Gusella Manuel;
+            \item Cristellon Giovanni;
+            \item Peruzzi Uncas;
+            \item Piva Riccardo;
+            \item Pivetta Federico;
+            \item Rubino Alfredo;
+            \item Trolese Leonardo;
+	\end{itemize}
+\item Piattaforma: Discord (online)
+\end{itemize}
+
+\subsection{Sintesi}
+Il gruppo si è riunito con l'obiettivo di pianificare il terzo periodo di sprint. In particolare sono stati definiti i ruoli per ciascuno membro. Infine è stato elaborato un preventivo delle ore e sono state identificate e anche stilate le issue da portare a termine durante questo nuovo sprint.
+Come concordato con la proponente, il terzo sprint si concluderà in data 2024-12-19, al fine di ripristinare un ciclo di durata di due settimane mentre in data 2024-12-12 si terrà l'incontro intermedio.\\
+
+\subsubsection{Assegnazione Ruoli}
+Per il terzo sprint, si è deciso di riassegnare i ruoli in modo tale che nessun membro possa ricoprire lo stesso incarico svolto negli sprint precedenti. L'unica eccezione riguarda Riccardo Piva, che continuerà a ricoprire il ruolo di Analista, poiché il suo stato di salute durante lo sprint appena concluso non gli ha consentito di adempiere pienamente ai propri compiti.\\
+
+\subsubsection{Preventivo e Consuntivo delle ore}
+Durante l'incontro, è stato analizzato il numero di ore impiegate per ciascun ruolo durante lo sprint appena concluso. Inoltre sono state apportate migliorie al processo di pianificazione delle ore per i futuri sprint, grazie ad una maggiore comprensione della distinzione tra ora produttiva e ora di orologio. Infine, sono stati redatti il preventivo delle ore per il terzo sprint e il consuntivo delle ore per il secondo sprint, entrambi inseriti all'interno del documento Piano di Progetto.\\
+
+\subsubsection{Creazione delle issue}
+Per garantire che nessun membro del gruppo resti inattivo al completamento di una task e per ottimizzare il lavoro asincrono evitando che quest'ultimo introduca eventuali rallentamenti, sono state create delle issue che definiscono chiaramente i compiti da svolgere nel prossimo periodo.\\
+In particolare, è stata attribuita priorità alla redazione di nuove sezioni dei documenti da presentare alla revisione RTB e all'implementazione delle chiavi Kafka, come richiesto dalla proponente durante l'incontro esterno del 2024-12-05.\\
+
+\subsubsection{PoC}
+Per quanto riguarda il Proof of Concept (PoC), oltre all'implementazione delle chiavi Kafka, come descritto nella sezione precedente, si è deciso di proseguire lo studio dei Large Language Models (LLM) con l'obiettivo di migliorare la qualità dei messaggi ottenuti come risposta e di identificare quali punti di interesse includere, in relazione alla specifica porzione di mappa che viene mostrata dalla dashboard.\\
+
+\subsection{Decisioni Prese}
+Queste sono le decisioni finali emerse dalle diverse discussioni:
+\begin{itemize}
+    \item Assegnazione dei ruoli per il terzo periodo di sprint:\\
+            \vspace{1mm}
+            Responsabile: Federico Pivetta;\\
+            Amministratore: Leonardo Trolese;\\
+            Analisti: Riccardo Piva, Uncas Peruzzi;\\
+            Programmatore: Giovanni Cristellon;\\
+            Verificatori: Alfredo Rubino, Manuel Gusella;\\
+    \item Incrementare l'utilizzo delle issue per ottimizzare il lavoro asincrono;
+    \item Studiare ed implementare le chiavi Kafka all'interno del PoC;
+    \item Migliorare la risposta generata dal LLM;
+    \item Decidere quali punti di interesse vanno inseriti nella mappa;
+    \item Iniziare la stesura del Piano di Qualifica;
+    \item Continuare la stesura degli altri documenti;
+    \item Risolvere un dubbio in merito agli attori e ai microservizi;
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+	\hline
+	   \textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+	\hline
+            \href{https://github.com/SevenBitsSwe/PoC/issues/8}{Issue \#8} & Approfondire messaggio LLM\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/PoC/issues/9}{Issue \#9} & Studio generazione Punti di Interesse\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/PoC/issues/10}{Issue \#10} & Studio e implementazioni Chiavi Kafka\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/58}{Issue \#58} & PdP, Redazione sezione relativa al secondo sprint\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/60}{Issue \#60} & Redazione sezione Processi Organizzativi NdP\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/61}{Issue \#61} & Redazione sezione Standard qualità (sez.5) NdP\\
+        \hline
+\end{tabular}
+\end{center}
+
+\end{document}

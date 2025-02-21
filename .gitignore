@@ -15,3 +15,14 @@ src-esterni
 *.notes
 .vscode
 RTB/images
+*.lot
+.DS_Store
+src-esterni
+
+##Others
+norme_di_progetto.notes
+.vscode/
+.vscode
+*.notes
+RTB/Verbali/Interni/images
+RTB/Verbali/Esterni/images

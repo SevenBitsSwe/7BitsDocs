@@ -1,37 +1,74 @@
 import re #libreria per lavorare con le sottostringhe
 
-parole=["Analisi-dei-Requisiti","baseline","branch","docker","ia","issue","latex","LLM","merge","milestone","PR","retrospettiva","review","RTB","SAL","sprint","synclab"]
+def change_word(testo,parola,sostituto):
+    pattern=r'(?<!\S)\b'+re.escape(parola)+r'\b(?![\w$-])'
+    testo=re.sub(pattern,sostituto,testo,flags=re.IGNORECASE)
 
-with open("Piano_Progetto.tex","r+") as file:
+    return testo
+
+def add_g(testo,parola):
+    sostituto=parola+"$_G$"
+
+    return change_word(testo,parola,sostituto)
+
+def add_g_comp(testo,parola):
+    termine='-'.join(parola.split())
+    sostituto=termine+"$_G$"
+
+    return change_word(testo,parola,sostituto)
+    
+
+parole=[
+    "Agile","API","Attore",
+    "BAC","Baseline","Branch","Bug","Build",
+    "Capitolato","ClickHouse","Committente","Container","Cruscotto","CI",
+    "Dashboard","Database","DBMS","Documentazione","Docker",
+    "EAC","efficacia","efficienza","ETC",
+    "faker","framework","feedback",
+    "Git","GitHub","Grafana",
+    "IA","IEEE","Inspection","Issue","ITS",
+    "Kafka",
+    "latex","LLM",
+    "Marker","Merge","Microservizio","Microservizi","Milestone","MVP",
+    "Norme","Overleaf",
+    "PB","Percorso","Percorsi","PoC","Processo","Processi","Progetto","PR","Proponente","Protocollo","Python",
+    "Query",
+    "Repository","Requisito","Requisiti","Rischio","Rischi","RTB",
+    "SAL","Scrum","Sistema","Sprint","SQL","Stakeholder","Synclab",
+    "Teamwork","Test","Topic",
+    "UML",
+    "Versionamento",
+    "Walkthrough"
+]
+
+parole_composte=[
+    "Analisi dei Requisiti",
+    "Best Practices",
+    "Caso d'uso","Casi d'uso","Ciclo di vita","Continuous Integration",
+    "Docker Compose",
+    "Sprint retrospective","Sprint review",
+    "User Story",
+    "Way of Working"
+]
+
+with open("Analisi_dei_Requisiti.tex","r+") as file:
 
     linee=file.readlines()
     nuovo_contenuto=""
 
-    #senza regex
-    #legge ogni linea
-    #for linea in linee:
-    #    #legge ogni parola della linea
-    #    for word in linea.split():
-    #        #ripeto questo ciclo per ogni parola presente nella lista parole
-    #        for parola in parole:
-    #            p=parola+"$_G$"
-    #            pattern=r'\b'+re.escape(p)+r'.*'
-    #            #controlla se la parola è presente nella word che sta leggendo
-    #            if parola in word:
-    #                #se è presente controlla se ha la G a pedice e se non la ha la inserisce
-    #                if p not in word:
-    #                    print(word)
-    #                    word=word.replace(parola,parola+"$_G$")
-    #        nuovo_contenuto=nuovo_contenuto+" "+word
-    #    nuovo_contenuto=nuovo_contenuto+"\n"
-
-    #con regex
+    #variabile booleana che serve a capire quando iniziare a mettere i G a pedice.
+    #noi vogliamo che li metta dopo la titlepage
+    start=False
     for linea in linee:
-        for parola in parole:
-            p=parola+"$_G$"
-            pattern=r'\b'+re.escape(parola)+r'\b(?![\w$])'
-            #re.findall(pattern,linea,flags=re.IGNORECASE)
-            linea=re.sub(pattern,p,linea,flags=re.IGNORECASE)
+        if(linea=="\\end{titlepage}\n"):
+            start=True
+        
+        if(start==True):
+            for parola in parole_composte:
+                linea=add_g_comp(linea,parola)
+
+            for parola in parole:
+                linea=add_g(linea,parola)
         nuovo_contenuto=nuovo_contenuto+linea
     #print(nuovo_contenuto)
 
