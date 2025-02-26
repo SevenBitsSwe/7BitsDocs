@@ -32,7 +32,7 @@
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v1.0.0}
+\rhead{\textcolor[HTML]{9e978a}{ ANALISI DEI REQUISITI v1.1.0}
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -440,9 +440,10 @@ Di seguito sono elencati gli attori con i quali si interfaccia il Sistema$_G$:
         \begin{enumerate}
             \item Un utente, mentre si muove sulla mappa, passa nell'area di un punto di interesse;
             \item Il Sistema$_G$ elabora le informazioni dell'utente e del punto di interesse per generare il testo dell'eventuale annuncio;
-            \item Il Sistema$_G$ invia all'utente il messaggio contenente l'annuncio se questo è stato generato.
+            \item Il Sistema$_G$ invia all'utente il messaggio contenente l'annuncio se questo è stato generato. L'annuncio contiene come informazioni almeno il nome del punto di interesse e il suo indirizzo.
+            % Da considerare l'idea di suddividere l'UC mediante include per ciascuna delle informazioni contenute nell'annuncio
         \end{enumerate}
-    \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano.
+    \item \textbf{User-Story$_G$ associata:} Come utente voglio visualizzare gli annunci pubblicitari personalizzati che mi arrivano, contenenti sicuramente almeno nome e indirizzo del punto di interesse oggetto dell'annuncio.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\textbf{UC3 - Visualizzazione mappa singolo utente}}
