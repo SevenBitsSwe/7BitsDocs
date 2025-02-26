@@ -1,0 +1,143 @@
+\documentclass[10pt]{article}
+
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{graphicx} % Per inserire immagini (loghi)
+\usepackage{geometry} % Per personalizzare i margini
+\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{anyfontsize}
+\usepackage{tabularx, etoolbox}
+\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
+\usepackage{float}
+\usepackage{longtable}
+
+\newcommand\version{1.0.0} %aggiunta versione come variabile
+
+\graphicspath{{images/}}
+%\graphicspath{{../images/}}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+%cambio misure della pagina
+\geometry{a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm}
+\definecolor{colorePie}{HTML}{ebdfc7}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+}
+\rhead{\textcolor[HTML]{9e978a}{ PIANO DI QUALIFICA v\version}
+}
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
+
+\renewcommand*\contentsname{Indice}
+\renewcommand{\listfigurename}{Elenco delle figure}
+\renewcommand{\listtablename}{Elenco delle tabelle}
+
+\begin{document}
+
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm]
+
+    % Titolo
+     {\fontsize{40}{40}\bfseries Piano di Qualifica}\selectfont \\[3.9em]
+
+    % Sottotitolo
+    {\huge NearYou\\ \vspace{3mm }Smart custom advertising platform} \\[2.7em]
+
+    % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+
+    % Spazio per il logo dell'università
+    \hfill
+
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie]
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+
+\vfill % Aggiunge spazio verticale per centrare il contenuto
+\end{titlepage}
+\newpage
+\clearpage
+\setcounter{page}{1}
+
+% Registro Modifiche
+\begin{center}
+ \textbf{Registro modifiche}\\   
+\end{center}
+
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alternato alle righe
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\endhead
+    \hline
+    0.1.0 & 2025-02-26 & Leonardo Trolese  & Manuel Gusella & Inizio redazione del documento\\
+    \hline
+\end{longtable}
+\rowcolors{0}{}{} % Riporta le righe alla colorazione originale
+
+\newpage
+\tableofcontents
+\newpage
+\listoffigures %elenco delle figure sarà da usare per ogni immagine
+\newpage
+\listoftables %lista delle tabelle presenti nel documento
+\newpage
+\begin{justify}
+
+\section{Introduzione}
+\subsection{Scopo del documento}
+Il presente documento si propone come una risorsa completa per la comprensione degli aspetti tecnici e progettuali della piattaforma "NearYou", dedicata alla 
+creazione di soluzioni di advertising personalizzato tramite intelligenza artificiale. L’obiettivo principale è fornire una descrizione dettagliata dell’architettura 
+implementativa e di deployment, illustrando le tecnologie adottate e le motivazioni alla base delle scelte progettuali.\\
+Nel contesto dell'architettura implementativa, il documento analizza nel dettaglio i moduli principali del sistema, i design pattern utilizzati. Saranno inclusi 
+diagrammi delle classi, e una spiegazione dettagliata dei design pattern utilizzati e delle motivazioni di queste scelte.\\
+Gli obiettivi di questo documento sono: motivare le decisioni architetturali, fungere da guida per lo sviluppo della piattaforma, e garantire la piena tracciabilità e 
+copertura dei requisiti definiti nel documento di Analisi dei Requisiti v1.0.0.\\
+In sintesi, il documento intende essere un punto di riferimento essenziale per tutti gli attori coinvolti nel ciclo di vita del progetto, offrendo una visione chiara e 
+strutturata delle fondamenta tecniche che sorreggono NearYou e delle logiche che ne determinano il funzionamento.\\
+\subsection{Glossario}
+
+\subsection{Riferimenti}
+
+\section{Tecnologie}
+
+\section{API}
+
+\section{Architettura di sistema}
+
+\section{Architettura di deployment}
+
+\section{Design Pattern}
+
+\section{Stato dei requisiti funzionali}
+
+\end{justify}
+\end{document}
