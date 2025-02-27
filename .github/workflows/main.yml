@@ -1,3 +1,63 @@
+# name: Compile LaTeX and Deploy to GitHub Pages
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# permissions:
+#   id-token: write
+#   contents: write
+#   pages: write
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+
+#       - name: Set up TeX Live
+#         run: |
+#           sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended
+
+#       - name: Setup website directory
+#         run: |
+#           mkdir -p output/sitoweb
+#           cp -r sitoweb/* output/sitoweb/
+
+#       - name: Compile .tex files to .pdf
+#         run: |
+#           mkdir -p output
+#           find . -name "*.tex" ! -path "./esterni/*" ! -path "./sitoweb/*" ! -path "./images/*" | while read file; do
+#           pdflatex -interaction=nonstopmode --output-directory=output "$file"
+#           pdflatex -interaction=nonstopmode --output-directory=output "$file"
+#           done
+
+#       - name: Generate HTML index with Python
+#         run: |
+#           python3 .github/workflows/generate_html.py
+  
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: "./output/sitoweb"
+    
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: build
+
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+
+#     steps:
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4
+
+
 name: Compile LaTeX and Deploy to GitHub Pages
 
 on:
@@ -25,8 +85,7 @@ jobs:
     - name: Compile .tex files to .pdf
       run: |
         mkdir -p output
-        find . -name "*.tex" | while read file; do
-        pdflatex -interaction=nonstopmode --output-directory=output "$file"
+        find . -name "*.tex" ! -path "./esterni/*" ! -path "./sitoweb/*" ! -path "./images/*" | while read file; do
         pdflatex -interaction=nonstopmode --output-directory=output "$file"
         pdflatex -interaction=nonstopmode --output-directory=output "$file"
         done
@@ -66,6 +125,3 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./output

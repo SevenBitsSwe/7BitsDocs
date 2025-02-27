@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7BitsDocs</title>
+    <title>SevenBits - Home</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="./images/Sevenbitslogo.png" alt="Icona del progetto"> 
-        </div>
-        <div class="group-description">
-                <p><div id="GroupName">SevenBits</div>Ingegneria del Software 2024-25.<br> Università degli Studi di Padova</p>       
-        </div>
 
-        </div>
-    </header>
-    <main>
+<body class="index">
+    <div id="include-navbar"></div>
 
+    <main data-aos="fade-up">
+        <section class="hero">
+            <div class="hero-content" data-aos="zoom-in" data-aos-delay="200">
+                <h1>Benvenuti in SevenBits</h1>
+                <p>Gruppo di Ingegneria del Software 2024-25</p>
+            </div>
+        </section>
+
+        <section class="features" data-aos="fade-up" data-aos-delay="400">
+            <a href="documentation.html" class="feature-card">
+                <i class="fas fa-book"></i>
+                <h2>Documentazione</h2>
+                <p>Esplora la documentazione del progetto</p>
+            </a>
+            <a href="glossary.html" class="feature-card">
+                <i class="fas fa-book-open"></i>
+                <h2>Glossario</h2>
+                <p>Consulta il glossario dei termini</p>
+            </a>
+            <a href="https://github.com/SevenBitsSwe/7BitsDocs" class="feature-card" target="_blank">
+                <i class="fab fa-github"></i>
+                <h3>Repository</h3>
+                <p>Esplora il nostro repository su GitHub</p>
+            </a>
+        </section>
     </main>
+
+    <div id="include-footer"></div>
+
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="Torna su">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/animations.js"></script>
 </body>
+
 </html>

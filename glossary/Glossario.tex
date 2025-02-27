@@ -1,0 +1,579 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{array}  
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{anyfontsize}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx, etoolbox}
+\usepackage{eso-pic}
+\usepackage{longtable}
+
+\newcommand\version{1.0.0} %aggiunta versione come variabile
+
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+%ebdfc7
+\definecolor{colorePie}{HTML}{ebdfc7}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+    }
+\rhead{\textcolor[HTML]{9e978a}{ GLOSSARIO v\version}
+    }
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
+
+\renewcommand*\contentsname{Indice}
+
+\begin{document}
+
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    
+    % Titolo
+     {\fontsize{40}{40}\bfseries Glossario}\selectfont \\[3.9em]
+    
+    % Sottotitolo
+    % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    % Spazio per il logo dell'università
+    \hfill
+        
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+        
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+        
+\vfill 
+
+\end{titlepage}
+\newpage
+\clearpage
+\setcounter{page}{1}
+
+% Registro Modifiche
+\begin{center}
+ \textbf{Registro modifiche}\\   
+\end{center}
+
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alternato alle righe
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\endhead
+    \hline
+    1.0.0 & 2025-02-21 & Giovanni Cristellon & Riccardo Piva & Approvazione documento per RTB \\
+    \hline
+    0.2.14 & 2025-02-21 & Leonardo Trolese & Uncas Peruzzi & Aggiunta di alcuni termini\\
+    \hline
+    0.2.13 & 2025-02-21 & Manuel Gusella & Riccardo Piva & Correzione ortografica di alcuni definizioni e ordinato i termini in ordine alfabetico all'interno della sezione\\
+    \hline
+    0.2.12 & 2025-02-14 & Federico Pivetta & Giovanni Cristellon & Correzione di alcune definizioni\\
+    \hline
+    0.2.11 & 2025-01-29 & Manuel Gusella & Alfredo Rubino & Aggiunta di alcuni termini\\
+    \hline
+    0.2.10 & 2025-01-13 & Alfredo Rubino & Uncas Peruzzi & Aggiunta e correzione di alcuni termini\\
+    \hline
+    0.2.9 & 2025-01-04 & Federico Pivetta & Riccardo Piva & Aggiunta di alcuni termini\\
+    \hline
+    0.2.8 & 2024-12-19 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
+    \hline
+    0.2.7 & 2024-12-13 & Alfredo Rubino & Manuel Gusella & Aggiunta e correzione di alcuni termini\\
+    \hline
+    0.2.6 & 2024-12-11 & Alfredo Rubino & Manuel Gusella & Aggiunta di alcuni termini\\
+    \hline
+    0.2.5 & 2024-12-04 & Manuel Gusella & Giovanni Cristellon & Aggiunta di framework, feedback e proponente\\
+    \hline
+    0.2.4 & 2024-12-04 & Federico Pivetta & Giovanni Cristellon & Aggiunta di alcuni termini\\
+    \hline
+    0.2.3 & 2024-11-14  & Manuel Gusella & Riccardo Piva  & Aggiunta di alcuni termini e modifica struttura tabella del Registro modifiche\\
+    \hline
+    0.2.2 & 2024-11-14  & Federico Pivetta & Riccardo Piva  & Aggiunta di alcuni termini ed inserimento del link all'Indice\\
+    \hline
+    0.2.1 & 2024-11-14  & Uncas Peruzzi & Federico Pivetta  & Modifica design front page e aggiunto header \\
+    \hline
+    0.2.0 & 2024-11-13  & Federico Pivetta & Riccardo Piva  & Modifica alla struttura ed inserimento dei primi termini\\
+    \hline
+    0.1.0 & 2024-10-23  & Federico Pivetta & Riccardo Piva  & Creazione del documento\\
+    \hline
+\end{longtable}
+\rowcolors{0}{}{} % Riporta le righe alla colorazione originale
+
+\newpage
+\hypertarget{indice}{}
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+Questo documento ha lo scopo di fornire una raccolta di termini specifici e delle loro definizioni. Il glossario è stato pensato per facilitare la comprensione dei concetti chiave utilizzati nei vari documenti redatti. Per questa ragione ogni termine elencato viene accompagnato da una definizione chiara e concisa.\\
+
+\section{Struttura del glossario}
+Questo glossario è strutturato come una raccolta di semplici tabelle caratterizzate da due colonne: Termini e Definizioni. I termini sono elencati in ordine alfabetico nella prima colonna, ciascuno accompagnato da una definizione dettagliata nella colonna accanto. \newline
+Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tabella. Questo sistema rende il glossario più ordinato e facilmente consultabile, aiutando il fruitore a trovare velocemente le definizioni di cui ha bisogno.\\
+
+\section{Tabelle Glossario}
+Di seguito sono riportate le tabelle per ogni lettera del glossario.
+
+\vspace{2mm}
+\renewcommand{\arraystretch}{1.5} % gestisce altezza delle righe
+\setlength{\tabcolsep}{10pt} % padding orizzontale alle celle
+
+% Aggiungi il pulsante "Torna su" solo a partire dalla pagina 4
+\AddToShipoutPictureBG{
+    \ifnum\value{page}>3 % Appare a partire dalla pagina 4
+    \begin{tikzpicture}[overlay, remember picture]
+        \node[anchor=south east, xshift=-10mm, yshift=10mm] at (current page.south east) {
+            \hyperlink{indice}{\textbf{\underline{Torna all'indice}}}
+        };
+    \end{tikzpicture}
+    \fi
+}
+
+\subsection{A} % LETTERA A
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+AC & Acronimo di "Actual Cost", trattasi di una metrica che rappresenta il costo in euro sostenuto fino al momento corrente per svolgere le ore produttive rendicontate.\\
+\hline
+Agile & Insieme di principi e metodologie per la gestione e lo sviluppo di progetti, focalizzato sull'adattabilità e la collaborazione. Basato sul Manifesto Agile, enfatizza la flessibilità nei processi, il coinvolgimento continuo degli stakeholder e la capacità di rispondere rapidamente ai cambiamenti, garantendo prodotti di alta qualità e una soddisfazione costante del cliente.\\
+\hline
+Analisi dei Requisiti & Processo fondamentale nello sviluppo di un prodotto software, durante il quale vengono identificati e definiti in dettaglio i requisiti che il sistema deve soddisfare. Sebbene non definisca soluzioni tecniche specifiche, tiene conto della fattibilità tecnologica per garantire che i requisiti siano realizzabili. Questo processo è essenziale per ridurre errori nelle fasi successive e per assicurare che il prodotto finale soddisfi le aspettative del proponente.\\
+\hline
+API & Acronimo di "Application Programming Interface", è un insieme di regole e protocolli che consente a diversi software di comunicare e interagire tra loro. Agisce come un ponte, definendo metodi e strutture dati standardizzati per lo scambio di informazioni e funzionalità. Le API permettono alle applicazioni di collaborare in modo efficiente, facilitando l'integrazione e la connessione tra sistemi diversi.\\
+\hline
+Attore & Entità esterna al sistema che interagisce con esso per raggiungere uno scopo specifico. Gli attori possono essere principali (comunicano attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi).\\
+\hline
+\end{longtable}
+
+\subsection{B} % LETTERA B
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+BAC & "Budget At Completion", è il budget complessivo preventivato all'inizio di un progetto, che rappresenta il costo totale stimato per completare tutte le attività e consegnare il prodotto finale.\\
+\hline
+Baseline & Versione approvata di un prodotto di lavoro che può essere modificato solo attraverso delle procedure formali. Una baseline funge da punto di riferimento per monitorare e confrontare i progressi o le modifiche del progetto nel tempo.\\
+\hline
+Best Practices & Insieme di metodi o procedure considerate le più efficaci e affidabili per raggiungere determinati obiettivi in un determinato contesto.\\
+\hline
+Branch & Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività.\\
+\hline
+Bug & Un errore o malfunzionamento nel codice del software che provoca un comportamento inatteso, indesiderato o errato. I bug possono derivare da errori di programmazione, progettazione o implementazione.\\
+\hline
+Build & Il processo che compone ogni sottoprodotto (eseguibili, documenti, ecc.) a partire da un insieme di parti, come il codice sorgente e le risorse necessarie. Durante questo processo, il codice viene compilato e assemblato per generare una versione eseguibile o distribuita del prodotto, che può essere testata o distribuita. La build include anche la gestione delle dipendenze e, in alcuni casi, l’esecuzione di test automatici per garantire la correttezza e il funzionamento del software.\\
+\hline
+\end{longtable}
+
+\subsection{C} % LETTERA C
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Capitolato & Documento che definisce le specifiche, i requisiti e le condizioni di un progetto o di un appalto. Fornisce una base solida per la pianificazione e l’esecuzione di un progetto, garantendo che tutte le parti coinvolte comprendano chiaramente le aspettative e i bisogni a cui il progetto deve rispondere, offrendo così una guida chiara per la realizzazione della soluzione.\\
+\hline
+Caso d'Uso & Rappresenta un'interazione tra il sistema e gli attori, descrivendo le modalità con cui il sistema viene utilizzato e le funzionalità che offre. Si articola in una serie di scenari o sequenze di azioni che condividono un obiettivo finale, permettendo agli utenti di raggiungere uno scopo specifico attraverso l'interazione con il sistema.\\
+\hline
+Ciclo di vita & Insieme degli stati che un prodotto software attraversa dalla sua concezione iniziale fino all'uso ed eventualmente al suo ritiro. \'E compito di un progetto far progredire lo stato di avanzamento di un software lungo il suo ciclo di vita.\\
+\hline
+ClickHouse & DBMS open-source progettato per l'elaborazione rapida e scalabile di grandi quantità di dati. Utilizza un'architettura column-oriented, ottimizzata per query analitiche ad alta velocità e compressione efficiente dei dati. Questo lo rende ideale per applicazioni che richiedono analisi in tempo reale su grandi dataset.\\
+\hline
+Committente & Parte esterna che assegna l'esecuzione di un progetto ad un esecutore, definendo i termini contrattuali e le condizioni relative alla sua realizzazione. Nel nostro caso, il prof. Vardanega e il prof. Cardin.\\
+\hline
+Container & Unità di software che include un'applicazione e tutte le sue dipendenze, come file di sistema, librerie e configurazioni, per eseguirla in un ambiente isolato e autonomo. Nel contesto di strumenti come Docker, i container garantiscono portabilità e consistenza, permettendo all'applicazione di funzionare in modo uniforme su diversi sistemi e piattaforme.\\
+\hline
+Continuous Integration & Abbreviata come CI, è una pratica di sviluppo software che prevede l'integrazione frequente e automatica delle modifiche al codice sorgente in un repository condiviso. Ogni modifica viene validata attraverso test automatici per garantire la stabilità e l'integrità del software. La CI consente di identificare e risolvere rapidamente conflitti o errori di integrazione, riducendo il rischio di difetti nel prodotto finale.\\
+\hline
+CPI & Acronimo di "Cost Performance Index", è una metrica che misura l'efficienza del progetto, confrontando il valore guadagnato (EV) con il costo effettivo (AC) sostenuto fino al momento corrente. Il CPI inferiore a 1 indica che il progetto sta superando il budget, mentre un CPI superiore a 1 indica che il progetto sta rispettando il budget.\\
+\hline
+Cruscotto & Traduzione italiana del termine inglese "Dashboard".\\
+\hline
+CV & Acronimo di "Cost Variance", è una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il costo effettivo (AC) sostenuto fino al momento corrente.\\
+\hline
+\end{longtable}
+
+\subsection{D} % LETTERA D
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Dashboard & Interfaccia utente grafica che raccoglie e presenta in modo chiaro e sintetico le informazioni più rilevanti per un utente o un processo specifico. La Dashboard fornisce una panoramica rapida delle metriche e delle prestazioni, utilizzando vari elementi visivi come grafici, tabelle e indicatori.\\
+\hline
+Database & Sistema organizzato per raccogliere e gestire dati strutturati, con l'obiettivo di consentire un accesso ed un'elaborazione efficienti. Grazie alla sua struttura, un database facilita la gestione di grandi quantità di informazioni, rendendole facilmente recuperabili e utilizzabili per vari scopi dagli utenti.\\
+\hline
+DBMS & Acronimo di "DataBase Management System", è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro.\\
+\hline
+Docker & Piattaforma che consente di creare, distribuire ed eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione.\\
+\hline
+Docker Compose & Strumento che consente di definire e gestire applicazioni multi-container Docker. Permette di configurare un'applicazione complessa con più servizi e le relative dipendenze in un unico file.\\
+\hline
+Documentazione & Insieme di documenti, manuali e guide che descrivono un prodotto, un sistema o un processo. Ha lo scopo di fornire istruzioni, spiegazioni e dettagli utili per l'uso, la manutenzione e lo sviluppo di un prodotto.\\
+\hline
+\end{longtable}
+
+\subsection{E} % LETTERA E
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+EAC & Acronimo di "Estimated at Completion", è un termine utilizzato nella gestione dei progetti per stimare il costo totale che sarà necessario per il completamento. Viene calcolato durante il corso del progetto per fornire una previsione aggiornata dei costi, tenendo conto delle performance reali rispetto a quanto pianificato inizialmente. Questo valore aiuta il team a monitorare il progresso del progetto e a prendere decisioni ponderate riguardo alla gestione del budget e alle risorse necessarie.\\
+\hline
+Efficacia & Misura la capacità di raggiungere un obiettivo o un risultato desiderato, indipendentemente dalle risorse utilizzate.\\
+\hline
+Efficienza & Misura dell'abilità di raggiungere un obiettivo o un risultato desiderato, impiegando le risorse minime indispensabili.\\
+\hline
+ETC & Acronimo di "Estimate to Complete", è una stima dei costi aggiuntivi necessari per completare un progetto, tenendo conto del budget rimanente e delle risorse necessarie per terminare il lavoro. L'ETC viene utilizzato per determinare l'ammontare di fondi ancora da allocare per completare il progetto entro i termini previsti, basandosi sui progressi fatti fino a quel momento.\\
+\hline
+EV & Acronimo di "Earned Value", è una metrica che rappresenta il valore in euro delle attività realizzate alla data corrente, ovvero il valore dei deliverable rilasciati fino al momento della misurazione in seguito alle attività svolte.\\
+\hline
+\end{longtable}
+
+\subsection{F} % LETTERA F
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Faker & Libreria Python progettata per generare dati falsi in modo casuale, come ad esempio nomi, indirizzi, numeri di telefono e altre informazioni. Viene utilizzata per creare set di dati che simulano la struttura e la variabilità dei dati reali, evitando l'uso di informazioni sensibili durante lo sviluppo e il testing del software.\\
+\hline
+Feedback & Riscontro, positivo o negativo, dato per influenzare il comportamento futuro.\\
+\hline
+Framework & Architettura logica di supporto sulla quale un software può essere progettato e realizzato.\\
+\hline
+\end{longtable}
+
+\subsection{G} % LETTERA G
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Git & Sistema di controllo versione distribuito (DVCS) progettato per tracciare le modifiche nel codice sorgente durante lo sviluppo del software. È uno strumento essenziale per la gestione delle versioni, che consente ai team di sviluppo di lavorare in modo collaborativo, monitorare le revisioni del codice e gestire le modifiche apportate nel tempo. Git facilita anche il ripristino a versioni precedenti del software, garantendo un controllo preciso delle modifiche.\\
+\hline
+GitHub & Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l'organizzazione e la collaborazione all'interno dei team di sviluppo.\\
+\hline
+Grafana & Piattaforma open-source per la visualizzazione e il monitoraggio dei dati. Permette di creare dashboard interattive e personalizzabili, report e grafici utilizzando dati provenienti da diverse fonti.\\
+\hline
+\end{longtable}
+
+%\subsection{H} % LETTERA H
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
+
+\subsection{I} % LETTERA I
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+IA & Acronimo italiano di "Intelligenza artificiale", è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l'apprendimento, la pianificazione e la creatività.\\
+\hline
+IEEE & Acronimo di "Institute of Electrical and Electronics Engineers", è un'organizzazione internazionale dedicata all'avanzamento della tecnologia in diversi ambiti, fra cui l'informatica. L'IEEE è noto per la pubblicazione di standard tecnici che definiscono specifiche e linee guida per garantire interoperabilità, qualità, sicurezza e prestazioni nei dispositivi e nei sistemi.\\
+\hline
+Inspection & Tecnica di analisi statica utilizzata per individuare errori attraverso una lettura mirata. Durante l'inspection, il verificatore segue una sequenza di passaggi prestabiliti per assicurare la conformità agli standard e la qualità del prodotto.\\
+\hline
+Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, bug, richieste di funzionalità o altre attività relative a un progetto. Le issue permettono di descrivere, assegnare e discutere vari aspetti di un progetto, come ad esempio errori o nuove funzionalità, con l'aiuto di strumenti come i commenti, le etichette e le milestone.\\
+\hline
+ITS & Acronimo di "Issue Tracking System", sono dei software utilizzati per gestire e tenere traccia di problemi, bug, richieste di funzionalità e altre attività correlate nel ciclo di sviluppo del software. Questi sistemi forniscono un'infrastruttura organizzativa che supporta la gestione delle problematiche, permettendo a sviluppatori, team di supporto e stakeholder di documentare e risolvere le questioni che emergono durante lo sviluppo del progetto.\\
+\hline
+\end{longtable}
+
+%\subsection{J} % LETTERA J
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
+
+\subsection{K} % LETTERA K
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Kafka & Piattaforma distribuita open-source, progettata per la gestione di flussi di dati in tempo reale. Utilizza un'architettura basata su messaggi pubblicati e sottoscritti (pub-sub), consentendo la raccolta e l'elaborazione di grandi quantità di dati. È comunemente usata per applicazioni di streaming, analisi di eventi e integrazione tra sistemi.\\
+\hline
+\end{longtable}
+
+\subsection{L} % LETTERA L
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+\LaTeX & Linguaggio di marcatura basato su comandi che permettono di formattare il testo e produrre documenti. Viene spesso utilizzato in ambito accademico, scientifico e tecnico per la scrittura di articoli, libri, tesi e presentazioni.\\
+\hline
+LLM & Acronimo di "Large Language Model", è un tipo di modello linguistico notevole per essere in grado di ottenere la comprensione e la generazione di linguaggio di ambito generale. Gli LLM acquisiscono questa capacità adoperando enormi quantità di dati per apprendere miliardi di parametri nell'addestramento.\\
+\hline
+\end{longtable}
+
+\subsection{M} % LETTERA M
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Marker & Un marker identifica una posizione su una mappa tramite un'immagine standard, per esempio un cerchio, un quadrato o un triangolo.\\
+\hline
+Merge & Operazione in un sistema di versionamento che combina le modifiche provenienti da diversi rami (branches) di sviluppo in un unico ramo, unificando il codice o la documentazione, senza perdere il lavoro svolto separatamente.\\
+\hline
+Microservizio & Un approccio per sviluppare e organizzare l'architettura dei software secondo cui questi ultimi sono composti di servizi indipendenti di piccole dimensioni che comunicano tra loro tramite API ben definite. Le architetture basate su microservizi permettono di scalare e sviluppare le applicazioni in modo più semplice e rapido, facilitando eventuali cambiamenti e miglioramenti.\\
+\hline
+Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel tempo all'interno di un progetto. Viene utilizzata per monitorare i progressi e assicurare che il progetto rispetti la pianificazione stabilita. Il raggiungimento degli obiettivi associati a una milestone viene sostanziato attraverso lo sviluppo di una baseline.\\
+\hline
+MVP & Acronimo di "Minimum Viable Product", è una versione di un prodotto software che include solo le funzionalità essenziali per soddisfare i bisogni principali degli utenti. L'obiettivo di un MVP è quello di testare il prodotto, raccogliendo feedback degli utenti per migliorarlo e svilupparlo ulteriormente.\\
+\hline
+\end{longtable}
+
+\subsection{N} % LETTERA N
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Norme & Insieme di regole, linee guida o standard che stabiliscono comportamenti e procedure da seguire in un determinato contesto o settore. Il loro scopo principale è garantire la sicurezza, la qualità, l'efficienza e l'efficacia delle attività svolte, assicurando che vengano rispettati determinati criteri e pratiche operative.\\
+\hline
+\end{longtable}
+
+\subsection{O} % LETTERA O
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Overleaf & Piattaforma online per la scrittura collaborativa di documenti in \LaTeX. Essa offre un ambiente basato sul web che permette a più utenti di lavorare contemporaneamente sugli stessi documenti, facilitando la collaborazione in tempo reale e la revisione, senza la necessità di configurare software locali.\\
+\hline
+\end{longtable}
+
+\subsection{P} % LETTERA P
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+PB & Acronimo di "Product Baseline", è una tappa chiave nello sviluppo di un progetto, durante la quale viene verificata e dimostrata la solidità dell'architettura definita nella fase precedente (RTB). È la seconda revisione di avanzamento del progetto didattico, corrispondente alla presentazione dell'MVP.\\
+\hline
+Percorso & Un percorso è lo spostamento che un utente sta compiendo con un mezzo, in questo caso la bicicletta noleggiata.\\
+\hline
+PoC & Acronimo di "Proof of Concept", è un prototipo iniziale realizzato per dimostrare la fattibilità tecnologica di un prodotto atteso, permettendo di delineare il suo potenziale di realizzazione.\\
+\hline
+Processo & Insieme di attività collegate tra loro, finalizzate al raggiungimento di un obiettivo specifico, utilizzando risorse e seguendo regole prestabilite. Deve essere condotto in modo sistematico, disciplinato e misurabile.\\
+\hline
+Progetto & Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Ha una data d'inizio e una data di fine fissate.\\
+\hline
+Proponente & L'entità che avanza una proposta per la realizzazione di un progetto. Il proponente definisce i requisiti e gli obiettivi finali del progetto, garantendo che il risultato finale risponda alle sue necessità. Nel caso del nostro progetto, il proponente è l'azienda SyncLab.\\
+\hline
+Protocollo & Insieme di regole e convenzioni che definiscono come deve avvenire la comunicazione o l'interazione tra due o più entità, siano esse dispositivi, software o persone. I protocolli garantiscono che lo scambio di informazioni avvenga in modo standardizzato, sicuro ed efficiente, evitando malintesi o incompatibilità.\\
+\hline
+PV & Acronimo di "Planned Value", è una metrica che rappresenta il valore in euro delle attività pianificate alla data corrente, ovvero il valore dei deliverable che dovrebbero essere stati completati fino al momento della misurazione in base alla pianificazione iniziale.\\
+\hline
+Pull Request & Richiesta da parte di un membro del team, solitamente effettuata tramite una piattaforma come GitHub per integrare le modifiche fatte in un branch nel repository principale. Le PR sono uno strumento fondamentale per la revisione del codice, consentendo agli altri membri del team di collaborare, commentare e approvare le modifiche prima che esse siano integrate nel progetto con un merge.\\
+\hline
+Python & Linguaggio di programmazione ad alto livello, semplice e versatile. Supporta più paradigmi di programmazione, tra cui quello ad oggetti e quello funzionale. Grazie alla sua sintassi, viene utilizzato in una vasta gamma di applicazioni, tra cui sviluppo software, automazione, analisi dei dati e intelligenza artificiale.\\
+\hline
+\end{longtable}
+
+\subsection{Q} % LETTERA Q
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Query & Istruzione formale utilizzata per interagire con i sistemi di gestione dei database. Solitamente scritta in linguaggi come SQL, è uno strumento fondamentale per gestire e analizzare grandi quantità di informazioni in modo strutturato.\\
+\hline
+\end{longtable}
+
+\subsection{R} % LETTERA R
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Repository & Archivio digitale centralizzato utilizzato per conservare, organizzare e gestire file, dati o codice sorgente. Facilita la condivisione, il controllo delle versioni e l'accesso collaborativo, ottimizzando la gestione e lo sviluppo di un progetto.\\
+\hline
+Requisito & Doppio significato: la competenza necessaria per un utente affinché possa risolvere un problema o raggiungere un obiettivo (lato bisogno), ma anche la capacità che un sistema deve possedere per soddisfare un'aspettativa (lato soluzione).\\
+\hline
+Rischio & Problema che potrebbe causare perdite o minacciare l'avanzamento del progetto, influendo sui costi o sul successo tecnico. L'Analisi dei Rischi identifica e gestisce tali rischi, prevenendo le perdite e definendo misure per mitigare eventuali danni.\\
+\hline
+RSI & Acronimo di "Requirements Stability Index", è una metrica che  misura la percentuale di stabilità dei requisiti nel ciclo di vita di un progetto.\\
+\hline
+RTB & Acronimo di "Requirements and Technology Baseline", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
+\hline
+\end{longtable}
+
+\subsection{S} % LETTERA S
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+SAL & Acronimo di "Stato Avanzamento Lavori", è un incontro in cui il team si riunisce per controllare il progresso degli obiettivi pianificati. Durante questo incontro, si discute cosa è stato completato, cosa è ancora in corso e cosa potrebbe ostacolare il progetto.\\
+\hline
+Scrum & Framework per la gestione dei progetti che promuove il lavoro di squadra e il progresso iterativo verso obiettivi definiti. Basato sull'adattabilità, Scrum incoraggia a partire da ciò che è noto, monitorare continuamente i progressi e apportare modifiche in base alle necessità, garantendo flessibilità e miglioramento continuo durante il ciclo di sviluppo. Comprende quattro eventi chiave, usati per pianificare e porre in retrospettiva il team di sviluppo: Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.\\
+\hline
+Sistema & Insieme organizzato di componenti interconnesse e interagenti, che lavorano insieme per raggiungere un obiettivo comune o eseguire specifiche funzioni.\\
+\hline
+Sprint & Periodo di tempo dalle 2 alle 4 settimane, in cui un team di sviluppo si concentra sul completamento di un insieme ristretto di attività. Ogni sprint è seguito da una review per verificare il progresso raggiunto e da una retrospettiva per adottare ulteriori miglioramenti.\\
+\hline
+Sprint Retrospective & Incontro che si tiene alla fine di ogni sprint, subito dopo la review. Durante questa riunione, il team di sviluppo riflette sullo sprint appena concluso, discutendo cosa è andato bene, cosa potrebbe essere migliorato e quali azioni concrete debbano essere adottate per migliorare i successivi sprint.\\
+\hline
+Sprint Review & Incontro che si tiene alla fine di uno sprint, in cui il team di sviluppo presenta il lavoro completato. Durante questa sessione, il team mostra le funzionalità sviluppate e raccoglie feedback per verificare se i requisiti sono stati soddisfatti e se ci sono modifiche da apportare.\\
+\hline
+SQL & Acronimo di "Structured Query Language", è un linguaggio di programmazione specifico utilizzato per gestire e manipolare i dati all'interno di un sistema di gestione di database relazionali (RDBMS).\\
+\hline
+Stakeholder & Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori.\\
+\hline
+SV & Acronimo di "Schedule Variance", trattasi di una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il valore pianificato (PV) fino al momento corrente.\\
+\hline
+SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale che realizza prodotti e soluzioni per diversi mercati quali: Sanità, Industria, Energia, Telco, Finanza e Trasporti \& Logistica. Offre anche consulenze per diversi temi come: GDPR, Big Data, Cloud Computing, IoT, Mobile e Cyber Security.\\
+\hline
+\end{longtable}
+
+\subsection{T} % LETTERA T
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Teamwork & Collaborazione tra membri di un gruppo per raggiungere obiettivi comuni, in modo efficace ed efficiente. Richiede il rispetto di regole condivise e l'adozione di best practices per ottimizzare il lavoro, come la condivisione dei rischi, l'assunzione di responsabilità o la comunicazione aperta e trasparente.\\
+\hline
+Test & Un processo o un'attività finalizzata a verificare il funzionamento di un software o di un sistema informatico, con lo scopo di identificare eventuali difetti o problemi. Esistono diverse tipologie di test, ciascuna con un obiettivo specifico.\\
+\hline
+Topic & In Apache Kafka, è una categoria che consente di organizzare e suddividere i flussi di messaggi. I topic sono essenziali nel modello di pubblicazione/sottoscrizione di Kafka, dove i produttori inviano messaggi a specifici topic e i consumatori si sottoscrivono a tali topic per ricevere i messaggi di loro interesse.\\
+\hline
+\end{longtable}
+
+\subsection{U} % LETTERA U
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+UML & Acronimo di "Unified Modeling Language", è un linguaggio di modellazione visuale utilizzato per analizzare, progettare e documentare sistemi software complessi. Consente di rappresentare in modo chiaro e standardizzato la struttura del sistema, il comportamento delle sue componenti e le interazioni tra gli attori e il sistema stesso, facilitando la comunicazione tra i membri del team di sviluppo e gli stakeholder.\\
+\hline
+User story & Descrizione concisa di una funzionalità o di un requisito del sistema, espressa dal punto di vista dell'utente. Viene utilizzata per definire i requisiti di un prodotto in modo semplice e comprensibile, per questo è solitamente scritta in linguaggio naturale.\\
+\hline
+\end{longtable}
+
+\subsection{V} % LETTERA V
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Versionamento & Il processo di "version control" consente di stabilire la storia cronologica delle azioni eseguite per una certa attività, tracciando tutti i cambiamenti effettuati e fornendo la possibilità di ritornare a uno stadio precedente se necessario. Il versionamento è fondamentale per mantenere il controllo sulle modifiche, evitare perdite di dati e permettere una gestione efficace delle versioni in progetti complessi.\\
+\hline
+\end{longtable}
+
+\subsection{W} % LETTERA W
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+Walkthrough & Tecnica di verifica di un documento o di un codice in modo approfondito e senza ricorrere a una checklist predefinita. Durante questa revisione, l'attenzione è focalizzata sul contenuto per individuare e correggere errori, evidenziando aspetti critici e identificando potenziali problematiche, senza aderire a parametri di valutazione rigidi.\\
+\hline
+Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei comportamenti che devono essere adottati da un team o un'organizzazione per svolgere le proprie attività allo stato dell'arte.\\
+\hline
+\end{longtable}
+
+%\subsection{X} % LETTERA X
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
+
+%\subsection{Y} % LETTERA Y
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
+
+%\subsection{Z} % LETTERA Z
+%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+%\hline
+%\rowcolor[gray]{0.8}
+%\textbf{Termine} & \textbf{Definizione}\\
+%\endhead
+%\hline
+% & \\
+%\hline
+%\end{longtable}
+
+\end{document}

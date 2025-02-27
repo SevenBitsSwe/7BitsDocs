@@ -1,19 +1,20 @@
 \documentclass[10pt]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[table,xcdraw]{xcolor}
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{array}  
-\usepackage{graphicx} % Per inserire immagini (loghi)
-\usepackage{geometry} % Per personalizzare i margini
-\usepackage{fancyhdr} % Per gestire intestazioni e piè di pagina
+\usepackage{graphicx}
+\usepackage{geometry} 
+\usepackage{fancyhdr} 
 \usepackage{tikz}
 \usepackage{ragged2e}
 \usepackage{anyfontsize}
-\usepackage{tabularx, etoolbox} % aggiungi etoolbox per condizioni% Load xcolor
-\usepackage{eso-pic} % Per aggiungere elementi grafici su tutte le pagine
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx, etoolbox} 
+\usepackage{eso-pic}
 \usepackage{float}
+\usepackage{longtable}
 
 \newcommand\version{0.1.0} % Versione
 
@@ -38,6 +39,8 @@
 \cfoot{\thepage}
 
 \renewcommand*\contentsname{Indice}
+\renewcommand{\listfigurename}{Elenco delle figure}
+\renewcommand{\listtablename}{Elenco delle tabelle}
 
 \begin{document}
 
@@ -79,19 +82,33 @@
 \clearpage
 \setcounter{page}{1}
 
+% Registro Modifiche
 \begin{center}
-\textbf{Registro modifiche}\\
-\vspace{2mm}
-\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
-\hline
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione} \\
-\hline
-\end{tabularx}   
+ \textbf{Registro modifiche}\\   
 \end{center}
 
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white} % Aggiunge colore alternato alle righe
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{5cm}|}
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
+\endhead
+\hline
+\end{longtable}
+\rowcolors{0}{}{} % Riporta le righe alla colorazione originale
+
 \newpage
-\tableofcontents % Indice
+\tableofcontents
 \newpage
+\listoffigures
+\newpage
+\listoftables
+
+\newpage
+\begin{justify}
+
+\section{Introduzione}
 
 %% Codice per Immagini %%
 
@@ -105,16 +122,18 @@
 
 %% Codice per Tabelle %%
 
-%\begin{table}[H]
-%\centering
+%\begin{center}
 %\renewcommand{\arraystretch}{1.5}
-%\begin{tabular}{|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{2.1cm}|}
+%\begin{longtable}
+%{|>{\centering\arraybackslash}m{2.7cm}|>       {\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.1cm}|}
 %\hline
-%\textbf{Id. Requisito} & \textbf{Importanza} & \textbf{Descrizione} & \textbf{Fonti}\\
+%\textbf{} & \textbf{} & \textbf{}\\
+%\endhead
 %\hline
-%\end{tabular}
-%\caption{TestoCaption}
-%\end{table}
+%\hline
+%\caption{Requisiti$_G$ funzionali}
+%\end{longtable}
+%\end{center}
 
-
+\end{justify}
 \end{document}
