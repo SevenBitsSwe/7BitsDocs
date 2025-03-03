@@ -1,0 +1,6 @@
+casi
+microservizi
+percorsi
+processi
+requisiti
+rischi
