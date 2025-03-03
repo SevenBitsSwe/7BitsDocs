@@ -1,0 +1,119 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Esterno del meeting in data 2025-03-03} % Sostituire la data
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+\maketitle
+\center 
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\newpage
+\raggedright
+\tableofcontents
+
+\newpage
+\section{2025-03-03} % Inserire la data in formato yyyy-mm-dd
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 10:30 - 10:50; % Sostituire con l'orario corretto del meeting
+\item Partecipanti: 	
+	\begin{itemize}
+        \item SevenBits:
+        \begin{itemize}
+            \item Gusella Manuel;
+            \item Peruzzi Uncas;
+            \item Piva Riccardo;
+            \item Pivetta Federico;
+            \item Rubino Alfredo;
+            \item Trolese Leonardo.
+        \end{itemize}
+            \item SyncLab:
+            \begin{itemize}
+                \item Dorigo Andrea;
+                \item Pallaro Fabio.
+	    \end{itemize}
+	\end{itemize}
+\item Piattaforma: Google meet (online)
+\end{itemize}
+
+\subsection{Ordine del giorno}
+\begin{itemize}
+    \item Discussione esito RTB;
+    \item Presentazione nuova data di consegna;
+    \item Presentazione bozza dell'architettura della componente di simulazione dei sensori;
+    \item Discussione sulla durata degli sprint da svolgere prima della consegna PB.
+\end{itemize}
+
+\subsection{Oggetto}
+Incontro organizzativo con Andrea Dorigo e Fabio Pallaro dell'azienda SyncLab, finalizzato a pianificare lo sviluppo del progetto a seguito della consegna RTB, 
+e allineare gruppo e azienda su quanto svolto fino ad ora.
+
+\subsection{Sintesi}
+Durante l'incontro la proponente è stata messa al corrente dello stato attuale dello sviluppo del progetto, e nello specifico dell'esito della consegna RTB ricevuto in data
+2025-03-01. Il gruppo ha inoltre informato la proponente del cambiamento della data di consegna prevista per il progetto, pianificata ora per il 2025-04-04.\\
+Ha seguito l'esposizione di quanto svolto fino ad ora in ambito di progettazione: nello specifico è stata presentata una bozza di architettura software per la componente
+di simulazione dei sensori, che è stata approvata dall'azienda, con qualche indicazione sulle possibili librerie da usare per la gestione dei thread, oltre a quella 
+standard.\\
+
+\subsubsection{Obiettivi per la realizzazione dell'MVP}
+La proponente ha inoltre richiesto al gruppo di definire in maniera precisa e tracciabile gli obiettivi da concretizzare con la realizzazione dell'MVP, e che differenzieranno
+quest'ultimo dal PoC fino a questo momento sviluppato dal team. Gli obiettivi individuati sono i seguenti:
+\begin{itemize}
+    \item Realizzazione di una dashboard specifica per utente che consenta la visualizzazione dei dati (messaggi generati e percorso seguito) accessibile dalla dashboard 
+    principale;
+    \item Realizzazione di una tabella che per ogni punto di interesse registrato mostri il numero di messaggi generati;
+    \item Aumento del numero di utenti che vengono simulati contemporaneamente fino a \simeq10 (attualmente 1).
+\end{itemize}
+
+\subsection{Decisioni Prese}
+\'E stata deciso di ridurre la durata delle iterazioni da due settimane a una fino alla consegna RTB a partire dal prossimo sprint (che inizierà in data 2025-03-07); e 
+il gruppo si è posto l'obiettivo di completare e presentare la proposta di architettura per la componente di simulazione dei sensori per il prossimo SAL (fissato con 
+l'azienda in data 2025-03-10).
+
+\subsection{Obiettivi prossimo SAL} 
+Gli obiettivi stabiliti per il prossimo SAL sono:
+    \begin{itemize}
+            \item Presentazione della proposta di architettura per la componente di simulazione dei sensori adattata al multithreading;
+    \end{itemize}
+    \begin{center}
+    \begin{tabular}{|>{\hspace{20pt}}c<{\hspace{20pt}}|>{\hspace{20pt}}c<{\hspace{20pt}}|}
+	\hline
+	\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+	    \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/161}{Issue \#161} & Aggiornamento bozza architettura simulazione sensori con aggiunta di multithreading\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/160}{Issue \#160} & Redazione verbale esterno 2025-03-03\\
+        \hline
+    \end{tabular}
+    \end{center}
+
+%parte di firma
+\vfill
+\begin{minipage}{10cm}
+Firma: \hrulefill \\
+\vspace{2mm}
+Data: \dotfill
+\end{minipage}
+
+\end{document}
