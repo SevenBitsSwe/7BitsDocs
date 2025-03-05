@@ -167,7 +167,7 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario\_v1.0.0.p
 Questa sezione descrive strumenti e tecnologie impiegate nello sviluppo del software del progetto nearYou.\\
 Descriveremo quindi a seguire le tecnologie usate per lo sviluppo del software, le librerie e i framework utilizzati, e le motivazioni di queste scelte.\\
 
-    \subsection{Linguaggi}
+    \subsection{Panoramica dei linguaggi}
         \subsubsection{Python}
             Si tratta di un linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, noto per la sua sintassi chiara e leggibile. Python dispone
             anche di una vasta libreria standard ed è caratterizzato dalla grande quantità di framework disponibili.\\
@@ -282,13 +282,31 @@ Descriveremo quindi a seguire le tecnologie usate per lo sviluppo del software, 
                     \item[-] File di configurazione per i test.
                 \end{itemize}
             \myparagraph{Framework e tools correlati}
-            \begin{itemize}
-                \item[-] Docker Compose;
-                \item[-] GitHub Actions;
-                \item[-] Grafana.
-            \end{itemize}
+                \begin{itemize}
+                    \item[-] Docker Compose;
+                    \item[-] GitHub Actions;
+                    \item[-] Grafana.
+                \end{itemize}
 
-        
+        \subsubsection{JSON}
+        JSON (JavaScript Object Notation) è un formato di interscambio dati leggero, text-based e indipendente dal linguaggio, che utilizza una struttura di coppie 
+        chiave-valore e array. Progettato per essere facilmente leggibile sia dall'uomo che dalle macchine.
+            \myparagraph{Versione} 
+                JSON 2.0
+            \myparagraph{Documentazione}
+            \myparagraph{Utilizzo operato nel progetto}
+                \begin{itemize}
+                    \item[-] Configurazione dashboard Grafana;
+                    \item[-] Invio e ricezione dati mediante il broker Kafka;
+                    \ietm[-] Risposta API del servizio Groq;
+                \end{itemize}
+            \myparagraph{Framework e tools correlati}
+                \begin{itemize}
+                    \item[-] Groq;
+                    \item[-] Kafka;
+                    \item[-] Grafana.
+                \end{itemize}
+
 
     \subsection{Strumenti e servizi}
         \subsubsection{Docker}
