@@ -99,6 +99,10 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.1.2 & 2025-03-05 & Leonardo Trolese  & Manuel Gusella & Conclusione redazione sottosezione \hyperref[sec:linguaggi]{Panoramica Linguaggi} della sezione Tecnologie\\
+    \hline
+    0.1.1 & 2025-03-02 & Leonardo Trolese  & Manuel Gusella & Redazione sottosezione \hyperref[sec:linguaggi]{Panoramica Linguaggi} della sezione Tecnologie\\
+    \hline
     0.1.0 & 2025-02-26 & Leonardo Trolese  & Manuel Gusella & Inizio redazione del documento\\
     \hline
 \end{longtable}
@@ -168,6 +172,7 @@ Questa sezione descrive strumenti e tecnologie impiegate nello sviluppo del soft
 Descriveremo quindi a seguire le tecnologie usate per lo sviluppo del software, le librerie e i framework utilizzati, e le motivazioni di queste scelte.\\
 
     \subsection{Panoramica dei linguaggi}
+    \label{sec:linguaggi}
         \subsubsection{Python}
             Si tratta di un linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, noto per la sua sintassi chiara e leggibile. Python dispone
             anche di una vasta libreria standard ed è caratterizzato dalla grande quantità di framework disponibili.\\
@@ -256,12 +261,13 @@ Descriveremo quindi a seguire le tecnologie usate per lo sviluppo del software, 
                         \end{itemize}
                 \end{itemize}
 
-        \subsubsection{SQL}
+        \subsubsection{SQL (Structured Query Language)}
         Usato come dialetto SQL specifico per l'interazione con il database ClickHouse, un DBMS colonnare ad alte prestazioni.
             \myparagraph{Versione}
                 ClickHouse 24.10
             \myparagraph{Documentazione}
-            \myparagraph{Utilizzo operato nel progetto}
+                La documentazione può essere trovata qui: \url{https://clickhouse.com/docs/sql-reference} (consultato: 2025-03-05)
+            \paragraph{Utilizzo operato nel progetto}
                 \begin{itemize}
                     \item[-] Definizione schema del database;
                     \item[-] Query per il recupero dei dati per la visualizzazione;
@@ -274,33 +280,35 @@ Descriveremo quindi a seguire le tecnologie usate per lo sviluppo del software, 
             \myparagraph{Versione} 
                 YAML 1.2
             \myparagraph{Documentazione}
-            \myparagraph{Utilizzo operato nel progetto}
+                La documentazione può essere trovata qui: \url{https://yaml.org/spec/1.2.2/} (consultato: 2025-03-05)
+            \paragraph{Utilizzo operato nel progetto}
                 \begin{itemize}
                     \item[-] \textit{docker-compose.yml} per la configurazione dei servizi;
                     \item[-] Workflow GitHub Actions per CI/CD;
                     \item[-] File di configurazione per Grafana;
                     \item[-] File di configurazione per i test.
                 \end{itemize}
-            \myparagraph{Framework e tools correlati}
+            \paragraph{Framework e tools correlati}
                 \begin{itemize}
                     \item[-] Docker Compose;
                     \item[-] GitHub Actions;
                     \item[-] Grafana.
                 \end{itemize}
 
-        \subsubsection{JSON}
+        \subsubsection{JSON (JavaScript Object Notation)}
         JSON (JavaScript Object Notation) è un formato di interscambio dati leggero, text-based e indipendente dal linguaggio, che utilizza una struttura di coppie 
         chiave-valore e array. Progettato per essere facilmente leggibile sia dall'uomo che dalle macchine.
             \myparagraph{Versione} 
                 JSON 2.0
             \myparagraph{Documentazione}
-            \myparagraph{Utilizzo operato nel progetto}
+            La documentazione può essere trovata qui: \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON} (consultato: 2025-03-02)
+            \paragraph{Utilizzo operato nel progetto}
                 \begin{itemize}
                     \item[-] Configurazione dashboard Grafana;
                     \item[-] Invio e ricezione dati mediante il broker Kafka;
                     \ietm[-] Risposta API del servizio Groq;
                 \end{itemize}
-            \myparagraph{Framework e tools correlati}
+            \paragraph{Framework e tools correlati}
                 \begin{itemize}
                     \item[-] Groq;
                     \item[-] Kafka;
