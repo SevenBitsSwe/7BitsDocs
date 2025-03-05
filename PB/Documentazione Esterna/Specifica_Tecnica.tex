@@ -268,23 +268,27 @@ Descriveremo quindi a seguire le tecnologie usate per lo sviluppo del software, 
                     \item[-] Query per il recupero dei dati per la generazione dei messaggi pubblicitari.
                 \end{itemize}
 
-        \subsubsection{YAML}
-            \myparagraph{Versione}
+        \subsubsection{YAML (YAML Ain't Markup Language)}
+        YAML è un linguaggio di serializzazione dei dati human-readable progettato per essere facilmente leggibile dall'uomo. La sua 
+        sintassi è basata sull'indentazione e ha una struttura chiave-valore. YAML è spesso usato in file di configurazione.
+            \myparagraph{Versione} 
+                YAML 1.2
             \myparagraph{Documentazione}
             \myparagraph{Utilizzo operato nel progetto}
                 \begin{itemize}
-                    \item
+                    \item[-] \textit{docker-compose.yml} per la configurazione dei servizi;
+                    \item[-] Workflow GitHub Actions per CI/CD;
+                    \item[-] File di configurazione per Grafana;
+                    \item[-] File di configurazione per i test.
                 \end{itemize}
-            \myparagraph{Dipendenze}
+            \myparagraph{Framework e tools correlati}
+            \begin{itemize}
+                \item[-] Docker Compose;
+                \item[-] GitHub Actions;
+                \item[-] Grafana.
+            \end{itemize}
 
-        \subsubsection{JSON}
-            \myparagraph{Versione}
-            \myparagraph{Documentazione}
-            \myparagraph{Utilizzo operato nel progetto}
-                \begin{itemize}
-                    \item
-                \end{itemize}
-            \myparagraph{Dipendenze}
+        
 
     \subsection{Strumenti e servizi}
         \subsubsection{Docker}
