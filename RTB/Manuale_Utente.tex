@@ -102,7 +102,9 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
 \hline
-0.1.0 & 2025-03-03  & Alfredo Rubino & Riccardo Piva & Stesura sezione \ref{introduzione}\\
+0.1.1 & 2025-03-09  & Alfredo Rubino & Leonardo Trolese & Stesura sezione \hyperref[sec:installazione]{Installazione} e correzione errori minori\\
+\hline
+0.1.0 & 2025-03-03  & Alfredo Rubino & Riccardo Piva & Stesura sezione \hyperref[sec:intro]{Introduzione}\\
 \hline
 \end{longtable}
 \rowcolors{0}{}{} % Riporta le righe alla colorazione originale
@@ -118,23 +120,18 @@
 \begin{justify}
 
 \section{Introduzione}
-\label{introduzione}
+\label{sec:intro}
 
 \subsection{Scopo del documento}
-Il presente documento ha l'obiettivo di fornire una guida dettagliata sull'utilizzo del prodotto software \textit{"NearYou - Smart custom advertising platform"}, concernente il Capitolato C4 proposto dall'azienda Synclab e aggiudicato al gruppo dal Committente. Vengono illustrate le funzionalità principali, le modalità di interazione con il sistema e le opzioni di personalizzazione disponibili. Il manuale intende informare l'utente sui requisiti minimi necessari per l'utilizzo della piattaforma, sulle procedure di configurazione e su come sfruttare al meglio tutte le potenzialità offerte dal sistema.
+Il presente documento ha l'obiettivo di fornire una guida dettagliata sull'utilizzo del prodotto software \textit{``NearYou - Smart custom advertising platform"}, concernente il Capitolato C4 proposto dall'azienda Synclab e aggiudicato al gruppo dal Committente. Vengono illustrate le funzionalità principali, le modalità di interazione con il sistema e le opzioni di personalizzazione disponibili. Il manuale intende informare l'utente sui requisiti minimi necessari per l'utilizzo della piattaforma, sulle procedure di configurazione e su come sfruttare al meglio tutte le potenzialità offerte dal sistema.
 
 \subsection{Scopo del prodotto}
 Ogni giorno, le persone vengono sommerse da una miriade di annunci generici che spesso non rispecchiano i loro reali interessi o il contesto in cui si trovano. Questa separazione tra il messaggio e il destinatario porta ad una bassa interazione con gli utenti e una riduzione delle conversioni per i brand.\\
-Il progetto \textit{"NearYou"} è stato sviluppato per affrontare questo problema, concentrandosi sulla creazione di una dashboard composta principalmente da una mappa, sulla quale vengono visualizzate in tempo reale le posizioni degli utenti. Mediante un pop-up o una finestra a parte, vengono visualizzati messaggi personalizzati solo in prossimità dei punti di interesse.\\
+Il progetto \textit{``NearYou"} è stato sviluppato per affrontare questo problema, concentrandosi sulla creazione di una dashboard composta principalmente da una mappa, sulla quale vengono visualizzate in tempo reale le posizioni degli utenti. Mediante un pop-up o una finestra a parte, vengono visualizzati messaggi personalizzati solo in prossimità dei punti di interesse.\\
 L'obiettivo finale è generare annunci pubblicitari in base agli interessi del cliente e alla sua posizione in quel momento, sfruttando la potenza dell'intelligenza artificiale con modelli linguistici (LLM) per creare messaggi pubblicitari dinamici e personalizzati che si adattano perfettamente alle esigenze degli utenti, migliorando significativamente l'efficacia degli annunci e il ritorno sull'investimento (ROI) per gli inserzionisti.
 
-\subsection{Accesso alla piattaforma}
-La piattaforma \textit{"NearYou"} è presentata come una web-application accessibile agli utenti amministratori.\\
-L'accesso alla dashboard è garantito tramite un browser web, senza la necessità di installare software aggiuntivo sul dispositivo. L'accesso al servizio è protetto da credenziali fornite dal team amministrativo. Una volta effettuato l'accesso, l'amministratore può visualizzare una mappa con le posizioni in tempo reale degli utenti, monitorare l'efficacia degli annunci pubblicitari generati e configurare i parametri del sistema.\\
-L'accesso alla piattaforma è garantito da qualsiasi dispositivo con connessione Internet, offrendo un'esperienza di utilizzo flessibile e accessibile.
-
 \subsection{Glossario}
-Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno del documento, è presente il \textit{Glossario.pdf}, in cui vengono riportate tutte le definizioni delle parole con un significato specifico. Questi termini veranno marcati con una $_G$ a pedice, mentre i termini composti, oltre alla $_G$ a pedice, saranno uniti da un "-" come segue: termine-composto$_G$.\\
+Al fine di evitare ambiguità relative alla terminologia utilizzata all'interno del documento, è presente il \textit{Glossario.pdf}, in cui vengono riportate tutte le definizioni delle parole con un significato specifico. Questi termini veranno marcati con una $_G$ a pedice, mentre i termini composti, oltre alla $_G$ a pedice, saranno uniti da un ``-" come segue: termine-composto$_G$.\\
 Le definizioni sono presenti nell'apposito documento \textit{Glossario\_v1.0.0.pdf}.
 
 \subsection{Riferimenti}
@@ -172,13 +169,14 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario\_v1.0.0.p
 
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item[-] Analisi dei Requisiti$_G$ v1.0.0
-    \item[-] Specifica Tecnica$_G$ v1.0.0
+    \item[-] \textit{Analisi\_dei\_Requisiti\_v1.0.0.pdf}
+    \item[-] \textit{Specifica\_Tecnica\_v1.0.0.pdf}
 \end{itemize}
 
 
+
 \section{Requisiti}
-\label{requisiti}
+\label{sec:requisiti}
 
 \subsection{Requisiti hardware}
 
@@ -187,6 +185,81 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario\_v1.0.0.p
 \subsection{Requisiti software}
 
 \subsection{Requisiti browser}
+
+
+
+\section{Installazione}
+\label{sec:installazione}
+La seguente sezione fornisce istruzioni dettagliate su come installare e avviare il sistema di pubblicità personalizzata. Si consiglia di seguire i seguenti passi riportati nell'ordine specificato.
+
+\subsection{Clonare la repository}
+\begin{enumerate}
+    \item Avviare un prompt dei comandi;
+    \item Spotarsi nella cartella in cui si desidera clonare la repository;
+    \item Con Git installato in locale, clonare la repository tramite il comando:
+\begin{verbatim}
+git clone https://github.com/SevenBitsSwe/MVP.git
+\end{verbatim}
+\end{enumerate}
+
+\subsection{Creare API Key per Groq}
+Per il corretto funzionamento del sistema di generazione dei messaggi pubblicitari è necessario registrarsi sulla piattaforma Groq: \url{https://console.groq.com}.\\
+Una volta effettuato l'accesso:
+\begin{enumerate}
+    \item Raggiungere la sezione \textbf{API Keys};
+    \item Cliccare sul pulsante \textbf{Create API Key};
+    \item Copiare la chiave API generata e salvarla per dopo.
+\end{enumerate}
+
+\subsection{Configurazione dell'ambiente}
+Nella directory della repository clonata al passo 1, allo stesso livello del file \texttt{README.md}, occorre creare un file chiamato ``\texttt{.env}" con il seguente contenuto:
+\begin{verbatim}
+PYTHON_PROGRAM_KEY=<GROQ_API_KEY_GENERATA_AL_PASSO_2>
+\end{verbatim}
+A questo punto, sostituire il testo tra parentesi angolate (comprese) con la chiave API salvata precedentemente.
+
+\subsection{Avviare l'applicazione}
+\begin{enumerate}
+    \item Assicurarsi di avere Docker installato sul sistema;
+    \item Dal prompt dei comandi, posizionarsi nella cartella corretta tramite il comando:
+\begin{verbatim}
+cd percorso\della\repository\MVP
+\end{verbatim}
+    \item Raggiunta la directory principale del progetto, eseguire:
+\begin{verbatim}
+docker compose up --build
+\end{verbatim}
+\end{enumerate}
+
+\subsection{Accesso al sistema}
+Dopo essersi accertati dell'avvio di tutti i sette container (zookeeper, kafka, kafdrop, positions, flink, clickhouse, grafana):
+\begin{itemize}
+    \item[-] La dashboard Grafana è accessibile dall'indirizzo: \url{http://localhost:3000};
+    \item[-] Le credenziali di default sono:
+    \begin{itemize}
+        \item[*] \textbf{Username}: \texttt{admin}
+        \item[*] \textbf{Password}: \texttt{admin}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Verifica del funzionamento}
+Per verificare il corretto funzionamento:
+\begin{enumerate}
+    \item Accedere a Grafana;
+    \item Navigare fino alla dashboard \textbf{Advertising Messages};
+    \item Verificare che i messaggi pubblicitari vengano generati in base alle posizioni simulate.
+\end{enumerate}
+
+\subsection{Riavvio}
+Nel caso sia necessario riavviare il sistema e rimuovere i volumi associati ai container, eseguire il seguente comando:
+\begin{verbatim}
+docker compose down --volumes
+\end{verbatim}
+
+
+
+
+
 
 %% Codice per Immagini %%
 
