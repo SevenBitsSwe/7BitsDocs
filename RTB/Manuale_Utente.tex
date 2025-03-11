@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.1.0} % Versione
+\newcommand\version{0.1.2} % Versione
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -102,9 +102,11 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
 \hline
+0.1.2 & 2025-03-09  & Alfredo Rubino & Leonardo Trolese & Stesura sezione \hyperref[sec:supporto]{Supporto Tecnico}\\
+\hline
 0.1.1 & 2025-03-09  & Alfredo Rubino & Leonardo Trolese & Stesura sezione \hyperref[sec:installazione]{Installazione} e correzione errori minori\\
 \hline
-0.1.0 & 2025-03-03  & Alfredo Rubino & Riccardo Piva & Stesura sezione \hyperref[sec:intro]{Introduzione}\\
+0.1.0 & 2025-03-03  & Alfredo Rubino & Riccardo Piva & Stesura sezione \hyperref[sec:introduzione]{Introduzione}\\
 \hline
 \end{longtable}
 \rowcolors{0}{}{} % Riporta le righe alla colorazione originale
@@ -118,6 +120,8 @@
 
 \newpage
 \begin{justify}
+
+
 
 \section{Introduzione}
 \label{sec:introduzione}
@@ -204,10 +208,10 @@ git clone https://github.com/SevenBitsSwe/MVP.git
 
 \subsection{Creare API Key per Groq}
 Per il corretto funzionamento del sistema di generazione dei messaggi pubblicitari è necessario registrarsi sulla piattaforma Groq: \url{https://console.groq.com}.\\
-Una volta effettuato l'accesso o la registrazione se è la prima volta che si fruisce del servizio:
+Una volta effettuato l'accesso, o la registrazione ne la caso in cui fosse la prima volta che si fruisce del servizio:
 \begin{enumerate}
     \item Raggiungere la sezione \textbf{API Keys};
-    \item Cliccare sul pulsante \textbf{Create API Key} per creare una nuova chiave, oppure utilizzare una chiave già precedentemente creata se presente;
+    \item Cliccare sul pulsante \textbf{Create API Key} per creare una nuova chiave, oppure selezionare una chiave già precedentemente creata se presente;
     \item Copiare la chiave API generata e salvarla per dopo.
 \end{enumerate}
 
@@ -258,6 +262,23 @@ docker compose --profile prod down -v
 
 
 
+\section{Istruzioni per l'uso} %subsection solo placeholder, ancora da definire
+\label{sec:istruzioni}
+
+\subsection{Login}
+
+\subsection{Dashboard}
+
+\subsection{Pannelli}
+
+
+
+
+\section{Supporto Tecnico}
+\label{sec:supporto}
+Per ricevere assistenza su problemi tecnici, difficoltà nell'installazione o dubbi relativi all'utilizzo del sistema, è possibile contattare il team di supporto all'indirizzo email: \texttt{sevenbits.swe.unipd@gmail.com}.\\
+Il team si impegna a fornire una risposta tempestiva con le informazioni necessarie per risolvere eventuali problematiche.\\
+Nel messaggio di richiesta supporto, è consigliato includere una descrizione chiara del problema, eventuali messaggi di errore ricevuti, la data e l'ora in cui è stato riscontrato il malfunzionamento, e possibilmente degli screenshot o altri dettagli che possano tornare utili per la risoluzione.
 
 
 
