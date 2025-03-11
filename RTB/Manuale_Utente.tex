@@ -120,7 +120,7 @@
 \begin{justify}
 
 \section{Introduzione}
-\label{sec:intro}
+\label{sec:introduzione}
 
 \subsection{Scopo del documento}
 Il presente documento ha l'obiettivo di fornire una guida dettagliata sull'utilizzo del prodotto software \textit{``NearYou - Smart custom advertising platform"}, concernente il Capitolato C4 proposto dall'azienda Synclab e aggiudicato al gruppo dal Committente. Vengono illustrate le funzionalità principali, le modalità di interazione con il sistema e le opzioni di personalizzazione disponibili. Il manuale intende informare l'utente sui requisiti minimi necessari per l'utilizzo della piattaforma, sulle procedure di configurazione e su come sfruttare al meglio tutte le potenzialità offerte dal sistema.
@@ -190,7 +190,7 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario\_v1.0.0.p
 
 \section{Installazione}
 \label{sec:installazione}
-La seguente sezione fornisce istruzioni dettagliate su come installare e avviare il sistema di pubblicità personalizzata. Si consiglia di seguire i seguenti passi riportati nell'ordine specificato.
+La seguente sezione fornisce istruzioni dettagliate su come installare e avviare il sistema di pubblicità personalizzata. Si consiglia di seguire i passi riportati nell'ordine specificato.
 
 \subsection{Clonare la repository}
 \begin{enumerate}
@@ -204,10 +204,10 @@ git clone https://github.com/SevenBitsSwe/MVP.git
 
 \subsection{Creare API Key per Groq}
 Per il corretto funzionamento del sistema di generazione dei messaggi pubblicitari è necessario registrarsi sulla piattaforma Groq: \url{https://console.groq.com}.\\
-Una volta effettuato l'accesso:
+Una volta effettuato l'accesso o la registrazione se è la prima volta che si fruisce del servizio:
 \begin{enumerate}
     \item Raggiungere la sezione \textbf{API Keys};
-    \item Cliccare sul pulsante \textbf{Create API Key};
+    \item Cliccare sul pulsante \textbf{Create API Key} per creare una nuova chiave, oppure utilizzare una chiave già precedentemente creata se presente;
     \item Copiare la chiave API generata e salvarla per dopo.
 \end{enumerate}
 
@@ -227,7 +227,7 @@ cd percorso\della\repository\MVP
 \end{verbatim}
     \item Raggiunta la directory principale del progetto, eseguire:
 \begin{verbatim}
-docker compose up --build
+docker compose --profile prod up --build
 \end{verbatim}
 \end{enumerate}
 
@@ -253,7 +253,7 @@ Per verificare il corretto funzionamento:
 \subsection{Riavvio}
 Nel caso sia necessario riavviare il sistema e rimuovere i volumi associati ai container, eseguire il seguente comando:
 \begin{verbatim}
-docker compose down --volumes
+docker compose --profile prod down -v
 \end{verbatim}
 
 
