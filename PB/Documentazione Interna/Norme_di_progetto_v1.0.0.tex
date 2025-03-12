@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{1.0.0} %aggiunta versione come variabile
+\newcommand\version{1.0.1} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -111,7 +111,9 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    1.0.0 & 2025-02-21 & Giovanni Cristellon & Manuel Gusella & Approvazione documento per RTB.\\
+    1.0.1 & 2025-03-12 & Federico Pivetta & Alfredo Rubino & Aggiunti paragrafi Specifica Tecnica, Manuale Utente, Qualità dell'architettura e Design Pattern\\
+    \hline
+    1.0.0 & 2025-02-21 & Giovanni Cristellon & Manuel Gusella & Approvazione documento per RTB\\
     \hline
     0.5.18 & 2025-02-17 & Federico Pivetta & Uncas Peruzzi & Correzioni ai nomi dei documenti\\
     \hline
@@ -264,34 +266,40 @@
         \item \textbf{Consegna}: Composta dalla consegna del prodotto software alla proponente$_G$, accompagnato dalla documentazione$_G$ finale.
     \end{enumerate}
 
-    \subsubsection{Rapporti con l'azienda proponente$_G$}
+    \subsubsection{Rapporti con l'azienda proponente}
     L'azienda proponente$_G$ SyncLab$_G$ si è resa disponibile mediante diversi canali tra cui: e-mail, Discord e Google Meet ad una comunicazione frequente con il gruppo Seven Bits, così da risolvere tempestivamente eventuali domande o dubbi che possono emergere durante lo svolgimento del progetto$_G$.\\
-    Durante la prima riunione organizzativa con l'azienda, è stata definita l'organizzazione dei periodi di sprint$_G$, stabilendo una durata di due settimane per ciascun ciclo. Al termine di ogni sprint$_G$ avviene un incontro SAL$_G$ (Stato di Avanzamento Lavori), dove verranno analizzati i risultati del lavoro svolto e si procederà con una sprint-review$_G$. Inoltre, tra un SAL$_G$ e l'altro, secondo le necessità di proponente$_G$ e team, è possibile concordare un incontro intermedio per monitorare i progressi raggiunti e rispondere ad eventuali quesiti emersi.\\
+    Durante la prima riunione organizzativa con l'azienda, è stata definita l'organizzazione dei periodi di sprint$_G$, inizialmente stabilendo una durata di due settimane per ciascun ciclo. Tuttavia, a seguito della revisione RTB, questa è stata ridotta ad una settimana per accelerare il ritmo di lavoro e garantire il rispetto della data di consegna.\\
+    Al termine di ogni sprint$_G$ avviene un incontro SAL$_G$ (Stato di Avanzamento Lavori), durante il quale vengono analizzati i risultati del lavoro svolto e si procede con una sprint-review$_G$. Inoltre, tra un SAL$_G$ e l'altro, secondo le necessità di proponente$_G$ e team, è possibile concordare un incontro intermedio per monitorare i progressi raggiunti e rispondere ad eventuali quesiti emersi.\\
     Ogni incontro con l'azienda viene formalizzato attraverso un verbale esterno. Tale verbale è successivamente sottoposto alla proponente$_G$ per la validazione mediante firma, in modo da ottenere un'approvazione formale del resoconto delle discussioni svolte durante la riunione.\\
 
     \subsubsection{Documentazione fornita}
     Di seguito sono elencati i documenti che il gruppo si impegna a consegnare ai Committenti, Prof. Tullio Vardanega e Prof. Riccardo Cardin, nonché all'azienda proponente$_G$:\\
 
         \paragraph{Analisi dei Requisiti}
-        \'E un documento essenziale per lo sviluppo del prodotto software, che include la descrizione degli attori coinvolti, dei casi d'uso e l'elenco dei requisiti, suddivisi in requisiti funzionali, di qualità, di vincolo e prestazionali.\\
+        È un documento essenziale per lo sviluppo del prodotto software, che include la descrizione degli attori coinvolti, dei casi d'uso e l'elenco dei requisiti, suddivisi in requisiti funzionali, di qualità, di vincolo e prestazionali.\\
 
-        \paragraph{Piano di Progetto$_G$}
-        Il \textit{Piano\_di\_Progetto} è un documento che ha lo scopo di definire in modo chiaro le modalità con cui ogni membro del gruppo svolgerà le attività per la realizzazione del progetto$_G$. Include l'analisi dei rischi, la pianificazione delle attività, la suddivisione dei ruoli e la stima di costi e risorse.\\
+        \paragraph{Piano di Progetto}
+        È un un documento che ha lo scopo di definire in modo chiaro le modalità con cui ogni membro del gruppo svolgerà le attività per la realizzazione del progetto$_G$. Include l'analisi dei rischi, la pianificazione delle attività, la suddivisione dei ruoli e la stima di costi e risorse.\\
 
         \paragraph{Piano di Qualifica}
-        Il \textit{Piano\_di\_Qualifica} è un documento che ha l'obiettivo di garantire la qualità del prodotto e dei processi durante l'intero ciclo-di-vita$_G$ del progetto$_G$, per questo motivo sarà aggiornato nel tempo per riflettere eventuali modifiche e i risultati delle verifiche effettuate. Include le sezioni sulla qualità di processo$_G$, sulla qualità di prodotto, le modalità di testing e il cruscotto$_G$ di valutazione delle qualità.\\
+        È un documento che ha l'obiettivo di garantire la qualità del prodotto e dei processi durante l'intero ciclo-di-vita$_G$ del progetto$_G$, per questo motivo sarà aggiornato nel tempo per riflettere eventuali modifiche e i risultati delle verifiche effettuate. Include le sezioni sulla qualità di processo$_G$, sulla qualità di prodotto, le modalità di testing e il cruscotto$_G$ di valutazione delle qualità.\\
+
+        \paragraph{Specifica Tecnica}
+        È un documento che descrive gli aspetti tecnici e progettuali del prodotto software, offrendo una visione dell'architettura implementativa e di deployment attraverso l'analisi di moduli, design pattern e scelte tecnologiche. Ha l'obiettivo di monitorare le decisioni progettuali, guidare lo sviluppo e garantire la tracciabilità dei requisiti, costituendo così un punto di riferimento fondamentale per tutti gli stakeholder.\\
+
+        \paragraph{Manuale Utente}
+        È un documento che fornisce una guida sull'utilizzo della piattaforma software "NearYou - Smart custom advertising platform", sviluppata per l'azienda proponente SyncLab$_G$. Descrive le principali funzionalità, le modalità di interazione e le opzioni di personalizzazione, oltre a fornire informazioni sui requisiti minimi, le procedure di configurazione e come sfruttare al meglio le potenzialità del sistema.\\
 
         \paragraph{Glossario}
-        Il \textit{Glossario} è un documento che raccoglie dei termini specifici e le loro definizioni chiare e concise. Il suo scopo è quello di facilitare la comprensione dei concetti chiave presenti nei vari documenti redatti.\\
+        È un documento che raccoglie dei termini specifici e le loro definizioni chiare e concise. Il suo scopo è quello di facilitare la comprensione dei concetti chiave presenti nei vari documenti redatti.\\
 
         \paragraph{Lettera di Presentazione}
-        La Lettera di Presentazione è un documento che accompagna la consegna del prodotto software e della relativa documentazione$_G$ durante le fasi di revisione di progetto$_G$. Il contenuto di questo documento comprende un link alla pagina web che contiene tutta la documentazione$_G$ fin'ora prodotta ed un preventivo aggiornato rispetto a quello presentato alla revisione precedente.\\
+        La Lettera di Presentazione è un documento che accompagna la consegna del prodotto software e della relativa documentazione$_G$ durante le fasi di revisione di progetto$_G$. Il contenuto di questo documento comprende un link alla pagina web che contiene tutta la documentazione$_G$ finora prodotta, un preventivo aggiornato rispetto a quello presentato alla revisione precedente, e dei link alle varie repository del gruppo.\\
 
     \subsubsection{Strumenti}
     Gli strumenti utilizzati per la gestione del processo$_G$ di fornitura sono i seguenti:
     \begin{itemize}
         \item \textbf{Canva}: Piattaforma che permette la creazione di presentazioni multimediali, utilizzata per la realizzazione dei diari di bordo;
-        \item \textbf{Draw.io}: Software utilizzato per creare diagrammi e grafici di vario tipo, in particolare è stato impiegato per realizzare diagrammi UML$_G$, come quelli dei casi d'uso;
         \item \textbf{Google Meet e Discord}: Servizi che permettono di effettuare videochiamate, utilizzati dal team per le discussioni sincrone e asincrone con la proponente$_G$;
         \item \textbf{Google Sheets}: Servizio che permette la creazione di fogli di calcolo, utilizzato dal gruppo per la rendicontazione delle ore produttive impiegate durante ogni sprint$_G$.
     \end{itemize}
@@ -485,6 +493,26 @@
         La progettazione, o design, è un'altra fase cruciale del processo$_G$ di sviluppo software che ha l'obiettivo di tradurre i requisiti individuati durante la fase di analisi in una struttura architetturale definita. Questa attività definisce in dettaglio i vincoli e le caratteristiche del prodotto semplificando la pianificazione e la suddivisione delle attività di codifica.\\
         Prima di avviare la progettazione vera e propria, si intraprende una fase preliminare che prevede la creazione di un PoC$_G$ (Proof of Concept), un prototipo preliminare "usa e getta" realizzato per dimostrare la fattibilità tecnologica del prodotto previsto. Questa fase serve a confermare le tecnologie da adottare e a definire insieme alla proponente$_G$ le componenti principali che costituiranno l'MVP (Minimum Viable Product).\\
 
+        \paragraph{Qualità dell'architettura}
+        Una buona architettura software è fondamentale per il successo di un progetto. Di seguito sono elencate le principali qualità che caratterizzano una buona architettura:
+        \begin{itemize}
+            \item \textbf{Sufficienza}: l'architettura soddisfa tutti i requisti funzionali e non funzionali definiti per il sistema;
+            \item \textbf{Comprensibilità}: l'architettura è facilmente comprensibile da tutti gli stakeholder, facilitando la manutenzione e l'evoluzione del sistema;
+            \item \textbf{Modularità}: l'architettura è suddivisa in moduli separati e indipendenti, che possono essere sviluppati, testati e aggiornati autonomamente;
+            \item \textbf{Robustezza}: l'architettura è progettata per essere resistente a diversi tipi di ingressi, gestendo correttamente anche condizioni di errore o situazioni impreviste;
+            \item \textbf{Flessibilità}: l'architettura può adattarsi facilmente a nuovi requisiti, cambiamenti o evoluzione delle tecnologie senza richiedere modifiche radicali o strutturali;
+            \item \textbf{Riusabilità}: le componenti e i moduli possono essere riutilizzati in contesti diversi, riducendo la duplicazione del lavoro e migliorando l'efficienza complessiva;
+            \item \textbf{Efficienza}: l'architettura è progettata per ottimizzare l'utilizzo delle risorse, garantendo prestazioni elevate con il minor consumo di risorse possibile;
+            \item \textbf{Affidabilità}: la capacità del software di svolgere correttamente le sue funzioni in modo coerente e prevedibile nel tempo;
+            \item \textbf{Disponibilità}: il software è disponibile e operativo quando richiesto, riducendo al minimo i periodi di inattività;
+            \item \textbf{Sicurezza rispetto a malfunzionamenti}: l'architettura è progettata per garantire che il sistema continui a funzionare correttamente anche in caso di guasti o malfunzionamenti;
+            \item \textbf{Sicurezza rispetto a intrusioni}: il sistema è protetto da accessi non autorizzati e tentativi di intrusione, garantendo la riservatezza e l'integrità dei dati;
+            \item \textbf{Semplicità}: l'architettura è il più semplice possibile, riducendo la complessità e facilitando la comprensione, la manutenzione e l'evoluzione;
+            \item \textbf{Incapsulazione}: i dettagli implementativi interni delle componenti sono nascosti all'esterno, permettendo l'accesso solo attraverso un'interfaccia definita;
+            \item \textbf{Coesione}: la misura in cui i componenti all'interno di un modulo o un'unità lavorano insieme per un obiettivo comune senza essere eccessivamente interdipendenti;
+            \item \textbf{Basso accoppiamento}: il grado di dipendenza tra i diversi moduli o componenti del software deve essere minimizzato per migliorare la manutenibilità e flessibilità del sistema.
+        \end{itemize}
+
         \paragraph{Diagrammi delle classi}
         Sono una tipologia di diagramma UML$_G$ utile a rappresentare la struttura statica di un sistema$_G$ software orientato agli oggetti. Questi diagrammi visualizzano le classi del sistema$_G$ con i loro attributi e metodi insieme alle relazioni tra di esse.\\
         Le classi sono rappresentate tramite rettangoli suddivisi in tre sezioni:
@@ -552,10 +580,20 @@
             \item \textbf{Generalizzazione}: La relazione di generalizzazione si verifica quando una classe eredita attributi, comportamenti e relazioni dalla classe genitore. Nello specifico ogni istanza della classe figlia è anche un'istanza della classe genitore, ma con caratteristiche o dettagli aggiuntivi specifici. La generalizzazione è rappresentata graficamente con una freccia vuota che collega la classe figlia (B) alla classe genitore (A).
             \begin{figure}[H]
             \centering
-            \includegraphics[width=0.15\textwidth]{GeneralizzazioneClasse.png}
+            \includegraphics[width=0.15\textwidth]
+            {GeneralizzazioneClasse.png}
             \caption{Rappresentazione della relazione di generalizzazione.}
             \end{figure}
         \end{itemize}
+
+        \paragraph{Design Pattern}
+        I design pattern costituiscono delle soluzioni progettuali consolidate a problemi ricorrenti nello sviluppo software. Essi rappresentano delle best practices che permettono di migliorare la qualità, la manutenibilità e la scalabilità del codice, facilitando la comprensione e la comunicazione tra sviluppatori. I design pattern non sono implementazioni specifiche, ma schemi generali che possono essere adattati a diversi contesti e linguaggi di programmazione. Essi si suddividono in tre categorie principali:
+        \begin{itemize}
+            \item \textbf{Creazionali}: gestiscono il processo di creazione degli oggetti in modo flessibile ed efficiente (es. Singleton, Builder o Abstract Factory);
+            \item \textbf{Strutturali}: definiscono le modalità per semplificare e ottimizzare la struttura del codice (es. Adapter, Decorator, Facade o Proxy);
+            \item \textbf{Comportamentali}: migliorano la comunicazione e cooperazione tra gli oggetti (es. Command, Iterator, Observer, Strategy o Template Method).
+        \end{itemize}
+        L'adozione dei design pattern può introdurre un certo grado di complessità nel codice, pertanto è fondamentale valutarne l'utilizzo con attenzione. È importante adottarli solo quando i benefici giustificano l'aumento della complessità, evitando di rendere il sistema più difficile da comprendere e gestire qualora non sia necessario.
 
         \paragraph{Metriche}
         \begin{table}[H]
@@ -643,6 +681,13 @@
           \caption{Metriche relative all'attività di codifica}
         \end{table}
 
+    \subsubsection{Strumenti}
+    Gli strumenti utilizzati per la gestione del processo$_G$ di sviluppo sono i seguenti:
+    \begin{itemize}
+        \item \textbf{Draw.io}: Software utilizzato per creare diagrammi e grafici di vario tipo, in particolare è stato impiegato per realizzare diagrammi UML$_G$, come quelli dei casi d'uso;
+        \item \textbf{StarUML}: Software per la modellazione UML utilizzato per creare diagrammi delle classi e altri diagrammi di progettazione software, in particolare è stato impiegato per definire l'architettura del nostro prodotto software.
+    \end{itemize}
+
 \newpage
 \section{Processi di supporto}
     \subsection{Documentazione}
@@ -663,7 +708,7 @@
         \item [-] \textit{Verbali interni}
     \end{itemize}
 
-    \subsubsection{Ciclo di vita documenti e Versionamento$_G$}
+    \subsubsection{Ciclo di vita documenti e Versionamento}
     I documenti seguono due workflow distinti a seconda che si tratti di verbali (interni o esterni) oppure di documenti più corposi, e le versioni delle modifiche successive apportate ai documenti seguono il sistema$_G$ di versionamento$_G$ indicato di seguito.\\
 
         \paragraph{Versionamento dei documenti}
@@ -688,7 +733,7 @@
             indicato nel Registro modifiche del documento stesso;
             \item Se CI$_G$ sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
             \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare;
-            Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda Synclab$_G$ perché venga firmato;
+            Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
             \item Quando il documento è completo l'ultimo Verificatore
             chiude la pull-request ed esegue il merge$_G$ nel branch$_G$ Main.
         \end{enumerate}
@@ -757,7 +802,7 @@
         I verbali hanno lo scopo di tenere traccia di chi ha partecipato agli incontri ed in particolare quali decisioni sono state prese.\\
         Sono composti da 2 sezioni principali:
         \begin{itemize}
-            \item \textbf{Durata e partecipanti}: Viene indicata la data di inizio e fine dell'incontro, insieme al luogo in cui si è svolto. Successivamente, vengono elencati i nomi dei partecipanti del gruppo. Se il verbale è esterno, vengono inclusi anche i partecipanti dell'azienda Synclab$_G$;
+            \item \textbf{Durata e partecipanti}: Viene indicata la data di inizio e fine dell'incontro, insieme al luogo in cui si è svolto. Successivamente, vengono elencati i nomi dei partecipanti del gruppo. Se il verbale è esterno, vengono inclusi anche i partecipanti dell'azienda SyncLab$_G$;
             \item \textbf{Sintesi e Decisioni/Obiettivi}: La prima sezione contiene un riassunto degli argomenti trattati durante il meeting, mentre la seconda include un elenco delle decisioni prese, collegate alle issue$_G$ corrispondenti tramite una tabella.
         \end{itemize}
         Inoltre, per i verbali esterni è presente una sezione per la convalida del documento mediante una firma.\\
@@ -809,11 +854,11 @@
         \item \href{https://github.com/SevenBitsSwe/PoC}{https://github.com/SevenBitsSwe/PoC}: questa repository$_G$ è dedicata alla condivisione e verifica del codice sorgente relativo al prodotto software realizzato per la revisione RTB$_G$. Viene utilizzata dal team per lavorare sul codice del prodotto, consentendo una gestione centralizzata dello sviluppo e delle modifiche apportate al software.
     \end{itemize}
 
-        \paragraph{Struttura della repository$_G$ 7BitsDocs}
+        \paragraph{Struttura della repository 7BitsDocs}
         Per ogni documento è stato creato un branch$_G$ dedicato, al fine di lavorare in modo efficace ed efficiente, evitando di generare conflitti e prevenendo il caricamento sulla pagina web di documenti non ancora approvati, ossia con una versione precedente alla 1.0.0. Per questo motivo, è stato adottato un modello git-flow semplificato, che prevede l'uso di più branch$_G$ di lavoro separati. Di conseguenza, nessuno dei branch$_G$ dedicati deve essere eliminato.\\
         Ogni branch$_G$, derivante direttamente dal branch$_G$ principale Main, contiene diverse cartelle relative alle fasi del progetto$_G$: una per la Candidatura e una per la RTB$_G$, ciascuna contenente i documenti redatti per quella specifica fase. Inoltre, sono presenti una cartella per le immagini utilizzate nei documenti, due cartelle per la gestione della pagina web e i file di supporto (README, templates, ecc.).
 
-        \paragraph{Struttura della repository$_G$ PoC$_G$}
+        \paragraph{Struttura della repository PoC}
         Per quanto riguarda il prodotto software sviluppato per la revisione RTB$_G$, sono stati creati diversi branch$_G$, ognuno derivante direttamente dal branch$_G$ Main, e ciascuno utilizzato per esplorare e approfondire una specifica tecnologia. Solo una volta presa la decisione di implementare una determinata tecnologia, viene effettuato un merge$_G$ in un branch$_G$ specifico che include l'intero prodotto. Solo quest'ultimo può successivamente confluire nel branch$_G$ Main attraverso una pull-request, a condizione che ogni modifica sia stata verificata e approvata.
     
     \subsubsection{Pagina web} 
@@ -846,7 +891,7 @@
     L'analisi dinamica viene condotta direttamente sul prodotto software attraverso la sua esecuzione effettiva. Questo tipo di analisi si suddivide in diverse tipologie di test$_G$, ciascuna finalizzata a verificare aspetti specifici del funzionamento software. Ogni test$_G$ corrisponde all'esecuzione di un programma, e simula il comportamento di singole parti di codice su un insieme finito di casi di prova.\\
     Questa procedura misura la qualità del prodotto e assicura che esso raggiunga correttamente il suo scopo. I test$_G$ effettuati devono essere ripetibili nel tempo per assicurare un funzionamento persistente durante tutto lo svolgimento del prodotto software.
     
-    \subsubsection{Classificazione dei test$_G$}
+    \subsubsection{Classificazione dei test}
     Tutti i test$_G$ che verranno eseguiti sono presenti nel documento \textit{Piano\_di\_Qualifica} ed il Verificatore è tenuto a svolgerli, riportandone gli esiti all'interno dello stesso documento.\\
     Ad ogni test$_G$ devono essere attribuiti:
     \begin{itemize}
@@ -873,7 +918,7 @@
       \item \textbf{Top-down}: l'integrazione parte dalle componenti di sistema$_G$ con maggiori dipendenze e un maggiore valore esterno. Richiede molti mock ma integra prima le funzionalità visibili all'utente.
     \end{itemize}
 
-    \paragraph{Test di sistema$_G$}
+    \paragraph{Test di sistema}
     Test$_G$ eseguiti per controllare che i requisiti specificati durante l'analisi-dei-requisiti siano rispettati, garantendo che tutte le componenti siano integrate correttamente.\\
     L'obiettivo di questi test$_G$ è di accertarsi che l'intero sistema$_G$ lavori come entità unica, verificando che tutte le singole componenti funzionino insieme. Vengono eseguiti al completamento dei test$_G$ di integrazione.
 
@@ -884,10 +929,10 @@
     \paragraph{Test di accettazione}
     Sono gli ultimi test$_G$ da passare prima del rilascio del software. Servono a garantire che il prodotto finale soddisfi le aspettative del proponente$_G$ e degli utenti finali.
 
-    \paragraph{Classificazione dei test$_G$}
+    \paragraph{Classificazione dei test}
     I test$_G$ vengono identificati in base alla loro tipologia e tramite un codice numerico, specifico all'interno della categoria. I test$_G$ devono avere la seguente forma:
     \begin{quote}
-    \textbf{T[Tipologia Test$_G$][Codice]}\\
+    \textbf{T[Tipologia Test][Codice]}\\
     \end{quote}
     Dove:
     \item [-] \textbf{Tipologia}:
@@ -898,7 +943,7 @@
         \item [*] \textbf{A}: Accettazione.
     \end{itemize}
 
-    \paragraph{Stato dei test$_G$}
+    \paragraph{Stato dei test}
     Nel \textit{Piano\_di\_Qualifica} ogni test$_G$ viene seguito dal suo stato:
     \begin{itemize}
     \item \textbf{NI}: Il test$_G$ non è stato implementato;
@@ -971,10 +1016,10 @@ Eventualmente, le metriche possono includere:
         \item \textbf{Revisione e chiusura}: Composta dalla valutazione complessiva del progetto$_G$ al termine delle attività, dall'identificazione delle nozioni apprese e dalla formalizzazione della chiusura del progetto$_G$ con la consegna dei risultati finali.
     \end{enumerate}
 
-    \subsubsection{Pianificazione degli sprint$_G$}
+    \subsubsection{Pianificazione degli sprint}
     Include la durata di ogni sprint$_G$ e una lista degli obiettivi da raggiungere entro la sua conclusione. Se si verificano dei rischi, viene aggiunta una sezione che descrive come il gruppo li ha gestiti e l'impatto che hanno avuto sulle attività pianificate. Inoltre, la pianificazione contiene una tabella con i ruoli assegnati ai membri del gruppo e due sezioni separate: una per il preventivo, che indica le ore e i costi stimati per lo sprint$_G$, e una per il consuntivo, che riporta le ore e i costi effettivi per lo stesso periodo.
 
-    \subsubsection{Ruoli di progetto$_G$}
+    \subsubsection{Ruoli di progetto}
     Durante l'intero sviluppo del progetto$_G$, ciascun membro del gruppo assume sei ruoli distinti, ciascuno con responsabilità ben definite che riguardano specifiche attività di specifici processi.
     Ogni ruolo contribuisce al raggiungimento degli obiettivi del progetto$_G$, risultando essenziale per completare tutte le attività necessarie alla creazione di un prodotto finale di qualità.\\
     I ruoli assunti a rotazione da ciascun membro del gruppo sono i seguenti:
@@ -1150,7 +1195,7 @@ Eventualmente, le metriche possono includere:
     Questo approccio consente al gruppo di raggiungere un livello uniforme di conoscenze, adeguato al conseguimento degli obiettivi, e favorisce lo sviluppo complessivo del progetto$_G$.
 
 \newpage
-\section{Standard di progetto$_G$}
+\section{Standard di progetto}
 
     \subsection{Standard ISO/IEC 12207 - 1995}
     \label{standard_12207}
@@ -1423,7 +1468,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
       \end{itemize}
 \end{itemize}
 
-\subsection{Metriche di qualità di Processo$_G$}
+\subsection{Metriche di qualità di Processo}
 L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualità del Processo$_G$.
 
 \subsubsection{Processi Primari}
