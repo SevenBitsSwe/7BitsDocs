@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.1.2} % Versione
+\newcommand\version{0.1.3} % Versione
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -102,6 +102,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
 \hline
+0.1.3 & 2025-03-13  & Alfredo Rubino & Leonardo Trolese & Stesura sezione \hyperref[sec:requisiti]{Requisiti}\\
+\hline
 0.1.2 & 2025-03-11  & Alfredo Rubino & Leonardo Trolese & Stesura sezione \hyperref[sec:supporto]{Supporto Tecnico}\\
 \hline
 0.1.1 & 2025-03-09  & Alfredo Rubino & Leonardo Trolese & Stesura sezione \hyperref[sec:installazione]{Installazione} e correzione errori minori\\
@@ -181,14 +183,93 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario\_v1.0.0.p
 
 \section{Requisiti}
 \label{sec:requisiti}
+Per poter garantire un funzionamento corretto del prodotto, è necessario rispettare i requisiti minimi elencati di seguito.
 
 \subsection{Requisiti hardware}
+I requisiti hardware definiscono le specifiche minime necessarie affinché il software possa essere eseguito in modo efficiente su un determinato dispositivo.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!25}
+        Componente & Requisiti minimi \\
+        \hline
+        CPU & 3 core CPU (2.0 GHz o superiore)\\
+        \hline
+        RAM & 3 GB di RAM\\
+        \hline
+        Storage & 1 GB di spazio su disco\\
+        \hline
+    \end{tabular}
+    \caption{Requisiti hardware}
+    \label{tab:requisiti_hardware}
+\end{table}
 
 \subsection{Requisiti di sistema operativo}
+I requisiti del sistema operativo specificano la versione minima necessaria affinché il software possa funzionare correttamente su un determinato dispositivo.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!25}
+        Sistema Operativo & Versione \\
+        \hline
+        Ubuntu & x\\ %da inserire, distibuzioni linux da cambiare eventualmente 
+        \hline
+        Debian & x\\ %da inserire
+        \hline
+        Arch & x\\ %da inserire
+        \hline
+        Windows & 11\\
+        \hline
+        MacOS & x\\ %da inserire
+        \hline
+    \end{tabular}
+    \caption{Requisiti di sistema operativo}
+    \label{tab:requisiti_sistema}
+\end{table}
 
 \subsection{Requisiti software}
+I requisiti software specificano le dipendenze e i programmi che devono essere installati sul sistema dell’utente per consentire l’avvio e il corretto funzionamento del prodotto.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!25}
+        Software & Versione \\
+        \hline
+        Docker & 28.0.1\\
+        \hline
+    \end{tabular}
+    \caption{Requisiti software}
+    \label{tab:requisiti_software}
+\end{table}
 
 \subsection{Requisiti browser}
+I requisiti browser definiscono le specifiche tecniche minime necessarie per assicurare la corretta visualizzazione e fruizione del software su un browser web specifico.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \rowcolor{gray!25}
+        Browser & Versione \\
+        \hline
+        Google Chrome & 135\\
+        \hline
+        Mozilla Firefox & 136\\
+        \hline
+        Microsoft Edge & 134\\
+        \hline
+        Safari & 18.4\\
+        \hline
+    \end{tabular}
+    \caption{Requisiti browser}
+    \label{tab:requisiti_browser}
+\end{table}
 
 
 
