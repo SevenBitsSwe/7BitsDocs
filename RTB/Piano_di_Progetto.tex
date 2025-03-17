@@ -18,7 +18,7 @@
 \usepackage{longtable}
 
 
-\newcommand\version{1.0.0} %aggiunta versione come variabile
+\newcommand\version{1.0.1} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -105,6 +105,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+\hline
+1.0.1 & 2025-03-8 & Giovanni Cristellon & Leonardo Trolese & Redazione settimo sprint$_G$ \ref{settimo-sprint$_G$}\\
 \hline
 1.0.0 & 2025-02-21 & Giovanni Cristellon & Manuel Gusella & Approvazione documento per RTB$_G$.\\
 \hline
@@ -1453,4 +1455,175 @@ Nonostante queste difficoltà, il gruppo è riuscito ad affrontare la prima fase
     Infine, il confronto con l’azienda ha permesso di chiarire alcuni aspetti critici e pianificare le attività rimanenti. L’obiettivo del prossimo sprint$_G$ sarà consolidare le correzioni richieste e prepararsi alla seconda parte della revisione RTB$_G$, garantendo la massima aderenza agli standard qualitativi stabiliti.
     A seguito del termine della sessione d'esami per tutti i membri del team, il gruppo aumenterà il numero di ore lavorative e, di conseguenza, la produttività nei prossimi sprint$_G$. Questo impegno aggiuntivo è finalizzato a rispettare quanto più possibile la nuova data di consegna del progetto$_G$, stabilita dal gruppo per il 04-04-2025.
     
+    %%%%%%%%%%
+    %%%%% Settimo sprint$_G$
+    %%%%%%%%%%%
+
+    \newpage
+    \subsubsection{Settimo sprint$_G$}
+    \label{settimo-sprint$_G$}
+        
+        \paragraph{Durata sprint$_G$}\mbox{}\\
+        \vspace{-1.5em}
+        \begin{table}[h] 
+        \renewcommand{\arraystretch}{1.2}  
+        \begin{tabular}{ l l }
+            Inizio: & 2025-02-21 \\
+            Fine Prevista: & 2025-03-06 \\
+            Fine Effettiva: & 2025-03-06 \\
+            Giorni di ritardo: & 0 \\
+        \end{tabular}
+        \end{table}
+        \vspace{-2em}
+        {\renewcommand{\arraystretch}{1.5}%
+        
+        \paragraph{Panoramica generale e obiettivi}\mbox{}\vspace{0.4em}
+
+        Nel corso del settimo sprint$_G$ il gruppo si propone di ultimare la consegna RTB$_G$ tramite il colloquio conclusivo con il professor 
+        Vardanega, e di procedere con la fase di progettazione e sviluppo del MVP$_G$.
+        \\
+        Il gruppo ha in programma di:
+        \begin{itemize}
+            \item Concludere la revisione RTB$_G$, in un incontro con il professor Vardanega programmato per lunedì 2025-02-25 dalle 18:30 alle 18:50;
+            \item Organizzare un incontro con il proponente sullo stato avanzamento lavori;
+            \item Iniziare la fase di progettazione del prodotto MVP$_G$.
+        \end{itemize}
+
+        Seguono le attività inserite nel backlog per questo periodo:
+        \vspace{-0.5em}
+        \begin{itemize}
+        \setlength\itemsep{-0.2em}
+        \item [-] Inizio stesura documento specifica tecnica;
+        \item [-] Inizio stesura diagrammi delle classi;
+        \item [-] Automatizzazione dell'esecuzione dei test$_G$ di unità in un ottica di Continuous Integration;
+        \item [-] Implementazione della simulazione sensori con multithreading;
+        \item [-] Implementazione dei test automatizzati.
+        \end{itemize}
+
+        \paragraph{Gestione Rischi}\mbox{}
+        \vspace{-1em}
+        \subparagraph*{Rischi Attesi}\mbox{}
+        
+        Relativamente alla settima iterazione sono stati identificati dei potenziali rischi in cui potrebbe imbattersi il gruppo:
+        \vspace{-0.5em}
+        \begin{itemize}
+        \setlength\itemsep{-0.2em}
+        \item [-] \hyperref[RT3]{RT3} - Produzione di codice confuso o con errori;
+        \item [-] \hyperref[RP1]{RP1} - Indisponibilità individuale o malattia;
+        \item [-] \hyperref[RP2]{RP2} - Incertezza sulle stime delle attività.
+        \end{itemize}
+
+        \subparagraph*{Rischi Incontrati}\mbox{}
+        
+        Durante il settimo periodo il gruppo si è imbattuto in diversi rischi, fra i quali l'indisponibilità di uno dei membri del team a causa di malattia, e una serie
+        di difficoltà legate alla fase di progettazione del prodotto, affrontata per la prima volta dal team. Nello specifico, la scarsa esperienza del gruppo in ambito 
+        progettuale, ha reso difficile la definizione di un adeguato livello di complessità e granularità del design, che si è tradotta nella scrittura di codice confuso
+        e con errori. Inoltre l'inesperienza del team ha reso difficile la stima delle attività.       
+
+        \paragraph{Definizione ruoli}\mbox{}\vspace{0.4em}
+        
+        Questi sono i ruoli assegnati per membro in questo settimo sprint$_G$.\\
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|}
+            \hline
+            \rowcolor{gray!25}
+            \textbf{Ruolo} & \textbf{Membro}\\
+            \hline
+            Responsabile & Giovanni Cristellon \\
+            \hline
+            Progettista & Leonardo Trolese \\
+            & Uncas Peruzzi\\
+            & Alfredo Rubino\\
+            \hline
+            Programmatore & Federico Pivetta\\
+            \hline
+            Verificatore & Manuel Gusella \\
+            & Riccardo Piva\\
+            \hline
+            \end{tabular}
+            \caption{Tabella dei ruoli - Settimo Sprint$_G$}
+        \end{table}
+
+        \paragraph{Preventivo orario}\mbox{}\vspace{0.4em}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{preventivoOreSettimoSprint.png}
+            \caption{Preventivo orario per membro - Settimo sprint$_G$}
+            \label{fig:Preventivo orario per membro - Settimo sprint$_G$}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \pie[
+                    text=pin,
+                    hide number,
+                    color={responsabile, verificatore, progettista, programmatore}, 
+                    radius=1.5
+                ]{11/Responsabile - 11\% , 21/Verificatore - 21\%, 47/Progettista - 47\%, 21/Programmatore - 21\%}
+            \end{tikzpicture}
+            \caption{Diagramma circolare della partizione delle ore preventive per ruolo - Settimo sprint$_G$ }
+            \label{fig:Diagramma circolare della partizione delle ore preventive per ruolo - Settimo sprint$_G$}
+        \end{figure}
+        
+        \paragraph{Consuntivo orario}\mbox{}\vspace{0.4em}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=0.6\linewidth]{consuntivoOreSettimoSprint.png}
+            \caption{Consuntivo orario per membro - Settimo sprint$_G$}
+            \label{fig:Consuntivo orario per membro - Settimo sprint$_G$}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \pie[
+                    text=pin,
+                    hide number,
+                    color={responsabile, amministratore, analista, verificatore, progettista, programmatore}, 
+                    radius=1.5
+                ]{8/Responsabile - 8\%, 2/Amministratore - 2\%, 2/Analista - 2\%, 21/Verificatore - 21\%, 37/Progettista - 37\%, 30/Programmatore - 30\%}
+            \end{tikzpicture}
+            \caption{Diagramma circolare della partizione delle ore consuntive per ruolo - Settimo sprint$_G$ }
+            \label{fig:Diagramma circolare della partizione delle ore consuntive per ruolo - Settimo sprint$_G$}
+        \end{figure}
+
+        \paragraph{Rendicontazione delle risorse economiche restanti}\mbox{}\vspace{0.4em}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{oreCostiSettimoSprint.png}
+            \caption{Consuntivo orario e costi per ruolo - Settimo sprint$_G$}
+            \label{fig:Consuntivo orario e costi per ruolo - Settimo sprint$_G$}
+        \end{figure}
+        
+        \paragraph{Retrospettiva}\mbox{}\vspace{0.4em}
+
+        Durante il settimo periodo il gruppo ha affrontato il colloquio RTB$_G$ con il professor Vardanega, ottenendo un esito positivo. Inoltre ha avuto modo di 
+        cimentarsi per la prima volta nella progettazione del prodotto.
+
+        \subparagraph{Analisi delle strategie di mitigazione adottate}\mbox{}\vspace{0.4em}
+
+        Come atteso, la fase di progettazione ha presentato alcune difficoltà, che erano però già state individuate in fase di analisi dei rischi. Questo ha permesso
+        al gruppo di adottare le strategie di mitigazione precedentemente individuate. Nello specifico, per affrontare il rischio RP2 (incertezza sulle stime delle 
+        attività), il gruppo avrebbe dovuto introdurre un margine di sicurezza nelle stime orarie effettuate a inizio sprint$_G$; tuttavia ciò non è stato fatto, e questo
+        spiega la significativa differenza fra le ore stimate e quelle effettivamente consumate.\\ 
+        Inoltre, il gruppo ha affrontato il rischio RP1 (indisponibilità individuale o malattia), che non ha avuto però un impatto significativo sullo sprint$_G$ in 
+        quanto il membri sono comunque riusciti a coordinarsi, riassegnando i compiti in modo da non influire sulle tempistiche.\\
+        Il team ha infine affrontato il rischio RT3 (produzione di codice confuso o con errori), adottando una strategia di cooperazione con brevi sedute di 
+        peer-programming per garantire una buona comprensione da parte di tutti i componenti del codice prodotto. Sempre per mitigare il rischio RT3, è inoltre stato 
+        richiesto un colloquio con il professore Cardin per l'iterazione successiva.
+        
+        \subparagraph{Raffinamento delle stime}\mbox{}\vspace{0.4em}
+
+        Basandosi su quanto prodotto nel settimo sprint il gruppo può affermare di essere attualmente in linea (anzi leggermente in anticipo) rispetto alle stime originali.
+        Il budget totale stimato per il completamento del progetto$_G$ è di 12.554,70€, rispetto ai 12.950,00€ inizialmente preventivati. Di questa cifra, 4.867,20€ 
+        rappresentano i costi ancora da sostenere per completare il prodotto e la relativa documentazione$_G$.\\
+        Questo è un indicatore positivo per il gruppo, che può confermare la consegna PB del progetto indicativamente per la data 2025-04-04, riprogrammata a seguito della 
+        revisione RTB.\\
+        Resta tuttavia aperto il problema dell'imprecisione nella stima delle ore di lavoro previste per ogni sprint, che anche in questa iterazione si è rivelata essere
+        imprecisa.\\
+        
+
+                
 \end{document}
