@@ -18,10 +18,10 @@
 \usepackage{float}
 \usepackage{setspace}
 \usepackage{longtable}
-
-\RequirePackage{listings}
-\RequirePackage[framemethod=TikZ]{mdframed}
-\RequirePackage{xcolor}
+\usepackage{listings}
+\usepackage{lstautogobble}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{xcolor}
 
 % Minimal color setup
 \definecolor{MLbg}{HTML}{F8F9FA}
@@ -36,12 +36,7 @@
     linecolor=MLborder,
     backgroundcolor=MLbg,
     roundcorner=4pt,
-    skipabove=\baselineskip,
-    innertopmargin=6pt,
-    innerbottommargin=6pt,
-    innerleftmargin=6pt,
-    innerrightmargin=6pt,
-    skipbelow=\smallskipamount
+    skipabove=\baselineskip
 }
 
 \lstset{
@@ -49,50 +44,25 @@
     basicstyle=\ttfamily\small,
     columns=flexible,
     breaklines=true,
-    tabsize=4,
-    keepspaces=true,
+    tabsize=8,
+    % keepspaces=true,
     showstringspaces=false,
     commentstyle=\color{MLcomment},
     keywordstyle=\color{MLkeyword},
     stringstyle=\color{MLstring},
     numbers=left,
     numberstyle=\tiny\color{MLcomment},
-    numbersep=1em,
-    xleftmargin=0.8em,
-    belowskip=-0.5\baselineskip
-}
-
-% Python definition
-\lstdefinelanguage{Python}{
-    morekeywords={and,as,assert,break,class,continue,def,del,elif,else,except,
-        finally,for,from,global,if,import,in,is,lambda,nonlocal,not,or,pass,raise,
-        return,try,while,with,yield},
-    morecomment=[l]{\#},
-    morestring=[b]"
-}
-
-% SQL definition
-\lstdefinelanguage{SQL}{
-    morekeywords={SELECT,FROM,WHERE,JOIN,INNER,LEFT,RIGHT,ON,GROUP,BY,HAVING,ORDER,
-        INSERT,UPDATE,DELETE,CREATE,ALTER,DROP,INDEX,VALUES,INTO,PRIMARY,KEY,NULL},
-    morecomment=[l]{--}
-}
-
-% JSON definition
-\lstdefinelanguage{JSON}{
-    morestring=[b]",
-    morecomment=[l]{\#},
-    literate=
-     *{true}{{{\color{MLkeyword}true}}}{4}
-        {false}{{{\color{MLkeyword}false}}}{5}
-        {null}{{{\color{MLkeyword}null}}}{4}
+    numbersep=0pt, % Riduce lo spazio tra i numeri e il codice
+    xleftmargin=-2em,    
+    aboveskip=0pt, % Riduce lo spazio sopra il codice
+    belowskip=0pt, % Riduce lo spazio sotto il codice
 }
 
 \surroundwithmdframed{lstlisting}
 
 \newcommand\version{0.1.4} %aggiunta versione come variabile
-\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\vspace{0.4em}}
-
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -269,13 +239,13 @@ Il sistema NearYou si basa su un'architettura a microservizi event-driven che ut
 \subsubsection{Python}
 Linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, scelto per la sua leggibilità, la vasta libreria standard e l'ampio ecosistema di framework disponibili, particolarmente adatto allo sviluppo rapido di applicazioni.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 3.12.2
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.python.org/}} (Consultato: 2025-03-02)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 Nel contesto di NearYou, Python viene impiegato per:
 \begin{itemize}
     \item[-] Sviluppo del simulatore di spostamenti utente
@@ -285,7 +255,7 @@ Nel contesto di NearYou, Python viene impiegato per:
     \item[-] Applicazione degli algoritmi di selezione dei POI rilevanti
 \end{itemize}
 
-\paragraph{Dipendenze}
+\myparagraph{Dipendenze}
 \begin{itemize}
     \item[-] \textbf{ClickHouse Connect}:
     \begin{itemize}
@@ -361,13 +331,13 @@ Nel contesto di NearYou, Python viene impiegato per:
 \subsubsection{SQL}
 Linguaggio standard per l'interrogazione e la manipolazione di database relazionali, utilizzato nel contesto di ClickHouse per definire lo schema del database e per interrogare i dati.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Dialetto}: ClickHouse SQL
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/sql-reference}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 In NearYou, SQL viene utilizzato per:
 \begin{itemize}
     \item[-] Definizione dello schema del database
@@ -376,32 +346,32 @@ In NearYou, SQL viene utilizzato per:
 \end{itemize}
 
 \subsubsection{Formati di interscambio dati}
-\paragraph{YAML}
+\myparagraph{YAML}
 YAML è un formato di serializzazione dei dati human-readable basato sull'indentazione, utilizzato principalmente per file di configurazione.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 1.2
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://yaml.org/spec/1.2.2/}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 \begin{itemize}
     \item[-] Configurazione dell'ambiente Docker
     \item[-] Workflow CI/CD
     \item[-] Configurazione dei servizi
 \end{itemize}
 
-\paragraph{JSON}
+\myparagraph{JSON}
 JSON è un formato di interscambio dati leggero e indipendente dal linguaggio, basato su coppie chiave-valore.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 2.0
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON}} (Consultato: 2025-03-02)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 \begin{itemize}
     \item[-] Serializzazione dei messaggi scambiati tra i componenti
     \item[-] Configurazione delle dashboard di visualizzazione
@@ -414,13 +384,13 @@ JSON è un formato di interscambio dati leggero e indipendente dal linguaggio, b
 \subsubsection{Apache ZooKeeper}
 Servizio di coordinamento distribuito che fornisce primitive per la gestione della configurazione, la sincronizzazione e la denominazione dei nodi in sistemi distribuiti.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 7.6.0
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://zookeeper.apache.org/documentation.html}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 In NearYou, ZooKeeper è utilizzato per:
 \begin{itemize}
     \item[-] Gestione dei broker Kafka e delle loro configurazioni
@@ -432,13 +402,13 @@ In NearYou, ZooKeeper è utilizzato per:
 \subsubsection{Apache Kafka}
 Sistema di messaggistica distribuita in grado di gestire flussi di dati in tempo reale, caratterizzato da elevata scalabilità, affidabilità e tolleranza ai guasti.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 7.6.0
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://kafka.apache.org/documentation/}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 In NearYou, Kafka rappresenta il backbone della comunicazione tra componenti:
 \begin{itemize}
     \item[-] Gestione del flusso di dati di posizione dagli utenti
@@ -450,13 +420,13 @@ In NearYou, Kafka rappresenta il backbone della comunicazione tra componenti:
 \subsubsection{Apache Flink}
 Framework di elaborazione dati stream e batch distribuito, caratterizzato da bassa latenza, elevato throughput e gestione efficiente dello stato.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 1.20.0
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://nightlies.apache.org/flink/flink-docs-stable/}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 In NearYou, Flink è utilizzato per:
 \begin{itemize}
     \item[-] Elaborazione in tempo reale dei dati di posizione
@@ -468,13 +438,13 @@ In NearYou, Flink è utilizzato per:
 \subsubsection{ClickHouse}
 Database colonnare progettato per l'analisi OLAP (Online Analytical Processing) con prestazioni eccezionali su grandi volumi di dati.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 24.10
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/en/}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 In NearYou, ClickHouse è utilizzato per:
 \begin{itemize}
     \item[-] Archiviazione dei dati di posizione degli utenti
@@ -484,7 +454,7 @@ In NearYou, ClickHouse è utilizzato per:
     \item[-] Supporto alle query analitiche per la visualizzazione
 \end{itemize}
 
-\paragraph{Caratteristiche principali}
+\myparagraph{Caratteristiche principali}
 \begin{itemize}
     \item[-] Architettura colonnare per interrogazioni analitiche efficienti
     \item[-] Supporto a funzioni geospaziali per calcoli di distanza
@@ -495,13 +465,13 @@ In NearYou, ClickHouse è utilizzato per:
 \subsubsection{Grafana}
 Piattaforma open-source per la visualizzazione e il monitoraggio dei dati, con supporto per diverse fonti di dati e creazione di dashboard interattive.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 11.5.2
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://grafana.com/docs/}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 In NearYou, Grafana è utilizzato per:
 \begin{itemize}
     \item[-] Visualizzazione in tempo reale delle posizioni degli utenti
@@ -513,13 +483,13 @@ In NearYou, Grafana è utilizzato per:
 \subsubsection{Docker}
 Piattaforma di containerizzazione che consente di impacchettare applicazioni con le loro dipendenze in unità standardizzate chiamate container.
 
-\paragraph{Specifiche}
+\myparagraph{Specifiche}
 \begin{itemize}
     \item \textbf{Versione}: 28.0.1
     \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.docker.com/}} (Consultato: 2025-03-05)
 \end{itemize}
 
-\paragraph{Ruolo nel progetto}
+\myparagraph{Ruolo nel progetto}
 In NearYou, Docker è utilizzato per:
 \begin{itemize}
     \item[-] Containerizzazione dei diversi componenti del sistema
@@ -541,7 +511,7 @@ In NearYou, Docker è utilizzato per:
 %             3.12.2
 %         \myparagraph{Documentazione}
 %                  \textcolor{blue}{\url{https://docs.python.org/}} (Consultato: 2025-03-02)
-%         \paragraph{Utilizzo operato nel progetto}
+%         \myparagraph{Utilizzo operato nel progetto}
 %             \begin{itemize}
 %                 \item[-] Creazione dei sensori e simulazione degli spostamenti;
 %                 \item[-] Generazione dei punti di interesse oggetto del messaggio pubblicitario;
@@ -550,7 +520,7 @@ In NearYou, Docker è utilizzato per:
 %                 \item[-] Logica di selezione dei punti di interesse rilevanti per l'utente;
 %                 \item[-] Testing.
 %             \end{itemize}
-%         \paragraph{Dipendenze}
+%         \myparagraph{Dipendenze}
 %             \begin{itemize}
 %                 \item[-] ClickHouse Connect
 %                     \begin{itemize}
@@ -628,7 +598,7 @@ In NearYou, Docker è utilizzato per:
 %             24.10
 %         \myparagraph{Documentazione}
 %             \textcolor{blue}{\url{https://clickhouse.com/docs/sql-reference}} (Consultato: 2025-03-05)
-%         \paragraph{Utilizzo operato nel progetto}
+%         \myparagraph{Utilizzo operato nel progetto}
 %             \begin{itemize}
 %                 \item[-] Definizione schema del database;
 %                 \item[-] Query per il recupero dei dati per la visualizzazione;
@@ -642,14 +612,14 @@ In NearYou, Docker è utilizzato per:
 %             1.2
 %         \myparagraph{Documentazione}
 %            \textcolor{blue}{\url{https://yaml.org/spec/1.2.2/}} (Consultato: 2025-03-05)
-%         \paragraph{Utilizzo operato nel progetto}
+%         \myparagraph{Utilizzo operato nel progetto}
 %             \begin{itemize}
 %                 \item[-] \textit{docker-compose.yml} per la configurazione dei servizi;
 %                 \item[-] Workflow GitHub Actions per CI/CD;
 %                 \item[-] File di configurazione per Grafana;
 %                 \item[-] File di configurazione per i test.
 %             \end{itemize}
-%         \paragraph{Framework e tools correlati}
+%         \myparagraph{Framework e tools correlati}
 %             \begin{itemize}
 %                 \item[-] Docker Compose;
 %                 \item[-] GitHub Actions;
@@ -663,13 +633,13 @@ In NearYou, Docker è utilizzato per:
 %             2.0
 %         \myparagraph{Documentazione}
 %         \textcolor{blue}{\url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON}} (Consultato: 2025-03-02)
-%         \paragraph{Utilizzo operato nel progetto}
+%         \myparagraph{Utilizzo operato nel progetto}
 %             \begin{itemize}
 %                 \item[-] Configurazione dashboard Grafana;
 %                 \item[-] Invio e ricezione dati mediante il broker Kafka;
 %                 \item[-] Risposta API del servizio Groq;
 %             \end{itemize}
-%         \paragraph{Framework e tools correlati}
+%         \myparagraph{Framework e tools correlati}
 %             \begin{itemize}
 %                 \item[-] Groq;
 %                 \item[-] Kafka;
@@ -690,7 +660,7 @@ In NearYou, Docker è utilizzato per:
 %     \myparagraph{Documentazione}
 %     \textcolor{blue}{\url{https://docs.docker.com/}} (Consultato: 2025-03-05)
 
-%     \paragraph{Utilizzo nel progetto}
+%     \myparagraph{Utilizzo nel progetto}
 %     \begin{itemize}
 %         \item[-] Creazione di container per il database, il backend e il servizio di elaborazione dati;
 %         \item[-] Definizione di un ambiente standardizzato per il deployment.
@@ -705,7 +675,7 @@ In NearYou, Docker è utilizzato per:
 %     \myparagraph{Documentazione} 
 %     \textcolor{blue}{\url{https://grafana.com/docs/}} (Consultato: 2025-03-05)
     
-%     \paragraph{Utilizzo nel progetto}
+%     \myparagraph{Utilizzo nel progetto}
 %     \begin{itemize}
 %         \item[-] Creazione di dashboard per il monitoraggio delle performance del sistema;
 %         \item[-] Visualizzazione delle informazioni degli utenti, dei punti di interesse e degli annunci pubblicitari.
@@ -720,7 +690,7 @@ In NearYou, Docker è utilizzato per:
 %     \myparagraph{Documentazione}
 %     \textcolor{blue}{\url{https://clickhouse.com/docs/en/}} (Consultato: 2025-03-05)
     
-%     \paragraph{Utilizzo nel progetto}
+%     \myparagraph{Utilizzo nel progetto}
 %     \begin{itemize}
 %         \item[-] Archiviazione dei dati degli utenti, dei punti di interesse e degli annunci pubblicitari;
 %         \item[-] Query ad alte prestazioni per l'analisi dei dati.
@@ -735,7 +705,7 @@ In NearYou, Docker è utilizzato per:
 %     \myparagraph{Documentazione} 
 %     \textcolor{blue}{\url{https://kafka.apache.org/documentation/}} (Consultato: 2025-03-05)
     
-%     \paragraph{Utilizzo nel progetto}
+%     \myparagraph{Utilizzo nel progetto}
 %     \begin{itemize}
 %         \item[-] Pubblicazione e consumo di eventi relativi ai movimenti degli utenti;
 %         \item[-] Integrazione con Flink per l'elaborazione dei dati in tempo reale.
@@ -750,7 +720,7 @@ In NearYou, Docker è utilizzato per:
 %     \myparagraph{Documentazione} 
 %     \textcolor{blue}{\url{https://zookeeper.apache.org/documentation.html}} (Consultato: 2025-03-05)
 
-%     \paragraph{Utilizzo nel progetto}
+%     \myparagraph{Utilizzo nel progetto}
 %     \begin{itemize}
 %         \item[-] Coordinamento e gestione dei broker Kafka;
 %         \item[-] Sincronizzazione tra i nodi del sistema distribuito;
@@ -766,7 +736,7 @@ In NearYou, Docker è utilizzato per:
 %     \myparagraph{Documentazione} 
 %     \textcolor{blue}{\url{https://nightlies.apache.org/flink/flink-docs-stable/}} (Consultato: 2025-03-05)
     
-%     \paragraph{Utilizzo nel progetto}
+%     \myparagraph{Utilizzo nel progetto}
 %     \begin{itemize}
 %         \item[-] Elaborazione in tempo reale dei dati di posizione degli utenti;
 %         \item[-] Analisi dei flussi di dati per la generazione di messaggi pubblicitari personalizzati.
@@ -789,23 +759,22 @@ I microservizi si suddividono in:
     \item Servizio di visualizzazione Grafana.
 \end{itemize}
 
-\subsubsection{Modello a layer}
-\paragraph{Data Generation Layer}
+\myparagraph{Generazione di dati}
 Responsabile della produzione dei dati di posizione degli utenti in formato JSON, pubblicati su Kafka. 
 Per garantire dati più realistici, il simulatore introduce un parametro velocità che varia fra le tipologie di simulazione.
 
-\paragraph{Messaging Layer}
+\myparagraph{Gestione messaggi}
 Basato su Apache Kafka, gestisce la comunicazione asincrona tra i microservizi, garantendo la scalabilità e la resilienza del sistema grazie alla gestione dei topic e delle partizioni con le chiavi e la replicazione sul database ClickHouse.
 
-\paragraph{Processing Layer}
+\myparagraph{Elaborazione dei dati}
 Implementato con Apache Flink, elabora i dati valutando la prossimità dei punti d’interesse e interagendo con 
 l’LLM per generare annunci personalizzati. 
 
-\paragraph{Storage Layer}
+\myparagraph{Storage}
 Supportato dal database ClickHouse, memorizza i dati in tabelle colonnari ad alte prestazioni, consentendo query 
 analitiche rapide grazie all’ottimizzazione per letture intensive. 
 
-\paragraph{Visualization Layer}
+\myparagraph{Visualizzazione}
 Basato su Grafana, costituisce una soluzione di visualizzazione dei dati su una mappa e facilita l'estensione di tale interfaccia sfruttando i dati già presenti. 
 Sfrutta inoltre il connettore nativo di ClickHouse, permettendo l'integrazione e l'analisi in tempo reale delle informazioni.
 
@@ -821,71 +790,70 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
 \subsection{K-Architecture: Event Streaming Platform}
 Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di streaming basata su Flink, che implementa il pattern di K-Architecture (Kappa Architecture). Questo pattern rappresenta un'evoluzione della Lambda Architecture, eliminando la necessità del dual-path processing (batch e speed layer) a favore di un unico layer di stream processing.
     \subsubsection{Motivazioni della scelta architetturale}
-        \paragraph{Vantaggi per l'elaborazione in tempo reale}
+        \myparagraph{Vantaggi per l'elaborazione in tempo reale}
         Tra i vantaggi per l'elaborazione in tempo reale c'è la capacità di gestire flussi di dati continui senza ritardi significativi.
-        \paragraph{Benefici sul disaccoppiamento}
+        \myparagraph{Benefici sul disaccoppiamento}
         Tra i benefici sul disaccoppiamento c'è la possibilità di sviluppare e scalare indipendentemente i componenti del sistema, garantendo una maggiore flessibilità.
-        \paragraph{Ottimizzazione del codebase}
+        \myparagraph{Ottimizzazione del codebase}
         La semplificazione della pipeline di dati permette di ridurre la complessità del codice e di semplificare la manutenzione.
-        \paragraph{Gestione della consistenza dei dati}
+        \myparagraph{Gestione della consistenza dei dati}
         La K-Architecture garantisce la coerenza dei dati in tempo reale, evitando problemi di sincronizzazione e di versionamento.
-        \paragraph{Tecniche di riduzione della latenza}
+        \myparagraph{Tecniche di riduzione della latenza}
         La riduzione della latenza è garantita dalla gestione dei dati in tempo reale, senza la necessità di processi batch.
     
     \subsubsection{Implementazione della K-Architecture}
-        \paragraph{Apache Kafka}
-            \subparagraph{Topic e partitioning}
+        \myparagraph{Apache Kafka}
+            \mysubparagraph{Topic e partitioning}
         In questo progetto si utilizzano due topic: 
         \begin{itemize}
         \item \textbf{posizioni}, per pubblicare i dati generati dai sensori (simulator);
         \item \textbf{messaggi}, per pubblicare gli annunci elaborati dall’LLM.
         \end{itemize}
 
-        \subparagraph{Producer e Consumer}
-        Il componente producer invia i record JSON relativi alle posizioni utente (topic posizioni) o ai messaggi elaborati (topic messaggi), mentre il consumer legge tali record per gestire l’elaborazione o la memorizzazione.
+        \mysubparagraph{Producer e Consumer}
 
-        \subparagraph{Message keys}
+        \mysubparagraph{Message keys}
         Le chiavi dei messaggi (key) determinano la partizione Kafka a cui viene inviato ogni evento, bilanciando il carico tra i consumer. Una chiave può essere definita in base a uno o più campi del messaggio, ad esempio l'ID del sensore per i record di posizione. Inoltre, è fondamentale considerare come la scelta delle chiavi possa influenzare la distribuzione dei dati e le performance del sistema.
         \begin{lstlisting}
-            key_type = Types.ROW_NAMED(['sensor_id'], [Types.STRING()])
+        key_type = Types.ROW_NAMED(['sensor_id'], [Types.STRING()])
         \end{lstlisting}
 
-        \subparagraph{Integrazione con Flink keyed stream}
+        \mysubparagraph{Integrazione con Flink keyed stream}
         All’interno del job Flink, l'utilizzo della chiave su ogni record consente di creare un keyed stream
         in cui i dati, prima di essere elaborati, vengono raggruppati in base alla loro chiave. Questo permette
         di gestire le funzioni di stato in modo isolato per ogni chiave e di applicare trasformazioni o filtri
         specifici, migliorando l’efficacia del processing e riducendo i conflitti di stato tra utenti o sensori
         diversi.
 
-        \subparagraph{Schema topic simulator position}
+        \mysubparagraph{Schema topic simulator position}
         I dati inviati dal producer sul topic \texttt{posizioni} seguono questa struttura JSON: \\
         \begin{lstlisting}
-            {
-                "id": "UUID",
-                "latitude": "Float64",
-                "longitude": "Float64",
-                "received_at": "String"
-            }
+        {
+            "id": "UUID",
+            "latitude": "Float64",
+            "longitude": "Float64",
+            "received_at": "String"
+        }
         \end{lstlisting}
 
-        \subparagraph{Schema message elaborated}
+        \mysubparagraph{Schema message elaborated}
         I messaggi sul topic \texttt{messaggi} hanno il seguente formato: \\
         \begin{lstlisting}
-            {
-                "user_uuid": "UUID",
-                "activity_uuid": "UUID",
-                "message_uuid": "UUID",
-                "message": "String",
-                "activityLatitude": "Float64",
-                "activityLongitude": "Float64",
-                "creationTime": "String",
-                "userLatitude": "Float64",
-                "userLongitude": "Float64"
-            }
+        {
+            "user_uuid": "UUID",
+            "activity_uuid": "UUID",
+            "message_uuid": "UUID",
+            "message": "String",
+            "activityLatitude": "Float64",
+            "activityLongitude": "Float64",
+            "creationTime": "String",
+            "userLatitude": "Float64",
+            "userLongitude": "Float64"
+        }
         \end{lstlisting}
 
-        \paragraph{Apache Flink}
-        \subparagraph{Stream processing jobs}
+        \myparagraph{Apache Flink}
+        \mysubparagraph{Stream processing jobs}
         Nell'architettura NearYou, Flink gestisce un job di streaming strutturato secondo il paradigma DataStream API, approccio scelto per la sua flessibilità e per la ricchezza di operatori disponibili per la manipolazione dei flussi di dati. Il flusso di elaborazione è organizzato attraverso un componente centrale, il FlinkJobManager, che coordina l'intero ciclo di vita del processing dei dati. Questo manager riceve i dati di posizione dagli utenti tramite Kafka, li elabora attraverso una serie di trasformazioni, e infine produce messaggi pubblicitari personalizzati.
         
         Il job è progettato secondo principi di modularità e dependency injection, con componenti intercambiabili che seguono interfacce ben definite. L'elaborazione avviene in diverse fasi sequenziali:
@@ -900,7 +868,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         La configurazione del job è ottimizzata per l'elaborazione in tempo reale con un livello di parallelismo adeguato al carico di lavoro previsto, impostato attraverso i parametri di configurazione dell'ambiente di esecuzione Flink. L'utilizzo della DataStream API permette inoltre di definire operazioni di trasformazione in modo dichiarativo, aumentando la leggibilità del codice e facilitando la manutenzione.
         
-        \subparagraph{Elaborazione dati e pattern di progettazione}
+        \mysubparagraph{Elaborazione dati e pattern di progettazione}
         Il cuore dell'elaborazione dati in Flink è costituito dal pattern di trasformazione dello stream attraverso funzioni di mapping e filtraggio. Il componente principale di questa elaborazione è il PositionToMessageProcessor, che implementa un pattern di design funzionale per trasformare i dati di posizione in messaggi pubblicitari contestuali.
         
         Questo processore integra diverse fonti di dati e servizi:
@@ -914,7 +882,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Il pattern di progettazione adottato consente una chiara separazione delle responsabilità: la logica di business è incapsulata nel processore, mentre l'infrastruttura di comunicazione è gestita dal job manager. Questo approccio facilita la manutenzione e l'evoluzione del sistema.
         
-        \subparagraph{Integrazione con componenti esterni}
+        \mysubparagraph{Integrazione con componenti esterni}
         Flink funge da elemento integratore tra i vari componenti dell'architettura NearYou, coordinando il flusso dei dati attraverso connettori specializzati:
         
         \begin{itemize}
@@ -925,7 +893,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \item \textbf{Comunicazione con servizi LLM}: Flink orchestra l'interazione con il servizio Groq per la generazione di testi pubblicitari, implementando meccanismi di rate limiting per gestire le restrizioni dell'API. Questo garantisce un utilizzo efficiente del servizio esterno, bilanciando la necessità di generare contenuti personalizzati con i vincoli imposti dal provider.
         \end{itemize}
         
-        \subparagraph{Serializzazione e deserializzazione dei messaggi}
+        \mysubparagraph{Serializzazione e deserializzazione dei messaggi}
         La gestione della serializzazione e deserializzazione è fondamentale nell'architettura Flink per garantire l'efficiente trasferimento dei dati tra i componenti del sistema streaming. Il sistema implementa serializzatori personalizzati che garantiscono coerenza e integrità dei dati durante l'elaborazione.
         
         Per i messaggi di posizione, viene utilizzato un deserializzatore JSON conforme allo schema del topic \texttt{posizioni}:
@@ -953,10 +921,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         }
         \end{lstlisting}
         
-        \paragraph{Simulatore posizioni}
+        \myparagraph{Simulatore posizioni}
         Il simulatore di posizioni è un componente fondamentale dell'architettura che simula i dati GPS degli utenti, consentendo di testare e dimostrare il funzionamento del sistema senza richiedere dispositivi fisici reali.
         
-        \subparagraph{Strategie di movimento}
+        \mysubparagraph{Strategie di movimento}
         Il simulatore implementa il pattern Strategy per definire diverse modalità di movimento. L'interfaccia \texttt{IPositionSimulationStrategy} definisce il contratto comune per tutte le strategie di simulazione:
         \begin{lstlisting}
         class IPositionSimulationStrategy(ABC):
@@ -973,7 +941,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \item[-] Consente configurazione temporale degli aggiornamenti di posizione
         \end{itemize}
     
-        \subparagraph{Generazione dati JSON}
+        \mysubparagraph{Generazione dati JSON}
         La serializzazione dei dati avviene attraverso il pattern Adapter, implementato dalla classe \texttt{PositionJsonAdapter} che converte gli oggetti \texttt{GeoPosition} in formato JSON:
         \begin{lstlisting}
         {
@@ -986,7 +954,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     
         Questo formato è compatibile con le aspettative del topic Kafka \texttt{SimulatorPosition} e della tabella ClickHouse corrispondente. L'adapter implementa l'interfaccia \texttt{IJsonSerializable}, garantendo uniformità nella serializzazione di diversi tipi di dati.
     
-        \subparagraph{Configurazione del simulatore}
+        \mysubparagraph{Configurazione del simulatore}
         Il simulatore è altamente configurabile attraverso diversi parametri:
         \begin{itemize}
             \item[-] \textbf{Delta tempo}: Intervallo temporale tra aggiornamenti di posizione
@@ -1002,7 +970,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         sensor_istance = sensor_factory.create_sensor(sensor_uuid, strategy_simulation)
         \end{lstlisting}
     
-        \subparagraph{Tipologie di dati generati}
+        \mysubparagraph{Tipologie di dati generati}
         Il simulatore produce dati con le seguenti caratteristiche:
         \begin{itemize}
             \item[-] \textbf{Continuità spaziale}: I punti generati seguono percorsi realistici lungo le strade del grafo OSM
@@ -1019,10 +987,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
                 self.__longitude = longitude
                 self.__timestamp = timestamp
         \end{lstlisting}
-        \paragraph{ClickHouse}
+        \myparagraph{ClickHouse}
         ClickHouse è un sistema di gestione database colonnare open-source progettato specificamente per carichi analitici. Nel contesto di NearYou, è stato adottato per la sua capacità di processare ed analizzare in tempo reale grandi volumi di dati geospaziali mantenendo latenze minime e offrendo funzionalità avanzate di partizione e gestione del ciclo di vita dei dati.
         
-        \subparagraph{Architettura MergeTree}
+        \mysubparagraph{Architettura MergeTree}
         Il cuore di ClickHouse è il motore MergeTree, fondamentale per le prestazioni del sistema NearYou. A differenza dei database tradizionali, MergeTree è ottimizzato per l'inserimento di grandi volumi di dati e query analitiche complesse grazie alle seguenti caratteristiche:
         
         \begin{itemize}
@@ -1084,7 +1052,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \item Eventuale eliminazione tramite TTL o operazioni manuali
         \end{enumerate}
         
-        \subparagraph{Schema del database}
+        \mysubparagraph{Schema del database}
         Lo schema del database comprende le seguenti tabelle principali:
         
         \begin{itemize}
@@ -1179,7 +1147,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             Simile alla precedente ma dedicata al consumo di dati di posizione dal topic "posizioni".
         \end{itemize}
         
-        \subparagraph{Indici e partizioni}
+        \mysubparagraph{Indici e partizioni}
         ClickHouse utilizza diversi tipi di indici per ottimizzare l'accesso ai dati:
         
         \begin{itemize}
@@ -1196,7 +1164,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         La partizione dei dati è implementata su base temporale. In questo caso le tabelle positions e messages sono partizionate per giorno:
         \begin{lstlisting}
-          PARTITION BY toYYYYMMDD(received_at)
+        PARTITION BY toYYYYMMDD(received_at)
         \end{lstlisting}
             
             Questa strategia di partizionamento:
@@ -1206,7 +1174,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
                 \item[-] Consente una gestione efficiente dello storage
             \end{itemize}
         
-        \subparagraph{Time-To-Live (TTL)}
+        \mysubparagraph{Time-To-Live (TTL)}
         Il meccanismo TTL in ClickHouse rappresenta una funzionalità cruciale per NearYou, automatizzando la gestione del ciclo di vita dei dati senza richiedere procedure manuali o script esterni. ClickHouse implementa TTL come parte integrante del processo di merging di MergeTree:
         
         \begin{itemize}
@@ -1243,39 +1211,39 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         Nel nostro progetto usiamo solo il TTL a livello di tabella per eliminare automaticamente i dati più vecchi di 30 giorni:
         Ad esempio nella tabella delle posizioni:
         \begin{lstlisting}
-            ALTER TABLE positions MODIFY TTL received_at + INTERVAL 30 DAY;
+        ALTER TABLE positions MODIFY TTL received_at + INTERVAL 30 DAY;
         \end{lstlisting}
 
         Questa strategia bilancia efficacemente le esigenze di performance con l'ottimizzazione dei costi di storage, mantenendo solo i dati necessari e nella forma appropriata.
         
-        \subparagraph{Materialized Views}
+        \mysubparagraph{Materialized Views}
         Le materialized view rappresentano un elemento fondamentale nell'architettura di NearYou, consentendo di usare i dati provenienti da Kafka come normali tabelle ClickHouse offrendo inoltre ottime performance per le query in tempo reale. Ecco alcuni esempi:
         
         \begin{lstlisting}
-            CREATE MATERIALIZED VIEW nearyou.mv_positions TO nearyou.positions
-            AS
-            SELECT
-                userID,
-                latitude,
-                longitude,
-                received_at
-            FROM nearyou.positionsKafka;
+        CREATE MATERIALIZED VIEW nearyou.mv_positions TO nearyou.positions
+        AS
+        SELECT
+            userID,
+            latitude,
+            longitude,
+            received_at
+        FROM nearyou.positionsKafka;
         \end{lstlisting}
         
         \begin{lstlisting}
-            CREATE MATERIALIZED VIEW nearyou.mv_messageTable TO nearyou.messageTable
-            AS
-            SELECT
-                user_uuid,
-                activity_uuid,
-                message_uuid,
-                message,
-                activityLatitude,
-                activityLongitude,
-                creationTime,
-                userLatitude,
-                userLongitude
-            FROM nearyou.messageTableKafka;
+        CREATE MATERIALIZED VIEW nearyou.mv_messageTable TO nearyou.messageTable
+        AS
+        SELECT
+            user_uuid,
+            activity_uuid,
+            message_uuid,
+            message,
+            activityLatitude,
+            activityLongitude,
+            creationTime,
+            userLatitude,
+            userLongitude
+        FROM nearyou.messageTableKafka;
         \end{lstlisting}
         
         Queste view consentono:
@@ -1285,7 +1253,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \item[-] Sincronizzazione in tempo reale tra Kafka e le tabelle ClickHouse
         \end{itemize}
         
-        \subparagraph{Integrazione con Kafka}
+        \mysubparagraph{Integrazione con Kafka}
         L'integrazione tra Kafka e ClickHouse avviene tramite tabelle speciali con engine Kafka che fungono da consumer nativo:
         
         \begin{lstlisting}
@@ -1339,7 +1307,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \item[-] Permette di definire pipeline ETL dichiarative
         \end{itemize}
         
-        \subparagraph{Funzionalità geospaziali}
+        \mysubparagraph{Funzionalità geospaziali}
         NearYou sfrutta intensivamente le funzioni geospaziali di ClickHouse per il calcolo delle distanze e la rilevazione di prossimità:
         
         \begin{itemize}
@@ -1376,7 +1344,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Queste ottimizzazioni consentono di eseguire query di prossimità in tempo reale anche con milioni di punti di interesse e migliaia di utenti attivi contemporaneamente.
         
-        \subparagraph{Ottimizzazioni di query}
+        \mysubparagraph{Ottimizzazioni di query}
         Per garantire performance elevate su grandi volumi di dati, abbiamo implementato diverse strategie di ottimizzazione:
         
         \begin{itemize}
@@ -1422,10 +1390,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         Questa combinazione di archiviazione colonnare efficiente, indici ottimizzati, TTL automatico e strategie di query avanzate permette a ClickHouse di supportare l'intera pipeline di dati di NearYou con prestazioni eccellenti sia per l'inserimento che per l'analisi dei dati di posizione e la generazione di messaggi pubblicitari contestuali.
         
 
-        \paragraph{Grafana}
+        \myparagraph{Grafana}
         Grafana è una piattaforma di visualizzazione e analisi dati utilizzata in NearYou per rappresentare graficamente le informazioni raccolte dal sistema e consentire il monitoraggio in tempo reale delle attività.
         
-        \subparagraph{Dashboard}
+        \mysubparagraph{Dashboard}
         La dashboard principale di Grafana in NearYou fornisce un'interfaccia centralizzata per monitorare l'intero sistema. È composta da due elementi fondamentali:
         
         \begin{itemize}
@@ -1459,7 +1427,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         ORDER BY numero_messaggi DESC
         \end{lstlisting}
         
-        \subparagraph{Dashboard specifica}
+        \mysubparagraph{Dashboard specifica}
         La dashboard specifica è dedicata all'analisi dettagliata di un singolo utente, identificato tramite un parametro \texttt{user\_id}. Questa dashboard permette di:
         
         \begin{itemize}
@@ -1473,7 +1441,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \item[-] Analizzare i dati temporali delle posizioni e dei messaggi correlati
         \end{itemize}
         
-        \subparagraph{Querying ClickHouse}
+        \mysubparagraph{Querying ClickHouse}
         L'integrazione tra Grafana e ClickHouse è realizzata tramite query SQL ottimizzate per le performance. Di seguito sono riportate le principali query utilizzate nelle dashboard:
         
         \begin{itemize}
@@ -1554,7 +1522,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \end{lstlisting}
         \end{itemize} 
 
-        \subparagraph{Connettore ClickHouse e visualizzazione in tempo reale}
+        \mysubparagraph{Connettore ClickHouse e visualizzazione in tempo reale}
         Grafana si integra con ClickHouse attraverso un connettore nativo specifico, configurato come datasource all'interno della piattaforma:
         
         \begin{lstlisting}
@@ -1598,7 +1566,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \item[-] Statistiche sulle attività commerciali più popolari
         \end{itemize}
         
-        \subparagraph{Provisioning automatico}
+        \mysubparagraph{Provisioning automatico}
         Il provisioning automatico di Grafana è implementato attraverso file di configurazione YAML che vengono caricati all'avvio del container, garantendo la disponibilità immediata di datasource e dashboard preconfiguraate.
         
         \begin{itemize}
@@ -1638,7 +1606,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
 \subsection{Design Pattern e Best Practices}
 \subsubsection{Design pattern applicati}
-    \paragraph{Data Transfer Object (DTO)}
+    \myparagraph{Data Transfer Object (DTO)}
     Il pattern DTO è ampiamente utilizzato nel progetto per trasferire dati tra i componenti senza esporre i dettagli implementativi. Un esempio significativo è l'implementazione della classe ActivityDTO:
     \begin{lstlisting}
     class ActivityDTO:
@@ -1663,7 +1631,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \end{lstlisting}
     Questo pattern garantisce la separazione tra rappresentazione dei dati e logica di business.
 
-    \paragraph{Strategy Pattern}
+    \myparagraph{Strategy Pattern}
     L'architettura implementa il pattern Strategy per definire diverse modalità di simulazione del movimento. L'interfaccia \texttt{IPositionSimulationStrategy} definisce il contratto che tutte le strategie concrete devono implementare:
     \begin{lstlisting}
     class IPositionSimulationStrategy(ABC):
@@ -1673,14 +1641,14 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \end{lstlisting}
     La strategia \texttt{BycicleSimulationStrategy} implementa questa interfaccia fornendo un comportamento specifico per simulare il movimento di una bicicletta. Questo pattern permette di cambiare dinamicamente l'algoritmo di simulazione senza modificare il codice client.
 
-    \paragraph{Factory Pattern}
+    \myparagraph{Factory Pattern}
     Il pattern Factory è utilizzato per la creazione di oggetti sensore, nascondendo la complessità della loro istanziazione:
     \begin{lstlisting}
     sensor_istance = sensor_factory.create_sensor(sensor_uuid, strategy_simulation)
     \end{lstlisting}
     Questo approccio centralizza la logica di creazione degli oggetti e facilita la manutenzione e l'estensione del sistema.
 
-    \paragraph{Adapter Pattern}
+    \myparagraph{Adapter Pattern}
     Il pattern Adapter è implementato dalla classe \texttt{PositionJsonAdapter} che converte gli oggetti del dominio \texttt{GeoPosition} in formato JSON compatibile con Kafka:
     \begin{lstlisting}
     class PositionJsonAdapter(IJsonSerializable):
@@ -1698,7 +1666,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \end{lstlisting}
     Questo pattern consente di adattare interfacce incompatibili e promuove il riutilizzo del codice.
 
-    \paragraph{Repository Pattern}
+    \myparagraph{Repository Pattern}
     Per l'accesso ai dati, l'architettura utilizza il Repository Pattern, che astrae la logica di persistenza e fornisce un'interfaccia coerente per le operazioni CRUD:
     \begin{lstlisting}
     class ActivityRepository(IActivityRepository):
@@ -1712,19 +1680,8 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \end{lstlisting}
     Questo pattern disaccoppia la logica di business dalla logica di accesso ai dati, migliorando la manutenibilità.
 
-    \paragraph{Observer Pattern}
-    Nel contesto di streaming dei dati, è implementato implicitamente l'Observer Pattern attraverso Kafka, dove i producer pubblicano eventi e i consumer li osservano:
-    \begin{lstlisting}
-    # Producer code
-    position_receiver_istance.process_item(map_function_istance.map(position))
-    
-    # Consumer code in Flink
-    job_istance.execute()
-    \end{lstlisting}
-    Questo pattern facilita la comunicazione asincrona tra componenti distribuiti.
-        
     \subsubsection{Best practices architetturali}
-    \paragraph{PEP8 - Stile di codifica Python}
+    \myparagraph{PEP8 - Stile di codifica Python}
     Il progetto aderisce alle linee guida PEP8, lo standard di stile di codifica Python, garantendo coerenza e leggibilità. Questo include:
     \begin{itemize}
         \item[-] Indentazione di 4 spazi (non tab)
@@ -1735,7 +1692,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \end{itemize}
     Il rispetto di PEP8 è verificato attraverso l'uso di linting automatizzato, come evidenziato dal badge PyLint nel README del progetto (punteggio 7.7/10.0).
     
-    \paragraph{Principi SOLID}
+    \myparagraph{Principi SOLID}
     L'architettura del software è progettata seguendo i principi SOLID:
     \begin{itemize}
         \item[-] \textbf{Single Responsibility Principle}: Ogni classe ha una singola responsabilità ben definita. Ad esempio, la classe \texttt{ActivityDTO} è responsabile solo della rappresentazione dei dati di un'attività.
@@ -1745,7 +1702,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         \item[-] \textbf{Dependency Inversion Principle}: I componenti dipendono da astrazioni, non da implementazioni concrete. Questo è visibile nell'iniezione delle dipendenze nei costruttori.
     \end{itemize}
 
-    \paragraph{Gestione dello stato}
+    \myparagraph{Gestione dello stato}
     La gestione dello stato nel sistema è basata sul principio di immutabilità e sul concetto di "stato come evento". Gli oggetti di dominio come \texttt{GeoPosition} sono progettati per essere immutabili, con solo metodi getter e nessun metodo setter.
 
     Il flusso di stato è unidirezionale: gli eventi di posizione generano cambiamenti di stato che vengono propagati attraverso il sistema mediante Kafka e processati da Flink. Questo approccio event-driven offre diversi vantaggi:
@@ -1756,7 +1713,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema
     \end{itemize}
 
-    \paragraph{Idempotenza delle operazioni}
+    \myparagraph{Idempotenza delle operazioni}
     Le operazioni nel sistema sono progettate per essere idempotenti, ovvero possono essere eseguite più volte producendo lo stesso risultato. Questa proprietà è particolarmente importante in un ambiente distribuito dove le operazioni possono essere ripetute a causa di errori di rete o altri fallimenti.
 
     L'idempotenza è implementata attraverso:
@@ -1769,7 +1726,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
     Questa strategia garantisce consistenza anche in presenza di messaggi duplicati o ritrasmissioni.
 
-    \paragraph{Circuit breaking e fallback}
+    \myparagraph{Circuit breaking e fallback}
     Il sistema implementa pattern di resilienza come il circuit breaking per gestire situazioni di errore nei servizi esterni e prevenire il fallimento a cascata. In particolare, l'integrazione con il servizio LLM include:
     \begin{itemize}
         \item[-] Timeout configurabili per le chiamate API
@@ -1779,7 +1736,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
     Questo approccio garantisce che il sistema continui a funzionare anche in presenza di problemi nei servizi esterni, mantenendo un livello di servizio accettabile per gli utenti finali.
 
-    \paragraph{Gestione dello stato}
+    \myparagraph{Gestione dello stato}
     La gestione dello stato nel sistema è basata sul principio di immutabilità e sul concetto di "stato come evento". Gli oggetti di dominio come \texttt{GeoPosition} sono progettati per essere immutabili, con solo metodi getter e nessun metodo setter.
 
     Il flusso di stato è unidirezionale: gli eventi di posizione generano cambiamenti di stato che vengono propagati attraverso il sistema mediante Kafka e processati da Flink. Questo approccio event-driven offre diversi vantaggi:
@@ -1897,14 +1854,14 @@ Al fine di implementare ed eseguire l'intero stack tecnologico ed i layer del mo
         \subsubsection{Ambiente Docker}
         Descrizione dell'ambiente Docker utilizzato, incluse le immagini e le configurazioni specifiche.
 
-        \subsubsection{Organizzazione per layer}
-        In questa sezione, si discuterà la suddivisione dei componenti nell'architettura in layer, evidenziando i ruoli e le responsabilità di ciascun layer.
+        \subsubsection{Componenti principali}
+        In questa sezione vengono descritti i componenti principali dell'architettura, evidenziandone i ruoli e le responsabilità.
 
         \subsubsection{Dipendenze tra componenti}
         Le interazioni tra i vari componenti avvengono attraverso Kafka, che garantisce l'invio e la ricezione di messaggi in modo affidabile e resiliente.
 
 \begin{itemize}
-    \item \textbf{Data Generation Layer:}
+    \item \textbf{Generazione di dati:}
     \begin{itemize}
         \item \textbf{Container sensor-simulator:}
         \begin{itemize}
@@ -1914,7 +1871,7 @@ Al fine di implementare ed eseguire l'intero stack tecnologico ed i layer del mo
         \end{itemize}
     \end{itemize}
     
-    \item \textbf{Messaging Layer:}
+    \item \textbf{Gestione messaggi:}
     \begin{itemize}
         \item \textbf{Container kafka:}
         \begin{itemize}
@@ -1938,7 +1895,7 @@ Al fine di implementare ed eseguire l'intero stack tecnologico ed i layer del mo
         \end{itemize}
     \end{itemize}
     
-    \item \textbf{Processing Layer:}
+    \item \textbf{Elaborazione dei dati:}
     \begin{itemize}
         \item \textbf{Container flink-jobmanager:}
         \begin{itemize}
@@ -1954,7 +1911,7 @@ Al fine di implementare ed eseguire l'intero stack tecnologico ed i layer del mo
         \end{itemize}
     \end{itemize}
     
-    \item \textbf{Storage Layer:}
+    \item \textbf{Storage:}
     \begin{itemize}
         \item \textbf{Container clickhouse:}
         \begin{itemize}
@@ -1964,7 +1921,7 @@ Al fine di implementare ed eseguire l'intero stack tecnologico ed i layer del mo
         \end{itemize}
     \end{itemize}
     
-    \item \textbf{Visualization Layer:}
+    \item \textbf{Visualizzazione:}
     \begin{itemize}
         \item \textbf{Container grafana:}
         \begin{itemize}
@@ -2164,5 +2121,6 @@ Opzionali & 2 & 1 & 0 & 1 \\
 L'analisi dello stato dei requisiti funzionali indica un buon progresso nell'implementazione delle funzionalità richieste. Con l'82\% dei requisiti funzionali già implementati e il 9\% in fase di implementazione, il progetto è sulla buona strada per soddisfare tutti i requisiti obbligatori entro la consegna finale.
 
 I requisiti attualmente in fase di implementazione riguardano principalmente l'integrazione con il servizio LLM, mentre quelli ancora da implementare comprendono uno dei requisiti opzionali e alcuni aspetti avanzati del sistema. La stabilità raggiunta nei requisiti dopo la revisione tecnica fornisce una base solida per il completamento dell'implementazione, mentre il sistema di test definito garantirà la qualità del prodotto finale.
+
 
 \end{document}
