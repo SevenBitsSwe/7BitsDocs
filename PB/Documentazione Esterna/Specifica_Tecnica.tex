@@ -145,7 +145,9 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    0.1.4 & 2025-03-16 & Riccardo Piva & Leonardo Trolese & Redazione generale macro sezioni documento \\ 
+    0.1.5 & 2025-03-17 & Riccardo Piva & Alfredo Rubino & Fix generali e miglioramenti \\ 
+    \hline
+    0.1.4 & 2025-03-16 & Riccardo Piva & Alfredo Rubino & Redazione generale macro sezioni documento \\ 
     \hline
     0.1.3 & 2025-03-05 & Alfredo Rubino & Manuel Gusella & Redazione sottosezione \hyperref[sec:strumenti]{Strumenti e Servizi} della sezione Tecnologie\\
     \hline
@@ -225,12 +227,12 @@ Questa sezione descrive le tecnologie utilizzate per lo sviluppo del sistema Nea
 Il sistema NearYou si basa su un'architettura a microservizi event-driven che utilizza diverse tecnologie integrate:
 
 \begin{itemize}
-    \item \textbf{Python}: Linguaggio principale per lo sviluppo dei componenti del sistema
-    \item \textbf{Apache Kafka}: Sistema di messaggistica distribuito per la comunicazione tra componenti
-    \item \textbf{Apache Flink}: Framework di elaborazione dati in tempo reale
-    \item \textbf{ClickHouse}: Database colonnare ad alte prestazioni
-    \item \textbf{Grafana}: Piattaforma di visualizzazione dei dati in tempo reale
-    \item \textbf{Docker}: Sistema di containerizzazione per il deployment
+    \item \textbf{Python}: Linguaggio principale per lo sviluppo dei componenti del sistema;
+    \item \textbf{Apache Kafka}: Sistema di messaggistica distribuito per la comunicazione tra componenti;
+    \item \textbf{Apache Flink}: Framework di elaborazione dati in tempo reale;
+    \item \textbf{ClickHouse}: Database colonnare ad alte prestazioni;
+    \item \textbf{Grafana}: Piattaforma di visualizzazione dei dati in tempo reale;
+    \item \textbf{Docker}: Sistema di containerizzazione per il deployment.
 \end{itemize}
 
 \subsection{Linguaggi di programmazione}
@@ -241,90 +243,90 @@ Linguaggio di programmazione ad alto livello, interpretato e orientato agli ogge
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 3.12.2
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.python.org/}} (Consultato: 2025-03-02)
+    \item \textbf{Versione}: 3.12.2;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.python.org/}} (Consultato: 2025-03-02).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 Nel contesto di NearYou, Python viene impiegato per:
 \begin{itemize}
-    \item[-] Sviluppo del simulatore di spostamenti utente
-    \item[-] Implementazione della logica di elaborazione dati
-    \item[-] Interazione con i servizi esterni e le API
-    \item[-] Gestione della persistenza dei dati
-    \item[-] Applicazione degli algoritmi di selezione dei POI rilevanti
+    \item[-] Sviluppo del simulatore di spostamenti utente;
+    \item[-] Implementazione della logica di elaborazione dati;
+    \item[-] Interazione con i servizi esterni e le API;
+    \item[-] Gestione della persistenza dei dati;
+    \item[-] Applicazione degli algoritmi di selezione dei POI rilevanti.
 \end{itemize}
 
 \myparagraph{Dipendenze}
 \begin{itemize}
     \item[-] \textbf{ClickHouse Connect}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Libreria client per l'interazione con il database ClickHouse, permettendo operazioni di query e gestione dei dati.
-        \item \textbf{Versione}: 0.6.8
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/integrations/python}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: Libreria client per l'interazione con il database ClickHouse, permettendo operazioni di query e gestione dei dati;
+        \item \textbf{Versione}: 0.6.8;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/integrations/python}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{PyFlink}:
     \begin{itemize}
-        \item \textbf{Descrizione}: API Python di Apache Flink per l'elaborazione di flussi di dati distribuiti, sia in modalità batch che streaming.
-        \item \textbf{Verione}: 1.18.1
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://pyflink.readthedocs.io/en/main/getting_started/index.html}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: API Python di Apache Flink per l'elaborazione di flussi di dati distribuiti, sia in modalità batch che streaming;
+        \item \textbf{Versione}: 1.18.1;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://pyflink.readthedocs.io/en/main/getting_started/index.html}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{LangChain}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Framework per lo sviluppo di applicazioni basate su modelli linguistici, consentendo di orchestrare prompt e integrare fonti di dati esterne.
-        \item \textbf{Versione}: 0.1.12
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://python.langchain.com/docs/introduction/}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: Framework per lo sviluppo di applicazioni basate su modelli linguistici, consentendo di orchestrare prompt e integrare fonti di dati esterne;
+        \item \textbf{Versione}: 0.1.12;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://python.langchain.com/docs/introduction/}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{Groq}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Client Python per l'API Groq, utilizzato per la generazione di contenuti tramite LLM.
-        \item \textbf{Versione}: 0.4.2
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://console.groq.com/docs/libraries}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: Client Python per l'API Groq, utilizzato per la generazione di contenuti tramite LLM;
+        \item \textbf{Versione}: 0.4.2;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://console.groq.com/docs/libraries}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{Confluent Kafka}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Libreria per l'interazione con Apache Kafka, utilizzata per la pubblicazione e sottoscrizione di messaggi.
-        \item \textbf{Versione}: 2.8.0
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.confluent.io/kafka/overview.html}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: Libreria per l'interazione con Apache Kafka, utilizzata per la pubblicazione e sottoscrizione di messaggi;
+        \item \textbf{Versione}: 2.8.0;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.confluent.io/kafka/overview.html}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{GeoPy}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Libreria per operazioni geospaziali e calcolo delle distanze.
-        \item \textbf{Versione}: 2.4.1
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://geopy.readthedocs.io/en/stable/index.html}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: Libreria per operazioni geospaziali e calcolo delle distanze;
+        \item \textbf{Versione}: 2.4.1;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://geopy.readthedocs.io/en/stable/index.html}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{OSMnx}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Libreria per scaricare e analizzare reti stradali da OpenStreetMap, utilizzata per simulare percorsi realistici.
-        \item \textbf{Versione}: 1.9.1
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://osmnx.readthedocs.io/en/stable/}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: Libreria per scaricare e analizzare reti stradali da OpenStreetMap, utilizzata per simulare percorsi realistici;
+        \item \textbf{Versione}: 1.9.1;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://osmnx.readthedocs.io/en/stable/}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{Faker}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Libreria per la generazione di dati realistici per test.
-        \item \textbf{Versione}: 24.1.0
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://faker.readthedocs.io/en/master/}} (Consultato: 2025-03-02)
+        \item \textbf{Descrizione}: Libreria per la generazione di dati realistici per test;
+        \item \textbf{Versione}: 24.1.0;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://faker.readthedocs.io/en/master/}} (Consultato: 2025-03-02).
     \end{itemize}
     
     \item[-] \textbf{Pylint}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Strumento di analisi statica del codice Python.
-        \item \textbf{Versione}: 3.0.3
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://pylint.pycqa.org/en/latest/index.html}} (Consultato: 2025-03-03)
+        \item \textbf{Descrizione}: Strumento di analisi statica del codice Python;
+        \item \textbf{Versione}: 3.0.3;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://pylint.pycqa.org/en/latest/index.html}} (Consultato: 2025-03-03).
     \end{itemize}
     
     \item[-] \textbf{pytest}:
     \begin{itemize}
-        \item \textbf{Descrizione}: Framework per test automatizzati.
-        \item \textbf{Versione}: 7.4.3
-        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.pytest.org/en/stable/}} (Consultato: 2025-03-03)
+        \item \textbf{Descrizione}: Framework per test automatizzati;
+        \item \textbf{Versione}: 7.4.3;
+        \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.pytest.org/en/stable/}} (Consultato: 2025-03-03).
     \end{itemize}
 \end{itemize}
 
@@ -333,16 +335,16 @@ Linguaggio standard per l'interrogazione e la manipolazione di database relazion
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Dialetto}: ClickHouse SQL
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/sql-reference}} (Consultato: 2025-03-05)
+    \item \textbf{Dialetto}: ClickHouse SQL;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/sql-reference}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 In NearYou, SQL viene utilizzato per:
 \begin{itemize}
-    \item[-] Definizione dello schema del database
-    \item[-] Interrogazione dei dati per la visualizzazione
-    \item[-] Creazione di query analitiche per l'identificazione delle relazioni spaziali
+    \item[-] Definizione dello schema del database;
+    \item[-] Interrogazione dei dati per la visualizzazione;
+    \item[-] Creazione di query analitiche per l'identificazione delle relazioni spaziali.
 \end{itemize}
 
 \subsubsection{Formati di interscambio dati}
@@ -351,15 +353,15 @@ YAML è un formato di serializzazione dei dati human-readable basato sull'indent
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 1.2
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://yaml.org/spec/1.2.2/}} (Consultato: 2025-03-05)
+    \item \textbf{Versione}: 1.2;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://yaml.org/spec/1.2.2/}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 \begin{itemize}
-    \item[-] Configurazione dell'ambiente Docker
-    \item[-] Workflow CI/CD
-    \item[-] Configurazione dei servizi
+    \item[-] Configurazione dell'ambiente Docker;
+    \item[-] Workflow CI/CD;
+    \item[-] Configurazione dei servizi.
 \end{itemize}
 
 \myparagraph{JSON}
@@ -367,15 +369,15 @@ JSON è un formato di interscambio dati leggero e indipendente dal linguaggio, b
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 2.0
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON}} (Consultato: 2025-03-02)
+    \item \textbf{Versione}: 2.0;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON}} (Consultato: 2025-03-02).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 \begin{itemize}
-    \item[-] Serializzazione dei messaggi scambiati tra i componenti
-    \item[-] Configurazione delle dashboard di visualizzazione
-    \item[-] Comunicazione con i servizi API esterni
+    \item[-] Serializzazione dei messaggi scambiati tra i componenti;
+    \item[-] Configurazione delle dashboard di visualizzazione;
+    \item[-] Comunicazione con i servizi API esterni.
 \end{itemize}
 
 \subsection{Infrastruttura e servizi}
@@ -386,17 +388,17 @@ Servizio di coordinamento distribuito che fornisce primitive per la gestione del
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 7.6.0
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://zookeeper.apache.org/documentation.html}} (Consultato: 2025-03-05)
+    \item \textbf{Versione}: 7.6.0;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://zookeeper.apache.org/documentation.html}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 In NearYou, ZooKeeper è utilizzato per:
 \begin{itemize}
-    \item[-] Gestione dei broker Kafka e delle loro configurazioni
-    \item[-] Monitoraggio dello stato dei nodi nel sistema distribuito
-    \item[-] Coordinamento delle operazioni distribuite tra i componenti
-    \item[-] Gestione delle elezioni dei leader per le partizioni Kafka
+    \item[-] Gestione dei broker Kafka e delle loro configurazioni;
+    \item[-] Monitoraggio dello stato dei nodi nel sistema distribuito;
+    \item[-] Coordinamento delle operazioni distribuite tra i componenti;
+    \item[-] Gestione delle elezioni dei leader per le partizioni Kafka.
 \end{itemize}
 
 \subsubsection{Apache Kafka}
@@ -404,17 +406,17 @@ Sistema di messaggistica distribuita in grado di gestire flussi di dati in tempo
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 7.6.0
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://kafka.apache.org/documentation/}} (Consultato: 2025-03-05)
+    \item \textbf{Versione}: 7.6.0;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://kafka.apache.org/documentation/}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 In NearYou, Kafka rappresenta il backbone della comunicazione tra componenti:
 \begin{itemize}
-    \item[-] Gestione del flusso di dati di posizione dagli utenti
-    \item[-] Trasferimento dei messaggi pubblicitari generati
-    \item[-] Garanzia di consegna delle informazioni anche in caso di guasti
-    \item[-] Supporto al pattern event-driven dell'architettura
+    \item[-] Gestione del flusso di dati di posizione dagli utenti;
+    \item[-] Trasferimento dei messaggi pubblicitari generati;
+    \item[-] Garanzia di consegna delle informazioni anche in caso di guasti;
+    \item[-] Supporto al pattern event-driven dell'architettura.
 \end{itemize}
 
 \subsubsection{Apache Flink}
@@ -422,62 +424,62 @@ Framework di elaborazione dati stream e batch distribuito, caratterizzato da bas
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 1.20.0
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://nightlies.apache.org/flink/flink-docs-stable/}} (Consultato: 2025-03-05)
+    \item \textbf{Versione}: 1.20.0;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://nightlies.apache.org/flink/flink-docs-stable/}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 In NearYou, Flink è utilizzato per:
 \begin{itemize}
-    \item[-] Elaborazione in tempo reale dei dati di posizione
-    \item[-] Calcolo della prossimità tra utenti e punti di interesse tramite clickhouse
-    \item[-] Orchestrazione del processo di generazione dei messaggi pubblicitari tramite LLM
-    \item[-] Configurazione dei job per l'elaborazione dei dati 
+    \item[-] Elaborazione in tempo reale dei dati di posizione;
+    \item[-] Calcolo della prossimità tra utenti e punti di interesse tramite clickhouse;
+    \item[-] Orchestrazione del processo di generazione dei messaggi pubblicitari tramite LLM;
+    \item[-] Configurazione dei job per l'elaborazione dei dati.
 \end{itemize}
 
 \subsubsection{ClickHouse}
-Database colonnare progettato per l'analisi OLAP (Online Analytical Processing) con prestazioni eccezionali su grandi volumi di dati.
+Database colonnare progettato per l'analisi OLAP (OnLine Analytical Processing) con prestazioni eccezionali su grandi volumi di dati. Le caratterische principali di ClickHouse sono:
+\begin{itemize}
+    \item[-] Architettura colonnare per interrogazioni analitiche efficienti;
+    \item[-] Supporto a funzioni geospaziali per calcoli di distanza;
+    \item[-] Integrazione nativa con Kafka per l'ingestione di dati;
+    \item[-] Scalabilità orizzontale per gestire grandi volumi di dati.
+\end{itemize}
+
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 24.10
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/en/}} (Consultato: 2025-03-05)
+    \item \textbf{Versione}: 24.10;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/en/}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 In NearYou, ClickHouse è utilizzato per:
 \begin{itemize}
-    \item[-] Archiviazione dei dati di posizione degli utenti
-    \item[-] Rilevamento della prossimità tra utenti e punti di interesse
-    \item[-] Memorizzazione delle informazioni sui punti di interesse
-    \item[-] Storicizzazione dei messaggi pubblicitari generati
-    \item[-] Supporto alle query analitiche per la visualizzazione
+    \item[-] Archiviazione dei dati di posizione degli utenti;
+    \item[-] Rilevamento della prossimità tra utenti e punti di interesse;
+    \item[-] Memorizzazione delle informazioni sui punti di interesse;
+    \item[-] Storicizzazione dei messaggi pubblicitari generati;
+    \item[-] Supporto alle query analitiche per la visualizzazione.
 \end{itemize}
 
-\myparagraph{Caratteristiche principali}
-\begin{itemize}
-    \item[-] Architettura colonnare per interrogazioni analitiche efficienti
-    \item[-] Supporto a funzioni geospaziali per calcoli di distanza
-    \item[-] Integrazione nativa con Kafka per l'ingestione di dati
-    \item[-] Scalabilità orizzontale per gestire grandi volumi di dati
-\end{itemize}
 
 \subsubsection{Grafana}
 Piattaforma open-source per la visualizzazione e il monitoraggio dei dati, con supporto per diverse fonti di dati e creazione di dashboard interattive.
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 11.5.2
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://grafana.com/docs/}} (Consultato: 2025-03-05)
+    \item \textbf{Versione}: 11.5.2;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://grafana.com/docs/}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 In NearYou, Grafana è utilizzato per:
 \begin{itemize}
-    \item[-] Visualizzazione in tempo reale delle posizioni degli utenti
-    \item[-] Rappresentazione dei punti di interesse sulla mappa
-    \item[-] Monitoraggio dei messaggi pubblicitari generati
-    \item[-] Creazione di dashboard interattive per l'analisi dei dati
+    \item[-] Visualizzazione in tempo reale delle posizioni degli utenti;
+    \item[-] Rappresentazione dei punti di interesse sulla mappa;
+    \item[-] Monitoraggio dei messaggi pubblicitari generati;
+    \item[-] Creazione di dashboard interattive per l'analisi dei dati.
 \end{itemize}
 
 \subsubsection{Docker}
@@ -485,17 +487,17 @@ Piattaforma di containerizzazione che consente di impacchettare applicazioni con
 
 \myparagraph{Specifiche}
 \begin{itemize}
-    \item \textbf{Versione}: 28.0.1
-    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.docker.com/}} (Consultato: 2025-03-05)
+    \item \textbf{Versione}: 28.0.1;
+    \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.docker.com/}} (Consultato: 2025-03-05).
 \end{itemize}
 
 \myparagraph{Ruolo nel progetto}
 In NearYou, Docker è utilizzato per:
 \begin{itemize}
-    \item[-] Containerizzazione dei diversi componenti del sistema
-    \item[-] Creazione di un ambiente di sviluppo e deployment coerente
-    \item[-] Semplificazione della distribuzione dell'applicazione
-    \item[-] Isolamento dei servizi e gestione delle dipendenze
+    \item[-] Containerizzazione dei diversi componenti del sistema;
+    \item[-] Creazione di un ambiente di sviluppo e deployment coerente;
+    \item[-] Semplificazione della distribuzione dell'applicazione;
+    \item[-] Isolamento dei servizi e gestione delle dipendenze.
 \end{itemize}
 
 % \section{Tecnologie}
@@ -779,13 +781,15 @@ Basato su Grafana, costituisce una soluzione di visualizzazione dei dati su una 
 Sfrutta inoltre il connettore nativo di ClickHouse, permettendo l'integrazione e l'analisi in tempo reale delle informazioni.
 
 \subsubsection{Flusso di dati end-to-end}
-1. Il simulatore genera dati di posizione e li invia a Kafka, includendo informazioni sul timestamp e sull’ID utente. 
-2. Flink legge i topic, rileva la prossimità dei punti d’interesse e genera un messaggio tramite l'LLM.
-3. L’LLM elabora i dettagli dell’evento, producendo un messaggio personalizzato, poi memorizzato in ClickHouse. 
-4. Grafana interroga ClickHouse e consente la visualizzazione in tempo reale tramite dashboard di attività, utenti, relative posizioni e annunci generati.
+\begin{enumerate}
+    \item Il simulatore genera dati di posizione e li invia a Kafka, includendo informazioni sul timestamp e sull’ID utente.
+    \item Flink legge i topic, rileva la prossimità dei punti d’interesse e genera un messaggio tramite l'LLM.
+    \item L’LLM elabora i dettagli dell’evento, producendo un messaggio personalizzato, poi memorizzato in ClickHouse.
+    \item Grafana interroga ClickHouse e consente la visualizzazione in tempo reale tramite dashboard di attività, utenti, relative posizioni e annunci generati.
+\end{enumerate}
 
 \subsubsection{Interfacce tra componenti}
-Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in formato JSON. Per quanto riguarda l'integrazione fra kafka e clickhouse è presente un connettore nativo che permette inoltre di creare delle materialized view per la storicizzazione dei dati. Per Grafana è sempre presente un connettore nativo per clickhouse che permette di interrogare il database e visualizzare i dati in tempo reale.
+Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in formato JSON. Per quanto riguarda l'integrazione fra Kafka e ClickHouse è presente un connettore nativo che permette inoltre di creare delle materialized view per la storicizzazione dei dati. Per Grafana è sempre presente un connettore nativo per ClickHouse che permette di interrogare il database e visualizzare i dati in tempo reale.
 
 \subsection{K-Architecture: Event Streaming Platform}
 Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di streaming basata su Flink, che implementa il pattern di K-Architecture (Kappa Architecture). Questo pattern rappresenta un'evoluzione della Lambda Architecture, eliminando la necessità del dual-path processing (batch e speed layer) a favore di un unico layer di stream processing.
@@ -806,8 +810,8 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             \mysubparagraph{Topic e partitioning}
         In questo progetto si utilizzano due topic: 
         \begin{itemize}
-        \item \textbf{posizioni}, per pubblicare i dati generati dai sensori (simulator);
-        \item \textbf{messaggi}, per pubblicare gli annunci elaborati dall’LLM.
+        \item \texttt{posizioni}, per pubblicare i dati generati dai sensori (simulator);
+        \item \texttt{messaggi}, per pubblicare gli annunci elaborati dall’LLM.
         \end{itemize}
 
         \mysubparagraph{Producer e Consumer}
@@ -854,16 +858,15 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
         \myparagraph{Apache Flink}
         \mysubparagraph{Stream processing jobs}
-        Nell'architettura NearYou, Flink gestisce un job di streaming strutturato secondo il paradigma DataStream API, approccio scelto per la sua flessibilità e per la ricchezza di operatori disponibili per la manipolazione dei flussi di dati. Il flusso di elaborazione è organizzato attraverso un componente centrale, il FlinkJobManager, che coordina l'intero ciclo di vita del processing dei dati. Questo manager riceve i dati di posizione dagli utenti tramite Kafka, li elabora attraverso una serie di trasformazioni, e infine produce messaggi pubblicitari personalizzati.
-        
+        Nell'architettura NearYou, Flink gestisce un job di streaming strutturato secondo il paradigma DataStream API, approccio scelto per la sua flessibilità e per la ricchezza di operatori disponibili per la manipolazione dei flussi di dati. Il flusso di elaborazione è organizzato attraverso un componente centrale, il FlinkJobManager, che coordina l'intero ciclo di vita del processing dei dati. Questo manager riceve i dati di posizione dagli utenti tramite Kafka, li elabora attraverso una serie di trasformazioni, e infine produce messaggi pubblicitari personalizzati. \\
         Il job è progettato secondo principi di modularità e dependency injection, con componenti intercambiabili che seguono interfacce ben definite. L'elaborazione avviene in diverse fasi sequenziali:
         
         \begin{itemize}
-            \item Ricezione di eventi di posizione attraverso un source connector Kafka
-            \item Raggruppamento (key-by) per identificatore utente
-            \item Applicazione di funzioni di mapping per la generazione dei messaggi
-            \item Filtraggio dei messaggi già visualizzati
-            \item Pubblicazione dei risultati su un topic Kafka di output
+            \item Ricezione di eventi di posizione attraverso un source connector Kafka;
+            \item Raggruppamento (key-by) per identificatore utente;
+            \item Applicazione di funzioni di mapping per la generazione dei messaggi;
+            \item Filtraggio dei messaggi già visualizzati;
+            \item Pubblicazione dei risultati su un topic Kafka di output.
         \end{itemize}
         
         La configurazione del job è ottimizzata per l'elaborazione in tempo reale con un livello di parallelismo adeguato al carico di lavoro previsto, impostato attraverso i parametri di configurazione dell'ambiente di esecuzione Flink. L'utilizzo della DataStream API permette inoltre di definire operazioni di trasformazione in modo dichiarativo, aumentando la leggibilità del codice e facilitando la manutenzione.
@@ -873,9 +876,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Questo processore integra diverse fonti di dati e servizi:
         \begin{itemize}
-            \item Repository di utenti per recuperare informazioni demografiche e preferenze
-            \item Repository di attività per individuare punti di interesse nelle vicinanze
-            \item Servizio LLM per generare testi pubblicitari personalizzati
+            \item Repository di utenti per recuperare informazioni demografiche e preferenze;
+            \item Repository di attività per individuare punti di interesse nelle vicinanze;
+            \item Servizio LLM per generare testi pubblicitari personalizzati.
         \end{itemize}
         
         Un aspetto importante dell'elaborazione è il meccanismo di filtering, implementato attraverso il componente FilterMessageAlreadyDisplayed. Questa logica evita di inviare ripetutamente lo stesso messaggio quando l'utente rimane fermo o si muove minimamente, ottimizzando così sia l'esperienza utente che il consumo di risorse del sistema.
@@ -935,10 +938,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     
         La strategia principale implementata, \texttt{BycicleSimulationStrategy}, simula il movimento di una bicicletta su un grafo stradale reale utilizzando la libreria OSMnx. Questa strategia:
         \begin{itemize}
-            \item[-] Seleziona casualmente nodi nel grafo stradale per creare percorsi realistici
-            \item[-] Utilizza una velocità parametrizzabile (default: 10-20 km/h)
-            \item[-] Applica interpolazione lineare tra i punti del percorso
-            \item[-] Consente configurazione temporale degli aggiornamenti di posizione
+            \item[-] Seleziona casualmente nodi nel grafo stradale per creare percorsi realistici;
+            \item[-] Utilizza una velocità parametrizzabile (default: 10-20 km/h);
+            \item[-] Applica interpolazione lineare tra i punti del percorso;
+            \item[-] Consente configurazione temporale degli aggiornamenti di posizione.
         \end{itemize}
     
         \mysubparagraph{Generazione dati JSON}
@@ -957,10 +960,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         \mysubparagraph{Configurazione del simulatore}
         Il simulatore è altamente configurabile attraverso diversi parametri:
         \begin{itemize}
-            \item[-] \textbf{Delta tempo}: Intervallo temporale tra aggiornamenti di posizione
-            \item[-] \textbf{Range di velocità}: Valori minimi e massimi per la velocità di spostamento
-            \item[-] \textbf{Area geografica}: Delimitazione dell'area in cui generare percorsi
-            \item[-] \textbf{Numero di sensori}: Quantità di sensori simulati simultaneamente
+            \item[-] \textbf{Delta tempo}: Intervallo temporale tra aggiornamenti di posizione;
+            \item[-] \textbf{Range di velocità}: Valori minimi e massimi per la velocità di spostamento;
+            \item[-] \textbf{Area geografica}: Delimitazione dell'area in cui generare percorsi;
+            \item[-] \textbf{Numero di sensori}: Quantità di sensori simulati simultaneamente.
         \end{itemize}
     
         La configurazione sfrutta la libreria OSMnx per caricare grafi stradali reali. Il sistema utilizza un grafo precaricato dell'area di interesse per ottimizzare le performance di avvio:
@@ -973,9 +976,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         \mysubparagraph{Tipologie di dati generati}
         Il simulatore produce dati con le seguenti caratteristiche:
         \begin{itemize}
-            \item[-] \textbf{Continuità spaziale}: I punti generati seguono percorsi realistici lungo le strade del grafo OSM
-            \item[-] \textbf{Variabilità temporale}: Gli aggiornamenti rispettano intervalli di tempo configurabili
-            \item[-] \textbf{Coerenza di velocità}: La distanza tra punti consecutivi è proporzionale alla velocità simulata
+            \item[-] \textbf{Continuità spaziale}: I punti generati seguono percorsi realistici lungo le strade del grafo OSM;
+            \item[-] \textbf{Variabilità temporale}: Gli aggiornamenti rispettano intervalli di tempo configurabili;
+            \item[-] \textbf{Coerenza di velocità}: La distanza tra punti consecutivi è proporzionale alla velocità simulata.
         \end{itemize}
     
         La classe \texttt{GeoPosition} rappresenta la struttura dati fondamentale per le posizioni:
@@ -996,23 +999,23 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         \begin{itemize}
             \item[-] \textbf{Archiviazione colonnare}: I dati sono organizzati per colonne anziché per righe, permettendo:
             \begin{itemize}
-                \item[.] Compressione più efficiente (10-100x rispetto ai database row-oriented)
-                \item[.] I/O ridotto quando le query selezionano solo un sottoinsieme di colonne
-                \item[.] Elaborazione vettoriale che sfrutta le istruzioni SIMD del processore
+                \item[.] Compressione più efficiente (10-100x rispetto ai database row-oriented);
+                \item[.] I/O ridotto quando le query selezionano solo un sottoinsieme di colonne;
+                \item[.] Elaborazione vettoriale che sfrutta le istruzioni SIMD del processore.
             \end{itemize}
             
             \item[-] \textbf{Organizzazione in parti (parts)}: I dati vengono inseriti in parti separate che vengono poi fuse in background:
             \begin{itemize}
-                \item[.] Le nuove scritture avvengono in parti temporanee separate
-                \item[.] Un processo di merge periodico unisce parti piccole in parti più grandi
-                \item[.] Questo processo consente inserimenti massivi senza bloccare le query di lettura
+                \item[.] Le nuove scritture avvengono in parti temporanee separate;
+                \item[.] Un processo di merge periodico unisce parti piccole in parti più grandi;
+                \item[.] Questo processo consente inserimenti massivi senza bloccare le query di lettura.
             \end{itemize}
             
             \item[-] \textbf{Indici sparsi}: Ogni parte contiene un indice sparso per le colonne di ordinamento:
             \begin{itemize}
-                \item[.] L'indice divide i dati in granuli (blocchi) di 8192 righe
-                \item[.] Per ogni granulo, vengono memorizzati i valori min/max delle chiavi di ordinamento
-                \item[.] Durante l'esecuzione delle query, interi granuli possono essere saltati
+                \item[.] L'indice divide i dati in granuli (blocchi) di 8192 righe;
+                \item[.] Per ogni granulo, vengono memorizzati i valori min/max delle chiavi di ordinamento;
+                \item[.] Durante l'esecuzione delle query, interi granuli possono essere saltati.
             \end{itemize}
             
             \item[-] \textbf{Partizionamento primario}: I dati vengono suddivisi fisicamente in base a una chiave di partizione:
@@ -1020,9 +1023,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             PARTITION BY toYYYYMMDD(received_at)
             \end{lstlisting}
             \begin{itemize}
-                \item[.] Ogni partizione è memorizzata come directory separata
-                \item[.] Le query possono escludere rapidamente intere partizioni non pertinenti
-                \item[.] Facilita operazioni di manutenzione come eliminazione o spostamento di dati storici
+                \item[.] Ogni partizione è memorizzata come directory separata;
+                \item[.] Le query possono escludere rapidamente intere partizioni non pertinenti;
+                \item[.] Facilita operazioni di manutenzione come eliminazione o spostamento di dati storici.
             \end{itemize}
             
             \item[-] \textbf{Ordinamento primario}: I dati all'interno di ogni partizione sono fisicamente ordinati:
@@ -1030,26 +1033,26 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             ORDER BY (sensor_id, received_at)
             \end{lstlisting}
             \begin{itemize}
-                \item[.] Accelera ricerche per range su queste colonne
-                \item[.] Migliora la compressione raggruppando valori simili
-                \item[.] Definisce l'ordine di costruzione degli indici sparsi
+                \item[.] Accelera ricerche per range su queste colonne;
+                \item[.] Migliora la compressione raggruppando valori simili;
+                \item[.] Definisce l'ordine di costruzione degli indici sparsi.
             \end{itemize}
         \end{itemize}
         
         Nel contesto di NearYou, questa architettura consente di gestire efficacemente:
         \begin{itemize}
-            \item[-] Migliaia di aggiornamenti di posizione al secondo
-            \item[-] Query analitiche complesse come il calcolo di distanze geospaziali
-            \item[-] Aggregazioni per dashboard in tempo reale
-            \item[-] Interrogazioni su dati storici con latenze contenute
+            \item[-] Migliaia di aggiornamenti di posizione al secondo;
+            \item[-] Query analitiche complesse come il calcolo di distanze geospaziali;
+            \item[-] Aggregazioni per dashboard in tempo reale;
+            \item[-] Interrogazioni su dati storici con latenze contenute.
         \end{itemize}
         
         Il ciclo di vita di un dato in MergeTree segue questi passi:
         \begin{enumerate}
-            \item Inserimento in memoria come parte temporanea
-            \item Scrittura su disco quando la parte raggiunge una certa dimensione
-            \item Fusione periodica con altre parti per ottimizzare lo storage
-            \item Eventuale eliminazione tramite TTL o operazioni manuali
+            \item Inserimento in memoria come parte temporanea;
+            \item Scrittura su disco quando la parte raggiunge una certa dimensione;
+            \item Fusione periodica con altre parti per ottimizzare lo storage;
+            \item Eventuale eliminazione tramite TTL o operazioni manuali.
         \end{enumerate}
         
         \mysubparagraph{Schema del database}
@@ -1169,9 +1172,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             
             Questa strategia di partizionamento:
             \begin{itemize}
-                \item[-] Facilita l'eliminazione automatica dei dati storici con TTL
-                \item[-] Migliora le performance delle query che filtrano per intervalli temporali
-                \item[-] Consente una gestione efficiente dello storage
+                \item[-] Facilita l'eliminazione automatica dei dati storici con TTL;
+                \item[-] Migliora le performance delle query che filtrano per intervalli temporali;
+                \item[-] Consente una gestione efficiente dello storage.
             \end{itemize}
         
         \mysubparagraph{Time-To-Live (TTL)}
@@ -1203,9 +1206,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Il TTL viene applicato durante le operazioni di merge:
         \begin{enumerate}
-            \item Durante il merge, il motore verifica la condizione TTL per ogni riga o colonna
-            \item Se la condizione è soddisfatta (ad es. il dato è più vecchio del limite), viene applicata l'azione corrispondente
-            \item Se tutte le righe in una partizione vengono eliminate dal TTL, l'intera partizione viene rimossa
+            \item Durante il merge, il motore verifica la condizione TTL per ogni riga o colonna;
+            \item Se la condizione è soddisfatta (ad es. il dato è più vecchio del limite), viene applicata l'azione corrispondente;
+            \item Se tutte le righe in una partizione vengono eliminate dal TTL, l'intera partizione viene rimossa.
         \end{enumerate}
         
         Nel nostro progetto usiamo solo il TTL a livello di tabella per eliminare automaticamente i dati più vecchi di 30 giorni:
@@ -1248,9 +1251,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Queste view consentono:
         \begin{itemize}
-            \item[-] Trasformazione automatica dei dati JSON in formato tabellare
-            \item[-] Inserimento automatico nelle tabelle di destinazione
-            \item[-] Sincronizzazione in tempo reale tra Kafka e le tabelle ClickHouse
+            \item[-] Trasformazione automatica dei dati JSON in formato tabellare;
+            \item[-] Inserimento automatico nelle tabelle di destinazione;
+            \item[-] Sincronizzazione in tempo reale tra Kafka e le tabelle ClickHouse.
         \end{itemize}
         
         \mysubparagraph{Integrazione con Kafka}
@@ -1293,18 +1296,18 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Caratteristiche del connettore:
         \begin{itemize}
-            \item[-] Consumo asincrono dei messaggi da Kafka
-            \item[-] Supporto per diverse codifiche (JSON utilizzato nel progetto)
-            \item[-] Gestione automatica degli offset
-            \item[-] Integrazione con il sistema di materialized view per la trasformazione dati
+            \item[-] Consumo asincrono dei messaggi da Kafka;
+            \item[-] Supporto per diverse codifiche (JSON utilizzato nel progetto);
+            \item[-] Gestione automatica degli offset;
+            \item[-] Integrazione con il sistema di materialized view per la trasformazione dati.
         \end{itemize}
         
         Questo approccio offre diversi vantaggi:
         \begin{itemize}
-            \item[-] Elimina la necessità di consumer Kafka dedicati
-            \item[-] Garantisce trasformazione e inserimento dei dati in tempo reale
-            \item[-] Offre resilienza: i messaggi rimangono disponibili in Kafka in caso di problemi
-            \item[-] Permette di definire pipeline ETL dichiarative
+            \item[-] Elimina la necessità di consumer Kafka dedicati;
+            \item[-] Garantisce trasformazione e inserimento dei dati in tempo reale;
+            \item[-] Offre resilienza: i messaggi rimangono disponibili in Kafka in caso di problemi;
+            \item[-] Permette di definire pipeline ETL dichiarative.
         \end{itemize}
         
         \mysubparagraph{Funzionalità geospaziali}
@@ -1337,9 +1340,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Per ottimizzare queste query geospaziali, implementiamo:
         \begin{itemize}
-            \item[-] Pre-filtro con bounding box per ridurre i punti da valutare
-            \item[-] Indici spaziali impliciti basati sull'ordinamento delle coordinate
-            \item[-] Materialized view con pre-aggregazioni per aree geografiche comuni
+            \item[-] Pre-filtro con bounding box per ridurre i punti da valutare;
+            \item[-] Indici spaziali impliciti basati sull'ordinamento delle coordinate;
+            \item[-] Materialized view con pre-aggregazioni per aree geografiche comuni.
         \end{itemize}
         
         Queste ottimizzazioni consentono di eseguire query di prossimità in tempo reale anche con milioni di punti di interesse e migliaia di utenti attivi contemporaneamente.
@@ -1399,17 +1402,17 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         \begin{itemize}
             \item[-] \textbf{Mappa geospaziale}: Un pannello interattivo che visualizza su una mappa OpenStreetMap:
             \begin{itemize}
-                \item[.] Marker verdi che rappresentano le posizioni attuali degli utenti
-                \item[.] Marker arancioni che mostrano i messaggi pubblicitari generati
-                \item[.] Marker rossi che indicano le attività commerciali nel territorio
+                \item[.] Marker verdi che rappresentano le posizioni attuali degli utenti;
+                \item[.] Marker arancioni che mostrano i messaggi pubblicitari generati;
+                \item[.] Marker rossi che indicano le attività commerciali nel territorio.
             \end{itemize}
             
             \item[-] \textbf{Tabella delle attività più popolari}: Una classifica in tempo reale delle attività commerciali ordinate per numero di messaggi pubblicitari generati, con le seguenti informazioni:
             \begin{itemize}
-                \item[.] Nome dell'attività
-                \item[.] Categoria o tipologia dell'attività
-                \item[.] Indirizzo dell'attività
-                \item[.] Conteggio totale dei messaggi generati
+                \item[.] Nome dell'attività;
+                \item[.] Categoria o tipologia dell'attività;
+                \item[.] Indirizzo dell'attività;
+                \item[.] Conteggio totale dei messaggi generati.
             \end{itemize}
         \end{itemize}
         
@@ -1431,14 +1434,14 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         La dashboard specifica è dedicata all'analisi dettagliata di un singolo utente, identificato tramite un parametro \texttt{user\_id}. Questa dashboard permette di:
         
         \begin{itemize}
-            \item[-] Visualizzare l'intero percorso storico dell'utente sulla mappa, con punti che rappresentano le posizioni registrate nel tempo
+            \item[-] Visualizzare l'intero percorso storico dell'utente sulla mappa, con punti che rappresentano le posizioni registrate nel tempo;
             \item[-] Evidenziare con marker specifici:
             \begin{itemize}
-                \item[.] La prima e l'ultima posizione registrata (verde scuro e chiaro)
-                \item[.] Le attività commerciali vicine al percorso (rosso)
-                \item[.] I messaggi pubblicitari generati lungo il percorso (arancione)
+                \item[.] La prima e l'ultima posizione registrata (verde scuro e chiaro);
+                \item[.] Le attività commerciali vicine al percorso (rosso);
+                \item[.] I messaggi pubblicitari generati lungo il percorso (arancione).
             \end{itemize}
-            \item[-] Analizzare i dati temporali delle posizioni e dei messaggi correlati
+            \item[-] Analizzare i dati temporali delle posizioni e dei messaggi correlati.
         \end{itemize}
         
         \mysubparagraph{Querying ClickHouse}
@@ -1546,9 +1549,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         Il connettore nativo offre vantaggi significativi rispetto alle alternative generiche:
         
         \begin{itemize}
-            \item[-] \textbf{Prestazioni ottimizzate}: Progettato specificamente per il modello colonnare di ClickHouse
-            \item[-] \textbf{Supporto per tipi di dati specifici}: Gestione corretta di UUID, Array e altri tipi ClickHouse
-            \item[-] \textbf{Query builder visuale}: Interfaccia grafica per costruire query complesse
+            \item[-] \textbf{Prestazioni ottimizzate}: Progettato specificamente per il modello colonnare di ClickHouse;
+            \item[-] \textbf{Supporto per tipi di dati specifici}: Gestione corretta di UUID, Array e altri tipi ClickHouse;
+            \item[-] \textbf{Query builder visuale}: Interfaccia grafica per costruire query complesse.
         \end{itemize}
         
         La visualizzazione in tempo reale è garantita attraverso un intervallo di aggiornamento automatico configurato a 10 secondi:
@@ -1561,9 +1564,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
         
         Questa impostazione assicura che i dati visualizzati nelle dashboard siano costantemente aggiornati, permettendo di monitorare in tempo reale:
         \begin{itemize}
-            \item[-] Spostamenti degli utenti
-            \item[-] Generazione di nuovi messaggi pubblicitari
-            \item[-] Statistiche sulle attività commerciali più popolari
+            \item[-] Spostamenti degli utenti;
+            \item[-] Generazione di nuovi messaggi pubblicitari;
+            \item[-] Statistiche sulle attività commerciali più popolari.
         \end{itemize}
         
         \mysubparagraph{Provisioning automatico}
@@ -1684,21 +1687,21 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \myparagraph{PEP8 - Stile di codifica Python}
     Il progetto aderisce alle linee guida PEP8, lo standard di stile di codifica Python, garantendo coerenza e leggibilità. Questo include:
     \begin{itemize}
-        \item[-] Indentazione di 4 spazi (non tab)
-        \item[-] Lunghezza massima delle linee di 79 caratteri
-        \item[-] Spaziatura coerente attorno agli operatori
-        \item[-] Convenzioni di nomenclatura: \texttt{snake\_case} per variabili e funzioni, \texttt{PascalCase} per classi
-        \item[-] Docstring per moduli, classi e funzioni
+        \item[-] Indentazione di 4 spazi (non tab);
+        \item[-] Lunghezza massima delle linee di 79 caratteri;
+        \item[-] Spaziatura coerente attorno agli operatori;
+        \item[-] Convenzioni di nomenclatura: \texttt{snake\_case} per variabili e funzioni, \texttt{PascalCase} per classi;
+        \item[-] Docstring per moduli, classi e funzioni.
     \end{itemize}
     Il rispetto di PEP8 è verificato attraverso l'uso di linting automatizzato, come evidenziato dal badge PyLint nel README del progetto (punteggio 7.7/10.0).
     
     \myparagraph{Principi SOLID}
     L'architettura del software è progettata seguendo i principi SOLID:
     \begin{itemize}
-        \item[-] \textbf{Single Responsibility Principle}: Ogni classe ha una singola responsabilità ben definita. Ad esempio, la classe \texttt{ActivityDTO} è responsabile solo della rappresentazione dei dati di un'attività.
-        \item[-] \textbf{Open/Closed Principle}: Le classi sono estensibili senza modificare il codice esistente. Questo è evidente nell'implementazione delle strategie di simulazione, dove nuovi comportamenti possono essere aggiunti implementando l'interfaccia \texttt{IPositionSimulationStrategy}.
-        \item[-] \textbf{Liskov Substitution Principle}: Le classi derivate possono sostituire le classi base senza alterare il comportamento. Le varie implementazioni di strategie di simulazione possono essere utilizzate in modo intercambiabile.
-        \item[-] \textbf{Interface Segregation Principle}: Le interfacce sono specifiche e mirate. Ad esempio, \texttt{IJsonSerializable} definisce solo i metodi necessari per la serializzazione JSON.
+        \item[-] \textbf{Single Responsibility Principle}: Ogni classe ha una singola responsabilità ben definita. Ad esempio, la classe \texttt{ActivityDTO} è responsabile solo della rappresentazione dei dati di un'attività;
+        \item[-] \textbf{Open/Closed Principle}: Le classi sono estensibili senza modificare il codice esistente. Questo è evidente nell'implementazione delle strategie di simulazione, dove nuovi comportamenti possono essere aggiunti implementando l'interfaccia \texttt{IPositionSimulationStrategy};
+        \item[-] \textbf{Liskov Substitution Principle}: Le classi derivate possono sostituire le classi base senza alterare il comportamento. Le varie implementazioni di strategie di simulazione possono essere utilizzate in modo intercambiabile;
+        \item[-] \textbf{Interface Segregation Principle}: Le interfacce sono specifiche e mirate. Ad esempio, \texttt{IJsonSerializable} definisce solo i metodi necessari per la serializzazione JSON;
         \item[-] \textbf{Dependency Inversion Principle}: I componenti dipendono da astrazioni, non da implementazioni concrete. Questo è visibile nell'iniezione delle dipendenze nei costruttori.
     \end{itemize}
 
@@ -1707,10 +1710,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
     Il flusso di stato è unidirezionale: gli eventi di posizione generano cambiamenti di stato che vengono propagati attraverso il sistema mediante Kafka e processati da Flink. Questo approccio event-driven offre diversi vantaggi:
     \begin{itemize}
-        \item[-] Tracciabilità completa dello stato attraverso la storia degli eventi
-        \item[-] Maggiore resilienza agli errori grazie alla possibilità di ricostruire lo stato dal flusso di eventi
-        \item[-] Facilità nel debugging e nell'analisi retrospettiva
-        \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema
+        \item[-] Tracciabilità completa dello stato attraverso la storia degli eventi;
+        \item[-] Maggiore resilienza agli errori grazie alla possibilità di ricostruire lo stato dal flusso di eventi;
+        \item[-] Facilità nel debugging e nell'analisi retrospettiva;
+        \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema.
     \end{itemize}
 
     \myparagraph{Idempotenza delle operazioni}
@@ -1718,10 +1721,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
     L'idempotenza è implementata attraverso:
     \begin{itemize}
-        \item[-] L'uso di identificatori univoci (UUID) per ogni entità e messaggio
-        \item[-] Il componente \texttt{FilterMessageAlreadyDisplayed} che evita la duplicazione dei messaggi
-        \item[-] L'approccio "upsert" nelle operazioni di scrittura su ClickHouse
-        \item[-] Meccanismi di deduplicazione basati su chiavi di Kafka
+        \item[-] L'uso di identificatori univoci (UUID) per ogni entità e messaggio;
+        \item[-] Il componente \texttt{FilterMessageAlreadyDisplayed} che evita la duplicazione dei messaggi;
+        \item[-] L'approccio "upsert" nelle operazioni di scrittura su ClickHouse;
+        \item[-] Meccanismi di deduplicazione basati su chiavi di Kafka.
     \end{itemize}
 
     Questa strategia garantisce consistenza anche in presenza di messaggi duplicati o ritrasmissioni.
@@ -1729,9 +1732,9 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \myparagraph{Circuit breaking e fallback}
     Il sistema implementa pattern di resilienza come il circuit breaking per gestire situazioni di errore nei servizi esterni e prevenire il fallimento a cascata. In particolare, l'integrazione con il servizio LLM include:
     \begin{itemize}
-        \item[-] Timeout configurabili per le chiamate API
-        \item[-] Circuit breaker che impedisce chiamate ripetute a servizi non disponibili come quello LLM
-        \item[-] Strategia di fallback che filtra i messaggi quando il servizio LLM non è disponibile
+        \item[-] Timeout configurabili per le chiamate API;
+        \item[-] Circuit breaker che impedisce chiamate ripetute a servizi non disponibili come quello LLM;
+        \item[-] Strategia di fallback che filtra i messaggi quando il servizio LLM non è disponibile.
     \end{itemize}
 
     Questo approccio garantisce che il sistema continui a funzionare anche in presenza di problemi nei servizi esterni, mantenendo un livello di servizio accettabile per gli utenti finali.
@@ -1741,10 +1744,10 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
     Il flusso di stato è unidirezionale: gli eventi di posizione generano cambiamenti di stato che vengono propagati attraverso il sistema mediante Kafka e processati da Flink. Questo approccio event-driven offre diversi vantaggi:
     \begin{itemize}
-        \item[-] Tracciabilità completa dello stato attraverso la storia degli eventi
-        \item[-] Maggiore resilienza agli errori grazie alla possibilità di ricostruire lo stato dal flusso di eventi
-        \item[-] Facilità nel debugging e nell'analisi retrospettiva
-        \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema
+        \item[-] Tracciabilità completa dello stato attraverso la storia degli eventi;
+        \item[-] Maggiore resilienza agli errori grazie alla possibilità di ricostruire lo stato dal flusso di eventi;
+        \item[-] Facilità nel debugging e nell'analisi retrospettiva;
+        \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema.
     \end{itemize}
 
     \section{Architettura logica}
@@ -1764,15 +1767,15 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     Nell'architettura esagonale implementata, possiamo distinguere:
     
     \begin{itemize}
-        \item[-] \textbf{Core domain}: Il nucleo centrale che rappresenta le entità e la logica di business (punti di interesse, utenti, posizioni e messaggi pubblicitari).
+        \item[-] \textbf{Core domain}: Il nucleo centrale che rappresenta le entità e la logica di business (punti di interesse, utenti, posizioni e messaggi pubblicitari);
         \item[-] \textbf{Porte (Ports)}: Interfacce che definiscono come il dominio interagisce con l'esterno. Si distinguono in:
         \begin{itemize}
-            \item[.] \textbf{Inbound ports}: Interfacce che espongono le funzionalità del dominio verso l'esterno, come l'interfaccia \texttt{IPositionProcessor} che riceve posizioni da elaborare.
+            \item[.] \textbf{Inbound ports}: Interfacce che espongono le funzionalità del dominio verso l'esterno, come l'interfaccia \texttt{IPositionProcessor} che riceve posizioni da elaborare;
             \item[.] \textbf{Outbound ports}: Interfacce che definiscono come il dominio può utilizzare servizi esterni, come \texttt{IRepository}, \texttt{IMessagePublisher} e \texttt{ILlmService}.
         \end{itemize}
         \item[-] \textbf{Adapters}: Implementazioni concrete delle porte che collegano il dominio alle tecnologie specifiche:
         \begin{itemize}
-            \item[.] \textbf{Inbound adapters}: Adattatori che convertono le richieste esterne nel formato atteso dal dominio, come \texttt{KafkaConsumerAdapter}.
+            \item[.] \textbf{Inbound adapters}: Adattatori che convertono le richieste esterne nel formato atteso dal dominio, come \texttt{KafkaConsumerAdapter};
             \item[.] \textbf{Outbound adapters}: Adattatori che implementano le interfacce di uscita collegandole a tecnologie specifiche, come \texttt{ClickHouseRepository} o \texttt{GroqLlmAdapter}.
         \end{itemize}
     \end{itemize}
@@ -1784,17 +1787,17 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \begin{itemize}
         \item[-] \textbf{Generatore di posizioni GPS}:
         \begin{itemize}
-            \item[.] \textbf{Core domain}: Implementa la logica di simulazione del movimento di utenti nello spazio.
-            \item[.] \textbf{Outbound ports}: Non dispone di inbound ports poiché non riceve input esterni ma solo genera dati.
-            \item[.] \textbf{Outbound ports}: Include interfacce come \texttt{IPositionPublisher} per pubblicare le posizioni generate.
+            \item[.] \textbf{Core domain}: Implementa la logica di simulazione del movimento di utenti nello spazio;
+            \item[.] \textbf{Outbound ports}: Non dispone di inbound ports poiché non riceve input esterni ma solo genera dati;
+            \item[.] \textbf{Outbound ports}: Include interfacce come \texttt{IPositionPublisher} per pubblicare le posizioni generate;
             \item[.] \textbf{Adapters}: Implementa adattatori come \texttt{KafkaPositionPublisherAdapter} che converte le posizioni generate in messaggi Kafka.
         \end{itemize}
         
         \item[-] \textbf{Elaboratore di posizioni / Generatore di messaggi}:
         \begin{itemize}
-            \item[.] \textbf{Core domain}: Contiene la logica di identificazione della prossimità e generazione di messaggi pubblicitari.
-            \item[.] \textbf{Inbound ports}: Include interfacce come \texttt{IPositionReceiver} che ricevono eventi di posizione.
-            \item[.] \textbf{Outbound ports}: Comprende interfacce verso repository (\texttt{IUserRepository}, \texttt{IActivityRepository}), servizi esterni (\texttt{ILlmService}) e publisher di messaggi (\texttt{IMessagePublisher}).
+            \item[.] \textbf{Core domain}: Contiene la logica di identificazione della prossimità e generazione di messaggi pubblicitari;
+            \item[.] \textbf{Inbound ports}: Include interfacce come \texttt{IPositionReceiver} che ricevono eventi di posizione;
+            \item[.] \textbf{Outbound ports}: Comprende interfacce verso repository (\texttt{IUserRepository}, \texttt{IActivityRepository}), servizi esterni (\texttt{ILlmService}) e publisher di messaggi (\texttt{IMessagePublisher});
             \item[.] \textbf{Adapters}: Implementa adattatori per tecnologie specifiche, come \texttt{KafkaPositionReceiverAdapter}, \texttt{ClickHouseRepositoryAdapter} e \texttt{GroqLlmAdapter}.
         \end{itemize}
     \end{itemize}
@@ -1808,36 +1811,36 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \begin{enumerate}
         \item \textbf{Generazione delle posizioni}:
         \begin{itemize}
-            \item[.] Il core domain del generatore crea oggetti \texttt{GeoPosition} che rappresentano le coordinate degli utenti.
-            \item[.] Questi oggetti vengono passati attraverso l'outbound port \texttt{IPositionPublisher}.
+            \item[.] Il core domain del generatore crea oggetti \texttt{GeoPosition} che rappresentano le coordinate degli utenti;
+            \item[.] Questi oggetti vengono passati attraverso l'outbound port \texttt{IPositionPublisher};
             \item[.] L'adapter \texttt{KafkaPositionPublisherAdapter} serializza i dati in formato JSON e li pubblica sul topic Kafka \texttt{posizioni}.
         \end{itemize}
         
         \item \textbf{Consumo delle posizioni}:
         \begin{itemize}
-            \item[.] L'inbound adapter \texttt{KafkaPositionReceiverAdapter} del servizio di elaborazione sottoscrive il topic Kafka \texttt{posizioni}.
-            \item[.] I messaggi ricevuti vengono deserializzati e convertiti in oggetti di dominio \texttt{UserPosition}.
+            \item[.] L'inbound adapter \texttt{KafkaPositionReceiverAdapter} del servizio di elaborazione sottoscrive il topic Kafka \texttt{posizioni};
+            \item[.] I messaggi ricevuti vengono deserializzati e convertiti in oggetti di dominio \texttt{UserPosition};
             \item[.] Questi oggetti vengono passati all'inbound port \texttt{IPositionProcessor} per l'elaborazione.
         \end{itemize}
         
         \item \textbf{Elaborazione e generazione di messaggi}:
         \begin{itemize}
-            \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IActivityRepository} per recuperare le attività nelle vicinanze.
-            \item[.] In caso di rilevamento di prossimità, il sistema richiede informazioni sull'utente tramite l'outbound port \texttt{IUserRepository}.
-            \item[.] Con i dati dell'utente e del punto di interesse, il core domain richiede un messaggio personalizzato tramite l'outbound port \texttt{ILlmService}.
-            \item[.] L'adapter \texttt{GroqLlmAdapter} comunica con il servizio LLM esterno e restituisce il messaggio generato.
+            \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IActivityRepository} per recuperare le attività nelle vicinanze;
+            \item[.] In caso di rilevamento di prossimità, il sistema richiede informazioni sull'utente tramite l'outbound port \texttt{IUserRepository};
+            \item[.] Con i dati dell'utente e del punto di interesse, il core domain richiede un messaggio personalizzato tramite l'outbound port \texttt{ILlmService};
+            \item[.] L'adapter \texttt{GroqLlmAdapter} comunica con il servizio LLM esterno e restituisce il messaggio generato;
             \item[.] Il messaggio personalizzato viene incapsulato in un oggetto \texttt{AdvertisingMessage} del dominio.
         \end{itemize}
         
         \item \textbf{Pubblicazione del messaggio pubblicitario}:
         \begin{itemize}
-            \item[.] L'oggetto \texttt{AdvertisingMessage} viene passato all'outbound port \texttt{IMessagePublisher}.
+            \item[.] L'oggetto \texttt{AdvertisingMessage} viene passato all'outbound port \texttt{IMessagePublisher};
             \item[.] L'adapter \texttt{KafkaMessagePublisherAdapter} serializza il messaggio e lo pubblica sul topic Kafka \texttt{messaggi}.
         \end{itemize}
         
         \item \textbf{Persistenza e visualizzazione}:
         \begin{itemize}
-            \item[.] ClickHouse, attraverso il connettore Kafka nativo, consuma e archivia i messaggi dal topic \texttt{messaggi}.
+            \item[.] ClickHouse, attraverso il connettore Kafka nativo, consuma e archivia i messaggi dal topic \texttt{messaggi};
             \item[.] Grafana interroga ClickHouse per recuperare e visualizzare i dati in tempo reale attraverso dashboard interattive.
         \end{itemize}
     \end{enumerate}
@@ -1975,6 +1978,8 @@ L'architettura di deployment è stata progettata per supportare future evoluzion
     \item \textbf{Distribuzione multi-zona}: Possibilità di distribuire i container su più zone di disponibilità per aumentare l'affidabilità del sistema;
     \item \textbf{Implementazione di auto-scaling}: Aggiunta di meccanismi per scalare automaticamente i servizi in base al carico.
 \end{itemize}
+
+\newpage
 
 \section{Stato dei requisiti funzionali}
 
