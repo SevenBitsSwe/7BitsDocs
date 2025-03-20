@@ -751,14 +751,28 @@ In NearYou, Docker è utilizzato per:
 \subsection{Panoramica architetturale}
 L'architettura del progetto si basa su un insieme di microservizi event-driven che comunicano fra di loro mediante Kafka. I dati di posizione vengono raccolti in tempo reale, elaborati per verificare la prossimità dei punti d'interesse ed eventualmente sottoposti a un servizio LLM che genera messaggi pubblicitari personalizzati per l'utente in base al tipo di attività.
 
+\subsection{K-Architecture: Event Streaming Platform}
+Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di streaming basata su Flink, che implementa il pattern di K-Architecture (Kappa Architecture). Questo pattern rappresenta un'evoluzione della Lambda Architecture, eliminando la necessità del dual-path processing (batch e speed layer) a favore di un unico layer di stream processing.
+    \subsubsection{Motivazioni della scelta architetturale}
+        \myparagraph{Vantaggi per l'elaborazione in tempo reale}
+        Tra i vantaggi per l'elaborazione in tempo reale c'è la capacità di gestire flussi di dati continui senza ritardi significativi.
+        \myparagraph{Benefici sul disaccoppiamento}
+        Tra i benefici sul disaccoppiamento c'è la possibilità di sviluppare e scalare indipendentemente i componenti del sistema, garantendo una maggiore flessibilità.
+        \myparagraph{Ottimizzazione del codebase}
+        La semplificazione della pipeline di dati permette di ridurre la complessità del codice e di semplificare la manutenzione.
+        \myparagraph{Gestione della consistenza dei dati}
+        La K-Architecture garantisce la coerenza dei dati in tempo reale, evitando problemi di sincronizzazione e di versionamento.
+        \myparagraph{Tecniche di riduzione della latenza}
+        La riduzione della latenza è garantita dalla gestione dei dati in tempo reale, senza la necessità di processi batch.
+
 \subsubsection{Componenti principali}
-I microservizi si suddividono in:
+Il progetto si suddivide in cinque componenti principali, ognuno dei quali svolge un ruolo specifico nell'architettura complessiva:
 \begin{itemize}
-    \item Servizio di generazione posizioni (simulazione sensori);
-    \item Servizio di messaggistica Kafka;
-    \item Servizio di elaborazione Flink;
-    \item Database ClickHouse;
-    \item Servizio di visualizzazione Grafana.
+    \item[-] Generazione di dati;
+    \item[-] Gestione messaggi;
+    \item[-] Elaborazione dei dati;
+    \item[-] Storage;
+    \item[-] Visualizzazione.
 \end{itemize}
 
 \myparagraph{Generazione di dati}
@@ -791,21 +805,7 @@ Sfrutta inoltre il connettore nativo di ClickHouse, permettendo l'integrazione e
 \subsubsection{Interfacce tra componenti}
 Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in formato JSON. Per quanto riguarda l'integrazione fra Kafka e ClickHouse è presente un connettore nativo che permette inoltre di creare delle materialized view per la storicizzazione dei dati. Per Grafana è sempre presente un connettore nativo per ClickHouse che permette di interrogare il database e visualizzare i dati in tempo reale.
 
-\subsection{K-Architecture: Event Streaming Platform}
-Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di streaming basata su Flink, che implementa il pattern di K-Architecture (Kappa Architecture). Questo pattern rappresenta un'evoluzione della Lambda Architecture, eliminando la necessità del dual-path processing (batch e speed layer) a favore di un unico layer di stream processing.
-    \subsubsection{Motivazioni della scelta architetturale}
-        \myparagraph{Vantaggi per l'elaborazione in tempo reale}
-        Tra i vantaggi per l'elaborazione in tempo reale c'è la capacità di gestire flussi di dati continui senza ritardi significativi.
-        \myparagraph{Benefici sul disaccoppiamento}
-        Tra i benefici sul disaccoppiamento c'è la possibilità di sviluppare e scalare indipendentemente i componenti del sistema, garantendo una maggiore flessibilità.
-        \myparagraph{Ottimizzazione del codebase}
-        La semplificazione della pipeline di dati permette di ridurre la complessità del codice e di semplificare la manutenzione.
-        \myparagraph{Gestione della consistenza dei dati}
-        La K-Architecture garantisce la coerenza dei dati in tempo reale, evitando problemi di sincronizzazione e di versionamento.
-        \myparagraph{Tecniche di riduzione della latenza}
-        La riduzione della latenza è garantita dalla gestione dei dati in tempo reale, senza la necessità di processi batch.
-    
-    \subsubsection{Implementazione della K-Architecture}
+    \subsection{Implementazione tecnica dei componenti principali}
         \myparagraph{Apache Kafka}
             \mysubparagraph{Topic e partitioning}
         In questo progetto si utilizzano due topic: 
@@ -855,6 +855,77 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
             "userLongitude": "Float64"
         }
         \end{lstlisting}
+
+        \mysubparagraph{Kafka poisoning}
+        \begin{itemize}
+            \item \textbf{Descrizione del problema}\\
+            Il sistema di stream processing Kafka risulta potenzialmente vulnerabile ad un attaccante che inserisca
+            dati falsi o malformati al fine di alterare il comportamento del sistema, pertanto è necessario applicare delle strategie
+            di mitigazione che verifichino origine e correttezza dei dati e limitino i potenziali danni.
+            
+            \item \textbf{Soluzioni}\\
+            Alcune delle possibili soluzioni per la mitigazione di questa tipologia di attacchi sono le seguenti:
+            \begin{itemize}
+                \item Validazione dei dati a livello di codice; 
+                \item Uso del protocollo TLS per la comunicazione sensori-sistema;
+                \item Autenticazione sensori mediante SASL;
+                \item Definizione di policies di access control.
+            \end{itemize}
+            
+            \item \textbf{Strategie di mitigazione in Dettaglio}
+            \begin{itemize}
+            
+                \item \underline{Validazione dei dati a livello di codice}
+                \begin{itemize}
+                    \item \textbf{Descrizione}:\\
+                    La validazione dei dati a livello di codice consiste nel controllo del dato, ovvero quando si prelevano i dati dal topic potrebbe capitare che siano dei dati malformati o malevoli. 
+                    Facendo questo in modo mirato sul singolo dato, è possibile garantire che ogni informazione elaborata sia conforme agli standard attesi. \\
+                    Ad esempio se sappiamo per certo che una persona si muove tra i 3 e i 6 km/h, possiamo scartare i dati che superano questa soglia.
+
+                    \item \textbf{Requisiti implementazione}:\\
+                    Sarà necessario implementare dei controlli quando si prelevano i dati dal topic così da garantire che i dati al loro interno siano entro un range di valori ammissibili, questo dovrebbe garantire la validità del dato.
+
+                \end{itemize}
+
+                \item \underline{Uso del protocollo TLS per la comunicazione sensori-sistema}
+                \begin{itemize}
+                    \item \textbf{Descrizione}:\\
+                    Il protocollo TLS fornisce una modalità di comunicazione tra client e server protetta da cifratura
+                    in grado di autenticare il server e garantire l'integrità e riservatezza dei dati in transito.
+                    Il protocollo utilizza una chiave di cifratura asimmetrica certificata per stabilire la comunicazione iniziale
+                    per poi utilizzare cifratura simmetrica per il resto della sessione.
+                    Apache Kafka dispone inoltre della possibilità di applicare 2-way TLS per introdurre un'ulteriore autenticazione del client.
+                    
+                    \item \textbf{Requisiti implementazione}:\\
+                    Il protocollo TLS è già implementato all'interno di Apache Kafka è pertanto semplicemente necessario abilitarlo ed inserire i certificati richiesti.
+                    È possibile adottare sia certificati interni che certificati garantiti da una Certification Authority.
+                    
+                \end{itemize}
+                
+                \item \underline{Autenticazione sensori mediante SASL}
+                \begin{itemize}
+                    \item \textbf{Descrizione}:\\
+                    Il protocollo SASL fornisce la possibilità di integrare un ampio spettro di metodologie per l'autenticazione di messaggi in ingresso basata su sfide e risposte e può anche essere integrato con
+                    protocolli di trasporto che garantiscano riservatezza del messaggio.
+                    
+                    \item \textbf{Requisiti implementazione}:\\
+                    Il protocollo SASL è già implementato all'interno di Apache Kafka è pertanto semplicemente necessario abilitarlo ed inserire i certificati richiesti.
+                    È possibile adottare sia certificati interni che certificati garantiti da una Certification Authority.
+                    
+                \end{itemize}
+                
+                \item \underline{Policies di access control}
+                \begin{itemize}
+                    \item \textbf{Descrizione}:\\
+                    L'uso di access control lists permette di definire un insieme di regole volto a limitare la possibilità che un client compromesso abbia accesso ad informazioni sensibili o sia in grado di manomettere il sistema.
+                    Ogni regola definisce per un client o gruppo di client se questi sia autorizzato o meno a produrre o consumare elementi di un topic.
+                    
+                    \item \textbf{Requisiti implementazione}:\\
+                    Apache Kafka dispone di un sistema integrato di gestione dei permessi ed è quindi semplicemente necessario definire un file di configurazione che elenchi le policies che si intende adottare.
+                    
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
 
         \myparagraph{Apache Flink}
         \mysubparagraph{Stream processing jobs}
@@ -1609,31 +1680,6 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
 
 \subsection{Design Pattern e Best Practices}
 \subsubsection{Design pattern applicati}
-    \myparagraph{Data Transfer Object (DTO)}
-    Il pattern DTO è ampiamente utilizzato nel progetto per trasferire dati tra i componenti senza esporre i dettagli implementativi. Un esempio significativo è l'implementazione della classe ActivityDTO:
-    \begin{lstlisting}
-    class ActivityDTO:
-        '''This class is a Data Transfer Object for the User class. 
-        It is used to abstract the user'''
-
-        def __init__(self, activity_id: uuid = uuid.uuid4(), 
-                    activity_name: str = "",
-                    activity_lon: float = 0.0, 
-                    activity_lat: float = 0.0, 
-                    activity_addr: str ="", 
-                    activity_type: str = "", 
-                    activity_description: str =""):
-            '''constructor to initialize the user data access object'''
-            self.activity_id = activity_id
-            self.activity_name = activity_name
-            self.activity_lon = activity_lon
-            self.activity_addr = activity_addr
-            self.activity_lat = activity_lat
-            self.activity_type = activity_type
-            self.activity_description = activity_description
-    \end{lstlisting}
-    Questo pattern garantisce la separazione tra rappresentazione dei dati e logica di business.
-
     \myparagraph{Strategy Pattern}
     L'architettura implementa il pattern Strategy per definire diverse modalità di simulazione del movimento. L'interfaccia \texttt{IPositionSimulationStrategy} definisce il contratto che tutte le strategie concrete devono implementare:
     \begin{lstlisting}
@@ -1852,7 +1898,7 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     Questo utilizzo di Kafka come backbone di comunicazione sostiene la natura asincrona ed event-driven del sistema, svincolando i componenti gli uni dagli altri. Grazie a questa separazione in porte e adattatori, l'architettura risulta flessibile, manutenibile e facile da testare: ogni modifica alla periferia può essere gestita senza impattare la logica di dominio, preservando nel contempo la coerenza e la semplicità di estensione all'intero sistema.
 
 \section{Architettura di deployment}
-Al fine di implementare ed eseguire l'intero stack tecnologico ed i layer del modello architetturale del sistema, è stato configurato un ambiente Docker che simula la suddivisione e la distribuzione dei servizi. Informazioni aggiuntive sulle immagini utilizzate e sulle configurazioni dell'ambiente sono disponibili nel file docker-compose.yml presente nel repository del progetto oltre che nella sezione \ref{sec:strumenti}.
+Al fine di implementare ed eseguire l'intero stack tecnologico ed i componenti del modello architetturale del sistema, è stato configurato un ambiente Docker che simula la suddivisione e la distribuzione dei servizi. Informazioni aggiuntive sulle immagini utilizzate e sulle configurazioni dell'ambiente sono disponibili nel file docker-compose.yml presente nel repository del progetto oltre che nella sezione \ref{sec:strumenti}.
     \subsection{Panoramica dell'infrastruttura}
         \subsubsection{Ambiente Docker}
         Descrizione dell'ambiente Docker utilizzato, incluse le immagini e le configurazioni specifiche.
