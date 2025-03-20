@@ -925,6 +925,8 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                     
                 \end{itemize}
             \end{itemize}
+\item \textbf{Conclusioni}\\
+La validazione dei dati a livello di codice è stata adottata per mitigare il rischio di \textit{Kafka poisoning}, in quanto non erano richieste misure di sicurezza avanzate dal proponente. Pur offrendo una protezione inferiore rispetto a soluzioni più sofisticate, questa strategia risulta semplice da integrare e fornisce una prima linea di difesa contro possibili iniezioni di dati malevoli, senza comportare carichi di lavoro eccessivi sul resto del progetto. È stato condotto comunque uno studio approfondito delle altre tecniche di mitigazione, così da valutare il carico di lavoro richiesto e quale fosse la scelta più adatta, lasciando comunque possibilità di implementarle in futuro per migliorare la sicurezza del sistema.\\
         \end{itemize}
 
         \myparagraph{Apache Flink}
