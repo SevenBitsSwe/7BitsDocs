@@ -746,6 +746,107 @@ In NearYou, Docker è utilizzato per:
     
 % \section{API}
 
+    \section{Architettura logica}
+
+    La logica del progetto adotta un approccio esagonale (Hexagonal Architecture, noto anche come Ports and Adapters) incentrato sugli eventi, con l'obiettivo di separare chiaramente la logica di dominio dai servizi esterni. Al centro si trova il core esagonale, che contiene le regole per la gestione del business legato alla generazione di messaggi pubblicitari personalizzati. Questo nucleo è isolato da sistemi come Flink, Kafka, ClickHouse e Grafana tramite porte (interface) e adattatori (infrastructure), favorendo una netta suddivisione delle responsabilità.
+
+    \begin{figure}[h]
+    \centering
+    % Inserire qui il diagramma dell'architettura esagonale
+    \caption{Architettura logica del prodotto con modello esagonale}
+    \end{figure}
+
+    \subsection{Pattern di architettura esagonale}
+    
+    Il pattern architetturale Ports and Adapters è stato scelto per la sua capacità di disaccoppiare la logica di business dalle tecnologie specifiche. Questa separazione consente una maggiore manutenibilità e testabilità del sistema, oltre a facilitare l'evoluzione tecnologica senza impattare sul nucleo funzionale.
+    
+    Nell'architettura esagonale implementata, possiamo distinguere:
+    
+    \begin{itemize}
+        \item[-] \textbf{Core domain}: Il nucleo centrale che rappresenta le entità e la logica di business (punti di interesse, utenti, posizioni e messaggi pubblicitari);
+        \item[-] \textbf{Porte (Ports)}: Interfacce che definiscono come il dominio interagisce con l'esterno. Si distinguono in:
+        \begin{itemize}
+            \item[.] \textbf{Inbound ports}: Interfacce che espongono le funzionalità del dominio verso l'esterno, come l'interfaccia \texttt{IPositionProcessor} che riceve posizioni da elaborare;
+            \item[.] \textbf{Outbound ports}: Interfacce che definiscono come il dominio può utilizzare servizi esterni, come \texttt{IRepository}, \texttt{IMessagePublisher} e \texttt{ILlmService}.
+        \end{itemize}
+        \item[-] \textbf{Adapters}: Implementazioni concrete delle porte che collegano il dominio alle tecnologie specifiche:
+        \begin{itemize}
+            \item[.] \textbf{Inbound adapters}: Adattatori che convertono le richieste esterne nel formato atteso dal dominio, come \texttt{KafkaConsumerAdapter};
+            \item[.] \textbf{Outbound adapters}: Adattatori che implementano le interfacce di uscita collegandole a tecnologie specifiche, come \texttt{ClickHouseRepository} o \texttt{GroqLlmAdapter}.
+        \end{itemize}
+    \end{itemize}
+
+    \subsection{Servizi principali e loro componenti}
+    
+    NearYou implementa due servizi principali, entrambi progettati secondo il pattern esagonale:
+
+    \begin{itemize}
+        \item[-] \textbf{Generatore di posizioni GPS}:
+        \begin{itemize}
+            \item[.] \textbf{Core domain}: Implementa la logica di simulazione del movimento di utenti nello spazio;
+            \item[.] \textbf{Outbound ports}: Non dispone di inbound ports poiché non riceve input esterni ma solo genera dati;
+            \item[.] \textbf{Outbound ports}: Include interfacce come \texttt{IPositionPublisher} per pubblicare le posizioni generate;
+            \item[.] \textbf{Adapters}: Implementa adattatori come \texttt{KafkaPositionPublisherAdapter} che converte le posizioni generate in messaggi Kafka.
+        \end{itemize}
+        
+        \item[-] \textbf{Elaboratore di posizioni / Generatore di messaggi}:
+        \begin{itemize}
+            \item[.] \textbf{Core domain}: Contiene la logica di identificazione della prossimità e generazione di messaggi pubblicitari;
+            \item[.] \textbf{Inbound ports}: Include interfacce come \texttt{IPositionReceiver} che ricevono eventi di posizione;
+            \item[.] \textbf{Outbound ports}: Comprende interfacce verso repository (\texttt{IUserRepository}, \texttt{IActivityRepository}), servizi esterni (\texttt{ILlmService}) e publisher di messaggi (\texttt{IMessagePublisher});
+            \item[.] \textbf{Adapters}: Implementa adattatori per tecnologie specifiche, come \texttt{KafkaPositionReceiverAdapter}, \texttt{ClickHouseRepositoryAdapter} e \texttt{GroqLlmAdapter}.
+        \end{itemize}
+    \end{itemize}
+    
+    Questo approccio garantisce che ogni componente abbia responsabilità chiaramente definite e che il nucleo di business rimanga indipendente dalle tecnologie utilizzate per l'implementazione.
+
+    \subsection{Dataflow}
+    
+    Il flusso dei dati attraverso l'architettura esagonale segue un percorso ben definito, garantendo la separazione tra la logica di business e le tecnologie di implementazione. Di seguito viene descritto il flusso di dati end-to-end:
+    
+    \begin{enumerate}
+        \item \textbf{Generazione delle posizioni}:
+        \begin{itemize}
+            \item[.] Il core domain del generatore crea oggetti \texttt{GeoPosition} che rappresentano le coordinate degli utenti;
+            \item[.] Questi oggetti vengono passati attraverso l'outbound port \texttt{IPositionPublisher};
+            \item[.] L'adapter \texttt{KafkaPositionPublisherAdapter} serializza i dati in formato JSON e li pubblica sul topic Kafka \texttt{posizioni}.
+        \end{itemize}
+        
+        \item \textbf{Consumo delle posizioni}:
+        \begin{itemize}
+            \item[.] L'inbound adapter \texttt{KafkaPositionReceiverAdapter} del servizio di elaborazione sottoscrive il topic Kafka \texttt{posizioni};
+            \item[.] I messaggi ricevuti vengono deserializzati e convertiti in oggetti di dominio \texttt{UserPosition};
+            \item[.] Questi oggetti vengono passati all'inbound port \texttt{IPositionProcessor} per l'elaborazione.
+        \end{itemize}
+        
+        \item \textbf{Elaborazione e generazione di messaggi}:
+        \begin{itemize}
+            \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IActivityRepository} per recuperare le attività nelle vicinanze;
+            \item[.] In caso di rilevamento di prossimità, il sistema richiede informazioni sull'utente tramite l'outbound port \texttt{IUserRepository};
+            \item[.] Con i dati dell'utente e del punto di interesse, il core domain richiede un messaggio personalizzato tramite l'outbound port \texttt{ILlmService};
+            \item[.] L'adapter \texttt{GroqLlmAdapter} comunica con il servizio LLM esterno e restituisce il messaggio generato;
+            \item[.] Il messaggio personalizzato viene incapsulato in un oggetto \texttt{AdvertisingMessage} del dominio.
+        \end{itemize}
+        
+        \item \textbf{Pubblicazione del messaggio pubblicitario}:
+        \begin{itemize}
+            \item[.] L'oggetto \texttt{AdvertisingMessage} viene passato all'outbound port \texttt{IMessagePublisher};
+            \item[.] L'adapter \texttt{KafkaMessagePublisherAdapter} serializza il messaggio e lo pubblica sul topic Kafka \texttt{messaggi}.
+        \end{itemize}
+        
+        \item \textbf{Persistenza e visualizzazione}:
+        \begin{itemize}
+            \item[.] ClickHouse, attraverso il connettore Kafka nativo, consuma e archivia i messaggi dal topic \texttt{messaggi};
+            \item[.] Grafana interroga ClickHouse per recuperare e visualizzare i dati in tempo reale attraverso dashboard interattive.
+        \end{itemize}
+    \end{enumerate}
+    
+    Il flusso dei dati è progettato per essere asincrono, garantendo la scalabilità e la resilienza del sistema. Ogni componente può funzionare indipendentemente, con Kafka che funge da buffer di messaggi affidabile tra i vari stadi del processo.
+
+    Gli adattatori si occupano d'interfacciarsi con l'esterno: il simulatore di posizioni produce eventi JSON su Kafka, successivamente elaborati da Flink per definire la prossimità ai punti di interesse e gestire i dati necessari alla logica di dominio. Qualora sia richiesta la generazione di contenuti, un LLM esterno crea i messaggi personalizzati che confluiscono nel dominio. La persistenza e la consultazione storica avvengono tramite ClickHouse, mentre Grafana rende immediatamente disponibili tali informazioni agli utenti.
+
+    Questo utilizzo di Kafka come backbone di comunicazione sostiene la natura asincrona ed event-driven del sistema, svincolando i componenti gli uni dagli altri. Grazie a questa separazione in porte e adattatori, l'architettura risulta flessibile, manutenibile e facile da testare: ogni modifica alla periferia può essere gestita senza impattare la logica di dominio, preservando nel contempo la coerenza e la semplicità di estensione all'intero sistema.
+
 \section{Architettura del Sistema}
 
 \subsection{Panoramica architetturale}
@@ -925,8 +1026,8 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                     
                 \end{itemize}
             \end{itemize}
-\item \textbf{Conclusioni}\\
-La validazione dei dati a livello di codice è stata adottata per mitigare il rischio di \textit{Kafka poisoning}, in quanto non erano richieste misure di sicurezza avanzate dal proponente. Pur offrendo una protezione inferiore rispetto a soluzioni più sofisticate, questa strategia risulta semplice da integrare e fornisce una prima linea di difesa contro possibili iniezioni di dati malevoli, senza comportare carichi di lavoro eccessivi sul resto del progetto. È stato condotto comunque uno studio approfondito delle altre tecniche di mitigazione, così da valutare il carico di lavoro richiesto e quale fosse la scelta più adatta, lasciando comunque possibilità di implementarle in futuro per migliorare la sicurezza del sistema.\\
+            \item \textbf{Conclusioni}\\
+                La validazione dei dati a livello di codice è stata adottata per mitigare il rischio di \textit{Kafka poisoning}, in quanto non erano richieste misure di sicurezza avanzate dal proponente. Pur offrendo una protezione inferiore rispetto a soluzioni più sofisticate, questa strategia risulta semplice da integrare e fornisce una prima linea di difesa contro possibili iniezioni di dati malevoli, senza comportare carichi di lavoro eccessivi sul resto del progetto. È stato condotto comunque uno studio approfondito delle altre tecniche di mitigazione, così da valutare il carico di lavoro richiesto e quale fosse la scelta più adatta, lasciando comunque possibilità di implementarle in futuro per migliorare la sicurezza del sistema.\\
         \end{itemize}
 
         \myparagraph{Apache Flink}
@@ -1797,107 +1898,6 @@ La validazione dei dati a livello di codice è stata adottata per mitigare il ri
         \item[-] Facilità nel debugging e nell'analisi retrospettiva;
         \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema.
     \end{itemize}
-
-    \section{Architettura logica}
-
-    La logica del progetto adotta un approccio esagonale (Hexagonal Architecture, noto anche come Ports and Adapters) incentrato sugli eventi, con l'obiettivo di separare chiaramente la logica di dominio dai servizi esterni. Al centro si trova il core esagonale, che contiene le regole per la gestione del business legato alla generazione di messaggi pubblicitari personalizzati. Questo nucleo è isolato da sistemi come Flink, Kafka, ClickHouse e Grafana tramite porte (interface) e adattatori (infrastructure), favorendo una netta suddivisione delle responsabilità.
-
-    \begin{figure}[h]
-    \centering
-    % Inserire qui il diagramma dell'architettura esagonale
-    \caption{Architettura logica del prodotto con modello esagonale}
-    \end{figure}
-
-    \subsection{Pattern di architettura esagonale}
-    
-    Il pattern architetturale Ports and Adapters è stato scelto per la sua capacità di disaccoppiare la logica di business dalle tecnologie specifiche. Questa separazione consente una maggiore manutenibilità e testabilità del sistema, oltre a facilitare l'evoluzione tecnologica senza impattare sul nucleo funzionale.
-    
-    Nell'architettura esagonale implementata, possiamo distinguere:
-    
-    \begin{itemize}
-        \item[-] \textbf{Core domain}: Il nucleo centrale che rappresenta le entità e la logica di business (punti di interesse, utenti, posizioni e messaggi pubblicitari);
-        \item[-] \textbf{Porte (Ports)}: Interfacce che definiscono come il dominio interagisce con l'esterno. Si distinguono in:
-        \begin{itemize}
-            \item[.] \textbf{Inbound ports}: Interfacce che espongono le funzionalità del dominio verso l'esterno, come l'interfaccia \texttt{IPositionProcessor} che riceve posizioni da elaborare;
-            \item[.] \textbf{Outbound ports}: Interfacce che definiscono come il dominio può utilizzare servizi esterni, come \texttt{IRepository}, \texttt{IMessagePublisher} e \texttt{ILlmService}.
-        \end{itemize}
-        \item[-] \textbf{Adapters}: Implementazioni concrete delle porte che collegano il dominio alle tecnologie specifiche:
-        \begin{itemize}
-            \item[.] \textbf{Inbound adapters}: Adattatori che convertono le richieste esterne nel formato atteso dal dominio, come \texttt{KafkaConsumerAdapter};
-            \item[.] \textbf{Outbound adapters}: Adattatori che implementano le interfacce di uscita collegandole a tecnologie specifiche, come \texttt{ClickHouseRepository} o \texttt{GroqLlmAdapter}.
-        \end{itemize}
-    \end{itemize}
-
-    \subsection{Servizi principali e loro componenti}
-    
-    NearYou implementa due servizi principali, entrambi progettati secondo il pattern esagonale:
-
-    \begin{itemize}
-        \item[-] \textbf{Generatore di posizioni GPS}:
-        \begin{itemize}
-            \item[.] \textbf{Core domain}: Implementa la logica di simulazione del movimento di utenti nello spazio;
-            \item[.] \textbf{Outbound ports}: Non dispone di inbound ports poiché non riceve input esterni ma solo genera dati;
-            \item[.] \textbf{Outbound ports}: Include interfacce come \texttt{IPositionPublisher} per pubblicare le posizioni generate;
-            \item[.] \textbf{Adapters}: Implementa adattatori come \texttt{KafkaPositionPublisherAdapter} che converte le posizioni generate in messaggi Kafka.
-        \end{itemize}
-        
-        \item[-] \textbf{Elaboratore di posizioni / Generatore di messaggi}:
-        \begin{itemize}
-            \item[.] \textbf{Core domain}: Contiene la logica di identificazione della prossimità e generazione di messaggi pubblicitari;
-            \item[.] \textbf{Inbound ports}: Include interfacce come \texttt{IPositionReceiver} che ricevono eventi di posizione;
-            \item[.] \textbf{Outbound ports}: Comprende interfacce verso repository (\texttt{IUserRepository}, \texttt{IActivityRepository}), servizi esterni (\texttt{ILlmService}) e publisher di messaggi (\texttt{IMessagePublisher});
-            \item[.] \textbf{Adapters}: Implementa adattatori per tecnologie specifiche, come \texttt{KafkaPositionReceiverAdapter}, \texttt{ClickHouseRepositoryAdapter} e \texttt{GroqLlmAdapter}.
-        \end{itemize}
-    \end{itemize}
-    
-    Questo approccio garantisce che ogni componente abbia responsabilità chiaramente definite e che il nucleo di business rimanga indipendente dalle tecnologie utilizzate per l'implementazione.
-
-    \subsection{Dataflow}
-    
-    Il flusso dei dati attraverso l'architettura esagonale segue un percorso ben definito, garantendo la separazione tra la logica di business e le tecnologie di implementazione. Di seguito viene descritto il flusso di dati end-to-end:
-    
-    \begin{enumerate}
-        \item \textbf{Generazione delle posizioni}:
-        \begin{itemize}
-            \item[.] Il core domain del generatore crea oggetti \texttt{GeoPosition} che rappresentano le coordinate degli utenti;
-            \item[.] Questi oggetti vengono passati attraverso l'outbound port \texttt{IPositionPublisher};
-            \item[.] L'adapter \texttt{KafkaPositionPublisherAdapter} serializza i dati in formato JSON e li pubblica sul topic Kafka \texttt{posizioni}.
-        \end{itemize}
-        
-        \item \textbf{Consumo delle posizioni}:
-        \begin{itemize}
-            \item[.] L'inbound adapter \texttt{KafkaPositionReceiverAdapter} del servizio di elaborazione sottoscrive il topic Kafka \texttt{posizioni};
-            \item[.] I messaggi ricevuti vengono deserializzati e convertiti in oggetti di dominio \texttt{UserPosition};
-            \item[.] Questi oggetti vengono passati all'inbound port \texttt{IPositionProcessor} per l'elaborazione.
-        \end{itemize}
-        
-        \item \textbf{Elaborazione e generazione di messaggi}:
-        \begin{itemize}
-            \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IActivityRepository} per recuperare le attività nelle vicinanze;
-            \item[.] In caso di rilevamento di prossimità, il sistema richiede informazioni sull'utente tramite l'outbound port \texttt{IUserRepository};
-            \item[.] Con i dati dell'utente e del punto di interesse, il core domain richiede un messaggio personalizzato tramite l'outbound port \texttt{ILlmService};
-            \item[.] L'adapter \texttt{GroqLlmAdapter} comunica con il servizio LLM esterno e restituisce il messaggio generato;
-            \item[.] Il messaggio personalizzato viene incapsulato in un oggetto \texttt{AdvertisingMessage} del dominio.
-        \end{itemize}
-        
-        \item \textbf{Pubblicazione del messaggio pubblicitario}:
-        \begin{itemize}
-            \item[.] L'oggetto \texttt{AdvertisingMessage} viene passato all'outbound port \texttt{IMessagePublisher};
-            \item[.] L'adapter \texttt{KafkaMessagePublisherAdapter} serializza il messaggio e lo pubblica sul topic Kafka \texttt{messaggi}.
-        \end{itemize}
-        
-        \item \textbf{Persistenza e visualizzazione}:
-        \begin{itemize}
-            \item[.] ClickHouse, attraverso il connettore Kafka nativo, consuma e archivia i messaggi dal topic \texttt{messaggi};
-            \item[.] Grafana interroga ClickHouse per recuperare e visualizzare i dati in tempo reale attraverso dashboard interattive.
-        \end{itemize}
-    \end{enumerate}
-    
-    Il flusso dei dati è progettato per essere asincrono, garantendo la scalabilità e la resilienza del sistema. Ogni componente può funzionare indipendentemente, con Kafka che funge da buffer di messaggi affidabile tra i vari stadi del processo.
-
-    Gli adattatori si occupano d'interfacciarsi con l'esterno: il simulatore di posizioni produce eventi JSON su Kafka, successivamente elaborati da Flink per definire la prossimità ai punti di interesse e gestire i dati necessari alla logica di dominio. Qualora sia richiesta la generazione di contenuti, un LLM esterno crea i messaggi personalizzati che confluiscono nel dominio. La persistenza e la consultazione storica avvengono tramite ClickHouse, mentre Grafana rende immediatamente disponibili tali informazioni agli utenti.
-
-    Questo utilizzo di Kafka come backbone di comunicazione sostiene la natura asincrona ed event-driven del sistema, svincolando i componenti gli uni dagli altri. Grazie a questa separazione in porte e adattatori, l'architettura risulta flessibile, manutenibile e facile da testare: ogni modifica alla periferia può essere gestita senza impattare la logica di dominio, preservando nel contempo la coerenza e la semplicità di estensione all'intero sistema.
 
 \section{Architettura di deployment}
 Al fine di implementare ed eseguire l'intero stack tecnologico ed i componenti del modello architetturale del sistema, è stato configurato un ambiente Docker che simula la suddivisione e la distribuzione dei servizi. Informazioni aggiuntive sulle immagini utilizzate e sulle configurazioni dell'ambiente sono disponibili nel file docker-compose.yml presente nel repository del progetto oltre che nella sezione \ref{sec:strumenti}.
