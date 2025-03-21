@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SevenBits - Glossario</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="glossary">
+    <div id="include-navbar"></div>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Glossario</h1>
+                <p>Termini e definizioni del progetto</p>
+                <div class="search-container">
+                    <input type="text" id="search-glossary" placeholder="Cerca un termine..." class="search-input">
+                </div>
+            </div>
+        </section>
+        <div id="glossary-content">
+            <!-- Glossary content will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <div id="include-footer"></div>
+
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="Torna su">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/theme.js"></script>
+    <script src="js/common.js"></script>
+    <script src="glossary.js"></script>
+    <script src="js/glossary-renderer.js"></script>
+</body>
+</html>
