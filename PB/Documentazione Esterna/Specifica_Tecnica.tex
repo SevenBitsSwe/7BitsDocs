@@ -60,7 +60,7 @@
 
 \surroundwithmdframed{lstlisting}
 
-\newcommand\version{0.1.4} %aggiunta versione come variabile
+\newcommand\version{0.1.6} %aggiunta versione come variabile
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 \newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
 
@@ -144,6 +144,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    0.1.6 & 2025-03-21 & Riccardo Piva & Uncas Peruzzi & Sezione Integrazione Architettura logica e Architettura di sistema \\ 
     \hline
     0.1.5 & 2025-03-17 & Riccardo Piva & Alfredo Rubino & Fix generali e miglioramenti \\ 
     \hline
@@ -846,6 +848,36 @@ In NearYou, Docker è utilizzato per:
     Gli adattatori si occupano d'interfacciarsi con l'esterno: il simulatore di posizioni produce eventi JSON su Kafka, successivamente elaborati da Flink per definire la prossimità ai punti di interesse e gestire i dati necessari alla logica di dominio. Qualora sia richiesta la generazione di contenuti, un LLM esterno crea i messaggi personalizzati che confluiscono nel dominio. La persistenza e la consultazione storica avvengono tramite ClickHouse, mentre Grafana rende immediatamente disponibili tali informazioni agli utenti.
 
     Questo utilizzo di Kafka come backbone di comunicazione sostiene la natura asincrona ed event-driven del sistema, svincolando i componenti gli uni dagli altri. Grazie a questa separazione in porte e adattatori, l'architettura risulta flessibile, manutenibile e facile da testare: ogni modifica alla periferia può essere gestita senza impattare la logica di dominio, preservando nel contempo la coerenza e la semplicità di estensione all'intero sistema.
+
+\section{Integrazione Architettura logica e Architettura di sistema}
+\subsection{Descrizione}
+Le due architetture, la Kappa Architecture e l'architettura esagonale, rappresentano due prospettive differenti dello stesso sistema.
+Mentre la Kappa Architecture si riferisce all’implementazione concreta del codice e al flusso continuodi dati in tempo reale, l’architettura esagonale evidenzia la separazione logicatra il core di business e le interfacce esterne.
+Nonostante l'approccio e la terminologia differiscano, i componenti  del sistema sono gli stessi condivisi fra le due architetture e possono quindi essere mappati fra di loro.
+Ovviamente, il layer di Visualizzazione non rientra nell'architettura esagonale, poiché non è un componente realizzato dal gruppo, ma si interfaccia solamente con il database ClickHouse per la parte di interfaccia utente.
+\subsection{Mappatura dei componenti}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{0}{gray!11}{white}
+\begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{4cm}|>{\raggedright\arraybackslash}m{6cm}|}
+\hline
+\rowcolor{gray!25}
+\textbf{Kappa Architecture} & \textbf{Architettura Esagonale} & \textbf{Ruolo nel Progetto} \\
+\hline
+Generazione di dati & Output Port (Generazione Posizioni) & Pubblica le posizioni generate sul topic Kafka \texttt{raw\_positions}. \\
+\hline
+Gestione messaggi & Input Port (Elaborazione Posizioni) & Sistema di topic Kafka usato per lo scambio di informazioni fra i vari componenti. \\
+\hline
+Elaborazione dei dati & Core Service (Elaborazione Posizioni) & Si occupa della generazione dei messaggi ed esegue la logica di trasformazione e conseguente filtraggio dei dati. \\
+\hline
+Storage & Output Adapter (Elaborazione Posizioni) & Memorizza i dati elaborati in un database (ClickHouse in questo caso). \\
+\hline
+\end{tabular}
+\caption{Mappatura dei componenti tra Kappa Architecture e Architettura Esagonale}
+\label{tab:mappatura_componenti}
+\end{table}
 
 \section{Architettura del Sistema}
 
