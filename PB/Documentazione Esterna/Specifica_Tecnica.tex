@@ -60,7 +60,7 @@
 
 \surroundwithmdframed{lstlisting}
 
-\newcommand\version{0.1.6} %aggiunta versione come variabile
+\newcommand\version{0.1.7} %aggiunta versione come variabile
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 \newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
 
@@ -144,6 +144,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    0.1.7 & 2025-03-22 & Federico Pivetta & Uncas Peruzzi & Ampliati i paragrafi per i pattern Strategy e Factory \\ 
     \hline
     0.1.6 & 2025-03-21 & Riccardo Piva & Uncas Peruzzi & Sezione Integrazione Architettura logica e Architettura di sistema \\ 
     \hline
@@ -1569,24 +1571,94 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
 
 \subsection{Design Pattern e Best Practices}
 \subsubsection{Design pattern applicati}
-    \myparagraph{Strategy Pattern}
-    L'architettura implementa il pattern Strategy per definire diverse modalità di simulazione del movimento. L'interfaccia \texttt{IPositionSimulationStrategy} definisce il contratto che tutte le strategie concrete devono implementare:
-    \begin{lstlisting}
-    class IPositionSimulationStrategy(ABC):
-        @abstractmethod
-        def simulate_position_live_update(self, sensor_istance):
-            pass
-    \end{lstlisting}
-    La strategia \texttt{BycicleSimulationStrategy} implementa questa interfaccia fornendo un comportamento specifico per simulare il movimento di una bicicletta. Questo pattern permette di cambiare dinamicamente l'algoritmo di simulazione senza modificare il codice client.
+\myparagraph{Strategy Pattern}
 
-    \myparagraph{Factory Pattern}
-    Il pattern Factory è utilizzato per la creazione di oggetti sensore, nascondendo la complessità della loro istanziazione:
-    \begin{lstlisting}
-    sensor_istance = sensor_factory.create_sensor(sensor_uuid, strategy_simulation)
-    \end{lstlisting}
-    Questo approccio centralizza la logica di creazione degli oggetti e facilita la manutenzione e l'estensione del sistema.
+    \mysubparagraph{Motivazioni e studio del design pattern}
+    Il pattern Strategy è stato adottato per incrementare la flessibilità nella gestione di diverse modalità operative del sistema. Questa scelta architetturale permette di definire un'interfaccia comune per tutte le strategie implementate, consentendo di modificare il comportamento del sistema selezionando una strategia specifica. Tale approccio aderisce al principio Open/Closed, agevolando l'aggiunta di nuove strategie senza intervenire su quelle esistenti.
 
-    \myparagraph{Adapter Pattern}
+    \mysubparagraph{Implementazione del design pattern}
+    Il pattern Strategy è implementato attraverso la definizione di un'interfaccia che delinea il comportamento comune a tutte le strategie. Ogni strategia concreta realizza questa interfaccia, fornendo un'implementazione specifica per una determinata funzionalità. Questo design consente la selezione dinamica della strategia più appropriata in base alle esigenze operative, migliorando la modularità e la manutenibilità del codice complessivo.
+
+    \mysubparagraph{Utilizzo}
+    L'integrazione del pattern Strategy disaccoppia la logica specifica delle funzionalità dal codice client che le invoca, semplificando l'estensibilità del sistema. La possibilità di scegliere le strategie a runtime permette di adattare dinamicamente il comportamento dell'applicazione in base al contesto. Ciò si rivela particolarmente vantaggioso in scenari che richiedono la sperimentazione o l'utilizzo di diverse modalità operative senza necessità di modifiche al nucleo del codice.
+
+    \mysubparagraph{Integrazione del pattern}
+    Il pattern Strategy si compone di tre elementi principali: un contesto che utilizza la strategia, un'interfaccia che definisce il contratto comune e le classi concrete che implementano le varie strategie. Nel nostro sistema, questo pattern è implementato in diversi modi:
+    \begin{itemize}
+        \item Per la simulazione della posizione, il nostro sistema utilizza l'interfaccia IPositionSimulationStrategy, un contratto che definisce tre metodi astratti: get\_route(), get\_delta\_time() e get\_speed(). Questa interfaccia, basata sul pattern Strategy, permette di implementare diverse logiche di simulazione, garantendo flessibilità ed estendibilità per vari scenari di utilizzo.
+        \begin{lstlisting}
+        class IPositionSimulationStrategy(ABC):
+            @abstractmethod
+            def get_route(self):
+                pass
+            
+            @abstractmethod
+            def get_delta_time(self) -> float:
+                pass
+            
+            @abstractmethod
+            def get_speed(self) -> float:
+                pass
+        \end{lstlisting}
+        La strategia concreta BycicleSimulationStrategy implementa l'interfaccia IPositionSimulationStrategy, fornendo un algoritmo specifico per simulare il movimento di una bicicletta.
+        BycicleSimulationStrategy utilizza la libreria OSMnx per generare percorsi realistici su mappe stradali, calcolando il percorso più breve tra due nodi selezionati casualmente dal grafo e restituendo le relative coordinate geografiche. Definisce inoltre parametri specifici per la simulazione ciclistica, come una velocità media di circa 15 km/h e un delta temporale tra le posizioni simulate.\\
+        Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione.
+        
+        \item Per gestire l'interazione con modelli linguistici di grandi dimensioni (LLM), il nostro sistema utilizza l'interfaccia LLMService, un contratto che definisce i metodi \_\_init\_\_(self, structured\_response: BaseModel), set\_up\_chat(self) e get\_llm\_structured\_response(self, prompt). Questa interfaccia, basata sul pattern Strategy, permette di integrare diversi servizi di IA.
+        \begin{lstlisting}
+        class LLMService(ABC):
+            def __init__(self, structured_response: BaseModel):
+                self.__llm_structured_response = structured_response
+
+            @abstractmethod
+            def set_up_chat(self):
+                pass
+
+            @abstractmethod
+            def get_llm_structured_response(self, prompt):
+                pass
+        \end{lstlisting}
+        La strategia concreta GroqLLMService implementa l'interfaccia LLMService, fornendo un meccanismo specifico per comunicare con il modello Groq. GroqLLMService si avvale della libreria langchain-groq per stabilire la connessione e inviare richieste al servizio Groq, gestendo l'autenticazione tramite una chiave API. Il metodo set\_up\_chat() configura l'interazione con il modello "Gemma2-9b-it" mentre il metodo get\_llm\_structured\_response(self, prompt) prende un prompt come input e restituisce una risposta strutturata, definita al momento dell'inizializzazione della classe.\\
+        Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie per diversi fornitori di LLM.
+        
+    \end{itemize}
+    In conclusione, questo approccio modulare, basato sul pattern Strategy, ci consente di estendere facilmente il sistema con nuove strategie senza dover modificare il codice esistente. Tale progettazione rispetta i principi SOLID, in particolare il principio Open/Closed, e contribuisce significativamente al miglioramento della manutenibilità complessiva dell'applicazione.
+
+\myparagraph{Factory Pattern}
+
+    \mysubparagraph{Motivazioni e studio del design pattern}
+    Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di instanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
+
+    \mysubparagraph{Implementazione del design pattern}
+    Il pattern Factory viene implementato attraverso una classe dedicata, denominata "Factory", che contiene metodi specifici per la creazione dei diversi tipi di oggetti che essa è responsabile di produrre. Questa classe Factory spesso dipende da astrazioni (come interfacce o classi astratte) per poter creare le istanze concrete. I metodi di creazione all'interno della Factory si occupano di gestire la logica necessaria per istanziare e configurare correttamente gli oggetti richiesti, potenzialmente gestendo dipendenze o configurazioni specifiche per ciascun tipo di oggetto. La Factory può anche svolgere un ruolo nell'assicurare che gli oggetti creati rispettino determinati contratti o abbiano uno stato iniziale valido.
+
+    \mysubparagraph{Utilizzo}
+    L'integrazione del pattern Factory semplifica il processo di ottenimento di oggetti per il codice client. Invece di istanziare direttamente le classi concrete degli oggetti di cui ha bisogno, il codice client interagisce con la Factory, invocando il metodo di creazione appropriato per il tipo di oggetto desiderato. Il client fornisce alla Factory eventuali parametri necessari per la creazione dell'oggetto. La Factory si occupa quindi di creare e restituire un'istanza dell'oggetto richiesto, completamente configurata e pronta per essere utilizzata. Questo approccio riduce l'accoppiamento tra il codice client e le implementazioni concrete degli oggetti, migliorando la manutenibilità e la testabilità del sistema, in quanto le dipendenze di creazione sono centralizzate e possono essere facilmente sostituite o testate isolatamente.
+
+    \mysubparagraph{Integrazione del pattern}
+    Il pattern Factory è implementato nel nostro sistema attraverso la classe SensorFactory, la quale incapsula la logica di creazione degli oggetti SensorSubject. Questa classe definisce i seguenti metodi principali:
+    \begin{lstlisting}
+    class SensorFactory:
+        def __init__(self, sensor_repo: ISensorRepository, user_repo: IUserRepository):
+        self.__user_sensor_service = UserSensorService(sensor_repo, user_repo)
+
+        def create_gps_sensor(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy) -> SensorSubject:
+            uuid = self.__user_sensor_service.assign_sensor_to_user()
+            return GpsSensor(uuid, position_sender, simulation_strategy)
+            
+        def create_gps_sensor_list(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy, number_of_sensors: int) -> List[SensorSubject]:
+            sensor_list = [self.create_gps_sensor(position_sender, simulation_strategy) for i in range(number_of_sensors)]
+            return sensor_list
+    \end{lstlisting}
+    Il funzionamento dei metodi della SensorFactory è il seguente:
+    \begin{itemize}
+        \item \_\_init\_\_(self, sensor\_repo, user\_repo): Costruttore che inizializza la factory, ricevendo repository per sensori e utenti per la gestione dell'assegnazione degli ID unici tramite UserSensorService;
+        \item create\_gps\_sensor(self, position\_sender, simulation\_strategy) -$>$ SensorSubject: Crea una singola istanza di GpsSensor. Riceve un PositionSender e una IPositionSimulationStrategy, ottiene un UUID tramite UserSensorService e restituisce l'oggetto GpsSensor configurato con questi elementi;
+        \item create\_gps\_sensor\_list(self, position\_sender, simulation\_strategy, number\_of\_sensors) -$>$ List[SensorSubject]: Crea una lista contenente il numero specificato di istanze di GpsSensor, riutilizzando il metodo create\_gps\_sensor() per ogni elemento della lista. Richiede un PositionSender, una IPositionSimulationStrategy e il numero di sensori da creare.
+    \end{itemize}
+In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di instanziazione in un unico punto e rispettando il principio di singola responsabilità.
+
+\myparagraph{Adapter Pattern}
     Il pattern Adapter è implementato dalla classe \texttt{PositionJsonAdapter} che converte gli oggetti del dominio \texttt{GeoPosition} in formato JSON compatibile con Kafka:
     \begin{lstlisting}
     class PositionJsonAdapter(IJsonSerializable):
@@ -1604,19 +1676,20 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
     \end{lstlisting}
     Questo pattern consente di adattare interfacce incompatibili e promuove il riutilizzo del codice.
 
-    \myparagraph{Repository Pattern}
-    Per l'accesso ai dati, l'architettura utilizza il Repository Pattern, che astrae la logica di persistenza e fornisce un'interfaccia coerente per le operazioni CRUD:
-    \begin{lstlisting}
-    class ActivityRepository(IActivityRepository):
-        def __init__(self, db_connector):
-            self.__db_connector = db_connector
+    %%%%%%%%%%%%%%%%% TOGLIERE ??? %%%%%%%%%%%%%%%%%
+    %\myparagraph{Repository Pattern}
+    %Per l'accesso ai dati, l'architettura utilizza il Repository Pattern, che astrae la logica di persistenza e fornisce un'interfaccia coerente per le operazioni CRUD:
+    %\begin{lstlisting}
+    %class ActivityRepository(IActivityRepository):
+    %    def __init__(self, db_connector):
+    %        self.__db_connector = db_connector
 
-        def get_activities_in_radius(self, lat, lon, radius_meters):
-            # Query per trovare attivit\`a entro il raggio specificato
-            # ...
-            return activities_list
-    \end{lstlisting}
-    Questo pattern disaccoppia la logica di business dalla logica di accesso ai dati, migliorando la manutenibilità.
+    %    def get_activities_in_radius(self, lat, lon, radius_meters):
+    %        # Query per trovare attivit\`a entro il raggio specificato
+    %        # ...
+    %        return activities_list
+    %\end{lstlisting}
+    %Questo pattern disaccoppia la logica di business dalla logica di accesso ai dati, migliorando la manutenibilità.
 
     \subsubsection{Best practices architetturali}
     \myparagraph{PEP8 - Stile di codifica Python}
