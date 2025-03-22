@@ -145,6 +145,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.1.8 & 2025-03-22 & Alfredo Rubino & Uncas Peruzzi & Aggiunto pattern Adapter \\ 
+    \hline
     0.1.7 & 2025-03-22 & Federico Pivetta & Uncas Peruzzi & Ampliati i paragrafi per i pattern Strategy e Factory \\ 
     \hline
     0.1.6 & 2025-03-21 & Riccardo Piva & Uncas Peruzzi & Sezione Integrazione Architettura logica e Architettura di sistema \\ 
@@ -1659,22 +1661,49 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
 In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di instanziazione in un unico punto e rispettando il principio di singola responsabilità.
 
 \myparagraph{Adapter Pattern}
-    Il pattern Adapter è implementato dalla classe \texttt{PositionJsonAdapter} che converte gli oggetti del dominio \texttt{GeoPosition} in formato JSON compatibile con Kafka:
-    \begin{lstlisting}
+\mysubparagraph{Motivazioni e studio del design pattern}
+Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka o la serializzazione in JSON). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
+
+\mysubparagraph{Implementazione del design pattern}
+L’implementazione del pattern Adapter avviene tramite la creazione di:
+\begin{enumerate}
+    \item Una o più interfacce che definiscono i metodi necessari a interagire con l’architettura esagonale;
+    \item Una classe \texttt{adapter} concreta che implementa tali interfacce, convertendo gli oggetti e le chiamate tra il formato richiesto dalla business logic e quello utilizzato dalla componente esterna.
+\end{enumerate}
+
+\mysubparagraph{Integrazione del pattern}
+L’Adapter funge da collegamento tra l’architettura esagonale e le librerie esterne. L’architettura esagonale interagisce esclusivamente con \texttt{GeoPosition} e altre entità di dominio, senza preoccuparsi del formato dei messaggi o delle dipendenze verso Kafka. Se in futuro fosse necessario sostituire il broker di messaggistica o cambiare il formato di serializzazione, basterebbe quindi aggiornare l’Adapter corrispondente, senza intaccare la logica di business interna.\\
+Di seguito viene mostrata l’implementazione concreta dell’Adapter, che trasforma gli oggetti \texttt{GeoPosition} in stringhe JSON compatibili con il topic di Kafka:
+
+\begin{lstlisting}
     class PositionJsonAdapter(IJsonSerializable):
-        def __init__(self, position_instance: GeoPosition):
-            self.__position_instance = position_instance
-            
-        def to_json(self) -> str:
-            data = {
-                "id": str(self.__position_instance.get_sensor_id()),
-                "latitude": self.__position_instance.get_latitude(),
-                "longitude": self.__position_instance.get_longitude(),
-                "received_at": self.__position_instance.get_timestamp().isoformat()
-            }
-            return json.dumps(data)
-    \end{lstlisting}
-    Questo pattern consente di adattare interfacce incompatibili e promuove il riutilizzo del codice.
+    def serialize_to_json(self, position_istance: GeoPosition):
+
+        return json.dumps({
+            'user_uuid': position_istance.get_sensor_id(),
+            'latitude': float(position_istance.get_latitude()),
+            'longitude': float(position_istance.get_longitude()),
+            'received_at': position_istance.get_timestamp(),
+        })
+\end{lstlisting}
+Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Adapter per serializzare i dati prima dell’invio a Kafka:
+\begin{lstlisting}
+    class KafkaConfluentAdapter(PositionSender):
+    
+    def __init__(self,
+                kafka_config: KafkaConfigParameters,
+                json_adapter_istance: "PositionJsonAdapter",
+                producer_istance: Producer):
+        super().__init__(json_adapter_istance)
+        self.__kafka_config = kafka_config
+        self.__producer = producer_istance
+        
+    def send_data_to_broker(self, json_payload, sensor_id: str):
+        self.__producer.produce(self.__kafka_config.source_topic, 
+                                key = str(sensor_id),
+                                value = json_payload.encode('utf-8'))
+        self.__producer.flush()
+\end{lstlisting}
 
     %%%%%%%%%%%%%%%%% TOGLIERE ??? %%%%%%%%%%%%%%%%%
     %\myparagraph{Repository Pattern}
