@@ -1,0 +1,119 @@
+
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Interno del meeting in data 2025-03-24}
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+%contenuti principali
+\maketitle
+\begin{center}
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+\end{center}
+\newpage
+\tableofcontents
+\newpage
+\section{2025-03-24}
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 9:30 - 10:30;
+\item Partecipanti:
+	\begin{itemize}
+            \item Giovanni Cristellon;
+		\item Gusella Manuel;
+		\item Peruzzi Uncas;
+		\item Piva Riccardo;
+		\item Pivetta Federico;
+		\item Rubino Alfredo;
+		\item Trolese Leonardo.
+	\end{itemize}
+\item Piattaforma: Discord (online)
+\end{itemize}
+
+\subsection{Ordine del giorno}
+\begin{itemize}
+    \item Retrospettiva dello sprint appena concluso;
+    \item Assegnazione dei ruoli;
+    \item Redazione del preventivo e consuntivo delle ore;
+    \item Pianificazione delle attività per il prossimo sprint.
+\end{itemize}
+
+\subsection{Sintesi}
+Il gruppo si è riunito per concludere la nona iterazione.\\
+Durante l'incontro, sono stati analizzati i progressi dell'iterazione precedente e pianificate le attività per la successiva. La riunione si è conclusa con l'assegnazione dei ruoli e la redazione del preventivo per la prossima iterazione.
+
+\subsubsection{Assegnazione ruoli}
+Il gruppo ha deciso di assegnare i ruoli in modo da completare al meglio le ultime attività rimaste, continuando comunque con la rotazione.
+
+\subsubsection{Preventivo e Consuntivo delle ore}
+Il gruppo ha redatto il consuntivo della settimana appena conclusa e ha in seguito compilato il preventivo per la prossima iterazione.
+
+\subsubsection{Issue}
+Per garantire un'organizzazione efficace delle attività rimanenti, sono state create delle issue relative alle ultime task da completare. Questo per permettere al team di avere sempre una visione chiara di ciò che resta da fare, facilitando la distribuzione del lavoro e ottimizzando i tempi in vista della consegna imminente.
+
+\subsubsection{Sprint Planning}
+Durante il prossimo sprint, il gruppo si concentrerà sull'implementazione delle ultime funzionalità del prodotto, sulla scrittura dei test mancanti e sulla redazione dei documenti in vista della revisione PB. In particolare, dovrà apportare le ultime correzioni alle \textit{Norme\_di\_Progetto}, completare la redazione della sezione dedicata allo sprint 9 nel \textit{Piano\_di\_Progetto}, aggiungere nuovi termini al \textit{Glossario} e integrare i test di unità ed integrazione nel \textit{Piano\_di\_Qualifica}.
+
+\subsection{Decisioni Prese}
+Segue un elenco delle decisioni prese durante la riunione:
+\begin{itemize}
+    \item   Assegnazione dei ruoli per il decimo sprint:
+            Responsabile: Uncas Peruzzi;\\
+            Progettisti: Giovanni Cristellon;\\
+            Programmatore: Leonardo Trolese, Alfredo Rubino;\\
+            Amministratore: Manuel Gusella;\\
+            Verificatore: Federico Pivetta, Riccardo Piva.
+    \item Continuare la stesura dei vari documenti;
+    \item Aggiungere la tabella con le informazioni dell'utente nell'MVP;
+    \item Redarre sezione dello sprint 9 nel PdP;
+    \item Redarre i test di unità ed integrazione nel PdQ;
+    \item Scrivere i test mancanti all'MVP;
+    \item Apportare le ultime correzioni alle NdP.
+\end{itemize}
+
+\begin{center}
+    \begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{12cm}|}
+	\hline
+	\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+	\hline  
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/179}{Issue \#179} & Redazione sezione Architettura di sistema\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/194}{Issue \#194} & Stesura Test di Integrazione PdQ\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/195}{Issue \#195} & Stesura Test di Unita PdQ\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/196}{Issue \#196} & Redazione sezione sprint 9 PdP\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/7BitsDocs/issues/200}{Issue \#200} & Correzione Nome di Progetto\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/MVP/issues/17}{Issue \#17} & Implementare Strato di Validazione per messaggi in arrivo da Kafka\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/MVP/issues/18}{Issue \#18} & Scrittura dei Test di Integrazione\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/MVP/issues/19}{Issue \#19} & Scrittura dei Test di Sistema\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\end{document}
+
