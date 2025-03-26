@@ -297,9 +297,6 @@
         \paragraph{Glossario}
         È un documento che raccoglie dei termini specifici e le loro definizioni chiare e concise. Il suo scopo è quello di facilitare la comprensione dei concetti chiave presenti nei vari documenti redatti.\\
 
-        \paragraph{Specifica Tecnica}
-        La \textit{Specifica tecnica} è un documento che fornisce una guida completa per comprendere gli aspetti tecnici fondamentali del progetto, focalizzandosi sull'architettura implementativa e di deployment. Questo documento approfondisce le scelte di design e fornisce una spiegazione dettagliata dei pattern e degli idiomi utilizzati nel progetto. Inoltre, espone le motivazioni alla base delle scelte progettuali e funge da guida chiara per l'attività di codifica e la manutenzione del software.\\
-
         \paragraph{Lettera di Presentazione}
         La Lettera di Presentazione è un documento che accompagna la consegna del prodotto software e della relativa documentazione$_G$ durante le fasi di revisione di progetto$_G$. Il contenuto di questo documento comprende un link alla pagina web che contiene tutta la documentazione$_G$ finora prodotta, un preventivo aggiornato rispetto a quello presentato alla revisione precedente, e dei link alle varie repository del gruppo.\\
 
@@ -743,14 +740,14 @@
         \begin{enumerate}
             \item Creazione di un branch$_G$ dedicato esclusivamente alla redazione di un documento specifico;
             \item Creazione del documento a partire da un template comune a tutti i documenti (esclusi i verbali). La versione iniziale del documento corrisponde a \{0.1.0\};
-            \item Creazione di una draft pull-request dal branch$_G$ corrispondente a tale documento al branch$_G$ Main;
+            \item Creazione di un branch di feauture per la redazione di una sezione del documento, o per una modifica da apportare al documento partendo dal branch$_G$ del documento;
             \item Compilazione dei campi della sezione Registro modifiche;
-            \item Redazione del documento o di una sua sezione;
+            \item Creazione di una pull-request dal branch$_G$ di feauture, precedentemente creato, al branch$_G$ del documento desiderato;
             \item Verifica della documentazione$_G$ prodotta da parte del Verificatore indicato nel Registro modifiche e associato alle modifiche effettuate in quella seduta di lavoro;
-            \item Se CI$_G$ sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
-            \item Si ripetono le operazioni indicate dal punto \{4\} al punto \{6\} fino a quando il documento non è stato completato;
-            \item Quando il documento è completo l'ultimo Verificatore
-            chiude la draft pull-request ed esegue il merge$_G$ nel branch$_G$ Main. Successivamente, si procede ad eliminare il branch$_G$ dedicato, solo se non sono previsti ulteriori sviluppi.
+            \item Se ci sono correzioni o ulteriori modifiche da effettuare, queste devono essere prima indicate tramite suggestion, attraverso la sezione di Review della pull-request, e successivamente apportate alla feature in cui si sta lavorando;
+            \item Se la pull-request viene approvata, si esegue il merge$_G$ nel branch del documento e si elimina il branch di feature creato;
+            \item Si ripetono le operazioni indicate dal punto \{3\} al punto \{8\} fino a quando il documento non è stato completato;
+            \item Quando il documento è completo si aprirà una pull-request verso il branch$_G$ Main e, dopo l'approvazione del documento da parte dei due Verificatori presenti durante il periodo di lavoro, si esegue il merge$_G$ nel branch$_G$ Main. Successivamente, si procede ad eliminare il branch$_G$ dedicato, solo se non sono previsti ulteriori sviluppi.
         \end{enumerate}
 
     \subsubsection{Template in \LaTeX}
@@ -799,11 +796,12 @@
 
         \paragraph{Verbali}
         I verbali sono dei documenti di sintesi di un incontro che sia interno al team o esterno con l'azienda, per questo motivo la loro struttura è diversa rispetto agli altri documenti ufficiali.\\
+        La differenza più lampante è la mancanza del registro modifiche al loro interno, visto che sono documenti che non hanno bisogno di un ciclo di vita prolungato.\\
         I verbali hanno lo scopo di tenere traccia di chi ha partecipato agli incontri ed in particolare quali decisioni sono state prese.\\
         Sono composti da 2 sezioni principali:
         \begin{itemize}
             \item \textbf{Durata e partecipanti}: Viene indicata la data di inizio e fine dell'incontro, insieme al luogo in cui si è svolto. Successivamente, vengono elencati i nomi dei partecipanti del gruppo. Se il verbale è esterno, vengono inclusi anche i partecipanti dell'azienda SyncLab$_G$;
-            \item \textbf{Sintesi e Decisioni/Obiettivi}: La prima sezione contiene un riassunto degli argomenti trattati durante il meeting, mentre la seconda include un elenco delle decisioni prese, collegate alle issue$_G$ corrispondenti tramite una tabella.
+            \item \textbf{Sintesi e Decisioni/Obiettivi}: La prima sezione contiene un riassunto degli argomenti trattati durante il meeting, anche detto: ``ordine del giorno'', mentre la seconda include un elenco delle decisioni prese, collegate alle issue$_G$ corrispondenti tramite una tabella.
         \end{itemize}
         Inoltre, per i verbali esterni è presente una sezione per la convalida del documento mediante una firma.\\
 
@@ -848,10 +846,11 @@
     \end{enumerate}
 
     \subsubsection{Repository}
-    Il gruppo utilizza due repository$_G$ all'interno della propria organizzazione Github$_G$:
+    Il gruppo utilizza tre repository$_G$ all'interno della propria organizzazione Github$_G$:
     \begin{itemize}
         \item \href{https://github.com/SevenBitsSwe/7BitsDocs}{https://github.com/SevenBitsSwe/7BitsDocs}: questa repository$_G$ è utilizzata per revisionare e mantenere aggiornati i documenti redatti, permettendo ai membri del gruppo di gestire in modo efficiente la documentazione$_G$;
-        \item \href{https://github.com/SevenBitsSwe/PoC}{https://github.com/SevenBitsSwe/PoC}: questa repository$_G$ è dedicata alla condivisione e verifica del codice sorgente relativo al prodotto software realizzato per la revisione RTB$_G$. Viene utilizzata dal team per lavorare sul codice del prodotto, consentendo una gestione centralizzata dello sviluppo e delle modifiche apportate al software.
+        \item \href{https://github.com/SevenBitsSwe/PoC}{https://github.com/SevenBitsSwe/PoC}: questa repository$_G$ è dedicata alla condivisione e verifica del codice sorgente relativo al prodotto software realizzato per la revisione RTB$_G$. Viene utilizzata dal team per lavorare sul codice del prodotto, consentendo una gestione centralizzata dello sviluppo e delle modifiche apportate al software;
+        \item \href{https://github.com/SevenBitsSwe/MVP}{https://github.com/SevenBitsSwe/MVP}: questa repository$_G$ è usata per la condivisione e la verifica del codice sorgente relativo al prodotto software realizzato per la revisione PB$_G$. Viene utilizzata dal team per lavorare sul codice del MVP.
     \end{itemize}
 
         \paragraph{Struttura della repository 7BitsDocs}
@@ -861,6 +860,9 @@
         \paragraph{Struttura della repository PoC}
         Per quanto riguarda il prodotto software sviluppato per la revisione RTB$_G$, sono stati creati diversi branch$_G$, ognuno derivante direttamente dal branch$_G$ Main, e ciascuno utilizzato per esplorare e approfondire una specifica tecnologia. Solo una volta presa la decisione di implementare una determinata tecnologia, viene effettuato un merge$_G$ in un branch$_G$ specifico che include l'intero prodotto. Solo quest'ultimo può successivamente confluire nel branch$_G$ Main attraverso una pull-request, a condizione che ogni modifica sia stata verificata e approvata.
     
+        \paragraph{Struttura della repository MVP}
+        Per il prodotto software sviluppato per la fase di PB$_G$, sono stati creati diversi branch$_G$, ognuno derivante direttamente dal branch$_G$ Main, e ciascuno utilizzato per sviluppare una diversa parte del prodotto software. Solo dopo aver completato e testato una parte del prodotto finale, viene effettuato un merge$_G$ in un branch$_G$ specifico che include l'intero prodotto. Solo quest'ultimo può successivamente confluire nel branch$_G$ Main attraverso una pull-request, a condizione che ogni modifica sia stata verificata e approvata.
+
     \subsubsection{Pagina web} 
     La pagina web, accessibile al link \href{https://sevenbitsswe.github.io/7BitsDocs/}{https://sevenbitsswe.github.io/7BitsDocs/}, è stata progettata per offrire un'esperienza chiara e intuitiva, organizzando la documentazione$_G$ in base alle diverse fasi per cui è stata redatta. Grazie all'integrazione di una Github$_G$ Action, la pagina si aggiorna automaticamente ad ogni modifica apportata nel branch$_G$ Main del repository$_G$ 7BitsDocs, garantendo che siano visibili soltanto i documenti approvati.
 
@@ -1064,6 +1066,7 @@ Eventualmente, le metriche possono includere:
             \item Progettare l'architettura del sistema$_G$, definendo componenti, moduli e interazioni;
             \item Gestire eventuali rischi che possono sorgere durante lo sviluppo;
             \item Supervisionare lo sviluppo per garantire la conformità all'architettura.
+            \item Stesura e avanzamento del documento \textit{Specifica\_Tecnica}.
         \end{itemize}
 
         \paragraph{Programmatore}
@@ -1074,6 +1077,7 @@ Eventualmente, le metriche possono includere:
             \item Creazione di test$_G$ per la verifica e validazione del software;
             \item Scrittura di codice chiaro, leggibile e manutenibile;
             \item Risoluzione di eventuali bug$_G$.
+            \item Stesura e avanzamento del documento \textit{Manuale\_Utente}.
         \end{itemize}
 
         \paragraph{Verificatore}
@@ -1110,7 +1114,9 @@ Eventualmente, le metriche possono includere:
             \item \textbf{Stato}: rappresenta l'avanzamento del compito (Todo, In Progress, Done);
             \item \textbf{Priorità}: assegna un livello di urgenza o importanza alla issue$_G$ (Urgente, Importante, Moderato, Secondario);
             \item \textbf{Grandezza}: stima la complessità o il livello di sforzo richiesto per completare il compito (XS, S, M, L, XL);
-            \item \textbf{Iterazione}: specifica a quale sprint$_G$ la issue$_G$ è assegnata.
+            \item \textbf{Iterazione}: specifica a quale sprint$_G$ la issue$_G$ è assegnata;
+            \item \textbf{Data di inizio}: data in cui viene iniziato il lavoro descritto dalla issue;
+            \item \textbf{Data di fine}: data in cui viene terminata la issue.
         \end{itemize}
         \item \textbf{Milestone}: identifica il traguardo o obiettivo specifico a cui la issue$_G$ è associata.
     \end{itemize}
