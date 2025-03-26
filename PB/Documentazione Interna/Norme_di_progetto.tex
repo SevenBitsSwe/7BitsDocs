@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{1.0.2} %aggiunta versione come variabile
+\newcommand\version{1.0.3} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -111,7 +111,9 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    1.0.2 & 2025-03-26 & Leonardo Trolese & Federico Pivetta & Correzione sezione \hyperref[metriche_qualita]{metriche} a seguito di inizio stesura codice\\
+    1.0.3 & 2025-03-26 & Leonardo Trolese & Federico Pivetta & Correzione sezione \hyperref[metriche_qualita]{metriche} a seguito di inizio stesura codice\\
+    \hline
+    1.0.2 & 2025-03-20 & Giovanni Cristellon & Federico Pivetta & Correzioni minori.\\
     \hline
     1.0.1 & 2025-03-12 & Federico Pivetta & Alfredo Rubino & Aggiunti paragrafi Specifica Tecnica, Manuale Utente, Qualità dell'architettura e Design Pattern\\
     \hline
@@ -294,6 +296,9 @@
 
         \paragraph{Glossario}
         È un documento che raccoglie dei termini specifici e le loro definizioni chiare e concise. Il suo scopo è quello di facilitare la comprensione dei concetti chiave presenti nei vari documenti redatti.\\
+
+        \paragraph{Specifica Tecnica}
+        La \textit{Specifica tecnica} è un documento che fornisce una guida completa per comprendere gli aspetti tecnici fondamentali del progetto, focalizzandosi sull'architettura implementativa e di deployment. Questo documento approfondisce le scelte di design e fornisce una spiegazione dettagliata dei pattern e degli idiomi utilizzati nel progetto. Inoltre, espone le motivazioni alla base delle scelte progettuali e funge da guida chiara per l'attività di codifica e la manutenzione del software.\\
 
         \paragraph{Lettera di Presentazione}
         La Lettera di Presentazione è un documento che accompagna la consegna del prodotto software e della relativa documentazione$_G$ durante le fasi di revisione di progetto$_G$. Il contenuto di questo documento comprende un link alla pagina web che contiene tutta la documentazione$_G$ finora prodotta, un preventivo aggiornato rispetto a quello presentato alla revisione precedente, e dei link alle varie repository del gruppo.\\
@@ -701,6 +706,7 @@
         \item [-] \textit{Norme\_di\_Progetto}
         \item [-] \textit{Piano\_di\_Progetto}
         \item [-] \textit{Piano\_di\_Qualifica}
+        \item [-] \textit{Specifica\_Tecnica}
         \item [-] \textit{Verbali esterni}
         \item [-] \textit{Verbali interni}
     \end{itemize}
@@ -721,13 +727,10 @@
         I verbali seguono il seguente workflow:
         \begin{enumerate}
             \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno (la versione iniziale del documento corrisponde a \{0.1.0\});
-            \item Compilazione dei campi della sezione Registro modifiche;
             \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
             \item Nella sezione Decisioni prese si compila una
             tabella in cui ciascuna azione da intraprendere viene associata ad una issue$_G$ corrispondente;
             \item Creazione di una pull-request (PR) dal branch$_G$ Verbali al branch$_G$ Main;
-            \item Verifica del verbale prodotto da parte del Verificatore
-            indicato nel Registro modifiche del documento stesso;
             \item Se CI$_G$ sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
             \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare;
             Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
