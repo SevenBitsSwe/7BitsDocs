@@ -651,13 +651,13 @@
             \hline
             \textbf{Metrica} & \textbf{Descrizione} \\
             \hline
-            MPD05 & Code coverage\\
-            \hline
-            MPD06 & Statement coverage\\
+            MPD05 & Line coverage\\
+            % \hline
+            % MPD06 & Statement coverage\\
             \hline
             MPD07 & Branch$_G$ coverage\\
-            \hline
-            MPD08 & Condition coverage\\
+            % \hline
+            % MPD08 & Condition coverage\\
             % \hline
             % MPD12 & Coefficiente di accoppiamento fra classi\\
             \hline
@@ -1363,23 +1363,23 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Affidabilità}
 \begin{itemize}
-    \item \textbf{MPD05 - Code Coverage}:
+    \item \textbf{MPD05 - Line Coverage}:
     \begin{itemize}
-        \item \textbf{Descrizione}: percentuale di codice coperto da test$_G$.
+        \item \textbf{Descrizione}: percentuale di linee di codice coperto da test$_G$.
     \end{itemize}
-    \item \textbf{MPD06 - Statement Coverage}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test$_G$.
-        \item   \textbf{Formula:}
-                \[
-                SC = \frac{IST}{NTIS} \cdot 100
-                \]
-                Dove:
-                \begin{itemize}
-                    \item $IST$: istruzioni testate.
-                    \item $NTIST$: numero totale istruzioni.
-                \end{itemize}
-    \end{itemize}
+    % \item \textbf{MPD06 - Statement Coverage}:
+    % \begin{itemize}
+    %     \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test$_G$.
+    %     \item   \textbf{Formula:}
+    %             \[
+    %             SC = \frac{IST}{NTIS} \cdot 100
+    %             \]
+    %             Dove:
+    %             \begin{itemize}
+    %                 \item $IST$: istruzioni testate.
+    %                 \item $NTIST$: numero totale istruzioni.
+    %             \end{itemize}
+    % \end{itemize}
 
     \item \textbf{MPD07 - Branch$_G$ Coverage}:
     \begin{itemize}
@@ -1395,19 +1395,19 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
             \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPD08 - Condition coverage}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
-        \item   \textbf{Formula:}
-            \[
-            CC = \frac{CLT}{NTCL} \cdot 100
-            \]
-            Dove:
-            \begin{itemize}
-                \item $CLT$: condizioni logiche testate.
-                \item $NTCL$: numero totale condizioni logiche.
-            \end{itemize}
-    \end{itemize}
+    % \item \textbf{MPD08 - Condition coverage}:
+    % \begin{itemize}
+    %     \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
+    %     \item   \textbf{Formula:}
+    %         \[
+    %         CC = \frac{CLT}{NTCL} \cdot 100
+    %         \]
+    %         Dove:
+    %         \begin{itemize}
+    %             \item $CLT$: condizioni logiche testate.
+    %             \item $NTCL$: numero totale condizioni logiche.
+    %         \end{itemize}
+    % \end{itemize}
 
     \item \textbf{MPD09 - Tempo medio di risposta}:
     \begin{itemize}
@@ -1589,9 +1589,9 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
 
 \paragraph{Verifica}
 \begin{itemize}
-    \item \textbf{MPC13 - Code Coverage}:
+    \item \textbf{MPC13 - Line Coverage}:
     \begin{itemize}
-        \item \textbf{Descrizione}: percentuale di codice coperto da test$_G$.
+        \item \textbf{Descrizione}: percentuale di linee di codice coperto da test$_G$.
     \end{itemize}
     \item \textbf{MPC14 - Passed test$_G$ cases percentage}:
         \begin{itemize}
