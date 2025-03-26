@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{1.0.1} %aggiunta versione come variabile
+\newcommand\version{1.0.3} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -110,6 +110,12 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    1.0.4 & 2025-03-26 & Manuel Gusella & Federico Pivetta & Aggiornamento processo di verifica della documentazione e aggiornato i ruoli\\
+    \hline
+    1.0.3 & 2025-03-26 & Leonardo Trolese & Federico Pivetta & Correzione sezione \hyperref[metriche_qualita]{metriche} a seguito di inizio stesura codice\\
+    \hline
+    1.0.2 & 2025-03-20 & Giovanni Cristellon & Federico Pivetta & Correzioni minori e aggiornamento della stesura dei verbali.\\
     \hline
     1.0.1 & 2025-03-12 & Federico Pivetta & Alfredo Rubino & Aggiunti paragrafi Specifica Tecnica, Manuale Utente, Qualità dell'architettura e Design Pattern\\
     \hline
@@ -602,13 +608,13 @@
             \hline
             \textbf{Metrica} & \textbf{Descrizione} \\
             \hline
-            MPD09 & Tempo medio di risposta\\
+            MPD07 & Tempo medio di risposta\\
             \hline
-            MPD10 & Facilità di utilizzo\\
+            MPD08 & Facilità di utilizzo\\
             \hline
-            MPD11 & Tempo medio di apprendimento\\
+            MPD09 & Tempo medio di apprendimento\\
             \hline
-            MPD18 & Versioni browser supportati\\
+            MPD15 & Versioni browser supportati\\
             \hline
           \end{tabular}
           \caption{Metriche relative all'attività di progettazione}
@@ -651,25 +657,25 @@
             \hline
             \textbf{Metrica} & \textbf{Descrizione} \\
             \hline
-            MPD05 & Code coverage\\
+            MPD05 & Line coverage\\
+            % \hline
+            % MPD06 & Statement coverage\\
             \hline
-            MPD06 & Statement coverage\\
+            MPD06 & Branch$_G$ coverage\\
+            % \hline
+            % MPD08 & Condition coverage\\
+            % \hline
+            % MPD12 & Coefficiente di accoppiamento fra classi\\
             \hline
-            MPD07 & Branch$_G$ coverage\\
+            MPD10 & Linee di codice per metodo\\
             \hline
-            MPD08 & Condition coverage\\
+            MPD11 & Parametri per metodo\\
             \hline
-            MPD12 & Coefficiente di accoppiamento fra classi\\
+            MPD12 & Attributi per classe\\
             \hline
-            MPD13 & Linee di codice per metodo\\
+            MPD13 & Structure Fan IN\\
             \hline
-            MPD14 & Parametri per metodo\\
-            \hline
-            MPD15 & Attributi per classe\\
-            \hline
-            MPD16 & Structure Fan IN\\
-            \hline
-            MPD17 & Structure Fan OUT\\
+            MPD14 & Structure Fan OUT\\
             \hline
           \end{tabular}
           \caption{Metriche relative all'attività di codifica}
@@ -699,6 +705,8 @@
         \item [-] \textit{Norme\_di\_Progetto}
         \item [-] \textit{Piano\_di\_Progetto}
         \item [-] \textit{Piano\_di\_Qualifica}
+        \item [-] \textit{Specifica\_Tecnica}
+        \item [-] \textit{Manuale\_Utente}
         \item [-] \textit{Verbali esterni}
         \item [-] \textit{Verbali interni}
     \end{itemize}
@@ -719,14 +727,11 @@
         I verbali seguono il seguente workflow:
         \begin{enumerate}
             \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno (la versione iniziale del documento corrisponde a \{0.1.0\});
-            \item Compilazione dei campi della sezione Registro modifiche;
             \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
             \item Nella sezione Decisioni prese si compila una
             tabella in cui ciascuna azione da intraprendere viene associata ad una issue$_G$ corrispondente;
             \item Creazione di una pull-request (PR) dal branch$_G$ Verbali al branch$_G$ Main;
-            \item Verifica del verbale prodotto da parte del Verificatore
-            indicato nel Registro modifiche del documento stesso;
-            \item Se CI$_G$ sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
+            \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
             \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare;
             Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
             \item Quando il documento è completo l'ultimo Verificatore
@@ -738,14 +743,14 @@
         \begin{enumerate}
             \item Creazione di un branch$_G$ dedicato esclusivamente alla redazione di un documento specifico;
             \item Creazione del documento a partire da un template comune a tutti i documenti (esclusi i verbali). La versione iniziale del documento corrisponde a \{0.1.0\};
-            \item Creazione di una draft pull-request dal branch$_G$ corrispondente a tale documento al branch$_G$ Main;
+            \item Creazione di un branch di feauture per la redazione di una sezione del documento, o per una modifica da apportare al documento partendo dal branch$_G$ del documento;
             \item Compilazione dei campi della sezione Registro modifiche;
-            \item Redazione del documento o di una sua sezione;
+            \item Creazione di una pull-request dal branch$_G$ di feauture, precedentemente creato, al branch$_G$ del documento desiderato;
             \item Verifica della documentazione$_G$ prodotta da parte del Verificatore indicato nel Registro modifiche e associato alle modifiche effettuate in quella seduta di lavoro;
-            \item Se CI$_G$ sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
-            \item Si ripetono le operazioni indicate dal punto \{4\} al punto \{6\} fino a quando il documento non è stato completato;
-            \item Quando il documento è completo l'ultimo Verificatore
-            chiude la draft pull-request ed esegue il merge$_G$ nel branch$_G$ Main. Successivamente, si procede ad eliminare il branch$_G$ dedicato, solo se non sono previsti ulteriori sviluppi.
+            \item Se ci sono correzioni o ulteriori modifiche da effettuare, queste devono essere prima indicate tramite suggestion, attraverso la sezione di Review della pull-request, e successivamente apportate alla feature in cui si sta lavorando;
+            \item Se la pull-request viene approvata, si esegue il merge$_G$ nel branch del documento e si elimina il branch di feature creato;
+            \item Si ripetono le operazioni indicate dal punto \{3\} al punto \{8\} fino a quando il documento non è stato completato;
+            \item Quando il documento è completo si aprirà una pull-request verso il branch$_G$ Main e, dopo l'approvazione del documento da parte dei due Verificatori presenti durante il periodo di lavoro, si esegue il merge$_G$ nel branch$_G$ Main. Successivamente, si procede ad eliminare il branch$_G$ dedicato, solo se non sono previsti ulteriori sviluppi.
         \end{enumerate}
 
     \subsubsection{Template in \LaTeX}
@@ -794,11 +799,12 @@
 
         \paragraph{Verbali}
         I verbali sono dei documenti di sintesi di un incontro che sia interno al team o esterno con l'azienda, per questo motivo la loro struttura è diversa rispetto agli altri documenti ufficiali.\\
+        La differenza più lampante è la mancanza del registro modifiche al loro interno, visto che sono documenti che non hanno bisogno di un ciclo di vita prolungato.\\
         I verbali hanno lo scopo di tenere traccia di chi ha partecipato agli incontri ed in particolare quali decisioni sono state prese.\\
         Sono composti da 2 sezioni principali:
         \begin{itemize}
             \item \textbf{Durata e partecipanti}: Viene indicata la data di inizio e fine dell'incontro, insieme al luogo in cui si è svolto. Successivamente, vengono elencati i nomi dei partecipanti del gruppo. Se il verbale è esterno, vengono inclusi anche i partecipanti dell'azienda SyncLab$_G$;
-            \item \textbf{Sintesi e Decisioni/Obiettivi}: La prima sezione contiene un riassunto degli argomenti trattati durante il meeting, mentre la seconda include un elenco delle decisioni prese, collegate alle issue$_G$ corrispondenti tramite una tabella.
+            \item \textbf{Sintesi e Decisioni/Obiettivi}: La prima sezione contiene un riassunto degli argomenti trattati durante il meeting, anche detto: ``ordine del giorno'', mentre la seconda include un elenco delle decisioni prese, collegate alle issue$_G$ corrispondenti tramite una tabella.
         \end{itemize}
         Inoltre, per i verbali esterni è presente una sezione per la convalida del documento mediante una firma.\\
 
@@ -843,10 +849,11 @@
     \end{enumerate}
 
     \subsubsection{Repository}
-    Il gruppo utilizza due repository$_G$ all'interno della propria organizzazione Github$_G$:
+    Il gruppo utilizza tre repository$_G$ all'interno della propria organizzazione Github$_G$:
     \begin{itemize}
         \item \href{https://github.com/SevenBitsSwe/7BitsDocs}{https://github.com/SevenBitsSwe/7BitsDocs}: questa repository$_G$ è utilizzata per revisionare e mantenere aggiornati i documenti redatti, permettendo ai membri del gruppo di gestire in modo efficiente la documentazione$_G$;
-        \item \href{https://github.com/SevenBitsSwe/PoC}{https://github.com/SevenBitsSwe/PoC}: questa repository$_G$ è dedicata alla condivisione e verifica del codice sorgente relativo al prodotto software realizzato per la revisione RTB$_G$. Viene utilizzata dal team per lavorare sul codice del prodotto, consentendo una gestione centralizzata dello sviluppo e delle modifiche apportate al software.
+        \item \href{https://github.com/SevenBitsSwe/PoC}{https://github.com/SevenBitsSwe/PoC}: questa repository$_G$ è dedicata alla condivisione e verifica del codice sorgente relativo al prodotto software realizzato per la revisione RTB$_G$. Viene utilizzata dal team per lavorare sul codice del prodotto, consentendo una gestione centralizzata dello sviluppo e delle modifiche apportate al software;
+        \item \href{https://github.com/SevenBitsSwe/MVP}{https://github.com/SevenBitsSwe/MVP}: questa repository$_G$ è usata per la condivisione e la verifica del codice sorgente relativo al prodotto software realizzato per la revisione PB$_G$. Viene utilizzata dal team per lavorare sul codice del MVP.
     \end{itemize}
 
         \paragraph{Struttura della repository 7BitsDocs}
@@ -856,6 +863,9 @@
         \paragraph{Struttura della repository PoC}
         Per quanto riguarda il prodotto software sviluppato per la revisione RTB$_G$, sono stati creati diversi branch$_G$, ognuno derivante direttamente dal branch$_G$ Main, e ciascuno utilizzato per esplorare e approfondire una specifica tecnologia. Solo una volta presa la decisione di implementare una determinata tecnologia, viene effettuato un merge$_G$ in un branch$_G$ specifico che include l'intero prodotto. Solo quest'ultimo può successivamente confluire nel branch$_G$ Main attraverso una pull-request, a condizione che ogni modifica sia stata verificata e approvata.
     
+        \paragraph{Struttura della repository MVP}
+        Per il prodotto software sviluppato per la fase di PB$_G$, sono stati creati diversi branch$_G$, ognuno derivante direttamente dal branch$_G$ Main, e ciascuno utilizzato per sviluppare una diversa parte del prodotto software. Solo dopo aver completato e testato una parte del prodotto finale, viene effettuato un merge$_G$ in un branch$_G$ specifico che include l'intero prodotto. Solo quest'ultimo può successivamente confluire nel branch$_G$ Main attraverso una pull-request, a condizione che ogni modifica sia stata verificata e approvata.
+
     \subsubsection{Pagina web} 
     La pagina web, accessibile al link \href{https://sevenbitsswe.github.io/7BitsDocs/}{https://sevenbitsswe.github.io/7BitsDocs/}, è stata progettata per offrire un'esperienza chiara e intuitiva, organizzando la documentazione$_G$ in base alle diverse fasi per cui è stata redatta. Grazie all'integrazione di una Github$_G$ Action, la pagina si aggiorna automaticamente ad ogni modifica apportata nel branch$_G$ Main del repository$_G$ 7BitsDocs, garantendo che siano visibili soltanto i documenti approvati.
 
@@ -1059,6 +1069,7 @@ Eventualmente, le metriche possono includere:
             \item Progettare l'architettura del sistema$_G$, definendo componenti, moduli e interazioni;
             \item Gestire eventuali rischi che possono sorgere durante lo sviluppo;
             \item Supervisionare lo sviluppo per garantire la conformità all'architettura.
+            \item Stesura e avanzamento del documento \textit{Specifica\_Tecnica}.
         \end{itemize}
 
         \paragraph{Programmatore}
@@ -1069,6 +1080,7 @@ Eventualmente, le metriche possono includere:
             \item Creazione di test$_G$ per la verifica e validazione del software;
             \item Scrittura di codice chiaro, leggibile e manutenibile;
             \item Risoluzione di eventuali bug$_G$.
+            \item Stesura e avanzamento del documento \textit{Manuale\_Utente}.
         \end{itemize}
 
         \paragraph{Verificatore}
@@ -1105,7 +1117,9 @@ Eventualmente, le metriche possono includere:
             \item \textbf{Stato}: rappresenta l'avanzamento del compito (Todo, In Progress, Done);
             \item \textbf{Priorità}: assegna un livello di urgenza o importanza alla issue$_G$ (Urgente, Importante, Moderato, Secondario);
             \item \textbf{Grandezza}: stima la complessità o il livello di sforzo richiesto per completare il compito (XS, S, M, L, XL);
-            \item \textbf{Iterazione}: specifica a quale sprint$_G$ la issue$_G$ è assegnata.
+            \item \textbf{Iterazione}: specifica a quale sprint$_G$ la issue$_G$ è assegnata;
+            \item \textbf{Data di inizio}: data in cui viene iniziato il lavoro descritto dalla issue;
+            \item \textbf{Data di fine}: data in cui viene terminata la issue.
         \end{itemize}
         \item \textbf{Milestone}: identifica il traguardo o obiettivo specifico a cui la issue$_G$ è associata.
     \end{itemize}
@@ -1363,25 +1377,25 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Affidabilità}
 \begin{itemize}
-    \item \textbf{MPD05 - Code Coverage}:
+    \item \textbf{MPD05 - Line Coverage}:
     \begin{itemize}
-        \item \textbf{Descrizione}: percentuale di codice coperto da test$_G$.
+        \item \textbf{Descrizione}: percentuale di linee di codice coperto da test$_G$.
     \end{itemize}
-    \item \textbf{MPD06 - Statement Coverage}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test$_G$.
-        \item   \textbf{Formula:}
-                \[
-                SC = \frac{IST}{NTIS} \cdot 100
-                \]
-                Dove:
-                \begin{itemize}
-                    \item $IST$: istruzioni testate.
-                    \item $NTIST$: numero totale istruzioni.
-                \end{itemize}
-    \end{itemize}
+    % \item \textbf{MPD06 - Statement Coverage}:
+    % \begin{itemize}
+    %     \item   \textbf{Descrizione}: percentuale di istruzioni eseguite durante i test$_G$.
+    %     \item   \textbf{Formula:}
+    %             \[
+    %             SC = \frac{IST}{NTIS} \cdot 100
+    %             \]
+    %             Dove:
+    %             \begin{itemize}
+    %                 \item $IST$: istruzioni testate.
+    %                 \item $NTIST$: numero totale istruzioni.
+    %             \end{itemize}
+    % \end{itemize}
 
-    \item \textbf{MPD07 - Branch$_G$ Coverage}:
+    \item \textbf{MPD06 - Branch$_G$ Coverage}:
     \begin{itemize}
         \item   \textbf{Descrizione}: percentuale di rami decisionali testati.
         \item   \textbf{Formula:}
@@ -1395,21 +1409,21 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
             \end{itemize}
     \end{itemize}
 
-    \item \textbf{MPD08 - Condition coverage}:
-    \begin{itemize}
-        \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
-        \item   \textbf{Formula:}
-            \[
-            CC = \frac{CLT}{NTCL} \cdot 100
-            \]
-            Dove:
-            \begin{itemize}
-                \item $CLT$: condizioni logiche testate.
-                \item $NTCL$: numero totale condizioni logiche.
-            \end{itemize}
-    \end{itemize}
+    % \item \textbf{MPD08 - Condition coverage}:
+    % \begin{itemize}
+    %     \item   \textbf{Descrizione}: percentuale di condizioni logiche testate.
+    %     \item   \textbf{Formula:}
+    %         \[
+    %         CC = \frac{CLT}{NTCL} \cdot 100
+    %         \]
+    %         Dove:
+    %         \begin{itemize}
+    %             \item $CLT$: condizioni logiche testate.
+    %             \item $NTCL$: numero totale condizioni logiche.
+    %         \end{itemize}
+    % \end{itemize}
 
-    \item \textbf{MPD09 - Tempo medio di risposta}:
+    \item \textbf{MPD07 - Tempo medio di risposta}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura l'efficienza del sistema$_G$ in termini di reattività.
     \end{itemize}
@@ -1417,11 +1431,11 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Usabilità}
 \begin{itemize}
-    \item \textbf{MPD10 - Facilità di utilizzo}:
+    \item \textbf{MPD08 - Facilità di utilizzo}:
         \begin{itemize}
             \item \textbf{Descrizione}:  misura la facilità con cui gli utenti possono utilizzare il sistema$_G$.
         \end{itemize}
-    \item \textbf{MPD11 - Tempo medio di apprendimento}:
+    \item \textbf{MPD09 - Tempo medio di apprendimento}:
         \begin{itemize}
             \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema$_G$.
         \end{itemize}
@@ -1429,27 +1443,27 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Manutenibilità}
 \begin{itemize}
-    \item \textbf{MPD12 - Coefficiente di accoppiamento fra classi}:
-    \begin{itemize}
-        \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
-    \end{itemize}
-    \item \textbf{MPD13 - Linee di codice per metodo}:
+    % \item \textbf{MPD12 - Coefficiente di accoppiamento fra classi}:
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
+    % \end{itemize}
+    \item \textbf{MPD10 - Linee di codice per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di linee di codice consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD14 - Parametri per metodo}:
+    \item \textbf{MPD11 - Parametri per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di parametri consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD15 - Attributi per classe}:
+    \item \textbf{MPD12 - Attributi per classe}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di attributi consentito per singola classe.
       \end{itemize}
-    \item \textbf{MPD16 - Structure Fan IN}:
+    \item \textbf{MPD13 - Structure Fan IN}:
       \begin{itemize}
         \item \textbf{Descrizione}: rappresenta il numero di moduli, funzioni o classi che chiamano o utilizzano una specifica funzione o modulo, indicando quanto è riutilizzato.
       \end{itemize}
-    \item \textbf{MPD17 - Structure Fan OUT}:
+    \item \textbf{MPD14 - Structure Fan OUT}:
       \begin{itemize}
         \item \textbf{Descrizione}: misura il numero di moduli, funzioni o classi che una specifica funzione o modulo utilizza o chiama, evidenziando le sue dipendenze.
       \end{itemize}
@@ -1457,7 +1471,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Portabilità}
   \begin{itemize}
-    \item \textbf{MPD18 - Versioni browser supportati}:
+    \item \textbf{MPD15 - Versioni browser supportati}:
       \begin{itemize}
         \item \textbf{Descrizione}: percentuale delle versioni di browser supportate rispetto al totale delle versioni disponibili.
       \end{itemize}
@@ -1589,9 +1603,9 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
 
 \paragraph{Verifica}
 \begin{itemize}
-    \item \textbf{MPC13 - Code Coverage}:
+    \item \textbf{MPC13 - Line Coverage}:
     \begin{itemize}
-        \item \textbf{Descrizione}: percentuale di codice coperto da test$_G$.
+        \item \textbf{Descrizione}: percentuale di linee di codice coperto da test$_G$.
     \end{itemize}
     \item \textbf{MPC14 - Passed test$_G$ cases percentage}:
         \begin{itemize}
@@ -1616,10 +1630,10 @@ L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualit
         \end{itemize}
     \item \textbf{MPC17 - Efficienza$_G$ Temporale (ET)}:
     \begin{itemize}
-        \item   \textbf{Descrizione}: rapporto tra ore produttive ($O_p$) e ore totali ($O_o$) svolte a partire dall'ultima misurazione.
+        \item   \textbf{Descrizione}: rapporto tra ore totali ($O_o$) e ore produttive ($O_p$) svolte a partire dall'ultima misurazione.
         \item   \textbf{Formula:}
             \[
-            ET = \frac{O_p}{O_o}
+            ET = \frac{O_o}{O_p}
             \]
     \end{itemize}
 \end{itemize}
