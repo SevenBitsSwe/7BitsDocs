@@ -98,6 +98,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    1.0.3 & 2025-03-26 & Alfredo Rubino & Riccardo Piva & Redazione sottosezione Test di Unità \\
+    \hline
     1.0.2 & 2025-03-25 & Leonardo Trolese & Riccardo Piva & Aggiornamento metriche a seguito di inizio stesura codice \\
     \hline
     1.0.1 & 2025-03-21 & Federico Pivetta & Uncas Peruzzi & Correzione ai test di sistema\\
@@ -455,7 +457,7 @@ La gestione dei processi indica come vengono gestiti i processi all'interno del 
 Qui sotto sono elencati i vari test che vengono eseguiti automaticamente sul prodotto software.\\
 Questo serve a garantire che il prodotto soddisfi i requisiti e le aspettative indicate nel documento \textit{Analisi dei Requisiti}.\\
 I test sono divisi in quattro categorie: Test di unità, Test di sistema, Test di integrazione e Test di accettazione.\\
-E per indicare lo stato come indicato in \textit{Norme di Progetto} vengono utilizzate le seguenti abbreviazioni:
+Per indicarne lo stato, come definito nel documento \textit{Norme di Progetto} vengono utilizzate le seguenti abbreviazioni:
 \begin{itemize}
 \item \textbf{P}: Passato
 \item \textbf{NP}: Non Passato
@@ -467,8 +469,70 @@ I test di unità servono a verificare che ogni singola unità del software funzi
 
 \begin{longtable}{|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{7cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
 \hline
-\textbf{Codice} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato}\\
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato}\\
 \endhead
+\hline
+TU1 & Verificare che la classe \texttt{ClickhouseActivityRepository} restituisca correttamente le attività entro un determinato raggio geografico e i dettagli di una specifica attività a partire dal nome. Se l'attività non viene trovata, deve restituire un oggetto vuoto. & P \\
+\hline
+TU2 & Verificare che la classe \texttt{ClickhouseMessageRepository} restituisca correttamente l'ultimo messaggio inviato da un utente, includendo tutte le informazioni associate. In caso di assenza di messaggi, deve restituire un oggetto vuoto con valori di default. & P \\
+\hline
+TU3 & Verificare che la classe \texttt{ClickhouseUserRepository} gestisca correttamente l'assegnazione e il recupero delle informazioni sugli utenti. In particolare, deve aggiornare lo stato di un utente come occupato, recuperare un utente libero, restituire i dettagli di un utente associato a un sensore e gestire correttamente i casi in cui nessun utente venga trovato. & P \\
+\hline
+TU4 & Verificare che la classe \texttt{CustomPrompt} generi correttamente un prompt formattato in base alle informazioni dell'utente e alle attività disponibili. Deve garantire che i dati forniti siano integrati correttamente nel testo generato e che venga mantenuta una struttura valida anche in caso di dati mancanti. & P \\
+\hline
+TU5 & Verificare che la classe \texttt{DatabaseConnection} gestisca correttamente la connessione e la disconnessione al database. Inoltre, si verifica che la classe \texttt{DatabaseConfigParameters} inizializzi correttamente i valori di default dei parametri di configurazione. & P \\
+\hline
+TU6 & Verificare che le classi DTO (\texttt{MessageDTO}, \texttt{UserDTO}, \texttt{ActivityDTO}) inizializzino correttamente i dati forniti e gestiscano i valori di default quando i parametri non vengono specificati. & P \\
+\hline
+TU7 & Verificare che la classe \texttt{FilterMessageAlreadyDisplayed} filtri correttamente i messaggi già visualizzati dall'utente, escludendo i messaggi con le stesse coordinate dell'ultimo messaggio inviato, i messaggi con coordinate (0,0) e quelli che risultano identici dopo l'arrotondamento delle coordinate. & P \\
+\hline
+TU8 & Verificare che la classe \texttt{FlinkJobManager} inizializzi e gestisca correttamente il flusso di dati in Apache Flink. Deve configurare correttamente le operazioni di \texttt{map} e \texttt{filter}, collegarsi a sorgenti e sink e avviare l'esecuzione del job tramite \texttt{execute}. & P \\
+\hline
+TU9 & Verificare che la classe \texttt{GroqLLMService} gestisca correttamente l'inizializzazione, la configurazione della chat e la generazione di risposte strutturate. In particolare, deve caricare la chiave API dall'ambiente, impostare correttamente il modello \texttt{ChatGroq} con i parametri previsti e restituire un output coerente con la richiesta ricevuta. & P \\
+\hline
+TU10 & Verificare che la classe \texttt{JsonRowDeserializationAdapter} inizializzi correttamente lo schema di deserializzazione JSON, memorizzando correttamente il tipo di dati fornito e creando un'istanza di \texttt{JsonRowDeserializationSchema} con i parametri appropriati. & P \\
+\hline
+TU11 & Verificare che la classe \texttt{JsonRowSerializationAdapter} inizializzi correttamente lo schema di serializzazione JSON. In particolare, deve memorizzare il tipo di dati fornito e creare un'istanza di \texttt{JsonRowSerializationSchema} configurata con i parametri appropriati. & P \\
+\hline
+TU12 & Verificare che la classe \texttt{KafkaMessageWriter} inizializzi correttamente il writer Kafka. In particolare, deve configurare lo schema di serializzazione, impostare i parametri del sink Kafka e restituire correttamente l'istanza del writer tramite il metodo \texttt{get\_message\_writer}. & P \\
+\hline
+TU13 & Verificare che la classe \texttt{KafkaPositionReceiver} configuri correttamente la sorgente Kafka. In particolare, deve impostare i parametri di connessione, il gruppo di consumo, il deserializzatore e le proprietà di gestione degli offset, restituendo correttamente l'istanza della sorgente tramite il metodo \texttt{get\_position\_receiver}. & P \\
+\hline
+TU14 & Verificare che la classe \texttt{KafkaSourceConfiguration} inizializzi correttamente i parametri di configurazione con i valori di default previsti, inclusi server, topic, gruppo di consumo e gestione degli offset. & P \\
+\hline
+TU15 & Verificare che la classe \texttt{KafkaWriterConfiguration} inizializzi correttamente i parametri di configurazione con i valori di default previsti. In particolare, deve garantire che il server, il topic scrivibile e la struttura del \texttt{key\_type} siano definiti correttamente. & P \\
+\hline
+TU16 & Verificare che la classe \texttt{MessageSerializer} crei correttamente un oggetto \texttt{Row} a partire da un'istanza di \texttt{MessageDTO}. In particolare, deve garantire che i dati siano convertiti correttamente e mantenere la struttura prevista con il numero corretto di campi. & P \\
+\hline
+TU17 & Verificare che la classe \texttt{PositionToMessageProcessor} elabori correttamente le posizioni degli utenti e generi messaggi pubblicitari basati sulle attività nelle vicinanze. In particolare, deve gestire i casi in cui non ci siano attività disponibili e interagire con i repository e il servizio AI per elaborare i dati. & P \\
+\hline
+TU18 & Verificare che la classe \texttt{BycicleSimulationStrategy} inizializzi correttamente i parametri di simulazione e calcoli correttamente il percorso, la velocità e il tempo tra le posizioni. In particolare, deve interagire con il grafo per ottenere un percorso valido e restituire valori coerenti per velocità e intervallo di tempo. & P \\
+\hline
+TU19 & Verificare che la classe \texttt{DatabaseConfigParameters} inizializzi correttamente i parametri di configurazione con i valori di default previsti. & P \\
+\hline
+TU20 & Verificare che la classe \texttt{DatabaseConnection} gestisca correttamente la connessione e la disconnessione dal database. & P \\
+\hline
+TU21 & Verificare che la classe \texttt{GeoPosition} inizializzi correttamente i parametri e restituisca i valori attesi tramite i metodi di accesso. In particolare, deve garantire che \texttt{sensor\_id}, latitudine, longitudine e timestamp siano correttamente memorizzati e recuperabili. & P \\
+\hline
+TU22 & Verificare che la classe \texttt{GpsSensor} gestisca correttamente la simulazione della posizione. In particolare, deve inizializzare correttamente i parametri, generare e inviare posizioni simulate basate sulla strategia di simulazione e restituire i valori attesi per identificativo del sensore e tempo di aggiornamento. & P \\
+\hline
+TU23 & Verificare che la classe \texttt{GraphWrapper} inizializzi e recuperi correttamente la mappa stradale utilizzando \texttt{osmnx}. In particolare, deve chiamare \texttt{graph\_from\_point} con i parametri corretti per ottenere il grafo stradale basato sulla posizione, il raggio e il tipo di rete specificati. & P \\
+\hline
+TU24 & Verificare che la classe \texttt{KafkaConfigParameters} inizializzi correttamente i parametri di configurazione con i valori di default previsti, inclusi il server Kafka e il topic di origine. & P \\
+\hline
+TU25 & Verificare che la classe \texttt{KafkaConfluentAdapter} invii correttamente i dati al broker Kafka. In particolare, deve serializzare correttamente le posizioni, produrre i messaggi con la chiave corretta e gestire la sincronizzazione dei thread tramite un meccanismo di lock. & P \\
+\hline
+TU26 & Verificare che la classe \texttt{PositionJsonAdapter} serializzi correttamente un oggetto \texttt{GeoPosition} in formato JSON, mantenendo la struttura e i valori attesi per identificativo, coordinate e timestamp. & P \\
+\hline
+TU27 & Verificare che la classe \texttt{SensorFactory} crei correttamente istanze di \texttt{GpsSensor}. In particolare, deve garantire che ogni sensore sia un'istanza valida di \texttt{SensorSubject} e \texttt{GpsSensor}, che gli UUID assegnati siano validi e univoci, e che il metodo per la creazione di una lista di sensori generi il numero corretto di istanze. & P \\
+\hline
+TU28 & Verificare che la classe \texttt{SensorRepository} gestisca correttamente l'assegnazione e il recupero dei sensori. In particolare, deve aggiornare lo stato di un sensore come occupato e recuperare un sensore non occupato dal database. & P \\
+\hline
+TU29 & Verificare che la classe \texttt{SensorSimulationAdministrator} gestisca correttamente l'avvio della simulazione dei sensori. In particolare, deve inizializzare correttamente il registro dei sensori, avviare la simulazione tramite un \texttt{ThreadPool} e gestire eventuali errori durante l'esecuzione. & P \\
+\hline
+TU30 & Verificare che la classe \texttt{UserRepository} gestisca correttamente l'assegnazione e il recupero degli utenti. In particolare, deve aggiornare lo stato di un utente come occupato e recuperare un utente libero dal database. & P \\
+\hline
+TU31 & Verificare che la classe \texttt{UserSensorService} assegni correttamente un sensore a un utente disponibile. In particolare, deve recuperare un utente e un sensore non occupati, aggiornare il loro stato nel database e gestire correttamente i casi in cui non siano disponibili utenti o sensori. & P \\
 \hline
 \caption{Test di unità}\\
 \end{longtable}
