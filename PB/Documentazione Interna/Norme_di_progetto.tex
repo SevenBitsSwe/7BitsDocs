@@ -111,9 +111,11 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    1.0.4 & 2025-03-26 & Manuel Gusella & Federico Pivetta & Aggiornamento processo di verifica della documentazione e aggiornato i ruoli\\
+    \hline
     1.0.3 & 2025-03-26 & Leonardo Trolese & Federico Pivetta & Correzione sezione \hyperref[metriche_qualita]{metriche} a seguito di inizio stesura codice\\
     \hline
-    1.0.2 & 2025-03-20 & Giovanni Cristellon & Federico Pivetta & Correzioni minori.\\
+    1.0.2 & 2025-03-20 & Giovanni Cristellon & Federico Pivetta & Correzioni minori e aggiornamento della stesura dei verbali.\\
     \hline
     1.0.1 & 2025-03-12 & Federico Pivetta & Alfredo Rubino & Aggiunti paragrafi Specifica Tecnica, Manuale Utente, Qualità dell'architettura e Design Pattern\\
     \hline
@@ -606,13 +608,13 @@
             \hline
             \textbf{Metrica} & \textbf{Descrizione} \\
             \hline
-            MPD09 & Tempo medio di risposta\\
+            MPD07 & Tempo medio di risposta\\
             \hline
-            MPD10 & Facilità di utilizzo\\
+            MPD08 & Facilità di utilizzo\\
             \hline
-            MPD11 & Tempo medio di apprendimento\\
+            MPD09 & Tempo medio di apprendimento\\
             \hline
-            MPD18 & Versioni browser supportati\\
+            MPD15 & Versioni browser supportati\\
             \hline
           \end{tabular}
           \caption{Metriche relative all'attività di progettazione}
@@ -659,21 +661,21 @@
             % \hline
             % MPD06 & Statement coverage\\
             \hline
-            MPD07 & Branch$_G$ coverage\\
+            MPD06 & Branch$_G$ coverage\\
             % \hline
             % MPD08 & Condition coverage\\
             % \hline
             % MPD12 & Coefficiente di accoppiamento fra classi\\
             \hline
-            MPD13 & Linee di codice per metodo\\
+            MPD10 & Linee di codice per metodo\\
             \hline
-            MPD14 & Parametri per metodo\\
+            MPD11 & Parametri per metodo\\
             \hline
-            MPD15 & Attributi per classe\\
+            MPD12 & Attributi per classe\\
             \hline
-            MPD16 & Structure Fan IN\\
+            MPD13 & Structure Fan IN\\
             \hline
-            MPD17 & Structure Fan OUT\\
+            MPD14 & Structure Fan OUT\\
             \hline
           \end{tabular}
           \caption{Metriche relative all'attività di codifica}
@@ -704,6 +706,7 @@
         \item [-] \textit{Piano\_di\_Progetto}
         \item [-] \textit{Piano\_di\_Qualifica}
         \item [-] \textit{Specifica\_Tecnica}
+        \item [-] \textit{Manuale\_Utente}
         \item [-] \textit{Verbali esterni}
         \item [-] \textit{Verbali interni}
     \end{itemize}
@@ -728,7 +731,7 @@
             \item Nella sezione Decisioni prese si compila una
             tabella in cui ciascuna azione da intraprendere viene associata ad una issue$_G$ corrispondente;
             \item Creazione di una pull-request (PR) dal branch$_G$ Verbali al branch$_G$ Main;
-            \item Se CI$_G$ sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
+            \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
             \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare;
             Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
             \item Quando il documento è completo l'ultimo Verificatore
@@ -1392,7 +1395,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
     %             \end{itemize}
     % \end{itemize}
 
-    \item \textbf{MPD07 - Branch$_G$ Coverage}:
+    \item \textbf{MPD06 - Branch$_G$ Coverage}:
     \begin{itemize}
         \item   \textbf{Descrizione}: percentuale di rami decisionali testati.
         \item   \textbf{Formula:}
@@ -1420,7 +1423,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
     %         \end{itemize}
     % \end{itemize}
 
-    \item \textbf{MPD09 - Tempo medio di risposta}:
+    \item \textbf{MPD07 - Tempo medio di risposta}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura l'efficienza del sistema$_G$ in termini di reattività.
     \end{itemize}
@@ -1428,11 +1431,11 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Usabilità}
 \begin{itemize}
-    \item \textbf{MPD10 - Facilità di utilizzo}:
+    \item \textbf{MPD08 - Facilità di utilizzo}:
         \begin{itemize}
             \item \textbf{Descrizione}:  misura la facilità con cui gli utenti possono utilizzare il sistema$_G$.
         \end{itemize}
-    \item \textbf{MPD11 - Tempo medio di apprendimento}:
+    \item \textbf{MPD09 - Tempo medio di apprendimento}:
         \begin{itemize}
             \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema$_G$.
         \end{itemize}
@@ -1444,23 +1447,23 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
     % \begin{itemize}
     %     \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
     % \end{itemize}
-    \item \textbf{MPD13 - Linee di codice per metodo}:
+    \item \textbf{MPD10 - Linee di codice per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di linee di codice consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD14 - Parametri per metodo}:
+    \item \textbf{MPD11 - Parametri per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di parametri consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD15 - Attributi per classe}:
+    \item \textbf{MPD12 - Attributi per classe}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di attributi consentito per singola classe.
       \end{itemize}
-    \item \textbf{MPD16 - Structure Fan IN}:
+    \item \textbf{MPD13 - Structure Fan IN}:
       \begin{itemize}
         \item \textbf{Descrizione}: rappresenta il numero di moduli, funzioni o classi che chiamano o utilizzano una specifica funzione o modulo, indicando quanto è riutilizzato.
       \end{itemize}
-    \item \textbf{MPD17 - Structure Fan OUT}:
+    \item \textbf{MPD14 - Structure Fan OUT}:
       \begin{itemize}
         \item \textbf{Descrizione}: misura il numero di moduli, funzioni o classi che una specifica funzione o modulo utilizza o chiama, evidenziando le sue dipendenze.
       \end{itemize}
@@ -1468,7 +1471,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Portabilità}
   \begin{itemize}
-    \item \textbf{MPD18 - Versioni browser supportati}:
+    \item \textbf{MPD15 - Versioni browser supportati}:
       \begin{itemize}
         \item \textbf{Descrizione}: percentuale delle versioni di browser supportate rispetto al totale delle versioni disponibili.
       \end{itemize}
