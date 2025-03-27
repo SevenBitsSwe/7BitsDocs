@@ -907,7 +907,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item[-] Applica interpolazione lineare tra i punti del percorso;
             \item[-] Consente configurazione temporale degli aggiornamenti di posizione.
         \end{itemize}
-    
+
         \mysubparagraph{Generazione dati JSON}
         La serializzazione dei dati avviene attraverso il pattern Adapter, implementato dalla classe \texttt{PositionJsonAdapter} che converte gli oggetti \texttt{GeoPosition} in formato JSON:
         \begin{lstlisting}
@@ -1276,86 +1276,57 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         
         \mysubparagraph{Funzionalità geospaziali}
         NearYou sfrutta intensivamente le funzioni geospaziali di ClickHouse per il calcolo delle distanze e la rilevazione di prossimità:
+        \textbf{geoDistance}: Calcola la distanza in metri tra due punti geografici
         
-        \begin{itemize}
-            \item[-] \textbf{geoDistance}: Calcola la distanza in metri tra due punti geografici
-        \end{itemize}
-        
-        Esempio di implementazione per la rilevazione di prossimità:
-        \begin{lstlisting}
-        WITH 
-            user_lat AS toFloat64(45.4095), 
-            user_lon AS toFloat64(11.8767)
-        SELECT 
-            activity_id, 
-            name,
-            category,
-            description,
-            geoDistance((latitude, longitude), (user_lat, user_lon)) AS distance_m
-        FROM activities
-        WHERE 
-            -- Pre-filtro approssimativo per ottimizzare
-            latitude BETWEEN user_lat - 0.01 AND user_lat + 0.01 AND
-            longitude BETWEEN user_lon - 0.01 AND user_lon + 0.01 AND
-            -- Calcolo preciso della distanza
-            geoDistance((latitude, longitude), (user_lat, user_lon)) <= 500
-        ORDER BY distance_m ASC;
-        \end{lstlisting}
-        
-        Per ottimizzare queste query geospaziali, implementiamo:
-        \begin{itemize}
-            \item[-] Pre-filtro con bounding box per ridurre i punti da valutare;
-            \item[-] Indici spaziali impliciti basati sull'ordinamento delle coordinate;
-            \item[-] Materialized view con pre-aggregazioni per aree geografiche comuni.
-        \end{itemize}
-        
-        Queste ottimizzazioni consentono di eseguire query di prossimità in tempo reale anche con milioni di punti di interesse e migliaia di utenti attivi contemporaneamente.
-        
-        \mysubparagraph{Ottimizzazioni di query}
-        Per garantire performance elevate su grandi volumi di dati, abbiamo implementato diverse strategie di ottimizzazione:
-        
-        \begin{itemize}
-            \item[-] \textbf{Projection push-down}: Selezione delle sole colonne necessarie
+        Esempio di implementazione per la rilevazione di prossimità che è stata usata per i messaggi nella mappa generale:
             \begin{lstlisting}
-            SELECT sensor_id, latitude, longitude 
-            FROM positions 
-            WHERE received_at >= now() - INTERVAL 1 HOUR;
-            \end{lstlisting}
-            
-            \item[-] \textbf{Window functions} per selezioni puntuali
-            \begin{lstlisting}
-            SELECT *
+            SELECT 
+                m.userLatitude AS latitude,
+                m.userLongitude AS longitude,
+                m.creationTime AS creazione_time,
+                u.name AS userName,
+                u.surname AS userSurname,
+                a.name AS activityName,
+                m.message AS message
             FROM (
                 SELECT 
-                    sensor_id, 
-                    latitude, 
-                    longitude, 
-                    ROW_NUMBER() OVER (
-                        PARTITION BY sensor_id 
-                        ORDER BY received_at DESC
-                    ) AS row_num
-                FROM positions
-            ) 
-            WHERE row_num = 1;
+                user_uuid,
+                message_uuid,
+                message,
+                activity_uuid,
+                activityLatitude,
+                activityLongitude,
+                creationTime,
+                userLatitude,
+                userLongitude,
+                ROW_NUMBER() OVER (PARTITION BY user_uuid 
+                        ORDER BY toDateTime(creationTime) DESC) AS rn
+                FROM nearyou.messageTable
+            ) AS m
+            INNER JOIN nearyou.user u 
+                ON m.user_uuid = u.user_uuid
+            INNER JOIN nearyou.activity a 
+                ON m.activity_uuid = a.activity_uuid
+            INNER JOIN (
+                SELECT 
+                user_uuid, 
+                latitude, 
+                longitude,
+                received_at,
+                ROW_NUMBER() OVER (PARTITION BY user_uuid 
+                        ORDER BY received_at DESC) AS rn
+                FROM nearyou.positions
+            ) AS p 
+                ON u.assigned_sensor_uuid = p.user_uuid AND p.rn = 1
+            WHERE 
+                m.rn = 1 
+                AND geoDistance(m.activityLongitude, m.activityLatitude, 
+                    p.longitude, p.latitude) < 300
+            ORDER BY 
+                m.creationTime DESC;
             \end{lstlisting}
-            
-            \item[-] \textbf{Aggregazioni pre-calcolate} per statistiche comuni
-            \begin{lstlisting}
-            CREATE MATERIALIZED VIEW hourly_stats 
-            ENGINE = SummingMergeTree()
-            ORDER BY (hour, activity_id)
-            POPULATE AS
-            SELECT 
-                toStartOfHour(created_at) AS hour,
-                activity_id,
-                count() AS message_count
-            FROM messages
-            GROUP BY hour, activity_id;
-            \end{lstlisting}
-        \end{itemize}
         
         Questa combinazione di archiviazione colonnare efficiente, indici ottimizzati, TTL automatico e strategie di query avanzate permette a ClickHouse di supportare l'intera pipeline di dati di NearYou con prestazioni eccellenti sia per l'inserimento che per l'analisi dei dati di posizione e la generazione di messaggi pubblicitari contestuali.
-        
 
         \myparagraph{Grafana}
         Grafana è una piattaforma di visualizzazione e analisi dati utilizzata in NearYou per rappresentare graficamente le informazioni raccolte dal sistema e consentire il monitoraggio in tempo reale delle attività.
@@ -1415,78 +1386,144 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item[-] \textbf{Query per posizioni attuali degli utenti} (utilizzata nella mappa principale):
             \begin{lstlisting}
             SELECT 
-                userID, 
+            user_uuid, 
+            latitude, 
+            longitude, 
+            received_at
+            FROM (
+            SELECT 
+                user_uuid, 
                 latitude, 
                 longitude, 
-                received_at
-            FROM (
-                SELECT 
-                    userID, 
-                    latitude, 
-                    longitude, 
-                    received_at,
-                    ROW_NUMBER() OVER (PARTITION BY userID ORDER BY received_at DESC) AS row_num
-                FROM "nearyou"."positions"
+                received_at,
+                ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS row_num
+            FROM "nearyou"."positions"
             ) 
             WHERE row_num = 1;
             \end{lstlisting}
             Questa query utilizza una window function (ROW\_NUMBER) per selezionare solo l'ultima posizione rilevata per ogni utente.
         
-            \item[-] \textbf{Query per messaggi pubblicitari recenti} (utilizzata nella mappa principale):
+            \item[-] \textbf{Query per messaggi recenti con informazioni contestuali} (utilizzata nella mappa principale):
             \begin{lstlisting}[basicstyle=\ttfamily\footnotesize]
             SELECT 
-                m.userID, 
-                m.userLongitude AS longitude, 
-                m.userLatitude AS latitude, 
-                m.message
+            m.userLatitude AS latitude,
+            m.userLongitude AS longitude,
+            m.creationTime AS creazione_time,
+            u.name AS userName,
+            u.surname AS userSurname,
+            a.name AS activityName,
+            m.message AS message
             FROM (
-                SELECT 
-                    userID, 
-                    message,
-                    userLongitude,
-                    userLatitude,
-                    activityLongitude,
-                    activityLatitude,
-                    creationTime,
-                    ROW_NUMBER() OVER (PARTITION BY userID ORDER BY creationTime DESC) AS row_num
-                FROM "nearyou"."messageTable"
-            ) m
-            JOIN (
-                SELECT 
-                    userID, 
-                    longitude, 
-                    latitude,
-                    ROW_NUMBER() OVER (PARTITION BY userID ORDER BY received_at DESC) AS row_num
-                FROM "nearyou"."positions"
-            ) p ON m.userID = p.userID AND p.row_num = 1
-            WHERE m.row_num = 1
+            SELECT 
+                user_uuid,
+                message_uuid,
+                message,
+                activity_uuid,
+                activityLatitude,
+                activityLongitude,
+                creationTime,
+                userLatitude,
+                userLongitude,
+                ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY toDateTime(creationTime) DESC) AS rn
+            FROM nearyou.messageTable
+            ) AS m
+            INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid
+            INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid
+            INNER JOIN (
+            SELECT 
+                user_uuid, 
+                latitude, 
+                longitude,
+                received_at,
+                ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS rn
+            FROM nearyou.positions
+            ) AS p ON u.assigned_sensor_uuid = p.user_uuid AND p.rn = 1
+            WHERE m.rn = 1 
+            AND geoDistance(m.activityLongitude, m.activityLatitude, p.longitude, p.latitude) < 300
+            ORDER BY m.creationTime DESC;
             \end{lstlisting}
+            Questa query complessa combina messaggi, dati utente e attività, utilizzando la funzione geospaziale geoDistance per filtrare i messaggi entro 300 metri dalla posizione attuale dell'utente.
         
+            \item[-] \textbf{Query per la tabella dei punti di interesse} (utilizzata nella dashboard principale):
+            \begin{lstlisting}
+            SELECT 
+            a.name AS nome_attivita,
+            a.address AS indirizzo,
+            a.type AS tipologia,
+            a.description as descrizione, 
+            COUNT(m.message_uuid) AS numero_messaggi
+            FROM nearyou.activity a
+            INNER JOIN nearyou.messageTable m ON a.activity_uuid = m.activity_uuid
+            GROUP BY a.activity_uuid, a.name, a.type, a.address, a.description
+            HAVING COUNT(m.message_uuid) > 0
+            ORDER BY numero_messaggi DESC
+            \end{lstlisting}
+            Questa query genera la classifica dei punti di interesse in base al numero di messaggi pubblicitari generati.
+            
             \item[-] \textbf{Query per lo storico delle posizioni di un utente specifico} (dashboard specifica):
             \begin{lstlisting}
             SELECT * FROM nearyou.positions 
-            WHERE (userID = toUUID('${user_id}')) 
+            WHERE user_uuid = toUUID('${user_id}') 
             LIMIT 1000
             \end{lstlisting}
-        
+            
             \item[-] \textbf{Query per identificare gli estremi del percorso utente} (dashboard specifica):
             \begin{lstlisting}
             (
-                SELECT * 
-                FROM nearyou.positions 
-                WHERE userID = toUUID('${user_id}') 
-                ORDER BY received_at ASC 
-                LIMIT 1
+            SELECT * 
+            FROM nearyou.positions 
+            WHERE user_uuid = toUUID('${user_id}') 
+            ORDER BY received_at ASC 
+            LIMIT 1
             )
             UNION ALL
             (
-                SELECT * 
-                FROM nearyou.positions 
-                WHERE userID = toUUID('${user_id}') 
-                ORDER BY received_at DESC 
-                LIMIT 1
+            SELECT * 
+            FROM nearyou.positions 
+            WHERE user_uuid = toUUID('${user_id}') 
+            ORDER BY received_at DESC 
+            LIMIT 1
             );
             \end{lstlisting}
+            Questa query utilizza UNION ALL per combinare il primo e l'ultimo punto del percorso dell'utente, permettendo di evidenziarli con marker speciali.
+            
+            \item[-] \textbf{Query per i messaggi generati per un utente specifico} (dashboard specifica):
+            \begin{lstlisting}
+            SELECT     
+            m.userLatitude, 
+            m.userLongitude, 
+            m.creationTime, 
+            u.name, 
+            u.surname, 
+            a.name, 
+            m.message 
+            FROM nearyou.messageTable m
+            INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid 
+            INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid 
+            WHERE u.assigned_sensor_uuid = toUUID('${user_id}')
+            LIMIT 1000;
+            \end{lstlisting}
+            
+            \item[-] \textbf{Query per i dati anagrafici e interessi dell'utente} (dashboard specifica):
+            \begin{lstlisting}
+            SELECT 
+            u.name, 
+            u.surname, 
+            u.email, 
+            u.gender, 
+            u.birthdate, 
+            u.civil_status, 
+            ARRAY_AGG(ui.interest) AS interests_json
+            FROM 
+            nearyou.user u
+            JOIN 
+            nearyou.user_interest ui ON u.user_uuid = ui.user_uuid
+            WHERE 
+            u.assigned_sensor_uuid = toUUID('${user_id}')
+            GROUP BY 
+            u.name, u.surname, u.email, u.gender, u.birthdate, u.civil_status, u.user_uuid;
+            \end{lstlisting}
+            Questa query utilizza ARRAY\_AGG per raccogliere tutti gli interessi dell'utente in un array JSON, che viene poi espanso nella dashboard utilizzando trasformazioni.
         \end{itemize} 
 
         \mysubparagraph{Connettore ClickHouse e visualizzazione in tempo reale}
@@ -1513,9 +1550,18 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         Il connettore nativo offre vantaggi significativi rispetto alle alternative generiche:
         
         \begin{itemize}
-            \item[-] \textbf{Prestazioni ottimizzate}: Progettato specificamente per il modello colonnare di ClickHouse;
-            \item[-] \textbf{Supporto per tipi di dati specifici}: Gestione corretta di UUID, Array e altri tipi ClickHouse;
-            \item[-] \textbf{Query builder visuale}: Interfaccia grafica per costruire query complesse.
+            \item[-] \textbf{Porta con se tutte le funzionalità di ClickHouse}: 
+            \begin{itemize}
+                \item[.] Supporto per query SQL avanzate;
+                \item[.] Funzioni geospaziali integrate;
+                \item[.] Ottimizzazione automatica delle performance.
+            \end{itemize}
+            \item[-] \textbf{Configurazione semplice e veloce}:
+            \begin{itemize}
+                \item[.] Configurazione del datasource in pochi passaggi;
+                \item[.] Nessuna necessità di scrivere codice personalizzato per l'integrazione.
+                \item[.] possibilità di configuare il provisioning automatico.
+            \end{itemize}
         \end{itemize}
         
         La visualizzazione in tempo reale è garantita attraverso un intervallo di aggiornamento automatico configurato a 10 secondi:
@@ -1530,7 +1576,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         \begin{itemize}
             \item[-] Spostamenti degli utenti;
             \item[-] Generazione di nuovi messaggi pubblicitari;
-            \item[-] Statistiche sulle attività commerciali più popolari.
+            \item[-] Statistiche di generazione di messaggi per le attività più popolari.
         \end{itemize}
         
         \mysubparagraph{Provisioning automatico}
@@ -1606,7 +1652,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         BycicleSimulationStrategy utilizza la libreria OSMnx per generare percorsi realistici su mappe stradali, calcolando il percorso più breve tra due nodi selezionati casualmente dal grafo e restituendo le relative coordinate geografiche. Definisce inoltre parametri specifici per la simulazione ciclistica, come una velocità media di circa 15 km/h e un delta temporale tra le posizioni simulate.\\
         Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione.
         
-        \item Per gestire l'interazione con modelli linguistici di grandi dimensioni (LLM), il nostro sistema utilizza l'interfaccia LLMService, un contratto che definisce i metodi \_\_init\_\_(self, structured\_response: BaseModel), set\_up\_chat(self) e get\_llm\_structured\_response(self, prompt). Questa interfaccia, basata sul pattern Strategy, permette di integrare diversi servizi di IA.
+        \item Per gestire l'interazione con modelli linguistici di grandi dimensioni (LLM), il nostro sistema utilizza la classe astratta LLMService, un contratto che definisce i metodi \_\_init\_\_(self, structured\_response: BaseModel), set\_up\_chat(self) e get\_llm\_structured\_response(self, prompt). Questa classe astratta, basata sul pattern Strategy, permette di integrare diversi servizi di IA.
         \begin{lstlisting}
         class LLMService(ABC):
             def __init__(self, structured_response: BaseModel):
@@ -1620,7 +1666,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             def get_llm_structured_response(self, prompt):
                 pass
         \end{lstlisting}
-        La strategia concreta GroqLLMService implementa l'interfaccia LLMService, fornendo un meccanismo specifico per comunicare con il modello Groq. GroqLLMService si avvale della libreria langchain-groq per stabilire la connessione e inviare richieste al servizio Groq, gestendo l'autenticazione tramite una chiave API. Il metodo set\_up\_chat() configura l'interazione con il modello "Gemma2-9b-it" mentre il metodo get\_llm\_structured\_response(self, prompt) prende un prompt come input e restituisce una risposta strutturata, definita al momento dell'inizializzazione della classe.\\
+        La strategia concreta GroqLLMService implementa la classe astratta LLMService, fornendo un meccanismo specifico per comunicare con il modello Groq. GroqLLMService si avvale della libreria langchain-groq per stabilire la connessione e inviare richieste al servizio Groq, gestendo l'autenticazione tramite una chiave API. Il metodo set\_up\_chat() configura l'interazione con il modello "Gemma2-9b-it" mentre il metodo get\_llm\_structured\_response(self, prompt) prende un prompt come input e restituisce una risposta strutturata, definita al momento dell'inizializzazione della classe.\\
         Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie per diversi fornitori di LLM.
         
     \end{itemize}
@@ -1629,7 +1675,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
 \myparagraph{Factory Pattern}
 
     \mysubparagraph{Motivazioni e studio del design pattern}
-    Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di instanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
+    Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di istanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
 
     \mysubparagraph{Implementazione del design pattern}
     Il pattern Factory viene implementato attraverso una classe dedicata, denominata "Factory", che contiene metodi specifici per la creazione dei diversi tipi di oggetti che essa è responsabile di produrre. Questa classe Factory spesso dipende da astrazioni (come interfacce o classi astratte) per poter creare le istanze concrete. I metodi di creazione all'interno della Factory si occupano di gestire la logica necessaria per istanziare e configurare correttamente gli oggetti richiesti, potenzialmente gestendo dipendenze o configurazioni specifiche per ciascun tipo di oggetto. La Factory può anche svolgere un ruolo nell'assicurare che gli oggetti creati rispettino determinati contratti o abbiano uno stato iniziale valido.
@@ -1638,7 +1684,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
     L'integrazione del pattern Factory semplifica il processo di ottenimento di oggetti per il codice client. Invece di istanziare direttamente le classi concrete degli oggetti di cui ha bisogno, il codice client interagisce con la Factory, invocando il metodo di creazione appropriato per il tipo di oggetto desiderato. Il client fornisce alla Factory eventuali parametri necessari per la creazione dell'oggetto. La Factory si occupa quindi di creare e restituire un'istanza dell'oggetto richiesto, completamente configurata e pronta per essere utilizzata. Questo approccio riduce l'accoppiamento tra il codice client e le implementazioni concrete degli oggetti, migliorando la manutenibilità e la testabilità del sistema, in quanto le dipendenze di creazione sono centralizzate e possono essere facilmente sostituite o testate isolatamente.
 
     \mysubparagraph{Integrazione del pattern}
-    Il pattern Factory è implementato nel nostro sistema attraverso la classe SensorFactory, la quale incapsula la logica di creazione degli oggetti SensorSubject. Questa classe definisce i seguenti metodi principali:
+    Il pattern Factory è implementato nel nostro sistema attraverso la classe SensorFactory, la quale incapsula la logica di creazione degli oggetti GpsSensor. Questa classe definisce i seguenti metodi principali:
     \begin{lstlisting}
     class SensorFactory:
         def __init__(self, sensor_repo: ISensorRepository, user_repo: IUserRepository):
@@ -1658,11 +1704,11 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         \item create\_gps\_sensor(self, position\_sender, simulation\_strategy) -$>$ SensorSubject: Crea una singola istanza di GpsSensor. Riceve un PositionSender e una IPositionSimulationStrategy, ottiene un UUID tramite UserSensorService e restituisce l'oggetto GpsSensor configurato con questi elementi;
         \item create\_gps\_sensor\_list(self, position\_sender, simulation\_strategy, number\_of\_sensors) -$>$ List[SensorSubject]: Crea una lista contenente il numero specificato di istanze di GpsSensor, riutilizzando il metodo create\_gps\_sensor() per ogni elemento della lista. Richiede un PositionSender, una IPositionSimulationStrategy e il numero di sensori da creare.
     \end{itemize}
-In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di instanziazione in un unico punto e rispettando il principio di singola responsabilità.
+In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di istanziazione in un unico punto e rispettando il principio di singola responsabilità.
 
 \myparagraph{Adapter Pattern}
 \mysubparagraph{Motivazioni e studio del design pattern}
-Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka o la serializzazione in JSON). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
+Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka tramite serializzazione JSON oppure la comunicazione con il repository di ClickHouse). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
 
 \mysubparagraph{Implementazione del design pattern}
 L’implementazione del pattern Adapter avviene tramite la creazione di:
@@ -1705,21 +1751,6 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
         self.__producer.flush()
 \end{lstlisting}
 
-    %%%%%%%%%%%%%%%%% TOGLIERE ??? %%%%%%%%%%%%%%%%%
-    %\myparagraph{Repository Pattern}
-    %Per l'accesso ai dati, l'architettura utilizza il Repository Pattern, che astrae la logica di persistenza e fornisce un'interfaccia coerente per le operazioni CRUD:
-    %\begin{lstlisting}
-    %class ActivityRepository(IActivityRepository):
-    %    def __init__(self, db_connector):
-    %        self.__db_connector = db_connector
-
-    %    def get_activities_in_radius(self, lat, lon, radius_meters):
-    %        # Query per trovare attivit\`a entro il raggio specificato
-    %        # ...
-    %        return activities_list
-    %\end{lstlisting}
-    %Questo pattern disaccoppia la logica di business dalla logica di accesso ai dati, migliorando la manutenibilità.
-
     \subsubsection{Best practices architetturali}
     \myparagraph{PEP8 - Stile di codifica Python}
     Il progetto aderisce alle linee guida PEP8, lo standard di stile di codifica Python, garantendo coerenza e leggibilità. Questo include:
@@ -1735,60 +1766,358 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
     \myparagraph{Principi SOLID}
     L'architettura del software è progettata seguendo i principi SOLID:
     \begin{itemize}
-        \item[-] \textbf{Single Responsibility Principle}: Ogni classe ha una singola responsabilità ben definita. Ad esempio, la classe \texttt{ActivityDTO} è responsabile solo della rappresentazione dei dati di un'attività;
+        \item[-] \textbf{Single Responsibility Principle}: Ogni classe ha una singola responsabilità ben definita. Ad esempio, la classe \texttt{KafkaMessageWriter} è responsabile esclusivamente per la pubblicazione di messaggi sul broker Kafka, mentre \texttt{MessageSerializer} si occupa solo della serializzazione dei dati;
         \item[-] \textbf{Open/Closed Principle}: Le classi sono estensibili senza modificare il codice esistente. Questo è evidente nell'implementazione delle strategie di simulazione, dove nuovi comportamenti possono essere aggiunti implementando l'interfaccia \texttt{IPositionSimulationStrategy};
         \item[-] \textbf{Liskov Substitution Principle}: Le classi derivate possono sostituire le classi base senza alterare il comportamento. Le varie implementazioni di strategie di simulazione possono essere utilizzate in modo intercambiabile;
         \item[-] \textbf{Interface Segregation Principle}: Le interfacce sono specifiche e mirate. Ad esempio, \texttt{IJsonSerializable} definisce solo i metodi necessari per la serializzazione JSON;
         \item[-] \textbf{Dependency Inversion Principle}: I componenti dipendono da astrazioni, non da implementazioni concrete. Questo è visibile nell'iniezione delle dipendenze nei costruttori.
     \end{itemize}
 
-    \myparagraph{Gestione dello stato}
-    La gestione dello stato nel sistema è basata sul principio di immutabilità e sul concetto di "stato come evento". Gli oggetti di dominio come \texttt{GeoPosition} sono progettati per essere immutabili, con solo metodi getter e nessun metodo setter.
-
-    Il flusso di stato è unidirezionale: gli eventi di posizione generano cambiamenti di stato che vengono propagati attraverso il sistema mediante Kafka e processati da Flink. Questo approccio event-driven offre diversi vantaggi:
+    \subsection{Diagramma delle Classi}
+    In questa sezione viene fornita una descrizione dettagliata dei diagrammi delle classi del sistema, evidenziando le componenti principali, i loro ruoli, attributi, operazioni e le relazioni tra di esse. I diagrammi rappresentano i due componenti fondamentali dell'architettura: il modulo di simulazione delle posizioni e il processore Flink.
+    
+    \subsubsection{Modulo di Simulazione}
+    Il modulo di simulazione è responsabile della generazione di dati di posizione simulati, consentendo di testare l'intero sistema senza richiedere l'utilizzo di dispositivi GPS reali.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{diaSimulation.png}
+        \caption{Diagramma delle classi del modulo di simulazione}
+        \label{fig:simulation_module}
+    \end{figure}
+    
+    \paragraph{SensorFactory}
     \begin{itemize}
-        \item[-] Tracciabilità completa dello stato attraverso la storia degli eventi;
-        \item[-] Maggiore resilienza agli errori grazie alla possibilità di ricostruire lo stato dal flusso di eventi;
-        \item[-] Facilità nel debugging e nell'analisi retrospettiva;
-        \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema.
+        \item \textbf{Descrizione}: Implementa il pattern Factory per la creazione di sensori GPS configurati. Si occupa di istanziare oggetti di tipo GpsSensor con le configurazioni appropriate, facilitando la gestione delle dipendenze.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_user\_sensor\_service: UserSensorService} - Servizio per l'assegnazione di sensori agli utenti, gestisce la corrispondenza tra UUID dei sensori e profili utente.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, sensor\_repo: ISensorRepository, user\_repo: IUserRepository)} - Costruttore che inizializza la factory con i repository necessari per sensori e utenti.
+            \item \texttt{create\_gps\_sensor(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy) -> SensorSubject} - Crea un singolo sensore GPS con il sender e la strategia forniti, generando un UUID unico.
+            \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int) -> List[SensorSubject]} - Crea una lista di sensori GPS con la configurazione specificata, utile per simulazioni multiple.
+        \end{itemize}
     \end{itemize}
-
-    \myparagraph{Idempotenza delle operazioni}
-    Le operazioni nel sistema sono progettate per essere idempotenti, ovvero possono essere eseguite più volte producendo lo stesso risultato. Questa proprietà è particolarmente importante in un ambiente distribuito dove le operazioni possono essere ripetute a causa di errori di rete o altri fallimenti.
-
-    L'idempotenza è implementata attraverso:
+    
+    \paragraph{GpsSensor}
     \begin{itemize}
-        \item[-] L'uso di identificatori univoci (UUID) per ogni entità e messaggio;
-        \item[-] Il componente \texttt{FilterMessageAlreadyDisplayed} che evita la duplicazione dei messaggi;
-        \item[-] L'approccio "upsert" nelle operazioni di scrittura su ClickHouse;
-        \item[-] Meccanismi di deduplicazione basati su chiavi di Kafka.
+        \item \textbf{Descrizione}: Implementa un sensore GPS che simula il movimento utilizzando la strategia fornita. Rappresenta un dispositivo fisico che trasmette dati di posizione.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_sensor\_uuid: str} - Identificatore univoco del sensore utilizzato per tracciare le posizioni.
+            \item \texttt{\_\_position\_sender: PositionSender} - Componente responsabile dell'invio delle posizioni al sistema di messaggistica.
+            \item \texttt{\_\_simulation\_strategy: IPositionSimulationStrategy} - Strategia utilizzata per simulare lo spostamento del sensore.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, sensor\_id: str, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy)} - Inizializza il sensore con un ID, un sender e una strategia di simulazione.
+            \item \texttt{simulate(self)} - Metodo principale che avvia la simulazione del movimento utilizzando la strategia definita, generando nuove posizioni a intervalli regolari.
+            \item \texttt{create\_geo\_position(self, latitude: float, longitude: float, timestamp: str) -> GeoPosition} - Crea un oggetto posizione con le coordinate specificate e il timestamp corrente.
+        \end{itemize}
     \end{itemize}
-
-    Questa strategia garantisce consistenza anche in presenza di messaggi duplicati o ritrasmissioni.
-
-    \myparagraph{Circuit breaking e fallback}
-    Il sistema implementa pattern di resilienza come il circuit breaking per gestire situazioni di errore nei servizi esterni e prevenire il fallimento a cascata. In particolare, l'integrazione con il servizio LLM include:
+    
+    \paragraph{SensorSubject}
     \begin{itemize}
-        \item[-] Timeout configurabili per le chiamate API;
-        \item[-] Circuit breaker che impedisce chiamate ripetute a servizi non disponibili come quello LLM;
-        \item[-] Strategia di fallback che filtra i messaggi quando il servizio LLM non è disponibile.
+        \item \textbf{Descrizione}: Interfaccia che definisce il contratto per gli oggetti di tipo sensore, implementa il pattern Observer per notificare i cambiamenti di posizione.
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{attach(self, observer: Observer)} - Registra un observer per ricevere notifiche dal sensore.
+            \item \texttt{detach(self, observer: Observer)} - Rimuove un observer registrato.
+            \item \texttt{notify(self)} - Notifica tutti gli observer registrati di un cambiamento di stato.
+            \item \texttt{simulate(self)} - Metodo astratto che deve essere implementato dalle classi concrete per avviare la simulazione.
+        \end{itemize}
     \end{itemize}
-
-    Questo approccio garantisce che il sistema continui a funzionare anche in presenza di problemi nei servizi esterni, mantenendo un livello di servizio accettabile per gli utenti finali.
-
-    \myparagraph{Gestione dello stato}
-    La gestione dello stato nel sistema è basata sul principio di immutabilità e sul concetto di "stato come evento". Gli oggetti di dominio come \texttt{GeoPosition} sono progettati per essere immutabili, con solo metodi getter e nessun metodo setter.
-
-    Il flusso di stato è unidirezionale: gli eventi di posizione generano cambiamenti di stato che vengono propagati attraverso il sistema mediante Kafka e processati da Flink. Questo approccio event-driven offre diversi vantaggi:
+    
+    \paragraph{PositionSender}
     \begin{itemize}
-        \item[-] Tracciabilità completa dello stato attraverso la storia degli eventi;
-        \item[-] Maggiore resilienza agli errori grazie alla possibilità di ricostruire lo stato dal flusso di eventi;
-        \item[-] Facilità nel debugging e nell'analisi retrospettiva;
-        \item[-] Scalabilità orizzontale grazie alla natura distribuita del sistema.
+        \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per l'invio delle posizioni attraverso vari canali di comunicazione.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_position\_serializator: IJsonSerializable} - Adattatore per la serializzazione in formato JSON.
+            \item \texttt{\_lock: threading.Lock} - Lock per garantire thread safety durante l'invio di dati.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, json\_adapter\_istance: IJsonSerializable)} - Costruttore che inizializza il sender con l'istanza del serializzatore.
+            \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Metodo astratto da implementare nelle sottoclassi per inviare dati al broker.
+            \item \texttt{send\_position(self, position: GeoPosition)} - Metodo che serializza e invia una posizione utilizzando l'adapter fornito.
+        \end{itemize}
     \end{itemize}
+    
+    \paragraph{KafkaConfluentAdapter}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Implementazione concreta di PositionSender che utilizza Confluent Kafka per pubblicare i dati di posizione.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_kafka\_config: KafkaConfigParameters} - Configurazione per la connessione a Kafka, include host, porta e topic.
+            \item \texttt{\_\_producer: Producer} - Producer Kafka utilizzato per l'invio dei messaggi.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: PositionJsonAdapter, producer\_istance: Producer)} - Costruttore che inizializza l'adapter con la configurazione Kafka e il producer.
+            \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Implementazione concreta che invia dati a Kafka utilizzando il producer configurato.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{IPositionSimulationStrategy}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Interfaccia che definisce le strategie di simulazione del movimento, implementando il pattern Strategy.
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{get\_route(self)} - Ottiene il percorso da simulare, ritornando una sequenza di coordinate geografiche.
+            \item \texttt{get\_delta\_time(self) -> float} - Ottiene l'intervallo di tempo in secondi tra aggiornamenti consecutivi di posizione.
+            \item \texttt{get\_speed(self) -> float} - Ottiene la velocità di simulazione in km/h.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{BycicleSimulationStrategy}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Implementazione concreta della strategia che simula il movimento di una bicicletta, generando percorsi realistici.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_osmnx\_graph: GraphWrapper} - Grafo stradale di OpenStreetMap utilizzato per la generazione di percorsi realistici.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, map\_graph: GraphWrapper)} - Costruttore che inizializza la strategia con un grafo stradale.
+            \item \texttt{get\_route(self)} - Genera un percorso realistico utilizzando il grafo stradale, selezionando punti di partenza e arrivo casuali.
+            \item \texttt{get\_delta\_time(self) -> float} - Restituisce l'intervallo temporale predefinito di 2 secondi tra aggiornamenti.
+            \item \texttt{get\_speed(self) -> float} - Restituisce la velocità media simulata di 15 km/h tipica per una bicicletta.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{SensorSimulationAdministrator}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Coordina la simulazione di più sensori in parallelo, gestendo l'esecuzione concorrente.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_sensor\_registry: List[SensorSubject]} - Registro contenente tutti i sensori da simulare.
+            \item \texttt{\_\_executor: ThreadPoolExecutor} - Pool di thread per l'esecuzione parallela delle simulazioni.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, list\_of\_sensors: List[SensorSubject])} - Costruttore che inizializza l'amministratore con una lista di sensori.
+            \item \texttt{start\_simulation(self)} - Avvia la simulazione per tutti i sensori registrati utilizzando un thread pool.
+            \item \texttt{stop\_simulation(self)} - Arresta la simulazione in corso per tutti i sensori.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{GeoPosition}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Classe che rappresenta una posizione geografica con coordinate e timestamp.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_sensor\_id: str} - Identificatore del sensore che ha generato la posizione.
+            \item \texttt{\_\_latitude: float} - Latitudine della posizione in gradi decimali.
+            \item \texttt{\_\_longitude: float} - Longitudine della posizione in gradi decimali.
+            \item \texttt{\_\_timestamp: str} - Timestamp ISO 8601 che indica quando è stata rilevata la posizione.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{get\_sensor\_id(self) -> str} - Restituisce l'ID del sensore associato.
+            \item \texttt{get\_latitude(self) -> float} - Restituisce la latitudine.
+            \item \texttt{get\_longitude(self) -> float} - Restituisce la longitudine.
+            \item \texttt{get\_timestamp(self) -> str} - Restituisce il timestamp della rilevazione.
+        \end{itemize}
+    \end{itemize}
+    
+    \subsubsection{Processore Flink}
+    Il processore Flink è responsabile dell'elaborazione dei dati di posizione in tempo reale per generare messaggi pubblicitari personalizzati.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{diaFlink.png}
+        \caption{Diagramma delle classi del processore Flink}
+        \label{fig:flink_processor}
+    \end{figure}
+    
+    \paragraph{FlinkJobManager}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Coordina l'esecuzione del job Flink, definendo il flusso di elaborazione dei dati e orchestrando le diverse trasformazioni.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_streaming\_env: StreamExecutionEnvironment} - Ambiente di esecuzione Flink per la definizione e l'esecuzione del job.
+            \item \texttt{\_\_populated\_datastream} - Stream di dati iniziale proveniente dalla source Kafka.
+            \item \texttt{keyed\_stream} - Stream con chiave applicata, utilizzato per raggruppare dati relativi allo stesso sensore/utente.
+            \item \texttt{\_\_mapped\_stream} - Stream risultante dopo l'applicazione della map function.
+            \item \texttt{\_\_filtered\_stream} - Stream finale dopo l'applicazione della funzione di filtro.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, streaming\_env\_istance: StreamExecutionEnvironment, map\_function\_implementation: MapFunction, filter\_function\_implementation: FilterFunction, position\_receiver\_istance: IPositionReceiver, message\_sender\_istance: IMessageWriter)} - Costruttore che configura il job con l'ambiente e le funzioni di trasformazione.
+            \item \texttt{execute(self)} - Esegue il job Flink, avviando l'elaborazione e mantenendola attiva.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{PositionToMessageProcessor}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Implementa la MapFunction di Flink per trasformare le posizioni in messaggi pubblicitari personalizzati.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{ai\_service: LLMService} - Servizio LLM per generare messaggi pubblicitari contestuali.
+            \item \texttt{\_\_user\_repository: IUserRepository} - Repository per accedere ai dati utente, come preferenze e informazioni demografiche.
+            \item \texttt{\_\_activity\_repository: IActivityRepository} - Repository per accedere ai dati delle attività commerciali nelle vicinanze.
+            \item \texttt{\_\_message\_serializer: IFlinkSerializable} - Serializer per i messaggi generati che saranno inviati a Kafka.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, ai\_chatbot\_service: LLMService, user\_repository: IUserRepository, activity\_repository: IActivityRepository, message\_serializer: IFlinkSerializable)} - Costruttore che inizializza il processore con i servizi necessari.
+            \item \texttt{open(self, runtime\_context)} - Inizializza il servizio LLM e altre risorse necessarie durante l'avvio del task.
+            \item \texttt{map(self, value)} - Trasforma un record di posizione in un messaggio pubblicitario, identificando POI nelle vicinanze e generando contenuti personalizzati.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{FilterMessageAlreadyDisplayed}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Implementa FilterFunction per evitare duplicazioni di messaggi per lo stesso utente entro un certo periodo di tempo.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_message\_repository: IMessageRepository} - Repository per verificare l'esistenza di messaggi precedenti.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, message\_repository: IMessageRepository)} - Costruttore che inizializza il filtro con il repository dei messaggi.
+            \item \texttt{filter(self, value)} - Filtra i messaggi che sono già stati visualizzati dall'utente per la stessa attività entro un periodo configurabile.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{KafkaPositionReceiver}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Adattatore per ricevere posizioni da Kafka, implementa IPositionReceiver.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_current\_configuration: KafkaSourceConfiguration} - Configurazione della source Kafka, inclusi topic, gruppo di consumer e server.
+            \item \texttt{\_\_position\_deserializer} - Deserializzatore per convertire i dati JSON in oggetti utilizzabili.
+            \item \texttt{\_\_kafka\_source: KafkaSource} - Source Kafka configurata per la lettura dei dati.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, kafka\_source\_configuration: KafkaSourceConfiguration, deserialize\_adapter: JsonRowDeserializationAdapter)} - Costruttore che inizializza il receiver con la configurazione e il deserializzatore.
+            \item \texttt{build\_kafka\_source(self) -> KafkaSource} - Costruisce e configura la source Kafka con le impostazioni appropriate.
+            \item \texttt{get\_position\_receiver(self)} - Restituisce la source Kafka configurata per l'utilizzo nel job Flink.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{KafkaMessageWriter}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Adattatore per scrivere messaggi su Kafka, implementa IMessageWriter.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_current\_configuration: KafkaWriterConfiguration} - Configurazione del writer Kafka, inclusi topic e server.
+            \item \texttt{\_\_position\_serializer} - Serializzatore per convertire gli oggetti in formato JSON.
+            \item \texttt{\_\_record\_serializer} - Serializzatore per i record Kafka, gestisce la trasformazione e la definizione di schema.
+            \item \texttt{\_\_kafka\_sink: KafkaSink} - Sink Kafka configurata per la scrittura dei dati.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, kafka\_writer\_configuration: KafkaWriterConfiguration, serialize\_adapter: JsonRowSerializationAdapter)} - Costruttore che inizializza il writer con la configurazione e il serializzatore.
+            \item \texttt{build\_record\_serializer(self)} - Costruisce il serializzatore di record per Kafka.
+            \item \texttt{build\_kafka\_sink(self)} - Costruisce la sink Kafka con le impostazioni appropriate.
+            \item \texttt{get\_message\_writer(self)} - Restituisce la sink Kafka configurata per l'utilizzo nel job Flink.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{LLMService}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per i servizi di language model utilizzati nella generazione di messaggi personalizzati.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_llm\_structured\_response: BaseModel} - Modello Pydantic per la risposta strutturata proveniente dal LLM.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, structured\_response: BaseModel)} - Costruttore che inizializza il servizio con il modello di risposta strutturata.
+            \item \texttt{set\_up\_chat(self)} - Metodo astratto per inizializzare la connessione con il servizio LLM.
+            \item \texttt{get\_llm\_structured\_response(self, prompt)} - Metodo astratto per ottenere una risposta strutturata dall'LLM.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{GroqLLMService}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Implementazione concreta di LLMService che utilizza il provider Groq per la generazione di testi.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{\_\_groq\_api\_key: str} - Chiave API per l'autenticazione con il servizio Groq.
+            \item \texttt{\_\_chat} - Istanza del client Groq per l'interazione con il servizio.
+        \end{itemize}
+        \item \textbf{Operazioni}:
+        \begin{itemize}
+            \item \texttt{\_\_init\_\_(self, structured\_response: BaseModel)} - Costruttore che inizializza il servizio Groq.
+            \item \texttt{set\_up\_chat(self)} - Configura il client Groq con rate limiting e gestione degli errori.
+            \item \texttt{get\_llm\_structured\_response(self, prompt)} - Invia un prompt al servizio Groq e converte la risposta in un formato strutturato.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{MessageDTO}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Data Transfer Object per i messaggi pubblicitari generati.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{user\_uuid: str} - Identificatore univoco dell'utente destinatario.
+            \item \texttt{activity\_uuid: str} - Identificatore univoco dell'attività commerciale associata.
+            \item \texttt{message\_uuid: str} - Identificatore univoco del messaggio.
+            \item \texttt{message: str} - Contenuto testuale del messaggio pubblicitario.
+            \item \texttt{activityLatitude: float} - Latitudine dell'attività commerciale.
+            \item \texttt{activityLongitude: float} - Longitudine dell'attività commerciale.
+            \item \texttt{creationTime: str} - Timestamp di creazione del messaggio.
+            \item \texttt{userLatitude: float} - Latitudine dell'utente al momento della generazione.
+            \item \texttt{userLongitude: float} - Longitudine dell'utente al momento della generazione.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{ActivityDTO}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Data Transfer Object per le attività commerciali.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{activity\_id: str} - Identificatore univoco dell'attività.
+            \item \texttt{name: str} - Nome dell'attività commerciale.
+            \item \texttt{category: str} - Categoria o tipologia dell'attività.
+            \item \texttt{description: str} - Descrizione dettagliata dell'attività.
+            \item \texttt{latitude: float} - Latitudine dell'attività.
+            \item \texttt{longitude: float} - Longitudine dell'attività.
+        \end{itemize}
+    \end{itemize}
+    
+    \paragraph{UserDTO}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Data Transfer Object per gli utenti del sistema.
+        \item \textbf{Attributi}:
+        \begin{itemize}
+            \item \texttt{user\_id: str} - Identificatore univoco dell'utente.
+            \item \texttt{name: str} - Nome dell'utente.
+            \item \texttt{age: int} - Età dell'utente.
+            \item \texttt{gender: str} - Genere dell'utente.
+            \item \texttt{interests: List[str]} - Lista degli interessi dell'utente.
+            \item \texttt{preferences: List[str]} - Lista delle preferenze dell'utente.
+        \end{itemize}
+    \end{itemize}
+    
+    \subsubsection{Relazioni tra componenti}
+    Le relazioni tra i componenti riflettono l'architettura modulare del sistema, basata su interfacce che seguono i principi SOLID:
+    
+    \paragraph{Modulo di Simulazione}
+    \begin{itemize}
+        \item \texttt{SensorFactory} crea istanze di \texttt{GpsSensor} che implementano l'interfaccia \texttt{SensorSubject}.
+        \item \texttt{GpsSensor} utilizza \texttt{IPositionSimulationStrategy} (implementata da \texttt{BycicleSimulationStrategy}) per determinare il proprio movimento.
+        \item \texttt{GpsSensor} invia dati attraverso \texttt{PositionSender} (implementato da \texttt{KafkaConfluentAdapter}) che utilizza \texttt{IJsonSerializable} per la serializzazione.
+        \item \texttt{SensorSimulationAdministrator} coordina una collezione di sensori che implementano \texttt{SensorSubject}.
+    \end{itemize}
+    
+    \paragraph{Processore Flink}
+    \begin{itemize}
+        \item \texttt{FlinkJobManager} orchestra l'intero flusso di elaborazione, ricevendo dati tramite \texttt{KafkaPositionReceiver} (implementa \texttt{IPositionReceiver}).
+        \item \texttt{FlinkJobManager} applica \texttt{PositionToMessageProcessor} per trasformare i dati (implementa \texttt{MapFunction}) e \texttt{FilterMessageAlreadyDisplayed} per filtrare messaggi duplicati (implementa \texttt{FilterFunction}).
+        \item \texttt{FlinkJobManager} invia i risultati tramite \texttt{KafkaMessageWriter} (implementa \texttt{IMessageWriter}).
+        \item \texttt{PositionToMessageProcessor} interagisce con \texttt{LLMService} (implementato da \texttt{GroqLLMService}) per generare messaggi, e con repository di dati per accedere a informazioni su utenti e attività.
+    \end{itemize}
+    
+    Questa architettura modulare consente un alto grado di testabilità e manutenibilità, permettendo la sostituzione di componenti con implementazioni alternative senza modificare il flusso di elaborazione complessivo.
 
 \section{Architettura di deployment}
-Al fine di implementare ed eseguire l'intero stack tecnologico ed i componenti del modello architetturale del sistema, è stato configurato un ambiente Docker che simula la suddivisione e la distribuzione dei servizi. Informazioni aggiuntive sulle immagini utilizzate e sulle configurazioni dell'ambiente sono disponibili nel file docker-compose.yml presente nel repository del progetto oltre che nella sezione \ref{sec:strumenti}.
+Da capitolato era stato definito l'uso di un'architettura containerizzata e anche valutando alcune alternative risultava comunque la scelta più ragionevole. Al fine di implementare ed eseguire l'intero stack tecnologico ed i componenti del modello architetturale del sistema seguendo questa architettura, è stato configurato un ambiente Docker che simula la suddivisione e la distribuzione dei servizi. Informazioni aggiuntive sulle immagini utilizzate e sulle configurazioni dell'ambiente sono disponibili nel file docker-compose.yml presente nel repository del progetto oltre che nella sezione \ref{sec:strumenti}.
     \subsection{Panoramica dell'infrastruttura}
         \subsubsection{Ambiente Docker}
         Descrizione dell'ambiente Docker utilizzato, incluse le immagini e le configurazioni specifiche.
@@ -1876,13 +2205,12 @@ Al fine di implementare ed eseguire l'intero stack tecnologico ed i componenti d
 Questa struttura containerizzata permette una distribuzione modulare e scalabile del sistema, semplificando la gestione e la manutenzione dei componenti e consentendo una rapida scalabilità in risposta alle esigenze emergenti. Grazie all'uso di Docker, si garantisce:
 
 \begin{itemize}
-    \item \textbf{Coerenza e riproducibilità}: L'ambiente di esecuzione è identico in sviluppo, test e produzione;
     \item \textbf{Isolamento}: Ogni componente opera nel proprio ambiente isolato, riducendo le interferenze tra servizi;
     \item \textbf{Portabilità}: L'applicazione può essere eseguita su qualsiasi piattaforma che supporti Docker;
+    \item \textbf{Portabilità della configurazione}: Grazie al compose di Docker si possono definire delle cartelle o dei file di configurazione per ogni container, rendendo il sistema facilmente replicabile;
     \item \textbf{Scalabilità orizzontale}: I container possono essere facilmente replicati per gestire carichi maggiori;
     \item \textbf{Gestione dichiarativa}: La configurazione dell'intero ambiente è definita nel file docker-compose.yml;
     \item \textbf{Efficienza delle risorse}: Ogni container riceve solo le risorse necessarie per il suo funzionamento;
-    \item \textbf{Resilienza}: In caso di guasto di un container, il sistema può riavviarlo automaticamente.
 \end{itemize}
 
 \subsection{Comunicazione tra container}
@@ -1890,9 +2218,7 @@ La comunicazione tra i vari container avviene principalmente attraverso il netwo
 
 \begin{itemize}
     \item \textbf{Disaccoppiamento}: I componenti possono evolvere indipendentemente, purché mantengano l'interfaccia di comunicazione;
-    \item \textbf{Resilienza alla rete}: Kafka gestisce automaticamente i problemi di connessione temporanei;
-    \item \textbf{Persistenza dei messaggi}: I dati vengono memorizzati in Kafka fino a quando non vengono elaborati con successo;
-    \item \textbf{Scalabilità}: Il sistema di messaggistica può scalare orizzontalmente per gestire volumi crescenti di dati.
+    \item \textbf{Persistenza dei messaggi}: I dati vengono memorizzati in Kafka e copiati subito dopo su una tabella clickhouse, garantendo la storicizzazione del dato;
 \end{itemize}
 
 \subsection{Orchestrazione e gestione}
@@ -1900,19 +2226,16 @@ Per la gestione dei container in ambiente di produzione, sono state implementate
 
 \begin{itemize}
     \item \textbf{Health checks}: Ogni container è configurato con controlli di integrità che verificano periodicamente il corretto funzionamento del servizio;
-    \item \textbf{Politiche di riavvio}: In caso di guasto, i container vengono riavviati automaticamente secondo politiche predefinite;
-    \item \textbf{Logging centralizzato}: I log di tutti i container vengono raccolti e indicizzati per facilitare il debugging;
-    \item \textbf{Monitoraggio}: Grafana fornisce dashboard dedicate per il monitoraggio delle prestazioni e dello stato dei container.
+    \item \textbf{Gerarchia di avvio dei container}: I container vengono avviati in un ordine specifico per garantire che le dipendenze siano soddisfatte prima di avviare i servizi che ne fanno uso;
 \end{itemize}
 
 \subsection{Evoluzione futura}
-L'architettura di deployment è stata progettata per supportare future evoluzioni del sistema, tra cui:
+L'architettura di deployment containerizzato con la sua separazione degli ambienti offre facile implementazione di future evoluzioni del sistema, tra cui:
 
 \begin{itemize}
-    \item \textbf{Migrazione verso Kubernetes}: L'attuale configurazione Docker è pronta per essere trasferita su un orchestratore come Kubernetes per una gestione più avanzata dei container;
-    \item \textbf{Implementazione di CI/CD}: Integrazione con pipeline di integrazione e distribuzione continua per automatizzare il deployment;
-    \item \textbf{Distribuzione multi-zona}: Possibilità di distribuire i container su più zone di disponibilità per aumentare l'affidabilità del sistema;
+    \item \textbf{Migrazione verso Kubernetes}: L'attuale configurazione Docker è pronta per essere eventualmente trasferita su un orchestratore come Kubernetes per una gestione più avanzata dei container;
     \item \textbf{Implementazione di auto-scaling}: Aggiunta di meccanismi per scalare automaticamente i servizi in base al carico.
+    \item \textbf{Monitoraggio}: C'è la possibilità di integrare strumenti di monitoraggio avanzati per analizzare le performance e il comportamento del sistema in tempo reale.
 \end{itemize}
 
 \newpage
