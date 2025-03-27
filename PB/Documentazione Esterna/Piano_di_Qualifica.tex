@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{1.0.2} %aggiunta versione come variabile
+\newcommand\version{1.0.4} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -97,6 +97,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    1.0.4 & 2025-03-26 & Federico Pivetta & Riccardo Piva & Ampliamento del cruscotto con le metriche relative alla revisione PB\\
     \hline
     1.0.3 & 2025-03-26 & Alfredo Rubino & Riccardo Piva & Redazione sottosezione Test di Unità \\
     \hline
@@ -245,7 +247,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   % MPD06 & Statement coverage & $\geq$ 80\% & 100\% \\
   % \hline
-  MPD07 & Branch coverage & $\geq$ 80\% & 100\% \\
+  MPD06 & Branch coverage & $\geq$ 80\% & 100\% \\
   \hline
   % MPD08 & Condition coverage & $\geq$ 80\% & 100\% \\
   % \hline
@@ -261,7 +263,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD09 & Tempo medio di risposta & $\leq$ 10 secondi & $\leq$ 4 secondi \\
+  MPD07 & Tempo medio di risposta & $\leq$ 10 secondi & $\leq$ 4 secondi \\
   \hline
 \end{tabular}
 \caption{Efficienza - Qualità di prodotto}
@@ -275,9 +277,9 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD10 & Facilità di utilizzo & $\leq$ 7 click & $\leq$ 5 click\\
+  MPD08 & Facilità di utilizzo & $\leq$ 7 click & $\leq$ 5 click\\
   \hline
-  MPD11 & Tempo medio di apprendimento & $\leq$ 5 minuti & $\leq$ 2 minuti \\
+  MPD09 & Tempo medio di apprendimento & $\leq$ 5 minuti & $\leq$ 2 minuti \\
   \hline
 \end{tabular}
 \caption{Usabilità - Qualità di prodotto}
@@ -293,15 +295,15 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   % \hline
   % MPD12 & Coefficiente di accoppiamento fra classi & $\leq$ 4 & $\leq$ 2 \\
   \hline
-  MPD13 & Linee di codice per metodo & $\leq$ 50 & $\leq$ 25 \\
+  MPD10 & Linee di codice per metodo & $\leq$ 50 & $\leq$ 25 \\
   \hline
-  MPD14 & Parametri per metodo & $\leq$ 7 & $\leq$ 4 \\
+  MPD11 & Parametri per metodo & $\leq$ 7 & $\leq$ 4 \\
   \hline
-  MPD15 & Attributi per classe & $\leq$ 7 & $\leq$ 5 \\
+  MPD12 & Attributi per classe & $\leq$ 7 & $\leq$ 5 \\
   \hline
-  MPD16 & Structure Fan IN & - & va massimizzato \\
+  MPD13 & Structure Fan IN & - & va massimizzato \\
   \hline
-  MPD17 & Structure Fan OUT & - & va minimizzato \\
+  MPD14 & Structure Fan OUT & - & va minimizzato \\
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -315,7 +317,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD18 & Versioni browser supportati & $\geq$ 80\% & 100\% \\
+  MPD15 & Versioni browser supportati & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Portabilità - Qualità di prodotto}
@@ -408,7 +410,7 @@ La verifica serve a garantire che il prodotto software sia conforme alle specifi
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPC13 & Code coverage & $\geq$ 80\% & 100\% \\
+  MPC13 & Line coverage & $\geq$ 80\% & 100\% \\
   \hline
   MPC14 & Passed test cases percentage & $\geq$ 80\% & 100\% \\
   \hline
@@ -684,6 +686,9 @@ restanti in riferimento al preventivo iniziale del progetto).\\
 In questo caso emerge dal grafico che il valore di EAC è poco al di sotto del preventivo iniziale (BAC), e in ogni caso entro i valori accettabili definiti
 per la metrica. Questo indica che il progetto è sufficientemente in linea con le aspettative in termini di costi.
 
+\noindent
+\textbf{PB}:
+
 
 \subsubsection{MPC05 - Planned Value (PV) \& MPC04 - Earned Value (EV)}
 
@@ -698,6 +703,9 @@ per la metrica. Questo indica che il progetto è sufficientemente in linea con l
 figura le due curve sono molto vicine, questo indica che il lavoro effettivamente svolto è conforme alla pianificazione; e nello specifico quella dell'EV è sempre 
 leggermente superiore a quella del PV. Ciò indica che il progetto sta producendo un valore maggiore rispetto a quanto pianificato, e quindi che il lavoro svolto 
 è leggermente al di sopra delle aspettative.
+
+\noindent
+\textbf{PB}:
 
 
 \subsubsection{MPC03 - Actual Cost (AC) \& MPC02 - Estimate to Complete (ETC)}
@@ -715,6 +723,10 @@ inferiore all'EAC, che viene rispettato in ogni iterazione.\\
 Ovviamente l'ETC tende a diminuire al progredire del progetto poiché questo si avvicina alla sua conclusione, mentre l'AC mostra una crescita proporzionale e inversa 
 rispetto all'ETC, in linea con le aspettative economiche del progetto.
 
+\noindent
+\textbf{PB}:
+
+
 \subsubsection{MPC08 - Cost Performance Index (CPI)}
 
 \begin{figure}[H]
@@ -729,6 +741,9 @@ progetto. La metrica è data dal rapporto fra il valore guadagnato (EV) e i cost
 Il valore accettabile invece è stato scelto essere maggiore o uguale a 0.9.\\
 Il grafico mostra che il CPI ha avuto valore strettamente maggiore di 1 per tutto il progetto, assestandosi fra il terzo e il sesto sprint a un valore pari a circa 1.06.
 Questo indica che il progetto ha prodotto un valore maggiore rispetto ai costi sostenuti.
+
+\noindent
+\textbf{PB}:
 
 
 % originariamente qui c'era una sottosezione in più di Pianificazione, che non appare però negli Obiettivi Metrici di qualità (sopra):
@@ -750,6 +765,9 @@ dal team nel corso della prima parte del progetto.\\
 La SV mostra un andamento positivo fino al quinto sprint, e ciò indica che il gruppo ha saputo produrre un valore maggiore di quanto
 pianificato nel corso delle iterazioni effettuate. Invece per il sesto sprint la SV è andata ad un valore non positivo.\\
 % Possibile aggiunta di una metrica PV - AC per mostrare gli errori di pianificazione nei preventivi. Bisognerebbe però aggiungere questa metrica anche nelle NdP
+
+\noindent
+\textbf{PB}:
 
 
 \subsection{Qualità di processo - Sviluppo}
@@ -774,6 +792,9 @@ evidenziato degli errori nell'approccio del gruppo all'analisi dei requisiti.\\
 Complessivamente il gruppo si aspetta una maggiore stabilità in futuro, in caso di un buon esito della revisione RTB, mentre potrebbero essere necessari ulteriori
 significativi cambiamenti in caso di esito negativo.\\
 
+\noindent
+\textbf{PB}:
+
 
 \subsection{Qualità di processo - Gestione dei processi}
 \subsubsection{MPC16 - Rischi non previsti}
@@ -788,6 +809,9 @@ significativi cambiamenti in caso di esito negativo.\\
 % da rivedere forse. Non so se davvero possiamo dire di non averne incontrati
 \textbf{RTB}: Nel corso del progetto il team ha senz'altro avuto modo di affrontare svariati dei rischi emersi durante l'analisi dei rischi, tuttavia non sono stati
 riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.
+
+\noindent
+\textbf{PB}:
 
 
 \subsubsection{MPC17 - Efficienza temporale (ET)}
@@ -806,6 +830,9 @@ maniera più precisa possibile, ma senza pretese di assoluta esattezza, per via 
 Dal grafico emerge che la ET si mantiene, per l'intera durata delle prime sei iterazioni del progetto, poco al di sopra del valore minimo accettabile (pari a 0.2), ma al di 
 sotto del valore ideale (pari o superiore a 1.0).\\
 
+\noindent
+\textbf{PB}:
+
 
 \subsection{Qualità di processo - Documentazione}
 \subsubsection{MPC01 - Errori ortografici}
@@ -823,13 +850,16 @@ Sebbene il valore ideale non sia mai rispettato nel corso dei primi 5 sprint per
 presentato dei prevedibili aumenti in fasi di grande produzione di documentazione. L'obiettivo del gruppo è comunque stato quello di consegnare al termine del sesto periodo
 dei documenti privi di errori ortografici, e ciò è stato raggiunto, dato che almeno da parte nostra non ne sono stati individuati.\\
 
+\noindent
+\textbf{PB}:
+
 
 \subsubsection{MPC11 - Indice Gulpease}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\linewidth]{gulpease.png}
-  \caption{Grafico a linee della metrica "indice di Gulpease"}
+  \caption{Grafico a linee della metrica "Indice di Gulpease"}
   \label{fig:gulpease_chart}
 \end{figure}
 
@@ -838,6 +868,9 @@ redatti per cui si è scelto di misurarlo; con alcune eccezioni per il documento
 Appare tuttavia chiaro che il gruppo ha avuto non poche difficoltà a raggiungere il valore ideale per questa metrica, poiché è stata sottovalutata la difficoltà dello 
 scrivere documentazione chiara e con linguaggio semplice.\\
 A questo proposito il gruppo si porrà in futuro l'obiettivo di migliorare il valore di questa metrica, cercando di esprimere i concetti con frasi più brevi e semplici.\\
+
+\noindent
+\textbf{PB}:
 
 
 \subsection{Qualità di processo - Gestione della qualità}
@@ -858,44 +891,64 @@ di miglioramento da perseguire.\\
 Un'ultima nota va aggiunta per specificare che il gruppo ha scelto di considerare la metrica relativa all'indice di Gulpease, che si applica a cinque documenti distinti, come 
 una metrica unica facendo la media dei cinque valori misurati.\\
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Queste metriche vanno posizionato sotto la sezione finale in cui si decide di metterli (probabilmente rispettivamente in fornitura e sviluppo)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent
+\textbf{PB}: 
 
-%% Questa metrica è il rapporto fra il valore del lavoro effettivamente svolto e il costo sostenuto per realizzarlo
-%% Il Cost Performance Index (CPI) è un indice che misura l'efficienza del progetto. Un valore maggiore di 1 indica
-%% che il progetto sta utilizzando le risorse in modo efficiente, mentre un valore minore di 1 indica che il progetto
-%% sta utilizzando le risorse in modo inefficiente.
-%% CPI = EV / AC
-% \subsubsection{MPC01 - Cost performance index (CPI)}
-% % Inserire grafico
-% \textbf{RTB}: Il grafico mostra che il CPI è prossimo ad 1 ma con un leggero calo nel periodo 3. Questo è dovuto al fatto che in questo periodo il team ha ricoperto 
-% ruoli più onerosi. Questo ha portato a un aumento dei costi e quindi a un calo del CPI. Questo calo è comunque accettabile e non preoccupante dato che nel periodo 
-% 3 dato il calo di lavoro e avendo ricoperto ruoli più economici c'è stato un bilanciamento.
 
-%% Questa metrica la percentuale di requisiti svolti in percentuale di periodo in periodo
-%% Questo dovrebbe valutare la stabilità dei requisiti nel tempo
-%% Quindi ogni periodo si raggiunge una percentuale di requisiti svolti
-%% E alla consegna della baseline RTB si raggiunge il 100%, poi per la PB si raggiunge il 100% di nuovo.
-%% Si va ad obbiettivi, o così l'ho interpretato io
-% RSI = 100 − {[(RA+RC+RR) / TR] * 100}
-% RA: numero di requisiti aggiunti nel periodo considerato;
-% RC: numero di requisiti cambiati nel periodo considerato;
-% RR: numero di requisiti rimossi nel periodo considerato;
-% TR: numero totale di requisiti al momento dell’analisi.
-% \subsubsection{MPC01 - Requirements stability index (RSI)}
-% % Inserire grafico
-% \textbf{RTB}: Questo grafico serve a mostrare l'avanzamento del progresso dei requisiti svolti nel tempo, indicando anche la stabilità nel progresso dei requisiti 
-% in percentuale. Inizialmente ovviamente nel primo periodo era a 0. La maggior parte dei progressi sono stati fatti nel 3 periodo con l'analisi dei requisiti e le norme 
-% di progetto e nel 5 periodo con la finalizzazione della documentazione citata precedentemente e il completamento del PoC. Il 4 periodo ha segnato un calo dovuto alle 
-% festività natalizie, mentre il 6 periodo ha segnato un calo dovuto alla persante revisione della documentazione. Questo indice è molto importante per valutare la 
-% stabilità dei requisiti nel tempo e per valutare l'efficienza del team nel soddisfare i requisiti.
 
-% Le due sezioni sottostanti saranno da completare per la PB
-% \subsection{Qualità di processo - analisi dei requisiti}
-% \subsection{Qualità di processo - verifica}
+\subsection{Qualità di processo - Analisi dei Requisiti}
+\subsubsection{MPC09 - Requisiti Obbligatori Soddisfatti (ROS)}
 
-%% Ci sarebbero altre metriche come il code smell e la densità di errori ma non le ho ritenute utili o particolarmente interessanti
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a linee della metrica ROS}
+\end{figure}
+
+\textbf{PB}: Questa metrica riflette la percentuale di requisiti obbligatori soddisfatti durante ogni iterazione. L'analisi del grafico mostra un andamento positivo, partendo dall'84\% raggiunto alla revisione RTB e progredendo costantemente attraverso i periodi (87\%, 90\%, 93\%...) fino a raggiungere il valore ideale del 100\% alla revisione PB.\\
+La costante progressione verso il 100\% dei requisiti obbligatori soddisfatti, culminata nel raggiungimento del valore ideale, è un segnale estremamente positivo. Dimostra una solida comprensione delle esigenze del progetto e un'efficace esecuzione da parte del team nel tradurre tali requisiti in funzionalità complete.
+
+
+\subsection{Qualità di processo- Verifica}
+\subsubsection{MPD06 - Branch Coverage}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a linee della metrica Branch coverage}
+\end{figure}
+
+\textbf{PB}:
+
+
+
+\subsubsection{MPC13 - Line Coverage}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a linee della metrica Line coverage}
+\end{figure}
+
+\textbf{PB}:
+
+
+
+\subsubsection{MPC14 - Passed test cases percentage}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a linee della metrica "Passed test cases percentage"}
+\end{figure}
+
+\textbf{PB}:
+
+
+% Eventualmente da aggiungere
+%MPD04 - Function Point (FP)
+%MPD13 - Structure Fan IN
+%MPD14 - Structure Fan OUT
 
 \end{justify}
 \end{document}
