@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{0.1.4} % Versione
+\newcommand\version{0.1.5} % Versione
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -113,6 +113,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+\hline
+0.1.5 & 2025-03-28  & Alfredo Rubino & Federico Pivetta & Inserimento immagini nella sezione \hyperref[sec:uso]{Istruzioni per l'uso} e correzioni minori\\
 \hline
 0.1.4 & 2025-03-14  & Federico Pivetta & Alfredo Rubino & Stesura sezione \hyperref[sec:uso]{Istruzioni per l'uso}\\
 \hline
@@ -365,18 +367,18 @@ docker compose --profile prod down -v
 \label{sec:uso}
 
 \subsection{Login}
-All'avvio del sito appare una schermata di accesso con un'interfaccia chiara e intuitiva. Al centro della pagina sono presenti due campi dedicati all'inserimento delle credenziali fornite dagli amministratori (username e password), necessarie per accedere al sistema. Si precisa che solo agli utenti autorizzati è consentito usufruire del servizio.\\
+All'avvio di Grafana, il sito appare come una schermata di accesso con un'interfaccia chiara e intuitiva. Al centro della pagina sono presenti due campi dedicati all'inserimento delle credenziali fornite dagli amministratori (username e password), necessarie per accedere al sistema. Si precisa che solo agli utenti autorizzati è consentito usufruire del servizio.\\
 Dopo aver inserito correttamente le credenziali, è necessario cliccare sul pulsante Login per completare l'autenticazione ed entrare nella piattaforma. Se le informazioni fornite sono corrette, l'utente autorizzato verrà reindirizzato alla dashboard principale, dove sarà possibile visualizzare i dati disponibili nel sistema.\\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.7\linewidth]{login.png}
     \caption{Schermata di accesso al sistema}
 \end{figure}
 \noindent
 In caso di credenziali errate, il sistema mostrerà un messaggio di errore, offrendo all'utente la possibilità di reimpostare le credenziali.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.7\linewidth]{error.png}
     \caption{Schermata di accesso in caso di messaggio di errore}
 \end{figure}
 
@@ -386,7 +388,7 @@ Ogni pannello è progettato per presentare i dati in modo ottimale in base alla 
 Oltre alla dashboard principale, gli utenti autorizzati possono accedere alle dashboard specifiche degli utenti standard, ciascuna composta da un pannello dedicato alla visualizzazione della mappa, che include marker per ogni attività e si concentra sull'intero percorso svolto e su tutti i messaggi ricevuti dal singolo utente.\\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=1\linewidth]{dashboard.png}
     \caption{Dashboard principale}
 \end{figure}
 
@@ -394,47 +396,47 @@ Oltre alla dashboard principale, gli utenti autorizzati possono accedere alle da
     La barra degli strumenti, situata nella parte superiore della dashboard, offre una serie di opzioni aggiuntive tramite pulsanti e menù a tendina, che consentono di eseguire azioni specifiche e accedere a funzionalità aggiuntive in modo semplice e rapido.\\
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=1\linewidth]{barra.png}
     \caption{Barra degli strumenti}
     \end{figure}
 
     \paragraph{Pulsante profilo utente}
-    Il pulsante del "profilo utente" consente di accedere rapidamente alle impostazioni personali, dove è possibile visualizzare e modificare le informazioni del proprio account. Premendo il pulsante, viene visualizzato un menù a tendina con le seguenti opzioni:
+    Il pulsante del ``profilo utente" consente di accedere rapidamente alle impostazioni personali, dove è possibile visualizzare e modificare le informazioni del proprio account. Premendo il pulsante, viene visualizzato un menù a tendina con le seguenti opzioni:
     \begin{itemize}
-        \item \textbf{Profile}: permette di consultare e aggiornare le informazioni personali;
-        \item \textbf{Notification history}: consente di visualizzare la cronologia delle notifiche ricevute;
-        \item \textbf{Change password}: offre la possibilità di modificare la password dell'account;
-        \item \textbf{Sign out}: consente di effettuare il logout dal sistema.
+        \item[-] \textbf{Profile}: permette di consultare e aggiornare le informazioni personali;
+        \item[-] \textbf{Notification history}: consente di visualizzare la cronologia delle notifiche ricevute;
+        \item[-] \textbf{Change password}: offre la possibilità di modificare la password dell'account;
+        \item[-] \textbf{Sign out}: consente di effettuare il logout dal sistema.
     \end{itemize}
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.25\linewidth]{profilo.png}
     \caption{Pulsante profilo utente}
     \end{figure}
 
     \paragraph{Barra di ricerca}
-    La barra di ricerca consente agli utenti autorizzati di cercare e filtrare rapidamente le dashboard disponibili o di navigare all'interno del sistema. È possibile digitare il nome della dashboard o della pagina desiderata e premere "Invio" per visualizzare i risultati corrispondenti.
+    La barra di ricerca consente agli utenti autorizzati di cercare e filtrare rapidamente le dashboard disponibili o di navigare all'interno del sistema. È possibile digitare il nome della dashboard o della pagina desiderata e premere ``Invio" per visualizzare i risultati corrispondenti.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.6\linewidth]{ricerca.png}
     \caption{Barra di ricerca}
     \end{figure}
 
     \paragraph{Menù}
     Il menù, accessibile tramite l'icona di Grafana situata sulla barra degli strumenti, offre agli utenti autorizzati l'accesso a diverse funzionalità aggiuntive. Le opzioni disponibili sono le seguenti:
     \begin{itemize}
-        \item \textbf{Home}: consente di tornare alla homepage;
-        \item \textbf{Bookmarks}: permette di visualizzare i collegamenti salvati per un accesso rapido;
-        \item \textbf{Starred}: mostra l'elenco delle dashboard contrassegnate come preferite;
-        \item \textbf{Dashboards}: consente di accedere alla lista completa delle dashboard disponibili;
-        \item \textbf{Explore}: offre strumenti per esplorare i dati e analizzarli in tempo reale;
-        \item \textbf{Altering}: permette di visualizzare, gestire ed esportare le regole di allerta e le notifiche;
-        \item \textbf{Connections}: consente di gestire le connessioni a database e fonti dati esterne;
-        \item \textbf{Administration}: fornisce accesso alle impostazioni avanzate e alla gestione degli utenti e dei permessi.
+        \item[-] \textbf{Home}: consente di tornare alla homepage;
+        \item[-] \textbf{Bookmarks}: permette di visualizzare i collegamenti salvati per un accesso rapido;
+        \item[-] \textbf{Starred}: mostra l'elenco delle dashboard contrassegnate come preferite;
+        \item[-] \textbf{Dashboards}: consente di accedere alla lista completa delle dashboard disponibili;
+        \item[-] \textbf{Explore}: offre strumenti per esplorare i dati e analizzarli in tempo reale;
+        \item[-] \textbf{Altering}: permette di visualizzare, gestire ed esportare le regole di allerta e le notifiche;
+        \item[-] \textbf{Connections}: consente di gestire le connessioni a database e fonti dati esterne;
+        \item[-] \textbf{Administration}: fornisce accesso alle impostazioni avanzate e alla gestione degli utenti e dei permessi.
     \end{itemize}
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.35\linewidth]{menu.png}
     \caption{Menù}
     \end{figure}
 
@@ -442,59 +444,67 @@ Oltre alla dashboard principale, gli utenti autorizzati possono accedere alle da
     La breadcrumb mostra il percorso di navigazione dell'utente autorizzato e indica la sua posizione corrente all'interno del sistema attraverso una serie di link. Questi link consentono di navigare facilmente tra le sezioni, permettendo all'utente di tornare rapidamente alle pagine precedenti.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.35\linewidth]{breadcrumb.png}
     \caption{Breadcrumb}
     \end{figure}
 
     \paragraph{Pulsante Mark as favorite}
-    Il pulsante "Mark as favorite" consente di aggiungere una dashboard all'elenco delle preferite, facilitandone l'accesso rapido.
+    Il pulsante ``Mark as favorite" consente di aggiungere una dashboard all'elenco delle preferite, facilitandone l'accesso rapido.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
-    \caption{Pulsante "Mark as favorite"}
+    \includegraphics[width=0.18\linewidth]{favorite.png}
+    \caption{Pulsante ``Mark as favorite"}
+    \end{figure}
+
+    \paragraph{Pulsante Export}
+    Il pulsante ``Export" consente di esportare una dashboard in formato JSON.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{export.png}
+    \caption{Pulsante ``Export"}
     \end{figure}
 
     \paragraph{Pulsante Share}
-    Il pulsante "Share", consente di condividere la dashboard attualmente visualizzata. Cliccando sulla freccia rivolta verso il basso accanto al pulsante, si apre un menù con le seguenti opzioni:
+    Il pulsante ``Share", consente di condividere la dashboard attualmente visualizzata. Cliccando sulla freccia rivolta verso il basso accanto al pulsante, si apre un menù con le seguenti opzioni:
     \begin{itemize}
-        \item \textbf{Share internally}: per condividere la dashboard con altri utenti all'interno dell'organizzazione, mantenendo il controllo sugli accessi e sui permessi;
-        \item \textbf{Share externally}: per rendere la dashboard accessibile pubblicamente, generando un link che chiunque può utilizzare per visualizzare la dashboard in modalità di sola lettura;
-        \item \textbf{Share snapshot}: per creare uno snapshot della dashboard da condividere. Questo metodo consente di condividere lo stato attuale della dashboard, rimuovendo dati sensibili come query e link ai pannelli.
+        \item[-] \textbf{Share internally}: per condividere la dashboard con altri utenti all'interno dell'organizzazione, mantenendo il controllo sugli accessi e sui permessi;
+        \item[-] \textbf{Share externally}: per rendere la dashboard accessibile pubblicamente, generando un link che chiunque può utilizzare per visualizzare la dashboard in modalità di sola lettura;
+        \item[-] \textbf{Share snapshot}: per creare uno snapshot della dashboard da condividere. Questo metodo consente di condividere lo stato attuale della dashboard, rimuovendo dati sensibili come query e link ai pannelli.
     \end{itemize}
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
-    \caption{Pulsante "Share"}
+    \includegraphics[width=0.25\linewidth]{share.png}
+    \caption{Pulsante ``Share"}
     \end{figure}
 
     \paragraph{Time settings}
-    Il menù a tendina "Time settings" permette all'utente di selezionare l'intervallo temporale desiderato per la visualizzazione dei dati. La dashboard offre una serie di intervalli predefiniti e consente all'utente di personalizzarli secondo le proprie necessità. Le aggregazioni delle misurazioni e le operazioni sui dati vengono applicate in base all'intervallo temporale selezionato, garantendo un'analisi accurata e contestualizzata delle informazioni.
+    Il menù a tendina ``Time settings" permette all'utente di selezionare l'intervallo temporale desiderato per la visualizzazione dei dati. La dashboard offre una serie di intervalli predefiniti e consente all'utente di personalizzarli secondo le proprie necessità. Le aggregazioni delle misurazioni e le operazioni sui dati vengono applicate in base all'intervallo temporale selezionato, garantendo un'analisi accurata e contestualizzata delle informazioni.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
-    \caption{Menù "Time settings"}
+    \includegraphics[width=0.7\linewidth]{time.png}
+    \caption{Menù ``Time settings"}
     \end{figure}
 
     \paragraph{Pulsante Zoom out}
-    Il pulsante "Zoom out" consente di estendere l'intervallo temporale visualizzato nei grafici, permettendo di analizzare periodi più ampi di dati. Cliccando su questo pulsante, la visualizzazione si adatta automaticamente per mostrare un intervallo temporale più esteso, secondo gli intervalli predefiniti.
+    Il pulsante ``Zoom out" consente di estendere l'intervallo temporale visualizzato nei grafici, permettendo di analizzare periodi più ampi di dati. Cliccando su questo pulsante, la visualizzazione si adatta automaticamente per mostrare un intervallo temporale più esteso, secondo gli intervalli predefiniti.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
-    \caption{Pulsante "Zoom out"}
+    \includegraphics[width=0.45\linewidth]{zoomout.png}
+    \caption{Pulsante ``Zoom out"}
     \end{figure}
     
     \paragraph{Pulsante Refresh}
-    Il pulsante "Refresh" consente all'utente di aggiornare la dashboard attualmente visualizzata per ottenere i dati più recenti. Cliccando sulla freccia accanto al pulsante, si apre un menù a tendina che offre diverse opzioni per la frequenza di aggiornamento:
+    Il pulsante ``Refresh" consente all'utente di aggiornare la dashboard attualmente visualizzata per ottenere i dati più recenti. Cliccando sulla freccia accanto al pulsante, si apre un menù a tendina che offre diverse opzioni per la frequenza di aggiornamento:
     \begin{itemize}
-        \item \textbf{Off}: disattiva l'aggiornamento automatico;
-        \item \textbf{Auto}: aggiorna la dashboard a intervalli dinamici, determinati dalla durata dell'intervallo temporale visualizzato e dalla larghezza della finestra del browser;
-        \item \textbf{Intervalli predefiniti}: permettono di impostare un aggiornamento automatico a intervalli specifici (ad esempio, 5s, 10s, 30s, 1m, ecc.).
+        \item[-] \textbf{Off}: disattiva l'aggiornamento automatico;
+        \item[-] \textbf{Auto}: aggiorna la dashboard a intervalli dinamici, determinati dalla durata dell'intervallo temporale visualizzato e dalla larghezza della finestra del browser;
+        \item[-] \textbf{Intervalli predefiniti}: permettono di impostare un aggiornamento automatico a intervalli specifici (ad esempio, 5s, 10s, 30s, 1m, ecc.).
     \end{itemize}
     Di default, le dashboard del sistema sono configurate per aggiornarsi automaticamente ogni 10 secondi. Questa impostazione può essere modificata in base alle esigenze dell'utente autorizzato.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
-    \caption{Pulsante "Refresh"}
+    \includegraphics[width=0.25\linewidth]{refresh.png}
+    \caption{Pulsante ``Refresh"}
     \end{figure}
 
 
@@ -502,17 +512,17 @@ Oltre alla dashboard principale, gli utenti autorizzati possono accedere alle da
     I pannelli costituiscono la componente principale della dashboard, presentando i dati in modo interattivo. Ogni pannello è un widget progettato per visualizzare un insieme specifico di dati, utilizzando una forma appropriata in base alla loro tipologia. Nel contesto del sistema in questione, i pannelli includono una mappa generale, delle mappe specifiche per utenti e una tabella riepilogativa dei punti di interesse.\\
     Gli elementi presenti nei pannelli sono:
     \begin{itemize}
-        \item Nome del pannello;
-        \item Legenda (se presente);
-        \item Menù opzioni del pannello;
-        \item Visualizzazione dei dati.
+        \item[-] Nome del pannello;
+        \item[-] Legenda (se presente);
+        \item[-] Menù opzioni del pannello;
+        \item[-] Visualizzazione dei dati.
     \end{itemize}
 
     \paragraph{Legenda}
     La legenda è una sezione del pannello che fornisce la chiave di lettura dei dati visualizzati. È utile per comprendere il significato dei colori e delle forme utilizzate nel pannello. Viene impiegata solamente nei pannelli che contengono una mappa.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.25\linewidth]{legenda.png}
     \caption{Legenda}
     \end{figure}
 
@@ -520,7 +530,7 @@ Oltre alla dashboard principale, gli utenti autorizzati possono accedere alle da
     Cliccando sull'icona con tre puntini verticali nell'angolo in alto a destra di un pannello, è possibile accedere a diverse funzionalità, tra cui la visualizzazione a schermo intero, la condivisione o l'esportazione del pannello, l'esplorazione delle query per un'analisi più approfondita, l'ispezione dei dati visualizzati e l'accesso a opzioni aggiuntive.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.25\linewidth]{opzioni.png}
     \caption{Opzioni del pannello}
     \end{figure}
 
@@ -530,28 +540,28 @@ Questa sezione descrive nel dettaglio i pannelli principali che compongono le da
     \subsubsection{Mappa generale}
     La mappa generale presenta una visualizzazione globale dei dati geospaziali, utilizzando dei marker distinti per rappresentare diverse entità ed attività:
     \begin{itemize}
-        \item \textbf{Punti di interesse}: indicati da dei marker rossi immobili, evidenziano le attività che offrono dei servizi;
-        \item \textbf{Sensori}: rappresentati da dei marker verdi in movimento, seguono gli spostamenti degli utenti sulla mappa e forniscono dati in tempo reale sulla loro ultima posizione;
-        \item \textbf{Messaggi pubblicitari}: mostrati come quadrati arancioni, indicano l'ultimo messaggio pubblicitario generato per ciascun utente. Questi sono visibili solo se l'utente si trova all'interno dell'area di influenza dell'attività correlata.
+        \item[-] \textbf{Punti di interesse}: indicati da dei marker rossi immobili, evidenziano le attività che offrono dei servizi;
+        \item[-] \textbf{Sensori}: rappresentati da dei marker verdi in movimento, seguono gli spostamenti degli utenti sulla mappa e forniscono dati in tempo reale sulla loro ultima posizione;
+        \item[-] \textbf{Messaggi pubblicitari}: mostrati come quadrati arancioni, indicano l'ultimo messaggio pubblicitario generato per ciascun utente. Questi sono visibili solo se l'utente si trova all'interno dell'area di influenza dell'attività correlata.
     \end{itemize}
-    La mappa include una leggenda che associa colori e forme alle diverse categorie di dati per facilitarne l'interpretazione. Inoltre, è possibile navigare sulla mappa con il mouse, mentre lo zoom può essere regolato utilizzando la rotella del mouse o tramite i pulsanti "+" e "-" situati sotto il nome del pannello.
+    La mappa include una leggenda che associa colori e forme alle diverse categorie di dati per facilitarne l'interpretazione. Inoltre, è possibile navigare sulla mappa con il mouse, mentre lo zoom può essere regolato utilizzando la rotella del mouse o tramite i pulsanti ``+" e ``-" situati sotto il nome del pannello.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=1\linewidth]{mappa.png}
     \caption{Pannello mappa generale}
     \end{figure}
 
     \subsubsection{Mappa specifica}
     La mappa specifica presenta una visualizzazione globale dei dati geospaziali relativi ad un singolo utente, utilizzando dei marker distinti per rappresentare diverse entità e attività:
     \begin{itemize}
-        \item \textbf{Punti di interesse}: indicati da dei marker rossi immobili, evidenziano le attività che offrono dei servizi;
-        \item \textbf{Percorso dell'utente}: rappresentato da dei marker viola che tracciano tutte le posizioni percorse dal singolo utente. La prima e l'ultima posizione del percorso sono evidenziate da un contorno verde;
-        \item \textbf{Messaggi pubblicitari}: mostrati come quadrati arancioni, indicano tutti i messaggi pubblicitari ricevuti dall'utente, posizionati esattamente nel punto in cui sono stati ricevuti.
+        \item[-] \textbf{Punti di interesse}: indicati da dei marker rossi immobili, evidenziano le attività che offrono dei servizi;
+        \item[-] \textbf{Percorso dell'utente}: rappresentato da dei marker viola che tracciano tutte le posizioni percorse dal singolo utente. La prima e l'ultima posizione del percorso sono evidenziate da un contorno verde;
+        \item[-] \textbf{Messaggi pubblicitari}: mostrati come quadrati arancioni, indicano tutti i messaggi pubblicitari ricevuti dall'utente, posizionati esattamente nel punto in cui sono stati ricevuti.
     \end{itemize}
-    La mappa include una leggenda che facilita l'interpretazione dei marker. Inoltre, è possibile navigare sulla mappa con il mouse, mentre lo zoom può essere regolato utilizzando la rotella del mouse o tramite i pulsanti "+" e "-" situati sotto il nome del pannello.
+    La mappa include una leggenda che facilita l'interpretazione dei marker. Inoltre, è possibile navigare sulla mappa con il mouse, mentre lo zoom può essere regolato utilizzando la rotella del mouse o tramite i pulsanti ``+" e ``-" situati sotto il nome del pannello.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=1\linewidth]{mappaspec.png}
     \caption{Pannello mappa specifica per singolo utente}
     \end{figure}
 
@@ -559,7 +569,7 @@ Questa sezione descrive nel dettaglio i pannelli principali che compongono le da
     La tabella mostra una le attività raggruppate per numero di messaggi generati nel mese corrente. I campi visualizzati includono: nome dell'attività, indirizzo, numero di messaggi generati e tipologia. Questo pannello è presente insieme alla mappa generale nella dashboard principale.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=1\linewidth]{tabella.png}
     \caption{Pannello tabella attività}
     \end{figure}
 
@@ -569,35 +579,35 @@ Questa sezione descrive nel dettaglio i pannelli principali che compongono le da
 La pagina del profilo utente è accessibile cliccando sull'icona dell'utente situata nell'angolo in alto a destra della barra degli strumenti. Da qui, gli utenti autorizzati possono visualizzare e modificare le proprie informazioni personali, oltre ad accedere alle preferenze per apportare eventuali modifiche.\\
 La schermata del profilo utente è suddivisa in tre schede principali:  
 \begin{itemize}  
-    \item Profile; 
-    \item Notification history; 
-    \item Change password.  
+    \item[-] Profile; 
+    \item[-] Notification history; 
+    \item[-] Change password.  
 \end{itemize}
     
     \subsubsection{Profile}
-    La schermata dedicata al profilo permette di visualizzare e modificare le proprie informazioni personali. In particolare, è possibile aggiornare il nome, l'email e lo username. Dopo aver apportato le modifiche desiderate, è possibile salvarle cliccando sul pulsante "Save".\\
+    La schermata dedicata al profilo permette di visualizzare e modificare le proprie informazioni personali. In particolare, è possibile aggiornare il nome, l'email e lo username. Dopo aver apportato le modifiche desiderate, è possibile salvarle cliccando sul pulsante ``Save".\\
     Sono inoltre disponibili tre sottosezioni aggiuntive:
     \begin{itemize}
-        \item Preferences;
-        \item Organizations;
-        \item Sessions.
+        \item[-] Preferences;
+        \item[-] Organizations;
+        \item[-] Sessions.
     \end{itemize}
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=1\linewidth]{profile.png}
     \caption{Schermata del profilo utente}
     \end{figure}
 
     \paragraph{Preferences}
     La seguente sezione consente di modificare le proprie preferenze:  
     \begin{itemize}  
-        \item Tema dell'interfaccia;  
-        \item Dashboard predefinita (Home dashboard);  
-        \item Fuso orario;  
-        \item Inizio della settimana;  
-        \item Lingua.  
+        \item[-] Tema dell'interfaccia;  
+        \item[-] Dashboard predefinita (Home dashboard);  
+        \item[-] Fuso orario;  
+        \item[-] Inizio della settimana;  
+        \item[-] Lingua.  
     \end{itemize}  
-    Una volta effettuate le modifiche desiderate, è possibile confermarle cliccando sul pulsante "Save". 
+    Una volta effettuate le modifiche desiderate, è possibile confermarle cliccando sul pulsante ``Save". 
     
     \paragraph{Organizations}
     La seguente sezione consente di visualizzare le organizzazioni a cui l'utente appartiene. Per ogni organizzazione, è possibile visualizzare il nome e il ruolo dell'utente al suo interno.  
@@ -606,19 +616,19 @@ La schermata del profilo utente è suddivisa in tre schede principali:
     La seguente sezione consente di visualizzare le sessioni attive dell'utente. Per ciascuna sessione, è possibile visualizzare la data e l'ora dell'ultimo accesso, l'indirizzo IP, nonché il browser e il sistema operativo utilizzati. Attraverso un pulsante dedicato, è possibile terminare la sessione desiderata.
 
     \subsubsection{Notification history}
-    Questa schermata consente di visualizzare la cronologia delle notifiche relative a errori o avvertenze. Per ciascuna notifica, è possibile visualizzare la data e l'ora, il tipo di notifica e, se presente, il messaggio corrispondente. È possibile selezionare una o più notifiche e, cliccando sul pulsante "Dismiss Notifications", eliminarle. Una volta cancellate, le notifiche non saranno più recuperabili.
+    Questa schermata consente di visualizzare la cronologia delle notifiche relative a errori o avvertenze. Per ciascuna notifica, è possibile visualizzare la data e l'ora, il tipo di notifica e, se presente, il messaggio corrispondente. È possibile selezionare una o più notifiche e, cliccando sul pulsante ``Dismiss Notifications", eliminarle. Una volta cancellate, le notifiche non saranno più recuperabili.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=1\linewidth]{notification.png}
     \caption{Schermata cronologia delle notifiche}
     \end{figure}
 
     \subsubsection{Change password}
-    Questa schermata consente di modificare la propria password. Per effettuare la modifica, è necessario inserire la password corrente, la nuova password e confermare quest'ultima. Una volta inserite le informazioni richieste, è possibile confermare le modifiche cliccando sul pulsante "Change Password", oppure annullare le modifiche cliccando su "Cancel".\\
+    Questa schermata consente di modificare la propria password. Per effettuare la modifica, è necessario inserire la password corrente, la nuova password e confermare quest'ultima. Una volta inserite le informazioni richieste, è possibile confermare le modifiche cliccando sul pulsante ``Change Password", oppure annullare le modifiche cliccando su ``Cancel".\\
     Cliccando sull'icona a forma di occhio, è possibile visualizzare la password inserita. Cliccando nuovamente sull'icona, la password verrà nascosta nuovamente.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.1\linewidth]{LogoUnipd.png}
+    \includegraphics[width=0.5\linewidth]{password.png}
     \caption{Schermata cambio della password}
     \end{figure}
 
