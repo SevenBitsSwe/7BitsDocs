@@ -133,7 +133,7 @@
     \hline
     0.5.13 & 2025-01-11 & Manuel Gusella & Leonardo Trolese & Aggiunte tabelle delle metriche per le sezioni \hyperref[codifica]{Codifica}, \hyperref[progettazione]{Progettazione} e \hyperref[analisi]{Analisi dei Requisiti}\\
     \hline
-    0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metrica Function Point e correzioni minori\\
+    0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metriche e correzioni minori\\
     \hline
     0.5.11 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Scrittura della sezione \hyperref[standard_12207]{"Standard ISO/IEC 12207"}\\
     \hline
@@ -242,12 +242,12 @@
         \begin{itemize}
             \item Riferimenti per le metriche: 
             \begin{itemize}
-                \item \textcolor{blue}{\texttt{\url{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}}}\\
-              (Consultato: 2025-02-19).\\
+            %     \item \textcolor{blue}{\texttt{\url{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}}}\\
+            %   (Consultato: 2025-02-19).\\
                 \item \textcolor{blue}{\texttt{\url{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}}}\\
               (Consultato: 2025-02-19).\\
-                \item \textcolor{blue}{\texttt{\url{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}}}\\
-              (Consultato: 2025-02-19).\\
+            %     \item \textcolor{blue}{\texttt{\url{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}}}\\
+            %   (Consultato: 2025-02-19).\\
                 \item \textcolor{blue}{\texttt{\url{https://youtu.be/CXgDazM0DWA?feature=shared}}}\\
               (Consultato: 2025-02-19).
             \end{itemize}
@@ -487,8 +487,8 @@
             \hline
             MPD03 & Requisiti Opzionali Soddisfatti\\
             \hline
-            MPD04 & Function Point\\
-            \hline
+            % MPD04 & Function Point\\
+            % \hline
           \end{tabular}
           \caption{Metriche relative all'attività di analisi-dei-requisiti}
         \end{table}
@@ -1355,24 +1355,24 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
                             \item $TRP$: requisiti opzionali totali.
                         \end{itemize}
             \end{itemize}
-    \item   \textbf{MPD04 - Function Point (FP)}:
-            \begin{itemize}
-                \item   \textbf{Descrizione}: metrica utilizzata per misurare la dimensione funzionale di un prodotto software. Si basa sulle funzionalità offerte dal sistema$_G$ agli utenti finali, e pertanto tiene conto di elementi quali input, output, interfacce, file e query$_G$ interne.
-                Il calcolo di tale metrica segue uno schema standardizzato che fa riferimento al IFPUG (International Function Point Users Group), e include cinque componenti principali:
-                \begin{enumerate}
-                    \item Ingressi esterni (EI).
-                    \item Uscite esterne (EO).
-                    \item Query$_G$ esterne (EQ).
-                    \item File logici interni (ILF).
-                    \item File di interfaccia esterni (EIF).
-                \end{enumerate}
-                Il numero totale di function points viene ponderato sulla base della complessità (alta, media o bassa) relativa a ciascuno di questi elementi.
-                \begin{figure}[H]
-                \centering
-                \includegraphics[width=0.7\textwidth]{FunctionPointFigure.png}
-                \caption{Schema riassuntivo della metrica Function Point}
-                \end{figure}
-            \end{itemize}
+    % \item   \textbf{MPD04 - Function Point (FP)}:
+    %         \begin{itemize}
+    %             \item   \textbf{Descrizione}: metrica utilizzata per misurare la dimensione funzionale di un prodotto software. Si basa sulle funzionalità offerte dal sistema$_G$ agli utenti finali, e pertanto tiene conto di elementi quali input, output, interfacce, file e query$_G$ interne.
+    %             Il calcolo di tale metrica segue uno schema standardizzato che fa riferimento al IFPUG (International Function Point Users Group), e include cinque componenti principali:
+    %             \begin{enumerate}
+    %                 \item Ingressi esterni (EI).
+    %                 \item Uscite esterne (EO).
+    %                 \item Query$_G$ esterne (EQ).
+    %                 \item File logici interni (ILF).
+    %                 \item File di interfaccia esterni (EIF).
+    %             \end{enumerate}
+    %             Il numero totale di function points viene ponderato sulla base della complessità (alta, media o bassa) relativa a ciascuno di questi elementi.
+    %             \begin{figure}[H]
+    %             \centering
+    %             \includegraphics[width=0.7\textwidth]{FunctionPointFigure.png}
+    %             \caption{Schema riassuntivo della metrica Function Point}
+    %             \end{figure}
+    %         \end{itemize}
 \end{itemize}
 
 \subsubsection{Affidabilità}
