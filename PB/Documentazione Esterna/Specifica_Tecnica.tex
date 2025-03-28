@@ -147,6 +147,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.2.0 & 2025-03-28 & Uncas Peruzzi & Riccardo Pivetta & Refactoring Struttura, Aggiunti SimulationService e PositionToMessageService \\
+    \hline
     0.1.9 & 2025-03-28 & Uncas Peruzzi & Riccardo Pivetta & Aggiunte immagini servizi e diagrammi UML \\
     \hline
     0.1.8 & 2025-03-22 & Alfredo Rubino & Uncas Peruzzi & Aggiunto pattern Adapter \\
@@ -808,6 +810,74 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
         La simulazione crea un flusso continuo di eventi che rispecchia scenari di movimento reali. Questo approccio event-driven si allinea perfettamente con la filosofia Kappa, dove tutti i dati sono modellati come flussi di eventi, mentre la struttura interna rispetta i principi dell'Architettura Esagonale.
 
+
+        % \myparagraph{Simulatore posizioni}
+        % Il simulatore di posizioni è un componente fondamentale dell'architettura che simula i dati GPS degli utenti, consentendo di testare e dimostrare il funzionamento del sistema senza richiedere dispositivi fisici reali.
+
+        % \mysubparagraph{Strategie di movimento}
+        % Il simulatore implementa il pattern Strategy per definire diverse modalità di movimento. L'interfaccia \texttt{IPositionSimulationStrategy} definisce il contratto comune per tutte le strategie di simulazione:
+        % \begin{lstlisting}
+        % class IPositionSimulationStrategy(ABC):
+        %     @abstractmethod
+        %     def simulate_position_live_update(self, sensor_istance):
+        %         pass
+        % \end{lstlisting}
+
+        % La strategia principale implementata, \texttt{BycicleSimulationStrategy}, simula il movimento di una bicicletta su un grafo stradale reale utilizzando la libreria OSMnx. Questa strategia:
+        % \begin{itemize}
+        %     \item[-] Seleziona casualmente nodi nel grafo stradale per creare percorsi realistici;
+        %     \item[-] Utilizza una velocità parametrizzabile (default: 10-20 km/h);
+        %     \item[-] Applica interpolazione lineare tra i punti del percorso;
+        %     \item[-] Consente configurazione temporale degli aggiornamenti di posizione.
+        % \end{itemize}
+
+        % \mysubparagraph{Generazione dati JSON}
+        % La serializzazione dei dati avviene attraverso il pattern Adapter, implementato dalla classe \texttt{PositionJsonAdapter} che converte gli oggetti \texttt{GeoPosition} in formato JSON:
+        % \begin{lstlisting}
+        % {
+        %     "id": "UUID",
+        %     "latitude": "Float64",
+        %     "longitude": "Float64",
+        %     "received_at": "String"
+        % }
+        % \end{lstlisting}
+
+        % Questo formato è compatibile con le aspettative del topic Kafka \texttt{SimulatorPosition} e della tabella ClickHouse corrispondente. L'adapter implementa l'interfaccia \texttt{IJsonSerializable}, garantendo uniformità nella serializzazione di diversi tipi di dati.
+
+        % \mysubparagraph{Configurazione del simulatore}
+        % Il simulatore è altamente configurabile attraverso diversi parametri:
+        % \begin{itemize}
+        %     \item[-] \textbf{Delta tempo}: Intervallo temporale tra aggiornamenti di posizione;
+        %     \item[-] \textbf{Range di velocità}: Valori minimi e massimi per la velocità di spostamento;
+        %     \item[-] \textbf{Area geografica}: Delimitazione dell'area in cui generare percorsi;
+        %     \item[-] \textbf{Numero di sensori}: Quantità di sensori simulati simultaneamente.
+        % \end{itemize}
+
+        % La configurazione sfrutta la libreria OSMnx per caricare grafi stradali reali. Il sistema utilizza un grafo precaricato dell'area di interesse per ottimizzare le performance di avvio:
+        % \begin{lstlisting}
+        % graph_istance = GraphWrapper().get_graph()
+        % strategy_simulation = BycicleSimulationStrategy()
+        % sensor_istance = sensor_factory.create_sensor(sensor_uuid, strategy_simulation)
+        % \end{lstlisting}
+
+        % \mysubparagraph{Tipologie di dati generati}
+        % Il simulatore produce dati con le seguenti caratteristiche:
+        % \begin{itemize}
+        %     \item[-] \textbf{Continuità spaziale}: I punti generati seguono percorsi realistici lungo le strade del grafo OSM;
+        %     \item[-] \textbf{Variabilità temporale}: Gli aggiornamenti rispettano intervalli di tempo configurabili;
+        %     \item[-] \textbf{Coerenza di velocità}: La distanza tra punti consecutivi è proporzionale alla velocità simulata.
+        % \end{itemize}
+
+        % La classe \texttt{GeoPosition} rappresenta la struttura dati fondamentale per le posizioni:
+        % \begin{lstlisting}
+        % class GeoPosition:
+        %     def __init__(self, sensor_id, latitude, longitude, timestamp):
+        %         self.__sensor_id = sensor_id
+        %         self.__latitude = latitude
+        %         self.__longitude = longitude
+        %         self.__timestamp = timestamp
+        % \end{lstlisting}
+        
         \myparagraph{Diagramma della classi }
 
 
@@ -862,7 +932,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \end{itemize}
     In conclusione, questo approccio modulare, basato sul pattern Strategy, ci consente di estendere facilmente il sistema con nuove strategie senza dover modificare il codice esistente. Tale progettazione rispetta i principi SOLID, in particolare il principio Open/Closed, e contribuisce significativamente al miglioramento della manutenibilità complessiva dell'applicazione.
 
-\myparagraph{Factory Pattern}
+\myparagraph{Design Pattern - Factory Pattern}
 
     \mysubparagraph{Motivazioni e studio del design pattern}
     Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di istanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
@@ -896,7 +966,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \end{itemize}
     In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di istanziazione in un unico punto e rispettando il principio di singola responsabilità.
     
-    \myparagraph{Adapter Pattern}
+    \myparagraph{Design Pattern - Adapter Pattern}
     \mysubparagraph{Motivazioni e studio del design pattern}
     Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka tramite serializzazione JSON oppure la comunicazione con il repository di ClickHouse). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
     
@@ -1348,19 +1418,18 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \end{itemize}
     \end{itemize}
     
+    \newpage
 
-
-
+    \subsubsection{Streaming Layer - Apache Kafka}
         
-        \myparagraph{Apache Kafka}
-            \mysubparagraph{Topic e partitioning}
+        \myparagraph{Topic e partitioning}
         In questo progetto si utilizzano due topic:
         \begin{itemize}
         \item \texttt{posizioni}, per pubblicare i dati generati dai sensori (simulator);
         \item \texttt{messaggi}, per pubblicare gli annunci generati dall’LLM.
         \end{itemize}
 
-        \mysubparagraph{Producer e Consumer}
+        \myparagraph{Producer e Consumer}
 
         \mysubparagraph{Message keys}
         Le chiavi dei messaggi (key) determinano la partizione Kafka a cui viene inviato ogni evento, bilanciando il carico tra i consumer. Una chiave può essere definita in base a uno o più campi del messaggio, ad esempio l'ID del sensore per i record di posizione. Inoltre, è fondamentale considerare come la scelta delle chiavi possa influenzare la distribuzione dei dati e le performance del sistema.
@@ -1368,14 +1437,14 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         key_type = Types.ROW_NAMED(['sensor_id'], [Types.STRING()])
         \end{lstlisting}
 
-        \mysubparagraph{Integrazione con Flink keyed stream}
+        \myparagraph{Integrazione con Flink keyed stream}
         All’interno del job Flink, l'utilizzo della chiave su ogni record consente di creare un keyed stream
         in cui i dati, prima di essere elaborati, vengono raggruppati in base alla loro chiave. Questo permette
         di gestire le funzioni di stato in modo isolato per ogni chiave e di applicare trasformazioni o filtri
         specifici, migliorando l’efficacia del processing e riducendo i conflitti di stato tra utenti o sensori
         diversi.
 
-        \mysubparagraph{Schema topic simulator position}
+        \myparagraph{Schema topic simulator position}
         I dati inviati dal producer sul topic \texttt{posizioni} seguono questa struttura JSON: \\
         \begin{lstlisting}
         {
@@ -1386,7 +1455,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         }
         \end{lstlisting}
 
-        \mysubparagraph{Schema message elaborated}
+        \myparagraph{Schema message elaborated}
         I messaggi sul topic \texttt{messaggi} hanno il seguente formato: \\
         \begin{lstlisting}
         {
@@ -1403,7 +1472,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \end{lstlisting}
 
 
-        \mysubparagraph{Kafka poisoning}\label{poison}
+        \myparagraph{Kafka poisoning}\label{poison}
         \begin{itemize}
             \item \textbf{Descrizione del problema}\\
             Il sistema di stream processing Kafka risulta potenzialmente vulnerabile ad un attaccante che inserisca
@@ -1480,9 +1549,18 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             \item \textbf{Conclusioni}\\
                 La validazione dei dati a livello di codice è stata adottata per mitigare il rischio di \textit{Kafka poisoning}, in quanto non erano richieste misure di sicurezza avanzate dal proponente. Pur offrendo una protezione inferiore rispetto a soluzioni più sofisticate, questa strategia risulta semplice da integrare e fornisce una prima linea di difesa contro possibili iniezioni di dati malevoli, senza comportare carichi di lavoro eccessivi sul resto del progetto. È stato condotto comunque uno studio approfondito delle altre tecniche di mitigazione, così da valutare il carico di lavoro richiesto e quale fosse la scelta più adatta, lasciando comunque possibilità di implementarle in futuro per migliorare la sicurezza del sistema.\\
         \end{itemize}
+        
 
+
+
+
+
+
+
+
+
+        \subsubsection{Processing Layer - PositionToMessageProcessor}
         \myparagraph{Apache Flink}
-        \mysubparagraph{Stream processing jobs}
         Nell'architettura NearYou, Flink gestisce un job di streaming strutturato sfruttando le funzionalità offerte della DataStream API,
         approccio scelto per la sua flessibilità e per la ricchezza di operatori disponibili per la manipolazione dei flussi di dati.
         Il flusso di elaborazione è organizzato attraverso un componente centrale, il FlinkJobManager, che coordina l'intero ciclo di vita del processing dei dati.
@@ -1530,73 +1608,668 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \mysubparagraph{Serializzazione e deserializzazione dei messaggi}
         La gestione della serializzazione e deserializzazione è fondamentale nell'architettura Flink per garantire l'efficiente trasferimento dei dati tra i componenti del sistema streaming. Il sistema implementa serializzatori personalizzati che garantiscono coerenza e integrità dei dati durante l'elaborazione.
 
-        \myparagraph{Simulatore posizioni}
-        Il simulatore di posizioni è un componente fondamentale dell'architettura che simula i dati GPS degli utenti, consentendo di testare e dimostrare il funzionamento del sistema senza richiedere dispositivi fisici reali.
+        \myparagraph{Diagrammi delle classi}
+        Seguono i diagrammmi delle classi, suddiviso per comodita in 2 parti, rispetto alla classe \texttt{FlinkJobManager}
+        \begin{figure}[H]
+        \hspace{-1.5cm} % Sposta l'immagine di 2cm a sinistra
+        \includegraphics[width=1.24\textwidth]{flink2.jpg}
+        \caption{PositionToMessageProcessorService InBound/OutBound Ports con il Broker}
+        \end{figure}
 
-        \mysubparagraph{Strategie di movimento}
-        Il simulatore implementa il pattern Strategy per definire diverse modalità di movimento. L'interfaccia \texttt{IPositionSimulationStrategy} definisce il contratto comune per tutte le strategie di simulazione:
-        \begin{lstlisting}
-        class IPositionSimulationStrategy(ABC):
-            @abstractmethod
-            def simulate_position_live_update(self, sensor_istance):
-                pass
-        \end{lstlisting}
+        \begin{figure}[H]
+        \hspace{-1.5cm}
+        \includegraphics[width=1.25\textwidth]{flink1.jpg}
+        \caption{PositionToMessageProcessorService OutBound Ports}
+        \end{figure}
 
-        La strategia principale implementata, \texttt{BycicleSimulationStrategy}, simula il movimento di una bicicletta su un grafo stradale reale utilizzando la libreria OSMnx. Questa strategia:
+        
+    \paragraph{Design Pattern - Adapter Pattern}
+    \begin{itemize} 
+    \item \textbf{Motivazioni e studio del design pattern}
+    \begin{itemize}
+        \item Nel contesto della nostra architettura esagonale, l'Adapter Pattern risulta essenziale per facilitare l'interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka o la ricezione di dati da esso).
+        \item Grazie a questo approccio, manteniamo l'indipendenza tra i moduli interni e le librerie di terze parti, riducendo i vincoli e semplificando la futura sostituzione di tali componenti senza impattare sul sistema.
+        \item Questo pattern consente di adattare interfacce incompatibili e promuove il riutilizzo del codice, proteggendo la logica di business dai dettagli implementativi delle tecnologie esterne.
+    \end{itemize}
+    
+    \item \textbf{Implementazione del design pattern}
+    \begin{itemize}
+        \item L'implementazione del pattern Adapter avviene tramite:
+        \begin{enumerate}
+            \item Interfacce ben definite (\texttt{IMessageWriter} e \texttt{IPositionReceiver}) che dichiarano i metodi essenziali per l'interazione con l'architettura esagonale
+            \item Classi adapter concrete (\texttt{KafkaMessageWriter} e \texttt{KafkaPositionReceiver}) che implementano tali interfacce, incapsulando la complessità di conversione tra i formati interni e quelli richiesti da Kafka
+            \item Adapter di serializzazione/deserializzazione (\texttt{JsonRowSerializationAdapter} e \\ \texttt{JsonRowDeserializationAdapter}) che gestiscono la conversione dei dati
+        \end{enumerate}
+    \end{itemize}
+    
+    \item \textbf{Integrazione del pattern}
+    \begin{itemize}
+        \item \texttt{KafkaMessageWriter} agisce come adapter per l'invio di messaggi a Kafka:
+        \begin{enumerate}
+            \item Riceve una configurazione (\texttt{KafkaWriterConfiguration}) e un adapter di serializzazione
+            \item Costruisce un serializzatore di record Kafka configurandolo con il topic di destinazione e gli schemi di serializzazione per chiave e valore
+            \item Crea un sink Kafka con i server bootstrap e il serializzatore configurati
+            \item Espone il metodo \texttt{get\_message\_writer()} che restituisce il sink configurato, nascondendo tutti i dettagli di implementazione di Kafka
+        \end{enumerate}
+        
+        \item \texttt{KafkaPositionReceiver} agisce come adapter per la ricezione di posizioni da Kafka:
+        \begin{enumerate}
+            \item Riceve una configurazione (\texttt{KafkaSourceConfiguration}) e un adapter di deserializzazione
+            \item Costruisce una sorgente Kafka configurandola con server bootstrap, topic, gruppo consumer e schema di deserializzazione
+            \item Configura proprietà specifiche come auto-commit e gestione degli offset
+            \item Espone il metodo \texttt{get\_position\_receiver()} che restituisce la sorgente configurata, nascondendo i dettagli di Kafka
+        \end{enumerate}
+        
+        \item Grazie a questi adapter, il core dell'applicazione può interagire con Kafka attraverso un'interfaccia semplificata e coerente, senza essere esposto ai dettagli implementativi della libreria Kafka. Se in futuro fosse necessario sostituire Kafka con un altro broker di messaggistica, basterebbe implementare nuovi adapter che rispettino le stesse interfacce.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{Design Pattern - Strategy Pattern}
+    \begin{itemize} 
+    \item \textbf{Motivazioni e studio del design pattern}
+    \begin{itemize}
+        \item Nel contesto della nostra architettura, il Pattern Strategy risulta fondamentale per gestire diverse implementazioni di modelli linguistici (LLM) senza modificare il codice client che li utilizza.
+        \item Questo pattern permette di definire una famiglia di algoritmi (in questo caso, diverse implementazioni di servizi LLM), incapsularli in classi separate e renderli intercambiabili a runtime.
+        \item Grazie a questo approccio, possiamo estendere facilmente le capacità del sistema aggiungendo nuovi servizi LLM senza modificare la logica di business che li utilizza, garantendo una maggiore flessibilità e manutenibilità del codice.
+    \end{itemize}
+    
+    \item \textbf{Implementazione del design pattern}
+    \begin{itemize}
+        \item L'implementazione del pattern Strategy avviene tramite:
+        \begin{enumerate}
+            \item Un'interfaccia astratta \texttt{LLMService} che definisce il contratto comune per tutti i servizi LLM, dichiarando i metodi essenziali come \texttt{set\_up\_chat()} e \texttt{get\_llm\_structured\_response()}.
+            \item Classi concrete (come \texttt{GroqLLMService}) che implementano l'interfaccia \texttt{LLMService}, fornendo implementazioni specifiche per interagire con diversi provider di LLM.
+            \item Un meccanismo di configurazione che permette di selezionare la strategia appropriata a runtime.
+        \end{enumerate}
+    \end{itemize}
+    
+    \item \textbf{Integrazione del pattern}
+    \begin{itemize}
+        \item \texttt{LLMService} agisce come interfaccia strategica:
+        \begin{enumerate}
+            \item Definisce un costruttore che riceve un modello strutturato di risposta (\texttt{structured\_response})
+            \item Dichiara il metodo astratto \texttt{set\_up\_chat()} che deve essere implementato per inizializzare la comunicazione con il servizio LLM specifico
+            \item Dichiara il metodo astratto \texttt{get\_llm\_structured\_response(prompt)} che deve essere implementato per ottenere risposte strutturate dal LLM
+        \end{enumerate}
+        
+        \item \texttt{GroqLLMService} rappresenta una strategia concreta:
+        \begin{enumerate}
+            \item Implementa l'interfaccia \texttt{LLMService} fornendo un'implementazione specifica per il servizio Groq
+            \item Configura parametri specifici come la chiave API, il modello ("Gemma2-9b-it"), la temperatura e altri parametri propri di Groq
+            \item Implementa \texttt{set\_up\_chat()} impostando un limitatore di frequenza e inizializzando il client ChatGroq
+            \item Implementa \texttt{get\_llm\_structured\_response(prompt)} utilizzando la funzionalità \texttt{with\_structured\_output} di ChatGroq per ottenere risposte nel formato desiderato
+        \end{enumerate}
+        
+        \item Il client (in questo caso, \texttt{PositionToMessageProcessor}) interagisce con l'interfaccia \texttt{LLMService} senza conoscere quale implementazione specifica viene utilizzata:
+        \begin{enumerate}
+            \item Riceve un'istanza di \texttt{LLMService} tramite dependency injection
+            \item Chiama il metodo \texttt{get\_llm\_structured\_response()} sull'interfaccia, delegando l'implementazione concreta alla strategia selezionata
+            \item Non ha bisogno di conoscere i dettagli implementativi di Groq o di qualsiasi altro servizio LLM
+        \end{enumerate}
+        
+        \item Grazie a questo pattern, il sistema può facilmente supportare nuovi servizi LLM (come OpenAI, Claude, ecc.) semplicemente creando nuove classi che implementano l'interfaccia \texttt{LLMService}, senza modificare il codice che utilizza questi servizi. Ciò garantisce un'elevata estensibilità e facilità di manutenzione.
+    \end{itemize}
+    \end{itemize}
+
+
+    \myparagraph{Classi, interfacce, metodi e attributi:}
+
+    \paragraph{FlinkJobManager}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un gestore per job Apache Flink che configura e orchestra un pipeline di elaborazione dati in streaming. Costruisce un flusso di dati completo con operazioni di ricezione, trasformazione e invio di messaggi.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_streaming\_env: StreamExecutionEnvironment} - Ambiente di esecuzione Flink per l'elaborazione in streaming.
+        \item \texttt{\_\_populated\_datastream} - Stream di dati iniziale popolato dalla sorgente di posizioni.
+        \item \texttt{\_\_keyed\_stream} - Stream partizionato (keyed) in base all'identificatore della posizione.
+        \item \texttt{\_\_validated\_stream} - Stream filtrato contenente solo le posizioni validate.
+        \item \texttt{\_\_mapped\_stream} - Stream con dati trasformati dal formato di input al formato di output.
+        \item \texttt{\_\_filtered\_stream} - Stream finale filtrato prima dell'invio al sink.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, streaming\_env\_istance: StreamExecutionEnvironment, map\_function\_implementation: MapFunction, filter\_validator\_implementation: FilterFunction, filter\_function\_implementation: FilterFunction, position\_receiver\_istance: IPositionReceiver, message\_sender\_istance: IMessageWriter)} - Costruttore che configura l'intero pipeline di elaborazione dati. Inizializza l'ambiente di streaming, crea uno stream di dati dalla sorgente, applica operazioni di chiave, validazione, mappatura e filtraggio, e configura il sink per l'output.
+        
+        \item \texttt{execute(self)} - Avvia l'esecuzione del job Flink con l'identificatore "Flink Job".
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{IMessageWriter}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per i componenti di scrittura dei messaggi. Rappresenta una porta in uscita (outbound port) nel sistema, responsabile di fornire un meccanismo standardizzato per scrivere messaggi verso sistemi esterni.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{get\_message\_writer(self)} - Metodo astratto che deve essere implementato dalle sottoclassi per fornire l'istanza concreta dello scrittore di messaggi. L'implementazione dipenderà dal sistema di destinazione specifico (ad esempio, un sink Kafka o un altro sistema di messaggistica).
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{KafkaMessageWriter}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa l'interfaccia IMessageWriter per fornire un adattatore specifico per la scrittura di messaggi su Apache Kafka. Configura e costruisce un sink Kafka per l'integrazione con il pipeline di elaborazione dati di Apache Flink.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_current\_configuration: KafkaWriterConfiguration} - Configurazione contenente i parametri necessari per la connessione a Kafka e la serializzazione dei messaggi.
+        \item \texttt{\_\_position\_serializer} - Schema di serializzazione per convertire gli oggetti di posizione in formato JSON.
+        \item \texttt{\_\_record\_serializer: KafkaRecordSerializationSchema} - Schema di serializzazione per i record Kafka che include sia la chiave che il valore.
+        \item \texttt{\_\_kafka\_sink: KafkaSink} - Componente sink di Flink configurato per scrivere su Kafka.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, kafka\_writer\_configuration: KafkaWriterConfiguration, serialize\_adapter: JsonRowSerializationAdapter)} - Costruttore che inizializza l'adattatore con la configurazione Kafka e l'adattatore di serializzazione JSON, e costruisce il serializzatore di record e il sink Kafka.
+        
+        \item \texttt{build\_record\_serializer(self)} - Metodo privato che costruisce lo schema di serializzazione per i record Kafka, configurando il topic di destinazione, lo schema di serializzazione della chiave e dello schema di serializzazione del valore.
+        
+        \item \texttt{build\_kafka\_sink(self)} - Metodo privato che costruisce il sink Kafka utilizzando i server bootstrap e il serializzatore di record precedentemente configurati.
+        
+        \item \texttt{get\_message\_writer(self)} - Implementazione del metodo dell'interfaccia che restituisce l'istanza del sink Kafka configurato, pronto per essere utilizzato nel pipeline Flink.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{JsonRowSerializationAdapter}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un adattatore per la serializzazione di dati in formato JSON. Incapsula la configurazione e la creazione di uno schema di serializzazione JSON per l'uso nei flussi di dati di Apache Flink.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_row\_type\_info\_message} - Informazioni sul tipo di riga che definisce la struttura dei dati da serializzare. Specifica lo schema e i tipi di dati per il processo di serializzazione JSON.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, row\_type\_config\_message)} - Costruttore che inizializza l'adattatore con le informazioni di tipo necessarie per definire la struttura dei messaggi da serializzare.
+        
+        \item \texttt{get\_serialization\_schema(self)} - Restituisce uno schema di serializzazione JSON configurato con le informazioni di tipo fornite. Lo schema creato può essere utilizzato per convertire oggetti Flink Row in stringhe JSON formattate secondo lo schema definito.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{KafkaWriterConfiguration}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe di dati (dataclass) che contiene la configurazione necessaria per scrivere messaggi su Apache Kafka dal pipeline Flink. Definisce sia i parametri di connessione sia la struttura dei dati da serializzare.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{bootstrap\_servers: str} - Indirizzo e porta dei server bootstrap Kafka. Il valore predefinito è "kafka:9092".
+        \item \texttt{writable\_topic: str} - Nome del topic Kafka su cui scrivere i messaggi elaborati. Il valore predefinito è "MessageElaborated".
+        \item \texttt{key\_type} - Definizione del tipo di chiave per i record Kafka, strutturata come una riga con un singolo campo 'user\_uuid' di tipo stringa.
+        \item \texttt{row\_type\_info\_message} - Definizione completa dello schema dei messaggi, strutturata come una riga con nove campi che rappresentano le informazioni dell'utente, dell'attività e del messaggio, con i relativi tipi di dati (stringhe per identificatori e messaggio, float per coordinate geografiche).
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item Nessuna operazione esplicita definita, in quanto si tratta di una dataclass che fornisce automaticamente costruttore, rappresentazione in stringa, confronto e altre funzionalità.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{IPositionReceiver}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per i componenti di ricezione delle posizioni. Rappresenta una porta in entrata (inbound port) nel sistema, responsabile di fornire un meccanismo standardizzato per ricevere dati di posizione da fonti esterne.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{get\_position\_receiver(self)} - Metodo astratto che deve essere implementato dalle sottoclassi per fornire l'istanza concreta del ricevitore di posizioni. L'implementazione dipenderà dalla fonte di dati specifica (ad esempio, un source Kafka o un altro sistema di messaggistica).
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{KafkaPositionReceiver}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa l'interfaccia IPositionReceiver per fornire un adattatore specifico per la ricezione di posizioni da Apache Kafka. Configura e costruisce una fonte Kafka per l'integrazione con il pipeline di elaborazione dati di Apache Flink.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_current\_configuration: KafkaSourceConfiguration} - Configurazione contenente i parametri necessari per la connessione a Kafka e la deserializzazione dei messaggi.
+        \item \texttt{\_\_position\_deserializer} - Schema di deserializzazione per convertire i messaggi JSON ricevuti in oggetti di posizione.
+        \item \texttt{\_\_kafka\_source: KafkaSource} - Componente source di Flink configurato per leggere da Kafka.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, kafka\_source\_configuration: KafkaSourceConfiguration, deserialize\_adapter: JsonRowDeserializationAdapter)} - Costruttore che inizializza l'adattatore con la configurazione Kafka e l'adattatore di deserializzazione JSON, e costruisce la fonte Kafka.
+        
+        \item \texttt{build\_kafka\_source(self) -> KafkaSource} - Metodo privato che costruisce la fonte Kafka configurando i server bootstrap, il topic di origine, l'ID del gruppo di consumatori, il deserializzatore e altre proprietà specifiche come l'auto-commit e il commit degli offset sui checkpoint.
+        
+        \item \texttt{get\_position\_receiver(self)} - Implementazione del metodo dell'interfaccia che restituisce l'istanza della fonte Kafka configurata, pronta per essere utilizzata nel pipeline Flink.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{JsonRowDeserializationAdapter}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un adattatore per la deserializzazione di dati in formato JSON. Incapsula la configurazione e la creazione di uno schema di deserializzazione JSON per l'uso nei flussi di dati di Apache Flink.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_row\_type\_info} - Informazioni sul tipo di riga che definisce la struttura dei dati da deserializzare. Specifica lo schema e i tipi di dati per il processo di deserializzazione JSON.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, row\_type\_config)} - Costruttore che inizializza l'adattatore con le informazioni di tipo necessarie per definire la struttura dei messaggi da deserializzare.
+        
+        \item \texttt{get\_deserialization\_schema(self)} - Restituisce uno schema di deserializzazione JSON configurato con le informazioni di tipo fornite. Lo schema creato può essere utilizzato per convertire stringhe JSON in oggetti Flink Row strutturati secondo lo schema definito.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{KafkaSourceConfiguration}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe di dati (dataclass) che contiene la configurazione necessaria per leggere messaggi da Apache Kafka nel pipeline Flink. Definisce sia i parametri di connessione sia la struttura dei dati da deserializzare.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{bootstrap\_servers: str} - Indirizzo e porta dei server bootstrap Kafka. Il valore predefinito è "kafka:9092".
+        \item \texttt{source\_topic: str} - Nome del topic Kafka da cui leggere i messaggi di posizione. Il valore predefinito è "SimulatorPosition".
+        \item \texttt{group\_id: str} - Identificatore del gruppo di consumatori Kafka. Il valore predefinito è "pyfinkJob".
+        \item \texttt{enable\_auto\_commit: str} - Flag che indica se abilitare il commit automatico degli offset. Il valore predefinito è "true".
+        \item \texttt{commit\_offsets\_on\_checkpoint: str} - Flag che indica se commettere gli offset durante i checkpoint Flink. Il valore predefinito è "true".
+        \item \texttt{row\_type} - Definizione dello schema di deserializzazione delle posizioni, strutturato come una riga con quattro campi: 'user\_uuid' (string), 'latitude' (float), 'longitude' (float) e 'received\_at' (string).
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item Nessuna operazione esplicita definita, in quanto si tratta di una dataclass che fornisce automaticamente costruttore, rappresentazione in stringa, confronto e altre funzionalità.
+    \end{itemize}
+    \end{itemize}
+    
+    \paragraph{FilterMessageValidator}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe FilterFunction di Apache Flink per filtrare messaggi Kafka invalidi o potenzialmente dannosi. Esegue diversi controlli di validazione sui dati ricevuti per garantire l'integrità e la sicurezza del pipeline di elaborazione.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo specifico definito nella classe.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{open(self, runtime\_context)} - Metodo che viene chiamato all'inizializzazione della funzione di filtro. Non implementa operazioni specifiche in questa versione.
+        
+        \item \texttt{filter(self, value)} - Implementa il metodo dell'interfaccia FilterFunction per determinare quali messaggi devono essere mantenuti nel flusso. Esegue diversi controlli di validazione:
         \begin{itemize}
-            \item[-] Seleziona casualmente nodi nel grafo stradale per creare percorsi realistici;
-            \item[-] Utilizza una velocità parametrizzabile (default: 10-20 km/h);
-            \item[-] Applica interpolazione lineare tra i punti del percorso;
-            \item[-] Consente configurazione temporale degli aggiornamenti di posizione.
+            \item Verifica che latitudine e longitudine siano valori numerici e rientrino nei range geografici validi (-90 <= lat <= 90, -180 <= lon <= 180).
+            \item Controlla che il timestamp sia in un formato valido ('%Y-%m-%d %H:%M:%S').
+            \item Verifica che l'ID utente sia un UUID valido di versione 4.
+            \item Analizza tutti i valori di tipo stringa per identificare pattern sospetti di SQL injection (come "--", ";", comandi SQL come "DROP", "DELETE", ecc.).
         \end{itemize}
+        Restituisce True solo se tutti i controlli di validazione vengono superati, altrimenti restituisce False per scartare il messaggio dal flusso.
+    \end{itemize}
+    \end{itemize}
 
-        \mysubparagraph{Generazione dati JSON}
-        La serializzazione dei dati avviene attraverso il pattern Adapter, implementato dalla classe \texttt{PositionJsonAdapter} che converte gli oggetti \texttt{GeoPosition} in formato JSON:
-        \begin{lstlisting}
-        {
-            "id": "UUID",
-            "latitude": "Float64",
-            "longitude": "Float64",
-            "received_at": "String"
-        }
-        \end{lstlisting}
-
-        Questo formato è compatibile con le aspettative del topic Kafka \texttt{SimulatorPosition} e della tabella ClickHouse corrispondente. L'adapter implementa l'interfaccia \texttt{IJsonSerializable}, garantendo uniformità nella serializzazione di diversi tipi di dati.
-
-        \mysubparagraph{Configurazione del simulatore}
-        Il simulatore è altamente configurabile attraverso diversi parametri:
+    \paragraph{PositionToMessageProcessor}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe MapFunction di Apache Flink per trasformare dati di posizione in messaggi personalizzati. Utilizza un servizio di intelligenza artificiale per generare contenuti pubblicitari contestuali basati sulla posizione dell'utente e sulle attività disponibili nelle vicinanze.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{ai\_service: LLMService} - Servizio di modello di linguaggio (LLM) utilizzato per generare contenuti pubblicitari personalizzati.
+        \item \texttt{\_\_user\_repository: IUserRepository} - Repository per accedere alle informazioni sugli utenti.
+        \item \texttt{\_\_activity\_repository: IActivityRepository} - Repository per recuperare attività commerciali nelle vicinanze dell'utente.
+        \item \texttt{\_\_message\_serializer: IFlinkSerializable} - Componente per serializzare i messaggi nel formato richiesto da Flink.
+        \item \texttt{prompt\_creator: CustomPrompt} - Generatore di prompt per l'interazione con il servizio LLM.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, ai\_chatbot\_service: LLMService, user\_repository: IUserRepository, activity\_repository: IActivityRepository, message\_serializer: IFlinkSerializable)} - Costruttore che inizializza il processore con i servizi e repository necessari.
+        
+        \item \texttt{open(self, runtime\_context)} - Metodo chiamato all'inizializzazione del pipeline Flink. Configura il servizio LLM e inizializza il generatore di prompt.
+        
+        \item \texttt{map(self, value)} - Implementa il metodo dell'interfaccia MapFunction per trasformare i dati di posizione in messaggi. Esegue il seguente processo:
         \begin{itemize}
-            \item[-] \textbf{Delta tempo}: Intervallo temporale tra aggiornamenti di posizione;
-            \item[-] \textbf{Range di velocità}: Valori minimi e massimi per la velocità di spostamento;
-            \item[-] \textbf{Area geografica}: Delimitazione dell'area in cui generare percorsi;
-            \item[-] \textbf{Numero di sensori}: Quantità di sensori simulati simultaneamente.
+            \item Recupera le informazioni dell'utente associato al sensore
+            \item Trova le attività commerciali nel raggio di 300 metri dalla posizione
+            \item Se non ci sono attività nelle vicinanze, restituisce un messaggio segnaposto
+            \item Altrimenti, genera un prompt personalizzato basato sull'utente e sulle attività
+            \item Invoca il servizio LLM per ottenere una risposta strutturata
+            \item Recupera le informazioni dettagliate sull'attività selezionata
+            \item Crea un oggetto MessageDTO con il contenuto pubblicitario generato
+            \item Serializza il messaggio nel formato Row di Flink per l'elaborazione successiva
         \end{itemize}
+    \end{itemize}
+    \end{itemize}
 
-        La configurazione sfrutta la libreria OSMnx per caricare grafi stradali reali. Il sistema utilizza un grafo precaricato dell'area di interesse per ottimizzare le performance di avvio:
-        \begin{lstlisting}
-        graph_istance = GraphWrapper().get_graph()
-        strategy_simulation = BycicleSimulationStrategy()
-        sensor_istance = sensor_factory.create_sensor(sensor_uuid, strategy_simulation)
-        \end{lstlisting}
 
-        \mysubparagraph{Tipologie di dati generati}
-        Il simulatore produce dati con le seguenti caratteristiche:
+
+    \paragraph{LLMService}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per servizi di modelli linguistici (LLM). Fornisce una struttura comune per interagire con diversi modelli di linguaggio e ottenere risposte strutturate in un formato predefinito.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_llm\_structured\_response: BaseModel} - Modello Pydantic che definisce la struttura attesa per la risposta del modello linguistico.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, structured\_response: BaseModel)} - Costruttore che inizializza il servizio con un modello Pydantic che definisce la struttura della risposta attesa dal modello linguistico.
+        
+        \item \texttt{set\_up\_chat(self)} - Metodo astratto che deve essere implementato dalle sottoclassi per inizializzare e configurare la sessione di chat con il modello linguistico.
+        
+        \item \texttt{get\_llm\_structured\_response(self, prompt)} - Metodo astratto che deve essere implementato dalle sottoclassi per inviare un prompt al modello linguistico e ottenere una risposta strutturata secondo il modello Pydantic definito.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{CustomPrompt}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un generatore di prompt personalizzati per l'interazione con modelli linguistici. Utilizza un template predefinito per costruire richieste strutturate che mirano a ottenere messaggi pubblicitari contestualizzati in base alle informazioni dell'utente e alle attività commerciali disponibili.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_template: Template} - Template di stringa che definisce la struttura del prompt, con variabili per inserire dinamicamente informazioni sull'utente e sulle attività commerciali.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self)} - Costruttore che inizializza il generatore di prompt con un template predefinito. Il template include istruzioni per il modello linguistico su come generare un messaggio pubblicitario personalizzato, con criteri specifici per la selezione dell'attività e vincoli sul formato della risposta.
+        
+        \item \texttt{get\_prompt(self, user\_info\_dict, activity\_dict)} - Genera un prompt personalizzato sostituendo le variabili del template con le informazioni specifiche dell'utente e l'elenco delle attività disponibili. Formatta le attività come una lista puntata e restituisce il prompt completo pronto per essere inviato al modello linguistico.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{StructuredResponseMessage}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un modello Pydantic che definisce la struttura della risposta attesa dal modello linguistico. Garantisce che le risposte generate soddisfino un formato predefinito, facilitando l'elaborazione e la validazione automatica dei dati ricevuti.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{pubblicita: str} - Campo che contiene il messaggio pubblicitario generato dal modello linguistico. Deve essere lungo almeno 200 caratteri come specificato nella descrizione del campo.
+        \item \texttt{attivita: str} - Campo che contiene il nome dell'azienda selezionata tra quelle proposte per cui è stato prodotto l'annuncio pubblicitario.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item Nessuna operazione esplicita definita, in quanto si tratta di un modello Pydantic che fornisce automaticamente funzionalità di validazione, serializzazione, deserializzazione e altre funzionalità di gestione dei dati.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{GroqLLMService}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe concreta che estende l'interfaccia LLMService per interagire specificamente con l'API Groq. Configura e gestisce una connessione a un modello linguistico di Groq, con controllo della frequenza delle richieste e gestione delle risposte strutturate.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_groq\_api\_key: str} - Chiave API per autenticarsi al servizio Groq, recuperata dalle variabili d'ambiente.
+        \item \texttt{\_\_chat: ChatGroq} - Istanza del client di chat Groq configurata con parametri specifici per l'interazione con il modello linguistico.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, structured\_response)} - Costruttore che inizializza il servizio ereditando dalla classe base e configurando la chiave API Groq dalle variabili d'ambiente.
+        
+        \item \texttt{set\_up\_chat(self)} - Implementa il metodo astratto della classe base per inizializzare il client di chat Groq. Configura un rate limiter per controllare la frequenza delle richieste API (circa una ogni 15 secondi) e inizializza il client ChatGroq con parametri specifici come il modello "Gemma2-9b-it", temperatura di generazione, e altre configurazioni per la gestione delle richieste.
+        
+        \item \texttt{get\_llm\_structured\_response(self, prompt)} - Implementa il metodo astratto della classe base per inviare un prompt al modello Groq e ottenere una risposta strutturata. Utilizza la funzionalità "with\_structured\_output" del client ChatGroq per forzare la risposta nel formato definito dal modello Pydantic specificato nella classe base.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{IActivityRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per i repository di gestione delle attività commerciali. Stabilisce i metodi necessari per recuperare informazioni sulle attività in base al nome o alla posizione geografica.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{get\_activity\_spec\_from\_name(self, activity\_name) -> ActivityDTO} - Metodo astratto che deve essere implementato dalle sottoclassi per recuperare le specifiche dettagliate di un'attività commerciale in base al suo nome. Restituisce un oggetto ActivityDTO contenente tutte le informazioni sull'attività.
+        
+        \item \texttt{get\_activities\_in\_range(self, lon, lat, max\_distance) -> list} - Metodo astratto che deve essere implementato dalle sottoclassi per recuperare un elenco di attività commerciali situate entro una distanza massima specificata da una data posizione geografica. Prende in input le coordinate (longitudine e latitudine) e la distanza massima, e restituisce una lista di attività nelle vicinanze.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{ClickhouseActivityRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe concreta che realizza l'interfaccia IActivityRepository per recuperare informazioni sulle attività commerciali da un database ClickHouse. Fornisce metodi per cercare attività in base alla vicinanza geografica e al nome.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_db\_conn: DatabaseConnection} - Connessione al database ClickHouse utilizzata per eseguire query sui dati delle attività.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, db\_connection: DatabaseConnection)} - Costruttore che inizializza il repository con una connessione al database.
+        
+        \item \texttt{get\_activities\_in\_range(self, lon, lat, max\_distance) -> list} - Implementa il metodo dell'interfaccia per trovare attività commerciali entro una distanza specificata da una posizione geografica. Esegue una query SQL che utilizza la funzione geoDistance per calcolare la distanza tra la posizione fornita e ogni attività, restituendo quelle che si trovano entro la distanza massima specificata. Il risultato comprende nome, indirizzo, tipo, descrizione e distanza calcolata.
+        
+        \item \texttt{get\_activity\_spec\_from\_name(self, activity\_name) -> ActivityDTO} - Implementa il metodo dell'interfaccia per recuperare i dettagli completi di un'attività in base al suo nome. Esegue una query SQL che cerca un'attività con il nome esatto fornito e costruisce un oggetto ActivityDTO con tutti i dati recuperati (UUID, nome, coordinate, indirizzo, tipo e descrizione). Se nessuna attività corrisponde al nome, restituisce un ActivityDTO vuoto.
+    \end{itemize}
+    \end{itemize}
+    
+
+    \paragraph{ActivityDTO}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un oggetto di trasferimento dati (Data Transfer Object) per la classe Activity. Viene utilizzato per astrarre e incapsulare i dati delle attività commerciali, facilitando il trasferimento delle informazioni tra i diversi strati dell'applicazione senza esporre i dettagli implementativi.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{activity\_id: uuid} - Identificatore univoco dell'attività commerciale.
+        \item \texttt{activity\_name: str} - Nome dell'attività commerciale.
+        \item \texttt{activity\_lon: float} - Longitudine della posizione geografica dell'attività.
+        \item \texttt{activity\_lat: float} - Latitudine della posizione geografica dell'attività.
+        \item \texttt{activity\_addr: str} - Indirizzo fisico dell'attività commerciale.
+        \item \texttt{activity\_type: str} - Categoria o tipo di attività commerciale (es. Ristorante, Negozio, Servizio).
+        \item \texttt{activity\_description: str} - Descrizione dettagliata dell'attività commerciale.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, activity\_id: uuid = uuid.uuid4(), activity\_name: str = "", activity\_lon: float = 0.0, activity\_lat: float = 0.0, activity\_addr: str ="", activity\_type: str = "", activity\_description: str ="")} - Costruttore che inizializza l'oggetto DTO con tutti i dati dell'attività, fornendo valori predefiniti per tutti i parametri in modo da poter istanziare anche un oggetto vuoto.
+    \end{itemize}
+    \end{itemize}
+    
+    \paragraph{IUserRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per i repository di gestione degli utenti nel contesto dell'applicazione Flink. Stabilisce il metodo necessario per recuperare le informazioni di un utente in base all'identificatore del sensore associato.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{get\_user\_who\_owns\_sensor(self, sensor\_uuid) -> UserDTO} - Metodo astratto che deve essere implementato dalle sottoclassi per recuperare i dati dell'utente proprietario di un sensore specifico. Prende in input l'UUID del sensore e restituisce un oggetto UserDTO contenente tutte le informazioni dell'utente associato.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{ClickhouseUserRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe concreta che realizza l'interfaccia IUserRepository per recuperare informazioni sugli utenti da un database ClickHouse. Fornisce un metodo per trovare un utente in base all'UUID del sensore a lui assegnato, recuperando anche i suoi interessi.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_db\_conn: DatabaseConnection} - Connessione al database ClickHouse utilizzata per eseguire query sui dati degli utenti.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, db\_connection: DatabaseConnection)} - Costruttore che inizializza il repository con una connessione al database.
+        
+        \item \texttt{get\_user\_who\_owns\_sensor(self, sensor\_uuid) -> UserDTO} - Implementa il metodo dell'interfaccia per recuperare i dati dell'utente associato a un sensore specifico. Esegue una query SQL complessa che unisce le tabelle user e user\_interest per ottenere tutti i dati dell'utente e i suoi interessi in un'unica operazione. La query filtra gli utenti in base all'UUID del sensore fornito, raggruppa i risultati per i campi dell'utente e utilizza la funzione groupArray per aggregare gli interessi in un array. Restituisce un oggetto UserDTO popolato con tutti i dati recuperati, incluso l'elenco degli interessi, o None se nessun utente è associato al sensore specificato.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{UserDTO}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un oggetto di trasferimento dati (Data Transfer Object) per la classe User nel contesto dell'applicazione Flink. Viene utilizzato per astrarre e incapsulare i dati degli utenti, facilitando il trasferimento delle informazioni tra i diversi strati dell'applicazione senza esporre i dettagli implementativi.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{user\_uuid: uuid} - Identificatore univoco dell'utente.
+        \item \texttt{assigned\_sensor\_uuid: uuid} - Identificatore univoco del sensore assegnato all'utente.
+        \item \texttt{name: str} - Nome dell'utente.
+        \item \texttt{surname: str} - Cognome dell'utente.
+        \item \texttt{email: str} - Indirizzo email dell'utente.
+        \item \texttt{gender: str} - Genere dell'utente.
+        \item \texttt{birthdate: str} - Data di nascita dell'utente.
+        \item \texttt{civil\_status: str} - Stato civile dell'utente.
+        \item \texttt{interests: list[str]} - Lista degli interessi dell'utente, opzionale (default None).
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, user\_uuid: uuid, assigned\_sensor\_uuid: uuid, name: str, surname: str, email: str, gender: str, birthdate: str, civil\_status: str, interests: list[str] = None)} - Costruttore che inizializza l'oggetto DTO con tutti i dati dell'utente, includendo una lista opzionale di interessi che può essere None se non specificata.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{IMessageRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per i repository di gestione dei messaggi. Stabilisce il metodo necessario per verificare se un'attività è già stata mostrata a un utente specifico, permettendo così di evitare ripetizioni nei messaggi pubblicitari.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{check\_activity\_already\_displayed\_for\_user(self, user\_id: str, activity\_id: str) -> bool} - Metodo astratto che deve essere implementato dalle sottoclassi per verificare se una specifica attività commerciale è già stata mostrata a un determinato utente. Prende in input l'identificatore dell'utente e l'identificatore dell'attività, e restituisce un valore booleano: True se l'attività è già stata mostrata all'utente, False altrimenti.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{ClickhouseMessageRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe concreta che realizza l'interfaccia IMessageRepository per gestire i messaggi in un database ClickHouse. Fornisce funzionalità per verificare se un messaggio pubblicitario relativo a una specifica attività è già stato mostrato a un determinato utente.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_db\_conn: DatabaseConnection} - Connessione al database ClickHouse utilizzata per eseguire query sui dati dei messaggi.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, db\_connection: DatabaseConnection)} - Costruttore che inizializza il repository con una connessione al database.
+        
+        \item \texttt{check\_activity\_already\_displayed\_for\_user(self, user\_id: str, activity\_id: str) -> bool} - Implementa il metodo dell'interfaccia per verificare se una specifica attività è già stata mostrata a un determinato utente. Esegue una query SQL che cerca nella tabella dei messaggi record con l'UUID dell'utente e l'UUID dell'attività specificati. Restituisce True se trova almeno un record corrispondente (indicando che l'attività è già stata mostrata all'utente), False altrimenti.
+        
+        \item \texttt{get\_user\_last\_message(self, user\_id) -> MessageDTO} - Metodo commentato (non attivo) che recupererebbe l'ultimo messaggio inviato a un utente specifico. La query SQL cercherebbe tutti i messaggi per l'utente specificato, ordinandoli per data di creazione in ordine decrescente e limitando il risultato a un solo record (il più recente). Restituirebbe un oggetto MessageDTO popolato con tutti i dati del messaggio.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{MessageDTO}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un oggetto di trasferimento dati (Data Transfer Object) per la classe Message. Viene utilizzato per astrarre e incapsulare i dati dei messaggi pubblicitari, facilitando il trasferimento delle informazioni tra i diversi strati dell'applicazione e mantenendo le relazioni con utenti e attività commerciali.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{user\_id: str} - Identificatore univoco dell'utente a cui è destinato il messaggio.
+        \item \texttt{activity\_id: str} - Identificatore univoco dell'attività commerciale a cui si riferisce il messaggio.
+        \item \texttt{message\_id: str} - Identificatore univoco del messaggio stesso.
+        \item \texttt{message\_text: str} - Contenuto testuale del messaggio pubblicitario.
+        \item \texttt{activity\_lat: float} - Coordinata di latitudine dell'attività commerciale.
+        \item \texttt{activity\_lon: float} - Coordinata di longitudine dell'attività commerciale.
+        \item \texttt{creation\_time: str} - Timestamp che indica quando è stato creato il messaggio.
+        \item \texttt{user\_lat: float} - Coordinata di latitudine dell'utente al momento della creazione del messaggio.
+        \item \texttt{user\_lon: float} - Coordinata di longitudine dell'utente al momento della creazione del messaggio.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, user\_id: uuid = uuid.uuid4(), activity\_id: uuid = uuid.uuid4(), message\_id: uuid = uuid.uuid4(), message\_text: str = "", activity\_lat: float = 0.0, activity\_lon: float = 0.0, creation\_time: str = "", user\_lat: float = 0.0, user\_lon: float = 0.0)} - Costruttore che inizializza l'oggetto DTO con tutti i dati del messaggio, fornendo valori predefiniti per tutti i parametri in modo da poter istanziare anche un oggetto vuoto. Converte automaticamente gli UUID in stringhe per facilitare la serializzazione.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{DatabaseConnection}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe che gestisce la connessione al database ClickHouse nel contesto dell'applicazione Flink. Fornisce metodi per stabilire e chiudere connessioni al database, incapsulando i dettagli di configurazione e gestione della connessione.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{host: str} - Indirizzo del server ClickHouse, derivato dai parametri di configurazione.
+        \item \texttt{port: int} - Porta sulla quale il server ClickHouse accetta connessioni, derivata dai parametri di configurazione.
+        \item \texttt{user: str} - Nome utente per l'autenticazione al database, derivato dai parametri di configurazione.
+        \item \texttt{password: str} - Password per l'autenticazione al database, derivata dai parametri di configurazione.
+        \item \texttt{connection} - Oggetto connessione al database ClickHouse, inizialmente impostato a None.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, config\_parameters: DatabaseConfigParameters)} - Costruttore che inizializza l'oggetto connessione con i parametri di configurazione del database forniti.
+        
+        \item \texttt{connect(self)} - Stabilisce una connessione al database ClickHouse utilizzando i parametri configurati e restituisce l'oggetto client di connessione. Utilizza la libreria clickhouse\_connect per creare il client con i parametri di host, porta, nome utente e password.
+        
+        \item \texttt{disconnect(self)} - Chiude la connessione al database se attiva e reimposta l'attributo connection a None.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{DatabaseConfigParameters}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe di dati (dataclass) che contiene i parametri di configurazione necessari per la connessione a un database ClickHouse nel contesto dell'applicazione Flink. Fornisce una struttura semplice per incapsulare e trasportare le impostazioni di configurazione del database in modo tipizzato.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{host: str} - Indirizzo del server ClickHouse. Il valore predefinito è "clickhouse".
+        \item \texttt{port: str} - Porta sulla quale il server ClickHouse accetta connessioni. Il valore predefinito è "8123".
+        \item \texttt{user: str} - Nome utente per l'autenticazione al database. Il valore predefinito è "default".
+        \item \texttt{password: str} - Password per l'autenticazione al database. Il valore predefinito è "pass".
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item Nessuna operazione esplicita definita, in quanto si tratta di una dataclass che fornisce automaticamente costruttore, rappresentazione in stringa, confronto e altre funzionalità.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{IFlinkSerializable}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per la serializzazione di oggetti in formato Row di Apache Flink. Stabilisce il metodo necessario per convertire oggetti di dominio (in particolare MessageDTO) nel formato di riga utilizzato da Flink per elaborare i dati nel pipeline.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{create\_row\_from\_message(self, message\_to\_serialize: MessageDTO) -> Row} - Metodo astratto che deve essere implementato dalle sottoclassi per convertire un oggetto MessageDTO in un oggetto Row di Flink. Prende in input un'istanza di MessageDTO contenente i dati del messaggio e restituisce un oggetto Row che rappresenta questi dati in un formato compatibile con l'elaborazione Flink.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{MessageSerializer}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe concreta che realizza l'interfaccia IFlinkSerializable per la serializzazione di oggetti MessageDTO in oggetti Row di Apache Flink. Fornisce una conversione strutturata dei dati di messaggio nel formato richiesto dal pipeline di elaborazione Flink.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo specifico definito nella classe.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{create\_row\_from\_message(self, message\_to\_serialize: MessageDTO) -> Row} - Implementa il metodo dell'interfaccia per convertire un oggetto MessageDTO in un oggetto Row di Flink. Crea una nuova istanza di Row inserendo ordinatamente tutti i campi del messaggio: identificatore dell'utente, identificatore dell'attività, identificatore del messaggio, testo del messaggio, coordinate geografiche dell'attività (latitudine e longitudine), timestamp di creazione, e coordinate geografiche dell'utente (latitudine e longitudine). Garantisce che gli identificatori siano convertiti in stringhe per una corretta serializzazione.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{FilterMessageAlreadyDisplayed}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe FilterFunction di Apache Flink per filtrare messaggi pubblicitari che sono già stati mostrati a un utente specifico o che non contengono informazioni geografiche valide. È parte del pipeline di elaborazione che garantisce che gli utenti non ricevano ripetutamente lo stesso messaggio pubblicitario.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_local\_repository: IMessageRepository} - Repository che fornisce metodi per verificare se un messaggio pubblicitario è già stato mostrato a un utente.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, message\_repository: IMessageRepository)} - Costruttore che inizializza il filtro con un repository di messaggi per accedere ai dati storici.
+        
+        \item \texttt{open(self, runtime\_context)} - Metodo che viene chiamato all'inizializzazione della funzione di filtro. Non implementa operazioni specifiche in questa versione.
+        
+        \item \texttt{filter(self, value)} - Implementa il metodo dell'interfaccia FilterFunction per determinare quali messaggi devono essere mantenuti nel flusso. Esegue due controlli principali:
         \begin{itemize}
-            \item[-] \textbf{Continuità spaziale}: I punti generati seguono percorsi realistici lungo le strade del grafo OSM;
-            \item[-] \textbf{Variabilità temporale}: Gli aggiornamenti rispettano intervalli di tempo configurabili;
-            \item[-] \textbf{Coerenza di velocità}: La distanza tra punti consecutivi è proporzionale alla velocità simulata.
+            \item Verifica se l'attività pubblicizzata nel messaggio è già stata mostrata all'utente utilizzando il metodo del repository.
+            \item Controlla se le coordinate dell'attività sono valide (diverse da zero).
         \end{itemize}
+        Restituisce False (scartando il messaggio) se l'attività è già stata mostrata all'utente o se le coordinate sono (0,0), indicando un messaggio segnaposto o non valido. Altrimenti restituisce True, permettendo al messaggio di proseguire nel pipeline.
+        
+        Include anche una versione commentata di un algoritmo alternativo che avrebbe utilizzato l'ultimo messaggio mostrato all'utente per determinare se le stesse coordinate geografiche sono state già utilizzate.
+    \end{itemize}
+    \end{itemize}
 
-        La classe \texttt{GeoPosition} rappresenta la struttura dati fondamentale per le posizioni:
-        \begin{lstlisting}
-        class GeoPosition:
-            def __init__(self, sensor_id, latitude, longitude, timestamp):
-                self.__sensor_id = sensor_id
-                self.__latitude = latitude
-                self.__longitude = longitude
-                self.__timestamp = timestamp
-        \end{lstlisting}
-        \myparagraph{ClickHouse}
+
+
+
+
+
+
+
+%%%%INCOLLA QUA PIVA , incolla qua piva , Incolla Qua Piva        
+        \subsubsection{ClickHouse}
         ClickHouse è un sistema di gestione database colonnare open-source progettato specificamente per carichi analitici. Nel contesto di NearYou, è stato adottato per la sua capacità di processare ed analizzare in tempo reale grandi volumi di dati geospaziali mantenendo latenze minime e offrendo funzionalità avanzate di partizione e gestione del ciclo di vita dei dati.
 
         \mysubparagraph{Architettura MergeTree}
@@ -2421,12 +3094,12 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \subsubsection{Modulo di Simulazione}
     Il modulo di simulazione è responsabile della generazione di dati di posizione simulati, consentendo di testare l'intero sistema senza richiedere l'utilizzo di dispositivi GPS reali.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{diaSimulation.png}
-        \caption{Diagramma delle classi del modulo di simulazione}
-        \label{fig:simulation_module}
-    \end{figure}
+    % \begin{figure}[H]
+    %     \centering
+    %     \includegraphics[width=0.8\textwidth]{diaSimulation.png}
+    %     \caption{Diagramma delle classi del modulo di simulazione}
+    %     \label{fig:simulation_module}
+    % \end{figure}
 
     \paragraph{SensorFactory}
     \begin{itemize}
@@ -2568,12 +3241,12 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \subsubsection{Processore Flink}
     Il processore Flink è responsabile dell'elaborazione dei dati di posizione in tempo reale per generare messaggi pubblicitari personalizzati.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{diaFlink.png}
-        \caption{Diagramma delle classi del processore Flink}
-        \label{fig:flink_processor}
-    \end{figure}
+    % \begin{figure}[H]
+    %     \centering
+    %     \includegraphics[width=0.8\textwidth]{diaFlink.png}
+    %     \caption{Diagramma delle classi del processore Flink}
+    %     \label{fig:flink_processor}
+    % \end{figure}
 
     \paragraph{FlinkJobManager}
     \begin{itemize}
