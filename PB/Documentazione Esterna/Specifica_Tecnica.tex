@@ -22,6 +22,8 @@
 \usepackage{lstautogobble}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{xcolor}
+\usepackage{adjustbox}
+
 
 % Minimal color setup
 \definecolor{MLbg}{HTML}{F8F9FA}
@@ -799,16 +801,556 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
     \subsection{Implementazione tecnica dei componenti principali}
         \subsubsection{DataSource - Simulation Service}
+        Il SimulationModule è una componente architettonica progettata per simulare dati di posizionamento geografico in un ecosistema più ampio di gestione dati. Questo modulo rappresenta l'applicazione pratica dell'integrazione tra i principi della Kappa Architecture e dell'Architettura Esagonale.
+
         
+        Il sistema opera attraverso tre fasi fondamentali. Inizialmente, prepara l'ambiente di simulazione acquisendo le risorse necessarie e configurando il modello geografico. IN questa parte vengono creati i sensori che sono associati uno ad uno con gli utenti gia registrati nel sistema. Successivamente, viene attivato il processo di simulazione che genera flussi di dati rappresentanti movimenti virtuali attraverso percorsi realistici. Infine, questi dati vengono incanalati verso il sistema di streaming centrale.
+
+        La simulazione crea un flusso continuo di eventi che rispecchia scenari di movimento reali. Questo approccio event-driven si allinea perfettamente con la filosofia Kappa, dove tutti i dati sono modellati come flussi di eventi, mentre la struttura interna rispetta i principi dell'Architettura Esagonale.
+
+        \myparagraph{Diagramma della classi }
+
+
         
+        \begin{figure}[H]
+        \hspace{-1.5cm} % Sposta l'immagine di 2cm a sinistra
+        \includegraphics[width=1.24\textwidth]{CoreSimulation.jpg}
+        \caption{SimulationService Core}
+        \end{figure}
+
+        \begin{figure}[H]
+        \hspace{-1.5cm}
+        \includegraphics[width=1.25\textwidth]{SensorFactory.jpg}
+        \caption{Factory di Sensori}
+        \end{figure}
+
+
+    \myparagraph{Design Pattern - Strategy Pattern}
+
+    \mysubparagraph{Motivazioni e studio del design pattern}
+    Il pattern Strategy è stato adottato per incrementare la flessibilità nella gestione di diverse modalità operative del sistema. Questa scelta architetturale permette di definire un'interfaccia comune per tutte le strategie implementate, consentendo di modificare il comportamento del sistema selezionando una strategia specifica. Tale approccio aderisce al principio Open/Closed, agevolando l'aggiunta di nuove strategie senza intervenire su quelle esistenti.
+
+    \mysubparagraph{Implementazione del design pattern}
+    Il pattern Strategy è implementato attraverso la definizione di un'interfaccia che delinea il comportamento comune a tutte le strategie. Ogni strategia concreta realizza questa interfaccia, fornendo un'implementazione specifica per una determinata funzionalità. Questo design consente la selezione dinamica della strategia più appropriata in base alle esigenze operative, migliorando la modularità e la manutenibilità del codice complessivo.
+
+    \mysubparagraph{Utilizzo}
+    L'integrazione del pattern Strategy disaccoppia la logica specifica delle funzionalità dal codice client che le invoca, semplificando l'estensibilità del sistema. La possibilità di scegliere le strategie a runtime permette di adattare dinamicamente il comportamento dell'applicazione in base al contesto. Ciò si rivela particolarmente vantaggioso in scenari che richiedono la sperimentazione o l'utilizzo di diverse modalità operative senza necessità di modifiche al nucleo del codice.
+
+    \mysubparagraph{Integrazione del pattern}
+    Il pattern Strategy si compone di tre elementi principali: un contesto che utilizza la strategia, un'interfaccia che definisce il contratto comune e le classi concrete che implementano le varie strategie. Nel nostro sistema, questo pattern è implementato in diversi modi:
+    \begin{itemize}
+        \item Per la simulazione della posizione, il nostro sistema utilizza l'interfaccia IPositionSimulationStrategy, un contratto che definisce tre metodi astratti: get\_route(), get\_delta\_time() e get\_speed(). Questa interfaccia, basata sul pattern Strategy, permette di implementare diverse logiche di simulazione, garantendo flessibilità ed estendibilità per vari scenari di utilizzo.
+        \begin{lstlisting}
+        class IPositionSimulationStrategy(ABC):
+            @abstractmethod
+            def get_route(self):
+                pass
+
+            @abstractmethod
+            def get_delta_time(self) -> float:
+                pass
+
+            @abstractmethod
+            def get_speed(self) -> float:
+                pass
+        \end{lstlisting}
+        La strategia concreta BycicleSimulationStrategy implementa l'interfaccia IPositionSimulationStrategy, fornendo un algoritmo specifico per simulare il movimento di una bicicletta.
+        BycicleSimulationStrategy utilizza la libreria OSMnx per generare percorsi realistici su mappe stradali, calcolando il percorso più breve tra due nodi selezionati casualmente dal grafo e restituendo le relative coordinate geografiche. Definisce inoltre parametri specifici per la simulazione ciclistica, come una velocità media di circa 15 km/h e un delta temporale tra le posizioni simulate.\\
+        Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione.
         
+
+    \end{itemize}
+    In conclusione, questo approccio modulare, basato sul pattern Strategy, ci consente di estendere facilmente il sistema con nuove strategie senza dover modificare il codice esistente. Tale progettazione rispetta i principi SOLID, in particolare il principio Open/Closed, e contribuisce significativamente al miglioramento della manutenibilità complessiva dell'applicazione.
+
+\myparagraph{Factory Pattern}
+
+    \mysubparagraph{Motivazioni e studio del design pattern}
+    Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di istanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
+
+    \mysubparagraph{Implementazione del design pattern}
+    Il pattern Factory viene implementato attraverso una classe dedicata, denominata "Factory", che contiene metodi specifici per la creazione dei diversi tipi di oggetti che essa è responsabile di produrre. Questa classe Factory spesso dipende da astrazioni (come interfacce o classi astratte) per poter creare le istanze concrete. I metodi di creazione all'interno della Factory si occupano di gestire la logica necessaria per istanziare e configurare correttamente gli oggetti richiesti, potenzialmente gestendo dipendenze o configurazioni specifiche per ciascun tipo di oggetto. La Factory può anche svolgere un ruolo nell'assicurare che gli oggetti creati rispettino determinati contratti o abbiano uno stato iniziale valido.
+
+    \mysubparagraph{Utilizzo}
+    L'integrazione del pattern Factory semplifica il processo di ottenimento di oggetti per il codice client. Invece di istanziare direttamente le classi concrete degli oggetti di cui ha bisogno, il codice client interagisce con la Factory, invocando il metodo di creazione appropriato per il tipo di oggetto desiderato. Il client fornisce alla Factory eventuali parametri necessari per la creazione dell'oggetto. La Factory si occupa quindi di creare e restituire un'istanza dell'oggetto richiesto, completamente configurata e pronta per essere utilizzata. Questo approccio riduce l'accoppiamento tra il codice client e le implementazioni concrete degli oggetti, migliorando la manutenibilità e la testabilità del sistema, in quanto le dipendenze di creazione sono centralizzate e possono essere facilmente sostituite o testate isolatamente.
+
+    \mysubparagraph{Integrazione del pattern}
+    Il pattern Factory è implementato nel nostro sistema attraverso la classe SensorFactory, la quale incapsula la logica di creazione degli oggetti GpsSensor. Questa classe definisce i seguenti metodi principali:
+    \begin{lstlisting}
+    class SensorFactory:
+        def __init__(self, sensor_repo: ISensorRepository, user_repo: IUserRepository):
+        self.__user_sensor_service = UserSensorService(sensor_repo, user_repo)
+
+        def create_gps_sensor(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy) -> SensorSubject:
+            uuid = self.__user_sensor_service.assign_sensor_to_user()
+            return GpsSensor(uuid, position_sender, simulation_strategy)
+
+        def create_gps_sensor_list(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy, number_of_sensors: int) -> List[SensorSubject]:
+            sensor_list = [self.create_gps_sensor(position_sender, simulation_strategy) for i in range(number_of_sensors)]
+            return sensor_list
+    \end{lstlisting}
+    Il funzionamento dei metodi della SensorFactory è il seguente:
+    \begin{itemize}
+        \item \_\_init\_\_(self, sensor\_repo, user\_repo): Costruttore che inizializza la factory, ricevendo repository per sensori e utenti per la gestione dell'assegnazione degli ID unici tramite UserSensorService;
+        \item create\_gps\_sensor(self, position\_sender, simulation\_strategy) -$>$ SensorSubject: Crea una singola istanza di GpsSensor. Riceve un PositionSender e una IPositionSimulationStrategy, ottiene un UUID tramite UserSensorService e restituisce l'oggetto GpsSensor configurato con questi elementi;
+        \item create\_gps\_sensor\_list(self, position\_sender, simulation\_strategy, number\_of\_sensors) -$>$ List[SensorSubject]: Crea una lista contenente il numero specificato di istanze di GpsSensor, riutilizzando il metodo create\_gps\_sensor() per ogni elemento della lista. Richiede un PositionSender, una IPositionSimulationStrategy e il numero di sensori da creare.
+    \end{itemize}
+    In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di istanziazione in un unico punto e rispettando il principio di singola responsabilità.
+    
+    \myparagraph{Adapter Pattern}
+    \mysubparagraph{Motivazioni e studio del design pattern}
+    Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka tramite serializzazione JSON oppure la comunicazione con il repository di ClickHouse). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
+    
+    \mysubparagraph{Implementazione del design pattern}
+    L’implementazione del pattern Adapter avviene tramite la creazione di:
+    \begin{enumerate}
+        \item Una o più interfacce che definiscono i metodi necessari a interagire con l’architettura esagonale;
+        \item Una classe \texttt{adapter} concreta che implementa tali interfacce, convertendo gli oggetti e le chiamate tra il formato richiesto dalla business logic e quello utilizzato dalla componente esterna.
+    \end{enumerate}
+    
+    \mysubparagraph{Integrazione del pattern}
+    L’Adapter funge da collegamento tra l’architettura esagonale e le librerie esterne. L’architettura esagonale interagisce esclusivamente con \texttt{GeoPosition} e altre entità di dominio, senza preoccuparsi del formato dei messaggi o delle dipendenze verso Kafka. Se in futuro fosse necessario sostituire il broker di messaggistica o cambiare il formato di serializzazione, basterebbe quindi aggiornare l’Adapter corrispondente, senza intaccare la logica di business interna.\\
+    Di seguito viene mostrata l’implementazione concreta dell’Adapter, che trasforma gli oggetti \texttt{GeoPosition} in stringhe JSON compatibili con il topic di Kafka:
+    
+    \begin{lstlisting}
+        class PositionJsonAdapter(IJsonSerializable):
+        def serialize_to_json(self, position_istance: GeoPosition):
+    
+            return json.dumps({
+                'user_uuid': position_istance.get_sensor_id(),
+                'latitude': float(position_istance.get_latitude()),
+                'longitude': float(position_istance.get_longitude()),
+                'received_at': position_istance.get_timestamp(),
+            })
+    \end{lstlisting}
+    Il componente di pubblicazione \texttt{KafkaConcluentAdapter}, utilizza l’Adapter per implementare i metodi previsti dalla porta Position Sender e  serializzare i dati prima dell’invio a Kafka:
+    \begin{lstlisting}
+        class KafkaConfluentAdapter(PositionSender):
+    
+        def __init__(self,
+                    kafka_config: KafkaConfigParameters,
+                    json_adapter_istance: "PositionJsonAdapter",
+                    producer_istance: Producer):
+            super().__init__(json_adapter_istance)
+            self.__kafka_config = kafka_config
+            self.__producer = producer_istance
+    
+        def send_data_to_broker(self, json_payload, sensor_id: str):
+            self.__producer.produce(self.__kafka_config.source_topic,
+                                    key = str(sensor_id),
+                                    value = json_payload.encode('utf-8'))
+            self.__producer.flush()
+    \end{lstlisting}
+
+    \myparagraph{Classi, interfacce, metodi e attributi:}
+    
+    \paragraph{SensorSimulationAdministrator}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la logica per gestire la simulazione parallela di sensori multipli utilizzando un ThreadPool. Si occupa di coordinare l'esecuzione simultanea delle simulazioni di tutti i sensori registrati e l'invio dei dati a un topic Kafka.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_sensor\_registry: List["SensorSubject"]} - Registro contenente tutti i sensori da simulare, memorizzati come una lista di oggetti SensorSubject.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, list\_of\_sensors: List["SensorSubject"])} - Costruttore che inizializza l'amministratore con una lista di sensori su cui eseguire la simulazione.
         
+        \item \texttt{start\_simulation(self)} - Avvia la simulazione parallela di tutti i sensori registrati utilizzando un ThreadPool, assicurando che ogni sensore esegua il proprio metodo simulate() contemporaneamente per massimizzare l'efficienza.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{SensorSubject}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe astratta che funge da soggetto nel pattern Observer. È utilizzata per astrarre il sensore e renderlo osservabile dalle classi Observer. Si occupa di notificare le classi Observer quando i dati del sensore cambiano.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_sensor\_uuid: uuid} - Identificatore univoco del sensore.
+        \item \texttt{\_simulation\_strategy: IPositionSimulationStrategy} - Strategia utilizzata per simulare la posizione del sensore.
+        \item \texttt{\_update\_time: float} - Intervallo di tempo per gli aggiornamenti della simulazione.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, uuid\_creation: uuid, simulation\_strategy: "IPositionSimulationStrategy")} - Costruttore che inizializza il soggetto sensore con un UUID e una strategia di simulazione.
         
+        \item \texttt{get\_sensor\_uuid(self)} - Restituisce l'UUID del sensore.
         
+        \item \texttt{get\_update\_time(self) -> float} - Restituisce l'intervallo di tempo per gli aggiornamenti.
         
+        \item \texttt{simulate(self)} - Metodo astratto che deve essere implementato dalle sottoclassi per eseguire la simulazione dei dati del sensore.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{GpsSensor}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un sensore GPS che eredita dalla classe astratta SensorSubject. Questa classe simula il movimento di un dispositivo GPS lungo un percorso predefinito e invia le posizioni generate a un destinatario specifico.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_position\_sender: PositionSender} - Componente responsabile dell'invio delle posizioni generate.
+        \item \texttt{\_\_speed\_mps: float} - Velocità del sensore in metri al secondo.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, uuid\_creation: uuid, position\_sender: PositionSender, \\ simulation\_strategy: IPositionSimulationStrategy)} - Costruttore che inizializza il sensore GPS con un UUID, un sender di posizione e una strategia di simulazione.
         
+        \item \texttt{simulate(self)} - Implementa il metodo astratto della classe padre. Simula il movimento del sensore calcolando posizioni intermedie tra i punti della rotta definita nella strategia di simulazione, e le invia attraverso il position sender con intervalli regolari.
         
+        \item \texttt{create\_geo\_position(self, latitude: float, longitude: float) -> GeoPosition} - Crea un oggetto GeoPosition con la latitudine e longitudine fornite, insieme all'UUID del sensore e al timestamp corrente.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{GeoPosition}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe che rappresenta una posizione geografica nel mondo. Memorizza le coordinate (latitudine e longitudine), insieme all'identificatore del sensore che ha rilevato la posizione e al timestamp della rilevazione.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_sensor\_id: str} - Identificatore del sensore che ha rilevato la posizione.
+        \item \texttt{\_\_latitude: float} - Coordinata di latitudine della posizione.
+        \item \texttt{\_\_longitude: float} - Coordinata di longitudine della posizione.
+        \item \texttt{\_\_timestamp: str} - Timestamp che indica quando è stata rilevata la posizione.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, sensor\_id: str, latitude: float, longitude: float, timestamp: str)} - Costruttore che inizializza un oggetto posizione con l'ID del sensore, le coordinate geografiche e il timestamp.
         
+        \item \texttt{get\_sensor\_id(self) -> str} - Restituisce l'identificatore del sensore come stringa.
+        
+        \item \texttt{get\_latitude(self) -> float} - Restituisce il valore della latitudine.
+        
+        \item \texttt{get\_longitude(self) -> float} - Restituisce il valore della longitudine.
+        
+        \item \texttt{get\_timestamp(self) -> str} - Restituisce il timestamp della rilevazione.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{IPositionSimulationStrategy}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per diverse strategie di simulazione della posizione, seguendo il pattern Strategy. Permette di astrarre diversi modi di generare dati di posizione per i sensori simulati.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{get\_route(self)} - Metodo astratto che deve essere implementato dalle sottoclassi per fornire il percorso come sequenza di coordinate geografiche.
+        
+        \item \texttt{get\_delta\_time(self) -> float} - Metodo astratto che deve essere implementato dalle sottoclassi per fornire l'intervallo di tempo tra aggiornamenti consecutivi della posizione.
+        
+        \item \texttt{get\_speed(self) -> float} - Metodo astratto che deve essere implementato dalle sottoclassi per fornire la velocità di spostamento del sensore simulato.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{BycicleSimulationStrategy}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una strategia di simulazione specifica per biciclette, che estende l'interfaccia IPositionSimulationStrategy. Genera percorsi casuali su una rete stradale utilizzando dati geografici e calcola il percorso più breve tra due punti casuali del grafo.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_bycicle\_speed\_approximated: float} - Velocità approssimativa della bicicletta in km/h.
+        \item \texttt{\_\_delta\_time\_between\_positions: float} - Intervallo di tempo in secondi tra posizioni consecutive.
+        \item \texttt{\_\_graph\_istance: Graph} - Istanza del grafo della rete stradale utilizzata per la generazione del percorso.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, graph\_istance: GraphWrapper)} - Costruttore che inizializza la strategia con un'istanza di GraphWrapper contenente il grafo della rete stradale.
+        
+        \item \texttt{get\_route(self)} - Implementa il metodo dell'interfaccia per generare un percorso casuale. Seleziona due nodi casuali dal grafo e calcola il percorso più breve tra di essi, restituendo le coordinate geografiche dei nodi del percorso.
+        
+        \item \texttt{get\_delta\_time(self) -> float} - Implementa il metodo dell'interfaccia per restituire l'intervallo di tempo tra gli aggiornamenti di posizione.
+        
+        \item \texttt{get\_speed(self) -> float} - Implementa il metodo dell'interfaccia per restituire la velocità della bicicletta convertita da km/h a m/s.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{GraphWrapper}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un wrapper che nasconde i dettagli di implementazione di un grafo utilizzando la libreria OSMnx. Permette di ottenere un grafo della rete stradale basato su OpenStreetMap per una determinata posizione geografica.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_latitude: float} - Latitudine del punto centrale da cui generare il grafo.
+        \item \texttt{\_\_longitude: float} - Longitudine del punto centrale da cui generare il grafo.
+        \item \texttt{\_\_map\_radius: int} - Raggio in metri intorno al punto centrale per definire l'estensione del grafo.
+        \item \texttt{\_\_network\_type: str} - Tipo di rete stradale da recuperare (es. "drive", "bike", "walk").
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, latitude: float, longitude: float, map\_radius: int, network\_type: str)} - Costruttore che inizializza il wrapper con i parametri necessari per generare il grafo.
+        
+        \item \texttt{get\_graph(self) -> osmnx.graph} - Restituisce un grafo della rete stradale centrato sulle coordinate specificate con il raggio e il tipo di rete definiti, utilizzando la libreria OSMnx.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{SensorFactory}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa il pattern Factory per la creazione di sensori. Si occupa di istanziare oggetti sensore nascondendo i dettagli di implementazione e gestendo l'assegnazione degli UUID attraverso il servizio utente-sensore.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_user\_sensor\_service: UserSensorService} - Servizio che gestisce l'associazione tra sensori e utenti.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, sensor\_repo: ISensorRepository, user\_repo: IUserRepository)} - Costruttore che inizializza la factory con i repository necessari per gestire sensori e utenti.
+        
+        \item \texttt{create\_gps\_sensor(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy) -> SensorSubject} - Crea un singolo sensore GPS assegnandogli un UUID tramite il servizio utente-sensore e configurandolo con il sender e la strategia di simulazione forniti.
+        
+        \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int) -> List[SensorSubject]} - Crea una lista di sensori GPS del numero specificato, utilizzando lo stesso sender e la stessa strategia di simulazione per tutti.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{UserSensorService}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un servizio che gestisce l'associazione tra sensori e utenti. Si occupa di assegnare sensori disponibili a utenti liberi, garantendo l'atomicità delle operazioni attraverso un meccanismo di lock per prevenire race condition in ambienti multi-thread.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_SensorRepository: ISensorRepository} - Repository per l'accesso e la gestione dei dati relativi ai sensori.
+        \item \texttt{\_\_UserRepository: IUserRepository} - Repository per l'accesso e la gestione dei dati relativi agli utenti.
+        \item \texttt{\_\_lock: threading.Lock} - Oggetto lock utilizzato per garantire l'accesso thread-safe durante le operazioni di assegnazione sensore-utente.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, sensor\_repository: ISensorRepository, user\_repository: IUserRepository)} - Costruttore che inizializza il servizio con i repository necessari per gestire sensori e utenti.
+        
+        \item \texttt{assign\_sensor\_to\_user(self) -> uuid} - Assegna un sensore disponibile a un utente libero. Utilizza un lock per garantire che l'operazione sia thread-safe. Recupera un sensore non occupato e un utente libero dai rispettivi repository, marca il sensore come occupato e lo associa all'utente. Registra dettagliatamente tutte le operazioni in un file di log. Restituisce l'UUID del sensore assegnato o None se l'assegnazione fallisce.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{IUserRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per i repository di gestione degli utenti. Stabilisce i metodi necessari per gestire lo stato di occupazione degli utenti e la ricerca di utenti disponibili.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{mark\_user\_as\_occupied(self, user\_uuid: uuid.UUID, sensor\_uuid: uuid.UUID)} - Metodo astratto che deve essere implementato dalle sottoclassi per marcare un utente come occupato e associarlo a un sensore specifico tramite i rispettivi UUID.
+        
+        \item \texttt{get\_free\_user(self) -> UserDTO} - Metodo astratto che deve essere implementato dalle sottoclassi per recuperare un utente non assegnato a nessun sensore. Restituisce un oggetto UserDTO rappresentante l'utente libero, o None se non ci sono utenti disponibili.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{UserRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe concreta che realizza l'interfaccia IUserRepository per la gestione degli utenti nel database. Fornisce l'accesso ai dati degli utenti e le operazioni per modificare il loro stato di assegnazione ai sensori.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_db\_conn: DatabaseConnection} - Connessione al database utilizzata per eseguire query sui dati degli utenti.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, db\_connection: DatabaseConnection)} - Costruttore che inizializza il repository con una connessione al database.
+        
+        \item \texttt{mark\_user\_as\_occupied(self, user\_uuid: uuid.UUID, sensor\_uuid: uuid.UUID)} - Implementa il metodo dell'interfaccia per assegnare un sensore a un utente nel database. Esegue una query SQL che aggiorna il campo assigned\_sensor\_uuid con l'UUID del sensore specificato per l'utente con l'UUID indicato.
+        
+        \item \texttt{get\_free\_user(self) -> UserDTO} - Implementa il metodo dell'interfaccia per recuperare un utente non assegnato ad alcun sensore. Esegue una query SQL che seleziona il primo utente con assigned\_sensor\_uuid impostato a NULL e restituisce un oggetto UserDTO contenente tutte le informazioni dell'utente. Se non viene trovato alcun utente disponibile, restituisce None.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{UserDTO}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un oggetto di trasferimento dati (Data Transfer Object) per la classe User. Viene utilizzato per astrarre e incapsulare i dati degli utenti, facilitando il trasferimento delle informazioni tra i diversi strati dell'applicazione senza esporre i dettagli implementativi.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{user\_uuid: uuid} - Identificatore univoco dell'utente.
+        \item \texttt{assigned\_sensor\_uuid: uuid} - Identificatore univoco del sensore assegnato all'utente, può essere None se nessun sensore è assegnato.
+        \item \texttt{name: str} - Nome dell'utente.
+        \item \texttt{surname: str} - Cognome dell'utente.
+        \item \texttt{email: str} - Indirizzo email dell'utente.
+        \item \texttt{gender: str} - Genere dell'utente.
+        \item \texttt{birthdate: str} - Data di nascita dell'utente.
+        \item \texttt{civil\_status: str} - Stato civile dell'utente.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, user\_uuid: uuid, assigned\_sensor\_uuid: uuid, name: str, surname: str, email: str, gender: str, birthdate: str, civil\_status: str)} - Costruttore che inizializza l'oggetto DTO con tutti i dati dell'utente.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{ISensorRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per i repository di gestione dei sensori. Stabilisce i metodi necessari per gestire lo stato di occupazione dei sensori e la ricerca di sensori disponibili nel sistema.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{mark\_sensor\_as\_occupied(self, sensor\_uuid: uuid.UUID)} - Metodo astratto che deve essere implementato dalle sottoclassi per marcare un sensore come occupato, utilizzando il suo UUID come identificatore.
+        
+        \item \texttt{get\_non\_occupied\_sensor(self) -> SensorDTO} - Metodo astratto che deve essere implementato dalle sottoclassi per recuperare un sensore non occupato dal repository. Restituisce un oggetto SensorDTO rappresentante il sensore disponibile, o None se non ci sono sensori liberi.
+    \end{itemize}
+    \end{itemize}
+
+    
+    \paragraph{SensorRepository}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa la classe concreta che realizza l'interfaccia ISensorRepository per la gestione dei sensori nel database. Fornisce l'accesso ai dati dei sensori e le operazioni per modificarne lo stato di occupazione.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_db\_conn: DatabaseConnection} - Connessione al database utilizzata per eseguire query sui dati dei sensori.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, db\_connection: DatabaseConnection)} - Costruttore che inizializza il repository con una connessione al database.
+        
+        \item \texttt{mark\_sensor\_as\_occupied(self, sensor\_uuid: uuid.UUID)} - Implementa il metodo dell'interfaccia per marcare un sensore come occupato nel database. Esegue una query SQL che aggiorna il campo is\_occupied a true per il sensore con l'UUID specificato.
+        
+        \item \texttt{get\_non\_occupied\_sensor(self) -> SensorDTO} - Implementa il metodo dell'interfaccia per recuperare un sensore non occupato dal database. Esegue una query SQL che seleziona il primo sensore con is\_occupied impostato a 0 e restituisce un oggetto SensorDTO contenente l'UUID del sensore e il suo stato di occupazione. Se non viene trovato alcun sensore disponibile, restituisce None.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{SensorDTO}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un oggetto di trasferimento dati (Data Transfer Object) per la classe Sensor. Viene utilizzato per astrarre e incapsulare i dati dei sensori, facilitando il trasferimento delle informazioni tra i diversi strati dell'applicazione senza esporre i dettagli implementativi.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{sensor\_uuid: uuid} - Identificatore univoco del sensore.
+        \item \texttt{is\_occupied: bool} - Flag che indica se il sensore è attualmente occupato (assegnato a un utente) o disponibile.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, sensor\_uuid: uuid, is\_occupied: bool)} - Costruttore che inizializza l'oggetto DTO con l'UUID del sensore e il suo stato di occupazione.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{DatabaseConnection}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe che gestisce la connessione al database ClickHouse. Fornisce metodi per stabilire e chiudere connessioni al database, incapsulando i dettagli di configurazione e gestione della connessione.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{host: str} - Indirizzo del server ClickHouse.
+        \item \texttt{port: int} - Porta sulla quale il server ClickHouse accetta connessioni.
+        \item \texttt{user: str} - Nome utente per l'autenticazione al database.
+        \item \texttt{password: str} - Password per l'autenticazione al database.
+        \item \texttt{connection} - Oggetto connessione al database ClickHouse, inizialmente impostato a None.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, config\_parameters: DatabaseConfigParameters)} - Costruttore che inizializza l'oggetto connessione con i parametri di configurazione del database forniti.
+        
+        \item \texttt{connect(self)} - Stabilisce una connessione al database ClickHouse utilizzando i parametri configurati e restituisce l'oggetto client di connessione.
+        
+        \item \texttt{disconnect(self)} - Chiude la connessione al database se attiva e reimposta l'attributo connection a None.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{DatabaseConfigParameters}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe di dati (dataclass) che contiene i parametri di configurazione necessari per la connessione a un database ClickHouse. Fornisce una struttura semplice per incapsulare e trasportare le impostazioni di configurazione del database in modo tipizzato.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{host: str} - Indirizzo del server ClickHouse. Il valore predefinito è "clickhouse".
+        \item \texttt{port: str} - Porta sulla quale il server ClickHouse accetta connessioni. Il valore predefinito è "8123".
+        \item \texttt{user: str} - Nome utente per l'autenticazione al database. Il valore predefinito è "default".
+        \item \texttt{password: str} - Password per l'autenticazione al database. Il valore predefinito è "pass".
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item Nessuna operazione esplicita definita, in quanto si tratta di una dataclass che fornisce automaticamente costruttore, rappresentazione in stringa, confronto e altre funzionalità.
+    \end{itemize}
+    \end{itemize}
+
+    
+    \paragraph{IJsonSerializable}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un'interfaccia astratta che definisce il contratto per le classi che devono essere serializzabili in formato JSON. Fornisce un metodo standard per la serializzazione di oggetti.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo definito a livello di interfaccia.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{serialize\_to\_json(self, object\_to\_serialize: object)} - Metodo astratto che deve essere implementato dalle sottoclassi per serializzare un oggetto in formato JSON.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{PositionJsonAdapter}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un adattatore che converte oggetti GeoPosition in formato JSON, seguendo il pattern Adapter. Realizza l'interfaccia IJsonSerializable per fornire una serializzazione standardizzata degli oggetti posizione.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item Nessun attributo specificato nella classe.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{serialize\_to\_json(self, object\_to\_serialize: GeoPosition)} - Implementa il metodo dell'interfaccia IJsonSerializable. Converte un oggetto GeoPosition in una stringa JSON contenente l'UUID dell'utente (derivato dall'ID del sensore), le coordinate geografiche (latitudine e longitudine) e il timestamp della rilevazione.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{PositionSender}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe astratta che funge da componente per l'invio di posizioni geografiche a un broker di messaggi. Progettata per essere estesa da adattatori specifici come KafkaConfluentAdapter, gestisce la serializzazione dei dati di posizione e fornisce un meccanismo thread-safe per l'invio.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_position\_serializator: IJsonSerializable} - Componente che si occupa della serializzazione degli oggetti GeoPosition in formato JSON.
+        \item \texttt{\_lock: threading.Lock} - Meccanismo di lock per garantire l'accesso thread-safe alle risorse condivise durante l'invio dei dati.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, json\_adapter\_istance: IJsonSerializable)} - Costruttore che inizializza il sender con un adattatore JSON per la serializzazione dei dati di posizione.
+        
+        \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Metodo astratto che deve essere implementato dalle sottoclassi per inviare i dati serializzati al broker di messaggi specifico.
+        
+        \item \texttt{send\_position(self, position: GeoPosition)} - Metodo pubblico che gestisce il processo di invio di una posizione. Serializza l'oggetto GeoPosition utilizzando l'adattatore JSON e invoca il metodo astratto send\_data\_to\_broker in modo thread-safe utilizzando un lock.
+    \end{itemize}
+    \end{itemize}
+
+    \paragraph{KafkaConfluentAdapter}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa un adattatore concreto che estende PositionSender per inviare dati di posizione a un cluster Kafka utilizzando la libreria Confluent. Realizza l'interfaccia di invio astratta fornendo un'implementazione specifica per il broker Kafka.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{\_\_kafka\_config: KafkaConfigParameters} - Parametri di configurazione per la connessione a Kafka, inclusi il topic di destinazione e altre impostazioni specifiche.
+        \item \texttt{\_\_producer: Producer} - Istanza del producer Confluent Kafka utilizzato per inviare i messaggi al cluster Kafka.
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: "PositionJsonAdapter", producer\_istance: Producer)} - Costruttore che inizializza l'adattatore con i parametri di configurazione Kafka, un adattatore JSON per la serializzazione e un'istanza del producer Confluent.
+        
+        \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Implementa il metodo astratto della classe base. Invia il payload JSON al topic Kafka specificato nella configurazione, utilizzando l'UUID del sensore come chiave del messaggio e il payload serializzato come valore. Dopo l'invio, esegue un flush per garantire che il messaggio venga consegnato al broker.
+    \end{itemize}
+    \end{itemize}
+
+
+    \paragraph{KafkaConfigParameters}
+    \begin{itemize} 
+    \item \textbf{Descrizione}: Implementa una classe di dati (dataclass) che contiene i parametri di configurazione necessari per la connessione a un cluster Kafka. Fornisce una struttura semplice per incapsulare e trasportare le impostazioni di configurazione Kafka in modo tipizzato.
+    \item \textbf{Attributi}:
+    \begin{itemize}
+        \item \texttt{bootstrap\_servers: str} - L'indirizzo e la porta dei server bootstrap Kafka a cui connettersi. Il valore predefinito è "kafka:9092".
+        \item \texttt{source\_topic: str} - Il nome del topic Kafka su cui pubblicare i messaggi. Il valore predefinito è "SimulatorPosition".
+    \end{itemize}
+    
+    \item \textbf{Operazioni}:
+    \begin{itemize}
+        \item Nessuna operazione esplicita definita, in quanto si tratta di una dataclass che fornisce automaticamente costruttore, rappresentazione in stringa, confronto e altre funzionalità.
+    \end{itemize}
+    \end{itemize}
+    
+
+
+
         
         \myparagraph{Apache Kafka}
             \mysubparagraph{Topic e partitioning}
@@ -1717,139 +2259,139 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
         Le dashboard sono definite in file JSON che vengono copiati nella directory specificata nel provider durante il build dell'immagine Docker, garantendo che siano immediatamente disponibili all'avvio del container Grafana. Questa configurazione automatizzata elimina la necessità di setup manuale e assicura la coerenza dell'ambiente di visualizzazione in tutti i deployment del sistema.
 
-\subsection{Design Pattern e Best Practices}
-\subsubsection{Design pattern applicati}
-\myparagraph{Strategy Pattern}
+% \subsection{Design Pattern e Best Practices}
+% \subsubsection{Design pattern applicati}
+% \myparagraph{Strategy Pattern}
 
-    \mysubparagraph{Motivazioni e studio del design pattern}
-    Il pattern Strategy è stato adottato per incrementare la flessibilità nella gestione di diverse modalità operative del sistema. Questa scelta architetturale permette di definire un'interfaccia comune per tutte le strategie implementate, consentendo di modificare il comportamento del sistema selezionando una strategia specifica. Tale approccio aderisce al principio Open/Closed, agevolando l'aggiunta di nuove strategie senza intervenire su quelle esistenti.
+%     \mysubparagraph{Motivazioni e studio del design pattern}
+%     Il pattern Strategy è stato adottato per incrementare la flessibilità nella gestione di diverse modalità operative del sistema. Questa scelta architetturale permette di definire un'interfaccia comune per tutte le strategie implementate, consentendo di modificare il comportamento del sistema selezionando una strategia specifica. Tale approccio aderisce al principio Open/Closed, agevolando l'aggiunta di nuove strategie senza intervenire su quelle esistenti.
 
-    \mysubparagraph{Implementazione del design pattern}
-    Il pattern Strategy è implementato attraverso la definizione di un'interfaccia che delinea il comportamento comune a tutte le strategie. Ogni strategia concreta realizza questa interfaccia, fornendo un'implementazione specifica per una determinata funzionalità. Questo design consente la selezione dinamica della strategia più appropriata in base alle esigenze operative, migliorando la modularità e la manutenibilità del codice complessivo.
+%     \mysubparagraph{Implementazione del design pattern}
+%     Il pattern Strategy è implementato attraverso la definizione di un'interfaccia che delinea il comportamento comune a tutte le strategie. Ogni strategia concreta realizza questa interfaccia, fornendo un'implementazione specifica per una determinata funzionalità. Questo design consente la selezione dinamica della strategia più appropriata in base alle esigenze operative, migliorando la modularità e la manutenibilità del codice complessivo.
 
-    \mysubparagraph{Utilizzo}
-    L'integrazione del pattern Strategy disaccoppia la logica specifica delle funzionalità dal codice client che le invoca, semplificando l'estensibilità del sistema. La possibilità di scegliere le strategie a runtime permette di adattare dinamicamente il comportamento dell'applicazione in base al contesto. Ciò si rivela particolarmente vantaggioso in scenari che richiedono la sperimentazione o l'utilizzo di diverse modalità operative senza necessità di modifiche al nucleo del codice.
+%     \mysubparagraph{Utilizzo}
+%     L'integrazione del pattern Strategy disaccoppia la logica specifica delle funzionalità dal codice client che le invoca, semplificando l'estensibilità del sistema. La possibilità di scegliere le strategie a runtime permette di adattare dinamicamente il comportamento dell'applicazione in base al contesto. Ciò si rivela particolarmente vantaggioso in scenari che richiedono la sperimentazione o l'utilizzo di diverse modalità operative senza necessità di modifiche al nucleo del codice.
 
-    \mysubparagraph{Integrazione del pattern}
-    Il pattern Strategy si compone di tre elementi principali: un contesto che utilizza la strategia, un'interfaccia che definisce il contratto comune e le classi concrete che implementano le varie strategie. Nel nostro sistema, questo pattern è implementato in diversi modi:
-    \begin{itemize}
-        \item Per la simulazione della posizione, il nostro sistema utilizza l'interfaccia IPositionSimulationStrategy, un contratto che definisce tre metodi astratti: get\_route(), get\_delta\_time() e get\_speed(). Questa interfaccia, basata sul pattern Strategy, permette di implementare diverse logiche di simulazione, garantendo flessibilità ed estendibilità per vari scenari di utilizzo.
-        \begin{lstlisting}
-        class IPositionSimulationStrategy(ABC):
-            @abstractmethod
-            def get_route(self):
-                pass
+%     \mysubparagraph{Integrazione del pattern}
+%     Il pattern Strategy si compone di tre elementi principali: un contesto che utilizza la strategia, un'interfaccia che definisce il contratto comune e le classi concrete che implementano le varie strategie. Nel nostro sistema, questo pattern è implementato in diversi modi:
+%     \begin{itemize}
+%         \item Per la simulazione della posizione, il nostro sistema utilizza l'interfaccia IPositionSimulationStrategy, un contratto che definisce tre metodi astratti: get\_route(), get\_delta\_time() e get\_speed(). Questa interfaccia, basata sul pattern Strategy, permette di implementare diverse logiche di simulazione, garantendo flessibilità ed estendibilità per vari scenari di utilizzo.
+%         \begin{lstlisting}
+%         class IPositionSimulationStrategy(ABC):
+%             @abstractmethod
+%             def get_route(self):
+%                 pass
 
-            @abstractmethod
-            def get_delta_time(self) -> float:
-                pass
+%             @abstractmethod
+%             def get_delta_time(self) -> float:
+%                 pass
 
-            @abstractmethod
-            def get_speed(self) -> float:
-                pass
-        \end{lstlisting}
-        La strategia concreta BycicleSimulationStrategy implementa l'interfaccia IPositionSimulationStrategy, fornendo un algoritmo specifico per simulare il movimento di una bicicletta.
-        BycicleSimulationStrategy utilizza la libreria OSMnx per generare percorsi realistici su mappe stradali, calcolando il percorso più breve tra due nodi selezionati casualmente dal grafo e restituendo le relative coordinate geografiche. Definisce inoltre parametri specifici per la simulazione ciclistica, come una velocità media di circa 15 km/h e un delta temporale tra le posizioni simulate.\\
-        Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione.
+%             @abstractmethod
+%             def get_speed(self) -> float:
+%                 pass
+%         \end{lstlisting}
+%         La strategia concreta BycicleSimulationStrategy implementa l'interfaccia IPositionSimulationStrategy, fornendo un algoritmo specifico per simulare il movimento di una bicicletta.
+%         BycicleSimulationStrategy utilizza la libreria OSMnx per generare percorsi realistici su mappe stradali, calcolando il percorso più breve tra due nodi selezionati casualmente dal grafo e restituendo le relative coordinate geografiche. Definisce inoltre parametri specifici per la simulazione ciclistica, come una velocità media di circa 15 km/h e un delta temporale tra le posizioni simulate.\\
+%         Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione.
 
-        \item Per gestire l'interazione con modelli linguistici di grandi dimensioni (LLM), il nostro sistema utilizza la classe astratta LLMService, un contratto che definisce i metodi \_\_init\_\_(self, structured\_response: BaseModel), set\_up\_chat(self) e get\_llm\_structured\_response(self, prompt). Questa classe astratta, basata sul pattern Strategy, permette di integrare diversi servizi di IA.
-        \begin{lstlisting}
-        class LLMService(ABC):
-            def __init__(self, structured_response: BaseModel):
-                self.__llm_structured_response = structured_response
+%         \item Per gestire l'interazione con modelli linguistici di grandi dimensioni (LLM), il nostro sistema utilizza la classe astratta LLMService, un contratto che definisce i metodi \_\_init\_\_(self, structured\_response: BaseModel), set\_up\_chat(self) e get\_llm\_structured\_response(self, prompt). Questa classe astratta, basata sul pattern Strategy, permette di integrare diversi servizi di IA.
+%         \begin{lstlisting}
+%         class LLMService(ABC):
+%             def __init__(self, structured_response: BaseModel):
+%                 self.__llm_structured_response = structured_response
 
-            @abstractmethod
-            def set_up_chat(self):
-                pass
+%             @abstractmethod
+%             def set_up_chat(self):
+%                 pass
 
-            @abstractmethod
-            def get_llm_structured_response(self, prompt):
-                pass
-        \end{lstlisting}
-        La strategia concreta GroqLLMService implementa la classe astratta LLMService, fornendo un meccanismo specifico per comunicare con il modello Groq. GroqLLMService si avvale della libreria langchain-groq per stabilire la connessione e inviare richieste al servizio Groq, gestendo l'autenticazione tramite una chiave API. Il metodo set\_up\_chat() configura l'interazione con il modello "Gemma2-9b-it" mentre il metodo get\_llm\_structured\_response(self, prompt) prende un prompt come input e restituisce una risposta strutturata, definita al momento dell'inizializzazione della classe.\\
-        Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie per diversi fornitori di LLM.
+%             @abstractmethod
+%             def get_llm_structured_response(self, prompt):
+%                 pass
+%         \end{lstlisting}
+%         La strategia concreta GroqLLMService implementa la classe astratta LLMService, fornendo un meccanismo specifico per comunicare con il modello Groq. GroqLLMService si avvale della libreria langchain-groq per stabilire la connessione e inviare richieste al servizio Groq, gestendo l'autenticazione tramite una chiave API. Il metodo set\_up\_chat() configura l'interazione con il modello "Gemma2-9b-it" mentre il metodo get\_llm\_structured\_response(self, prompt) prende un prompt come input e restituisce una risposta strutturata, definita al momento dell'inizializzazione della classe.\\
+%         Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie per diversi fornitori di LLM.
 
-    \end{itemize}
-    In conclusione, questo approccio modulare, basato sul pattern Strategy, ci consente di estendere facilmente il sistema con nuove strategie senza dover modificare il codice esistente. Tale progettazione rispetta i principi SOLID, in particolare il principio Open/Closed, e contribuisce significativamente al miglioramento della manutenibilità complessiva dell'applicazione.
+%     \end{itemize}
+%     In conclusione, questo approccio modulare, basato sul pattern Strategy, ci consente di estendere facilmente il sistema con nuove strategie senza dover modificare il codice esistente. Tale progettazione rispetta i principi SOLID, in particolare il principio Open/Closed, e contribuisce significativamente al miglioramento della manutenibilità complessiva dell'applicazione.
 
-\myparagraph{Factory Pattern}
+% \myparagraph{Factory Pattern}
 
-    \mysubparagraph{Motivazioni e studio del design pattern}
-    Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di istanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
+%     \mysubparagraph{Motivazioni e studio del design pattern}
+%     Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di istanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
 
-    \mysubparagraph{Implementazione del design pattern}
-    Il pattern Factory viene implementato attraverso una classe dedicata, denominata "Factory", che contiene metodi specifici per la creazione dei diversi tipi di oggetti che essa è responsabile di produrre. Questa classe Factory spesso dipende da astrazioni (come interfacce o classi astratte) per poter creare le istanze concrete. I metodi di creazione all'interno della Factory si occupano di gestire la logica necessaria per istanziare e configurare correttamente gli oggetti richiesti, potenzialmente gestendo dipendenze o configurazioni specifiche per ciascun tipo di oggetto. La Factory può anche svolgere un ruolo nell'assicurare che gli oggetti creati rispettino determinati contratti o abbiano uno stato iniziale valido.
+%     \mysubparagraph{Implementazione del design pattern}
+%     Il pattern Factory viene implementato attraverso una classe dedicata, denominata "Factory", che contiene metodi specifici per la creazione dei diversi tipi di oggetti che essa è responsabile di produrre. Questa classe Factory spesso dipende da astrazioni (come interfacce o classi astratte) per poter creare le istanze concrete. I metodi di creazione all'interno della Factory si occupano di gestire la logica necessaria per istanziare e configurare correttamente gli oggetti richiesti, potenzialmente gestendo dipendenze o configurazioni specifiche per ciascun tipo di oggetto. La Factory può anche svolgere un ruolo nell'assicurare che gli oggetti creati rispettino determinati contratti o abbiano uno stato iniziale valido.
 
-    \mysubparagraph{Utilizzo}
-    L'integrazione del pattern Factory semplifica il processo di ottenimento di oggetti per il codice client. Invece di istanziare direttamente le classi concrete degli oggetti di cui ha bisogno, il codice client interagisce con la Factory, invocando il metodo di creazione appropriato per il tipo di oggetto desiderato. Il client fornisce alla Factory eventuali parametri necessari per la creazione dell'oggetto. La Factory si occupa quindi di creare e restituire un'istanza dell'oggetto richiesto, completamente configurata e pronta per essere utilizzata. Questo approccio riduce l'accoppiamento tra il codice client e le implementazioni concrete degli oggetti, migliorando la manutenibilità e la testabilità del sistema, in quanto le dipendenze di creazione sono centralizzate e possono essere facilmente sostituite o testate isolatamente.
+%     \mysubparagraph{Utilizzo}
+%     L'integrazione del pattern Factory semplifica il processo di ottenimento di oggetti per il codice client. Invece di istanziare direttamente le classi concrete degli oggetti di cui ha bisogno, il codice client interagisce con la Factory, invocando il metodo di creazione appropriato per il tipo di oggetto desiderato. Il client fornisce alla Factory eventuali parametri necessari per la creazione dell'oggetto. La Factory si occupa quindi di creare e restituire un'istanza dell'oggetto richiesto, completamente configurata e pronta per essere utilizzata. Questo approccio riduce l'accoppiamento tra il codice client e le implementazioni concrete degli oggetti, migliorando la manutenibilità e la testabilità del sistema, in quanto le dipendenze di creazione sono centralizzate e possono essere facilmente sostituite o testate isolatamente.
 
-    \mysubparagraph{Integrazione del pattern}
-    Il pattern Factory è implementato nel nostro sistema attraverso la classe SensorFactory, la quale incapsula la logica di creazione degli oggetti GpsSensor. Questa classe definisce i seguenti metodi principali:
-    \begin{lstlisting}
-    class SensorFactory:
-        def __init__(self, sensor_repo: ISensorRepository, user_repo: IUserRepository):
-        self.__user_sensor_service = UserSensorService(sensor_repo, user_repo)
+%     \mysubparagraph{Integrazione del pattern}
+%     Il pattern Factory è implementato nel nostro sistema attraverso la classe SensorFactory, la quale incapsula la logica di creazione degli oggetti GpsSensor. Questa classe definisce i seguenti metodi principali:
+%     \begin{lstlisting}
+%     class SensorFactory:
+%         def __init__(self, sensor_repo: ISensorRepository, user_repo: IUserRepository):
+%         self.__user_sensor_service = UserSensorService(sensor_repo, user_repo)
 
-        def create_gps_sensor(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy) -> SensorSubject:
-            uuid = self.__user_sensor_service.assign_sensor_to_user()
-            return GpsSensor(uuid, position_sender, simulation_strategy)
+%         def create_gps_sensor(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy) -> SensorSubject:
+%             uuid = self.__user_sensor_service.assign_sensor_to_user()
+%             return GpsSensor(uuid, position_sender, simulation_strategy)
 
-        def create_gps_sensor_list(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy, number_of_sensors: int) -> List[SensorSubject]:
-            sensor_list = [self.create_gps_sensor(position_sender, simulation_strategy) for i in range(number_of_sensors)]
-            return sensor_list
-    \end{lstlisting}
-    Il funzionamento dei metodi della SensorFactory è il seguente:
-    \begin{itemize}
-        \item \_\_init\_\_(self, sensor\_repo, user\_repo): Costruttore che inizializza la factory, ricevendo repository per sensori e utenti per la gestione dell'assegnazione degli ID unici tramite UserSensorService;
-        \item create\_gps\_sensor(self, position\_sender, simulation\_strategy) -$>$ SensorSubject: Crea una singola istanza di GpsSensor. Riceve un PositionSender e una IPositionSimulationStrategy, ottiene un UUID tramite UserSensorService e restituisce l'oggetto GpsSensor configurato con questi elementi;
-        \item create\_gps\_sensor\_list(self, position\_sender, simulation\_strategy, number\_of\_sensors) -$>$ List[SensorSubject]: Crea una lista contenente il numero specificato di istanze di GpsSensor, riutilizzando il metodo create\_gps\_sensor() per ogni elemento della lista. Richiede un PositionSender, una IPositionSimulationStrategy e il numero di sensori da creare.
-    \end{itemize}
-In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di istanziazione in un unico punto e rispettando il principio di singola responsabilità.
+%         def create_gps_sensor_list(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy, number_of_sensors: int) -> List[SensorSubject]:
+%             sensor_list = [self.create_gps_sensor(position_sender, simulation_strategy) for i in range(number_of_sensors)]
+%             return sensor_list
+%     \end{lstlisting}
+%     Il funzionamento dei metodi della SensorFactory è il seguente:
+%     \begin{itemize}
+%         \item \_\_init\_\_(self, sensor\_repo, user\_repo): Costruttore che inizializza la factory, ricevendo repository per sensori e utenti per la gestione dell'assegnazione degli ID unici tramite UserSensorService;
+%         \item create\_gps\_sensor(self, position\_sender, simulation\_strategy) -$>$ SensorSubject: Crea una singola istanza di GpsSensor. Riceve un PositionSender e una IPositionSimulationStrategy, ottiene un UUID tramite UserSensorService e restituisce l'oggetto GpsSensor configurato con questi elementi;
+%         \item create\_gps\_sensor\_list(self, position\_sender, simulation\_strategy, number\_of\_sensors) -$>$ List[SensorSubject]: Crea una lista contenente il numero specificato di istanze di GpsSensor, riutilizzando il metodo create\_gps\_sensor() per ogni elemento della lista. Richiede un PositionSender, una IPositionSimulationStrategy e il numero di sensori da creare.
+%     \end{itemize}
+% In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di istanziazione in un unico punto e rispettando il principio di singola responsabilità.
 
-\myparagraph{Adapter Pattern}
-\mysubparagraph{Motivazioni e studio del design pattern}
-Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka tramite serializzazione JSON oppure la comunicazione con il repository di ClickHouse). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
+% \myparagraph{Adapter Pattern}
+% \mysubparagraph{Motivazioni e studio del design pattern}
+% Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka tramite serializzazione JSON oppure la comunicazione con il repository di ClickHouse). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
 
-\mysubparagraph{Implementazione del design pattern}
-L’implementazione del pattern Adapter avviene tramite la creazione di:
-\begin{enumerate}
-    \item Una o più interfacce che definiscono i metodi necessari a interagire con l’architettura esagonale;
-    \item Una classe \texttt{adapter} concreta che implementa tali interfacce, convertendo gli oggetti e le chiamate tra il formato richiesto dalla business logic e quello utilizzato dalla componente esterna.
-\end{enumerate}
+% \mysubparagraph{Implementazione del design pattern}
+% L’implementazione del pattern Adapter avviene tramite la creazione di:
+% \begin{enumerate}
+%     \item Una o più interfacce che definiscono i metodi necessari a interagire con l’architettura esagonale;
+%     \item Una classe \texttt{adapter} concreta che implementa tali interfacce, convertendo gli oggetti e le chiamate tra il formato richiesto dalla business logic e quello utilizzato dalla componente esterna.
+% \end{enumerate}
 
-\mysubparagraph{Integrazione del pattern}
-L’Adapter funge da collegamento tra l’architettura esagonale e le librerie esterne. L’architettura esagonale interagisce esclusivamente con \texttt{GeoPosition} e altre entità di dominio, senza preoccuparsi del formato dei messaggi o delle dipendenze verso Kafka. Se in futuro fosse necessario sostituire il broker di messaggistica o cambiare il formato di serializzazione, basterebbe quindi aggiornare l’Adapter corrispondente, senza intaccare la logica di business interna.\\
-Di seguito viene mostrata l’implementazione concreta dell’Adapter, che trasforma gli oggetti \texttt{GeoPosition} in stringhe JSON compatibili con il topic di Kafka:
+% \mysubparagraph{Integrazione del pattern}
+% L’Adapter funge da collegamento tra l’architettura esagonale e le librerie esterne. L’architettura esagonale interagisce esclusivamente con \texttt{GeoPosition} e altre entità di dominio, senza preoccuparsi del formato dei messaggi o delle dipendenze verso Kafka. Se in futuro fosse necessario sostituire il broker di messaggistica o cambiare il formato di serializzazione, basterebbe quindi aggiornare l’Adapter corrispondente, senza intaccare la logica di business interna.\\
+% Di seguito viene mostrata l’implementazione concreta dell’Adapter, che trasforma gli oggetti \texttt{GeoPosition} in stringhe JSON compatibili con il topic di Kafka:
 
-\begin{lstlisting}
-    class PositionJsonAdapter(IJsonSerializable):
-    def serialize_to_json(self, position_istance: GeoPosition):
+% \begin{lstlisting}
+%     class PositionJsonAdapter(IJsonSerializable):
+%     def serialize_to_json(self, position_istance: GeoPosition):
 
-        return json.dumps({
-            'user_uuid': position_istance.get_sensor_id(),
-            'latitude': float(position_istance.get_latitude()),
-            'longitude': float(position_istance.get_longitude()),
-            'received_at': position_istance.get_timestamp(),
-        })
-\end{lstlisting}
-Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Adapter per serializzare i dati prima dell’invio a Kafka:
-\begin{lstlisting}
-    class KafkaConfluentAdapter(PositionSender):
+%         return json.dumps({
+%             'user_uuid': position_istance.get_sensor_id(),
+%             'latitude': float(position_istance.get_latitude()),
+%             'longitude': float(position_istance.get_longitude()),
+%             'received_at': position_istance.get_timestamp(),
+%         })
+% \end{lstlisting}
+% Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Adapter per serializzare i dati prima dell’invio a Kafka:
+% \begin{lstlisting}
+%     class KafkaConfluentAdapter(PositionSender):
 
-    def __init__(self,
-                kafka_config: KafkaConfigParameters,
-                json_adapter_istance: "PositionJsonAdapter",
-                producer_istance: Producer):
-        super().__init__(json_adapter_istance)
-        self.__kafka_config = kafka_config
-        self.__producer = producer_istance
+%     def __init__(self,
+%                 kafka_config: KafkaConfigParameters,
+%                 json_adapter_istance: "PositionJsonAdapter",
+%                 producer_istance: Producer):
+%         super().__init__(json_adapter_istance)
+%         self.__kafka_config = kafka_config
+%         self.__producer = producer_istance
 
-    def send_data_to_broker(self, json_payload, sensor_id: str):
-        self.__producer.produce(self.__kafka_config.source_topic,
-                                key = str(sensor_id),
-                                value = json_payload.encode('utf-8'))
-        self.__producer.flush()
-\end{lstlisting}
+%     def send_data_to_broker(self, json_payload, sensor_id: str):
+%         self.__producer.produce(self.__kafka_config.source_topic,
+%                                 key = str(sensor_id),
+%                                 value = json_payload.encode('utf-8'))
+%         self.__producer.flush()
+% \end{lstlisting}
 
     \subsubsection{Best practices architetturali}
     \myparagraph{PEP8 - Stile di codifica Python}
