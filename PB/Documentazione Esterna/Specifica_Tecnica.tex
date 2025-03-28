@@ -53,7 +53,7 @@
     numbers=left,
     numberstyle=\tiny\color{MLcomment},
     numbersep=0pt, % Riduce lo spazio tra i numeri e il codice
-    xleftmargin=-2em,    
+    xleftmargin=-2em,
     aboveskip=0pt, % Riduce lo spazio sopra il codice
     belowskip=0pt, % Riduce lo spazio sotto il codice
 }
@@ -99,7 +99,7 @@
     \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm]
 
     % Titolo
-     {\fontsize{40}{40}\bfseries Specifica Tecnica}\selectfont \\[3.9em]
+    {\fontsize{40}{40}\bfseries Specifica Tecnica}\selectfont \\[3.9em]
 
     % Sottotitolo
     {\huge NearYou\\ \vspace{3mm }Smart custom advertising platform} \\[2.7em]
@@ -134,7 +134,7 @@
 
 % Registro Modifiche
 \begin{center}
- \textbf{Registro modifiche}\\   
+\textbf{Registro modifiche}\\
 \end{center}
 
 \renewcommand{\arraystretch}{1.5}
@@ -145,15 +145,15 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    0.1.8 & 2025-03-22 & Alfredo Rubino & Uncas Peruzzi & Aggiunto pattern Adapter \\ 
+    0.1.8 & 2025-03-22 & Alfredo Rubino & Uncas Peruzzi & Aggiunto pattern Adapter \\
     \hline
-    0.1.7 & 2025-03-22 & Federico Pivetta & Uncas Peruzzi & Ampliati i paragrafi per i pattern Strategy e Factory \\ 
+    0.1.7 & 2025-03-22 & Federico Pivetta & Uncas Peruzzi & Ampliati i paragrafi per i pattern Strategy e Factory \\
     \hline
-    0.1.6 & 2025-03-21 & Riccardo Piva & Uncas Peruzzi & Sezione Integrazione Architettura logica e Architettura di sistema \\ 
+    0.1.6 & 2025-03-21 & Riccardo Piva & Uncas Peruzzi & Sezione Integrazione Architettura logica e Architettura di sistema \\
     \hline
-    0.1.5 & 2025-03-17 & Riccardo Piva & Alfredo Rubino & Fix generali e miglioramenti \\ 
+    0.1.5 & 2025-03-17 & Riccardo Piva & Alfredo Rubino & Fix generali e miglioramenti \\
     \hline
-    0.1.4 & 2025-03-16 & Riccardo Piva & Alfredo Rubino & Redazione generale macro sezioni documento \\ 
+    0.1.4 & 2025-03-16 & Riccardo Piva & Alfredo Rubino & Redazione generale macro sezioni documento \\
     \hline
     0.1.3 & 2025-03-05 & Alfredo Rubino & Manuel Gusella & Redazione sottosezione \hyperref[sec:strumenti]{Strumenti e Servizi} della sezione Tecnologie\\
     \hline
@@ -177,14 +177,14 @@
 
 \section{Introduzione}
 \subsection{Scopo del documento}
-Il presente documento si propone come una risorsa completa per la comprensione degli aspetti tecnici e progettuali della piattaforma "NearYou", dedicata alla 
-creazione di soluzioni di advertising personalizzato tramite intelligenza artificiale. L’obiettivo principale è fornire una descrizione dettagliata dell’architettura 
+Il presente documento si propone come una risorsa completa per la comprensione degli aspetti tecnici e progettuali della piattaforma "NearYou", dedicata alla
+creazione di soluzioni di advertising personalizzato tramite intelligenza artificiale. L’obiettivo principale è fornire una descrizione dettagliata dell’architettura
 implementativa e di deployment, illustrando le tecnologie adottate e le motivazioni alla base delle scelte progettuali.\\
-Nel contesto dell'architettura implementativa, il documento analizza nel dettaglio i moduli principali del sistema, i design pattern utilizzati. Saranno inclusi 
+Nel contesto dell'architettura implementativa, il documento analizza nel dettaglio i moduli principali del sistema, i design pattern utilizzati. Saranno inclusi
 diagrammi delle classi, e una spiegazione dettagliata dei design pattern utilizzati e delle motivazioni di queste scelte.\\
-Gli obiettivi di questo documento sono: motivare le decisioni architetturali, fungere da guida per lo sviluppo della piattaforma, e garantire la piena tracciabilità e 
+Gli obiettivi di questo documento sono: motivare le decisioni architetturali, fungere da guida per lo sviluppo della piattaforma, e garantire la piena tracciabilità e
 copertura dei requisiti definiti nel documento di \textit{Analisi dei Requisiti\_v1.0.0}.\\
-In sintesi, il documento intende essere un punto di riferimento essenziale per tutti gli attori coinvolti nel ciclo di vita del progetto, offrendo una visione chiara e 
+In sintesi, il documento intende essere un punto di riferimento essenziale per tutti gli attori coinvolti nel ciclo di vita del progetto, offrendo una visione chiara e
 strutturata delle fondamenta tecniche che sorreggono NearYou e delle logiche che ne determinano il funzionamento.\\
 
 \subsection{Glossario}
@@ -208,19 +208,19 @@ Le definizioni sono presenti nell'apposito documento \textit{Glossario\_v1.0.0.p
     \item[-] \textit{Analisi\_dei\_Requisiti\_v1.0.0}
     \item[-] Analisi-dei-Requisiti$_G$ - SWE 2024-25\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/\~tullio/IS-1/2024/Dispense/T05.pdf}}}\\ (Consultato: 2025-02-10).
-    
-    \item[-] Dependency Injection - SWE 2024-25\\    
+
+    \item[-] Dependency Injection - SWE 2024-25\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/\~rcardin/swea/2022/Design\%20Pattern\%20Architetturali\%20-\%20Dependency\%20Injection.pdf}}}\\ (Consultato: 2025-02-26).
-    
+
     \item[-] Design Pattern Creazionali - SWE 2024-25\\
     \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/\~rcardin/swea/2022/Design\%20Pattern\%20Creazionali.pdf}}}\\ (Consultato: 2025-02-26).
-    
+
     \item[-] Design Pattern Strutturali - SWE 2024-25\\
     \textcolor{blue}{\url{https://www.math.unipd.it/\~rcardin/swea/2022/Design\%20Pattern\%20Strutturali.pdf}}\\ (Consultato: 2025-02-26).
-    
+
     \item[-] Software Architecture Patterns - SWE 2024-25\\
     \textcolor{blue}{\url{https://www.math.unipd.it/\~rcardin/swea/2022/Software\%20Architecture\%20Patterns.pdf}}\\ (Consultato: 2025-02-26).
-    
+
     \item[-] Verbali Interni
     \item[-] Verbali Esterni
 \end{itemize}
@@ -271,63 +271,63 @@ Nel contesto di NearYou, Python viene impiegato per:
         \item \textbf{Versione}: 0.6.8;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://clickhouse.com/docs/integrations/python}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{PyFlink}:
     \begin{itemize}
         \item \textbf{Descrizione}: API Python di Apache Flink per l'elaborazione di flussi di dati distribuiti, sia in modalità batch che streaming;
         \item \textbf{Versione}: 1.18.1;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://pyflink.readthedocs.io/en/main/getting_started/index.html}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{LangChain}:
     \begin{itemize}
         \item \textbf{Descrizione}: Framework per lo sviluppo di applicazioni basate su modelli linguistici, consentendo di orchestrare prompt e integrare fonti di dati esterne;
         \item \textbf{Versione}: 0.1.12;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://python.langchain.com/docs/introduction/}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{Groq}:
     \begin{itemize}
         \item \textbf{Descrizione}: Client Python per l'API Groq, utilizzato per la generazione di contenuti tramite LLM;
         \item \textbf{Versione}: 0.4.2;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://console.groq.com/docs/libraries}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{Confluent Kafka}:
     \begin{itemize}
         \item \textbf{Descrizione}: Libreria per l'interazione con Apache Kafka, utilizzata per la pubblicazione e sottoscrizione di messaggi;
         \item \textbf{Versione}: 2.8.0;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://docs.confluent.io/kafka/overview.html}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{GeoPy}:
     \begin{itemize}
         \item \textbf{Descrizione}: Libreria per operazioni geospaziali e calcolo delle distanze;
         \item \textbf{Versione}: 2.4.1;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://geopy.readthedocs.io/en/stable/index.html}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{OSMnx}:
     \begin{itemize}
         \item \textbf{Descrizione}: Libreria per scaricare e analizzare reti stradali da OpenStreetMap, utilizzata per simulare percorsi realistici;
         \item \textbf{Versione}: 1.9.1;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://osmnx.readthedocs.io/en/stable/}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{Faker}:
     \begin{itemize}
         \item \textbf{Descrizione}: Libreria per la generazione di dati realistici per test;
         \item \textbf{Versione}: 24.1.0;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://faker.readthedocs.io/en/master/}} (Consultato: 2025-03-02).
     \end{itemize}
-    
+
     \item[-] \textbf{Pylint}:
     \begin{itemize}
         \item \textbf{Descrizione}: Strumento di analisi statica del codice Python;
         \item \textbf{Versione}: 3.0.3;
         \item \textbf{Documentazione}: \textcolor{blue}{\url{https://pylint.pycqa.org/en/latest/index.html}} (Consultato: 2025-03-03).
     \end{itemize}
-    
+
     \item[-] \textbf{pytest}:
     \begin{itemize}
         \item \textbf{Descrizione}: Framework per test automatizzati;
@@ -508,7 +508,7 @@ In NearYou, Docker è utilizzato per:
 
     \section{Architettura logica}
 
-    La logica del progetto adotta un approccio esagonale (Hexagonal Architecture, noto anche come Ports and Adapters) incentrato sugli eventi, con l'obiettivo di separare chiaramente la logica di dominio dai servizi esterni. Al centro si trova il core esagonale, che contiene le regole per la gestione del business legato alla generazione di messaggi pubblicitari personalizzati. Questo nucleo è isolato da sistemi come Flink, Kafka, ClickHouse e Grafana tramite porte (interface) e adattatori (infrastructure), favorendo una netta suddivisione delle responsabilità.
+    La logica del progetto adotta un approccio esagonale incentrato sugli eventi, con l'obiettivo di separare chiaramente la logica di dominio dai servizi esterni. Al centro si trova il core esagonale, che contiene le regole per la gestione del business legato alla generazione di messaggi pubblicitari personalizzati. Questo nucleo è isolato da sistemi come Flink, Kafka, ClickHouse e Grafana tramite porte (interface) e adattatori (infrastructure), favorendo una netta suddivisione delle responsabilità.
 
     \begin{figure}[h]
     \centering
@@ -517,13 +517,13 @@ In NearYou, Docker è utilizzato per:
     \end{figure}
 
     \subsection{Pattern di architettura esagonale}
-    
-    Il pattern architetturale Ports and Adapters è stato scelto per la sua capacità di disaccoppiare la logica di business dalle tecnologie specifiche. Questa separazione consente una maggiore manutenibilità e testabilità del sistema, oltre a facilitare l'evoluzione tecnologica senza impattare sul nucleo funzionale.
-    
+
+    Il pattern esagonale è stato scelto per la sua capacità di disaccoppiare la logica di business dalle tecnologie specifiche. Questa separazione consente una maggiore manutenibilità e testabilità del sistema, oltre a facilitare l'evoluzione tecnologica senza impattare sul nucleo funzionale.
+
     Nell'architettura esagonale implementata, possiamo distinguere:
-    
+
     \begin{itemize}
-        \item[-] \textbf{Core domain}: Il nucleo centrale che rappresenta le entità e la logica di business (punti di interesse, utenti, posizioni e messaggi pubblicitari);
+        \item[-] \textbf{Core domain}: Il nucleo centrale che rappresenta le entità e la logica di business del sistema. Un esempio di questo nucleo è SensorSimulationAdministrator che gestisce la simulazione dei movimenti degli utenti;
         \item[-] \textbf{Porte (Ports)}: Interfacce che definiscono come il dominio interagisce con l'esterno. Si distinguono in:
         \begin{itemize}
             \item[.] \textbf{Inbound ports}: Interfacce che espongono le funzionalità del dominio verso l'esterno, come l'interfaccia \texttt{IPositionProcessor} che riceve posizioni da elaborare;
@@ -537,7 +537,7 @@ In NearYou, Docker è utilizzato per:
     \end{itemize}
 
     \subsection{Servizi principali e loro componenti}
-    
+
     NearYou implementa due servizi principali, entrambi progettati secondo il pattern esagonale:
 
     \begin{itemize}
@@ -548,7 +548,7 @@ In NearYou, Docker è utilizzato per:
             \item[.] \textbf{Outbound ports}: Include interfacce come \texttt{IPositionPublisher} per pubblicare le posizioni generate;
             \item[.] \textbf{Adapters}: Implementa adattatori come \texttt{KafkaPositionPublisherAdapter} che converte le posizioni generate in messaggi Kafka.
         \end{itemize}
-        
+
         \item[-] \textbf{Elaboratore di posizioni / Generatore di messaggi}:
         \begin{itemize}
             \item[.] \textbf{Core domain}: Contiene la logica di identificazione della prossimità e generazione di messaggi pubblicitari;
@@ -557,13 +557,13 @@ In NearYou, Docker è utilizzato per:
             \item[.] \textbf{Adapters}: Implementa adattatori per tecnologie specifiche, come \texttt{KafkaPositionReceiverAdapter}, \texttt{ClickHouseRepositoryAdapter} e \texttt{GroqLlmAdapter}.
         \end{itemize}
     \end{itemize}
-    
+
     Questo approccio garantisce che ogni componente abbia responsabilità chiaramente definite e che il nucleo di business rimanga indipendente dalle tecnologie utilizzate per l'implementazione.
 
     \subsection{Dataflow}
-    
+
     Il flusso dei dati attraverso l'architettura esagonale segue un percorso ben definito, garantendo la separazione tra la logica di business e le tecnologie di implementazione. Di seguito viene descritto il flusso di dati end-to-end:
-    
+
     \begin{enumerate}
         \item \textbf{Generazione delle posizioni}:
         \begin{itemize}
@@ -571,14 +571,14 @@ In NearYou, Docker è utilizzato per:
             \item[.] Questi oggetti vengono passati attraverso l'outbound port \texttt{IPositionPublisher};
             \item[.] L'adapter \texttt{KafkaPositionPublisherAdapter} serializza i dati in formato JSON e li pubblica sul topic Kafka \texttt{posizioni}.
         \end{itemize}
-        
+
         \item \textbf{Consumo delle posizioni}:
         \begin{itemize}
             \item[.] L'inbound adapter \texttt{KafkaPositionReceiverAdapter} del servizio di elaborazione sottoscrive il topic Kafka \texttt{posizioni};
             \item[.] I messaggi ricevuti vengono deserializzati e convertiti in oggetti di dominio \texttt{UserPosition};
             \item[.] Questi oggetti vengono passati all'inbound port \texttt{IPositionProcessor} per l'elaborazione.
         \end{itemize}
-        
+
         \item \textbf{Elaborazione e generazione di messaggi}:
         \begin{itemize}
             \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IActivityRepository} per recuperare le attività nelle vicinanze;
@@ -587,20 +587,20 @@ In NearYou, Docker è utilizzato per:
             \item[.] L'adapter \texttt{GroqLlmAdapter} comunica con il servizio LLM esterno e restituisce il messaggio generato;
             \item[.] Il messaggio personalizzato viene incapsulato in un oggetto \texttt{AdvertisingMessage} del dominio.
         \end{itemize}
-        
+
         \item \textbf{Pubblicazione del messaggio pubblicitario}:
         \begin{itemize}
             \item[.] L'oggetto \texttt{AdvertisingMessage} viene passato all'outbound port \texttt{IMessagePublisher};
             \item[.] L'adapter \texttt{KafkaMessagePublisherAdapter} serializza il messaggio e lo pubblica sul topic Kafka \texttt{messaggi}.
         \end{itemize}
-        
+
         \item \textbf{Persistenza e visualizzazione}:
         \begin{itemize}
             \item[.] ClickHouse, attraverso il connettore Kafka nativo, consuma e archivia i messaggi dal topic \texttt{messaggi};
             \item[.] Grafana interroga ClickHouse per recuperare e visualizzare i dati in tempo reale attraverso dashboard interattive.
         \end{itemize}
     \end{enumerate}
-    
+
     Il flusso dei dati è progettato per essere asincrono, garantendo la scalabilità e la resilienza del sistema. Ogni componente può funzionare indipendentemente, con Kafka che funge da buffer di messaggi affidabile tra i vari stadi del processo.
 
     Gli adattatori si occupano d'interfacciarsi con l'esterno: il simulatore di posizioni produce eventi JSON su Kafka, successivamente elaborati da Flink per definire la prossimità ai punti di interesse e gestire i dati necessari alla logica di dominio. Qualora sia richiesta la generazione di contenuti, un LLM esterno crea i messaggi personalizzati che confluiscono nel dominio. La persistenza e la consultazione storica avvengono tramite ClickHouse, mentre Grafana rende immediatamente disponibili tali informazioni agli utenti.
@@ -647,14 +647,12 @@ Il cuore dell'architettura del progetto è rappresentato dalla piattaforma di st
     \subsubsection{Motivazioni della scelta architetturale}
         \myparagraph{Vantaggi per l'elaborazione in tempo reale}
         Tra i vantaggi per l'elaborazione in tempo reale c'è la capacità di gestire flussi di dati continui senza ritardi significativi.
+        \myparagraph{Tecniche di riduzione della latenza}
+        La riduzione della latenza è garantita dalla gestione dei dati in tempo reale, senza la necessità di processi batch.
         \myparagraph{Benefici sul disaccoppiamento}
         Tra i benefici sul disaccoppiamento c'è la possibilità di sviluppare e scalare indipendentemente i componenti del sistema, garantendo una maggiore flessibilità.
         \myparagraph{Ottimizzazione del codebase}
         La semplificazione della pipeline di dati permette di ridurre la complessità del codice e di semplificare la manutenzione.
-        \myparagraph{Gestione della consistenza dei dati}
-        La K-Architecture garantisce la coerenza dei dati in tempo reale, evitando problemi di sincronizzazione e di versionamento.
-        \myparagraph{Tecniche di riduzione della latenza}
-        La riduzione della latenza è garantita dalla gestione dei dati in tempo reale, senza la necessità di processi batch.
 
 \subsubsection{Componenti principali}
 Il progetto si suddivide in cinque componenti principali, ognuno dei quali svolge un ruolo specifico nell'architettura complessiva:
@@ -667,42 +665,43 @@ Il progetto si suddivide in cinque componenti principali, ognuno dei quali svolg
 \end{itemize}
 
 \myparagraph{Generazione di dati}
-Responsabile della produzione dei dati di posizione degli utenti in formato JSON, pubblicati su Kafka. 
+Responsabile della produzione dei dati di posizione degli utenti in formato JSON, pubblicati su Kafka.
 Per garantire dati più realistici, il simulatore introduce un parametro velocità che varia fra le tipologie di simulazione.
 
 \myparagraph{Gestione messaggi}
 Basato su Apache Kafka, gestisce la comunicazione asincrona tra i microservizi, garantendo la scalabilità e la resilienza del sistema grazie alla gestione dei topic e delle partizioni con le chiavi e la replicazione sul database ClickHouse.
 
 \myparagraph{Elaborazione dei dati}
-Implementato con Apache Flink, elabora i dati valutando la prossimità dei punti d’interesse e interagendo con 
-l’LLM per generare annunci personalizzati. 
+Implementato con Apache Flink, elabora i dati valutando la prossimità dei punti d’interesse e interagendo con
+l’LLM per generare annunci personalizzati.
 
 \myparagraph{Storage}
-Supportato dal database ClickHouse, memorizza i dati in tabelle colonnari ad alte prestazioni, consentendo query 
-analitiche rapide grazie all’ottimizzazione per letture intensive. 
+Supportato dal database ClickHouse, memorizza i dati in tabelle colonnari ad alte prestazioni, consentendo query
+analitiche rapide grazie all’ottimizzazione per letture intensive.
 
 \myparagraph{Visualizzazione}
-Basato su Grafana, costituisce una soluzione di visualizzazione dei dati su una mappa e facilita l'estensione di tale interfaccia sfruttando i dati già presenti. 
-Sfrutta inoltre il connettore nativo di ClickHouse, permettendo l'integrazione e l'analisi in tempo reale delle informazioni.
+Basato su Grafana, costituisce una soluzione di visualizzazione dei dati su una mappa e l'integrazione di tale interfaccia con i dati del datasource avviene tramite delle semplici query.
+Sfrutta inoltre il connettore nativo di ClickHouse, permettendo l'integrazione e le query in tempo reale delle informazioni.
 
 \subsubsection{Flusso di dati end-to-end}
 \begin{enumerate}
-    \item Il simulatore genera dati di posizione e li invia a Kafka, includendo informazioni sul timestamp e sull’ID utente.
-    \item Flink legge i topic, rileva la prossimità dei punti d’interesse e genera un messaggio tramite l'LLM.
-    \item L’LLM elabora i dettagli dell’evento, producendo un messaggio personalizzato, poi memorizzato in ClickHouse.
-    \item Grafana interroga ClickHouse e consente la visualizzazione in tempo reale tramite dashboard di attività, utenti, relative posizioni e annunci generati.
+    \item Il simulatore genera dati di posizione e li invia a Kafka, includendo informazioni sul timestamp e sull’ID sensore.
+    \item Flink legge i topic, rileva la prossimità dei punti d’interesse tramite ClickHouse e genera un messaggio tramite l'LLM passandogli le informazioni.
+    \item L’LLM elabora i dati che gli vengono passati, producendo un messaggio personalizzato ad esempio in base al tipo di attività, poi viene prodotto il messaggio, pubblicato su Kafka e di conseguenza su ClickHouse.
+    \item Grafana interroga ClickHouse e preleva i dati per la visualizzazione in tempo reale tramite dashboard di attività, utenti, relative posizioni e annunci generati.
 \end{enumerate}
 
 \subsubsection{Interfacce tra componenti}
-Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in formato JSON. Per quanto riguarda l'integrazione fra Kafka e ClickHouse è presente un connettore nativo che permette inoltre di creare delle materialized view per la storicizzazione dei dati. Per Grafana è sempre presente un connettore nativo per ClickHouse che permette di interrogare il database e visualizzare i dati in tempo reale.
+%%TODO: questo forse è ridondate quindi è da controllare
+%% Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in formato JSON. Per quanto riguarda l'integrazione fra Kafka e ClickHouse è presente un connettore nativo che permette inoltre di creare delle materialized view per la storicizzazione dei dati. Per Grafana è sempre presente un connettore nativo per ClickHouse che permette di interrogare il database e visualizzare i dati in tempo reale.
 
     \subsection{Implementazione tecnica dei componenti principali}
         \myparagraph{Apache Kafka}
             \mysubparagraph{Topic e partitioning}
-        In questo progetto si utilizzano due topic: 
+        In questo progetto si utilizzano due topic:
         \begin{itemize}
         \item \texttt{posizioni}, per pubblicare i dati generati dai sensori (simulator);
-        \item \texttt{messaggi}, per pubblicare gli annunci elaborati dall’LLM.
+        \item \texttt{messaggi}, per pubblicare gli annunci generati dall’LLM.
         \end{itemize}
 
         \mysubparagraph{Producer e Consumer}
@@ -724,7 +723,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         I dati inviati dal producer sul topic \texttt{posizioni} seguono questa struttura JSON: \\
         \begin{lstlisting}
         {
-            "id": "UUID",
+            "user_uuid": "UUID",
             "latitude": "Float64",
             "longitude": "Float64",
             "received_at": "String"
@@ -735,17 +734,18 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         I messaggi sul topic \texttt{messaggi} hanno il seguente formato: \\
         \begin{lstlisting}
         {
-            "user_uuid": "UUID",
-            "activity_uuid": "UUID",
-            "message_uuid": "UUID",
-            "message": "String",
-            "activityLatitude": "Float64",
-            "activityLongitude": "Float64",
-            "creationTime": "String",
-            "userLatitude": "Float64",
-            "userLongitude": "Float64"
+            "user_id": "UUID",
+            "activity_id": "UUID",
+            "message_id": "UUID",
+            "message_text": "String",
+            "activity_lat": "Float64",
+            "activity_lon": "Float64",
+            "creation_time": "String",
+            "user_lat": "Float64",
+            "user_lon": "Float64"
         }
         \end{lstlisting}
+
 
         \mysubparagraph{Kafka poisoning}
         \begin{itemize}
@@ -753,23 +753,23 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             Il sistema di stream processing Kafka risulta potenzialmente vulnerabile ad un attaccante che inserisca
             dati falsi o malformati al fine di alterare il comportamento del sistema, pertanto è necessario applicare delle strategie
             di mitigazione che verifichino origine e correttezza dei dati e limitino i potenziali danni.
-            
+
             \item \textbf{Soluzioni}\\
             Alcune delle possibili soluzioni per la mitigazione di questa tipologia di attacchi sono le seguenti:
             \begin{itemize}
-                \item Validazione dei dati a livello di codice; 
+                \item Validazione dei dati a livello di codice;
                 \item Uso del protocollo TLS per la comunicazione sensori-sistema;
                 \item Autenticazione sensori mediante SASL;
                 \item Definizione di policies di access control.
             \end{itemize}
-            
+
             \item \textbf{Strategie di mitigazione in Dettaglio}
             \begin{itemize}
-            
+
                 \item \underline{Validazione dei dati a livello di codice}
                 \begin{itemize}
                     \item \textbf{Descrizione}:\\
-                    La validazione dei dati a livello di codice consiste nel controllo del dato, ovvero quando si prelevano i dati dal topic potrebbe capitare che siano dei dati malformati o malevoli. 
+                    La validazione dei dati a livello di codice consiste nel controllo del dato, ovvero quando si prelevano i dati dal topic potrebbe capitare che siano dei dati malformati o malevoli.
                     Facendo questo in modo mirato sul singolo dato, è possibile garantire che ogni informazione elaborata sia conforme agli standard attesi. \\
                     Ad esempio se sappiamo per certo che una persona si muove tra i 3 e i 6 km/h, possiamo scartare i dati che superano questa soglia.
 
@@ -786,34 +786,39 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                     Il protocollo utilizza una chiave di cifratura asimmetrica certificata per stabilire la comunicazione iniziale
                     per poi utilizzare cifratura simmetrica per il resto della sessione.
                     Apache Kafka dispone inoltre della possibilità di applicare 2-way TLS per introdurre un'ulteriore autenticazione del client.
-                    
+
                     \item \textbf{Requisiti implementazione}:\\
-                    Il protocollo TLS è già implementato all'interno di Apache Kafka è pertanto semplicemente necessario abilitarlo ed inserire i certificati richiesti.
+                    Il protocollo TLS è già implementato all'interno di Apache Kafka per abilitarlo è però necessario inserire i certificati richiesti.
                     È possibile adottare sia certificati interni che certificati garantiti da una Certification Authority.
-                    
+
                 \end{itemize}
-                
+
                 \item \underline{Autenticazione sensori mediante SASL}
                 \begin{itemize}
                     \item \textbf{Descrizione}:\\
-                    Il protocollo SASL fornisce la possibilità di integrare un ampio spettro di metodologie per l'autenticazione di messaggi in ingresso basata su sfide e risposte e può anche essere integrato con
-                    protocolli di trasporto che garantiscano riservatezza del messaggio.
-                    
+                    Il protocollo SASL fornisce la possibilità di integrare un ampio spettro di metodologie per l'autenticazione di messaggi in ingresso basata su sfide e risposte e
+                    può anche essere integrato con protocolli di trasporto che garantiscano riservatezza del messaggio.
+
                     \item \textbf{Requisiti implementazione}:\\
-                    Il protocollo SASL è già implementato all'interno di Apache Kafka è pertanto semplicemente necessario abilitarlo ed inserire i certificati richiesti.
-                    È possibile adottare sia certificati interni che certificati garantiti da una Certification Authority.
-                    
+                    Il protocollo SASL è già implementato all'interno di Apache Kafka ed è necessario abilitarlo configurando i meccanismi di autenticazione desiderati (come PLAIN, SCRAM o GSSAPI/Kerberos).
+                    È poi richiesta la configurazione dei parametri di autenticazione sia lato client che server, definendo credenziali e ruoli degli utenti nel cluster Kafka.
+                    Questa opzione offrirebbe una soluzione di sicurezza robusta per autenticare i sensori e garantire l'integrità dei dati senza la necessità di contratti.
+
                 \end{itemize}
-                
+
                 \item \underline{Policies di access control}
                 \begin{itemize}
                     \item \textbf{Descrizione}:\\
-                    L'uso di access control lists permette di definire un insieme di regole volto a limitare la possibilità che un client compromesso abbia accesso ad informazioni sensibili o sia in grado di manomettere il sistema.
+                    L'uso di access control lists permette di definire un insieme di regole volto a limitare la possibilità che un client
+                    compromesso abbia accesso ad informazioni sensibili o sia in grado di manomettere il sistema.
                     Ogni regola definisce per un client o gruppo di client se questi sia autorizzato o meno a produrre o consumare elementi di un topic.
-                    
+
                     \item \textbf{Requisiti implementazione}:\\
-                    Apache Kafka dispone di un sistema integrato di gestione dei permessi ed è quindi semplicemente necessario definire un file di configurazione che elenchi le policies che si intende adottare.
-                    
+                    Apache Kafka dispone di un sistema integrato di gestione dei permessi che facilita l'implementazione di policy di sicurezza.
+                    È però necessario definire opportunamente le policies desiderate nel file di configurazione, assegnando i permessi specifici per ogni componente del sistema.
+                    Ad esempio, è possibile limitare i permessi di scrittura dei simulatori al solo topic dei dati dei sensori, mentre il modulo di elaborazione potrà avere solo permessi di lettura su quel topic.
+                    La configurazione delle policies viene gestita tramite file ACL (Access Control List) che specificano dettagliatamente i permessi di ogni componente del sistema.
+
                 \end{itemize}
             \end{itemize}
             \item \textbf{Conclusioni}\\
@@ -822,9 +827,13 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
 
         \myparagraph{Apache Flink}
         \mysubparagraph{Stream processing jobs}
-        Nell'architettura NearYou, Flink gestisce un job di streaming strutturato secondo il paradigma DataStream API, approccio scelto per la sua flessibilità e per la ricchezza di operatori disponibili per la manipolazione dei flussi di dati. Il flusso di elaborazione è organizzato attraverso un componente centrale, il FlinkJobManager, che coordina l'intero ciclo di vita del processing dei dati. Questo manager riceve i dati di posizione dagli utenti tramite Kafka, li elabora attraverso una serie di trasformazioni, e infine produce messaggi pubblicitari personalizzati. \\
-        Il job è progettato secondo principi di modularità e dependency injection, con componenti intercambiabili che seguono interfacce ben definite. L'elaborazione avviene in diverse fasi sequenziali:
-        
+        Nell'architettura NearYou, Flink gestisce un job di streaming strutturato sfruttando le funzionalità offerte della DataStream API,
+        approccio scelto per la sua flessibilità e per la ricchezza di operatori disponibili per la manipolazione dei flussi di dati.
+        Il flusso di elaborazione è organizzato attraverso un componente centrale, il FlinkJobManager, che coordina l'intero ciclo di vita del processing dei dati.
+        Questo manager riceve i dati di posizione dagli utenti tramite grazie al simulation module, li elabora attraverso una serie di trasformazioni, e infine produce messaggi pubblicitari personalizzati. \\
+        Il job è progettato secondo principi di modularità e dependency injection, con componenti intercambiabili che seguono interfacce ben definite.
+        L'elaborazione avviene in diverse fasi sequenziali:
+
         \begin{itemize}
             \item Ricezione di eventi di posizione attraverso un source connector Kafka;
             \item Raggruppamento (key-by) per identificatore utente;
@@ -832,65 +841,42 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item Filtraggio dei messaggi già visualizzati;
             \item Pubblicazione dei risultati su un topic Kafka di output.
         \end{itemize}
-        
-        La configurazione del job è ottimizzata per l'elaborazione in tempo reale con un livello di parallelismo adeguato al carico di lavoro previsto, impostato attraverso i parametri di configurazione dell'ambiente di esecuzione Flink. L'utilizzo della DataStream API permette inoltre di definire operazioni di trasformazione in modo dichiarativo, aumentando la leggibilità del codice e facilitando la manutenzione.
-        
+
+        La configurazione del job è ottimizzata per l'elaborazione in tempo reale con un livello di parallelismo adeguato al carico di lavoro previsto, impostato attraverso i parametri di configurazione dell'ambiente di esecuzione Flink.
+        L'utilizzo della DataStream API permette inoltre di definire operazioni di trasformazione in modo dichiarativo, aumentando la leggibilità del codice e facilitando la manutenzione.
+
         \mysubparagraph{Elaborazione dati e pattern di progettazione}
-        Il cuore dell'elaborazione dati in Flink è costituito dal pattern di trasformazione dello stream attraverso funzioni di mapping e filtraggio. Il componente principale di questa elaborazione è il PositionToMessageProcessor, che implementa un pattern di design funzionale per trasformare i dati di posizione in messaggi pubblicitari contestuali.
-        
+        Il cuore dell'elaborazione dati in Flink è costituito dal pattern di trasformazione dello stream attraverso funzioni di mapping e filtraggio.
+        Il componente principale di questa elaborazione è il PositionToMessageProcessor, che implementa un pattern di design funzionale per trasformare i dati di posizione in messaggi pubblicitari contestuali.
+
         Questo processore integra diverse fonti di dati e servizi:
         \begin{itemize}
             \item Repository di utenti per recuperare informazioni demografiche e preferenze;
             \item Repository di attività per individuare punti di interesse nelle vicinanze;
             \item Servizio LLM per generare testi pubblicitari personalizzati.
         \end{itemize}
-        
+
         Un aspetto importante dell'elaborazione è il meccanismo di filtering, implementato attraverso il componente FilterMessageAlreadyDisplayed. Questa logica evita di inviare ripetutamente lo stesso messaggio quando l'utente rimane fermo o si muove minimamente, ottimizzando così sia l'esperienza utente che il consumo di risorse del sistema.
-        
+
         Il pattern di progettazione adottato consente una chiara separazione delle responsabilità: la logica di business è incapsulata nel processore, mentre l'infrastruttura di comunicazione è gestita dal job manager. Questo approccio facilita la manutenzione e l'evoluzione del sistema.
-        
+
         \mysubparagraph{Integrazione con componenti esterni}
         Flink funge da elemento integratore tra i vari componenti dell'architettura NearYou, coordinando il flusso dei dati attraverso connettori specializzati:
-        
+
         \begin{itemize}
             \item \textbf{Integrazione con Kafka}: Attraverso i connettori KafkaPositionReceiver e KafkaMessageWriter, Flink legge le posizioni degli utenti dal topic "SimulatorPosition" e pubblica i messaggi elaborati sul topic "MessageElaborated". La DataStream API fornisce connettori nativi per Kafka che semplificano questa integrazione, garantendo la consistenza dei tipi di dati e la corretta gestione delle configurazioni.
-            
+
             \item \textbf{Interazione con ClickHouse}: Il rilevamento di prossimità ai punti di interesse nel raggio di generazione non avviene direttamente in Flink, bensì delegata a ClickHouse attraverso query geospaziali ottimizzate che sfruttano la funzione nativa geoDistance. Questo approccio sfrutta le capacità di calcolo geospaziale già presenti nel database, ottimizzando così le performance del sistema.
-            
+
             \item \textbf{Comunicazione con servizi LLM}: Flink orchestra l'interazione con il servizio Groq per la generazione di testi pubblicitari, implementando meccanismi di rate limiting per gestire le restrizioni dell'API. Questo garantisce un utilizzo efficiente del servizio esterno, bilanciando la necessità di generare contenuti personalizzati con i vincoli imposti dal provider.
         \end{itemize}
-        
+
         \mysubparagraph{Serializzazione e deserializzazione dei messaggi}
         La gestione della serializzazione e deserializzazione è fondamentale nell'architettura Flink per garantire l'efficiente trasferimento dei dati tra i componenti del sistema streaming. Il sistema implementa serializzatori personalizzati che garantiscono coerenza e integrità dei dati durante l'elaborazione.
-        
-        Per i messaggi di posizione, viene utilizzato un deserializzatore JSON conforme allo schema del topic \texttt{posizioni}:
-        \begin{lstlisting}
-        {
-            "id": "550e8400-e29b-41d4-a716-446655440000",
-            "latitude": 45.4095,
-            "longitude": 11.8767,
-            "received_at": "2025-03-15T14:22:36"
-        }
-        \end{lstlisting}
-        
-        Analogamente, per i messaggi elaborati viene implementato un serializzatore che converte gli oggetti di dominio nel formato JSON atteso dal topic \texttt{messaggi}:
-        \begin{lstlisting}
-        {
-            "user_uuid": "550e8400-e29b-41d4-a716-446655440000",
-            "activity_uuid": "a3b8d425-2b60-4ad7-becc-bedf2ef860a1",
-            "message_uuid": "7dac4d54-fa3f-42b2-9383-165228e9d1bc",
-            "message": "Ciao! Ti trovi a soli 50 metri da Caff\`e Pedrocchi. Vieni a provare il loro caff\`e speciale, perfetto per una pausa rinfrescante!",
-            "activityLatitude": 45.4084,
-            "activityLongitude": 11.8762,
-            "creationTime": "2025-03-15T14:22:40",
-            "userLatitude": 45.4095,
-            "userLongitude": 11.8767
-        }
-        \end{lstlisting}
-        
+
         \myparagraph{Simulatore posizioni}
         Il simulatore di posizioni è un componente fondamentale dell'architettura che simula i dati GPS degli utenti, consentendo di testare e dimostrare il funzionamento del sistema senza richiedere dispositivi fisici reali.
-        
+
         \mysubparagraph{Strategie di movimento}
         Il simulatore implementa il pattern Strategy per definire diverse modalità di movimento. L'interfaccia \texttt{IPositionSimulationStrategy} definisce il contratto comune per tutte le strategie di simulazione:
         \begin{lstlisting}
@@ -899,7 +885,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             def simulate_position_live_update(self, sensor_istance):
                 pass
         \end{lstlisting}
-    
+
         La strategia principale implementata, \texttt{BycicleSimulationStrategy}, simula il movimento di una bicicletta su un grafo stradale reale utilizzando la libreria OSMnx. Questa strategia:
         \begin{itemize}
             \item[-] Seleziona casualmente nodi nel grafo stradale per creare percorsi realistici;
@@ -918,9 +904,9 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             "received_at": "String"
         }
         \end{lstlisting}
-    
+
         Questo formato è compatibile con le aspettative del topic Kafka \texttt{SimulatorPosition} e della tabella ClickHouse corrispondente. L'adapter implementa l'interfaccia \texttt{IJsonSerializable}, garantendo uniformità nella serializzazione di diversi tipi di dati.
-    
+
         \mysubparagraph{Configurazione del simulatore}
         Il simulatore è altamente configurabile attraverso diversi parametri:
         \begin{itemize}
@@ -929,14 +915,14 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item[-] \textbf{Area geografica}: Delimitazione dell'area in cui generare percorsi;
             \item[-] \textbf{Numero di sensori}: Quantità di sensori simulati simultaneamente.
         \end{itemize}
-    
+
         La configurazione sfrutta la libreria OSMnx per caricare grafi stradali reali. Il sistema utilizza un grafo precaricato dell'area di interesse per ottimizzare le performance di avvio:
         \begin{lstlisting}
         graph_istance = GraphWrapper().get_graph()
         strategy_simulation = BycicleSimulationStrategy()
         sensor_istance = sensor_factory.create_sensor(sensor_uuid, strategy_simulation)
         \end{lstlisting}
-    
+
         \mysubparagraph{Tipologie di dati generati}
         Il simulatore produce dati con le seguenti caratteristiche:
         \begin{itemize}
@@ -944,7 +930,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item[-] \textbf{Variabilità temporale}: Gli aggiornamenti rispettano intervalli di tempo configurabili;
             \item[-] \textbf{Coerenza di velocità}: La distanza tra punti consecutivi è proporzionale alla velocità simulata.
         \end{itemize}
-    
+
         La classe \texttt{GeoPosition} rappresenta la struttura dati fondamentale per le posizioni:
         \begin{lstlisting}
         class GeoPosition:
@@ -956,10 +942,10 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         \end{lstlisting}
         \myparagraph{ClickHouse}
         ClickHouse è un sistema di gestione database colonnare open-source progettato specificamente per carichi analitici. Nel contesto di NearYou, è stato adottato per la sua capacità di processare ed analizzare in tempo reale grandi volumi di dati geospaziali mantenendo latenze minime e offrendo funzionalità avanzate di partizione e gestione del ciclo di vita dei dati.
-        
+
         \mysubparagraph{Architettura MergeTree}
         Il cuore di ClickHouse è il motore MergeTree, fondamentale per le prestazioni del sistema NearYou. A differenza dei database tradizionali, MergeTree è ottimizzato per l'inserimento di grandi volumi di dati e query analitiche complesse grazie alle seguenti caratteristiche:
-        
+
         \begin{itemize}
             \item[-] \textbf{Archiviazione colonnare}: I dati sono organizzati per colonne anziché per righe, permettendo:
             \begin{itemize}
@@ -967,21 +953,21 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 \item[.] I/O ridotto quando le query selezionano solo un sottoinsieme di colonne;
                 \item[.] Elaborazione vettoriale che sfrutta le istruzioni SIMD del processore.
             \end{itemize}
-            
+
             \item[-] \textbf{Organizzazione in parti (parts)}: I dati vengono inseriti in parti separate che vengono poi fuse in background:
             \begin{itemize}
                 \item[.] Le nuove scritture avvengono in parti temporanee separate;
                 \item[.] Un processo di merge periodico unisce parti piccole in parti più grandi;
                 \item[.] Questo processo consente inserimenti massivi senza bloccare le query di lettura.
             \end{itemize}
-            
+
             \item[-] \textbf{Indici sparsi}: Ogni parte contiene un indice sparso per le colonne di ordinamento:
             \begin{itemize}
                 \item[.] L'indice divide i dati in granuli (blocchi) di 8192 righe;
                 \item[.] Per ogni granulo, vengono memorizzati i valori min/max delle chiavi di ordinamento;
                 \item[.] Durante l'esecuzione delle query, interi granuli possono essere saltati.
             \end{itemize}
-            
+
             \item[-] \textbf{Partizionamento primario}: I dati vengono suddivisi fisicamente in base a una chiave di partizione:
             \begin{lstlisting}
             PARTITION BY toYYYYMMDD(received_at)
@@ -991,7 +977,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 \item[.] Le query possono escludere rapidamente intere partizioni non pertinenti;
                 \item[.] Facilita operazioni di manutenzione come eliminazione o spostamento di dati storici.
             \end{itemize}
-            
+
             \item[-] \textbf{Ordinamento primario}: I dati all'interno di ogni partizione sono fisicamente ordinati:
             \begin{lstlisting}
             ORDER BY (sensor_id, received_at)
@@ -1002,7 +988,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 \item[.] Definisce l'ordine di costruzione degli indici sparsi.
             \end{itemize}
         \end{itemize}
-        
+
         Nel contesto di NearYou, questa architettura consente di gestire efficacemente:
         \begin{itemize}
             \item[-] Migliaia di aggiornamenti di posizione al secondo;
@@ -1010,7 +996,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item[-] Aggregazioni per dashboard in tempo reale;
             \item[-] Interrogazioni su dati storici con latenze contenute.
         \end{itemize}
-        
+
         Il ciclo di vita di un dato in MergeTree segue questi passi:
         \begin{enumerate}
             \item Inserimento in memoria come parte temporanea;
@@ -1018,10 +1004,10 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item Fusione periodica con altre parti per ottimizzare lo storage;
             \item Eventuale eliminazione tramite TTL o operazioni manuali.
         \end{enumerate}
-        
+
         \mysubparagraph{Schema del database}
         Lo schema del database comprende le seguenti tabelle principali:
-        
+
         \begin{itemize}
             \item[-] \textbf{positions}: Archivia le posizioni GPS degli utenti con timestamp.
             \begin{lstlisting}
@@ -1036,7 +1022,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             ORDER BY (sensor_id, received_at);
             \end{lstlisting}
             Questa tabella memorizza i dati di posizione degli utenti ricevuti dal simulatore, permettendo di tracciare gli spostamenti nel tempo.
-            
+
             \item[-] \textbf{activities}: Contiene i punti di interesse con coordinate geografiche e metadati.
             \begin{lstlisting}
             CREATE TABLE activities (
@@ -1052,7 +1038,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             ORDER BY activity_id;
             \end{lstlisting}
             Questa tabella archivia le informazioni sui punti di interesse come negozi, ristoranti e attrazioni turistiche che possono generare messaggi pubblicitari personalizzati.
-            
+
             \item[-] \textbf{users}: Memorizza informazioni sui profili utente.
             \begin{lstlisting}
             CREATE TABLE users (
@@ -1067,7 +1053,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             ORDER BY user_id;
             \end{lstlisting}
             Questa tabella contiene i dati demografici e le preferenze degli utenti utilizzati per personalizzare i messaggi pubblicitari.
-            
+
             \item[-] \textbf{messages}: Memorizza i messaggi pubblicitari generati.
             \begin{lstlisting}
             CREATE TABLE messages (
@@ -1086,78 +1072,78 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             ORDER BY (user_id, created_at);
             \end{lstlisting}
             Questa tabella archivia tutti i messaggi pubblicitari generati dal sistema, collegando utenti e attività.
-            
+
             \item[-] \textbf{kafka\_messages}: Tabella di ingestion per i messaggi da Kafka.
             \begin{lstlisting}
             CREATE TABLE kafka_messages (
                 message String
             ) ENGINE = Kafka(
-                'kafka:9092', 
-                'messaggi', 
+                'kafka:9092',
+                'messaggi',
                 'clickhouse-consumer-group',
                 'JSONEachRow'
             );
             \end{lstlisting}
             Questa tabella speciale con engine Kafka consente di consumare direttamente gli eventi dal topic Kafka "messaggi" senza bisogno di un consumer dedicato.
-            
+
             \item[-] \textbf{kafka\_positions}: Tabella di ingestion per le posizioni da Kafka.
             \begin{lstlisting}
             CREATE TABLE kafka_positions (
                 message String
             ) ENGINE = Kafka(
-                'kafka:9092', 
-                'posizioni', 
+                'kafka:9092',
+                'posizioni',
                 'clickhouse-position-group',
                 'JSONEachRow'
             );
             \end{lstlisting}
             Simile alla precedente ma dedicata al consumo di dati di posizione dal topic "posizioni".
         \end{itemize}
-        
+
         \mysubparagraph{Indici e partizioni}
         ClickHouse utilizza diversi tipi di indici per ottimizzare l'accesso ai dati:
-        
+
         \begin{itemize}
             \item[-] \textbf{Indici primari}: Basati sulle colonne di ordinamento, accelerano la ricerca per utente e timestamp.
             \begin{lstlisting}
             ORDER BY (sensor_id, received_at)
             \end{lstlisting}
-            
+
             \item[-] \textbf{Indici spaziali impliciti}: Funzioni geospaziali ottimizzate per interrogazioni di prossimità.
             \begin{lstlisting}
             WHERE geoDistance((latitude, longitude), (user_lat, user_lon)) <= 500
             \end{lstlisting}
         \end{itemize}
-        
+
         La partizione dei dati è implementata su base temporale. In questo caso le tabelle positions e messages sono partizionate per giorno:
         \begin{lstlisting}
         PARTITION BY toYYYYMMDD(received_at)
         \end{lstlisting}
-            
+
             Questa strategia di partizionamento:
             \begin{itemize}
                 \item[-] Facilita l'eliminazione automatica dei dati storici con TTL;
                 \item[-] Migliora le performance delle query che filtrano per intervalli temporali;
                 \item[-] Consente una gestione efficiente dello storage.
             \end{itemize}
-        
+
         \mysubparagraph{Time-To-Live (TTL)}
         Il meccanismo TTL in ClickHouse rappresenta una funzionalità cruciale per NearYou, automatizzando la gestione del ciclo di vita dei dati senza richiedere procedure manuali o script esterni. ClickHouse implementa TTL come parte integrante del processo di merging di MergeTree:
-        
+
         \begin{itemize}
             \item[-] \textbf{TTL a livello di tabella}: Rimuove intere righe dopo un determinato periodo
             \begin{lstlisting}
-            ALTER TABLE positions 
+            ALTER TABLE positions
             MODIFY TTL received_at + INTERVAL 30 DAY;
             \end{lstlisting}
-            
+
             \item[-] \textbf{TTL a livello di colonna}: Permette l'anonimizzazione graduale
             \begin{lstlisting}
-            ALTER TABLE positions 
-            MODIFY COLUMN precise_location 
+            ALTER TABLE positions
+            MODIFY COLUMN precise_location
             TTL received_at + INTERVAL 7 DAY SET NULL;
             \end{lstlisting}
-            
+
             \item[-] \textbf{TTL multi-fase con storage tiering}: Ottimizza i costi di archiviazione
             \begin{lstlisting}
             ALTER TABLE positions
@@ -1167,14 +1153,14 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 received_at + INTERVAL 90 DAY DELETE;
             \end{lstlisting}
         \end{itemize}
-        
+
         Il TTL viene applicato durante le operazioni di merge:
         \begin{enumerate}
             \item Durante il merge, il motore verifica la condizione TTL per ogni riga o colonna;
             \item Se la condizione è soddisfatta (ad es. il dato è più vecchio del limite), viene applicata l'azione corrispondente;
             \item Se tutte le righe in una partizione vengono eliminate dal TTL, l'intera partizione viene rimossa.
         \end{enumerate}
-        
+
         Nel nostro progetto usiamo solo il TTL a livello di tabella per eliminare automaticamente i dati più vecchi di 30 giorni:
         Ad esempio nella tabella delle posizioni:
         \begin{lstlisting}
@@ -1182,10 +1168,10 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         \end{lstlisting}
 
         Questa strategia bilancia efficacemente le esigenze di performance con l'ottimizzazione dei costi di storage, mantenendo solo i dati necessari e nella forma appropriata.
-        
+
         \mysubparagraph{Materialized Views}
         Le materialized view rappresentano un elemento fondamentale nell'architettura di NearYou, consentendo di usare i dati provenienti da Kafka come normali tabelle ClickHouse offrendo inoltre ottime performance per le query in tempo reale. Ecco alcuni esempi:
-        
+
         \begin{lstlisting}
         CREATE MATERIALIZED VIEW nearyou.mv_positions TO nearyou.positions
         AS
@@ -1196,7 +1182,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             received_at
         FROM nearyou.positionsKafka;
         \end{lstlisting}
-        
+
         \begin{lstlisting}
         CREATE MATERIALIZED VIEW nearyou.mv_messageTable TO nearyou.messageTable
         AS
@@ -1212,17 +1198,17 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             userLongitude
         FROM nearyou.messageTableKafka;
         \end{lstlisting}
-        
+
         Queste view consentono:
         \begin{itemize}
             \item[-] Trasformazione automatica dei dati JSON in formato tabellare;
             \item[-] Inserimento automatico nelle tabelle di destinazione;
             \item[-] Sincronizzazione in tempo reale tra Kafka e le tabelle ClickHouse.
         \end{itemize}
-        
+
         \mysubparagraph{Integrazione con Kafka}
         L'integrazione tra Kafka e ClickHouse avviene tramite tabelle speciali con engine Kafka che fungono da consumer nativo:
-        
+
         \begin{lstlisting}
         CREATE TABLE messageTableKafka
         (
@@ -1236,13 +1222,13 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             userLatitude Float64,
             userLongitude Float64
         ) ENGINE = Kafka()
-        SETTINGS 
+        SETTINGS
             kafka_broker_list = 'kafka:9092',
             kafka_topic_list = 'MessageElaborated',
             kafka_group_name = 'clickhouseConsumerMessage',
             kafka_format = 'JSONEachRow';
         \end{lstlisting}
-        
+
         \begin{lstlisting}
         CREATE TABLE positionsKafka
         (
@@ -1251,13 +1237,13 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             longitude Float64,
             received_at DateTime64(3)
         ) ENGINE = Kafka()
-        SETTINGS 
+        SETTINGS
             kafka_broker_list = 'kafka:9092',
             kafka_topic_list = 'SimulatorPosition',
             kafka_group_name = 'clickhouseConsumerPosition',
             kafka_format = 'JSONEachRow';
         \end{lstlisting}
-        
+
         Caratteristiche del connettore:
         \begin{itemize}
             \item[-] Consumo asincrono dei messaggi da Kafka;
@@ -1265,7 +1251,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item[-] Gestione automatica degli offset;
             \item[-] Integrazione con il sistema di materialized view per la trasformazione dati.
         \end{itemize}
-        
+
         Questo approccio offre diversi vantaggi:
         \begin{itemize}
             \item[-] Elimina la necessità di consumer Kafka dedicati;
@@ -1273,14 +1259,14 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \item[-] Offre resilienza: i messaggi rimangono disponibili in Kafka in caso di problemi;
             \item[-] Permette di definire pipeline ETL dichiarative.
         \end{itemize}
-        
+
         \mysubparagraph{Funzionalità geospaziali}
         NearYou sfrutta intensivamente le funzioni geospaziali di ClickHouse per il calcolo delle distanze e la rilevazione di prossimità:
         \textbf{geoDistance}: Calcola la distanza in metri tra due punti geografici
-        
+
         Esempio di implementazione per la rilevazione di prossimità che è stata usata per i messaggi nella mappa generale:
             \begin{lstlisting}
-            SELECT 
+            SELECT
                 m.userLatitude AS latitude,
                 m.userLongitude AS longitude,
                 m.creationTime AS creazione_time,
@@ -1289,7 +1275,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 a.name AS activityName,
                 m.message AS message
             FROM (
-                SELECT 
+                SELECT
                 user_uuid,
                 message_uuid,
                 message,
@@ -1299,41 +1285,41 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 creationTime,
                 userLatitude,
                 userLongitude,
-                ROW_NUMBER() OVER (PARTITION BY user_uuid 
+                ROW_NUMBER() OVER (PARTITION BY user_uuid
                         ORDER BY toDateTime(creationTime) DESC) AS rn
                 FROM nearyou.messageTable
             ) AS m
-            INNER JOIN nearyou.user u 
+            INNER JOIN nearyou.user u
                 ON m.user_uuid = u.user_uuid
-            INNER JOIN nearyou.activity a 
+            INNER JOIN nearyou.activity a
                 ON m.activity_uuid = a.activity_uuid
             INNER JOIN (
-                SELECT 
-                user_uuid, 
-                latitude, 
+                SELECT
+                user_uuid,
+                latitude,
                 longitude,
                 received_at,
-                ROW_NUMBER() OVER (PARTITION BY user_uuid 
+                ROW_NUMBER() OVER (PARTITION BY user_uuid
                         ORDER BY received_at DESC) AS rn
                 FROM nearyou.positions
-            ) AS p 
+            ) AS p
                 ON u.assigned_sensor_uuid = p.user_uuid AND p.rn = 1
-            WHERE 
-                m.rn = 1 
-                AND geoDistance(m.activityLongitude, m.activityLatitude, 
+            WHERE
+                m.rn = 1
+                AND geoDistance(m.activityLongitude, m.activityLatitude,
                     p.longitude, p.latitude) < 300
-            ORDER BY 
+            ORDER BY
                 m.creationTime DESC;
             \end{lstlisting}
-        
+
         Questa combinazione di archiviazione colonnare efficiente, indici ottimizzati, TTL automatico e strategie di query avanzate permette a ClickHouse di supportare l'intera pipeline di dati di NearYou con prestazioni eccellenti sia per l'inserimento che per l'analisi dei dati di posizione e la generazione di messaggi pubblicitari contestuali.
 
         \myparagraph{Grafana}
         Grafana è una piattaforma di visualizzazione e analisi dati utilizzata in NearYou per rappresentare graficamente le informazioni raccolte dal sistema e consentire il monitoraggio in tempo reale delle attività.
-        
+
         \mysubparagraph{Dashboard}
         La dashboard principale di Grafana in NearYou fornisce un'interfaccia centralizzata per monitorare l'intero sistema. È composta da due elementi fondamentali:
-        
+
         \begin{itemize}
             \item[-] \textbf{Mappa geospaziale}: Un pannello interattivo che visualizza su una mappa OpenStreetMap:
             \begin{itemize}
@@ -1341,7 +1327,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 \item[.] Marker arancioni che mostrano i messaggi pubblicitari generati;
                 \item[.] Marker rossi che indicano le attività commerciali nel territorio.
             \end{itemize}
-            
+
             \item[-] \textbf{Tabella delle attività più popolari}: Una classifica in tempo reale delle attività commerciali ordinate per numero di messaggi pubblicitari generati, con le seguenti informazioni:
             \begin{itemize}
                 \item[.] Nome dell'attività;
@@ -1350,10 +1336,10 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 \item[.] Conteggio totale dei messaggi generati.
             \end{itemize}
         \end{itemize}
-        
+
         La query che alimenta la leaderboard delle attività è la seguente:
         \begin{lstlisting}
-        SELECT 
+        SELECT
             a.nome AS nome_attivita,
             a.tipologia,
             a.indirizzo,
@@ -1364,10 +1350,10 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         HAVING COUNT(m.id) > 0
         ORDER BY numero_messaggi DESC
         \end{lstlisting}
-        
+
         \mysubparagraph{Dashboard specifica}
         La dashboard specifica è dedicata all'analisi dettagliata di un singolo utente, identificato tramite un parametro \texttt{user\_id}. Questa dashboard permette di:
-        
+
         \begin{itemize}
             \item[-] Visualizzare l'intero percorso storico dell'utente sulla mappa, con punti che rappresentano le posizioni registrate nel tempo;
             \item[-] Evidenziare con marker specifici:
@@ -1378,34 +1364,34 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             \end{itemize}
             \item[-] Analizzare i dati temporali delle posizioni e dei messaggi correlati.
         \end{itemize}
-        
+
         \mysubparagraph{Querying ClickHouse}
         L'integrazione tra Grafana e ClickHouse è realizzata tramite query SQL ottimizzate per le performance. Di seguito sono riportate le principali query utilizzate nelle dashboard:
-        
+
         \begin{itemize}
             \item[-] \textbf{Query per posizioni attuali degli utenti} (utilizzata nella mappa principale):
             \begin{lstlisting}
-            SELECT 
-            user_uuid, 
-            latitude, 
-            longitude, 
+            SELECT
+            user_uuid,
+            latitude,
+            longitude,
             received_at
             FROM (
-            SELECT 
-                user_uuid, 
-                latitude, 
-                longitude, 
+            SELECT
+                user_uuid,
+                latitude,
+                longitude,
                 received_at,
                 ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS row_num
             FROM "nearyou"."positions"
-            ) 
+            )
             WHERE row_num = 1;
             \end{lstlisting}
             Questa query utilizza una window function (ROW\_NUMBER) per selezionare solo l'ultima posizione rilevata per ogni utente.
-        
+
             \item[-] \textbf{Query per messaggi recenti con informazioni contestuali} (utilizzata nella mappa principale):
             \begin{lstlisting}[basicstyle=\ttfamily\footnotesize]
-            SELECT 
+            SELECT
             m.userLatitude AS latitude,
             m.userLongitude AS longitude,
             m.creationTime AS creazione_time,
@@ -1414,7 +1400,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             a.name AS activityName,
             m.message AS message
             FROM (
-            SELECT 
+            SELECT
                 user_uuid,
                 message_uuid,
                 message,
@@ -1430,27 +1416,27 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid
             INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid
             INNER JOIN (
-            SELECT 
-                user_uuid, 
-                latitude, 
+            SELECT
+                user_uuid,
+                latitude,
                 longitude,
                 received_at,
                 ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS rn
             FROM nearyou.positions
             ) AS p ON u.assigned_sensor_uuid = p.user_uuid AND p.rn = 1
-            WHERE m.rn = 1 
+            WHERE m.rn = 1
             AND geoDistance(m.activityLongitude, m.activityLatitude, p.longitude, p.latitude) < 300
             ORDER BY m.creationTime DESC;
             \end{lstlisting}
             Questa query complessa combina messaggi, dati utente e attività, utilizzando la funzione geospaziale geoDistance per filtrare i messaggi entro 300 metri dalla posizione attuale dell'utente.
-        
+
             \item[-] \textbf{Query per la tabella dei punti di interesse} (utilizzata nella dashboard principale):
             \begin{lstlisting}
-            SELECT 
+            SELECT
             a.name AS nome_attivita,
             a.address AS indirizzo,
             a.type AS tipologia,
-            a.description as descrizione, 
+            a.description as descrizione,
             COUNT(m.message_uuid) AS numero_messaggi
             FROM nearyou.activity a
             INNER JOIN nearyou.messageTable m ON a.activity_uuid = m.activity_uuid
@@ -1459,76 +1445,76 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             ORDER BY numero_messaggi DESC
             \end{lstlisting}
             Questa query genera la classifica dei punti di interesse in base al numero di messaggi pubblicitari generati.
-            
+
             \item[-] \textbf{Query per lo storico delle posizioni di un utente specifico} (dashboard specifica):
             \begin{lstlisting}
-            SELECT * FROM nearyou.positions 
-            WHERE user_uuid = toUUID('${user_id}') 
+            SELECT * FROM nearyou.positions
+            WHERE user_uuid = toUUID('${user_id}')
             LIMIT 1000
             \end{lstlisting}
-            
+
             \item[-] \textbf{Query per identificare gli estremi del percorso utente} (dashboard specifica):
             \begin{lstlisting}
             (
-            SELECT * 
-            FROM nearyou.positions 
-            WHERE user_uuid = toUUID('${user_id}') 
-            ORDER BY received_at ASC 
+            SELECT *
+            FROM nearyou.positions
+            WHERE user_uuid = toUUID('${user_id}')
+            ORDER BY received_at ASC
             LIMIT 1
             )
             UNION ALL
             (
-            SELECT * 
-            FROM nearyou.positions 
-            WHERE user_uuid = toUUID('${user_id}') 
-            ORDER BY received_at DESC 
+            SELECT *
+            FROM nearyou.positions
+            WHERE user_uuid = toUUID('${user_id}')
+            ORDER BY received_at DESC
             LIMIT 1
             );
             \end{lstlisting}
             Questa query utilizza UNION ALL per combinare il primo e l'ultimo punto del percorso dell'utente, permettendo di evidenziarli con marker speciali.
-            
+
             \item[-] \textbf{Query per i messaggi generati per un utente specifico} (dashboard specifica):
             \begin{lstlisting}
-            SELECT     
-            m.userLatitude, 
-            m.userLongitude, 
-            m.creationTime, 
-            u.name, 
-            u.surname, 
-            a.name, 
-            m.message 
+            SELECT
+            m.userLatitude,
+            m.userLongitude,
+            m.creationTime,
+            u.name,
+            u.surname,
+            a.name,
+            m.message
             FROM nearyou.messageTable m
-            INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid 
-            INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid 
+            INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid
+            INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid
             WHERE u.assigned_sensor_uuid = toUUID('${user_id}')
             LIMIT 1000;
             \end{lstlisting}
-            
+
             \item[-] \textbf{Query per i dati anagrafici e interessi dell'utente} (dashboard specifica):
             \begin{lstlisting}
-            SELECT 
-            u.name, 
-            u.surname, 
-            u.email, 
-            u.gender, 
-            u.birthdate, 
-            u.civil_status, 
+            SELECT
+            u.name,
+            u.surname,
+            u.email,
+            u.gender,
+            u.birthdate,
+            u.civil_status,
             ARRAY_AGG(ui.interest) AS interests_json
-            FROM 
+            FROM
             nearyou.user u
-            JOIN 
+            JOIN
             nearyou.user_interest ui ON u.user_uuid = ui.user_uuid
-            WHERE 
+            WHERE
             u.assigned_sensor_uuid = toUUID('${user_id}')
-            GROUP BY 
+            GROUP BY
             u.name, u.surname, u.email, u.gender, u.birthdate, u.civil_status, u.user_uuid;
             \end{lstlisting}
             Questa query utilizza ARRAY\_AGG per raccogliere tutti gli interessi dell'utente in un array JSON, che viene poi espanso nella dashboard utilizzando trasformazioni.
-        \end{itemize} 
+        \end{itemize}
 
         \mysubparagraph{Connettore ClickHouse e visualizzazione in tempo reale}
         Grafana si integra con ClickHouse attraverso un connettore nativo specifico, configurato come datasource all'interno della piattaforma:
-        
+
         \begin{lstlisting}
         {
           "name": "ClickHouse",
@@ -1546,11 +1532,11 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
           }
         }
         \end{lstlisting}
-        
+
         Il connettore nativo offre vantaggi significativi rispetto alle alternative generiche:
-        
+
         \begin{itemize}
-            \item[-] \textbf{Porta con se tutte le funzionalità di ClickHouse}: 
+            \item[-] \textbf{Porta con se tutte le funzionalità di ClickHouse}:
             \begin{itemize}
                 \item[.] Supporto per query SQL avanzate;
                 \item[.] Funzioni geospaziali integrate;
@@ -1563,25 +1549,25 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 \item[.] possibilità di configuare il provisioning automatico.
             \end{itemize}
         \end{itemize}
-        
+
         La visualizzazione in tempo reale è garantita attraverso un intervallo di aggiornamento automatico configurato a 10 secondi:
-        
+
         \begin{lstlisting}
         {
           "refresh": "10s"
         }
         \end{lstlisting}
-        
+
         Questa impostazione assicura che i dati visualizzati nelle dashboard siano costantemente aggiornati, permettendo di monitorare in tempo reale:
         \begin{itemize}
             \item[-] Spostamenti degli utenti;
             \item[-] Generazione di nuovi messaggi pubblicitari;
             \item[-] Statistiche di generazione di messaggi per le attività più popolari.
         \end{itemize}
-        
+
         \mysubparagraph{Provisioning automatico}
         Il provisioning automatico di Grafana è implementato attraverso file di configurazione YAML che vengono caricati all'avvio del container, garantendo la disponibilità immediata di datasource e dashboard preconfiguraate.
-        
+
         \begin{itemize}
             \item[-] \textbf{Provisioning del datasource ClickHouse}:
             \begin{lstlisting}
@@ -1599,7 +1585,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                 secureJsonData:
                   password: pass
             \end{lstlisting}
-        
+
             \item[-] \textbf{Provisioning delle dashboard}:
             \begin{lstlisting}
             apiVersion: 1
@@ -1614,7 +1600,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
                   foldersFromFilesStructure: true
             \end{lstlisting}
         \end{itemize}
-        
+
         Le dashboard sono definite in file JSON che vengono copiati nella directory specificata nel provider durante il build dell'immagine Docker, garantendo che siano immediatamente disponibili all'avvio del container Grafana. Questa configurazione automatizzata elimina la necessità di setup manuale e assicura la coerenza dell'ambiente di visualizzazione in tutti i deployment del sistema.
 
 \subsection{Design Pattern e Best Practices}
@@ -1639,11 +1625,11 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
             @abstractmethod
             def get_route(self):
                 pass
-            
+
             @abstractmethod
             def get_delta_time(self) -> float:
                 pass
-            
+
             @abstractmethod
             def get_speed(self) -> float:
                 pass
@@ -1651,7 +1637,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         La strategia concreta BycicleSimulationStrategy implementa l'interfaccia IPositionSimulationStrategy, fornendo un algoritmo specifico per simulare il movimento di una bicicletta.
         BycicleSimulationStrategy utilizza la libreria OSMnx per generare percorsi realistici su mappe stradali, calcolando il percorso più breve tra due nodi selezionati casualmente dal grafo e restituendo le relative coordinate geografiche. Definisce inoltre parametri specifici per la simulazione ciclistica, come una velocità media di circa 15 km/h e un delta temporale tra le posizioni simulate.\\
         Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione.
-        
+
         \item Per gestire l'interazione con modelli linguistici di grandi dimensioni (LLM), il nostro sistema utilizza la classe astratta LLMService, un contratto che definisce i metodi \_\_init\_\_(self, structured\_response: BaseModel), set\_up\_chat(self) e get\_llm\_structured\_response(self, prompt). Questa classe astratta, basata sul pattern Strategy, permette di integrare diversi servizi di IA.
         \begin{lstlisting}
         class LLMService(ABC):
@@ -1668,7 +1654,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         \end{lstlisting}
         La strategia concreta GroqLLMService implementa la classe astratta LLMService, fornendo un meccanismo specifico per comunicare con il modello Groq. GroqLLMService si avvale della libreria langchain-groq per stabilire la connessione e inviare richieste al servizio Groq, gestendo l'autenticazione tramite una chiave API. Il metodo set\_up\_chat() configura l'interazione con il modello "Gemma2-9b-it" mentre il metodo get\_llm\_structured\_response(self, prompt) prende un prompt come input e restituisce una risposta strutturata, definita al momento dell'inizializzazione della classe.\\
         Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie per diversi fornitori di LLM.
-        
+
     \end{itemize}
     In conclusione, questo approccio modulare, basato sul pattern Strategy, ci consente di estendere facilmente il sistema con nuove strategie senza dover modificare il codice esistente. Tale progettazione rispetta i principi SOLID, in particolare il principio Open/Closed, e contribuisce significativamente al miglioramento della manutenibilità complessiva dell'applicazione.
 
@@ -1693,7 +1679,7 @@ Le comunicazioni tra componenti avvengono su Kafka, con dati strutturati in form
         def create_gps_sensor(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy) -> SensorSubject:
             uuid = self.__user_sensor_service.assign_sensor_to_user()
             return GpsSensor(uuid, position_sender, simulation_strategy)
-            
+
         def create_gps_sensor_list(self, position_sender: PositionSender, simulation_strategy: IPositionSimulationStrategy, number_of_sensors: int) -> List[SensorSubject]:
             sensor_list = [self.create_gps_sensor(position_sender, simulation_strategy) for i in range(number_of_sensors)]
             return sensor_list
@@ -1735,7 +1721,7 @@ Di seguito viene mostrata l’implementazione concreta dell’Adapter, che trasf
 Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Adapter per serializzare i dati prima dell’invio a Kafka:
 \begin{lstlisting}
     class KafkaConfluentAdapter(PositionSender):
-    
+
     def __init__(self,
                 kafka_config: KafkaConfigParameters,
                 json_adapter_istance: "PositionJsonAdapter",
@@ -1743,9 +1729,9 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
         super().__init__(json_adapter_istance)
         self.__kafka_config = kafka_config
         self.__producer = producer_istance
-        
+
     def send_data_to_broker(self, json_payload, sensor_id: str):
-        self.__producer.produce(self.__kafka_config.source_topic, 
+        self.__producer.produce(self.__kafka_config.source_topic,
                                 key = str(sensor_id),
                                 value = json_payload.encode('utf-8'))
         self.__producer.flush()
@@ -1762,7 +1748,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
         \item[-] Docstring per moduli, classi e funzioni.
     \end{itemize}
     Il rispetto di PEP8 è verificato attraverso l'uso di linting automatizzato, come evidenziato dal badge PyLint nel README del progetto (punteggio 7.7/10.0).
-    
+
     \myparagraph{Principi SOLID}
     L'architettura del software è progettata seguendo i principi SOLID:
     \begin{itemize}
@@ -1775,17 +1761,17 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
 
     \subsection{Diagramma delle Classi}
     In questa sezione viene fornita una descrizione dettagliata dei diagrammi delle classi del sistema, evidenziando le componenti principali, i loro ruoli, attributi, operazioni e le relazioni tra di esse. I diagrammi rappresentano i due componenti fondamentali dell'architettura: il modulo di simulazione delle posizioni e il processore Flink.
-    
+
     \subsubsection{Modulo di Simulazione}
     Il modulo di simulazione è responsabile della generazione di dati di posizione simulati, consentendo di testare l'intero sistema senza richiedere l'utilizzo di dispositivi GPS reali.
-    
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{diaSimulation.png}
         \caption{Diagramma delle classi del modulo di simulazione}
         \label{fig:simulation_module}
     \end{figure}
-    
+
     \paragraph{SensorFactory}
     \begin{itemize}
         \item \textbf{Descrizione}: Implementa il pattern Factory per la creazione di sensori GPS configurati. Si occupa di istanziare oggetti di tipo GpsSensor con le configurazioni appropriate, facilitando la gestione delle dipendenze.
@@ -1800,7 +1786,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int) -> List[SensorSubject]} - Crea una lista di sensori GPS con la configurazione specificata, utile per simulazioni multiple.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{GpsSensor}
     \begin{itemize}
         \item \textbf{Descrizione}: Implementa un sensore GPS che simula il movimento utilizzando la strategia fornita. Rappresenta un dispositivo fisico che trasmette dati di posizione.
@@ -1817,7 +1803,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{create\_geo\_position(self, latitude: float, longitude: float, timestamp: str) -> GeoPosition} - Crea un oggetto posizione con le coordinate specificate e il timestamp corrente.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{SensorSubject}
     \begin{itemize}
         \item \textbf{Descrizione}: Interfaccia che definisce il contratto per gli oggetti di tipo sensore, implementa il pattern Observer per notificare i cambiamenti di posizione.
@@ -1829,7 +1815,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{simulate(self)} - Metodo astratto che deve essere implementato dalle classi concrete per avviare la simulazione.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{PositionSender}
     \begin{itemize}
         \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per l'invio delle posizioni attraverso vari canali di comunicazione.
@@ -1845,7 +1831,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{send\_position(self, position: GeoPosition)} - Metodo che serializza e invia una posizione utilizzando l'adapter fornito.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{KafkaConfluentAdapter}
     \begin{itemize}
         \item \textbf{Descrizione}: Implementazione concreta di PositionSender che utilizza Confluent Kafka per pubblicare i dati di posizione.
@@ -1860,7 +1846,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Implementazione concreta che invia dati a Kafka utilizzando il producer configurato.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{IPositionSimulationStrategy}
     \begin{itemize}
         \item \textbf{Descrizione}: Interfaccia che definisce le strategie di simulazione del movimento, implementando il pattern Strategy.
@@ -1871,7 +1857,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{get\_speed(self) -> float} - Ottiene la velocità di simulazione in km/h.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{BycicleSimulationStrategy}
     \begin{itemize}
         \item \textbf{Descrizione}: Implementazione concreta della strategia che simula il movimento di una bicicletta, generando percorsi realistici.
@@ -1887,7 +1873,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{get\_speed(self) -> float} - Restituisce la velocità media simulata di 15 km/h tipica per una bicicletta.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{SensorSimulationAdministrator}
     \begin{itemize}
         \item \textbf{Descrizione}: Coordina la simulazione di più sensori in parallelo, gestendo l'esecuzione concorrente.
@@ -1903,7 +1889,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{stop\_simulation(self)} - Arresta la simulazione in corso per tutti i sensori.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{GeoPosition}
     \begin{itemize}
         \item \textbf{Descrizione}: Classe che rappresenta una posizione geografica con coordinate e timestamp.
@@ -1922,17 +1908,17 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{get\_timestamp(self) -> str} - Restituisce il timestamp della rilevazione.
         \end{itemize}
     \end{itemize}
-    
+
     \subsubsection{Processore Flink}
     Il processore Flink è responsabile dell'elaborazione dei dati di posizione in tempo reale per generare messaggi pubblicitari personalizzati.
-    
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{diaFlink.png}
         \caption{Diagramma delle classi del processore Flink}
         \label{fig:flink_processor}
     \end{figure}
-    
+
     \paragraph{FlinkJobManager}
     \begin{itemize}
         \item \textbf{Descrizione}: Coordina l'esecuzione del job Flink, definendo il flusso di elaborazione dei dati e orchestrando le diverse trasformazioni.
@@ -1950,7 +1936,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{execute(self)} - Esegue il job Flink, avviando l'elaborazione e mantenendola attiva.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{PositionToMessageProcessor}
     \begin{itemize}
         \item \textbf{Descrizione}: Implementa la MapFunction di Flink per trasformare le posizioni in messaggi pubblicitari personalizzati.
@@ -1968,7 +1954,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{map(self, value)} - Trasforma un record di posizione in un messaggio pubblicitario, identificando POI nelle vicinanze e generando contenuti personalizzati.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{FilterMessageAlreadyDisplayed}
     \begin{itemize}
         \item \textbf{Descrizione}: Implementa FilterFunction per evitare duplicazioni di messaggi per lo stesso utente entro un certo periodo di tempo.
@@ -1982,7 +1968,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{filter(self, value)} - Filtra i messaggi che sono già stati visualizzati dall'utente per la stessa attività entro un periodo configurabile.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{KafkaPositionReceiver}
     \begin{itemize}
         \item \textbf{Descrizione}: Adattatore per ricevere posizioni da Kafka, implementa IPositionReceiver.
@@ -1999,7 +1985,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{get\_position\_receiver(self)} - Restituisce la source Kafka configurata per l'utilizzo nel job Flink.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{KafkaMessageWriter}
     \begin{itemize}
         \item \textbf{Descrizione}: Adattatore per scrivere messaggi su Kafka, implementa IMessageWriter.
@@ -2018,7 +2004,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{get\_message\_writer(self)} - Restituisce la sink Kafka configurata per l'utilizzo nel job Flink.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{LLMService}
     \begin{itemize}
         \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per i servizi di language model utilizzati nella generazione di messaggi personalizzati.
@@ -2033,7 +2019,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{get\_llm\_structured\_response(self, prompt)} - Metodo astratto per ottenere una risposta strutturata dall'LLM.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{GroqLLMService}
     \begin{itemize}
         \item \textbf{Descrizione}: Implementazione concreta di LLMService che utilizza il provider Groq per la generazione di testi.
@@ -2049,7 +2035,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{get\_llm\_structured\_response(self, prompt)} - Invia un prompt al servizio Groq e converte la risposta in un formato strutturato.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{MessageDTO}
     \begin{itemize}
         \item \textbf{Descrizione}: Data Transfer Object per i messaggi pubblicitari generati.
@@ -2066,7 +2052,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{userLongitude: float} - Longitudine dell'utente al momento della generazione.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{ActivityDTO}
     \begin{itemize}
         \item \textbf{Descrizione}: Data Transfer Object per le attività commerciali.
@@ -2080,7 +2066,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{longitude: float} - Longitudine dell'attività.
         \end{itemize}
     \end{itemize}
-    
+
     \paragraph{UserDTO}
     \begin{itemize}
         \item \textbf{Descrizione}: Data Transfer Object per gli utenti del sistema.
@@ -2094,10 +2080,10 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
             \item \texttt{preferences: List[str]} - Lista delle preferenze dell'utente.
         \end{itemize}
     \end{itemize}
-    
+
     \subsubsection{Relazioni tra componenti}
     Le relazioni tra i componenti riflettono l'architettura modulare del sistema, basata su interfacce che seguono i principi SOLID:
-    
+
     \paragraph{Modulo di Simulazione}
     \begin{itemize}
         \item \texttt{SensorFactory} crea istanze di \texttt{GpsSensor} che implementano l'interfaccia \texttt{SensorSubject}.
@@ -2105,7 +2091,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
         \item \texttt{GpsSensor} invia dati attraverso \texttt{PositionSender} (implementato da \texttt{KafkaConfluentAdapter}) che utilizza \texttt{IJsonSerializable} per la serializzazione.
         \item \texttt{SensorSimulationAdministrator} coordina una collezione di sensori che implementano \texttt{SensorSubject}.
     \end{itemize}
-    
+
     \paragraph{Processore Flink}
     \begin{itemize}
         \item \texttt{FlinkJobManager} orchestra l'intero flusso di elaborazione, ricevendo dati tramite \texttt{KafkaPositionReceiver} (implementa \texttt{IPositionReceiver}).
@@ -2113,7 +2099,7 @@ Il componente di pubblicazione \texttt{KafkaPositionPublisher}, utilizza l’Ada
         \item \texttt{FlinkJobManager} invia i risultati tramite \texttt{KafkaMessageWriter} (implementa \texttt{IMessageWriter}).
         \item \texttt{PositionToMessageProcessor} interagisce con \texttt{LLMService} (implementato da \texttt{GroqLLMService}) per generare messaggi, e con repository di dati per accedere a informazioni su utenti e attività.
     \end{itemize}
-    
+
     Questa architettura modulare consente un alto grado di testabilità e manutenibilità, permettendo la sostituzione di componenti con implementazioni alternative senza modificare il flusso di elaborazione complessivo.
 
 \section{Architettura di deployment}
@@ -2138,7 +2124,7 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
             \item[.] Produce dati nel formato JSON definito e li invia al broker Kafka.
         \end{itemize}
     \end{itemize}
-    
+
     \item \textbf{Gestione messaggi:}
     \begin{itemize}
         \item \textbf{Container kafka:}
@@ -2162,7 +2148,7 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
             \end{itemize}
         \end{itemize}
     \end{itemize}
-    
+
     \item \textbf{Elaborazione dei dati:}
     \begin{itemize}
         \item \textbf{Container flink-jobmanager:}
@@ -2178,7 +2164,7 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
             \item[.] Integra il servizio LLM per la generazione di messaggi pubblicitari personalizzati.
         \end{itemize}
     \end{itemize}
-    
+
     \item \textbf{Storage:}
     \begin{itemize}
         \item \textbf{Container clickhouse:}
@@ -2188,7 +2174,7 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
             \item[.] La banca dati è accessibile agli altri container tramite l'indirizzo clickhouse:8123 e 9000.
         \end{itemize}
     \end{itemize}
-    
+
     \item \textbf{Visualizzazione:}
     \begin{itemize}
         \item \textbf{Container grafana:}
