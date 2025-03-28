@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{1.0.4} %aggiunta versione come variabile
+\newcommand\version{1.0.5} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -97,6 +97,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    1.0.5 & 2025-03-28 & Leonardo Trolese & Riccardo Piva & Ampliamento del cruscotto con le metriche relative alla revisione PB\\
     \hline
     1.0.4 & 2025-03-26 & Federico Pivetta & Riccardo Piva & Ampliamento del cruscotto con le metriche relative alla revisione PB\\
     \hline
@@ -228,8 +230,6 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   MPD02 & Requisiti Desiderabili Soddisfatti  & $\geq$ 0\% & 100\% \\
   \hline
   MPD03 & Requisiti Opzionali Soddisfatti & $\geq$ 0\% & 100\% \\
-  \hline
-  MPD04 & Function Point & da determinare & da determinare \\ 
   \hline
 \end{tabular}
 \caption{Funzionalità - Qualità di prodotto}
@@ -945,10 +945,59 @@ La costante progressione verso il 100\% dei requisiti obbligatori soddisfatti, c
 \textbf{PB}:
 
 
-% Eventualmente da aggiungere
-%MPD04 - Function Point (FP)
-%MPD13 - Structure Fan IN
-%MPD14 - Structure Fan OUT
+\subsection{MPD10 - Linee di codice per metodo}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Linee di codice per metodo"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsection{MPD11 - Parametri per metodo}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Parametri per metodo"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsection{MPD12 - Attributi per classe}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Attributi per classe"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsection{MPD13 - Structure Fan IN}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Structure Fan IN"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsection{MPD14 - Structure Fan OUT}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Structure Fan OUT"}
+\end{figure}
+
+\textbf{PB}:
 
 \end{justify}
 \end{document}
