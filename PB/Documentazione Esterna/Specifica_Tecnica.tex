@@ -574,7 +574,7 @@ In NearYou, Docker è utilizzato per:
         \caption{Architettura esagonale del PositionToMessageService}
         \end{figure}
         \begin{itemize}
-            \item[.] \textbf{Core domain}: Contiene la logica di identificazione della prossimità e generazione di messaggi pubblicitari. Questa logica permettere di elaborare i dati ricevuti tramite la inbound port e tramite il sistema di stream processing \ref{subsec:Flink} , consumandoli come datastream per poi effettuare operazioni di Filter e Mapping su di essi;
+            \item[.] \textbf{Core domain}: Contiene la logica di identificazione della prossimità e generazione di messaggi pubblicitari. Questa logica permette di elaborare i dati ricevuti tramite la inbound port e tramite il sistema di stream processing \ref{subsec:Flink} , consumandoli come datastream per poi effettuare operazioni di Filter e Mapping su di essi;
             \item[.] \textbf{Inbound ports}: Permette di ricevere i dati che andranno poi elaborati, interfaccia chiamata \texttt{IPositionReceiver};
             \item[.] \textbf{Outbound ports}: Comprende interfacce verso i diversi repository necessari alla logica \\ (\texttt{IUserRepository}, \texttt{IActivityRepository},\texttt{IMessageRepository}), servizi esterni necessari per l'elaborazione dei dati come  (\texttt{LLMService}) e publisher di messaggi (\texttt{IMessageWriter});
             \item[.] \textbf{Adapters}: Implementa adattatori per tecnologie specifiche, come \texttt{KafkaPositionReceiver}, \texttt{ClickHouseActivityAdapter} e \texttt{GroqLLMAdapter}.
