@@ -149,6 +149,8 @@
     \hline
     0.2.0 & 2025-03-28 & Uncas Peruzzi & Riccardo Pivetta & Refactoring Struttura, Aggiunti SimulationService e PositionToMessageService \\
     \hline
+    0.1.10 & 2025-03-28 & Riccardo Piva & Federico Pivetta & refactor sezione ClickHouse e Grafana architettura di sistema\\
+    \hline
     0.1.9 & 2025-03-28 & Uncas Peruzzi & Riccardo Pivetta & Aggiunte immagini servizi e diagrammi UML \\
     \hline
     0.1.8 & 2025-03-22 & Alfredo Rubino & Uncas Peruzzi & Aggiunto pattern Adapter \\
@@ -450,10 +452,13 @@ In NearYou, Flink è utilizzato per:
 \end{itemize}
 
 \subsubsection{ClickHouse}
-Database colonnare progettato per l'analisi OLAP (OnLine Analytical Processing) con prestazioni eccezionali su grandi volumi di dati. Le caratterische principali di ClickHouse sono:
+Database colonnare progettato per l'analisi OLAP (OnLine Analytical Processing, tecnica che consente di interrogare ed esaminare rapidamente grandi volumi di dati da diverse prospettive) che permette agli utenti di generare report analitici utilizzando query SQL in tempo reale.
+La struttura è ottimizzata per aggregazioni e interrogazioni, consentendo operazioni complesse su dataset estesi in tempi brevissimi.
+Le caratteristiche principali di ClickHouse sono:
 \begin{itemize}
     \item[-] Architettura colonnare per interrogazioni analitiche efficienti;
     \item[-] Supporto a funzioni geospaziali per calcoli di distanza;
+    \item[-] Supporto di dati timeseries;
     \item[-] Integrazione nativa con Kafka per l'ingestione di dati;
     \item[-] Scalabilità orizzontale per gestire grandi volumi di dati.
 \end{itemize}
@@ -2268,33 +2273,34 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
 
 
-%%%%INCOLLA QUA PIVA , incolla qua piva , Incolla Qua Piva        
-        \subsubsection{ClickHouse}
-        ClickHouse è un sistema di gestione database colonnare open-source progettato specificamente per carichi analitici. Nel contesto di NearYou, è stato adottato per la sua capacità di processare ed analizzare in tempo reale grandi volumi di dati geospaziali mantenendo latenze minime e offrendo funzionalità avanzate di partizione e gestione del ciclo di vita dei dati.
+        \myparagraph{ClickHouse}
+        Nel progetto ClickHouse è stato scelto come database data la possibilità di gestire sia dati time series sia dati geospaziali.
+        Inoltre questa soluzione portava con sé tanti altri benefici riguardanti le performance e la scalabilità del sistema.
 
         \mysubparagraph{Architettura MergeTree}
-        Il cuore di ClickHouse è il motore MergeTree, fondamentale per le prestazioni del sistema NearYou. A differenza dei database tradizionali, MergeTree è ottimizzato per l'inserimento di grandi volumi di dati e query analitiche complesse grazie alle seguenti caratteristiche:
+        Uno dei fattori che migliore le performance di ClickHouse è il motore MergeTree.
+        Ovvero a differenza dei database tradizionali, MergeTree è ottimizzato per l'inserimento di grandi volumi di dati e query analitiche complesse grazie alle seguenti caratteristiche:
 
         \begin{itemize}
             \item[-] \textbf{Archiviazione colonnare}: I dati sono organizzati per colonne anziché per righe, permettendo:
             \begin{itemize}
-                \item[.] Compressione più efficiente (10-100x rispetto ai database row-oriented);
-                \item[.] I/O ridotto quando le query selezionano solo un sottoinsieme di colonne;
-                \item[.] Elaborazione vettoriale che sfrutta le istruzioni SIMD del processore.
+                \item[.] Compressione più efficiente: le tecniche di archiviazione colonnare consentono una compressione da 10 a 100 volte superiore rispetto ai database orientati a righe, grazie all'ottimizzazione di dati simili in ogni colonna.
+                \item[.] I/O significativamente ridotto: le query che richiedono solo un sottoinsieme di colonne leggono solo i dati necessari, riducendo l’input/output complessivo.
+                \item[.] Elaborazione vettoriale che sfrutta le istruzioni SIMD (Single Instruction, Multiple Data): questo approccio permette al processore di eseguire la stessa operazione su più dati contemporaneamente, migliorando notevolmente le performance nelle operazioni di calcolo e aggregazione.
             \end{itemize}
 
             \item[-] \textbf{Organizzazione in parti (parts)}: I dati vengono inseriti in parti separate che vengono poi fuse in background:
             \begin{itemize}
-                \item[.] Le nuove scritture avvengono in parti temporanee separate;
-                \item[.] Un processo di merge periodico unisce parti piccole in parti più grandi;
-                \item[.] Questo processo consente inserimenti massivi senza bloccare le query di lettura.
+                \item[.] Le nuove scritture vengono gestite in "parti" temporanee separate, garantendo che ogni batch di dati sia isolato, così da evitare conflitti e consentire una rapida acquisizione dei dati.
+                \item[.] Un processo di merge periodico raccoglie queste parti piccole e le unisce in unità più grandi, ottimizzando la compressione e l'organizzazione dei dati per query più efficienti.
+                \item[.] Questo approccio permette di realizzare inserimenti massivi senza bloccare le operazioni di lettura, assicurando alta disponibilità e bassa latenza per le query.
             \end{itemize}
 
             \item[-] \textbf{Indici sparsi}: Ogni parte contiene un indice sparso per le colonne di ordinamento:
             \begin{itemize}
-                \item[.] L'indice divide i dati in granuli (blocchi) di 8192 righe;
-                \item[.] Per ogni granulo, vengono memorizzati i valori min/max delle chiavi di ordinamento;
-                \item[.] Durante l'esecuzione delle query, interi granuli possono essere saltati.
+                \item[.] L'indice segmenta i dati in blocchi di 8192 righe, il che facilita una migliore organizzazione interna e favorisce una compressione più efficiente.
+                \item[.] Per ogni blocco vengono registrati i valori minimi e massimi delle chiavi di ordinamento, fornendo un riassunto che consente di identificare rapidamente i range interessanti durante le query.
+                \item[.] Durante l'esecuzione delle query, l'uso dei min/max permette di saltare interi blocchi che non contengono valori rilevanti, riducendo l'I/O e migliorando le prestazioni.    
             \end{itemize}
 
             \item[-] \textbf{Partizionamento primario}: I dati vengono suddivisi fisicamente in base a una chiave di partizione:
@@ -2302,162 +2308,199 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             PARTITION BY toYYYYMMDD(received_at)
             \end{lstlisting}
             \begin{itemize}
-                \item[.] Ogni partizione è memorizzata come directory separata;
-                \item[.] Le query possono escludere rapidamente intere partizioni non pertinenti;
-                \item[.] Facilita operazioni di manutenzione come eliminazione o spostamento di dati storici.
+                \item[.] Ogni partizione viene memorizzata in una directory separata, il che consente una gestione isolata dei dati e semplifica il backup e il ripristino di segmenti specifici.
+                \item[.] Le query possono escludere intere partizioni non rilevanti, riducendo il carico I/O e migliorando notevolmente le prestazioni durante le operazioni di ricerca.
+                \item[.] Questa organizzazione agevola operazioni di manutenzione mirate (come l’eliminazione o il trasferimento di dati storici), minimizzando l’impatto sul sistema complessivo.
             \end{itemize}
 
-            \item[-] \textbf{Ordinamento primario}: I dati all'interno di ogni partizione sono fisicamente ordinati:
+            \item[-] \textbf{Ordinamento primario}: I dati all’interno di ogni partizione sono fisicamente ordinati:
             \begin{lstlisting}
             ORDER BY (sensor_id, received_at)
             \end{lstlisting}
             \begin{itemize}
-                \item[.] Accelera ricerche per range su queste colonne;
-                \item[.] Migliora la compressione raggruppando valori simili;
-                \item[.] Definisce l'ordine di costruzione degli indici sparsi.
-            \end{itemize}
+                \item[.] L'ordinamento fisico accelera le ricerche per intervallo su queste colonne, consentendo di individuare rapidamente i record richiesti.
+                \item[.] Raggruppare valori simili migliora la compressione, riducendo lo spazio su disco e ottimizzando i tempi di lettura.
+                \item[.] Inoltre, definire l’ordine dei dati facilita la creazione e l’utilizzo efficiente degli indici sparsi, ottimizzando le prestazioni complessive delle query.
+            \end{itemize}         
         \end{itemize}
-
-        Nel contesto di NearYou, questa architettura consente di gestire efficacemente:
-        \begin{itemize}
-            \item[-] Migliaia di aggiornamenti di posizione al secondo;
-            \item[-] Query analitiche complesse come il calcolo di distanze geospaziali;
-            \item[-] Aggregazioni per dashboard in tempo reale;
-            \item[-] Interrogazioni su dati storici con latenze contenute.
-        \end{itemize}
-
-        Il ciclo di vita di un dato in MergeTree segue questi passi:
-        \begin{enumerate}
-            \item Inserimento in memoria come parte temporanea;
-            \item Scrittura su disco quando la parte raggiunge una certa dimensione;
-            \item Fusione periodica con altre parti per ottimizzare lo storage;
-            \item Eventuale eliminazione tramite TTL o operazioni manuali.
-        \end{enumerate}
 
         \mysubparagraph{Schema del database}
         Lo schema del database comprende le seguenti tabelle principali:
 
         \begin{itemize}
-            \item[-] \textbf{positions}: Archivia le posizioni GPS degli utenti con timestamp.
-            \begin{lstlisting}
-            CREATE TABLE positions (
-                sensor_id UUID,
-                latitude Float64,
-                longitude Float64,
-                received_at DateTime64(3),
-                _timestamp DateTime DEFAULT now()
-            ) ENGINE = MergeTree()
-            PARTITION BY toYYYYMMDD(received_at)
-            ORDER BY (sensor_id, received_at);
-            \end{lstlisting}
-            Questa tabella memorizza i dati di posizione degli utenti ricevuti dal simulatore, permettendo di tracciare gli spostamenti nel tempo.
 
-            \item[-] \textbf{activities}: Contiene i punti di interesse con coordinate geografiche e metadati.
+            \item[-] \textbf{attivita}: Contiene i punti di interesse con coordinate geografiche e altri dati come nome, descrizione e tipo.
             \begin{lstlisting}
-            CREATE TABLE activities (
-                activity_id UUID,
+            CREATE TABLE nearyou.activity(
+                activity_uuid UUID,
                 name String,
-                category String,
+                longitude Float64,
+                latitude Float64,
+                address String,
+                type String,
                 description String,
+                PRIMARY KEY(activity_uuid)
+            ) ENGINE = MergeTree()
+            ORDER BY activity_uuid;
+            \end{lstlisting}
+            Questa tabella archivia le informazioni sui punti di interesse come negozi, ristoranti e attrazioni turistiche per cui verranno generati i messaggi pubblicitari personalizzati.
+
+            \item[-] \textbf{interesseUtente}: Contiene gli utenti e le loro preferenze.
+            \begin{lstlisting}
+            CREATE TABLE nearyou.user_interest(
+                user_uuid UUID,
+                interest String,
+                PRIMARY KEY(user_uuid, interest)
+            ) ENGINE = MergeTree()
+            ORDER BY (user_uuid, interest);
+            \end{lstlisting}
+            Questa tabella serve a collegare gli utenti ai loro interessi, consentendo di scegliere le attività per cui generare i messaggi in base agli interessi.
+
+            \item[-] \textbf{messageFromLLM}: Memorizza i messaggi pubblicitari generati dall'LLM e successivamente pubblicati sul topic kafka.
+            \begin{lstlisting}
+            CREATE TABLE nearyou.messageTableKafka
+            (
+                user_uuid UUID,
+                activity_uuid UUID,
+                message_uuid UUID,
+                message String,
+                activityLatitude Float64,
+                activityLongitude Float64,
+                creationTime String,
+                userLatitude Float64,
+                userLongitude Float64
+            ) ENGINE = Kafka()
+            SETTINGS 
+                kafka_broker_list = 'kafka:9092',
+                kafka_topic_list = 'MessageElaborated',
+                kafka_group_name = 'clickhouseConsumerMessage',
+                kafka_format = 'JSONEachRow';
+            \end{lstlisting}
+            Questa tabella funziona da consumer per il topic Kafka "MessageElaborated", permettendo di ricevere e memorizzare i messaggi pubblicitari generati dall'LLM in tempo reale.
+
+            \begin{lstlisting}
+            CREATE TABLE nearyou.messageTable
+            (
+                user_uuid UUID,
+                activity_uuid UUID,
+                message_uuid UUID,
+                message String,
+                activityLatitude Float64,
+                activityLongitude Float64,
+                creationTime String,
+                userLatitude Float64,
+                userLongitude Float64
+            )
+            ENGINE = MergeTree()
+            PARTITION BY toYYYYMM(toDateTime(creationTime))   -- Partizione per mese basato sul timestamp di creazione
+            PRIMARY KEY (message_uuid, toStartOfMinute(toDateTime(creationTime)), creationTime)
+            TTL toDateTime(creationTime) + INTERVAL 1 MONTH   -- I dati saranno conservati per 1 mese
+            SETTINGS index_granularity = 8192;
+            \end{lstlisting}
+            Questa tabella serve da storage per i messaggi pubblicitari generati e pubblicati sul topic Kafka. Contiene informazioni dettagliate sui messaggi, inclusi gli ID degli utenti e delle attività, le coordinate geografiche e il timestamp di creazione.
+
+            \item[-] \textbf{positionFromSimulator}: Memorizza le posizioni degli utenti generate dal simulatore e pubblicate sul topic kafka.
+            \begin{lstlisting}
+            CREATE TABLE nearyou.positionsKafka (
+                user_uuid UUID,
                 latitude Float64,
                 longitude Float64,
-                created_at DateTime,
-                updated_at DateTime DEFAULT now()
-            ) ENGINE = MergeTree()
-            ORDER BY activity_id;
+                received_at String
+            ) ENGINE = Kafka()
+            SETTINGS 
+                kafka_broker_list = 'kafka:9092',
+                kafka_topic_list = 'SimulatorPosition',
+                kafka_group_name = 'clickhouseConsumePositions',
+                kafka_format = 'JSONEachRow';
             \end{lstlisting}
-            Questa tabella archivia le informazioni sui punti di interesse come negozi, ristoranti e attrazioni turistiche che possono generare messaggi pubblicitari personalizzati.
-
-            \item[-] \textbf{users}: Memorizza informazioni sui profili utente.
+            Questa tabella funziona da consumer per il topic Kafka "SimulatorPosition", permettendo di ricevere e memorizzare le posizioni degli utenti in tempo reale.
+            
             \begin{lstlisting}
-            CREATE TABLE users (
-                user_id UUID,
+            CREATE TABLE nearyou.positions
+            (
+                user_uuid UUID,
+                latitude Float64,
+                longitude Float64,
+                received_at String
+            )
+            ENGINE = MergeTree()
+            PARTITION BY toYYYYMM(toDateTime(received_at))  -- Partizioniamo per mese in base al campo received_at
+            PRIMARY KEY (user_uuid, toStartOfMinute(toDateTime(received_at)), received_at)
+            TTL toDateTime(received_at) + INTERVAL 1 MONTH  -- I dati vengono conservati per un mese
+            SETTINGS index_granularity = 8192;
+            \end{lstlisting}
+            Questa tabella funziona da storage per i dati di posizione degli utenti e viene alimentata dalla tabella Kafka positionsKafka.
+
+            \item[-] \textbf{sensor}: Memorizza informazioni sui sensori utilizzati per raccogliere i dati di posizione.
+            \begin{lstlisting}
+            CREATE TABLE nearyou.sensor
+            (
+                sensor_uuid UUID PRIMARY KEY,
+                is_occupied Boolean DEFAULT false
+            ) ENGINE = MergeTree()
+            ORDER BY sensor_uuid;
+            \end{lstlisting}
+            Questa tabella contiene informazioni sui sensori utilizzati per raccogliere i dati di posizione degli utenti. Ogni sensore ha un UUID univoco e uno stato di occupazione che può essere aggiornato in tempo reale.
+            Ogni sensore viene assegnato regolarmente a un utente, e il suo stato di occupazione viene aggiornato in base alla posizione dell'utente.
+
+            \item[-] \textbf{tuttiInteressi}: Memorizza un elenco di tutti gli interessi disponibili nel sistema.
+            \begin{lstlisting}
+            CREATE TABLE nearyou.interest(
+                interest String,
+                PRIMARY KEY(interest)
+            ) ENGINE = MergeTree()
+            ORDER BY (interest);
+            \end{lstlisting}
+            Questa tabella contiene un elenco di tutti gli interessi disponibili nel sistema. Ogni interesse è rappresentato da una stringa e viene utilizzato per associare le preferenze degli utenti alle attività pubblicitarie.
+
+            \item[-] \textbf{utente}: Memorizza informazioni sui profili utente.
+            \begin{lstlisting}
+            CREATE TABLE nearyou.user(
+                user_uuid UUID,
+                assigned_sensor_uuid UUID NULL,
                 name String,
-                age UInt8,
+                surname String,
+                email String,
                 gender String,
-                interests Array(String),
-                preferences Array(String),
-                created_at DateTime DEFAULT now()
+                birthdate Date DEFAULT toDate(now()),
+                civil_status String,
+                PRIMARY KEY(user_uuid)
             ) ENGINE = MergeTree()
-            ORDER BY user_id;
+            ORDER BY user_uuid;
             \end{lstlisting}
-            Questa tabella contiene i dati demografici e le preferenze degli utenti utilizzati per personalizzare i messaggi pubblicitari.
+            Questa tabella contiene informazioni sui profili utente, inclusi nome, cognome, email, genere e stato civile. Ogni utente ha un UUID univoco e può essere associato a un sensore specifico.
 
-            \item[-] \textbf{messages}: Memorizza i messaggi pubblicitari generati.
-            \begin{lstlisting}
-            CREATE TABLE messages (
-                message_id UUID DEFAULT generateUUIDv4(),
-                user_id UUID,
-                activity_id UUID,
-                content String,
-                user_lat Float64,
-                user_lon Float64,
-                activity_lat Float64,
-                activity_lon Float64,
-                created_at DateTime,
-                _timestamp DateTime DEFAULT now()
-            ) ENGINE = MergeTree()
-            PARTITION BY toYYYYMMDD(created_at)
-            ORDER BY (user_id, created_at);
-            \end{lstlisting}
-            Questa tabella archivia tutti i messaggi pubblicitari generati dal sistema, collegando utenti e attività.
-
-            \item[-] \textbf{kafka\_messages}: Tabella di ingestion per i messaggi da Kafka.
-            \begin{lstlisting}
-            CREATE TABLE kafka_messages (
-                message String
-            ) ENGINE = Kafka(
-                'kafka:9092',
-                'messaggi',
-                'clickhouse-consumer-group',
-                'JSONEachRow'
-            );
-            \end{lstlisting}
-            Questa tabella speciale con engine Kafka consente di consumare direttamente gli eventi dal topic Kafka "messaggi" senza bisogno di un consumer dedicato.
-
-            \item[-] \textbf{kafka\_positions}: Tabella di ingestion per le posizioni da Kafka.
-            \begin{lstlisting}
-            CREATE TABLE kafka_positions (
-                message String
-            ) ENGINE = Kafka(
-                'kafka:9092',
-                'posizioni',
-                'clickhouse-position-group',
-                'JSONEachRow'
-            );
-            \end{lstlisting}
-            Simile alla precedente ma dedicata al consumo di dati di posizione dal topic "posizioni".
         \end{itemize}
 
-        \mysubparagraph{Indici e partizioni}
-        ClickHouse utilizza diversi tipi di indici per ottimizzare l'accesso ai dati:
 
-        \begin{itemize}
-            \item[-] \textbf{Indici primari}: Basati sulle colonne di ordinamento, accelerano la ricerca per utente e timestamp.
-            \begin{lstlisting}
-            ORDER BY (sensor_id, received_at)
-            \end{lstlisting}
+        \mysubparagraph{Index Granularity}
+        \begin{lstlisting}
+        SETTINGS index_granularity = 8192;
+        \end{lstlisting}
+        L'opzione \texttt{index\_granularity} in ClickHouse determina la dimensione del blocco per l'indicizzazione dei dati.
+        Questo parametro definisce quante righe appartengono a ciascun \"blocco indice\". Con un valore di 8192,
+        ClickHouse crea un indice per ogni blocco di 8192 righe, memorizzando i valori minimi e massimi delle
+        colonne di ordinamento in ogni blocco. Tale meccanismo permette al motore di saltare rapidamente blocchi di
+        dati non pertinenti durante l'esecuzione delle query, ottimizzando così le prestazioni.
 
-            \item[-] \textbf{Indici spaziali impliciti}: Funzioni geospaziali ottimizzate per interrogazioni di prossimità.
-            \begin{lstlisting}
-            WHERE geoDistance((latitude, longitude), (user_lat, user_lon)) <= 500
-            \end{lstlisting}
-        \end{itemize}
 
-        La partizione dei dati è implementata su base temporale. In questo caso le tabelle positions e messages sono partizionate per giorno:
+
+        \mysubparagraph{Partizionamento}
+        In questo progetto il partizionamente viene fatto su base temporale. In questo caso le tabelle positions e messages sono partizionate per giorno:
         \begin{lstlisting}
         PARTITION BY toYYYYMMDD(received_at)
         \end{lstlisting}
-
-            Questa strategia di partizionamento:
-            \begin{itemize}
-                \item[-] Facilita l'eliminazione automatica dei dati storici con TTL;
-                \item[-] Migliora le performance delle query che filtrano per intervalli temporali;
-                \item[-] Consente una gestione efficiente dello storage.
-            \end{itemize}
+        Questa strategia di partizionamento:
+        \begin{itemize}
+            \item[-] Facilita l'eliminazione automatica dei dati storici con TTL;
+            \item[-] Migliora le performance delle query che filtrano per intervalli temporali;
+            \item[-] Consente una gestione efficiente dello storage.
+        \end{itemize}
 
         \mysubparagraph{Time-To-Live (TTL)}
-        Il meccanismo TTL in ClickHouse rappresenta una funzionalità cruciale per NearYou, automatizzando la gestione del ciclo di vita dei dati senza richiedere procedure manuali o script esterni. ClickHouse implementa TTL come parte integrante del processo di merging di MergeTree:
+        Il meccanismo TTL in ClickHouse rappresenta una funzionalità cruciale per grandi quantità di dati.
+        C'è quindi un meccanismo automatico per la gestione del ciclo di vita dei dati senza richiedere procedure manuali o script esterni.
+        ClickHouse implementa TTL come parte integrante del processo di merging di MergeTree e ce ne sono 3 tipi:
 
         \begin{itemize}
             \item[-] \textbf{TTL a livello di tabella}: Rimuove intere righe dopo un determinato periodo
@@ -2490,22 +2533,30 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             \item Se tutte le righe in una partizione vengono eliminate dal TTL, l'intera partizione viene rimossa.
         \end{enumerate}
 
-        Nel nostro progetto usiamo solo il TTL a livello di tabella per eliminare automaticamente i dati più vecchi di 30 giorni:
+        In questo progetto il TTL viene usato solo a livello di tabella per eliminare automaticamente i dati più vecchi di 30 giorni:
         Ad esempio nella tabella delle posizioni:
         \begin{lstlisting}
         ALTER TABLE positions MODIFY TTL received_at + INTERVAL 30 DAY;
         \end{lstlisting}
 
-        Questa strategia bilancia efficacemente le esigenze di performance con l'ottimizzazione dei costi di storage, mantenendo solo i dati necessari e nella forma appropriata.
+        Questa strategia bilancia efficacemente le esigenze di performance con l'ottimizzazione dei costi di storage, mantenendo uno storico per un periodo abbastanza lungo.
 
         \mysubparagraph{Materialized Views}
-        Le materialized view rappresentano un elemento fondamentale nell'architettura di NearYou, consentendo di usare i dati provenienti da Kafka come normali tabelle ClickHouse offrendo inoltre ottime performance per le query in tempo reale. Ecco alcuni esempi:
+        Le materialized view rappresentano un elemento fondamentale nell'architettura di questo progetto, consentendo di trasformare in tempo reale i dati provenienti dalla tabella Kafka in tabelle ClickHouse ottimizzate per le query. I benefici principali dell'utilizzo delle materialized view sono:
+        \begin{itemize}
+            \item \textbf{Prestazioni ottimizzate:} Poiché i dati vengono pre-aggregati e trasformati al momento dell'inserimento, le query risultano più veloci, riducendo il carico computazionale durante l'esecuzione della query.
+            \item \textbf{Persistenza automatica:} Le view accumulano continuamente i dati dai flussi Kafka, assicurando che ogni nuovo messaggio sia immediatamente reso disponibile in ClickHouse per ulteriori analisi.
+            \item \textbf{Aggiornamento in tempo reale:} Non appena nuovi messaggi arrivano in Kafka, la materialized view li elabora automaticamente e li inserisce nella tabella di destinazione, mantenendo sempre aggiornato lo stato dei dati.
+            \item \textbf{Integrazione trasparente con Kafka:} Utilizzando l'engine Kafka per definire le tabelle sorgente, come detto nella sezione di Kafka ClickHouse può “iscriversi” automaticamente ai topic Kafka. In questo modo, l'engine si occuperà di gestire i dati e dopo dato che saranno disponibili anche nella materialized view si potranno trasformare e trattare coem se fosse una tabella normale.
+        \end{itemize}
+        
+        Ecco alcuni esempi:
 
         \begin{lstlisting}
         CREATE MATERIALIZED VIEW nearyou.mv_positions TO nearyou.positions
         AS
         SELECT
-            userID,
+            user_uuid,
             latitude,
             longitude,
             received_at
@@ -2528,133 +2579,50 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         FROM nearyou.messageTableKafka;
         \end{lstlisting}
 
-        Queste view consentono:
-        \begin{itemize}
-            \item[-] Trasformazione automatica dei dati JSON in formato tabellare;
-            \item[-] Inserimento automatico nelle tabelle di destinazione;
-            \item[-] Sincronizzazione in tempo reale tra Kafka e le tabelle ClickHouse.
-        \end{itemize}
+        In pratica, una volta che una materialized view è definita, ClickHouse continua a monitorare la tabella Kafka di origine e, ogni volta che arrivano nuovi dati, li elabora e li scrive nella tabella target (ad es. \texttt{positions} o \texttt{messageTable}). Questo meccanismo permette di sfruttare il flusso dati di Kafka senza perdere i vantaggi di una storage engine tradizionale, garantendo l'accesso in tempo reale a dati puliti e pre-aggregati.
 
-        \mysubparagraph{Integrazione con Kafka}
-        L'integrazione tra Kafka e ClickHouse avviene tramite tabelle speciali con engine Kafka che fungono da consumer nativo:
-
-        \begin{lstlisting}
-        CREATE TABLE messageTableKafka
-        (
-            user_uuid UUID,
-            activity_uuid UUID,
-            message_uuid UUID,
-            message String,
-            activityLatitude Float64,
-            activityLongitude Float64,
-            creationTime String,
-            userLatitude Float64,
-            userLongitude Float64
-        ) ENGINE = Kafka()
-        SETTINGS
-            kafka_broker_list = 'kafka:9092',
-            kafka_topic_list = 'MessageElaborated',
-            kafka_group_name = 'clickhouseConsumerMessage',
-            kafka_format = 'JSONEachRow';
-        \end{lstlisting}
-
-        \begin{lstlisting}
-        CREATE TABLE positionsKafka
-        (
-            sensor_id UUID,
-            latitude Float64,
-            longitude Float64,
-            received_at DateTime64(3)
-        ) ENGINE = Kafka()
-        SETTINGS
-            kafka_broker_list = 'kafka:9092',
-            kafka_topic_list = 'SimulatorPosition',
-            kafka_group_name = 'clickhouseConsumerPosition',
-            kafka_format = 'JSONEachRow';
-        \end{lstlisting}
-
-        Caratteristiche del connettore:
-        \begin{itemize}
-            \item[-] Consumo asincrono dei messaggi da Kafka;
-            \item[-] Supporto per diverse codifiche (JSON utilizzato nel progetto);
-            \item[-] Gestione automatica degli offset;
-            \item[-] Integrazione con il sistema di materialized view per la trasformazione dati.
-        \end{itemize}
-
-        Questo approccio offre diversi vantaggi:
-        \begin{itemize}
-            \item[-] Elimina la necessità di consumer Kafka dedicati;
-            \item[-] Garantisce trasformazione e inserimento dei dati in tempo reale;
-            \item[-] Offre resilienza: i messaggi rimangono disponibili in Kafka in caso di problemi;
-            \item[-] Permette di definire pipeline ETL dichiarative.
-        \end{itemize}
 
         \mysubparagraph{Funzionalità geospaziali}
-        NearYou sfrutta intensivamente le funzioni geospaziali di ClickHouse per il calcolo delle distanze e la rilevazione di prossimità:
+        In questo progetto sono state usate le funzioni geospaziali offerte da ClickHouse per calcolare distanze e rilevare la prossimità tra punti geografici.
         \textbf{geoDistance}: Calcola la distanza in metri tra due punti geografici
 
-        Esempio di implementazione per la rilevazione di prossimità che è stata usata per i messaggi nella mappa generale:
-            \begin{lstlisting}
-            SELECT
-                m.userLatitude AS latitude,
-                m.userLongitude AS longitude,
-                m.creationTime AS creazione_time,
-                u.name AS userName,
-                u.surname AS userSurname,
-                a.name AS activityName,
-                m.message AS message
-            FROM (
-                SELECT
-                user_uuid,
-                message_uuid,
-                message,
-                activity_uuid,
-                activityLatitude,
-                activityLongitude,
-                creationTime,
-                userLatitude,
-                userLongitude,
-                ROW_NUMBER() OVER (PARTITION BY user_uuid
-                        ORDER BY toDateTime(creationTime) DESC) AS rn
-                FROM nearyou.messageTable
-            ) AS m
-            INNER JOIN nearyou.user u
-                ON m.user_uuid = u.user_uuid
-            INNER JOIN nearyou.activity a
-                ON m.activity_uuid = a.activity_uuid
-            INNER JOIN (
-                SELECT
-                user_uuid,
-                latitude,
-                longitude,
-                received_at,
-                ROW_NUMBER() OVER (PARTITION BY user_uuid
-                        ORDER BY received_at DESC) AS rn
-                FROM nearyou.positions
-            ) AS p
-                ON u.assigned_sensor_uuid = p.user_uuid AND p.rn = 1
-            WHERE
-                m.rn = 1
-                AND geoDistance(m.activityLongitude, m.activityLatitude,
-                    p.longitude, p.latitude) < 300
-            ORDER BY
-                m.creationTime DESC;
-            \end{lstlisting}
-
-        Questa combinazione di archiviazione colonnare efficiente, indici ottimizzati, TTL automatico e strategie di query avanzate permette a ClickHouse di supportare l'intera pipeline di dati di NearYou con prestazioni eccellenti sia per l'inserimento che per l'analisi dei dati di posizione e la generazione di messaggi pubblicitari contestuali.
+        Ad esempio un implementazione della funzione \texttt{geoDistance} si trova nella query dei messaggi, dove questa funzione è stata usata per calcolare la distanza tra la posizione dell'utente e la posizione originale del messaggio.
+        Ecco il frammento della query in cui viene usata questa funzione:
+        \begin{lstlisting}
+        WHERE
+            geoDistance(m.activityLongitude, m.activityLatitude, p.longitude, p.latitude) < 300
+        \end{lstlisting}
 
         \myparagraph{Grafana}
-        Grafana è una piattaforma di visualizzazione e analisi dati utilizzata in NearYou per rappresentare graficamente le informazioni raccolte dal sistema e consentire il monitoraggio in tempo reale delle attività.
-
-        \mysubparagraph{Dashboard}
-        La dashboard principale di Grafana in NearYou fornisce un'interfaccia centralizzata per monitorare l'intero sistema. È composta da due elementi fondamentali:
-
+        Grafana è una piattaforma di visualizzazione e analisi dati utilizzata in questo progetto per rappresentare graficamente le informazioni raccolte dal sistema e consentire il monitoraggio in tempo reale delle attività.
+        
+        \mysubparagraph{Utenti}
+        Innanzitutto per fare l'accesso è necessario un account Grafana. 
+        Dato che lo scopo di questo progetto è quello di creare una dashboard da amministratore la scelta è stata quella di usare l'account admin per l'accesso.
+        Le credenziali per questo utente sono:
         \begin{itemize}
-            \item[-] \textbf{Mappa geospaziale}: Un pannello interattivo che visualizza su una mappa OpenStreetMap:
+            \item[-] \textbf{Username}: admin
+            \item[-] \textbf{Password}: admin
+        \end{itemize}
+        Questo utente ha accesso completo a entrambe le dashboard del progetto.
+
+        \mysubparagraph{Dashboards}
+        La visualizzazione in questo progetto è stata separata in due dashboard differenti:
+        \begin{itemize}
+            \item[.] Dashboard generale: Si occupa di una visuale complessiva del sistema, mostrando le ultime posizioni e gli ultimi messaggi di ogni singolo utente. Inoltre si vedono anche tutte le attività commerciali disposte per la mappa;
+            In questa mappa è anche presente una leaderboard che mostra le attività più popolari in base al numero di messaggi pubblicitari generati.
+            \item[.] Dashboard specifica: Questa dashboard è dedicata a un singolo utente e mostra ogni singola posizione che compone il suo percorso, ogni singolo messaggio pubblicitario generato per questo utente e tutte le attività presenti sulla mappa.
+            È inoltre presente una tabella che mostra tutti i dati anagrafici dell'utente.
+        \end{itemize}
+
+        \mysubparagraph{Dashboard generale}
+        La dashboard generale è quindi divisa in due widget:
+        \begin{itemize}
+            \item[-] \textbf{Mappa geospaziale}: Un pannello interattivo che visualizza una mappa OpenStreetMap su cui vengono mostrate le seguenti informazioni:
             \begin{itemize}
-                \item[.] Marker verdi che rappresentano le posizioni attuali degli utenti;
-                \item[.] Marker arancioni che mostrano i messaggi pubblicitari generati;
-                \item[.] Marker rossi che indicano le attività commerciali nel territorio.
+                \item[.] Marker verde scuro a cerchio che rappresentano solo l'ultima posizione per ogni singolo utente;
+                \item[.] Marker arancioni quadrati che mostrano l'ultimo messaggio pubblicitario generato per ogni singolo utente;
+                \item[.] Marker rossi a cerchio che indicano le attività commerciali nel territorio.
             \end{itemize}
 
             \item[-] \textbf{Tabella delle attività più popolari}: Una classifica in tempo reale delle attività commerciali ordinate per numero di messaggi pubblicitari generati, con le seguenti informazioni:
@@ -2666,22 +2634,11 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             \end{itemize}
         \end{itemize}
 
-        La query che alimenta la leaderboard delle attività è la seguente:
-        \begin{lstlisting}
-        SELECT
-            a.nome AS nome_attivita,
-            a.tipologia,
-            a.indirizzo,
-            COUNT(m.id) AS numero_messaggi
-        FROM nearyou.attivita a
-        LEFT JOIN nearyou.messageTable m ON a.id = m.attivitaID
-        GROUP BY a.id, a.nome, a.tipologia, a.indirizzo
-        HAVING COUNT(m.id) > 0
-        ORDER BY numero_messaggi DESC
-        \end{lstlisting}
+        Per accedere alla mappa specifica facendo hover o premendo sulla posizione di un utente comparirà il popup con le informazioni dell'utente.
+        Fra queste informazioni sarà presente anche un link che porta l'amministratore nella dashboard specifica che fa riferimento all'utente su cui ha premuto in origine.\\
 
         \mysubparagraph{Dashboard specifica}
-        La dashboard specifica è dedicata all'analisi dettagliata di un singolo utente, identificato tramite un parametro \texttt{user\_id}. Questa dashboard permette di:
+        La dashboard specifica è dedicata all'analisi dettagliata di un singolo utente, identificato tramite una variabile della dashboard \texttt{user\_id}. Questa dashboard permette di:
 
         \begin{itemize}
             \item[-] Visualizzare l'intero percorso storico dell'utente sulla mappa, con punti che rappresentano le posizioni registrate nel tempo;
@@ -2695,195 +2652,286 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \end{itemize}
 
         \mysubparagraph{Querying ClickHouse}
-        L'integrazione tra Grafana e ClickHouse è realizzata tramite query SQL ottimizzate per le performance. Di seguito sono riportate le principali query utilizzate nelle dashboard:
+        L'integrazione tra Grafana e ClickHouse è realizzata tramite query SQL ottimizzate per le performance. Di seguito sono riportate le principali query utilizzate nelle dashboard, che consentono di estrarre e visualizzare i dati in tempo reale.
+        \begin{itemize}
+
+        \item[-] \textbf{Query per la dashboard generale:} 
+        La dashboard generale contiene query per visualizzare dati aggregati che consentono di monitorare l'intera piattaforma.
+
+            \begin{itemize}
+                \item[-] \textbf{Posizioni attuali degli utenti:}
+                Questa query recupera l'ultima posizione nota per ciascun utente registrato nel sistema. Utilizza una subquery con ROW_NUMBER() per selezionare solo la posizione più recente per ciascun sensore.
+                
+                \begin{lstlisting}
+                SELECT 
+                    user_uuid, 
+                    latitude, 
+                    longitude, 
+                    received_at
+                FROM (
+                    SELECT 
+                    user_uuid, 
+                    latitude, 
+                    longitude, 
+                    received_at,
+                    ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS row_num
+                    FROM "nearyou"."positions"
+                ) 
+                WHERE row_num = 1;
+                \end{lstlisting}
+                
+                \item[-] \textbf{Messaggi pubblicitari recenti:}
+                Questa query complessa recupera i messaggi pubblicitari più recenti per ciascun utente, includendo informazioni contestuali come il nome dell'utente e dell'attività. Filtra i messaggi in base alla prossimità utilizzando la funzione geospaziale \texttt{geoDistance}.
+                
+                \begin{lstlisting}
+                SELECT 
+                    m.userLatitude AS latitude,
+                    m.userLongitude AS longitude,
+                    m.creationTime AS creazione_time,
+                    u.name AS userName,
+                    u.surname AS userSurname,
+                    a.name AS activityName,
+                    m.message AS message
+                FROM (
+                    SELECT 
+                    user_uuid,
+                    message_uuid,
+                    message,
+                    activity_uuid,
+                    activityLatitude,
+                    activityLongitude,
+                    creationTime,
+                    userLatitude,
+                    userLongitude,
+                    ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY toDateTime(creationTime) DESC) AS rn
+                    FROM nearyou.messageTable
+                ) AS m
+                INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid
+                INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid
+                INNER JOIN (
+                    SELECT 
+                    user_uuid, 
+                    latitude, 
+                    longitude,
+                    received_at,
+                    ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS rn
+                    FROM nearyou.positions
+                ) AS p ON u.assigned_sensor_uuid = p.user_uuid AND p.rn = 1
+                WHERE 
+                    m.rn = 1 
+                    AND geoDistance(m.activityLongitude, m.activityLatitude, p.longitude, p.latitude) < 300
+                ORDER BY m.creationTime DESC;
+                \end{lstlisting}
+                
+                \item[-] \textbf{Lista delle attività:}
+                Questa query recupera l'elenco completo delle attività (punti di interesse) dal database.
+                
+                \begin{lstlisting}
+                SELECT * FROM "nearyou"."activity" LIMIT 1000
+                \end{lstlisting}
+                
+                \item[-] \textbf{Attività più popolari:}
+                Questa query genera una classifica delle attività commerciali in base al numero di messaggi pubblicitari generati per ciascuna di esse.
+                
+                \begin{lstlisting}
+                SELECT 
+                    a.name AS nome_attivita,
+                    a.address AS indirizzo,
+                    a.type AS tipologia,
+                    a.description as descrizione, 
+                    COUNT(m.message_uuid) AS numero_messaggi
+                FROM nearyou.activity a
+                INNER JOIN nearyou.messageTable m ON a.activity_uuid = m.activity_uuid
+                GROUP BY a.activity_uuid, a.name, a.type, a.address, a.description
+                HAVING COUNT(m.message_uuid) > 0
+                ORDER BY numero_messaggi DESC
+                \end{lstlisting}
+            \end{itemize}
+
+        \item[-] \textbf{Query per la dashboard specifica utente:} 
+        La dashboard specifica per utente utilizza query che filtrano i dati in base all'utente selezionato, identificato tramite la variabile \texttt{\${user\_id}}.
+
+            \begin{itemize}
+                \item[-] \textbf{Storico posizioni dell'utente:}
+                Questa query recupera l'intero storico delle posizioni per un utente specifico, consentendo di visualizzare il suo percorso completo sulla mappa.
+                
+                \begin{lstlisting}
+                SELECT * FROM nearyou.positions 
+                WHERE user_uuid = toUUID('${user_id}') 
+                LIMIT 1000
+                \end{lstlisting}
+                
+                \item[-] \textbf{Prima e ultima posizione dell'utente:}
+                Questa query utilizza UNION ALL per combinare due subquery che identificano la prima e l'ultima posizione registrata per l'utente, consentendo di evidenziarle sulla mappa.
+                
+                \begin{lstlisting}
+                (
+                    SELECT * 
+                    FROM nearyou.positions 
+                    WHERE user_uuid = toUUID('${user_id}') 
+                    ORDER BY received_at ASC 
+                    LIMIT 1
+                )
+                UNION ALL
+                (
+                    SELECT * 
+                    FROM nearyou.positions 
+                    WHERE user_uuid = toUUID('${user_id}') 
+                    ORDER BY received_at DESC 
+                    LIMIT 1
+                );
+                \end{lstlisting}
+                
+                \item[-] \textbf{Messaggi per l'utente specifico:}
+                Questa query recupera i messaggi pubblicitari generati per un utente specifico, includendo informazioni contestuali come le coordinate dell'utente e dell'attività al momento della generazione.
+                
+                \begin{lstlisting}
+                SELECT     
+                    m.userLatitude, 
+                    m.userLongitude, 
+                    m.creationTime, 
+                    u.name, 
+                    u.surname, 
+                    a.name, 
+                    m.message 
+                FROM nearyou.messageTable m
+                INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid 
+                INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid 
+                WHERE u.assigned_sensor_uuid = toUUID('${user_id}')
+                LIMIT 1000;
+                \end{lstlisting}
+                
+                \item[-] \textbf{Dati anagrafici dell'utente:}
+                Questa query recupera i dati anagrafici dell'utente e i suoi interessi, utilizzando la funzione ARRAY_AGG per aggregare gli interessi multipli in un array.
+                
+                \begin{lstlisting}
+                SELECT 
+                    u.name, 
+                    u.surname, 
+                    u.email, 
+                    u.gender, 
+                    u.birthdate, 
+                    u.civil_status, 
+                    ARRAY_AGG(ui.interest) AS interests_json
+                FROM 
+                    nearyou.user u
+                JOIN 
+                    nearyou.user_interest ui ON u.user_uuid = ui.user_uuid
+                WHERE 
+                    u.assigned_sensor_uuid = toUUID('${user_id}')
+                GROUP BY 
+                    u.name, u.surname, u.email, u.gender, u.birthdate, u.civil_status, u.user_uuid;
+                \end{lstlisting}
+            \end{itemize}
+        \end{itemize}
+        Queste query rappresentano un insieme completo di interrogazioni utilizzate per alimentare le dashboard Grafana e consentire la visualizzazione di informazioni in tempo reale sulla posizione degli utenti, le attività commerciali e i messaggi pubblicitari generati.
+
+        \mysubparagraph{Variabili dashboard}
+        In questo progetto è stata usata una variabile dashboard per filtrare i dati in base all'utente selezionato.
+        Questa variabile è definita come \texttt{user\_id} e viene utilizzata per personalizzare le query SQL in modo da visualizzare solo i dati pertinenti a un singolo utente.
+        Ad esempio, la variabile viene utilizzata nella query per le posizioni correnti dell'utente:
+        \begin{lstlisting}
+            SELECT * 
+            FROM nearyou.positions 
+            WHERE user_uuid = toUUID('${user_id}')
+        \end{lstlisting} 
+
+        \mysubparagraph{Trasformazioni e array interessi}
+        Per la tabella dell'utente nella tabella della dashboard specifica per far vedere gli interessi dell'utente è stata usata la funzione \texttt{ARRAY\_AGG} per aggregare gli interessi dell'utente in un array JSON.
+        Questo approccio consente di visualizzare gli interessi in un formato strutturato e facilmente leggibile ma comparivano tutti in una singola cella.
+        Quindi sono state usate delle trasformazioni di Grafana per visualizzare un interesse per cella e rinominare la colonna in "Interesse0", "Interesse1", ecc.
 
         \begin{itemize}
-            \item[-] \textbf{Query per posizioni attuali degli utenti} (utilizzata nella mappa principale):
+            \item[-] \textbf{Estrazione campi}: Utilizzando la trasformazione "extractFields" per estrarre i valori dall'array JSON:
             \begin{lstlisting}
-            SELECT
-            user_uuid,
-            latitude,
-            longitude,
-            received_at
-            FROM (
-            SELECT
-                user_uuid,
-                latitude,
-                longitude,
-                received_at,
-                ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS row_num
-            FROM "nearyou"."positions"
-            )
-            WHERE row_num = 1;
+            {
+                "id": "extractFields",
+                "options": {
+                    "delimiter": ",",
+                    "format": "auto",
+                    "jsonPaths": [
+                            {
+                            "alias": "interest",
+                            "path": ""
+                            }
+                        ],
+                    "keepTime": false,
+                    "replace": false,
+                    "source": "interests_json"
+                }
+            }
             \end{lstlisting}
-            Questa query utilizza una window function (ROW\_NUMBER) per selezionare solo l'ultima posizione rilevata per ogni utente.
-
-            \item[-] \textbf{Query per messaggi recenti con informazioni contestuali} (utilizzata nella mappa principale):
-            \begin{lstlisting}[basicstyle=\ttfamily\footnotesize]
-            SELECT
-            m.userLatitude AS latitude,
-            m.userLongitude AS longitude,
-            m.creationTime AS creazione_time,
-            u.name AS userName,
-            u.surname AS userSurname,
-            a.name AS activityName,
-            m.message AS message
-            FROM (
-            SELECT
-                user_uuid,
-                message_uuid,
-                message,
-                activity_uuid,
-                activityLatitude,
-                activityLongitude,
-                creationTime,
-                userLatitude,
-                userLongitude,
-                ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY toDateTime(creationTime) DESC) AS rn
-            FROM nearyou.messageTable
-            ) AS m
-            INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid
-            INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid
-            INNER JOIN (
-            SELECT
-                user_uuid,
-                latitude,
-                longitude,
-                received_at,
-                ROW_NUMBER() OVER (PARTITION BY user_uuid ORDER BY received_at DESC) AS rn
-            FROM nearyou.positions
-            ) AS p ON u.assigned_sensor_uuid = p.user_uuid AND p.rn = 1
-            WHERE m.rn = 1
-            AND geoDistance(m.activityLongitude, m.activityLatitude, p.longitude, p.latitude) < 300
-            ORDER BY m.creationTime DESC;
-            \end{lstlisting}
-            Questa query complessa combina messaggi, dati utente e attività, utilizzando la funzione geospaziale geoDistance per filtrare i messaggi entro 300 metri dalla posizione attuale dell'utente.
-
-            \item[-] \textbf{Query per la tabella dei punti di interesse} (utilizzata nella dashboard principale):
+            
+            \item[-] \textbf{Organizzazione}: Per nascondere il campo originale dell'array e mantenere solo i campi estratti:
             \begin{lstlisting}
-            SELECT
-            a.name AS nome_attivita,
-            a.address AS indirizzo,
-            a.type AS tipologia,
-            a.description as descrizione,
-            COUNT(m.message_uuid) AS numero_messaggi
-            FROM nearyou.activity a
-            INNER JOIN nearyou.messageTable m ON a.activity_uuid = m.activity_uuid
-            GROUP BY a.activity_uuid, a.name, a.type, a.address, a.description
-            HAVING COUNT(m.message_uuid) > 0
-            ORDER BY numero_messaggi DESC
+            {
+                "id": "organize",
+                "options": {
+                    "excludeByName": {
+                        "interests_json": true
+                    },
+                    "includeByName": {},
+                    "indexByName": {},
+                    "renameByName": {}
+                }
+            }
             \end{lstlisting}
-            Questa query genera la classifica dei punti di interesse in base al numero di messaggi pubblicitari generati.
-
-            \item[-] \textbf{Query per lo storico delle posizioni di un utente specifico} (dashboard specifica):
+            
+            \item[-] \textbf{Ridenominazione colonne}: Usando la trasformazione "renameByRegex" per applicare un pattern di ridenominazione:
             \begin{lstlisting}
-            SELECT * FROM nearyou.positions
-            WHERE user_uuid = toUUID('${user_id}')
-            LIMIT 1000
+            {
+                "id": "renameByRegex",
+                "options": {
+                    "regex": "^(\\d+)$",
+                    "renamePattern": "interesse $1"
+                }
+            }
             \end{lstlisting}
-
-            \item[-] \textbf{Query per identificare gli estremi del percorso utente} (dashboard specifica):
-            \begin{lstlisting}
-            (
-            SELECT *
-            FROM nearyou.positions
-            WHERE user_uuid = toUUID('${user_id}')
-            ORDER BY received_at ASC
-            LIMIT 1
-            )
-            UNION ALL
-            (
-            SELECT *
-            FROM nearyou.positions
-            WHERE user_uuid = toUUID('${user_id}')
-            ORDER BY received_at DESC
-            LIMIT 1
-            );
-            \end{lstlisting}
-            Questa query utilizza UNION ALL per combinare il primo e l'ultimo punto del percorso dell'utente, permettendo di evidenziarli con marker speciali.
-
-            \item[-] \textbf{Query per i messaggi generati per un utente specifico} (dashboard specifica):
-            \begin{lstlisting}
-            SELECT
-            m.userLatitude,
-            m.userLongitude,
-            m.creationTime,
-            u.name,
-            u.surname,
-            a.name,
-            m.message
-            FROM nearyou.messageTable m
-            INNER JOIN nearyou.user u ON m.user_uuid = u.user_uuid
-            INNER JOIN nearyou.activity a ON m.activity_uuid = a.activity_uuid
-            WHERE u.assigned_sensor_uuid = toUUID('${user_id}')
-            LIMIT 1000;
-            \end{lstlisting}
-
-            \item[-] \textbf{Query per i dati anagrafici e interessi dell'utente} (dashboard specifica):
-            \begin{lstlisting}
-            SELECT
-            u.name,
-            u.surname,
-            u.email,
-            u.gender,
-            u.birthdate,
-            u.civil_status,
-            ARRAY_AGG(ui.interest) AS interests_json
-            FROM
-            nearyou.user u
-            JOIN
-            nearyou.user_interest ui ON u.user_uuid = ui.user_uuid
-            WHERE
-            u.assigned_sensor_uuid = toUUID('${user_id}')
-            GROUP BY
-            u.name, u.surname, u.email, u.gender, u.birthdate, u.civil_status, u.user_uuid;
-            \end{lstlisting}
-            Questa query utilizza ARRAY\_AGG per raccogliere tutti gli interessi dell'utente in un array JSON, che viene poi espanso nella dashboard utilizzando trasformazioni.
         \end{itemize}
 
-        \mysubparagraph{Connettore ClickHouse e visualizzazione in tempo reale}
-        Grafana si integra con ClickHouse attraverso un connettore nativo specifico, configurato come datasource all'interno della piattaforma:
 
+        \mysubparagraph{Connettore ClickHouse}
+        Grafana si integra con ClickHouse attraverso un connettore nativo specifico, configurato come datasource all'interno della piattaforma:
+        
         \begin{lstlisting}
         {
-          "name": "ClickHouse",
-          "type": "grafana-clickhouse-datasource",
-          "uid": "ee5wustcp8zr4b",
-          "jsonData": {
-            "defaultDatabase": "nearyou",
-            "port": 9000,
-            "host": "clickhouse",
-            "username": "default",
-            "tlsSkipVerify": false
-          },
-          "secureJsonData": {
-            "password": "pass"
-          }
+            "name": "ClickHouse",
+            "type": "grafana-clickhouse-datasource",
+            "uid": "ee5wustcp8zr4b",
+            "jsonData": {
+                "defaultDatabase": "nearyou",
+                "port": 9000,
+                "host": "clickhouse",
+                "username": "default",
+                "tlsSkipVerify": false
+            },
+            "secureJsonData": {
+                "password": "pass"
+            }
         }
         \end{lstlisting}
-
+        
         Il connettore nativo offre vantaggi significativi rispetto alle alternative generiche:
-
+        
         \begin{itemize}
-            \item[-] \textbf{Porta con se tutte le funzionalità di ClickHouse}:
+            \item[-] \textbf{Porta con sé tutte le funzionalità di ClickHouse}:
             \begin{itemize}
-                \item[.] Supporto per query SQL avanzate;
-                \item[.] Funzioni geospaziali integrate;
-                \item[.] Ottimizzazione automatica delle performance.
+            \item[.] Supporto per query SQL avanzate;
+            \item[.] Funzioni geospaziali integrate;
+            \item[.] Ottimizzazione automatica delle performance.
             \end{itemize}
             \item[-] \textbf{Configurazione semplice e veloce}:
             \begin{itemize}
-                \item[.] Configurazione del datasource in pochi passaggi;
-                \item[.] Nessuna necessità di scrivere codice personalizzato per l'integrazione.
-                \item[.] possibilità di configuare il provisioning automatico.
+            \item[.] Configurazione del datasource in pochi passaggi;
+            \item[.] Nessuna necessità di scrivere codice personalizzato per l'integrazione;
+            \item[.] Possibilità di configurare il provisioning automatico.
             \end{itemize}
         \end{itemize}
-
+        
         La visualizzazione in tempo reale è garantita attraverso un intervallo di aggiornamento automatico configurato a 10 secondi:
-
         \begin{lstlisting}
         {
-          "refresh": "10s"
+            "refresh": "10s"
         }
         \end{lstlisting}
 
