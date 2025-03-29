@@ -3929,6 +3929,58 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
     \end{itemize}
 \end{itemize}
 
+\subsection{Continuous Integration}
+    \begin{itemize} 
+    \item \textbf{Descrizione e approccio}: Il progetto implementa una robusta pipeline di Continuous Integration basata su GitHub Actions, progettata per automatizzare il testing, la valutazione della qualità del codice e la generazione di report dettagliati ad ogni push sul branch principale o apertura di pull request. Questo approccio integrato garantisce che ogni modifica al codebase venga rigorosamente verificata prima dell'integrazione, mantenendo elevati standard qualitativi durante tutto il ciclo di sviluppo.
+    
+    \item \textbf{Workflow e automatizzazione}:
+    \begin{itemize}
+        \item La pipeline CI viene attivata automaticamente in risposta a eventi Git specifici (push su main e pull request), creando un ciclo di feedback immediato per gli sviluppatori.
+        \item L'intero stack applicativo viene costruito in un ambiente isolato utilizzando Docker Compose con il profilo "test", garantendo che i test vengano eseguiti in un ambiente identico a quello di produzione.
+        \item I container vengono orchestrati per eseguire in sequenza, con controlli di dipendenza che assicurano che componenti come Kafka e ClickHouse siano completamente inizializzati prima dell'esecuzione dei test.
+        \item Al completamento dei test, i report vengono estratti dal container e archiviati come artefatti permanenti del repository, creando una cronologia consultabile dell'evoluzione qualitativa del progetto.
+    \end{itemize}
+    
+    \item \textbf{Misure di qualità e reporting}:
+    \begin{itemize}
+        \item Il sistema genera e traccia metriche complete sulla qualità del codice, tra cui:
+        \begin{itemize}
+            \item Copertura dei test (sia a livello di linee che di branch) con report in formato XML compatibile con servizi esterni come Coveralls.
+            \item Analisi statica tramite pylint con regole personalizzate definite in un file di configurazione dedicato.
+            \item Metriche di complessità del codice come fan-in, fan-out, numero di attributi, parametri e lunghezza delle funzioni, visualizzate attraverso grafici generati automaticamente.
+        \end{itemize}
+        \item I risultati vengono visualizzati dinamicamente nel README del progetto attraverso badge aggiornati ad ogni esecuzione, fornendo un'istantanea immediata dello stato del progetto.
+        \item L'integrazione con servizi esterni come Coveralls consente il monitoraggio delle tendenze nel tempo e il confronto con benchmark di settore.
+    \end{itemize}
+    
+    \item \textbf{Trasparenza e comunicazione}:
+    \begin{itemize}
+        \item I report generati non sono solo archiviati ma anche visualizzati attraverso grafici che evidenziano l'evoluzione delle metriche nel tempo, facilitando l'identificazione di trend e potenziali problemi.
+        \item Questi grafici vengono automaticamente aggiornati e committati nel repository, creando una documentazione visiva accessibile a tutti i membri del team.
+        \item I badge nel README forniscono un'indicazione immediata della salute del progetto, incentivando il mantenimento di standard elevati e facilitando la comunicazione dello stato del progetto a stakeholder tecnici e non.
+    \end{itemize}
+    
+    \item \textbf{Integrazione con il processo di sviluppo}:
+    \begin{itemize}
+        \item La CI è progettata per integrarsi perfettamente con il flusso di lavoro Git-flow adottato dal team, fornendo feedback immediato sulle pull request.
+        \item I risultati dei test diventano parte della documentazione delle pull request, facilitando il processo di code review e la decisione sull'approvazione delle modifiche.
+        \item L'automazione della generazione e del commit dei report riduce il carico manuale sul team, consentendo agli sviluppatori di concentrarsi sulla risoluzione dei problemi piuttosto che sulla loro documentazione.
+    \end{itemize}
+    
+    \item \textbf{Sicurezza e gestione delle credenziali}:
+    \begin{itemize}
+        \item La pipeline utilizza segreti di GitHub per gestire in modo sicuro token sensibili come quello di Coveralls, garantendo che le credenziali non vengano esposte.
+        \item L'utilizzo di un'identità bot per i commit generati automaticamente (\texttt{github-actions[bot]}) permette di distinguere chiaramente tra modifiche manuali e automatiche nella cronologia del repository.
+    \end{itemize}
+    
+    \item \textbf{Estensibilità e manutenzione}:
+    \begin{itemize}
+        \item La struttura modulare del workflow facilita l'aggiunta di nuovi strumenti di analisi o la modifica di quelli esistenti senza richiedere una riprogettazione completa.
+        \item Lo script \texttt{createCharts.py} è progettato per elaborare i report generati e produrre visualizzazioni significative, con la possibilità di estendere facilmente l'analisi a nuove metriche.
+        \item La generazione automatica di badge tramite \texttt{readmeBadges.py} può essere facilmente adattata per includere nuovi indicatori di qualità man mano che evolvono le esigenze del progetto.
+    \end{itemize}
+    \end{itemize}
+
 \subsection{Vantaggi dell'architettura containerizzata}
 Questa struttura containerizzata permette una distribuzione modulare e scalabile del sistema, semplificando la gestione e la manutenzione dei componenti e consentendo una rapida scalabilità in risposta alle esigenze emergenti. Grazie all'uso di Docker, si garantisce:
 
