@@ -728,7 +728,7 @@ Ovviamente, il layer di Visualizzazione non rientra nell'architettura esagonale,
 \rowcolor{gray!25}
 \textbf{Kappa Architecture} & \textbf{Architettura Esagonale} & \textbf{Ruolo nel Progetto} \\
 \hline
-Log Immutabile & \textit{SimulationService} Outbound Port & Il servizio che si occupa di creare posizioni simulate , invia queste ultime tramite l'apposita outbound port, come uno stream di dati persistente, partizionato per utente e ordinato temporalmente, implementato con ApacheKafka, usando il topic\texttt{SimulatorPosition}. \\
+Log Immutabile & \textit{SimulationService} Outbound Port & Il servizio che si occupa di creare le posizioni simulate, invia queste ultime tramite l'apposita outbound port, come uno stream di dati persistente, partizionato per utente e ordinato temporalmente, implementato con ApacheKafka, usando il topic \texttt{SimulatorPosition}. \\
 \hline
 Stream Processing Engine & \textit{PositionToMessageService} Inbound Port/Core Logic & Il servizio riceve le posizioni tramite l'apposita Inbound Port, elabora lo stream in tempo reale e parallelamente al numero di utenti , trasformando lo stream\\
 \hline
