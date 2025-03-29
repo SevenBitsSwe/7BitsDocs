@@ -1193,7 +1193,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \begin{itemize}
         \item \texttt{\_\_init\_\_(self, sensor\_repository: ISensorRepository, user\_repository: IUserRepository)} - Costruttore che inizializza il servizio con i repository necessari per gestire sensori e utenti.
         
-        \item \texttt{assign\_sensor\_to\_user(self) -> uuid} - Assegna un sensore disponibile a un utente libero. Utilizza un lock per garantire che l'operazione sia thread-safe. Recupera un sensore non occupato e un utente libero dai rispettivi repository, marca il sensore come occupato e lo associa all'utente. Registra dettagliatamente tutte le operazioni in un file di log. Restituisce l'UUID del sensore assegnato o None se l'assegnazione fallisce.
+        \item \texttt{assign\_sensor\_to\_user(self) -> uuid} - Assegna un sensore disponibile ad un utente libero. Utilizza un lock per garantire che l'operazione sia thread-safe. Recupera un sensore non occupato e un utente libero dai rispettivi repository, marca il sensore come occupato e lo associa all'utente. Registra dettagliatamente tutte le operazioni in un file di log. Restituisce l'UUID del sensore assegnato o None se l'assegnazione fallisce.
     \end{itemize}
     \end{itemize}
 
