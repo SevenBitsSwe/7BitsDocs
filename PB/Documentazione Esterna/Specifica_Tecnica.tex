@@ -1036,8 +1036,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
     \paragraph{SensorSubject}
     \begin{itemize} 
-    \item \textbf{Descrizione}: Implementa una classe astratta che funge da soggetto nel pattern Observer. È utilizzata per astrarre il sensore e renderlo osservabile dalle classi Observer. Si occupa di notificare le classi Observer quando i dati del sensore cambiano.
-    \item \textbf{Attributi}:
+    \item \textbf{Descrizione}: Implementa una classe astratta ed è utilizzata per astrarre il sensore.
     \begin{itemize}
         \item \texttt{\_sensor\_uuid: uuid} - Identificatore univoco del sensore.
         \item \texttt{\_simulation\_strategy: IPositionSimulationStrategy} - Strategia utilizzata per simulare la posizione del sensore.
@@ -2273,11 +2272,11 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
 
 
-        \myparagraph{ClickHouse}
+        \subsubsection{ClickHouse}
         Nel progetto ClickHouse è stato scelto come database data la possibilità di gestire sia dati time series sia dati geospaziali.
         Inoltre questa soluzione portava con sé tanti altri benefici riguardanti le performance e la scalabilità del sistema.
 
-        \mysubparagraph{Architettura MergeTree}
+        \myparagraph{Architettura MergeTree}
         Uno dei fattori che migliore le performance di ClickHouse è il motore MergeTree.
         Ovvero a differenza dei database tradizionali, MergeTree è ottimizzato per l'inserimento di grandi volumi di dati e query analitiche complesse grazie alle seguenti caratteristiche:
 
@@ -2324,7 +2323,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             \end{itemize}         
         \end{itemize}
 
-        \mysubparagraph{Schema del database}
+        \myparagraph{Schema del database}
         Lo schema del database comprende le seguenti tabelle principali:
 
         \begin{itemize}
@@ -2593,10 +2592,10 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             geoDistance(m.activityLongitude, m.activityLatitude, p.longitude, p.latitude) < 300
         \end{lstlisting}
 
-        \myparagraph{Grafana}
+        \subsubsection{Grafana}
         Grafana è una piattaforma di visualizzazione e analisi dati utilizzata in questo progetto per rappresentare graficamente le informazioni raccolte dal sistema e consentire il monitoraggio in tempo reale delle attività.
         
-        \mysubparagraph{Utenti}
+        \myparagraph{Utenti}
         Innanzitutto per fare l'accesso è necessario un account Grafana. 
         Dato che lo scopo di questo progetto è quello di creare una dashboard da amministratore la scelta è stata quella di usare l'account admin per l'accesso.
         Le credenziali per questo utente sono:
@@ -2606,7 +2605,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \end{itemize}
         Questo utente ha accesso completo a entrambe le dashboard del progetto.
 
-        \mysubparagraph{Dashboards}
+        \myparagraph{Dashboards}
         La visualizzazione in questo progetto è stata separata in due dashboard differenti:
         \begin{itemize}
             \item[.] Dashboard generale: Si occupa di una visuale complessiva del sistema, mostrando le ultime posizioni e gli ultimi messaggi di ogni singolo utente. Inoltre si vedono anche tutte le attività commerciali disposte per la mappa;
@@ -2615,7 +2614,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             È inoltre presente una tabella che mostra tutti i dati anagrafici dell'utente.
         \end{itemize}
 
-        \mysubparagraph{Dashboard generale}
+        \myparagraph{Dashboard generale}
         La dashboard generale è quindi divisa in due widget:
         \begin{itemize}
             \item[-] \textbf{Mappa geospaziale}: Un pannello interattivo che visualizza una mappa OpenStreetMap su cui vengono mostrate le seguenti informazioni:
@@ -2652,7 +2651,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             \item[-] Analizzare i dati temporali delle posizioni e dei messaggi correlati.
         \end{itemize}
 
-        \mysubparagraph{Querying ClickHouse}
+        \myparagraph{Querying ClickHouse}
         L'integrazione tra Grafana e ClickHouse è realizzata tramite query SQL ottimizzate per le performance. Di seguito sono riportate le principali query utilizzate nelle dashboard, che consentono di estrarre e visualizzare i dati in tempo reale.
         \begin{itemize}
 
@@ -2661,7 +2660,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
             \begin{itemize}
                 \item[-] \textbf{Posizioni attuali degli utenti:}
-                Questa query recupera l'ultima posizione nota per ciascun utente registrato nel sistema. Utilizza una subquery con ROW_NUMBER() per selezionare solo la posizione più recente per ciascun sensore.
+                Questa query recupera l'ultima posizione nota per ciascun utente registrato nel sistema. Utilizza una subquery con ROW\_NUMBER() per selezionare solo la posizione più recente per ciascun sensore.
                 
                 \begin{lstlisting}
                 SELECT 
@@ -2803,7 +2802,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
                 \end{lstlisting}
                 
                 \item[-] \textbf{Dati anagrafici dell'utente:}
-                Questa query recupera i dati anagrafici dell'utente e i suoi interessi, utilizzando la funzione ARRAY_AGG per aggregare gli interessi multipli in un array.
+                Questa query recupera i dati anagrafici dell'utente e i suoi interessi, utilizzando la funzione ARRAY\_AGG per aggregare gli interessi multipli in un array.
                 
                 \begin{lstlisting}
                 SELECT 
@@ -2827,7 +2826,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \end{itemize}
         Queste query rappresentano un insieme completo di interrogazioni utilizzate per alimentare le dashboard Grafana e consentire la visualizzazione di informazioni in tempo reale sulla posizione degli utenti, le attività commerciali e i messaggi pubblicitari generati.
 
-        \mysubparagraph{Variabili dashboard}
+        \myparagraph{Variabili dashboard}
         In questo progetto è stata usata una variabile dashboard per filtrare i dati in base all'utente selezionato.
         Questa variabile è definita come \texttt{user\_id} e viene utilizzata per personalizzare le query SQL in modo da visualizzare solo i dati pertinenti a un singolo utente.
         Ad esempio, la variabile viene utilizzata nella query per le posizioni correnti dell'utente:
@@ -2837,7 +2836,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             WHERE user_uuid = toUUID('${user_id}')
         \end{lstlisting} 
 
-        \mysubparagraph{Trasformazioni e array interessi}
+        \myparagraph{Trasformazioni e array interessi}
         Per la tabella dell'utente nella tabella della dashboard specifica per far vedere gli interessi dell'utente è stata usata la funzione \texttt{ARRAY\_AGG} per aggregare gli interessi dell'utente in un array JSON.
         Questo approccio consente di visualizzare gli interessi in un formato strutturato e facilmente leggibile ma comparivano tutti in una singola cella.
         Quindi sono state usate delle trasformazioni di Grafana per visualizzare un interesse per cella e rinominare la colonna in "Interesse0", "Interesse1", ecc.
@@ -2891,7 +2890,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \end{itemize}
 
 
-        \mysubparagraph{Connettore ClickHouse}
+        \myparagraph{Connettore ClickHouse}
         Grafana si integra con ClickHouse attraverso un connettore nativo specifico, configurato come datasource all'interno della piattaforma:
         
         \begin{lstlisting}
@@ -2943,7 +2942,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             \item[-] Statistiche di generazione di messaggi per le attività più popolari.
         \end{itemize}
 
-        \mysubparagraph{Provisioning automatico}
+        \myparagraph{Provisioning automatico}
         Il provisioning automatico di Grafana è implementato attraverso file di configurazione YAML che vengono caricati all'avvio del container, garantendo la disponibilità immediata di datasource e dashboard preconfiguraate.
 
         \begin{itemize}
@@ -3137,358 +3136,722 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \item[-] \textbf{Dependency Inversion Principle}: I componenti dipendono da astrazioni, non da implementazioni concrete. Questo è visibile nell'iniezione delle dipendenze nei costruttori.
     \end{itemize}
 
-    \subsection{Diagramma delle Classi}
-    In questa sezione viene fornita una descrizione dettagliata dei diagrammi delle classi del sistema, evidenziando le componenti principali, i loro ruoli, attributi, operazioni e le relazioni tra di esse. I diagrammi rappresentano i due componenti fondamentali dell'architettura: il modulo di simulazione delle posizioni e il processore Flink.
+    % \subsection{Diagramma delle Classi}
+    % In questa sezione viene fornita una descrizione dettagliata dei diagrammi delle classi del sistema, evidenziando le componenti principali, i loro ruoli, attributi, operazioni e le relazioni tra di esse. I diagrammi rappresentano i due componenti fondamentali dell'architettura: il modulo di simulazione delle posizioni e il processore Flink.
 
-    \subsubsection{Modulo di Simulazione}
-    Il modulo di simulazione è responsabile della generazione di dati di posizione simulati, consentendo di testare l'intero sistema senza richiedere l'utilizzo di dispositivi GPS reali.
+    % \subsubsection{Modulo di Simulazione}
+    % Il modulo di simulazione è responsabile della generazione di dati di posizione simulati, consentendo di testare l'intero sistema senza richiedere l'utilizzo di dispositivi GPS reali.
 
-    % \begin{figure}[H]
-    %     \centering
-    %     \includegraphics[width=0.8\textwidth]{diaSimulation.png}
-    %     \caption{Diagramma delle classi del modulo di simulazione}
-    %     \label{fig:simulation_module}
-    % \end{figure}
+    % % \begin{figure}[H]
+    % %     \centering
+    % %     \includegraphics[width=0.8\textwidth]{diaSimulation.png}
+    % %     \caption{Diagramma delle classi del modulo di simulazione}
+    % %     \label{fig:simulation_module}
+    % % \end{figure}
 
-    \paragraph{SensorFactory}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Implementa il pattern Factory per la creazione di sensori GPS configurati. Si occupa di istanziare oggetti di tipo GpsSensor con le configurazioni appropriate, facilitando la gestione delle dipendenze.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_user\_sensor\_service: UserSensorService} - Servizio per l'assegnazione di sensori agli utenti, gestisce la corrispondenza tra UUID dei sensori e profili utente.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, sensor\_repo: ISensorRepository, user\_repo: IUserRepository)} - Costruttore che inizializza la factory con i repository necessari per sensori e utenti.
-            \item \texttt{create\_gps\_sensor(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy) -> SensorSubject} - Crea un singolo sensore GPS con il sender e la strategia forniti, generando un UUID unico.
-            \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int) -> List[SensorSubject]} - Crea una lista di sensori GPS con la configurazione specificata, utile per simulazioni multiple.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{SensorFactory}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Implementa il pattern Factory per la creazione di sensori GPS configurati. Si occupa di istanziare oggetti di tipo GpsSensor con le configurazioni appropriate, facilitando la gestione delle dipendenze.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_user\_sensor\_service: UserSensorService} - Servizio per l'assegnazione di sensori agli utenti, gestisce la corrispondenza tra UUID dei sensori e profili utente.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, sensor\_repo: ISensorRepository, user\_repo: IUserRepository)} - Costruttore che inizializza la factory con i repository necessari per sensori e utenti.
+    %         \item \texttt{create\_gps\_sensor(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy) -> SensorSubject} - Crea un singolo sensore GPS con il sender e la strategia forniti, generando un UUID unico.
+    %         \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int) -> List[SensorSubject]} - Crea una lista di sensori GPS con la configurazione specificata, utile per simulazioni multiple.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{GpsSensor}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Implementa un sensore GPS che simula il movimento utilizzando la strategia fornita. Rappresenta un dispositivo fisico che trasmette dati di posizione.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_sensor\_uuid: str} - Identificatore univoco del sensore utilizzato per tracciare le posizioni.
-            \item \texttt{\_\_position\_sender: PositionSender} - Componente responsabile dell'invio delle posizioni al sistema di messaggistica.
-            \item \texttt{\_\_simulation\_strategy: IPositionSimulationStrategy} - Strategia utilizzata per simulare lo spostamento del sensore.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, sensor\_id: str, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy)} - Inizializza il sensore con un ID, un sender e una strategia di simulazione.
-            \item \texttt{simulate(self)} - Metodo principale che avvia la simulazione del movimento utilizzando la strategia definita, generando nuove posizioni a intervalli regolari.
-            \item \texttt{create\_geo\_position(self, latitude: float, longitude: float, timestamp: str) -> GeoPosition} - Crea un oggetto posizione con le coordinate specificate e il timestamp corrente.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{GpsSensor}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Implementa un sensore GPS che simula il movimento utilizzando la strategia fornita. Rappresenta un dispositivo fisico che trasmette dati di posizione.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_sensor\_uuid: str} - Identificatore univoco del sensore utilizzato per tracciare le posizioni.
+    %         \item \texttt{\_\_position\_sender: PositionSender} - Componente responsabile dell'invio delle posizioni al sistema di messaggistica.
+    %         \item \texttt{\_\_simulation\_strategy: IPositionSimulationStrategy} - Strategia utilizzata per simulare lo spostamento del sensore.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, sensor\_id: str, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy)} - Inizializza il sensore con un ID, un sender e una strategia di simulazione.
+    %         \item \texttt{simulate(self)} - Metodo principale che avvia la simulazione del movimento utilizzando la strategia definita, generando nuove posizioni a intervalli regolari.
+    %         \item \texttt{create\_geo\_position(self, latitude: float, longitude: float, timestamp: str) -> GeoPosition} - Crea un oggetto posizione con le coordinate specificate e il timestamp corrente.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{SensorSubject}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Interfaccia che definisce il contratto per gli oggetti di tipo sensore, implementa il pattern Observer per notificare i cambiamenti di posizione.
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{attach(self, observer: Observer)} - Registra un observer per ricevere notifiche dal sensore.
-            \item \texttt{detach(self, observer: Observer)} - Rimuove un observer registrato.
-            \item \texttt{notify(self)} - Notifica tutti gli observer registrati di un cambiamento di stato.
-            \item \texttt{simulate(self)} - Metodo astratto che deve essere implementato dalle classi concrete per avviare la simulazione.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{SensorSubject}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Interfaccia che definisce il contratto per gli oggetti di tipo sensore, implementa il pattern Observer per notificare i cambiamenti di posizione.
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{attach(self, observer: Observer)} - Registra un observer per ricevere notifiche dal sensore.
+    %         \item \texttt{detach(self, observer: Observer)} - Rimuove un observer registrato.
+    %         \item \texttt{notify(self)} - Notifica tutti gli observer registrati di un cambiamento di stato.
+    %         \item \texttt{simulate(self)} - Metodo astratto che deve essere implementato dalle classi concrete per avviare la simulazione.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{PositionSender}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per l'invio delle posizioni attraverso vari canali di comunicazione.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_position\_serializator: IJsonSerializable} - Adattatore per la serializzazione in formato JSON.
-            \item \texttt{\_lock: threading.Lock} - Lock per garantire thread safety durante l'invio di dati.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, json\_adapter\_istance: IJsonSerializable)} - Costruttore che inizializza il sender con l'istanza del serializzatore.
-            \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Metodo astratto da implementare nelle sottoclassi per inviare dati al broker.
-            \item \texttt{send\_position(self, position: GeoPosition)} - Metodo che serializza e invia una posizione utilizzando l'adapter fornito.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{PositionSender}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per l'invio delle posizioni attraverso vari canali di comunicazione.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_position\_serializator: IJsonSerializable} - Adattatore per la serializzazione in formato JSON.
+    %         \item \texttt{\_lock: threading.Lock} - Lock per garantire thread safety durante l'invio di dati.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, json\_adapter\_istance: IJsonSerializable)} - Costruttore che inizializza il sender con l'istanza del serializzatore.
+    %         \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Metodo astratto da implementare nelle sottoclassi per inviare dati al broker.
+    %         \item \texttt{send\_position(self, position: GeoPosition)} - Metodo che serializza e invia una posizione utilizzando l'adapter fornito.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{KafkaConfluentAdapter}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Implementazione concreta di PositionSender che utilizza Confluent Kafka per pubblicare i dati di posizione.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_kafka\_config: KafkaConfigParameters} - Configurazione per la connessione a Kafka, include host, porta e topic.
-            \item \texttt{\_\_producer: Producer} - Producer Kafka utilizzato per l'invio dei messaggi.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: PositionJsonAdapter, producer\_istance: Producer)} - Costruttore che inizializza l'adapter con la configurazione Kafka e il producer.
-            \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Implementazione concreta che invia dati a Kafka utilizzando il producer configurato.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{KafkaConfluentAdapter}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Implementazione concreta di PositionSender che utilizza Confluent Kafka per pubblicare i dati di posizione.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_kafka\_config: KafkaConfigParameters} - Configurazione per la connessione a Kafka, include host, porta e topic.
+    %         \item \texttt{\_\_producer: Producer} - Producer Kafka utilizzato per l'invio dei messaggi.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: PositionJsonAdapter, producer\_istance: Producer)} - Costruttore che inizializza l'adapter con la configurazione Kafka e il producer.
+    %         \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Implementazione concreta che invia dati a Kafka utilizzando il producer configurato.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{IPositionSimulationStrategy}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Interfaccia che definisce le strategie di simulazione del movimento, implementando il pattern Strategy.
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{get\_route(self)} - Ottiene il percorso da simulare, ritornando una sequenza di coordinate geografiche.
-            \item \texttt{get\_delta\_time(self) -> float} - Ottiene l'intervallo di tempo in secondi tra aggiornamenti consecutivi di posizione.
-            \item \texttt{get\_speed(self) -> float} - Ottiene la velocità di simulazione in km/h.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{IPositionSimulationStrategy}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Interfaccia che definisce le strategie di simulazione del movimento, implementando il pattern Strategy.
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{get\_route(self)} - Ottiene il percorso da simulare, ritornando una sequenza di coordinate geografiche.
+    %         \item \texttt{get\_delta\_time(self) -> float} - Ottiene l'intervallo di tempo in secondi tra aggiornamenti consecutivi di posizione.
+    %         \item \texttt{get\_speed(self) -> float} - Ottiene la velocità di simulazione in km/h.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{BycicleSimulationStrategy}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Implementazione concreta della strategia che simula il movimento di una bicicletta, generando percorsi realistici.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_osmnx\_graph: GraphWrapper} - Grafo stradale di OpenStreetMap utilizzato per la generazione di percorsi realistici.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, map\_graph: GraphWrapper)} - Costruttore che inizializza la strategia con un grafo stradale.
-            \item \texttt{get\_route(self)} - Genera un percorso realistico utilizzando il grafo stradale, selezionando punti di partenza e arrivo casuali.
-            \item \texttt{get\_delta\_time(self) -> float} - Restituisce l'intervallo temporale predefinito di 2 secondi tra aggiornamenti.
-            \item \texttt{get\_speed(self) -> float} - Restituisce la velocità media simulata di 15 km/h tipica per una bicicletta.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{BycicleSimulationStrategy}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Implementazione concreta della strategia che simula il movimento di una bicicletta, generando percorsi realistici.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_osmnx\_graph: GraphWrapper} - Grafo stradale di OpenStreetMap utilizzato per la generazione di percorsi realistici.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, map\_graph: GraphWrapper)} - Costruttore che inizializza la strategia con un grafo stradale.
+    %         \item \texttt{get\_route(self)} - Genera un percorso realistico utilizzando il grafo stradale, selezionando punti di partenza e arrivo casuali.
+    %         \item \texttt{get\_delta\_time(self) -> float} - Restituisce l'intervallo temporale predefinito di 2 secondi tra aggiornamenti.
+    %         \item \texttt{get\_speed(self) -> float} - Restituisce la velocità media simulata di 15 km/h tipica per una bicicletta.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{SensorSimulationAdministrator}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Coordina la simulazione di più sensori in parallelo, gestendo l'esecuzione concorrente.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_sensor\_registry: List[SensorSubject]} - Registro contenente tutti i sensori da simulare.
-            \item \texttt{\_\_executor: ThreadPoolExecutor} - Pool di thread per l'esecuzione parallela delle simulazioni.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, list\_of\_sensors: List[SensorSubject])} - Costruttore che inizializza l'amministratore con una lista di sensori.
-            \item \texttt{start\_simulation(self)} - Avvia la simulazione per tutti i sensori registrati utilizzando un thread pool.
-            \item \texttt{stop\_simulation(self)} - Arresta la simulazione in corso per tutti i sensori.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{SensorSimulationAdministrator}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Coordina la simulazione di più sensori in parallelo, gestendo l'esecuzione concorrente.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_sensor\_registry: List[SensorSubject]} - Registro contenente tutti i sensori da simulare.
+    %         \item \texttt{\_\_executor: ThreadPoolExecutor} - Pool di thread per l'esecuzione parallela delle simulazioni.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, list\_of\_sensors: List[SensorSubject])} - Costruttore che inizializza l'amministratore con una lista di sensori.
+    %         \item \texttt{start\_simulation(self)} - Avvia la simulazione per tutti i sensori registrati utilizzando un thread pool.
+    %         \item \texttt{stop\_simulation(self)} - Arresta la simulazione in corso per tutti i sensori.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{GeoPosition}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Classe che rappresenta una posizione geografica con coordinate e timestamp.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_sensor\_id: str} - Identificatore del sensore che ha generato la posizione.
-            \item \texttt{\_\_latitude: float} - Latitudine della posizione in gradi decimali.
-            \item \texttt{\_\_longitude: float} - Longitudine della posizione in gradi decimali.
-            \item \texttt{\_\_timestamp: str} - Timestamp ISO 8601 che indica quando è stata rilevata la posizione.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{get\_sensor\_id(self) -> str} - Restituisce l'ID del sensore associato.
-            \item \texttt{get\_latitude(self) -> float} - Restituisce la latitudine.
-            \item \texttt{get\_longitude(self) -> float} - Restituisce la longitudine.
-            \item \texttt{get\_timestamp(self) -> str} - Restituisce il timestamp della rilevazione.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{GeoPosition}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Classe che rappresenta una posizione geografica con coordinate e timestamp.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_sensor\_id: str} - Identificatore del sensore che ha generato la posizione.
+    %         \item \texttt{\_\_latitude: float} - Latitudine della posizione in gradi decimali.
+    %         \item \texttt{\_\_longitude: float} - Longitudine della posizione in gradi decimali.
+    %         \item \texttt{\_\_timestamp: str} - Timestamp ISO 8601 che indica quando è stata rilevata la posizione.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{get\_sensor\_id(self) -> str} - Restituisce l'ID del sensore associato.
+    %         \item \texttt{get\_latitude(self) -> float} - Restituisce la latitudine.
+    %         \item \texttt{get\_longitude(self) -> float} - Restituisce la longitudine.
+    %         \item \texttt{get\_timestamp(self) -> str} - Restituisce il timestamp della rilevazione.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \subsubsection{Processore Flink}
-    Il processore Flink è responsabile dell'elaborazione dei dati di posizione in tempo reale per generare messaggi pubblicitari personalizzati.
+    % \subsubsection{Processore Flink}
+    % Il processore Flink è responsabile dell'elaborazione dei dati di posizione in tempo reale per generare messaggi pubblicitari personalizzati.
 
-    % \begin{figure}[H]
-    %     \centering
-    %     \includegraphics[width=0.8\textwidth]{diaFlink.png}
-    %     \caption{Diagramma delle classi del processore Flink}
-    %     \label{fig:flink_processor}
-    % \end{figure}
+    % % \begin{figure}[H]
+    % %     \centering
+    % %     \includegraphics[width=0.8\textwidth]{diaFlink.png}
+    % %     \caption{Diagramma delle classi del processore Flink}
+    % %     \label{fig:flink_processor}
+    % % \end{figure}
 
-    \paragraph{FlinkJobManager}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Coordina l'esecuzione del job Flink, definendo il flusso di elaborazione dei dati e orchestrando le diverse trasformazioni.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_streaming\_env: StreamExecutionEnvironment} - Ambiente di esecuzione Flink per la definizione e l'esecuzione del job.
-            \item \texttt{\_\_populated\_datastream} - Stream di dati iniziale proveniente dalla source Kafka.
-            \item \texttt{keyed\_stream} - Stream con chiave applicata, utilizzato per raggruppare dati relativi allo stesso sensore/utente.
-            \item \texttt{\_\_mapped\_stream} - Stream risultante dopo l'applicazione della map function.
-            \item \texttt{\_\_filtered\_stream} - Stream finale dopo l'applicazione della funzione di filtro.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, streaming\_env\_istance: StreamExecutionEnvironment, map\_function\_implementation: MapFunction, filter\_function\_implementation: FilterFunction, position\_receiver\_istance: IPositionReceiver, message\_sender\_istance: IMessageWriter)} - Costruttore che configura il job con l'ambiente e le funzioni di trasformazione.
-            \item \texttt{execute(self)} - Esegue il job Flink, avviando l'elaborazione e mantenendola attiva.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{FlinkJobManager}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Coordina l'esecuzione del job Flink, definendo il flusso di elaborazione dei dati e orchestrando le diverse trasformazioni.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_streaming\_env: StreamExecutionEnvironment} - Ambiente di esecuzione Flink per la definizione e l'esecuzione del job.
+    %         \item \texttt{\_\_populated\_datastream} - Stream di dati iniziale proveniente dalla source Kafka.
+    %         \item \texttt{keyed\_stream} - Stream con chiave applicata, utilizzato per raggruppare dati relativi allo stesso sensore/utente.
+    %         \item \texttt{\_\_mapped\_stream} - Stream risultante dopo l'applicazione della map function.
+    %         \item \texttt{\_\_filtered\_stream} - Stream finale dopo l'applicazione della funzione di filtro.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, streaming\_env\_istance: StreamExecutionEnvironment, map\_function\_implementation: MapFunction, filter\_function\_implementation: FilterFunction, position\_receiver\_istance: IPositionReceiver, message\_sender\_istance: IMessageWriter)} - Costruttore che configura il job con l'ambiente e le funzioni di trasformazione.
+    %         \item \texttt{execute(self)} - Esegue il job Flink, avviando l'elaborazione e mantenendola attiva.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{PositionToMessageProcessor}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Implementa la MapFunction di Flink per trasformare le posizioni in messaggi pubblicitari personalizzati.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{ai\_service: LLMService} - Servizio LLM per generare messaggi pubblicitari contestuali.
-            \item \texttt{\_\_user\_repository: IUserRepository} - Repository per accedere ai dati utente, come preferenze e informazioni demografiche.
-            \item \texttt{\_\_activity\_repository: IActivityRepository} - Repository per accedere ai dati delle attività commerciali nelle vicinanze.
-            \item \texttt{\_\_message\_serializer: IFlinkSerializable} - Serializer per i messaggi generati che saranno inviati a Kafka.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, ai\_chatbot\_service: LLMService, user\_repository: IUserRepository, activity\_repository: IActivityRepository, message\_serializer: IFlinkSerializable)} - Costruttore che inizializza il processore con i servizi necessari.
-            \item \texttt{open(self, runtime\_context)} - Inizializza il servizio LLM e altre risorse necessarie durante l'avvio del task.
-            \item \texttt{map(self, value)} - Trasforma un record di posizione in un messaggio pubblicitario, identificando POI nelle vicinanze e generando contenuti personalizzati.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{PositionToMessageProcessor}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Implementa la MapFunction di Flink per trasformare le posizioni in messaggi pubblicitari personalizzati.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{ai\_service: LLMService} - Servizio LLM per generare messaggi pubblicitari contestuali.
+    %         \item \texttt{\_\_user\_repository: IUserRepository} - Repository per accedere ai dati utente, come preferenze e informazioni demografiche.
+    %         \item \texttt{\_\_activity\_repository: IActivityRepository} - Repository per accedere ai dati delle attività commerciali nelle vicinanze.
+    %         \item \texttt{\_\_message\_serializer: IFlinkSerializable} - Serializer per i messaggi generati che saranno inviati a Kafka.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, ai\_chatbot\_service: LLMService, user\_repository: IUserRepository, activity\_repository: IActivityRepository, message\_serializer: IFlinkSerializable)} - Costruttore che inizializza il processore con i servizi necessari.
+    %         \item \texttt{open(self, runtime\_context)} - Inizializza il servizio LLM e altre risorse necessarie durante l'avvio del task.
+    %         \item \texttt{map(self, value)} - Trasforma un record di posizione in un messaggio pubblicitario, identificando POI nelle vicinanze e generando contenuti personalizzati.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{FilterMessageAlreadyDisplayed}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Implementa FilterFunction per evitare duplicazioni di messaggi per lo stesso utente entro un certo periodo di tempo.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_message\_repository: IMessageRepository} - Repository per verificare l'esistenza di messaggi precedenti.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, message\_repository: IMessageRepository)} - Costruttore che inizializza il filtro con il repository dei messaggi.
-            \item \texttt{filter(self, value)} - Filtra i messaggi che sono già stati visualizzati dall'utente per la stessa attività entro un periodo configurabile.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{FilterMessageAlreadyDisplayed}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Implementa FilterFunction per evitare duplicazioni di messaggi per lo stesso utente entro un certo periodo di tempo.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_message\_repository: IMessageRepository} - Repository per verificare l'esistenza di messaggi precedenti.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, message\_repository: IMessageRepository)} - Costruttore che inizializza il filtro con il repository dei messaggi.
+    %         \item \texttt{filter(self, value)} - Filtra i messaggi che sono già stati visualizzati dall'utente per la stessa attività entro un periodo configurabile.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{KafkaPositionReceiver}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Adattatore per ricevere posizioni da Kafka, implementa IPositionReceiver.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_current\_configuration: KafkaSourceConfiguration} - Configurazione della source Kafka, inclusi topic, gruppo di consumer e server.
-            \item \texttt{\_\_position\_deserializer} - Deserializzatore per convertire i dati JSON in oggetti utilizzabili.
-            \item \texttt{\_\_kafka\_source: KafkaSource} - Source Kafka configurata per la lettura dei dati.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, kafka\_source\_configuration: KafkaSourceConfiguration, deserialize\_adapter: JsonRowDeserializationAdapter)} - Costruttore che inizializza il receiver con la configurazione e il deserializzatore.
-            \item \texttt{build\_kafka\_source(self) -> KafkaSource} - Costruisce e configura la source Kafka con le impostazioni appropriate.
-            \item \texttt{get\_position\_receiver(self)} - Restituisce la source Kafka configurata per l'utilizzo nel job Flink.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{KafkaPositionReceiver}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Adattatore per ricevere posizioni da Kafka, implementa IPositionReceiver.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_current\_configuration: KafkaSourceConfiguration} - Configurazione della source Kafka, inclusi topic, gruppo di consumer e server.
+    %         \item \texttt{\_\_position\_deserializer} - Deserializzatore per convertire i dati JSON in oggetti utilizzabili.
+    %         \item \texttt{\_\_kafka\_source: KafkaSource} - Source Kafka configurata per la lettura dei dati.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, kafka\_source\_configuration: KafkaSourceConfiguration, deserialize\_adapter: JsonRowDeserializationAdapter)} - Costruttore che inizializza il receiver con la configurazione e il deserializzatore.
+    %         \item \texttt{build\_kafka\_source(self) -> KafkaSource} - Costruisce e configura la source Kafka con le impostazioni appropriate.
+    %         \item \texttt{get\_position\_receiver(self)} - Restituisce la source Kafka configurata per l'utilizzo nel job Flink.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{KafkaMessageWriter}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Adattatore per scrivere messaggi su Kafka, implementa IMessageWriter.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_current\_configuration: KafkaWriterConfiguration} - Configurazione del writer Kafka, inclusi topic e server.
-            \item \texttt{\_\_position\_serializer} - Serializzatore per convertire gli oggetti in formato JSON.
-            \item \texttt{\_\_record\_serializer} - Serializzatore per i record Kafka, gestisce la trasformazione e la definizione di schema.
-            \item \texttt{\_\_kafka\_sink: KafkaSink} - Sink Kafka configurata per la scrittura dei dati.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, kafka\_writer\_configuration: KafkaWriterConfiguration, serialize\_adapter: JsonRowSerializationAdapter)} - Costruttore che inizializza il writer con la configurazione e il serializzatore.
-            \item \texttt{build\_record\_serializer(self)} - Costruisce il serializzatore di record per Kafka.
-            \item \texttt{build\_kafka\_sink(self)} - Costruisce la sink Kafka con le impostazioni appropriate.
-            \item \texttt{get\_message\_writer(self)} - Restituisce la sink Kafka configurata per l'utilizzo nel job Flink.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{KafkaMessageWriter}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Adattatore per scrivere messaggi su Kafka, implementa IMessageWriter.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_current\_configuration: KafkaWriterConfiguration} - Configurazione del writer Kafka, inclusi topic e server.
+    %         \item \texttt{\_\_position\_serializer} - Serializzatore per convertire gli oggetti in formato JSON.
+    %         \item \texttt{\_\_record\_serializer} - Serializzatore per i record Kafka, gestisce la trasformazione e la definizione di schema.
+    %         \item \texttt{\_\_kafka\_sink: KafkaSink} - Sink Kafka configurata per la scrittura dei dati.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, kafka\_writer\_configuration: KafkaWriterConfiguration, serialize\_adapter: JsonRowSerializationAdapter)} - Costruttore che inizializza il writer con la configurazione e il serializzatore.
+    %         \item \texttt{build\_record\_serializer(self)} - Costruisce il serializzatore di record per Kafka.
+    %         \item \texttt{build\_kafka\_sink(self)} - Costruisce la sink Kafka con le impostazioni appropriate.
+    %         \item \texttt{get\_message\_writer(self)} - Restituisce la sink Kafka configurata per l'utilizzo nel job Flink.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{LLMService}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per i servizi di language model utilizzati nella generazione di messaggi personalizzati.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_llm\_structured\_response: BaseModel} - Modello Pydantic per la risposta strutturata proveniente dal LLM.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, structured\_response: BaseModel)} - Costruttore che inizializza il servizio con il modello di risposta strutturata.
-            \item \texttt{set\_up\_chat(self)} - Metodo astratto per inizializzare la connessione con il servizio LLM.
-            \item \texttt{get\_llm\_structured\_response(self, prompt)} - Metodo astratto per ottenere una risposta strutturata dall'LLM.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{LLMService}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Classe astratta che definisce l'interfaccia per i servizi di language model utilizzati nella generazione di messaggi personalizzati.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_llm\_structured\_response: BaseModel} - Modello Pydantic per la risposta strutturata proveniente dal LLM.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, structured\_response: BaseModel)} - Costruttore che inizializza il servizio con il modello di risposta strutturata.
+    %         \item \texttt{set\_up\_chat(self)} - Metodo astratto per inizializzare la connessione con il servizio LLM.
+    %         \item \texttt{get\_llm\_structured\_response(self, prompt)} - Metodo astratto per ottenere una risposta strutturata dall'LLM.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{GroqLLMService}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Implementazione concreta di LLMService che utilizza il provider Groq per la generazione di testi.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{\_\_groq\_api\_key: str} - Chiave API per l'autenticazione con il servizio Groq.
-            \item \texttt{\_\_chat} - Istanza del client Groq per l'interazione con il servizio.
-        \end{itemize}
-        \item \textbf{Operazioni}:
-        \begin{itemize}
-            \item \texttt{\_\_init\_\_(self, structured\_response: BaseModel)} - Costruttore che inizializza il servizio Groq.
-            \item \texttt{set\_up\_chat(self)} - Configura il client Groq con rate limiting e gestione degli errori.
-            \item \texttt{get\_llm\_structured\_response(self, prompt)} - Invia un prompt al servizio Groq e converte la risposta in un formato strutturato.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{GroqLLMService}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Implementazione concreta di LLMService che utilizza il provider Groq per la generazione di testi.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_groq\_api\_key: str} - Chiave API per l'autenticazione con il servizio Groq.
+    %         \item \texttt{\_\_chat} - Istanza del client Groq per l'interazione con il servizio.
+    %     \end{itemize}
+    %     \item \textbf{Operazioni}:
+    %     \begin{itemize}
+    %         \item \texttt{\_\_init\_\_(self, structured\_response: BaseModel)} - Costruttore che inizializza il servizio Groq.
+    %         \item \texttt{set\_up\_chat(self)} - Configura il client Groq con rate limiting e gestione degli errori.
+    %         \item \texttt{get\_llm\_structured\_response(self, prompt)} - Invia un prompt al servizio Groq e converte la risposta in un formato strutturato.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{MessageDTO}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Data Transfer Object per i messaggi pubblicitari generati.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{user\_uuid: str} - Identificatore univoco dell'utente destinatario.
-            \item \texttt{activity\_uuid: str} - Identificatore univoco dell'attività commerciale associata.
-            \item \texttt{message\_uuid: str} - Identificatore univoco del messaggio.
-            \item \texttt{message: str} - Contenuto testuale del messaggio pubblicitario.
-            \item \texttt{activityLatitude: float} - Latitudine dell'attività commerciale.
-            \item \texttt{activityLongitude: float} - Longitudine dell'attività commerciale.
-            \item \texttt{creationTime: str} - Timestamp di creazione del messaggio.
-            \item \texttt{userLatitude: float} - Latitudine dell'utente al momento della generazione.
-            \item \texttt{userLongitude: float} - Longitudine dell'utente al momento della generazione.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{MessageDTO}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Data Transfer Object per i messaggi pubblicitari generati.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{user\_uuid: str} - Identificatore univoco dell'utente destinatario.
+    %         \item \texttt{activity\_uuid: str} - Identificatore univoco dell'attività commerciale associata.
+    %         \item \texttt{message\_uuid: str} - Identificatore univoco del messaggio.
+    %         \item \texttt{message: str} - Contenuto testuale del messaggio pubblicitario.
+    %         \item \texttt{activityLatitude: float} - Latitudine dell'attività commerciale.
+    %         \item \texttt{activityLongitude: float} - Longitudine dell'attività commerciale.
+    %         \item \texttt{creationTime: str} - Timestamp di creazione del messaggio.
+    %         \item \texttt{userLatitude: float} - Latitudine dell'utente al momento della generazione.
+    %         \item \texttt{userLongitude: float} - Longitudine dell'utente al momento della generazione.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{ActivityDTO}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Data Transfer Object per le attività commerciali.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{activity\_id: str} - Identificatore univoco dell'attività.
-            \item \texttt{name: str} - Nome dell'attività commerciale.
-            \item \texttt{category: str} - Categoria o tipologia dell'attività.
-            \item \texttt{description: str} - Descrizione dettagliata dell'attività.
-            \item \texttt{latitude: float} - Latitudine dell'attività.
-            \item \texttt{longitude: float} - Longitudine dell'attività.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{ActivityDTO}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Data Transfer Object per le attività commerciali.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{activity\_id: str} - Identificatore univoco dell'attività.
+    %         \item \texttt{name: str} - Nome dell'attività commerciale.
+    %         \item \texttt{category: str} - Categoria o tipologia dell'attività.
+    %         \item \texttt{description: str} - Descrizione dettagliata dell'attività.
+    %         \item \texttt{latitude: float} - Latitudine dell'attività.
+    %         \item \texttt{longitude: float} - Longitudine dell'attività.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \paragraph{UserDTO}
-    \begin{itemize}
-        \item \textbf{Descrizione}: Data Transfer Object per gli utenti del sistema.
-        \item \textbf{Attributi}:
-        \begin{itemize}
-            \item \texttt{user\_id: str} - Identificatore univoco dell'utente.
-            \item \texttt{name: str} - Nome dell'utente.
-            \item \texttt{age: int} - Età dell'utente.
-            \item \texttt{gender: str} - Genere dell'utente.
-            \item \texttt{interests: List[str]} - Lista degli interessi dell'utente.
-            \item \texttt{preferences: List[str]} - Lista delle preferenze dell'utente.
-        \end{itemize}
-    \end{itemize}
+    % \paragraph{UserDTO}
+    % \begin{itemize}
+    %     \item \textbf{Descrizione}: Data Transfer Object per gli utenti del sistema.
+    %     \item \textbf{Attributi}:
+    %     \begin{itemize}
+    %         \item \texttt{user\_id: str} - Identificatore univoco dell'utente.
+    %         \item \texttt{name: str} - Nome dell'utente.
+    %         \item \texttt{age: int} - Età dell'utente.
+    %         \item \texttt{gender: str} - Genere dell'utente.
+    %         \item \texttt{interests: List[str]} - Lista degli interessi dell'utente.
+    %         \item \texttt{preferences: List[str]} - Lista delle preferenze dell'utente.
+    %     \end{itemize}
+    % \end{itemize}
 
-    \subsubsection{Relazioni tra componenti}
-    Le relazioni tra i componenti riflettono l'architettura modulare del sistema, basata su interfacce che seguono i principi SOLID:
+    % \subsubsection{Relazioni tra componenti}
+    % Le relazioni tra i componenti riflettono l'architettura modulare del sistema, basata su interfacce che seguono i principi SOLID:
 
-    \paragraph{Modulo di Simulazione}
-    \begin{itemize}
-        \item \texttt{SensorFactory} crea istanze di \texttt{GpsSensor} che implementano l'interfaccia \texttt{SensorSubject}.
-        \item \texttt{GpsSensor} utilizza \texttt{IPositionSimulationStrategy} (implementata da \texttt{BycicleSimulationStrategy}) per determinare il proprio movimento.
-        \item \texttt{GpsSensor} invia dati attraverso \texttt{PositionSender} (implementato da \texttt{KafkaConfluentAdapter}) che utilizza \texttt{IJsonSerializable} per la serializzazione.
-        \item \texttt{SensorSimulationAdministrator} coordina una collezione di sensori che implementano \texttt{SensorSubject}.
-    \end{itemize}
+    % \paragraph{Modulo di Simulazione}
+    % \begin{itemize}
+    %     \item \texttt{SensorFactory} crea istanze di \texttt{GpsSensor} che implementano l'interfaccia \texttt{SensorSubject}.
+    %     \item \texttt{GpsSensor} utilizza \texttt{IPositionSimulationStrategy} (implementata da \texttt{BycicleSimulationStrategy}) per determinare il proprio movimento.
+    %     \item \texttt{GpsSensor} invia dati attraverso \texttt{PositionSender} (implementato da \texttt{KafkaConfluentAdapter}) che utilizza \texttt{IJsonSerializable} per la serializzazione.
+    %     \item \texttt{SensorSimulationAdministrator} coordina una collezione di sensori che implementano \texttt{SensorSubject}.
+    % \end{itemize}
 
-    \paragraph{Processore Flink}
-    \begin{itemize}
-        \item \texttt{FlinkJobManager} orchestra l'intero flusso di elaborazione, ricevendo dati tramite \texttt{KafkaPositionReceiver} (implementa \texttt{IPositionReceiver}).
-        \item \texttt{FlinkJobManager} applica \texttt{PositionToMessageProcessor} per trasformare i dati (implementa \texttt{MapFunction}) e \texttt{FilterMessageAlreadyDisplayed} per filtrare messaggi duplicati (implementa \texttt{FilterFunction}).
-        \item \texttt{FlinkJobManager} invia i risultati tramite \texttt{KafkaMessageWriter} (implementa \texttt{IMessageWriter}).
-        \item \texttt{PositionToMessageProcessor} interagisce con \texttt{LLMService} (implementato da \texttt{GroqLLMService}) per generare messaggi, e con repository di dati per accedere a informazioni su utenti e attività.
-    \end{itemize}
+    % \paragraph{Processore Flink}
+    % \begin{itemize}
+    %     \item \texttt{FlinkJobManager} orchestra l'intero flusso di elaborazione, ricevendo dati tramite \texttt{KafkaPositionReceiver} (implementa \texttt{IPositionReceiver}).
+    %     \item \texttt{FlinkJobManager} applica \texttt{PositionToMessageProcessor} per trasformare i dati (implementa \texttt{MapFunction}) e \texttt{FilterMessageAlreadyDisplayed} per filtrare messaggi duplicati (implementa \texttt{FilterFunction}).
+    %     \item \texttt{FlinkJobManager} invia i risultati tramite \texttt{KafkaMessageWriter} (implementa \texttt{IMessageWriter}).
+    %     \item \texttt{PositionToMessageProcessor} interagisce con \texttt{LLMService} (implementato da \texttt{GroqLLMService}) per generare messaggi, e con repository di dati per accedere a informazioni su utenti e attività.
+    % \end{itemize}
 
-    Questa architettura modulare consente un alto grado di testabilità e manutenibilità, permettendo la sostituzione di componenti con implementazioni alternative senza modificare il flusso di elaborazione complessivo.
+    % Questa architettura modulare consente un alto grado di testabilità e manutenibilità, permettendo la sostituzione di componenti con implementazioni alternative senza modificare il flusso di elaborazione complessivo.
 
 \newpage
 \section{Architettura di deployment}
 Da capitolato era stato definito l'uso di un'architettura containerizzata e anche valutando alcune alternative risultava comunque la scelta più ragionevole. Al fine di implementare ed eseguire l'intero stack tecnologico ed i componenti del modello architetturale del sistema seguendo questa architettura, è stato configurato un ambiente Docker che simula la suddivisione e la distribuzione dei servizi. Informazioni aggiuntive sulle immagini utilizzate e sulle configurazioni dell'ambiente sono disponibili nel file docker-compose.yml presente nel repository del progetto oltre che nella sezione \ref{sec:strumenti}.
     \subsection{Panoramica dell'infrastruttura}
-        \subsubsection{Ambiente Docker}
-        Descrizione dell'ambiente Docker utilizzato, incluse le immagini e le configurazioni specifiche.
+        \subsubsection{Ambiente Docker dei Componenti Principali}
 
-        \subsubsection{Componenti principali}
-        In questa sezione vengono descritti i componenti principali dell'architettura, evidenziandone i ruoli e le responsabilità.
+        \paragraph{Zookeeper Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa un servizio di coordinamento distribuito essenziale per l'infrastruttura Kafka. Fornisce sincronizzazione, centralizzazione della configurazione, gestione dei nomi, e leader election per il sistema distribuito.
+        \item \textbf{Configurazioni}:
+        \begin{itemize}
+            \item \texttt{hostname: zookeeper} - Nome host assegnato al container all'interno della rete Docker, utilizzato dagli altri servizi per riferirsi a Zookeeper.
+            \item \texttt{container\_name: zookeeper} - Nome esplicito assegnato al container per facilitarne l'identificazione e la gestione.
+            \item \texttt{image: confluentinc/cp-zookeeper:7.6.0} - Immagine Docker ufficiale di Confluent Inc. per Zookeeper, versione 7.6.0, garantendo compatibilità con il broker Kafka utilizzato.
+            \item \texttt{environment} - Variabili d'ambiente che configurano il comportamento di Zookeeper:
+            \begin{itemize}
+                \item \texttt{ZOOKEEPER\_CLIENT\_PORT: 2181} - Porta sulla quale Zookeeper accetta connessioni dai client.
+                \item \texttt{ZOOKEEPER\_TICK\_TIME: 2000} - Unità di tempo base in millisecondi utilizzata per il timeout e la sincronizzazione.
+            \end{itemize}
+            \item \texttt{ports: - 2181:2181} - Mappatura della porta, espone la porta 2181 del container alla porta 2181 dell'host per consentire connessioni esterne.
+        \end{itemize}
+
+        \item \textbf{Controlli e Disponibilità}:
+        \begin{itemize}
+            \item \texttt{healthcheck} - Verifica automatica dello stato di salute del servizio:
+            \begin{itemize}
+                \item \texttt{test: nc -z localhost 2181 || exit -1} - Comando che verifica se la porta 2181 è in ascolto, segnalando un errore in caso contrario.
+                \item \texttt{interval: 10s} - Frequenza di esecuzione del controllo (ogni 10 secondi).
+                \item \texttt{timeout: 5s} - Tempo massimo di attesa per l'esecuzione del controllo.
+                \item \texttt{retries: 3} - Numero di tentativi prima di considerare il controllo fallito.
+            \end{itemize}
+            \item \texttt{profiles: ["test","develop","prod"]} - Attivazione del servizio in tutti gli ambienti di esecuzione (test, sviluppo e produzione), indicando la sua importanza fondamentale per l'intero sistema.
+        \end{itemize}
+        \end{itemize}
+
+        \paragraph{Kafka Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa un broker di messaggistica distribuito che gestisce lo scambio di dati tra i componenti dell'applicazione. Fornisce un sistema publish-subscribe scalabile che consente la comunicazione asincrona tra il simulatore di posizione e il processore Flink.
+        \item \textbf{Configurazioni}:
+        \begin{itemize}
+            \item \texttt{image: confluentinc/cp-kafka:7.6.0} - Immagine Docker ufficiale di Confluent Inc. per Kafka, versione 7.6.0.
+            \item \texttt{hostname: kafka} - Nome host assegnato al container all'interno della rete Docker.
+            \item \texttt{container\_name: kafka} - Nome esplicito assegnato al container per facilitarne l'identificazione.
+            \item \texttt{depends\_on} - Dipendenze del servizio:
+            \begin{itemize}
+                \item \texttt{zookeeper: condition: service\_healthy} - Attende che Zookeeper sia completamente funzionante prima dell'avvio.
+                \item \texttt{clickhouse: condition: service\_started} - Attende l'avvio di ClickHouse.
+            \end{itemize}
+            \item \texttt{ports: - 29092:29092} - Espone la porta 29092 per connessioni da applicazioni esterne alla rete Docker.
+            \item \texttt{environment} - Variabili d'ambiente che configurano il comportamento di Kafka:
+            \begin{itemize}
+                \item \texttt{KAFKA\_BROKER\_ID: 1} - Identificatore univoco del broker Kafka.
+                \item \texttt{KAFKA\_ZOOKEEPER\_CONNECT: zookeeper:2181} - Indirizzo di connessione a Zookeeper.
+                \item \texttt{KAFKA\_ADVERTISED\_LISTENERS} - Configurazione degli endpoint pubblicizzati per le connessioni interne ed esterne.
+                \item \texttt{KAFKA\_LISTENER\_SECURITY\_PROTOCOL\_MAP} - Mappa dei protocolli di sicurezza per i diversi listener.
+                \item \texttt{KAFKA\_INTER\_BROKER\_LISTENER\_NAME: PLAINTEXT} - Nome del listener utilizzato per la comunicazione tra broker.
+                \item \texttt{KAFKA\_OFFSETS\_TOPIC\_REPLICATION\_FACTOR: 1} - Fattore di replica per il topic degli offset, impostato a 1 per un ambiente di sviluppo single-node.
+                \item \texttt{KAFKA\_AUTO\_CREATE\_TOPICS\_ENABLE: "true"} - Abilita la creazione automatica dei topic quando vengono referenziati.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Inizializzazione e Script}:
+        \begin{itemize}
+            \item \texttt{command} - Script di inizializzazione eseguito all'avvio del container:
+            \begin{itemize}
+                \item Rimuove eventuali nodi Kafka esistenti in Zookeeper per evitare conflitti di ID.
+                \item Avvia il processo Kafka in background.
+                \item Crea esplicitamente due topic cruciali per l'applicazione:
+                \begin{itemize}
+                    \item \texttt{MessageElaborated} - Topic che conterrà i messaggi elaborati dal processore Flink.
+                    \item \texttt{SimulatorPosition} - Topic che conterrà i dati di posizione generati dal simulatore.
+                \end{itemize}
+                \item Configura entrambi i topic con una partizione e un fattore di replica pari a 1 (adatto per ambienti di sviluppo).
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Controlli e Disponibilità}:
+        \begin{itemize}
+            \item \texttt{healthcheck} - Verifica automatica dello stato di salute del servizio:
+            \begin{itemize}
+                \item \texttt{test} - Verifica che entrambi i topic "MessageElaborated" e "SimulatorPosition" siano stati creati correttamente.
+                \item \texttt{interval: 10s} - Frequenza di esecuzione del controllo.
+                \item \texttt{timeout: 5s} - Tempo massimo di attesa per l'esecuzione del controllo.
+                \item \texttt{retries: 5} - Numero di tentativi prima di considerare il controllo fallito.
+                \item \texttt{start\_period: 10s} - Periodo iniziale di grazia prima di iniziare i controlli.
+            \end{itemize}
+            \item \texttt{profiles: ["test","develop","prod"]} - Attivazione del servizio in tutti gli ambienti di esecuzione, essendo un componente fondamentale dell'architettura.
+        \end{itemize}
+        \end{itemize}
+        
+        \paragraph{Kafdrop Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa un'interfaccia web user-friendly per il monitoraggio e la gestione di Apache Kafka. Fornisce una visualizzazione grafica del cluster Kafka, dei topic, dei consumer group e dei messaggi, facilitando il debug e l'analisi del flusso di dati.
+        \item \textbf{Configurazioni}:
+        \begin{itemize}
+            \item \texttt{container\_name: kafdrop} - Nome esplicito assegnato al container per facilitarne l'identificazione.
+            \item \texttt{image: obsidiandynamics/kafdrop} - Immagine Docker ufficiale di Kafdrop, un'interfaccia web open-source per Kafka.
+            \item \texttt{restart: "no"} - Politica di riavvio configurata per non riavviare automaticamente il container in caso di errori, adatta per un'interfaccia di amministrazione non critica.
+            \item \texttt{ports: - "9080:9000"} - Mappatura delle porte che espone l'interfaccia web Kafdrop sulla porta 9080 dell'host, mentre internamente utilizza la porta 9000.
+            \item \texttt{environment} - Variabili d'ambiente che configurano il comportamento di Kafdrop:
+            \begin{itemize}
+                \item \texttt{KAFKA\_BROKERCONNECT: "kafka:9092"} - Specifica l'indirizzo del broker Kafka a cui Kafdrop si connetterà, utilizzando il nome del servizio kafka all'interno della rete Docker e la porta 9092.
+            \end{itemize}
+            \item \texttt{depends\_on} - Dipendenze del servizio:
+            \begin{itemize}
+                \item \texttt{kafka: condition: service\_healthy} - Attende che il servizio Kafka sia completamente funzionante (passando il healthcheck) prima di avviare Kafdrop.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Funzionalità principali}:
+        \begin{itemize}
+            \item Visualizzazione della struttura del cluster Kafka, inclusi broker e topic
+            \item Monitoraggio dei dettagli dei topic, come partizioni, offset, e messaggi
+            \item Esplorazione e visualizzazione dei messaggi all'interno dei topic
+            \item Visualizzazione dei gruppi di consumatori e dei loro offset
+            \item Interfaccia web intuitiva per amministratori e sviluppatori
+        \end{itemize}
+        
+        \item \textbf{Disponibilità}:
+        \begin{itemize}
+            \item \texttt{profiles: ["develop","prod"]} - Il servizio è attivato solo negli ambienti di sviluppo e produzione, ma non in quello di test, suggerendo che è considerato uno strumento di supporto per sviluppatori e operatori piuttosto che un componente essenziale per i test automatizzati.
+        \end{itemize}
+        \end{itemize}
+
+        \paragraph{Grafana Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa una piattaforma di visualizzazione e analisi dati open-source che permette di creare dashboard interattive per monitorare l'andamento dell'applicazione. Fornisce una rappresentazione grafica dei dati archiviati in ClickHouse, facilitando l'interpretazione e l'analisi dei flussi di messaggi e delle posizioni degli utenti.
+        \item \textbf{Configurazioni}:
+        \begin{itemize}
+            \item \texttt{container\_name: grafana} - Nome esplicito assegnato al container per facilitarne l'identificazione.
+            \item \texttt{image: grafana/grafana:latest} - Immagine Docker ufficiale di Grafana, utilizzando l'ultima versione disponibile.
+            \item \texttt{ports: - "3000:3000"} - Mappatura delle porte che espone l'interfaccia web Grafana sulla porta 3000 dell'host.
+            \item \texttt{environment} - Variabili d'ambiente che configurano il comportamento di Grafana:
+            \begin{itemize}
+                \item \texttt{GF\_SECURITY\_ADMIN\_PASSWORD: admin} - Imposta la password dell'utente amministratore al valore "admin".
+                \item \texttt{GF\_INSTALL\_PLUGINS: "grafana-clickhouse-datasource"} - Installa automaticamente il plugin per la connessione a ClickHouse come fonte dati.
+            \end{itemize}
+            \item \texttt{volumes} - Configurazione dei volumi che collegano directory locali a percorsi all'interno del container:
+            \begin{itemize}
+                \item \texttt{./Grafana/DashboardProv:/etc/grafana/provisioning/dashboards} - Monta i file di configurazione per il provisioning automatico delle dashboard.
+                \item \texttt{./Grafana/Dashboards:/var/lib/grafana/dashboards} - Monta le definizioni JSON delle dashboard personalizzate.
+                \item \texttt{./Grafana/DatasourceProv:/etc/grafana/provisioning/datasources} - Monta la configurazione delle fonti dati, in particolare la connessione a ClickHouse.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Funzionalità principali}:
+        \begin{itemize}
+            \item Visualizzazione in tempo reale dei dati provenienti da ClickHouse
+            \item Dashboard personalizzate per monitorare metriche chiave dell'applicazione
+            \item Grafici interattivi per analizzare trend e pattern nei dati
+            \item Pannelli di controllo per monitorare lo stato del sistema
+            \item Integrazione completa con ClickHouse grazie al plugin dedicato
+            \item Provisioning automatico di dashboard e fonti dati attraverso file di configurazione
+        \end{itemize}
+        
+        \item \textbf{Disponibilità}:
+        \begin{itemize}
+            \item \texttt{profiles: ["develop","prod"]} - Il servizio è attivato solo negli ambienti di sviluppo e produzione, ma non in quello di test, essendo considerato uno strumento di supporto per monitoraggio e analisi piuttosto che un componente essenziale per i test automatizzati.
+        \end{itemize}
+        \end{itemize}
+                
+
+        \paragraph{ClickHouse Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa un database colonnare ad alte prestazioni, ottimizzato per carichi di lavoro analitici e query su grandi volumi di dati. Fornisce il layer di persistenza dell'applicazione, memorizzando dati di utenti, sensori, attività commerciali e messaggi pubblicitari generati.
+        \item \textbf{Configurazioni}:
+        \begin{itemize}
+            \item \texttt{image: clickhouse/clickhouse-server:24.10} - Immagine Docker ufficiale di ClickHouse, versione 24.10, che garantisce stabilità e prestazioni.
+            \item \texttt{hostname: clickhouse} - Nome host assegnato al container all'interno della rete Docker.
+            \item \texttt{container\_name: clickhouse} - Nome esplicito assegnato al container per facilitarne l'identificazione.
+            \item \texttt{ports} - Mappatura delle porte tra host e container:
+            \begin{itemize}
+                \item \texttt{"8123:8123"} - Espone la porta HTTP di ClickHouse per query REST e interfaccia web.
+                \item \texttt{"9000:9000"} - Espone la porta nativa di ClickHouse per connessioni client dirette.
+            \end{itemize}
+            \item \texttt{environment} - Variabili d'ambiente che configurano il comportamento di ClickHouse:
+            \begin{itemize}
+                \item \texttt{CLICKHOUSE\_DB: nearyou} - Crea automaticamente un database chiamato "nearyou" all'avvio.
+                \item \texttt{CLICKHOUSE\_USER: default} - Configura l'utente predefinito del sistema.
+                \item \texttt{CLICKHOUSE\_PASSWORD: pass} - Imposta la password per l'utente predefinito.
+                \item \texttt{CLICKHOUSE\_DEFAULT\_ACCESS\_MANAGEMENT: 0} - Disabilita la gestione degli accessi predefinita, utilizzando configurazioni personalizzate.
+            \end{itemize}
+            \item \texttt{volumes} - Configurazione dei volumi:
+            \begin{itemize}
+                \item \texttt{./StorageData:/docker-entrypoint-initdb.d} - Monta la directory locale ./StorageData nella directory di inizializzazione di ClickHouse, dove gli script SQL vengono eseguiti automaticamente al primo avvio per creare tabelle, indici e popolare dati iniziali.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Funzionalità principali}:
+        \begin{itemize}
+            \item Archiviazione efficiente di grandi volumi di dati in formato colonnare
+            \item Esecuzione di query analitiche ad alte prestazioni
+            \item Supporto per funzioni geospaziali utilizzate per calcolare distanze tra utenti e attività
+            \item Integrazione con Grafana per la visualizzazione dei dati
+            \item Inizializzazione automatica dello schema e dei dati all'avvio tramite script SQL
+            \item Supporto per strutture dati complesse come array (utilizzati per gli interessi degli utenti)
+        \end{itemize}
+        
+        \item \textbf{Disponibilità}:
+        \begin{itemize}
+            \item \texttt{profiles: ["test","develop","prod"]} - Il servizio è attivato in tutti gli ambienti (test, sviluppo e produzione), evidenziando il suo ruolo critico come componente infrastrutturale dell'applicazione.
+        \end{itemize}
+        \end{itemize}
+        
+        \paragraph{Position Simulator Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa un servizio di simulazione che genera realistici dati di posizione degli utenti e li pubblica sul broker Kafka. Utilizza strategie di simulazione basate su grafi stradali per creare percorsi plausibili, simulando il movimento di utenti nel contesto urbano.
+        \item \textbf{Configurazioni}:
+        \begin{itemize}
+            \item \texttt{container\_name: positions} - Nome esplicito assegnato al container per facilitarne l'identificazione.
+            \item \texttt{build: ./SimulationModule} - Specificazione della directory che contiene il Dockerfile e il codice sorgente necessario per costruire l'immagine personalizzata.
+            \item \texttt{depends\_on} - Dipendenze del servizio:
+            \begin{itemize}
+                \item \texttt{kafka: condition: service\_healthy} - Attende che il servizio Kafka sia completamente funzionante (passando il healthcheck) prima di avviare il simulatore.
+            \end{itemize}
+            \item \texttt{mem\_limit: 4G} - Comentato, ma pronto per limitare la memoria utilizzata dal container a 4GB, se necessario.
+        \end{itemize}
+        
+        \item \textbf{Dockerfile specifico}:
+        \begin{itemize}
+            \item \texttt{FROM python:3.8} - Utilizza l'immagine base Python 3.8 ufficiale.
+            \item \texttt{Prerequisiti} - Installa pacchetti di sistema essenziali:
+            \begin{itemize}
+                \item \texttt{gdal-bin} e \texttt{libgdal-dev} - Librerie per la manipolazione di dati geospaziali.
+                \item \texttt{build-essential} - Strumenti di compilazione per dipendenze native.
+                \item \texttt{librdkafka-dev} - Libreria client Kafka nativa richiesta da confluent-kafka.
+            \end{itemize}
+            \item \texttt{Variabili d'ambiente} - Configura GDAL per la corretta compilazione delle estensioni Python.
+            \item \texttt{Dipendenze Python} - Installa i pacchetti Python necessari da requirements.txt:
+            \begin{itemize}
+                \item \texttt{geopy} - Geocodifica e calcoli di distanza.
+                \item \texttt{osmnx} - Accesso ai dati OpenStreetMap e manipolazione di grafi stradali.
+                \item \texttt{gpxpy} - Parsing e generazione di file GPX.
+                \item \texttt{confluent\_kafka} - Client Kafka per la pubblicazione dei messaggi.
+                \item \texttt{scikit-learn} - Algoritmi di machine learning per simulazione avanzata.
+                \item \texttt{clickhouse-connect} - Client per la connessione al database ClickHouse.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Disponibilità}:
+        \begin{itemize}
+            \item \texttt{profiles: ["test","develop","prod"]} - Il servizio è attivato in tutti gli ambienti (test, sviluppo e produzione), evidenziando il suo ruolo essenziale nell'architettura dell'applicazione.
+        \end{itemize}
+        \end{itemize}
+
+
+        \paragraph{Flink Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa un motore di elaborazione di stream in tempo reale basato su Apache Flink che processa i dati di posizione provenienti da Kafka, li arricchisce con informazioni contestuali e genera messaggi pubblicitari personalizzati. Rappresenta il cuore computazionale dell'applicazione, realizzando la logica di business principale.
+        \item \textbf{Configurazioni}:
+        \begin{itemize}
+            \item \texttt{container\_name: flink} - Nome esplicito assegnato al container per facilitarne l'identificazione.
+            \item \texttt{build: ./FlinkProcessor} - Specificazione della directory che contiene il Dockerfile e il codice sorgente dell'applicazione Flink.
+            \item \texttt{volumes} - Configurazione dei volumi:
+            \begin{itemize}
+                \item \texttt{.env:/app/.env} - Monta il file di variabili d'ambiente nella directory dell'applicazione, consentendo l'accesso a chiavi API e altre configurazioni sensibili.
+            \end{itemize}
+            \item \texttt{restart: on-failure:5} - Politica di riavvio che tenta di riavviare il container fino a 5 volte in caso di errore.
+            \item \texttt{deploy} - Configurazioni di deployment:
+            \begin{itemize}
+                \item \texttt{resources.limits.cpus: '4.00'} - Limita l'utilizzo della CPU a 4 core.
+                \item \texttt{resources.limits.memory: 4G} - Limita l'utilizzo della memoria a 4 GB.
+            \end{itemize}
+            \item \texttt{depends\_on} - Dipendenze del servizio:
+            \begin{itemize}
+                \item \texttt{kafka: condition: service\_healthy} - Attende che il servizio Kafka sia completamente funzionante prima di avviare l'elaborazione.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Dockerfile specifico}:
+        \begin{itemize}
+            \item \texttt{FROM apache/flink:1.18.1-scala\_2.12-java11} - Utilizza l'immagine base di Apache Flink ufficiale con Java 11 e Scala 2.12.
+            \item \texttt{Ambiente Python} - Installa Python 3 e pip per supportare PyFlink:
+            \begin{itemize}
+                \item \texttt{apt-get install python3 python3-pip python3-dev} - Installa l'ambiente Python.
+                \item \texttt{ln -s /usr/bin/python3 /usr/bin/python} - Crea un symlink per rendere Python 3 il default.
+            \end{itemize}
+            \item \texttt{Dipendenze Python} - Installa le dipendenze Python dal file requirements.txt:
+            \begin{itemize}
+                \item \texttt{PyFlink} - API Python per Apache Flink.
+                \item \texttt{clickhouse-connect} - Client per la connessione al database ClickHouse.
+                \item \texttt{langchain} e \texttt{langchain-groq} - Framework per l'integrazione di modelli linguistici.
+                \item \texttt{python-dotenv} - Gestione delle variabili d'ambiente.
+                \item \texttt{pydantic} - Validazione e serializzazione dei dati.
+            \end{itemize}
+            \item \texttt{Connettori Flink} - Scarica e installa i connettori Java necessari:
+            \begin{itemize}
+                \item \texttt{flink-sql-connector-kafka} - Connettore per integrare Kafka con Flink.
+                \item \texttt{clickhouse-jdbc} - Driver JDBC per ClickHouse.
+                \item \texttt{flink-connector-jdbc} - Connettore JDBC generico per Flink.
+            \end{itemize}
+            \item \texttt{WORKDIR /app} - Imposta la directory di lavoro all'interno del container.
+            \item \texttt{CMD [ "python", "main.py" ]} - Comando di avvio che esegue lo script principale dell'applicazione.
+        \end{itemize}
+        
+        \item \textbf{Disponibilità}:
+        \begin{itemize}
+            \item \texttt{profiles: ["test","develop","prod"]} - Il servizio è attivato in tutti gli ambienti (test, sviluppo e produzione), evidenziando il suo ruolo fondamentale nell'architettura dell'applicazione.
+        \end{itemize}
+        \end{itemize}
+
+        \paragraph{Test Service}
+        \begin{itemize} 
+        \item \textbf{Descrizione}: Implementa un servizio dedicato all'esecuzione automatizzata dei test dell'applicazione, includendo test unitari, di integrazione e di sistema. Fornisce un ambiente isolato ma completo per verificare il corretto funzionamento di tutti i componenti e la loro interazione, generando report dettagliati sulla copertura e qualità del codice.
+        \item \textbf{Configurazioni in docker-compose}:
+        \begin{itemize}
+            \item \texttt{container\_name: test} - Nome esplicito assegnato al container per facilitarne l'identificazione.
+            \item \texttt{build} - Configurazione della build dell'immagine Docker:
+            \begin{itemize}
+                \item \texttt{context: ./} - Utilizza la directory root del progetto come contesto per la build.
+                \item \texttt{dockerfile: Tests/Dockerfile} - Specifica il Dockerfile da utilizzare, situato nella directory Tests.
+            \end{itemize}
+            \item \texttt{volumes} - Configurazione dei volumi (commentata, ma disponibile per l'attivazione):
+            \begin{itemize}
+                \item \texttt{./.github/reports:/app/reports:rw} - Montaggio della directory dei report per l'integrazione con CI/CD.
+            \end{itemize}
+            \item \texttt{depends\_on} - Dipendenze del servizio:
+            \begin{itemize}
+                \item \texttt{kafka: condition: service\_healthy} - Attende che il servizio Kafka sia completamente funzionante prima di eseguire i test.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Dockerfile specifico}:
+        \begin{itemize}
+            \item \texttt{FROM apache/flink:1.18.1-scala\_2.12-java11} - Utilizza l'immagine base di Apache Flink per garantire compatibilità con l'ambiente di produzione.
+            \item \texttt{WORKDIR /app} - Imposta la directory di lavoro all'interno del container.
+            \item \texttt{Configurazione delle dipendenze Flink}:
+            \begin{itemize}
+                \item Scarica e installa i connettori Java necessari: Kafka, ClickHouse JDBC, e JDBC generico.
+            \end{itemize}
+            \item \texttt{Struttura delle directory di test}:
+            \begin{itemize}
+                \item Crea struttura di directory per i moduli SimulationModule, FlinkProcessor, IntegrationTests e SystemTests.
+                \item Copia i file di configurazione dei test: .coveragerc, pylintrc, pytest.ini.
+            \end{itemize}
+            \item \texttt{Ambiente Python}:
+            \begin{itemize}
+                \item Installa Python 3, pip e le dipendenze necessarie da requirements.txt.
+                \item Installa strumenti specifici per i test: pytest, pytest-cov, coveralls, pylint.
+            \end{itemize}
+            \item \texttt{Preparazione e configurazione dei report}:
+            \begin{itemize}
+                \item Crea directory per i report (/app/reports) con permessi appropriati.
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Funzionalità di test}:
+        \begin{itemize}
+            \item \texttt{Analisi statica} - Esecuzione di pylint per verificare la qualità del codice:
+            \begin{itemize}
+                \item Utilizza configurazione personalizzata dal file pylintrc.
+                \item Genera report in formato parseable per l'integrazione con CI/CD.
+            \end{itemize}
+            \item \texttt{Test unitari e di integrazione} - Esecuzione di pytest con varie opzioni:
+            \begin{itemize}
+                \item Test per SimulationModule, FlinkProcessor e IntegrationTests.
+                \item Misurazione della copertura del codice con analisi dei branch.
+                \item Generazione di report XML per la copertura.
+            \end{itemize}
+            \item \texttt{Generazione di report} - Esecuzione dello script getReports.py che probabilmente formatta o aggrega i risultati dei test per facilitarne la lettura.
+        \end{itemize}
+        
+        \item \textbf{Disponibilità}:
+        \begin{itemize}
+            \item \texttt{profiles: ["test"]} - Il servizio è attivato solo nell'ambiente di test, evidenziando la sua funzione specifica per la verifica della qualità del codice piuttosto che per l'operatività dell'applicazione.
+        \end{itemize}
+        \end{itemize}
+
+
+
+        
+
+        
 
         \subsubsection{Dipendenze tra componenti}
         Le interazioni tra i vari componenti avvengono attraverso Kafka, che garantisce l'invio e la ricezione di messaggi in modo affidabile e resiliente.
