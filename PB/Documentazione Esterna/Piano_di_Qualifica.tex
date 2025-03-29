@@ -243,11 +243,11 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD05 & Line coverage & $\geq$ 80\% & 100\% \\
+  MPD04 & Line coverage & $\geq$ 80\% & 100\% \\
   \hline
   % MPD06 & Statement coverage & $\geq$ 80\% & 100\% \\
   % \hline
-  MPD06 & Branch coverage & $\geq$ 80\% & 100\% \\
+  MPD05 & Branch coverage & $\geq$ 80\% & 100\% \\
   \hline
   % MPD08 & Condition coverage & $\geq$ 80\% & 100\% \\
   % \hline
@@ -263,7 +263,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD07 & Tempo medio di risposta & $\leq$ 10 secondi & $\leq$ 4 secondi \\
+  MPD06 & Tempo medio di risposta & $\leq$ 10 secondi & $\leq$ 4 secondi \\
   \hline
 \end{tabular}
 \caption{Efficienza - Qualità di prodotto}
@@ -277,9 +277,9 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD08 & Facilità di utilizzo & $\leq$ 7 click & $\leq$ 5 click\\
+  MPD07 & Facilità di utilizzo & $\leq$ 7 click & $\leq$ 5 click\\
   \hline
-  MPD09 & Tempo medio di apprendimento & $\leq$ 5 minuti & $\leq$ 2 minuti \\
+  MPD08 & Tempo medio di apprendimento & $\leq$ 5 minuti & $\leq$ 2 minuti \\
   \hline
 \end{tabular}
 \caption{Usabilità - Qualità di prodotto}
@@ -295,15 +295,15 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   % \hline
   % MPD12 & Coefficiente di accoppiamento fra classi & $\leq$ 4 & $\leq$ 2 \\
   \hline
-  MPD10 & Linee di codice per metodo & $\leq$ 50 & $\leq$ 25 \\
+  MPD09 & Linee di codice per metodo & $\leq$ 50 & $\leq$ 25 \\
   \hline
-  MPD11 & Parametri per metodo & $\leq$ 7 & $\leq$ 4 \\
+  MPD10 & Parametri per metodo & $\leq$ 7 & $\leq$ 4 \\
   \hline
-  MPD12 & Attributi per classe & $\leq$ 7 & $\leq$ 5 \\
+  MPD11 & Attributi per classe & $\leq$ 7 & $\leq$ 5 \\
   \hline
-  MPD13 & Structure Fan IN & - & va massimizzato \\
+  MPD12 & Structure Fan IN & - & va massimizzato \\
   \hline
-  MPD14 & Structure Fan OUT & - & va minimizzato \\
+  MPD13 & Structure Fan OUT & - & va minimizzato \\
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -317,7 +317,7 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   \hline
   \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore ideale}\\
   \hline
-  MPD15 & Versioni browser supportati & $\geq$ 80\% & 100\% \\
+  MPD14 & Versioni browser supportati & $\geq$ 80\% & 100\% \\
   \hline
 \end{tabular}
 \caption{Portabilità - Qualità di prodotto}
@@ -915,11 +915,65 @@ La costante progressione verso il 100\% dei requisiti obbligatori soddisfatti, c
 \begin{figure}[H]
   \centering
   %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a linee della metrica Branch coverage}
+  \caption{Grafico a linee della metrica "Branch coverage"}
 \end{figure}
 
 \textbf{PB}:
 
+
+\subsubsection{MPD10 - Linee di codice per metodo}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Linee di codice per metodo"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsubsection{MPD11 - Parametri per metodo}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Parametri per metodo"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsubsection{MPD12 - Attributi per classe}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Attributi per classe"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsubsection{MPD13 - Structure Fan IN}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Structure Fan IN"}
+\end{figure}
+
+\textbf{PB}:
+
+
+\subsubsection{MPD14 - Structure Fan OUT}
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[width=0.9\linewidth]{}
+  \caption{Grafico a barre della metrica "Structure Fan OUT"}
+\end{figure}
+
+\textbf{PB}:
 
 
 \subsubsection{MPC13 - Line Coverage}
@@ -927,7 +981,7 @@ La costante progressione verso il 100\% dei requisiti obbligatori soddisfatti, c
 \begin{figure}[H]
   \centering
   %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a linee della metrica Line coverage}
+  \caption{Grafico a linee della metrica "Line coverage"}
 \end{figure}
 
 \textbf{PB}:
@@ -940,61 +994,6 @@ La costante progressione verso il 100\% dei requisiti obbligatori soddisfatti, c
   \centering
   %\includegraphics[width=0.9\linewidth]{}
   \caption{Grafico a linee della metrica "Passed test cases percentage"}
-\end{figure}
-
-\textbf{PB}:
-
-
-\subsection{MPD10 - Linee di codice per metodo}
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a barre della metrica "Linee di codice per metodo"}
-\end{figure}
-
-\textbf{PB}:
-
-
-\subsection{MPD11 - Parametri per metodo}
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a barre della metrica "Parametri per metodo"}
-\end{figure}
-
-\textbf{PB}:
-
-
-\subsection{MPD12 - Attributi per classe}
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a barre della metrica "Attributi per classe"}
-\end{figure}
-
-\textbf{PB}:
-
-
-\subsection{MPD13 - Structure Fan IN}
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a barre della metrica "Structure Fan IN"}
-\end{figure}
-
-\textbf{PB}:
-
-
-\subsection{MPD14 - Structure Fan OUT}
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a barre della metrica "Structure Fan OUT"}
 \end{figure}
 
 \textbf{PB}:
