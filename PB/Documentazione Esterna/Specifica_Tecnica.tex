@@ -732,7 +732,7 @@ Log Immutabile & \textit{SimulationService} Outbound Port & Il servizio che si o
 \hline
 Stream Processing Engine & \textit{PositionToMessageService} Inbound Port/Core Logic & Il servizio riceve le posizioni tramite l'apposita Inbound Port, elabora lo stream in tempo reale e parallelamente al numero di utenti , trasformando lo stream\\
 \hline
-Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occupa di prelevare i dati dello stream elaborato e storicizzarlo nell'apposito database clickhouse ottimizzato per rispondere alle query dell0interfaccia grafica in maniera efficiente \\
+Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occupa di prelevare i dati dello stream elaborato e storicizzarli nell'apposito database ClickHouse ottimizzato per rispondere alle query dell'interfaccia grafica in maniera efficiente\\
 \hline
 \end{tabular}
 \caption{Mappatura dei componenti tra Kappa Architecture e Architettura Esagonale}
