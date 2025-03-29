@@ -671,7 +671,7 @@ In NearYou, Docker è utilizzato per:
 \section{Architettura del Sistema}
 
 \subsection{Panoramica architetturale}
-L'architettura del progetto si basa su un insieme di microservizi event-driven che comunicano fra di loro mediante Kafka. I dati di posizione vengono raccolti in tempo reale, elaborati per verificare la prossimità dei punti d'interesse ed eventualmente sottoposti a un servizio LLM che genera messaggi pubblicitari personalizzati per l'utente in base al tipo di attività.
+L'architettura del progetto si basa su un insieme di microservizi event-driven che comunicano fra di loro mediante Kafka. I dati di posizione vengono raccolti in tempo reale, elaborati per verificare la prossimità dei punti d'interesse ed eventualmente sottoporli ad un servizio LLM che genera messaggi pubblicitari personalizzati per l'utente in base al tipo della attività.
 
 \subsection{K-Architecture: Event Streaming Platform}
 La Kappa Architecture è stata selezionata come architettura di riferimento per il progetto in virtù della sua capacità di unificare l’elaborazione di dati in tempo reale e batch all’interno di un unico stack tecnologico, garantendo flessibilità, semplicità operativa e scalabilità. Il vantaggio principale è l’eliminazione della duplicazione di tecnologie e pipeline tipica della Lambda Architecture. In quest’ultima, due sistemi separati (uno per il batch e uno per lo streaming) richiedono codice, logiche e infrastrutture distinte, aumentando i costi di sviluppo,
