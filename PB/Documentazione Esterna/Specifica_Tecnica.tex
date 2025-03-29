@@ -564,7 +564,7 @@ In NearYou, Docker è utilizzato per:
             \item[.] \textbf{Inbound ports}: Non dispone di inbound ports in quanto il modulo si occupa della mera creazione di dati fittizi;
             \item[.] \textbf{Outbound ports}: È necessario che il modulo si interfacci con l'esterno: con il database, per garantire una corretta associazione Sensore Simulato - Utente nel sistema, e con un'interfaccia di messaggistica, per pubblicare i dati prodotti dalla logica di business. Nel nostro sistema, le interfacce sono \texttt{IUserRepository}, \texttt{ISensorRepository} e la classe astratta \texttt{PositionSender};
             \sloppy
-            \item[.] \textbf{Adapters}: Implementa adattatori come \texttt{ClickhouseUserRepository} e \texttt{ClickhouseSensorRepository} che implementano le rispettive porte e permettono di eseguire le operazioni di accesso al database. Per quanto concerne la scrittura dei messagi, l'adapter associato è \texttt{KafkaConfluentAdapter} che sfrutta la tecnologia di broking scelta \ref{subsec:Kafka}.
+            \item[.] \textbf{Adapters}: Implementa adattatori come \texttt{ClickhouseUserRepository} e \texttt{ClickhouseSensorRepository} che implementano le rispettive porte e permettono di eseguire le operazioni di accesso al database. Per quanto riguarda la scrittura dei messaggi, l'adapter associato è \texttt{KafkaConfluentAdapter} che sfrutta la tecnologia di message brokering scelta \ref{subsec:Kafka}.
         \end{itemize}
 
         \item[-] \textbf{Elaboratore di posizioni / Generatore di messaggi}:
