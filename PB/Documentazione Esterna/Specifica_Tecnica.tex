@@ -3129,12 +3129,156 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \myparagraph{Principi SOLID}
     L'architettura del software è progettata seguendo i principi SOLID:
     \begin{itemize}
-        \item[-] \textbf{Single Responsibility Principle}: Ogni classe ha una singola responsabilità ben definita. Ad esempio, la classe \texttt{KafkaMessageWriter} è responsabile esclusivamente per la pubblicazione di messaggi sul broker Kafka, mentre \texttt{MessageSerializer} si occupa solo della serializzazione dei dati;
-        \item[-] \textbf{Open/Closed Principle}: Le classi sono estensibili senza modificare il codice esistente. Questo è evidente nell'implementazione delle strategie di simulazione, dove nuovi comportamenti possono essere aggiunti implementando l'interfaccia \texttt{IPositionSimulationStrategy};
-        \item[-] \textbf{Liskov Substitution Principle}: Le classi derivate possono sostituire le classi base senza alterare il comportamento. Le varie implementazioni di strategie di simulazione possono essere utilizzate in modo intercambiabile;
-        \item[-] \textbf{Interface Segregation Principle}: Le interfacce sono specifiche e mirate. Ad esempio, \texttt{IJsonSerializable} definisce solo i metodi necessari per la serializzazione JSON;
-        \item[-] \textbf{Dependency Inversion Principle}: I componenti dipendono da astrazioni, non da implementazioni concrete. Questo è visibile nell'iniezione delle dipendenze nei costruttori.
+        \item[-] \textbf{Single Responsibility Principle}: L'architettura di questo progetto rivela una comprensione profonda del Single Responsibility Principle (SRP), uno dei capisaldi dei principi SOLID. Ciò che colpisce immediatamente è come l'intero sistema sia stato concepito come un ecosistema di componenti indipendenti ma interconnessi, ognuno con un ruolo ben definito e limitato.
+
+        All'interno di ciascun modulo, l'aderenza al SRP continua a manifestarsi nella progettazione dei repository. Ogni repository è stato pensato come un guardiano dedicato a un singolo tipo di entità. Il \texttt{ClickhouseUserRepository} si concentra esclusivamente sui dati degli utenti, mentre l'\texttt{ActivityRepository} gestisce solo le attività. Questa specializzazione permette di incapsulare tutta la logica relativa a un'entità in un unico contenitore, rendendo il codice più prevedibile e facilitando i futuri interventi di manutenzione.
+
+
+        Particolarmente interessante è l'implementazione del pattern Strategy nel \texttt{SimulationService}. L'interfaccia IPositionSimulationStrategy definisce un contratto che viene poi implementato da classi specifiche come \texttt{BycicleSimulationStrategy}. Questo approccio consente di modificare gli algoritmi di simulazione senza dover intervenire sul resto del codice, incarnando perfettamente il principio di responsabilità singola.
+
+
+        I servizi specializzati come \texttt{GroqLLMService} e \texttt{UserSensorService} testimoniano ulteriormente l'impegno verso il SRP. Il primo si occupa esclusivamente dell'interazione con i modelli linguistici, mentre il secondo gestisce solo le relazioni tra sensori e utenti. Questa specializzazione rende il codice non solo più leggibile, ma anche più resiliente ai cambiamenti.
+
+        Nei processori Flink osserviamo lo stesso principio applicato alle operazioni di streaming. Ogni processore ha un compito specifico: trasformare posizioni in messaggi, validare messaggi o filtrare quelli già visualizzati. Questa "catena di responsabilità" permette di ragionare su ciascun passaggio indipendentemente, facilitando debugging e testing.
+        
+        \item[-] \textbf{Open/Closed Principle}: 
+
+        Al cuore dell'architettura troviamo un elegante sistema di interfacce che stabilisce contratti chiari tra i diversi componenti. La presenza di interfacce come \texttt{IUserRepository}, \texttt{IMessageRepository} e \texttt{IActivityRepository} consente di definire comportamenti astrati che possono essere implementati in molteplici modi. Questa scelta progettuale permette di introdurre nuove implementazioni (come potrebbe essere un \texttt{PostgresUserRepository} accanto all'esistente \texttt{ClickhouseUserRepository}) senza alterare il codice client che interagisce con queste interfacce.
+
+        Particolarmente significativa è l'implementazione del pattern Strategy nel modulo di simulazione. L'interfaccia \texttt{IPositionSimulationStrategy} definisce un contratto generico per gli algoritmi di simulazione delle posizioni, mentre implementazioni concrete come \texttt{BycicleSimulationStrategy} ne forniscono realizzazioni specifiche. Questo design consente di introdurre nuove strategie di simulazione – magari per automobili, pedoni o droni – senza modificare il codice esistente. Il sistema accoglie queste nuove funzionalità semplicemente estendendo il repertorio di strategie disponibili.
+        
+        Il paradigma dell'elaborazione streaming adottato con Apache Flink manifesta brillantemente il principio Open/Closed. La catena di processori come \texttt{PositionToMessageProcessor}, \texttt{FilterMessageValidator} e \texttt{FilterMessageAlreadyDisplayed} è costruita in modo tale che nuovi comportamenti di elaborazione possano essere introdotti aggiungendo nuovi processori, senza alterare quelli esistenti. Ogni processore ha una responsabilità ben definita e la pipeline di elaborazione può essere estesa aggiungendo nuovi anelli alla catena.
+
+
+        La struttura dei DTO (Data Transfer Objects) come \texttt{UserDTO, ActivityDTO e MessageDTO} è progettata per essere facilmente estensibile. Nuovi attributi o proprietà possono essere aggiunti a queste classi senza influenzare il codice che utilizza solo le proprietà esistenti, un esempio sottile ma potente di aderenza all'OCP.
+
+        I test unitari, infine, rivelano come l'architettura faciliti l'estensibilità: l'uso di mock e stub per le dipendenze dimostra che i componenti sono progettati per accettare implementazioni alternative delle loro dipendenze, un prerequisito essenziale per un sistema che rispetta il principio Open/Closed.
+        
+        \item[-] \textbf{Liskov Substitution Principle}: Le classi derivate possono sostituire le classi base senza alterare il comportamento. Le varie implementazioni di strategie di simulazione possono essere utilizzate in modo intercambiabile.
+        Questa sostitutibilità si manifesta con particolare chiarezza nel pattern Strategy adottato. La relazione tra IPositionSimulationStrategy e \texttt{BycicleSimulationStrategy} rappresenta un caso esemplare di rispetto del LSP. L'interfaccia stabilisce un contratto per la simulazione delle posizioni, e la strategia per biciclette lo implementa fedelmente. La bellezza di questo design è che qualsiasi nuova strategia – che si tratti di simulare automobili, pedoni o altre modalità di trasporto – può essere inserita nel sistema senza che il client debba essere modificato. Il codice che utilizza una strategia di simulazione continuerà a funzionare correttamente indipendentemente dall'implementazione specifica utilizzata.
+        
+        \item[-] \textbf{Interface Segregation Principle}: Le interfacce sono specifiche e mirate.
+        I processori del flusso Flink rappresentano un altro esempio eloquente di interfacce ben segregate. Ogni processore, sia esso \texttt{PositionToMessageProcessor}, \texttt{FilterMessageValidator} o \texttt{FilterMessageAlreadyDisplayed}, implementa un'interfaccia strettamente focalizzata sulla propria specifica funzione nella pipeline di elaborazione. Questo approccio consente a ciascun componente di concentrarsi su un singolo aspetto dell'elaborazione, senza essere appesantito da metodi non pertinenti alla propria responsabilità.
+
+        
+        \item[-] \textbf{Dependency Inversion Principle}: I componenti dipendono da astrazioni, non da implementazioni concrete. 
+        
+        Il pattern Strategy adottato nel \textit{SimulationService} rappresenta un esempio cristallino di DIP. I componenti che orchestrano la simulazione dipendono dall'interfaccia \texttt{IPositionSimulationStrategy} piuttosto che da implementazioni concrete come \texttt{BycicleSimulationStrategy}. Questa inversione permette di sostituire facilmente le strategie di simulazione, rendendo il sistema aperto all'estensione senza richiedere modifiche al codice esistente.
+
+        Particolarmente sofisticata è l'applicazione del DIP nei servizi di comunicazione con sistemi esterni. Il \texttt{GroqLLMService}, ad esempio, non espone i dettagli dell'implementazione specifica del provider LLM ai suoi client. Invece, offre un'interfaccia astratta che incapsula l'interazione con il modello linguistico. Questo design consente di sostituire il provider sottostante – magari passando da Groq ad altri fornitori – senza ripercussioni sui componenti che utilizzano questo servizio.
     \end{itemize}
+
+    \myparagraph{Dependency Injection}
+
+    La Dependency Injection (DI) è un pattern di progettazione software che implementa il principio di Inversione del Controllo (IoC). Questo pattern permette di separare la creazione di un oggetto dal suo utilizzo, consentendo di "iniettare" le dipendenze nei componenti anziché crearle all'interno di essi.
+    
+    Nel progetto NearYou, questo pattern è stato implementato per ottenere un'architettura software modulare, testabile e manutenibile. La DI ha permesso di gestire efficacemente le complesse dipendenze tra i vari componenti del sistema, facilitando l'integrazione tra i moduli di simulazione, elaborazione eventi e storage.
+    
+    \mysubparagraph{Constructor Injection nel Progetto}
+    
+    La tecnica di Constructor Injection è stata scelta come approccio principale per implementare la DI in questo progetto. Con questa tecnica, le dipendenze vengono fornite attraverso i parametri del costruttore della classe.
+    
+    \begin{itemize}
+        \item \textbf{Dipendenze obbligatorie}: Il costruttore richiede esplicitamente tutte le dipendenze necessarie
+        \item \textbf{Immutabilità}: Le dipendenze possono essere memorizzate in campi privati finali
+        \item \textbf{Testabilità}: Facilita la sostituzione delle dipendenze reali con mock durante i test
+        \item \textbf{Visibilità}: Rende esplicite le dipendenze di una classe
+    \end{itemize}
+    
+    \subsection{Implementazione nel FlinkProcessor}
+    
+    Un esempio significativo di Constructor Injection nel progetto è la classe \texttt{FlinkJobManager}, responsabile della configurazione e gestione del flusso di elaborazione dei dati:
+    
+    \begin{lstlisting}[language=Python, caption=Esempio di Constructor Injection in FlinkJobManager]
+    class FlinkJobManager:
+        def __init__(self,
+                     streaming_env_istance : StreamExecutionEnvironment,
+                     map_function_implementation : MapFunction,
+                     filter_validator_implementation : FilterFunction,
+                     filter_function_implementation : FilterFunction,
+                     position_receiver_istance: IPositionReceiver,
+                     message_sender_istance: IMessageWriter
+                     ):
+            self.__streaming_env = streaming_env_istance
+            self.__populated_datastream = self.__streaming_env.from_source(position_receiver_istance.get_position_receiver(),
+                                                                       WatermarkStrategy.for_monotonous_timestamps(),
+                                                                       "Positions Source")
+            self.__keyed_stream = self.__populated_datastream.key_by(lambda x: x[0], key_type=Types.STRING())
+            self.__validated_stream = self.__keyed_stream.filter(filter_validator_implementation)
+            self.__mapped_stream = self.__validated_stream.map(map_function_implementation,
+                                                              output_type=KafkaWriterConfiguration().row_type_info_message)
+            self.__filtered_stream = self.__mapped_stream.filter(filter_function_implementation)
+            self.__filtered_stream.sink_to(message_sender_istance.get_message_writer())
+    \end{lstlisting}
+    
+    Questo esempio mostra come il costruttore riceva tutte le dipendenze necessarie come parametri, ognuna tipizzata con la relativa interfaccia. Questo approccio garantisce che:
+    
+    \begin{enumerate}
+        \item Tutte le dipendenze siano fornite all'inizializzazione dell'oggetto
+        \item Le concrete implementazioni possano essere facilmente sostituite
+        \item La classe non debba conoscere i dettagli di implementazione delle sue dipendenze
+    \end{enumerate}
+    
+    \mysubparagraph{Implementazione nel SimulationModule}
+    
+    Nel modulo di simulazione, il pattern di Constructor Injection è utilizzato ampiamente, come nel caso di \texttt{SensorFactory}:
+    
+    \begin{lstlisting}[language=Python, caption=Esempio di Constructor Injection in SensorFactory]
+    class SensorFactory:
+        def __init__(self, sensor_repository: ISensorRepository, user_repository: IUserRepository):
+            self.__sensor_repository = sensor_repository
+            self.__user_repository = user_repository
+            
+        def create_gps_sensor(self, position_sender: PositionSender, 
+                             simulation_strategy: IPositionSimulationStrategy) -> GpsSensor:
+            # Implementazione che utilizza le dipendenze iniettate
+    \end{lstlisting}
+    
+    \mysubparagraph{Integrazione con il Sistema di Testing}
+    
+    La DI tramite costruttore ha semplificato notevolmente l'implementazione dei test unitari. Utilizzando librerie come \texttt{unittest.mock}, è possibile sostituire facilmente le dipendenze reali con mock:
+    
+    \begin{lstlisting}[language=Python, caption=Test di un componente con Constructor Injection]
+    def setUp(self):
+        self.mock_sensor_repository = Mock(spec=ISensorRepository)
+        self.mock_user_repository = Mock(spec=IUserRepository)
+        self.mock_position_sender = Mock(spec=PositionSender)
+        self.mock_simulation_strategy = Mock(spec=IPositionSimulationStrategy)
+        self.mock_user_sensor_service = Mock(spec=UserSensorService)
+    
+        self.patcher = patch('Models.SensorFactory.UserSensorService', 
+                             return_value=self.mock_user_sensor_service)
+        self.patcher.start()
+    
+        self.sensor_factory = SensorFactory(self.mock_sensor_repository, self.mock_user_repository)
+    \end{lstlisting}
+    
+    Questo approccio ha contribuito a raggiungere una copertura di test vicina al 100\%, come evidenziato dai badge del progetto, rendendo il codice più robusto e affidabile.
+    
+    \mysubparagraph{Implementazione nella Pratica}
+    
+    La composizione delle dipendenze nel progetto avviene tipicamente al punto di ingresso dell'applicazione, come mostrato in \texttt{main.py}:
+    
+    \begin{lstlisting}[language=Python, caption=Composizione delle dipendenze in main.py]
+    json_adapter: PositionJsonAdapter = PositionJsonAdapter()
+    kafka_confluent_adapter: PositionSender = KafkaConfluentAdapter(
+        KafkaConfigParameters(),
+        json_adapter,
+        Producer({'bootstrap.servers': KafkaConfigParameters().bootstrap_servers})
+    )
+    
+    graph_wrapper: GraphWrapper = GraphWrapper()
+    bicycle_simulation_strategy: IPositionSimulationStrategy = BycicleSimulationStrategy(graph_wrapper)
+    
+    # Database connection
+    db_connection = DatabaseConnection(DatabaseConfigParameters())
+    sensor_repository: ISensorRepository = SensorRepository(db_connection)
+    user_repository: IUserRepository = UserRepository(db_connection)
+    
+    # Factory
+    sensor_factory: SensorFactory = SensorFactory(sensor_repository, user_repository)
+    \end{lstlisting}
+
 
     % \subsection{Diagramma delle Classi}
     % In questa sezione viene fornita una descrizione dettagliata dei diagrammi delle classi del sistema, evidenziando le componenti principali, i loro ruoli, attributi, operazioni e le relazioni tra di esse. I diagrammi rappresentano i due componenti fondamentali dell'architettura: il modulo di simulazione delle posizioni e il processore Flink.
