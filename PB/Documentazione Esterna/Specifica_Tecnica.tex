@@ -762,7 +762,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \item \textbf{Consumo delle posizioni}:
         \begin{itemize}
             \item[.] L'inbound adapter \texttt{KafkaPositionReceiver} del servizio \textit{PositionToMessageService} istanzia una \textit{KafkaSource} collegata al topic Kafka \texttt{SimulatorPosition};
-            \item[.] I payload ricevuti vengono deserializzati secondo uno schema benn definito in \texttt{JsonRowDeserializationSchema} e convertiti in oggetti di dominio \texttt{UserPosition};
+            \item[.] I payload ricevuti vengono deserializzati secondo uno schema ben definito in \\ \texttt{JsonRowDeserializationSchema} e convertiti in oggetti di dominio \texttt{UserPosition};
             \item[.] L'istanza che implementa \texttt{IPositionReceiver} viene collegata al datastream nella logica di business del servizio di elaborazione che elaborerà le posizioni ricevute in input.
         \end{itemize}
 
