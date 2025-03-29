@@ -784,7 +784,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
         \item \textbf{Persistenza e visualizzazione}:
         \begin{itemize}
-            \item[.] ClickHouse, attraverso il connettore Kafka nativo,in particolare sfruttando le tecnologie \textit{Kafka Table Engine} $\Rightarrow$ \textit{Materialized View} $\Rightarrow$ \textit{Merge Tree} consuma e archivia nella apposita tabella i messaggi dal topic \texttt{messageTable};
+            \item[.] ClickHouse, attraverso il connettore Kafka nativo, in particolare sfruttando le tecnologie \textit{Kafka Table Engine} $\Rightarrow$ \textit{Materialized View} $\Rightarrow$ \textit{Merge Tree} consuma e archivia nella apposita tabella i messaggi dal topic \texttt{messageTable};
             \item[.] Grafana interroga ClickHouse tramite l'apposito plugin e il sistema di query, per recuperare e visualizzare i dati in tempo reale attraverso dashboard interattive.
         \end{itemize}
     \end{enumerate}
