@@ -133,7 +133,7 @@
     \hline
     0.5.13 & 2025-01-11 & Manuel Gusella & Leonardo Trolese & Aggiunte tabelle delle metriche per le sezioni \hyperref[codifica]{Codifica}, \hyperref[progettazione]{Progettazione} e \hyperref[analisi]{Analisi dei Requisiti}\\
     \hline
-    0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metrica Function Point e correzioni minori\\
+    0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metriche e correzioni minori\\
     \hline
     0.5.11 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Scrittura della sezione \hyperref[standard_12207]{"Standard ISO/IEC 12207"}\\
     \hline
@@ -242,12 +242,12 @@
         \begin{itemize}
             \item Riferimenti per le metriche: 
             \begin{itemize}
-                \item \textcolor{blue}{\texttt{\url{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}}}\\
-              (Consultato: 2025-02-19).\\
+            %     \item \textcolor{blue}{\texttt{\url{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}}}\\
+            %   (Consultato: 2025-02-19).\\
                 \item \textcolor{blue}{\texttt{\url{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}}}\\
               (Consultato: 2025-02-19).\\
-                \item \textcolor{blue}{\texttt{\url{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}}}\\
-              (Consultato: 2025-02-19).\\
+            %     \item \textcolor{blue}{\texttt{\url{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}}}\\
+            %   (Consultato: 2025-02-19).\\
                 \item \textcolor{blue}{\texttt{\url{https://youtu.be/CXgDazM0DWA?feature=shared}}}\\
               (Consultato: 2025-02-19).
             \end{itemize}
@@ -487,8 +487,8 @@
             \hline
             MPD03 & Requisiti Opzionali Soddisfatti\\
             \hline
-            MPD04 & Function Point\\
-            \hline
+            % MPD04 & Function Point\\
+            % \hline
           \end{tabular}
           \caption{Metriche relative all'attività di analisi-dei-requisiti}
         \end{table}
@@ -1355,29 +1355,29 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
                             \item $TRP$: requisiti opzionali totali.
                         \end{itemize}
             \end{itemize}
-    \item   \textbf{MPD04 - Function Point (FP)}:
-            \begin{itemize}
-                \item   \textbf{Descrizione}: metrica utilizzata per misurare la dimensione funzionale di un prodotto software. Si basa sulle funzionalità offerte dal sistema$_G$ agli utenti finali, e pertanto tiene conto di elementi quali input, output, interfacce, file e query$_G$ interne.
-                Il calcolo di tale metrica segue uno schema standardizzato che fa riferimento al IFPUG (International Function Point Users Group), e include cinque componenti principali:
-                \begin{enumerate}
-                    \item Ingressi esterni (EI).
-                    \item Uscite esterne (EO).
-                    \item Query$_G$ esterne (EQ).
-                    \item File logici interni (ILF).
-                    \item File di interfaccia esterni (EIF).
-                \end{enumerate}
-                Il numero totale di function points viene ponderato sulla base della complessità (alta, media o bassa) relativa a ciascuno di questi elementi.
-                \begin{figure}[H]
-                \centering
-                \includegraphics[width=0.7\textwidth]{FunctionPointFigure.png}
-                \caption{Schema riassuntivo della metrica Function Point}
-                \end{figure}
-            \end{itemize}
+    % \item   \textbf{MPD04 - Function Point (FP)}:
+    %         \begin{itemize}
+    %             \item   \textbf{Descrizione}: metrica utilizzata per misurare la dimensione funzionale di un prodotto software. Si basa sulle funzionalità offerte dal sistema$_G$ agli utenti finali, e pertanto tiene conto di elementi quali input, output, interfacce, file e query$_G$ interne.
+    %             Il calcolo di tale metrica segue uno schema standardizzato che fa riferimento al IFPUG (International Function Point Users Group), e include cinque componenti principali:
+    %             \begin{enumerate}
+    %                 \item Ingressi esterni (EI).
+    %                 \item Uscite esterne (EO).
+    %                 \item Query$_G$ esterne (EQ).
+    %                 \item File logici interni (ILF).
+    %                 \item File di interfaccia esterni (EIF).
+    %             \end{enumerate}
+    %             Il numero totale di function points viene ponderato sulla base della complessità (alta, media o bassa) relativa a ciascuno di questi elementi.
+    %             \begin{figure}[H]
+    %             \centering
+    %             \includegraphics[width=0.7\textwidth]{FunctionPointFigure.png}
+    %             \caption{Schema riassuntivo della metrica Function Point}
+    %             \end{figure}
+    %         \end{itemize}
 \end{itemize}
 
 \subsubsection{Affidabilità}
 \begin{itemize}
-    \item \textbf{MPD05 - Line Coverage}:
+    \item \textbf{MPD04 - Line Coverage}:
     \begin{itemize}
         \item \textbf{Descrizione}: percentuale di linee di codice coperto da test$_G$.
     \end{itemize}
@@ -1395,7 +1395,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
     %             \end{itemize}
     % \end{itemize}
 
-    \item \textbf{MPD06 - Branch$_G$ Coverage}:
+    \item \textbf{MPD05 - Branch$_G$ Coverage}:
     \begin{itemize}
         \item   \textbf{Descrizione}: percentuale di rami decisionali testati.
         \item   \textbf{Formula:}
@@ -1423,7 +1423,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
     %         \end{itemize}
     % \end{itemize}
 
-    \item \textbf{MPD07 - Tempo medio di risposta}:
+    \item \textbf{MPD06 - Tempo medio di risposta}:
     \begin{itemize}
         \item \textbf{Descrizione}: misura l'efficienza del sistema$_G$ in termini di reattività.
     \end{itemize}
@@ -1431,11 +1431,11 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Usabilità}
 \begin{itemize}
-    \item \textbf{MPD08 - Facilità di utilizzo}:
+    \item \textbf{MPD07 - Facilità di utilizzo}:
         \begin{itemize}
             \item \textbf{Descrizione}:  misura la facilità con cui gli utenti possono utilizzare il sistema$_G$.
         \end{itemize}
-    \item \textbf{MPD09 - Tempo medio di apprendimento}:
+    \item \textbf{MPD08 - Tempo medio di apprendimento}:
         \begin{itemize}
             \item \textbf{Descrizione}: tempo medio necessario agli utenti per apprendere l'uso del sistema$_G$.
         \end{itemize}
@@ -1447,23 +1447,23 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
     % \begin{itemize}
     %     \item \textbf{Descrizione}: misura del numero di classi usate da una singola classe.
     % \end{itemize}
-    \item \textbf{MPD10 - Linee di codice per metodo}:
+    \item \textbf{MPD09 - Linee di codice per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di linee di codice consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD11 - Parametri per metodo}:
+    \item \textbf{MPD10 - Parametri per metodo}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di parametri consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD12 - Attributi per classe}:
+    \item \textbf{MPD11 - Attributi per classe}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di attributi consentito per singola classe.
       \end{itemize}
-    \item \textbf{MPD13 - Structure Fan IN}:
+    \item \textbf{MPD12 - Structure Fan IN}:
       \begin{itemize}
         \item \textbf{Descrizione}: rappresenta il numero di moduli, funzioni o classi che chiamano o utilizzano una specifica funzione o modulo, indicando quanto è riutilizzato.
       \end{itemize}
-    \item \textbf{MPD14 - Structure Fan OUT}:
+    \item \textbf{MPD13 - Structure Fan OUT}:
       \begin{itemize}
         \item \textbf{Descrizione}: misura il numero di moduli, funzioni o classi che una specifica funzione o modulo utilizza o chiama, evidenziando le sue dipendenze.
       \end{itemize}
@@ -1471,7 +1471,7 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Portabilità}
   \begin{itemize}
-    \item \textbf{MPD15 - Versioni browser supportati}:
+    \item \textbf{MPD14 - Versioni browser supportati}:
       \begin{itemize}
         \item \textbf{Descrizione}: percentuale delle versioni di browser supportate rispetto al totale delle versioni disponibili.
       \end{itemize}
