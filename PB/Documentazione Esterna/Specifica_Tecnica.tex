@@ -1431,8 +1431,8 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \myparagraph{Topic e partitioning}
         In questo progetto si utilizzano due topic:
         \begin{itemize}
-        \item \texttt{posizioni}, per pubblicare i dati generati dai sensori (simulator);
-        \item \texttt{messaggi}, per pubblicare gli annunci generati dall’LLM.
+        \item \texttt{SimulatorPosition}, per pubblicare i dati generati dai sensori (simulator);
+        \item \texttt{MessageElaborated}, per pubblicare gli annunci generati dall’LLM.
         \end{itemize}
 
         \myparagraph{Producer e Consumer}
@@ -1440,7 +1440,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \mysubparagraph{Message keys}
         Le chiavi dei messaggi (key) determinano la partizione Kafka a cui viene inviato ogni evento, bilanciando il carico tra i consumer. Una chiave può essere definita in base a uno o più campi del messaggio, ad esempio l'ID del sensore per i record di posizione. Inoltre, è fondamentale considerare come la scelta delle chiavi possa influenzare la distribuzione dei dati e le performance del sistema.
         \begin{lstlisting}
-        key_type = Types.ROW_NAMED(['sensor_id'], [Types.STRING()])
+        key_type = Types.ROW_NAMED(['sensor_uuid'], [Types.STRING()])
         \end{lstlisting}
 
         \myparagraph{Integrazione con Flink keyed stream}
@@ -1451,7 +1451,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         diversi.
 
         \myparagraph{Schema topic simulator position}
-        I dati inviati dal producer sul topic \texttt{posizioni} seguono questa struttura JSON: \\
+        I dati inviati dal producer sul topic \texttt{SimulatorPosition} seguono questa struttura JSON: \\
         \begin{lstlisting}
         {
             "user_uuid": "UUID",
