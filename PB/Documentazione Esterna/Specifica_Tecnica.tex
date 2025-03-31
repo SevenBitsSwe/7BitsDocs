@@ -147,6 +147,8 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    0.2.2 & 2025-03-29 & Alfredo Rubino & Federico Pivetta & Aggiornamento sezione Design Pattern\\
+    \hline
     0.2.1 & 2025-03-29 & Federico Pivetta & Riccardo Piva & Correzioni generali\\
     \hline
     0.2.0 & 2025-03-28 & Uncas Peruzzi & Federico Pivetta & Refactoring Struttura, Aggiunti SimulationService e PositionToMessageService\\
@@ -983,13 +985,18 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \item Una o più interfacce che definiscono i metodi necessari a interagire con l’architettura esagonale;
         \item Una classe \texttt{adapter} concreta che implementa tali interfacce, convertendo gli oggetti e le chiamate tra il formato richiesto dalla business logic e quello utilizzato dalla componente esterna.
     \end{enumerate}
+
+    \mysubparagraph{Utilizzo}
+    L’integrazione del pattern Adapter disaccoppia la logica specifica della serializzazione e deserializzazione JSON dal codice che la utilizza, rendendo il sistema più modulare ed estensibile. Questa separazione consente di modificare o sostituire le implementazioni senza impattare il resto dell’applicazione. L’Adapter permette di astrarre il processo di conversione dei dati JSON nel formato interno e viceversa, facilitando l’interoperabilità con diversi sistemi e la manutenibilità del codice. Inoltre, questa soluzione si rivela particolarmente utile in scenari in cui l’infrastruttura sottostante potrebbe cambiare, poiché l’aggiornamento può avvenire semplicemente modificando l’Adapter, senza alterare la logica di business principale.
+
     
     \mysubparagraph{Integrazione del pattern}
     L’Adapter funge da collegamento tra l’architettura esagonale e le librerie esterne. L’architettura esagonale interagisce esclusivamente con \texttt{GeoPosition} e altre entità di dominio, senza preoccuparsi del formato dei messaggi o delle dipendenze verso Kafka. Se in futuro fosse necessario sostituire il broker di messaggistica o cambiare il formato di serializzazione, basterebbe quindi aggiornare l’Adapter corrispondente, senza intaccare la logica di business interna.\\
     Di seguito viene mostrata l’implementazione concreta dell’Adapter, che trasforma gli oggetti \texttt{GeoPosition} in stringhe JSON compatibili con il topic di Kafka:
     
     \begin{lstlisting}
-        class PositionJsonAdapter(IJsonSerializable):
+    class PositionJsonAdapter(IJsonSerializable):
+    
         def serialize_to_json(self, position_istance: GeoPosition):
     
             return json.dumps({
@@ -1001,7 +1008,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \end{lstlisting}
     Il componente di pubblicazione \texttt{KafkaConcluentAdapter}, utilizza l’Adapter per implementare i metodi previsti dalla porta Position Sender e  serializzare i dati prima dell’invio a Kafka:
     \begin{lstlisting}
-        class KafkaConfluentAdapter(PositionSender):
+    class KafkaConfluentAdapter(PositionSender):
     
         def __init__(self,
                     kafka_config: KafkaConfigParameters,
@@ -1017,8 +1024,31 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
                                     value = json_payload.encode('utf-8'))
             self.__producer.flush()
     \end{lstlisting}
+    L'Adapter per la deserializzazione di dati JSON utilizza il modulo \texttt{JsonRowDeserializationSchema} per convertire i dati ricevuti nel formato interno corretto.
+    \begin{lstlisting}
+    class JsonRowDeserializationAdapter:
+        def __init__(self, row_type_config ):
+            self.__row_type_info = row_type_config
+    \end{lstlisting}
+    Questo Adapter permette di gestire in modo astratto la configurazione del tipo di dati JSON in ingresso, garantendo flessibilità nell'integrazione con altri componenti del sistema.
+    Allo stesso modo, l'Adapter per la serializzazione utilizza il modulo \texttt{JsonRowSerializationSchema} per convertire i dati in formato JSON prima dell'invio.
+    \begin{lstlisting} 
+    class JsonRowSerializationAdapter:
+        def __init__(self, row_type_config_message ):
+            self.__row_type_info_message = row_type_config_message
+    
+        def get_serialization_schema(self):
+            return JsonRowSerializationSchema.builder()\
+                                             .with_type_info(self.__row_type_info_message)\
+                                             .build()
 
-    \myparagraph{Classi, interfacce, metodi e attributi:}
+        def get_deserialization_schema(self):
+            return JsonRowDeserializationSchema.builder() \
+                    .type_info(self.__row_type_info) \
+                    .build()
+    \end{lstlisting}
+
+    \subsubsection{Classi, interfacce, metodi e attributi}
     
     \paragraph{SensorSimulationAdministrator}
     \begin{itemize} 
@@ -1173,7 +1203,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \begin{itemize}
         \item \texttt{\_\_init\_\_(self, sensor\_repo: ISensorRepository, user\_repo: IUserRepository)} - Costruttore che inizializza la factory con i repository necessari per gestire sensori e utenti;
         
-        \item \texttt{create\_gps\_sensor(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy) -> SensorSubject} - Crea un singolo sensore GPS assegnandogli un UUID tramite il servizio utente-sensore e configurandolo con il sender e la strategia di simulazione forniti;
+        \item \texttt{create\_gps\_sensor(self, position\_sender: PositionSender, simulation\_strategy: \\IPositionSimulationStrategy) -> SensorSubject} - Crea un singolo sensore GPS assegnandogli un UUID tramite il servizio utente-sensore e configurandolo con il sender e la strategia di simulazione forniti;
         
         \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int) -> List[SensorSubject]} - Crea una lista di sensori GPS del numero specificato, utilizzando lo stesso sender e la stessa strategia di simulazione per tutti.
     \end{itemize}
@@ -1402,7 +1432,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: "PositionJsonAdapter", producer\_istance: Producer)} - Costruttore che inizializza l'adattatore con i parametri di configurazione Kafka, un adattatore JSON per la serializzazione e un'istanza del producer Confluent;
+        \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: \\"PositionJsonAdapter", producer\_istance: Producer)} - Costruttore che inizializza l'adattatore con i parametri di configurazione Kafka, un adattatore JSON per la serializzazione e un'istanza del producer Confluent;
         
         \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Implementa il metodo astratto della classe base. Invia il payload JSON al topic Kafka specificato nella configurazione, utilizzando l'UUID del sensore come chiave del messaggio e il payload serializzato come valore. Dopo l'invio, esegue un flush per garantire che il messaggio venga consegnato al broker.
     \end{itemize}
