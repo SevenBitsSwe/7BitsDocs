@@ -4179,8 +4179,9 @@ Durante la fase di analisi sono stati individuati 29 requisiti funzionali (RF01-
 
 I requisiti funzionali riguardano principalmente:
 \begin{itemize}
-    \item La visualizzazione della Dashboard e dei Marker sulla mappa;
+    \item La visualizzazione della Dashboard e dei marker sulla mappa;
     \item La gestione e visualizzazione dei punti di interesse;
+    \item La gestione e visualizzazione degli utenti;
     \item La visualizzazione degli annunci pubblicitari generati;
     \item La trasmissione e gestione dei dati geoposizionali.
 \end{itemize}
@@ -4250,14 +4251,6 @@ I requisiti funzionali riguardano principalmente:
     \hline
     RF29 & Obbligatorio & Il sensore deve essere in grado di trasmettere il proprio id, la sua latitudine e longitudine al Sistema. & Implementato \\
     \hline
-    RF30 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere i dati dell'utente e del punto di interesse inviati dal Sistema. & In implementazione \\
-    \hline
-    RF31 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere le informazioni dell'utente inviate dal Sistema, quali: il nome, il cognome, l'email, il genere, la data di nascita, lo stato civile e i suoi interessi. & In implementazione \\
-    \hline
-    RF32 & Obbligatorio & Il servizio LLM deve essere in grado di ricevere le informazioni del punto di interesse inviate dal Sistema, quali: il nome, l'indirizzo, la tipologia, la descrizione e la distanza del PoI dall'utente. & In implementazione \\
-    \hline
-    RF33 & Obbligatorio & Il servizio LLM deve essere in grado di trasmettere un messaggio custom, rappresentante il contenuto dell'annuncio per un utente, al Sistema. & Da implementare \\
-    \hline
 \end{longtable}
 
 \subsection{Stato di implementazione}
@@ -4273,13 +4266,13 @@ Lo stato di implementazione dei requisiti funzionali è rappresentato nella segu
 \rowcolor{gray!25}
 \textbf{Tipo di requisito} & \textbf{Totale} & \textbf{Implementati} & \textbf{In implementazione} & \textbf{Da implementare} \\
 \hline
-Obbligatori & 31 & 26 & 3 & 2 \\
+Obbligatori & 27 & 27 & 0 & 0 \\
 \hline
 Desiderabili & 0 & 0 & 0 & 0 \\
 \hline
-Opzionali & 2 & 1 & 0 & 1 \\
+Opzionali & 2 & 0 & 0 & 2 \\
 \hline
-\textbf{Totale} & 33 & 27 & 3 & 3 \\
+\textbf{Totale} & 29 & 27 & 0 & 2 \\
 \hline
 \end{tabular}
 \caption{Stato di implementazione dei requisiti funzionali}
@@ -4287,28 +4280,26 @@ Opzionali & 2 & 1 & 0 & 1 \\
 \end{table}
 
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \pie{84/Implementati, 10/In implementazione, 6/Da implementare}
-    \end{tikzpicture}
-    \caption{Stato dei requisiti funzionali obbligatori}
-    \label{fig:stato_requisiti_obbligatori}
+\centering
+\begin{tikzpicture}
+    \pie{100/Implementati}
+\end{tikzpicture}
+\caption{Stato dei requisiti funzionali obbligatori}
+\label{fig:stato_requisiti_obbligatori}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \pie{82/Implementati, 9/In implementazione, 9/Da implementare}
-    \end{tikzpicture}
-    \caption{Stato dei requisiti funzionali totali}
-    \label{fig:stato_requisiti_totali}
+\centering
+\begin{tikzpicture}
+    \pie{93.1/Implementati, 6.9/Da implementare}
+\end{tikzpicture}
+\caption{Stato dei requisiti funzionali totali}
+\label{fig:stato_requisiti_totali}
 \end{figure}
 
-\subsection{Conclusioni}
+\subsection{Riepilogo e Conclusioni}
 
-L'analisi dello stato dei requisiti funzionali indica un buon progresso nell'implementazione delle funzionalità richieste. Con l'82\% dei requisiti funzionali già implementati e il 9\% in fase di implementazione, il progetto è sulla buona strada per soddisfare tutti i requisiti obbligatori entro la consegna finale.
-
-I requisiti attualmente in fase di implementazione riguardano principalmente l'integrazione con il servizio LLM, mentre quelli ancora da implementare comprendono uno dei requisiti opzionali e alcuni aspetti avanzati del sistema. La stabilità raggiunta nei requisiti dopo la revisione tecnica fornisce una base solida per il completamento dell'implementazione, mentre il sistema di test definito garantirà la qualità del prodotto finale.
-
+L'analisi aggiornata dello stato dei requisiti funzionali indica un completamento quasi totale delle funzionalità richieste. Con il 93.1\% dei requisiti funzionali totali implementati e lo 0\% in fase di implementazione, il progetto ha raggiunto un traguardo significativo. Per quanto riguarda i requisiti obbligatori, l'implementazione è completa al 100\%.\\
+Attualmente, nessun requisito è in fase di implementazione. I soli requisiti ancora da implementare sono i 2 requisiti opzionali. Il completamento di tutti i requisiti obbligatori fornisce una base estremamente solida per la consegna finale, mentre il sistema di test definito continuerà a garantire la qualità del prodotto finale in vista dell'implementazione dei requisiti opzionali rimanenti.
 
 \end{document}
