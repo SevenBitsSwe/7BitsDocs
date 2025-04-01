@@ -62,7 +62,7 @@
 
 \surroundwithmdframed{lstlisting}
 
-\newcommand\version{0.2.3} %aggiunta versione come variabile
+\newcommand\version{0.2.4} %aggiunta versione come variabile
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 \newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
 
@@ -146,6 +146,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    0.2.4 & 2025-04-01 & Riccardo Piva & Giovanni Cristellon & Cambio immagine schemaDB e piccole correzioni generali\\
     \hline
     0.2.3 & 2025-03-31 & Federico Pivetta & Alfredo Rubino & Miglioramento alla descrizione dei design pattern\\
     \hline
@@ -596,7 +598,7 @@ In NearYou, Docker è utilizzato per:
     %     \includegraphics[width=\textwidth]{Dataflow.pdf}
     %     \caption{Flusso dei dati nell'architettura}
     % \end{figure}
-    % Il flusso dei dati nell'architetturra di sistema segue un percorso ben definito, garantendo la separazione tra la logica di business e le tecnologie di implementazione. Di seguito viene descritto il flusso di dati end-to-end:
+    % Il flusso dei dati nell'architettura di sistema segue un percorso ben definito, garantendo la separazione tra la logica di business e le tecnologie di implementazione. Di seguito viene descritto il flusso di dati end-to-end:
     
 
     % \begin{enumerate}
@@ -620,7 +622,7 @@ In NearYou, Docker è utilizzato per:
     %         \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IUserRepository} per ottenere le informazioni specifiche dell'utente collegato alla posizione ricevuta in input ,utilizza poi \texttt{IActivityRepository} per recuperare le attività nelle vicinanze dell'utente e con gli interessi condivisi;
     %         \item[.] In caso di rilevamento di un punto di interesse valido in prossimità,il core domain \\\texttt{PositionToMessageProcessor} crea un prompt per poi richiedere un messaggio personalizzato tramite l'outbound port \texttt{LLMService};
     %         \item[.] L'adapter \texttt{GroqLLMService} comunica con il servizio LLM esterno e restituisce il messaggio generato;
-    %         \item[.] Viene applicata un 'altra funzione di \textit{Filter}, implementata in \texttt{FilterMessageAlreadyDisplayed}, per prevenire la duplicazione di messaggi generati per il singolo utente, necessario per rispettare i requisiti stabiliti. 
+    %         \item[.] Viene applicata un'altra funzione di \textit{Filter}, implementata in \texttt{FilterMessageAlreadyDisplayed}, per prevenire la duplicazione di messaggi generati per il singolo utente, necessario per rispettare i requisiti stabiliti. 
     %         \item[.] Il messaggio personalizzato viene incapsulato in un oggetto \texttt{MessageDTO} del dominio per facilitarne la serializzazione.
     %     \end{itemize}
 
@@ -685,7 +687,7 @@ La Kappa Architecture è stata selezionata come architettura di riferimento per 
         \begin{itemize}
         \item \textbf{Vantaggi per l'elaborazione in tempo reale}: Tra i vantaggi per l'elaborazione in tempo reale c'è la capacità di gestire flussi di dati continui senza ritardi significativi;
         \item \textbf{Tecniche di riduzione della latenza}: La riduzione della latenza è garantita dalla gestione dei dati in tempo reale, senza la necessità di processi batch;
-        \item \textbf{Benefici sul disaccoppiamento}: Tra i benefici sul disaccoppiamento c'è la possibilità di sviluppare e scalare indipendentemente i componenti del sistema, garantendo una maggiore flessibilità;
+        \item \textbf{Benefici sul disaccoppiamento}: Tra i benefici del disaccoppiamento c'è la possibilità di sviluppare e scalare indipendentemente i componenti del sistema, garantendo una maggiore flessibilità;
         \item \textbf{Ottimizzazione del codebase}: La semplificazione della pipeline di dati permette di ridurre la complessità del codice e di semplificare la manutenzione.
     \end{itemize}
 
@@ -754,7 +756,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \includegraphics[width=\textwidth]{Dataflow.pdf}
         \caption{Flusso dei dati nell'architettura}
     \end{figure}
-    Il flusso dei dati nell'architetturra di sistema segue un percorso ben definito, garantendo la separazione tra la logica di business e le tecnologie di implementazione. Di seguito viene descritto il flusso di dati end-to-end:
+    Il flusso dei dati nell'architettura di sistema segue un percorso ben definito, garantendo la separazione tra la logica di business e le tecnologie di implementazione. Di seguito viene descritto il flusso di dati end-to-end:
     
 
     \begin{enumerate}
@@ -775,7 +777,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \item \textbf{Elaborazione e generazione di messaggi}:
         \begin{itemize}
             \item[.] Il core domain applica una funzione di \textit{Filter}, con la classe \texttt{FilterMessageValidator}, al datastream in input per validare i dati ricevuti in input e limitare il \textit{KafkaPoisoning} (scelta esplicata in \ref{poison})
-            \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IUserRepository} per ottenere le informazioni specifiche dell'utente collegato alla posizione ricevuta in input, utilizza poi \texttt{IActivityRepository} per recuperare le attività nelle vicinanze dell'utente e con gli interessi condivisi;
+            \item[.] Il core domain valuta la prossimità dell'utente rispetto ai punti di interesse, utilizzando l'outbound port \texttt{IUserRepository} per ottenere le informazioni specifiche dell'utente collegato alla posizione ricevuta in input, utilizza poi \texttt{IActivityRepository} per recuperare le attività nelle vicinanze dell'utente con gli interessi condivisi;
             \item[.] In caso di rilevamento di un punto di interesse valido in prossimità, il core domain \\\texttt{PositionToMessageProcessor} crea un prompt per poi richiedere un messaggio personalizzato tramite l'outbound port \texttt{LLMService};
             \item[.] L'adapter \texttt{GroqLLMService} comunica con il servizio LLM esterno e restituisce il messaggio generato;
             \item[.] Viene applicata un'altra funzione di \textit{Filter}, implementata in \texttt{FilterMessageAlreadyDisplayed}, per prevenire la duplicazione di messaggi generati per il singolo utente, necessario per rispettare i requisiti stabiliti;
@@ -2586,7 +2588,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
 
         \mysubparagraph{Partizionamento}
-        In questo progetto il partizionamente viene fatto su base temporale. In questo caso le tabelle positions e messageTable sono partizionate per giorno:
+        In questo progetto il partizionamento viene fatto su base temporale. In questo caso le tabelle positions e messageTable sono partizionate per giorno:
         \begin{lstlisting}
         PARTITION BY toYYYYMMDD(received_at)
         \end{lstlisting}
@@ -3275,7 +3277,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
     La Dependency Injection (DI) è un pattern di progettazione software che implementa il principio di Inversione del Controllo (IoC). Questo pattern permette di separare la creazione di un oggetto dal suo utilizzo, consentendo di "iniettare" le dipendenze nei componenti anziché crearle all'interno di essi.
     
-    Nel progetto NearYou, questo pattern è stato implementato per ottenere un'architettura software modulare, testabile e manutenibile. La DI ha permesso di gestire efficacemente le complesse dipendenze tra i vari componenti del sistema, facilitando l'integrazione tra i moduli di simulazione, elaborazione eventi e storage.
+    Nel progetto NearYou, questo pattern è stato implementato per ottenere un'architettura software modulare, testabile e manutenibile. La DI ha permesso di gestire efficacemente le complesse dipendenze tra i vari componenti del sistema, facilitando l'integrazione fra i moduli di simulazione, elaborazione eventi e storage.
     
     \mysubparagraph{Constructor Injection nel Progetto}
     
