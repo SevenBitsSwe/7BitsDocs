@@ -232,7 +232,7 @@ I requisiti del sistema$_G$ operativo specificano la versione minima necessaria 
     \begin{tabular}{|c|c|}
         \hline
         \rowcolor{gray!25}
-        Sistema$_G$ Operativo & Versione \\
+        Sistema Operativo & Versione \\
         \hline
         Ubuntu & 24.10\\ 
         \hline
@@ -301,7 +301,7 @@ La seguente sezione fornisce istruzioni dettagliate su come installare e avviare
     \item Spostarsi nella cartella in cui si desidera clonare la repository$_G$;
     \item Con Git$_G$ installato in locale, clonare la repository$_G$ tramite il comando:
 \begin{verbatim}
-git$_G$ clone https://github.com/SevenBitsSwe/MVP.git
+git clone https://github.com/SevenBitsSwe/MVP.git
 \end{verbatim}
 \end{enumerate}
 
@@ -326,11 +326,11 @@ A questo punto, sostituire il testo tra parentesi angolate (comprese) con la chi
     \item Assicurarsi di avere Docker$_G$ installato sul sistema$_G$;
     \item Dal prompt dei comandi, posizionarsi nella cartella corretta tramite il comando:
 \begin{verbatim}
-cd percorso$_G$\della\repository\MVP (o cd percorso$_G$/della/repository/MVP)
+cd percorso\della\repository\MVP (o cd percorso/della/repository/MVP)
 \end{verbatim}
     \item Raggiunta la directory principale del progetto$_G$, eseguire:
 \begin{verbatim}
-docker-compose$_G$ --profile prod up --build
+docker-compose --profile prod up --build
 \end{verbatim}
 \end{enumerate}
 
@@ -356,7 +356,7 @@ Per verificare il corretto funzionamento:
 \subsection{Riavvio}
 Nel caso sia necessario riavviare il sistema$_G$ e rimuovere i volumi associati ai container$_G$, eseguire il seguente comando:
 \begin{verbatim}
-docker-compose$_G$ --profile prod down -v
+docker-compose --profile prod down -v
 \end{verbatim}
 
 
