@@ -62,7 +62,7 @@
 
 \surroundwithmdframed{lstlisting}
 
-\newcommand\version{0.2.1} %aggiunta versione come variabile
+\newcommand\version{0.2.3} %aggiunta versione come variabile
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 \newcommand{\mysubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
 
@@ -147,7 +147,9 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
-    0.2.2 & 2025-03-29 & Alfredo Rubino & Federico Pivetta & Aggiornamento sezione Design Pattern\\
+    0.2.3 & 2025-03-31 & Federico Pivetta & Alfredo Rubino & Miglioramento alla descrizione dei design pattern\\
+    \hline
+    0.2.2 & 2025-03-31 & Alfredo Rubino & Federico Pivetta & Aggiornamento sezione pattern Adapter\\
     \hline
     0.2.1 & 2025-03-29 & Federico Pivetta & Riccardo Piva & Correzioni generali\\
     \hline
@@ -910,36 +912,76 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     Il pattern Strategy è stato adottato per incrementare la flessibilità nella gestione di diverse modalità operative del sistema. Questa scelta architetturale permette di definire un'interfaccia comune per tutte le strategie implementate, consentendo di modificare il comportamento del sistema selezionando una strategia specifica. Tale approccio aderisce al principio Open/Closed, agevolando l'aggiunta di nuove strategie senza intervenire su quelle esistenti.
 
     \mysubparagraph{Implementazione del design pattern}
-    Il pattern Strategy è implementato attraverso la definizione di un'interfaccia che delinea il comportamento comune a tutte le strategie. Ogni strategia concreta realizza questa interfaccia, fornendo un'implementazione specifica per una determinata funzionalità. Questo design consente la selezione dinamica della strategia più appropriata in base alle esigenze operative, migliorando la modularità e la manutenibilità del codice complessivo.
+    L’implementazione del pattern Strategy avviene tramite la creazione di:
+    \begin{enumerate}
+        \item Un'interfaccia che definisce i metodi comuni necessari per implementare diverse strategie per una specifica funzionalità;
+        \item Una o più classi concrete che implementano tale interfaccia, fornendo algoritmi specifici per realizzare la funzionalità in diversi modi.
+    \end{enumerate}
 
     \mysubparagraph{Utilizzo}
     L'integrazione del pattern Strategy disaccoppia la logica specifica delle funzionalità dal codice client che le invoca, semplificando l'estensibilità del sistema. La possibilità di scegliere le strategie a runtime permette di adattare dinamicamente il comportamento dell'applicazione in base al contesto. Ciò si rivela particolarmente vantaggioso in scenari che richiedono la sperimentazione o l'utilizzo di diverse modalità operative senza necessità di modifiche al nucleo del codice.
 
     \mysubparagraph{Integrazione del pattern}
-    Il pattern Strategy si compone di tre elementi principali: un contesto che utilizza la strategia, un'interfaccia che definisce il contratto comune e le classi concrete che implementano le varie strategie. Nel nostro sistema, questo pattern è implementato in diversi modi:
+    Il nostro sistema adotta il pattern Strategy per la simulazione della posizione, definendo l'interfaccia \texttt{IPositionSimulationStrategy}. Questa scelta architetturale consente l'implementazione di diverse logiche di simulazione, garantendo flessibilità per molteplici scenari di utilizzo.
+    \begin{lstlisting}
+    class IPositionSimulationStrategy(ABC):
+        @abstractmethod
+        def get_route(self):
+            pass
+
+        @abstractmethod
+        def get_delta_time(self) -> float:
+            pass
+
+        @abstractmethod
+        def get_speed(self) -> float:
+            pass
+    \end{lstlisting}
+    Il funzionamento dei metodi della \texttt{IPositionSimulationStrategy} è il seguente:
     \begin{itemize}
-        \item Per la simulazione della posizione, il nostro sistema utilizza l'interfaccia IPositionSimulationStrategy, un contratto che definisce tre metodi astratti: get\_route(), get\_delta\_time() e get\_speed(). Questa interfaccia, basata sul pattern Strategy, permette di implementare diverse logiche di simulazione, garantendo flessibilità ed estendibilità per vari scenari di utilizzo.
-        \begin{lstlisting}
-        class IPositionSimulationStrategy(ABC):
-            @abstractmethod
-            def get_route(self):
-                pass
-
-            @abstractmethod
-            def get_delta_time(self) -> float:
-                pass
-
-            @abstractmethod
-            def get_speed(self) -> float:
-                pass
-        \end{lstlisting}
-        La strategia concreta BycicleSimulationStrategy implementa l'interfaccia IPositionSimulationStrategy, fornendo un algoritmo specifico per simulare il movimento di una bicicletta.
-        BycicleSimulationStrategy utilizza la libreria OSMnx per generare percorsi realistici su mappe stradali, calcolando il percorso più breve tra due nodi selezionati casualmente dal grafo e restituendo le relative coordinate geografiche. Definisce inoltre parametri specifici per la simulazione ciclistica, come una velocità media di circa 15 km/h e un delta temporale tra le posizioni simulate.\\
-        Attualmente, questa è la nostra unica implementazione, ma grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione.
-        
-
+        \item \texttt{get\_route(...)}: Metodo astratto che deve restituire la sequenza di coordinate geografiche che rappresentano il percorso simulato;
+        \item \texttt{get\_delta\_time(...) -> float}: Metodo astratto che deve restituire l'intervallo di tempo (in secondi) tra due posizioni consecutive nella simulazione;
+        \item \texttt{get\_speed(...) -> float}: Metodo astratto che deve restituire la velocità (in metri al secondo) della simulazione.
     \end{itemize}
-    In conclusione, questo approccio modulare, basato sul pattern Strategy, ci consente di estendere facilmente il sistema con nuove strategie senza dover modificare il codice esistente. Tale progettazione rispetta i principi SOLID, in particolare il principio Open/Closed, e contribuisce significativamente al miglioramento della manutenibilità complessiva dell'applicazione.
+    \begin{lstlisting}
+    class BycicleSimulationStrategy(IPositionSimulationStrategy):
+
+        def __init__(self, graph_istance: GraphWrapper):
+            self.__bycicle_speed_approximated = 15
+            self.__delta_time_between_positions = 21
+            self.__graph_istance = graph_istance.get_graph()
+
+        def get_route(self):
+            graph_returned = self.__graph_istance
+            graph_nodes = list(graph_returned.nodes)
+            starting_node = random.choice(graph_nodes)
+            destination_node = random.choice(graph_nodes)
+
+            shortest_route = osmnx.shortest_path(
+                graph_returned,
+                starting_node,
+                destination_node,
+                weight='length'
+            )
+            route_coords = [(graph_returned.nodes[node]["y"], graph_returned.nodes[node]["x"]) for node in shortest_route]
+
+            return route_coords
+
+        def get_delta_time(self) -> float:
+            return self.__delta_time_between_positions
+
+        def get_speed(self) -> float:
+            speed = self.__bycicle_speed_approximated / 3.6
+            return speed
+    \end{lstlisting}
+    Il funzionamento dei metodi della \texttt{BycicleSimulationStrategy} è il seguente:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(...)}: Costruttore che inizializza la strategia di simulazione della bicicletta, ricevendo un'istanza di \texttt{GraphWrapper} (presumibilmente per accedere ai dati della mappa). Inizializza la velocità approssimativa della bicicletta e il delta temporale tra le posizioni;
+        \item \texttt{get\_route(...)}: Metodo che simula la generazione di un percorso. Utilizza la libreria OSMnx per ottenere un percorso più breve casuale tra due nodi del grafo fornito e restituisce una lista di coordinate geografiche;
+        \item \texttt{get\_delta\_time(...) -> float}: Metodo che restituisce il delta temporale predefinito per la simulazione della bicicletta;
+        \item \texttt{get\_speed(...) -> float}: Metodo che restituisce la velocità media approssimativa della bicicletta (convertita da km/h a m/s).
+    \end{itemize}
+    Attualmente, \texttt{BycicleSimulationStrategy} è la nostra unica implementazione concreta dell'interfaccia \texttt{IPositionSimulationStrategy}. Tuttavia, grazie all'adozione del pattern Strategy, il sistema è facilmente estendibile con altre strategie di simulazione per diversi tipi di movimento (ad esempio, simulazione di un'auto, di un pedone, ecc.), semplicemente implementando nuove classi che rispettino il contratto definito da \texttt{IPositionSimulationStrategy}.
 
 \myparagraph{Design Pattern - Factory Pattern}
 
@@ -947,8 +989,15 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     Il pattern Factory è stato introdotto nel nostro sistema per centralizzare la creazione di oggetti di una determinata famiglia (in questo caso, i sensori). Questa scelta architetturale mira a disaccoppiare il codice client dalla necessità di conoscere e istanziare direttamente le classi concrete degli oggetti che utilizza. Delegando la responsabilità di creazione ad una factory, si ottiene una maggiore flessibilità nel processo di istanziazione, si incapsula la logica potenzialmente complessa di creazione degli oggetti e si facilita l'introduzione di nuove varianti o tipologie di oggetti.
 
     \mysubparagraph{Implementazione del design pattern}
-    Il pattern Factory viene implementato attraverso una classe dedicata, denominata "Factory", che contiene metodi specifici per la creazione dei diversi tipi di oggetti che essa è responsabile di produrre. Questa classe Factory spesso dipende da astrazioni (come interfacce o classi astratte) per poter creare le istanze concrete. I metodi di creazione all'interno della Factory si occupano di gestire la logica necessaria per istanziare e configurare correttamente gli oggetti richiesti, potenzialmente gestendo dipendenze o configurazioni specifiche per ciascun tipo di oggetto. La Factory può anche svolgere un ruolo nell'assicurare che gli oggetti creati rispettino determinati contratti o abbiano uno stato iniziale valido.
-
+    Il pattern Factory viene implementato attraverso:
+    \begin{enumerate}
+        \item Una classe dedicata "Factory" che incapsula la logica di creazione di oggetti correlati;
+        \item Metodi specifici all'interno della "Factory" responsabili dell'istanza dei diversi tipi di oggetti che essa è progettata per produrre;
+        \item Una potenziale dipendenza da astrazioni (come interfacce o classi astratte) per la creazione delle istanze concrete;
+        \item La gestione, all'interno dei metodi di creazione, della logica necessaria per istanziare e configurare correttamente gli oggetti richiesti, inclusa la gestione di eventuali dipendenze o configurazioni specifiche;
+        \item La possibilità per la "Factory" di assicurare che gli oggetti creati rispettino determinati contratti o abbiano uno stato iniziale valido.
+    \end{enumerate}
+    
     \mysubparagraph{Utilizzo}
     L'integrazione del pattern Factory semplifica il processo di ottenimento di oggetti per il codice client. Invece di istanziare direttamente le classi concrete degli oggetti di cui ha bisogno, il codice client interagisce con la Factory, invocando il metodo di creazione appropriato per il tipo di oggetto desiderato. Il client fornisce alla Factory eventuali parametri necessari per la creazione dell'oggetto. La Factory si occupa quindi di creare e restituire un'istanza dell'oggetto richiesto, completamente configurata e pronta per essere utilizzata. Questo approccio riduce l'accoppiamento tra il codice client e le implementazioni concrete degli oggetti, migliorando la manutenibilità e la testabilità del sistema, in quanto le dipendenze di creazione sono centralizzate e possono essere facilmente sostituite o testate isolatamente.
 
@@ -967,17 +1016,17 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             sensor_list = [self.create_gps_sensor(position_sender, simulation_strategy) for i in range(number_of_sensors)]
             return sensor_list
     \end{lstlisting}
-    Il funzionamento dei metodi della SensorFactory è il seguente:
+    Il funzionamento dei metodi della \texttt{SensorFactory} è il seguente:
     \begin{itemize}
-        \item \_\_init\_\_(self, sensor\_repo, user\_repo): Costruttore che inizializza la factory, ricevendo repository per sensori e utenti per la gestione dell'assegnazione degli ID unici tramite UserSensorService;
-        \item create\_gps\_sensor(self, position\_sender, simulation\_strategy) -$>$ SensorSubject: Crea una singola istanza di GpsSensor. Riceve un PositionSender e una IPositionSimulationStrategy, ottiene un UUID tramite UserSensorService e restituisce l'oggetto GpsSensor configurato con questi elementi;
-        \item create\_gps\_sensor\_list(self, position\_sender, simulation\_strategy, number\_of\_sensors) -$>$ List[SensorSubject]: Crea una lista contenente il numero specificato di istanze di GpsSensor, riutilizzando il metodo create\_gps\_sensor() per ogni elemento della lista. Richiede un PositionSender, una IPositionSimulationStrategy e il numero di sensori da creare.
+        \item \_\_init\_\_(...): Costruttore che inizializza la factory, ricevendo repository per sensori e utenti per la gestione dell'assegnazione degli ID unici tramite \texttt{UserSensorService};
+        \item create\_gps\_sensor(...) -$>$ SensorSubject: Crea una singola istanza di \texttt{GpsSensor}. Riceve un\\ \texttt{PositionSender} e una \texttt{IPositionSimulationStrategy}, ottiene un UUID tramite\\ \texttt{UserSensorService} e restituisce l'oggetto \texttt{GpsSensor} configurato con questi elementi;
+        \item create\_gps\_sensor\_list(...) -$>$ List[SensorSubject]: Crea una lista contenente il numero specificato di istanze di \texttt{GpsSensor}, riutilizzando il metodo \texttt{create\_gps\_sensor(...)} per ogni elemento della lista. Richiede un \texttt{PositionSender}, una \texttt{IPositionSimulationStrategy} e il numero di sensori da creare.
     \end{itemize}
     In conclusione, la SensorFactory attualmente centralizza la creazione di sensori GPS, ma la sua progettazione modulare ne consente una facile estensione futura per supportare la creazione di ulteriori tipi di sensori, mantenendo la logica di istanziazione in un unico punto e rispettando il principio di singola responsabilità.
     
     \myparagraph{Design Pattern - Adapter Pattern}
     \mysubparagraph{Motivazioni e studio del design pattern}
-    Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka tramite serializzazione JSON oppure la comunicazione con il repository di ClickHouse). Grazie a questo approccio, possiamo mantenere l’indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
+    Nel contesto della nostra architettura esagonale, l’Adapter Pattern risulta essenziale per facilitare\\ l’interazione tra la business logic e le componenti esterne (ad esempio, i servizi di pubblicazione su Kafka tramite serializzazione JSON oppure la comunicazione con il repository di ClickHouse). Grazie a questo approccio, possiamo mantenere l'indipendenza tra i moduli interni e le librerie/framework di terze parti, riducendo i vincoli e semplificando la sostituzione futura di tali componenti senza impattare sul sistema. Questo pattern consente quindi di adattare interfacce incompatibili e promuove il riutilizzo del codice.
     
     \mysubparagraph{Implementazione del design pattern}
     L’implementazione del pattern Adapter avviene tramite la creazione di:
@@ -987,18 +1036,16 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \end{enumerate}
 
     \mysubparagraph{Utilizzo}
-    L’integrazione del pattern Adapter disaccoppia la logica specifica della serializzazione e deserializzazione JSON dal codice che la utilizza, rendendo il sistema più modulare ed estensibile. Questa separazione consente di modificare o sostituire le implementazioni senza impattare il resto dell’applicazione. L’Adapter permette di astrarre il processo di conversione dei dati JSON nel formato interno e viceversa, facilitando l’interoperabilità con diversi sistemi e la manutenibilità del codice. Inoltre, questa soluzione si rivela particolarmente utile in scenari in cui l’infrastruttura sottostante potrebbe cambiare, poiché l’aggiornamento può avvenire semplicemente modificando l’Adapter, senza alterare la logica di business principale.
-
+    L’integrazione del pattern Adapter disaccoppia la logica di interazione con librerie esterne dal codice principale, migliorando modularità ed estensibilità. Permette di sostituire le implementazioni esterne senza influenzare la business logic, grazie all'astrazione del processo di interazione. Ciò facilita l'interoperabilità con diverse tecnologie e la manutenibilità. L'Adapter è particolarmente utile in caso di evoluzione dell'infrastruttura sottostante, poiché l'aggiornamento si limita alla sua modifica, preservando l'integrità del sistema.
     
-    \mysubparagraph{Integrazione del pattern}
-    L’Adapter funge da collegamento tra l’architettura esagonale e le librerie esterne. L’architettura esagonale interagisce esclusivamente con \texttt{GeoPosition} e altre entità di dominio, senza preoccuparsi del formato dei messaggi o delle dipendenze verso Kafka. Se in futuro fosse necessario sostituire il broker di messaggistica o cambiare il formato di serializzazione, basterebbe quindi aggiornare l’Adapter corrispondente, senza intaccare la logica di business interna.\\
-    Di seguito viene mostrata l’implementazione concreta dell’Adapter, che trasforma gli oggetti \texttt{GeoPosition} in stringhe JSON compatibili con il topic di Kafka:
-    
+    \mysubparagraph{Integrazione del pattern Adapter}
+    Di seguito vengono mostrate diverse implementazioni concrete del pattern Adapter, ognuna focalizzata su uno specifico aspetto dell'interazione con sistemi esterni. Vedremo un Adapter per la serializzazione di oggetti \texttt{GeoPosition}, un Adapter che utilizza Kafka per la pubblicazione di dati serializzati, e Adapter dedicati alla gestione della serializzazione e deserializzazione JSON a livello di riga, evidenziando la versatilità di questo pattern nell'adattare diverse esigenze di integrazione all'interno dell'architettura esagonale.\\
+    Di seguito viene mostrata l’implementazione concreta dell’Adapter per la serializzazione in JSON degli oggetti \texttt{GeoPosition}:
     \begin{lstlisting}
     class PositionJsonAdapter(IJsonSerializable):
-    
+
         def serialize_to_json(self, position_istance: GeoPosition):
-    
+
             return json.dumps({
                 'user_uuid': position_istance.get_sensor_id(),
                 'latitude': float(position_istance.get_latitude()),
@@ -1006,37 +1053,50 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
                 'received_at': position_istance.get_timestamp(),
             })
     \end{lstlisting}
-    Il componente di pubblicazione \texttt{KafkaConcluentAdapter}, utilizza l’Adapter per implementare i metodi previsti dalla porta Position Sender e  serializzare i dati prima dell’invio a Kafka:
+    Il funzionamento dei metodi della \texttt{PositionJsonAdapter} è il seguente:
+    \begin{itemize}
+        \item \texttt{serialize\_to\_json(...)}: Metodo che prende in input un'istanza di \texttt{GeoPosition} e la serializza in una stringa JSON contenente l'UUID del sensore, la latitudine, la longitudine e il timestamp.
+    \end{itemize}
+    Il componente di pubblicazione \texttt{KafkaConcluentAdapter}, utilizza l'Adapter per implementare i metodi previsti dalla porta Position Sender e serializzare i dati prima dell'invio a Kafka:
     \begin{lstlisting}
     class KafkaConfluentAdapter(PositionSender):
-    
+
         def __init__(self,
-                    kafka_config: KafkaConfigParameters,
-                    json_adapter_istance: "PositionJsonAdapter",
-                    producer_istance: Producer):
+                     kafka_config: KafkaConfigParameters,
+                     json_adapter_istance: "PositionJsonAdapter",
+                     producer_istance: Producer):
             super().__init__(json_adapter_istance)
             self.__kafka_config = kafka_config
             self.__producer = producer_istance
-    
+
         def send_data_to_broker(self, json_payload, sensor_id: str):
             self.__producer.produce(self.__kafka_config.source_topic,
-                                    key = str(sensor_id),
-                                    value = json_payload.encode('utf-8'))
+                                     key = str(sensor_id),
+                                     value = json_payload.encode('utf-8'))
             self.__producer.flush()
     \end{lstlisting}
+    Il funzionamento dei metodi della \texttt{KafkaConfluentAdapter} è il seguente:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(...)}: Costruttore che inizializza l'Adapter, ricevendo la configurazione di Kafka, un Adapter JSON per la serializzazione e un producer Kafka per la gestione dell'invio dei messaggi al broker;
+        \item \texttt{send\_data\_to\_broker(...)}: Invia il payload JSON, precedentemente serializzato, al topic Kafka definito nella configurazione. Utilizza l'identificativo del sensore come chiave del messaggio e garantisce l'effettiva consegna al broker tramite il metodo \texttt{flush()}.
+    \end{itemize}
     L'Adapter per la deserializzazione di dati JSON utilizza il modulo \texttt{JsonRowDeserializationSchema} per convertire i dati ricevuti nel formato interno corretto.
     \begin{lstlisting}
     class JsonRowDeserializationAdapter:
         def __init__(self, row_type_config ):
             self.__row_type_info = row_type_config
     \end{lstlisting}
+    Il funzionamento dei metodi della \texttt{JsonRowDeserializationAdapter} è il seguente:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(...)}: Costruttore che inizializza l'Adapter, ricevendo la configurazione del tipo di riga JSON da deserializzare e memorizzandola internamente per essere utilizzata.
+    \end{itemize}
     Questo Adapter permette di gestire in modo astratto la configurazione del tipo di dati JSON in ingresso, garantendo flessibilità nell'integrazione con altri componenti del sistema.
     Allo stesso modo, l'Adapter per la serializzazione utilizza il modulo \texttt{JsonRowSerializationSchema} per convertire i dati in formato JSON prima dell'invio.
-    \begin{lstlisting} 
+    \begin{lstlisting}
     class JsonRowSerializationAdapter:
         def __init__(self, row_type_config_message ):
             self.__row_type_info_message = row_type_config_message
-    
+
         def get_serialization_schema(self):
             return JsonRowSerializationSchema.builder()\
                                              .with_type_info(self.__row_type_info_message)\
@@ -1044,9 +1104,15 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
 
         def get_deserialization_schema(self):
             return JsonRowDeserializationSchema.builder() \
-                    .type_info(self.__row_type_info) \
-                    .build()
+                                             .type_info(self.__row_type_info) \
+                                             .build()
     \end{lstlisting}
+    Il funzionamento dei metodi della \texttt{JsonRowSerializationAdapter} è il seguente:
+    \begin{itemize}
+        \item \texttt{\_\_init\_\_(...)}: Costruttore che inizializza l'Adapter, ricevendo la configurazione del tipo di riga JSON da serializzare e memorizzandola internamente per definire lo schema JSON in uscita;
+        \item \texttt{get\_serialization\_schema(...)}: Restituisce un'istanza di \texttt{JsonRowSerializationSchema} configurata con le informazioni sul tipo di messaggio fornite durante l'inizializzazione dell'Adapter. Questo schema è incaricato di serializzare i dati in formato JSON;
+        \item \texttt{get\_deserialization\_schema(...)}: Restituisce un'istanza di \texttt{JsonRowDeserializationSchema} configurata con le informazioni sul tipo di riga memorizzate. Questo schema è responsabile della deserializzazione dei dati JSON in un formato utilizzabile dal sistema.
+    \end{itemize}
 
     \subsubsection{Classi, interfacce, metodi e attributi}
     
@@ -1166,7 +1232,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         
         \item \texttt{get\_route(self)} - Implementa il metodo dell'interfaccia per generare un percorso casuale. Seleziona due nodi casuali dal grafo e calcola il percorso più breve tra di essi, restituendo le coordinate geografiche dei nodi del percorso;
         
-        \item \texttt{get\_delta\_time(self) -> float} - Implementa il metodo dell'interfaccia per restituire l'intervallo di tempo tra gli aggiornamenti di posizione;
+        \item \texttt{get\_delta\_time(self) -> float} - Implementa il metodo dell'interfaccia per restituire\\ l'intervallo di tempo tra gli aggiornamenti di posizione;
         
         \item \texttt{get\_speed(self) -> float} - Implementa il metodo dell'interfaccia per restituire la velocità della bicicletta convertita da km/h a m/s.
     \end{itemize}
@@ -1185,7 +1251,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, latitude: float, longitude: float, map\_radius: int, network\_type: str)} - Costruttore che inizializza il wrapper con i parametri necessari per generare il grafo;
+        \item \texttt{\_\_init\_\_(self, latitude: float, longitude: float, map\_radius: int,\\ network\_type: str)} - Costruttore che inizializza il wrapper con i parametri necessari per generare il grafo;
         
         \item \texttt{get\_graph(self) -> osmnx.graph} - Restituisce un grafo della rete stradale centrato sulle coordinate specificate con il raggio e il tipo di rete definiti, utilizzando la libreria OSMnx.
     \end{itemize}
@@ -1201,11 +1267,11 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, sensor\_repo: ISensorRepository, user\_repo: IUserRepository)} - Costruttore che inizializza la factory con i repository necessari per gestire sensori e utenti;
+        \item \texttt{\_\_init\_\_(self, sensor\_repo: ISensorRepository, user\_repo: IUserRepository)}\\ - Costruttore che inizializza la factory con i repository necessari per gestire sensori e utenti;
         
         \item \texttt{create\_gps\_sensor(self, position\_sender: PositionSender, simulation\_strategy: \\IPositionSimulationStrategy) -> SensorSubject} - Crea un singolo sensore GPS assegnandogli un UUID tramite il servizio utente-sensore e configurandolo con il sender e la strategia di simulazione forniti;
         
-        \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender, simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int) -> List[SensorSubject]} - Crea una lista di sensori GPS del numero specificato, utilizzando lo stesso sender e la stessa strategia di simulazione per tutti.
+        \item \texttt{create\_gps\_sensor\_list(self, position\_sender: PositionSender,\\ simulation\_strategy: IPositionSimulationStrategy, number\_of\_sensors: int)\\ -> List[SensorSubject]} - Crea una lista di sensori GPS del numero specificato, utilizzando lo stesso sender e la stessa strategia di simulazione per tutti.
     \end{itemize}
     \end{itemize}
 
@@ -1222,7 +1288,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, sensor\_repository: ISensorRepository, user\_repository: IUserRepository)} - Costruttore che inizializza il servizio con i repository necessari per gestire sensori e utenti;
+        \item \texttt{\_\_init\_\_(self, sensor\_repository:\\ ISensorRepository, user\_repository: IUserRepository)} - Costruttore che inizializza il servizio con i repository necessari per gestire sensori e utenti;
         
         \item \texttt{assign\_sensor\_to\_user(self) -> uuid} - Assegna un sensore disponibile ad un utente libero. Utilizza un lock per garantire che l'operazione sia thread-safe. Recupera un sensore non occupato e un utente libero dai rispettivi repository, marca il sensore come occupato e lo associa all'utente. Registra dettagliatamente tutte le operazioni in un file di log. Restituisce l'UUID del sensore assegnato o None se l'assegnazione fallisce.
     \end{itemize}
@@ -1238,7 +1304,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{mark\_user\_as\_occupied(self, user\_uuid: uuid.UUID, sensor\_uuid: uuid.UUID)} - Metodo astratto che deve essere implementato dalle sottoclassi per marcare un utente come occupato e associarlo a un sensore specifico tramite i rispettivi UUID;
+        \item \texttt{mark\_user\_as\_occupied(self, user\_uuid: uuid.UUID, sensor\_uuid: uuid.UUID)}\\ - Metodo astratto che deve essere implementato dalle sottoclassi per marcare un utente come occupato e associarlo a un sensore specifico tramite i rispettivi UUID;
         
         \item \texttt{get\_free\_user(self) -> UserDTO} - Metodo astratto che deve essere implementato dalle sottoclassi per recuperare un utente non assegnato a nessun sensore. Restituisce un oggetto UserDTO rappresentante l'utente libero, o None se non ci sono utenti disponibili.
     \end{itemize}
@@ -1312,7 +1378,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \begin{itemize}
         \item \texttt{\_\_init\_\_(self, db\_connection: DatabaseConnection)} - Costruttore che inizializza il repository con una connessione al database;
         
-        \item \texttt{mark\_sensor\_as\_occupied(self, sensor\_uuid: uuid.UUID)} - Implementa il metodo dell'interfaccia per marcare un sensore come occupato nel database. Esegue una query SQL che aggiorna il campo is\_occupied a true per il sensore con l'UUID specificato;
+        \item \texttt{mark\_sensor\_as\_occupied(self, sensor\_uuid: uuid.UUID)} - Implementa il metodo\\ dell'interfaccia per marcare un sensore come occupato nel database. Esegue una query SQL che aggiorna il campo is\_occupied a true per il sensore con l'UUID specificato;
         
         \item \texttt{get\_non\_occupied\_sensor(self) -> SensorDTO} - Implementa il metodo dell'interfaccia per recuperare un sensore non occupato dal database. Esegue una query SQL che seleziona il primo sensore con is\_occupied impostato a 0 e restituisce un oggetto SensorDTO contenente l'UUID del sensore e il suo stato di occupazione. Se non viene trovato alcun sensore disponibile, restituisce None.
     \end{itemize}
@@ -1329,7 +1395,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, sensor\_uuid: uuid, is\_occupied: bool)} - Costruttore che inizializza l'oggetto DTO con l'UUID del sensore e il suo stato di occupazione.
+        \item \texttt{\_\_init\_\_(self, sensor\_uuid: uuid, is\_occupied: bool)} - Costruttore che inizializza\\ l'oggetto DTO con l'UUID del sensore e il suo stato di occupazione.
     \end{itemize}
     \end{itemize}
 
@@ -1432,7 +1498,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: \\"PositionJsonAdapter", producer\_istance: Producer)} - Costruttore che inizializza l'adattatore con i parametri di configurazione Kafka, un adattatore JSON per la serializzazione e un'istanza del producer Confluent;
+        \item \texttt{\_\_init\_\_(self, kafka\_config: KafkaConfigParameters, json\_adapter\_istance: \\"PositionJsonAdapter", producer\_istance: Producer)} - Costruttore che inizializza\\ l'adattatore con i parametri di configurazione Kafka, un adattatore JSON per la serializzazione e un'istanza del producer Confluent;
         
         \item \texttt{send\_data\_to\_broker(self, json\_payload, sensor\_id: str)} - Implementa il metodo astratto della classe base. Invia il payload JSON al topic Kafka specificato nella configurazione, utilizzando l'UUID del sensore come chiave del messaggio e il payload serializzato come valore. Dopo l'invio, esegue un flush per garantire che il messaggio venga consegnato al broker.
     \end{itemize}
@@ -1570,7 +1636,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
                     Ogni regola definisce per un client o gruppo di client se questi sia autorizzato o meno a produrre o consumare elementi di un topic;
 
                     \item \textbf{Requisiti implementazione}:\\
-                    Apache Kafka dispone di un sistema integrato di gestione dei permessi che facilita l'implementazione di policy di sicurezza.
+                    Apache Kafka dispone di un sistema integrato di gestione dei permessi che facilita\\ l'implementazione di policy di sicurezza.
                     È però necessario definire opportunamente le policies desiderate nel file di configurazione, assegnando i permessi specifici per ogni componente del sistema.
                     Ad esempio, è possibile limitare i permessi di scrittura dei simulatori al solo topic dei dati dei sensori, mentre il modulo di elaborazione potrà avere solo permessi di lettura su quel topic.
                     La configurazione delle policies viene gestita tramite file ACL (Access Control List) che specificano dettagliatamente i permessi di ogni componente del sistema.
@@ -1730,13 +1796,13 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
             \item Implementa l'interfaccia \texttt{LLMService} fornendo un'implementazione specifica per il servizio Groq;
             \item Configura parametri specifici come la chiave API, il modello ("Gemma2-9b-it"), la temperatura e altri parametri propri di Groq;
             \item Implementa \texttt{set\_up\_chat()} impostando un limitatore di frequenza e inizializzando il client ChatGroq;
-            \item Implementa \texttt{get\_llm\_structured\_response(prompt)} utilizzando la funzionalità \texttt{with\_structured\_output} di ChatGroq per ottenere risposte nel formato desiderato.
+            \item Implementa \texttt{get\_llm\_structured\_response(prompt)} utilizzando la funzionalità\\ \texttt{with\_structured\_output} di ChatGroq per ottenere risposte nel formato desiderato.
         \end{enumerate}
         
         \item Il client (in questo caso, \texttt{PositionToMessageProcessor}) interagisce con l'interfaccia \texttt{LLMService} senza conoscere quale implementazione specifica viene utilizzata:
         \begin{enumerate}
             \item Riceve un'istanza di \texttt{LLMService} tramite dependency injection;
-            \item Chiama il metodo \texttt{get\_llm\_structured\_response()} sull'interfaccia, delegando l'implementazione concreta alla strategia selezionata;
+            \item Chiama il metodo \texttt{get\_llm\_structured\_response()} sull'interfaccia, delegando\\ l'implementazione concreta alla strategia selezionata;
             \item Non ha bisogno di conoscere i dettagli implementativi di Groq o di qualsiasi altro servizio LLM.
         \end{enumerate}
         
@@ -1752,7 +1818,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \item \textbf{Descrizione}: Implementa un gestore per job Apache Flink che configura e orchestra un pipeline di elaborazione dati in streaming. Costruisce un flusso di dati completo con operazioni di ricezione, trasformazione e invio di messaggi;
     \item \textbf{Attributi}:
     \begin{itemize}
-        \item \texttt{\_\_streaming\_env: StreamExecutionEnvironment} - Ambiente di esecuzione Flink per l'elaborazione in streaming;
+        \item \texttt{\_\_streaming\_env: StreamExecutionEnvironment} - Ambiente di esecuzione Flink per\\ l'elaborazione in streaming;
         \item \texttt{\_\_populated\_datastream} - Stream di dati iniziale popolato dalla sorgente di posizioni;
         \item \texttt{\_\_keyed\_stream} - Stream partizionato (keyed) in base all'identificatore della posizione;
         \item \texttt{\_\_validated\_stream} - Stream filtrato contenente solo le posizioni validate;
@@ -1762,7 +1828,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, streaming\_env\_istance: StreamExecutionEnvironment, map\_function\_implementation: MapFunction, filter\_validator\_implementation: FilterFunction, filter\_function\_implementation: FilterFunction, position\_receiver\_istance: IPositionReceiver, message\_sender\_istance: IMessageWriter)} - Costruttore che configura l'intero pipeline di elaborazione dati. Inizializza l'ambiente di streaming, crea uno stream di dati dalla sorgente, applica operazioni di chiave, validazione, mappatura e filtraggio, e configura il sink per l'output;
+        \item \texttt{\_\_init\_\_(self, streaming\_env\_istance: StreamExecutionEnvironment,\\ map\_function\_implementation: MapFunction, filter\_validator\_implementation:\\ FilterFunction, filter\_function\_implementation: FilterFunction,\\ position\_receiver\_istance: IPositionReceiver, message\_sender\_istance:\\ IMessageWriter)} - Costruttore che configura l'intero pipeline di elaborazione dati. Inizializza l'ambiente di streaming, crea uno stream di dati dalla sorgente, applica operazioni di chiave, validazione, mappatura e filtraggio, e configura il sink per l'output;
         
         \item \texttt{execute(self)} - Avvia l'esecuzione del job Flink con l'identificatore "Flink Job".
     \end{itemize}
@@ -1787,7 +1853,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \item \textbf{Descrizione}: Implementa l'interfaccia IMessageWriter per fornire un adattatore specifico per la scrittura di messaggi su Apache Kafka. Configura e costruisce un sink Kafka per l'integrazione con il pipeline di elaborazione dati di Apache Flink;
     \item \textbf{Attributi}:
     \begin{itemize}
-        \item \texttt{\_\_current\_configuration: KafkaWriterConfiguration} - Configurazione contenente i parametri necessari per la connessione a Kafka e la serializzazione dei messaggi;
+        \item \texttt{\_\_current\_configuration: KafkaWriterConfiguration} - Configurazione contenente i\\ parametri necessari per la connessione a Kafka e la serializzazione dei messaggi;
         \item \texttt{\_\_position\_serializer} - Schema di serializzazione per convertire gli oggetti di posizione in formato JSON;
         \item \texttt{\_\_record\_serializer: KafkaRecordSerializationSchema} - Schema di serializzazione per i record Kafka che include sia la chiave che il valore;
         \item \texttt{\_\_kafka\_sink: KafkaSink} - Componente sink di Flink configurato per scrivere su Kafka.
@@ -1795,13 +1861,13 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, kafka\_writer\_configuration: KafkaWriterConfiguration, serialize\_adapter: JsonRowSerializationAdapter)} - Costruttore che inizializza l'adattatore con la configurazione Kafka e l'adattatore di serializzazione JSON, e costruisce il serializzatore di record e il sink Kafka;
+        \item \texttt{\_\_init\_\_(self, kafka\_writer\_configuration: KafkaWriterConfiguration,\\ serialize\_adapter: JsonRowSerializationAdapter)} - Costruttore che inizializza\\ l'adattatore con la configurazione Kafka e l'adattatore di serializzazione JSON, e costruisce il serializzatore di record e il sink Kafka;
         
         \item \texttt{build\_record\_serializer(self)} - Metodo privato che costruisce lo schema di serializzazione per i record Kafka, configurando il topic di destinazione, lo schema di serializzazione della chiave e dello schema di serializzazione del valore;
         
         \item \texttt{build\_kafka\_sink(self)} - Metodo privato che costruisce il sink Kafka utilizzando i server bootstrap e il serializzatore di record precedentemente configurati;
         
-        \item \texttt{get\_message\_writer(self)} - Implementazione del metodo dell'interfaccia che restituisce l'istanza del sink Kafka configurato, pronto per essere utilizzato nel pipeline Flink.
+        \item \texttt{get\_message\_writer(self)} - Implementazione del metodo dell'interfaccia che restituisce\\ l'istanza del sink Kafka configurato, pronto per essere utilizzato nel pipeline Flink.
     \end{itemize}
     \end{itemize}
 
@@ -1859,14 +1925,14 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \item \textbf{Descrizione}: Implementa l'interfaccia IPositionReceiver per fornire un adattatore specifico per la ricezione di posizioni da Apache Kafka. Configura e costruisce una fonte Kafka per l'integrazione con il pipeline di elaborazione dati di Apache Flink;
     \item \textbf{Attributi}:
     \begin{itemize}
-        \item \texttt{\_\_current\_configuration: KafkaSourceConfiguration} - Configurazione contenente i parametri necessari per la connessione a Kafka e la deserializzazione dei messaggi;
+        \item \texttt{\_\_current\_configuration: KafkaSourceConfiguration} - Configurazione contenente\\ i parametri necessari per la connessione a Kafka e la deserializzazione dei messaggi;
         \item \texttt{\_\_position\_deserializer} - Schema di deserializzazione per convertire i messaggi JSON ricevuti in oggetti di posizione;
         \item \texttt{\_\_kafka\_source: KafkaSource} - Componente source di Flink configurato per leggere da Kafka.
     \end{itemize}
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, kafka\_source\_configuration: KafkaSourceConfiguration, deserialize\_adapter: JsonRowDeserializationAdapter)} - Costruttore che inizializza l'adattatore con la configurazione Kafka e l'adattatore di deserializzazione JSON, e costruisce la fonte Kafka;
+        \item \texttt{\_\_init\_\_(self, kafka\_source\_configuration: KafkaSourceConfiguration,\\ deserialize\_adapter: JsonRowDeserializationAdapter)} - Costruttore che inizializza\\ l'adattatore con la configurazione Kafka e l'adattatore di deserializzazione JSON, e costruisce la fonte Kafka;
         
         \item \texttt{build\_kafka\_source(self) -> KafkaSource} - Metodo privato che costruisce la fonte Kafka configurando i server bootstrap, il topic di origine, l'ID del gruppo di consumatori, il deserializzatore e altre proprietà specifiche come l'auto-commit e il commit degli offset sui checkpoint;
         
@@ -2066,7 +2132,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         
         \item \texttt{get\_activities\_in\_range(self, lon, lat, max\_distance) -> list} - Implementa il metodo dell'interfaccia per trovare attività commerciali entro una distanza specificata da una posizione geografica. Esegue una query SQL che utilizza la funzione geoDistance per calcolare la distanza tra la posizione fornita e ogni attività, restituendo quelle che si trovano entro la distanza massima specificata. Il risultato comprende nome, indirizzo, tipo, descrizione e distanza calcolata;
         
-        \item \texttt{get\_activity\_spec\_from\_name(self, activity\_name) -> ActivityDTO} - Implementa il metodo dell'interfaccia per recuperare i dettagli completi di un'attività in base al suo nome. Esegue una query SQL che cerca un'attività con il nome esatto fornito e costruisce un oggetto ActivityDTO con tutti i dati recuperati (UUID, nome, coordinate, indirizzo, tipo e descrizione). Se nessuna attività corrisponde al nome, restituisce un ActivityDTO vuoto.
+        \item \texttt{get\_activity\_spec\_from\_name(self, activity\_name) -> ActivityDTO} - Implementa il\\ metodo dell'interfaccia per recuperare i dettagli completi di un'attività in base al suo nome. Esegue una query SQL che cerca un'attività con il nome esatto fornito e costruisce un oggetto ActivityDTO con tutti i dati recuperati (UUID, nome, coordinate, indirizzo, tipo e descrizione). Se nessuna attività corrisponde al nome, restituisce un ActivityDTO vuoto.
     \end{itemize}
     \end{itemize}
     
@@ -2087,7 +2153,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{\_\_init\_\_(self, activity\_id: uuid = uuid.uuid4(), activity\_name: str = "", activity\_lon: float = 0.0, activity\_lat: float = 0.0, activity\_addr: str ="", activity\_type: str = "", activity\_description: str ="")} - Costruttore che inizializza l'oggetto DTO con tutti i dati dell'attività, fornendo valori predefiniti per tutti i parametri in modo da poter istanziare anche un oggetto vuoto.
+        \item \texttt{\_\_init\_\_(self, activity\_id: uuid = uuid.uuid4(), activity\_name: str = "",\\ activity\_lon: float = 0.0, activity\_lat: float = 0.0, activity\_addr: str ="", activity\_type: str = "", activity\_description: str ="")} - Costruttore che inizializza l'oggetto DTO con tutti i dati dell'attività, fornendo valori predefiniti per tutti i parametri in modo da poter istanziare anche un oggetto vuoto.
     \end{itemize}
     \end{itemize}
     
@@ -2117,7 +2183,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     \begin{itemize}
         \item \texttt{\_\_init\_\_(self, db\_connection: DatabaseConnection)} - Costruttore che inizializza il repository con una connessione al database;
         
-        \item \texttt{get\_user\_who\_owns\_sensor(self, sensor\_uuid) -> UserDTO} - Implementa il metodo dell'interfaccia per recuperare i dati dell'utente associato a un sensore specifico. Esegue una query SQL complessa che unisce le tabelle user e user\_interest per ottenere tutti i dati dell'utente e i suoi interessi in un'unica operazione. La query filtra gli utenti in base all'UUID del sensore fornito, raggruppa i risultati per i campi dell'utente e utilizza la funzione groupArray per aggregare gli interessi in un array. Restituisce un oggetto UserDTO popolato con tutti i dati recuperati, incluso l'elenco degli interessi, o None se nessun utente è associato al sensore specificato.
+        \item \texttt{get\_user\_who\_owns\_sensor(self, sensor\_uuid) -> UserDTO} - Implementa il metodo\\ dell'interfaccia per recuperare i dati dell'utente associato a un sensore specifico. Esegue una query SQL complessa che unisce le tabelle user e user\_interest per ottenere tutti i dati dell'utente e i suoi interessi in un'unica operazione. La query filtra gli utenti in base all'UUID del sensore fornito, raggruppa i risultati per i campi dell'utente e utilizza la funzione groupArray per aggregare gli interessi in un array. Restituisce un oggetto UserDTO popolato con tutti i dati recuperati, incluso l'elenco degli interessi, o None se nessun utente è associato al sensore specificato.
     \end{itemize}
     \end{itemize}
 
@@ -2265,7 +2331,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
     
     \item \textbf{Operazioni}:
     \begin{itemize}
-        \item \texttt{create\_row\_from\_message(self, message\_to\_serialize: MessageDTO) -> Row} - Implementa il metodo dell'interfaccia per convertire un oggetto MessageDTO in un oggetto Row di Flink. Crea una nuova istanza di Row inserendo ordinatamente tutti i campi del messaggio: identificatore dell'utente, identificatore dell'attività, identificatore del messaggio, testo del messaggio, coordinate geografiche dell'attività (latitudine e longitudine), timestamp di creazione, e coordinate geografiche dell'utente (latitudine e longitudine). Garantisce che gli identificatori siano convertiti in stringhe per una corretta serializzazione.
+        \item \texttt{create\_row\_from\_message(self, message\_to\_serialize: MessageDTO) -> Row}\\ - Implementa il metodo dell'interfaccia per convertire un oggetto MessageDTO in un oggetto Row di Flink. Crea una nuova istanza di Row inserendo ordinatamente tutti i campi del messaggio: identificatore dell'utente, identificatore dell'attività, identificatore del messaggio, testo del messaggio, coordinate geografiche dell'attività (latitudine e longitudine), timestamp di creazione, e coordinate geografiche dell'utente (latitudine e longitudine). Garantisce che gli identificatori siano convertiti in stringhe per una corretta serializzazione.
     \end{itemize}
     \end{itemize}
 
@@ -2571,7 +2637,7 @@ Viste Materializzate & \textit{PositionToMessageService} Outbound Port & Si occu
         \mysubparagraph{Materialized Views}
         Le materialized view rappresentano un elemento fondamentale nell'architettura di questo progetto, consentendo di trasformare in tempo reale i dati provenienti dalle tabelle Kafka in tabelle ClickHouse ottimizzate per le query. I benefici principali dell'utilizzo delle materialized view sono:
         \begin{itemize}
-            \item \textbf{Prestazioni ottimizzate:} Poiché i dati vengono pre-aggregati e trasformati al momento dell'inserimento, le query risultano più veloci, riducendo il carico computazionale durante l'esecuzione della query;
+            \item \textbf{Prestazioni ottimizzate:} Poiché i dati vengono pre-aggregati e trasformati al momento\\ dell'inserimento, le query risultano più veloci, riducendo il carico computazionale durante l'esecuzione della query;
             \item \textbf{Persistenza automatica:} Le view accumulano continuamente i dati dai flussi Kafka, assicurando che ogni nuovo messaggio sia immediatamente reso disponibile in ClickHouse per ulteriori analisi;
             \item \textbf{Aggiornamento in tempo reale:} Non appena nuovi messaggi arrivano in Kafka, la materialized view li elabora automaticamente e li inserisce nella tabella di destinazione, mantenendo sempre aggiornato lo stato dei dati;
             \item \textbf{Integrazione trasparente con Kafka:} Utilizzando l'engine Kafka per definire le tabelle sorgente, come detto nella sezione di Kafka ClickHouse può “iscriversi” automaticamente ai topic Kafka. In questo modo, l'engine si occuperà di gestire i dati e dopo dato che saranno disponibili anche nella materialized view si potranno trasformare e trattare coem se fosse una tabella normale.
@@ -3667,7 +3733,7 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
         \item \textbf{Configurazioni}:
         \begin{itemize}
             \item \texttt{hostname: zookeeper} - Nome host assegnato al container all'interno della rete Docker, utilizzato dagli altri servizi per riferirsi a Zookeeper;
-            \item \texttt{container\_name: zookeeper} - Nome esplicito assegnato al container per facilitarne l'identificazione e la gestione;
+            \item \texttt{container\_name: zookeeper} - Nome esplicito assegnato al container per facilitarne\\ l'identificazione e la gestione;
             \item \texttt{image: confluentinc/cp-zookeeper:7.6.0} - Immagine Docker ufficiale di Confluent Inc. per Zookeeper, versione 7.6.0, garantendo compatibilità con il broker Kafka utilizzato;
             \item \texttt{environment} - Variabili d'ambiente che configurano il comportamento di Zookeeper:
             \begin{itemize}
@@ -3823,7 +3889,7 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
         \begin{itemize}
             \item \texttt{image: clickhouse/clickhouse-server:24.10} - Immagine Docker ufficiale di ClickHouse, versione 24.10, che garantisce stabilità e prestazioni;
             \item \texttt{hostname: clickhouse} - Nome host assegnato al container all'interno della rete Docker;
-            \item \texttt{container\_name: clickhouse} - Nome esplicito assegnato al container per facilitarne l'identificazione;
+            \item \texttt{container\_name: clickhouse} - Nome esplicito assegnato al container per facilitarne\\ l'identificazione;
             \item \texttt{ports} - Mappatura delle porte tra host e container:
             \begin{itemize}
                 \item \texttt{"8123:8123"} - Espone la porta HTTP di ClickHouse per query REST e interfaccia web;
@@ -3863,7 +3929,7 @@ Da capitolato era stato definito l'uso di un'architettura containerizzata e anch
         \item \textbf{Descrizione}: Implementa un servizio di simulazione che genera realistici dati di posizione degli utenti e li pubblica sul broker Kafka. Utilizza strategie di simulazione basate su grafi stradali per creare percorsi plausibili, simulando il movimento di utenti nel contesto urbano;
         \item \textbf{Configurazioni}:
         \begin{itemize}
-            \item \texttt{container\_name: positions} - Nome esplicito assegnato al container per facilitarne l'identificazione;
+            \item \texttt{container\_name: positions} - Nome esplicito assegnato al container per facilitarne\\ l'identificazione;
             \item \texttt{build: ./SimulationModule} - Specificazione della directory che contiene il Dockerfile e il codice sorgente necessario per costruire l'immagine personalizzata;
             \item \texttt{depends\_on} - Dipendenze del servizio:
             \begin{itemize}
