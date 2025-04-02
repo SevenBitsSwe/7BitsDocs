@@ -1,6 +1,13 @@
-casi
+attori
+cruscotti
+documentazioni
 microservizi
+pannelli
 percorsi
 processi
+progetti
+proponenti
+protocolli
 requisiti
 rischi
+sistemi

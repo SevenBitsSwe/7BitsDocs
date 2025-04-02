@@ -1,10 +1,21 @@
 analisi dei requisiti
+API key
+architettura esagonale
 best practices
 caso d'uso
 ciclo di vita
 continuous integration
+design pattern
 docker compose
+event driven
+github actions
+google meet
+kafka poisoning
+kappa architecture
+manuale utente
+pull request
 sprint retrospective
 sprint review
+stream processing
 user story
 way of working
