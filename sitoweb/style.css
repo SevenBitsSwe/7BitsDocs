@@ -383,7 +383,6 @@ main {
 }
 
 .feature-card h3 {
-  margin-bottom: 1rem;
   color: var(--text-color);
   transition: color 0.3s ease;
 }
@@ -1088,7 +1087,6 @@ main {
   }
 
   .feature-card h3 {
-    margin-bottom: 1rem;
     color: var(--text-color);
     transition: color 0.3s ease;
   }
@@ -1407,4 +1405,21 @@ div#include-footer {
 
 .subsection-title {
   margin-top: 0;
+}
+
+[data-theme="light"] .feature-card:hover,
+[data-theme="light"] .feature-card:hover h2,
+[data-theme="light"] .feature-card:hover h3,
+[data-theme="light"] .feature-card:hover p {
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  div#include-footer {
+    padding: 0;
+  }
+
+  [data-theme="light"] .hamburger.active span {
+      background: var(--text-color);
+  }
 }

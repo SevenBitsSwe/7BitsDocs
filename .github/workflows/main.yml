@@ -85,7 +85,7 @@ jobs:
     - name: Compile .tex files to .pdf
       run: |
         mkdir -p output
-        find . -name "*.tex" ! -path "./esterni/*" ! -path "./sitoweb/*" ! -path "./images/*" | while read file; do
+        find . -name "*.tex" ! -path "./esterni/*" ! -path "./glossary/*" ! -path "./sitoweb/*" ! -path "./images/*" | while read file; do
         pdflatex -interaction=nonstopmode --output-directory=output "$file"
         pdflatex -interaction=nonstopmode --output-directory=output "$file"
         done
