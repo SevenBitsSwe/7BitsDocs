@@ -43,7 +43,7 @@ def extract_from_glossary_tex(file_path):
     print("\nAggiunto manualmente: synclab")
     
     # Trova tutte le tabelle dopo ogni subsection
-    sections = re.finditer(r'\\subsection{([A-Z])}.*?\\begin{longtable}.*?\\hline(.*?)\\end{longtable}', content, re.DOTALL)
+    sections = re.finditer(r'\\subsection\*{([A-Z])}.*?\\begin{longtable}.*?\\hline(.*?)\\end{longtable}', content, re.DOTALL)
     
     for section in sections:
         letter = section.group(1)

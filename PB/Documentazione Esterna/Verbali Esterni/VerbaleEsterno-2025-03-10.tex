@@ -1,0 +1,114 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}  
+
+%path per conversione in locale
+%\graphicspath{{../../../images/}}
+
+%path per quando caricare in repo
+\graphicspath{{images/}}
+
+%cambio misure della pagina
+\geometry{a4paper,left=20mm,right=20mm,top=20mm}
+
+\title{Verbale Esterno del meeting in data 2025-03-10} % Sostituire la data
+\date{A.A 2024/2025}
+
+\renewcommand*\contentsname{Indice}
+\begin{document}
+\maketitle
+\center 
+\includegraphics[width=0.25\textwidth]{LogoUnipd}\\
+\includegraphics[width=0.25\textwidth]{Sevenbitslogo}\\
+sevenbits.swe.unipd@gmail.com\\
+\vspace{2mm}
+
+\newpage
+\raggedright
+\tableofcontents
+
+\newpage
+\section{2025-03-10} % Inserire la data in formato yyyy-mm-dd
+\subsection{Durata e partecipanti}
+\begin{itemize}
+\item Ora: 10:30 - 10:50; % Sostituire con l'orario corretto del meeting
+\item Partecipanti: 	
+	\begin{itemize}
+        \item SevenBits:
+        \begin{itemize}
+            \item Giovanni Cristellon;
+            \item Gusella Manuel;
+            \item Peruzzi Uncas;
+            \item Piva Riccardo;
+            \item Pivetta Federico;
+            \item Rubino Alfredo;
+            \item Trolese Leonardo.
+        \end{itemize}
+            \item SyncLab:
+            \begin{itemize}
+                \item Dorigo Andrea;
+                \item Pallaro Fabio.
+	    \end{itemize}
+	\end{itemize}
+\item Piattaforma: Google meet (online)
+\end{itemize}
+
+\subsection{Ordine del giorno}
+\begin{itemize}
+    \item Aggiornamento azienda su stato progettazione schema delle classi;
+    \item Aggiornamento azienda su stato avanzamento prodotto MVP.
+\end{itemize}
+
+\subsection{Oggetto}
+Incontro organizzativo con Andrea Dorigo e Fabio Pallaro dell'azienda SyncLab, incentrato sull'allineare gruppo e azienda su quanto svolto dallo scorso SAL a ora.
+
+\subsection{Sintesi}
+All'inizio dell'incontro il gruppo ha presentato lo stato attuale della progettazione dello schema delle classi e ha informato l'azienda del futuro incontro con il professor Cardin per verificare la correttezza dell'architettura proposta.\\
+Poi l'incontro è proseguito facendo vedere l'avanzamento del prodotto MVP e sono state fatte delle domande dal gruppo riguardo la dashboard e delle scelte stilistiche per l'implementazione.\\
+
+\subsubsection{Obiettivi per la realizzazione dell'MVP}
+La proponente ha inoltre richiesto al gruppo di definire in maniera precisa e tracciabile gli obiettivi da concretizzare con la realizzazione dell'MVP, e che differenzieranno
+quest'ultimo dal PoC sviluppato dal team. Gli obiettivi individuati sono i seguenti:
+\begin{itemize}
+    \item Modifica del sistema di visualizzazione dei messaggi e adeguamento dello stesso con le richieste della proponente.
+\end{itemize}
+
+\subsection{Decisioni Prese}
+È stato deciso di cambiare l'attuale visualizzazione del messaggio, facendo in modo che il messaggio segua l'utente e che poi scompaia nel momento in cui egli esce dal raggio di generazione del messaggio.\\
+Il gruppo si è posto l'obiettivo di modificare la mappa e presentare al prossimo SAL il nuovo sistema di visualizzazione dei messaggi.\\
+
+\section{Obiettivi prossimo SAL}
+Gli obiettivi stabiliti per il prossimo SAL sono:
+    \begin{itemize}
+            \item Presentazione del nuovo sistema di visualizzazione dei messaggi.
+    \end{itemize}
+    \begin{center}
+    \begin{tabular}{|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{12cm}|}
+	\hline
+	\textbf{Rif.Issue} & \textbf{Dettaglio Decisione}\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/MVP/issues/4}{Issue \#4} & Creazione tabella sensore DB \\
+        \hline
+            \href{https://github.com/SevenBitsSwe/MVP/issues/5}{Issue \#5} & Implementazione nuovo sistema UUID simulatore posizioni \\
+        \hline
+            \href{https://github.com/SevenBitsSwe/MVP/issues/6}{Issue \#6} & Implementazione logica di business\\
+        \hline
+            \href{https://github.com/SevenBitsSwe/MVP/issues/9}{Issue \#9} & Modifica visualizzazione messaggi\\
+        \hline
+    \end{tabular}
+    \end{center}
+
+%parte di firma
+\vfill
+\begin{minipage}{10cm}
+Firma: \hrulefill \\
+\vspace{2mm}
+Data: \dotfill
+\end{minipage}
+
+\end{document}

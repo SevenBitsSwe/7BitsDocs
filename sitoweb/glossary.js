@@ -15,6 +15,14 @@ const glossaryData = {
     "term": "API",
     "definition": "Acronimo di \"Application Programming Interface\", è un insieme di regole e protocolli che consente a diversi software di comunicare e interagire tra loro. Agisce come un ponte, definendo metodi e strutture dati standardizzati per lo scambio di informazioni e funzionalità. Le API permettono alle applicazioni di collaborare in modo efficiente, facilitando l'integrazione e la connessione tra sistemi diversi."
   },
+  "api-key": {
+    "term": "API Key",
+    "definition": "Chiave di autenticazione utilizzata per accedere ai servizi API di Groq, che forniscono elaborazione ad alte prestazioni per modelli di intelligenza artificiale. Questa chiave è necessaria per autenticare le richieste e garantire un accesso sicuro alle risorse e alle funzionalità offerte dalla piattaforma Groq."
+  },
+  "architettura-esagonale": {
+    "term": "Architettura Esagonale",
+    "definition": "Pattern architetturale che separa la logica di business dai dettagli di implementazione, utilizzando porte (ports) e adattatori (adapters) per interfacciarsi con sistemi esterni. Garantisce manutenibilità, testabilità e indipendenza tecnologica."
+  },
   "attore": {
     "term": "Attore",
     "definition": "Entità esterna al sistema che interagisce con esso per raggiungere uno scopo specifico. Gli attori possono essere principali (comunicano attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi)."
@@ -34,6 +42,10 @@ const glossaryData = {
   "branch": {
     "term": "Branch",
     "definition": "Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività."
+  },
+  "broker": {
+    "term": "Broker",
+    "definition": "Componente software che funge da intermediario tra sistemi, servizi o altri componenti, facilitando la comunicazione e l’integrazione tra di essi. A seconda del contesto, un broker può gestire il routing dei messaggi, la trasformazione dei dati o la mediazione tra produttori e consumatori di messaggi."
   },
   "bug": {
     "term": "Bug",
@@ -91,6 +103,14 @@ const glossaryData = {
     "term": "DBMS",
     "definition": "Acronimo di \"DataBase Management System\", è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro."
   },
+  "design-pattern": {
+    "term": "Design Pattern",
+    "definition": "Soluzione generale e riutilizzabile a problemi comuni di progettazione software. I design pattern vengono impiegati per strutturare in modo modulare ed efficiente i componenti del sistema, garantendo manutenibilità e scalabilità del codice."
+  },
+  "discord": {
+    "term": "Discord",
+    "definition": "Piattaforma di comunicazione utilizzata per le riunioni interne del team. Fornisce strumenti per chat testuali, chiamate vocali e video, facilitando la collaborazione e la condivisione di informazioni tra i membri del progetto."
+  },
   "docker": {
     "term": "Docker",
     "definition": "Piattaforma che consente di creare, distribuire ed eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione."
@@ -123,6 +143,10 @@ const glossaryData = {
     "term": "EV",
     "definition": "Acronimo di \"Earned Value\", è una metrica che rappresenta il valore in euro delle attività realizzate alla data corrente, ovvero il valore dei deliverable rilasciati fino al momento della misurazione in seguito alle attività svolte."
   },
+  "event-driven": {
+    "term": "Event-Driven",
+    "definition": "Paradigma architetturale in cui il flusso di esecuzione di un sistema è determinato da eventi, come input utente, messaggi da altri servizi o variazioni di stato. Questo approccio consente alta reattività e scalabilità, ed è utilizzato in sistemi distribuiti, microservizi e piattaforme di stream processing."
+  },
   "faker": {
     "term": "Faker",
     "definition": "Libreria Python progettata per generare dati falsi in modo casuale, come ad esempio nomi, indirizzi, numeri di telefono e altre informazioni. Viene utilizzata per creare set di dati che simulano la struttura e la variabilità dei dati reali, evitando l'uso di informazioni sensibili durante lo sviluppo e il testing del software."
@@ -130,6 +154,10 @@ const glossaryData = {
   "feedback": {
     "term": "Feedback",
     "definition": "Riscontro, positivo o negativo, dato per influenzare il comportamento futuro."
+  },
+  "flink": {
+    "term": "Flink",
+    "definition": "Apache Flink è un framework open-source per lélaborazione di stream di dati in tempo reale. Nel nostro progetto, Flink processa i dati di posizionamento trasformandoli in messaggi pubblicitari personalizzati e filtrandoli per evitare ripetizioni."
   },
   "framework": {
     "term": "Framework",
@@ -143,13 +171,29 @@ const glossaryData = {
     "term": "GitHub",
     "definition": "Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l'organizzazione e la collaborazione all'interno dei team di sviluppo."
   },
+  "github-actions": {
+    "term": "GitHub Actions",
+    "definition": "Servizio di automazione fornito da GitHub che permette di gestire e automatizzare flussi di lavoro all’interno di un repository. Consente agli sviluppatori di creare, personalizzare e condividere workflow che si attivano in risposta a eventi specifici, come il push di codice o l’apertura di una pull request."
+  },
+  "google-meet": {
+    "term": "Google Meet",
+    "definition": "Piattaforma di videoconferenza utilizzata per le riunioni esterne del gruppo con la proponente. Consente comunicazioni audio e video, condivisione dello schermo e collaborazione in tempo reale, facilitando l’interazione con gli stakeholder."
+  },
   "grafana": {
     "term": "Grafana",
     "definition": "Piattaforma open-source per la visualizzazione e il monitoraggio dei dati. Permette di creare dashboard interattive e personalizzabili, report e grafici utilizzando dati provenienti da diverse fonti."
   },
+  "groq": {
+    "term": "Groq",
+    "definition": "Azienda nota per la progettazione di unità di elaborazione ad alte prestazioni, ottimizzate per eseguire modelli di deep learning con bassa latenza e alta efficienza. Le sue soluzioni sono utilizzate per applicazioni che richiedono elaborazione in tempo reale, come l'AI generativa e l'analisi di dati su larga scala."
+  },
   "ia": {
     "term": "IA",
     "definition": "Acronimo italiano di \"Intelligenza artificiale\", è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l'apprendimento, la pianificazione e la creatività."
+  },
+  "ide": {
+    "term": "IDE",
+    "definition": "Acronimo di \"Integrated Development Environment\", è un ambiente software completo, progettato per agevolare lo sviluppo, la compilazione, il debug e la gestione del codice di programmazione. Esso include una serie di strumenti integrati come un editor di testo, un compilatore, un debugger, un gestore di versioni e altre utilità, offrendo un’interfaccia unificata per gli sviluppatori."
   },
   "ieee": {
     "term": "IEEE",
@@ -167,9 +211,21 @@ const glossaryData = {
     "term": "ITS",
     "definition": "Acronimo di \"Issue Tracking System\", sono dei software utilizzati per gestire e tenere traccia di problemi, bug, richieste di funzionalità e altre attività correlate nel ciclo di sviluppo del software. Questi sistemi forniscono un'infrastruttura organizzativa che supporta la gestione delle problematiche, permettendo a sviluppatori, team di supporto e stakeholder di documentare e risolvere le questioni che emergono durante lo sviluppo del progetto."
   },
+  "json": {
+    "term": "JSON",
+    "definition": "JSON è un formato leggero per lo scambio di dati, strutturato come coppie chiave-valore. Nel nostro progetto, JSON viene utilizzato per formattare e serializzare i messaggi scambiati tra i diversi componenti del sistema, facilitando la comunicazione tra Kafka, Flink e le altre applicazioni."
+  },
   "kafka": {
     "term": "Kafka",
     "definition": "Piattaforma distribuita open-source, progettata per la gestione di flussi di dati in tempo reale. Utilizza un'architettura basata su messaggi pubblicati e sottoscritti (pub-sub), consentendo la raccolta e lélaborazione di grandi quantità di dati. È comunemente usata per applicazioni di streaming, analisi di eventi e integrazione tra sistemi."
+  },
+  "kafka-poisoning": {
+    "term": "Kafka Poisoning",
+    "definition": "Un tipo di attacco informatico in cui vengono inviati dati dannosi o manipolati ai topic di Apache Kafka, compromettendo l'integrità del flusso di informazioni."
+  },
+  "kappa-architecture": {
+    "term": "Kappa Architecture",
+    "definition": "Architettura progettata per lélaborazione di dati in tempo reale, eliminando la distinzione tra batch e streaming. Utilizza un unico flusso di dati continuo per semplificare la gestione e migliorare la scalabilità."
   },
   "latex": {
     "term": "LaTeX",
@@ -203,17 +259,25 @@ const glossaryData = {
     "term": "Norme",
     "definition": "Insieme di regole, linee guida o standard che stabiliscono comportamenti e procedure da seguire in un determinato contesto o settore. Il loro scopo principale è garantire la sicurezza, la qualità, léfficienza e léfficacia delle attività svolte, assicurando che vengano rispettati determinati criteri e pratiche operative."
   },
+  "pannello": {
+    "term": "Pannello",
+    "definition": "È un elemento visuale all'interno di una dashboard, progettato per rappresentare specifici dati o metriche attraverso grafici, tabelle, numeri singoli o altri tipi di visualizzazione. Ogni pannello è configurabile per interrogare una o più fonti dati, applicare trasformazioni e presentare le informazioni in modo chiaro e significativo per il monitoraggio e l'analisi."
+  },
   "pb": {
     "term": "PB",
     "definition": "Acronimo di \"Product Baseline\", è una tappa chiave nello sviluppo di un progetto, durante la quale viene verificata e dimostrata la solidità dell'architettura definita nella fase precedente (RTB). È la seconda revisione di avanzamento del progetto didattico, corrispondente alla presentazione dell'MVP."
   },
   "percorso": {
     "term": "Percorso",
-    "definition": "Un percorso è lo spostamento che un utente sta compiendo con un mezzo, in questo caso la bicicletta noleggiata."
+    "definition": "Un percorso è lo spostamento che un utente sta compiendo con un mezzo, nel contesto del nostro progetto, è quello compiuto dall'utente con la bicicletta noleggiata."
   },
   "poc": {
     "term": "PoC",
     "definition": "Acronimo di \"Proof of Concept\", è un prototipo iniziale realizzato per dimostrare la fattibilità tecnologica di un prodotto atteso, permettendo di delineare il suo potenziale di realizzazione."
+  },
+  "poi": {
+    "term": "PoI",
+    "definition": "Un Punto di Interesse è una localizzazione geografica rilevante all'interno del sistema. Nel nostro progetto, i PoI vengono utilizzati per identificare posizioni specifiche, ossia le attività che offrono dei servizi."
   },
   "processo": {
     "term": "Processo",
@@ -222,6 +286,10 @@ const glossaryData = {
   "progetto": {
     "term": "Progetto",
     "definition": "Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Ha una data d'inizio e una data di fine fissate."
+  },
+  "prompt": {
+    "term": "Prompt",
+    "definition": "Input testuale fornito a un modello linguistico per generare una risposta. Utilizzato per creare messaggi pubblicitari personalizzati basati su contesto e preferenze."
   },
   "proponente": {
     "term": "Proponente",
@@ -299,6 +367,10 @@ const glossaryData = {
     "term": "Stakeholder",
     "definition": "Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori."
   },
+  "stream-processing": {
+    "term": "Stream Processing",
+    "definition": "Tecnica di elaborazione dei dati in tempo reale, in cui i flussi di dati vengono processati in modo continuo man mano che vengono generati, senza necessità di memorizzazione preventiva. È utilizzata per analisi in tempo reale, monitoraggio e rilevamento di eventi."
+  },
   "sv": {
     "term": "SV",
     "definition": "Acronimo di \"Schedule Variance\", trattasi di una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il valore pianificato (PV) fino al momento corrente."
@@ -338,5 +410,9 @@ const glossaryData = {
   "way-of-working": {
     "term": "Way of Working",
     "definition": "Insieme delle metodologie, dei processi, degli strumenti e dei comportamenti che devono essere adottati da un team o un'organizzazione per svolgere le proprie attività allo stato dell'arte."
+  },
+  "zookeeper": {
+    "term": "Zookeeper",
+    "definition": "Servizio di coordinamento distribuito utilizzato nel progetto per garantire la gestione affidabile dei nodi e la sincronizzazione tra le componenti del sistema. Nel contesto della nostra architettura, viene impiegato per supportare Apache Kafka, gestendo i broker, mantenendo metadati di configurazione e coordinando le operazioni di leader election. Questo assicura unélevata disponibilità e tolleranza ai guasti nella gestione dello streaming dei dati."
   }
 };
