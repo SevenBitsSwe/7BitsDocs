@@ -17,7 +17,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{1.0.3} %aggiunta versione come variabile
+\newcommand\version{1.0.5} %aggiunta versione come variabile
 
 \graphicspath{{images}}
 %\graphicspath{{../images/}}
@@ -111,11 +111,13 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    1.0.5 & 2025-04-03 & Federico Pivetta &  Manuel Gusella & Correzioni alle metriche e alla gestione della configurazione\\
+    \hline
     1.0.4 & 2025-03-26 & Manuel Gusella & Federico Pivetta & Aggiornamento processo di verifica della documentazione e aggiornato i ruoli\\
     \hline
     1.0.3 & 2025-03-26 & Leonardo Trolese & Federico Pivetta & Correzione sezione \hyperref[metriche_qualita]{metriche} a seguito di inizio stesura codice\\
     \hline
-    1.0.2 & 2025-03-20 & Giovanni Cristellon & Federico Pivetta & Correzioni minori e aggiornamento della stesura dei verbali.\\
+    1.0.2 & 2025-03-20 & Giovanni Cristellon & Federico Pivetta & Correzioni minori e aggiornamento della stesura dei verbali\\
     \hline
     1.0.1 & 2025-03-12 & Federico Pivetta & Alfredo Rubino & Aggiunti paragrafi Specifica Tecnica, Manuale Utente, Qualità dell'architettura e Design Pattern\\
     \hline
@@ -133,7 +135,7 @@
     \hline
     0.5.13 & 2025-01-11 & Manuel Gusella & Leonardo Trolese & Aggiunte tabelle delle metriche per le sezioni \hyperref[codifica]{Codifica}, \hyperref[progettazione]{Progettazione} e \hyperref[analisi]{Analisi dei Requisiti}\\
     \hline
-    0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Aggiunta della metriche e correzioni minori\\
+    0.5.12 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Correzioni minori\\
     \hline
     0.5.11 & 2025-01-02 & Leonardo Trolese & Uncas Peruzzi & Scrittura della sezione \hyperref[standard_12207]{"Standard ISO/IEC 12207"}\\
     \hline
@@ -220,14 +222,14 @@
     Ai fini di garantire l'adesione dei membri del gruppo ad un vocabolario comune e condiviso, che non lasci spazio ad ambiguità, dubbi o imprecisioni; il gruppo ha definito un documento denominato \textit{Glossario\_v1.0.0.pdf}, nel quale sono presenti tutti i termini tecnici adottati dal gruppo per l'intera durata della realizzazione del progetto$_G$. Tali termini saranno contrassegnati con una $_G$ a pedice. Nel caso di termini composti, essi saranno uniti da un trattino (es. pull-request$_G$)
 
     \subsection{Riferimenti}
-        \subsubsection{Riferimenti normativi}
+        \subsubsection{Riferimenti Normativi}
         \begin{itemize}
             \item Capitolato$_G$ di progetto$_G$ C4 - Near You - Smart custom advertising platform\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4p.pdf}}}\\ 
               (Consultato: 2025-02-19).
             \item Standard ISO/IEC 12207:1995\\ \textcolor{blue}{\texttt{\url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}}}\\
               (Consultato: 2025-02-19).
         \end{itemize}
-        \subsubsection{Riferimenti tecnologici}
+        \subsubsection{Riferimenti Tecnologici}
         \begin{itemize}
             \item Documentazione$_G$ Git$_G$: \textcolor{blue}{\texttt{\url{https://git-scm.com/docs}}}\\
               (Consultato: 2025-02-19).
@@ -238,16 +240,12 @@
             \item Documentazione$_G$ Python$_G$: \textcolor{blue}{\texttt{\url{https://www.python.org/doc/}}}\\
               (Consultato: 2025-02-19).
         \end{itemize}
-        \subsubsection{Riferimenti informativi}
+        \subsubsection{Riferimenti Informativi}
         \begin{itemize}
             \item Riferimenti per le metriche: 
             \begin{itemize}
-            %     \item \textcolor{blue}{\texttt{\url{https://www.javatpoint.com/software-engineering-functional-point-fp-analysis}}}\\
-            %   (Consultato: 2025-02-19).\\
                 \item \textcolor{blue}{\texttt{\url{https://lia.disi.unibo.it/Courses/IngSW/SE_C_2_Metriche_.pdf}}}\\
               (Consultato: 2025-02-19).\\
-            %     \item \textcolor{blue}{\texttt{\url{https://www.valeriofinazzo.it/wordpress/2014/06/function-point-tutorial-2-definizioni/}}}\\
-            %   (Consultato: 2025-02-19).\\
                 \item \textcolor{blue}{\texttt{\url{https://youtu.be/CXgDazM0DWA?feature=shared}}}\\
               (Consultato: 2025-02-19).
             \end{itemize}
@@ -487,8 +485,6 @@
             \hline
             MPD03 & Requisiti Opzionali Soddisfatti\\
             \hline
-            % MPD04 & Function Point\\
-            % \hline
           \end{tabular}
           \caption{Metriche relative all'attività di analisi-dei-requisiti}
         \end{table}
@@ -608,13 +604,13 @@
             \hline
             \textbf{Metrica} & \textbf{Descrizione} \\
             \hline
-            MPD07 & Tempo medio di risposta\\
+            MPD06 & Tempo medio di risposta\\
             \hline
-            MPD08 & Facilità di utilizzo\\
+            MPD07 & Facilità di utilizzo\\
             \hline
-            MPD09 & Tempo medio di apprendimento\\
+            MPD08 & Tempo medio di apprendimento\\
             \hline
-            MPD15 & Versioni browser supportati\\
+            MPD14 & Versioni browser supportati\\
             \hline
           \end{tabular}
           \caption{Metriche relative all'attività di progettazione}
@@ -657,25 +653,25 @@
             \hline
             \textbf{Metrica} & \textbf{Descrizione} \\
             \hline
-            MPD05 & Line coverage\\
+            MPD04 & Line coverage\\
             % \hline
             % MPD06 & Statement coverage\\
             \hline
-            MPD06 & Branch$_G$ coverage\\
+            MPD05 & Branch$_G$ coverage\\
             % \hline
             % MPD08 & Condition coverage\\
             % \hline
             % MPD12 & Coefficiente di accoppiamento fra classi\\
             \hline
-            MPD10 & Linee di codice per metodo\\
+            MPD09 & Linee di codice per metodo\\
             \hline
-            MPD11 & Parametri per metodo\\
+            MPD10 & Parametri per metodo\\
             \hline
-            MPD12 & Attributi per classe\\
+            MPD11 & Attributi per classe\\
             \hline
-            MPD13 & Structure Fan IN\\
+            MPD12 & Structure Fan IN\\
             \hline
-            MPD14 & Structure Fan OUT\\
+            MPD13 & Structure Fan OUT\\
             \hline
           \end{tabular}
           \caption{Metriche relative all'attività di codifica}
@@ -710,48 +706,6 @@
         \item [-] \textit{Verbali esterni}
         \item [-] \textit{Verbali interni}
     \end{itemize}
-
-    \subsubsection{Ciclo di vita documenti e Versionamento}
-    I documenti seguono due workflow distinti a seconda che si tratti di verbali (interni o esterni) oppure di documenti più corposi, e le versioni delle modifiche successive apportate ai documenti seguono il sistema$_G$ di versionamento$_G$ indicato di seguito.\\
-
-        \paragraph{Versionamento dei documenti}
-        Il sistema$_G$ adottato dal team per il versionamento$_G$ dei documenti è il sistema$_G$ di versionamento$_G$ semantico: \{x.y.z\}, in cui ogni numero ha un significato specifico:\\
-        \begin{itemize}
-            \item "x" indica la versione maggiore, incrementata per cambiamenti incompatibili con versioni precedenti;
-            \item "y" rappresenta la versione minore, usata per aggiungere informazioni compatibili;
-            \item "z" è la versione di patch, aggiornata per correzioni di errori poco significativi e retrocompatibili.
-        \end{itemize}
-        Questo sistema$_G$ aiuta il team a comprendere velocemente l'impatto di un aggiornamento fatto ad un documento prodotto.\\
-
-        \paragraph{Workflow verbali}
-        I verbali seguono il seguente workflow:
-        \begin{enumerate}
-            \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno (la versione iniziale del documento corrisponde a \{0.1.0\});
-            \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
-            \item Nella sezione Decisioni prese si compila una
-            tabella in cui ciascuna azione da intraprendere viene associata ad una issue$_G$ corrispondente;
-            \item Creazione di una pull-request (PR) dal branch$_G$ Verbali al branch$_G$ Main;
-            \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
-            \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare;
-            Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
-            \item Quando il documento è completo l'ultimo Verificatore
-            chiude la pull-request ed esegue il merge$_G$ nel branch$_G$ Main.
-        \end{enumerate}
-
-        \paragraph{Workflow altri documenti}
-        Gli altri documenti seguono il seguente workflow:
-        \begin{enumerate}
-            \item Creazione di un branch$_G$ dedicato esclusivamente alla redazione di un documento specifico;
-            \item Creazione del documento a partire da un template comune a tutti i documenti (esclusi i verbali). La versione iniziale del documento corrisponde a \{0.1.0\};
-            \item Creazione di un branch di feauture per la redazione di una sezione del documento, o per una modifica da apportare al documento partendo dal branch$_G$ del documento;
-            \item Compilazione dei campi della sezione Registro modifiche;
-            \item Creazione di una pull-request dal branch$_G$ di feauture, precedentemente creato, al branch$_G$ del documento desiderato;
-            \item Verifica della documentazione$_G$ prodotta da parte del Verificatore indicato nel Registro modifiche e associato alle modifiche effettuate in quella seduta di lavoro;
-            \item Se ci sono correzioni o ulteriori modifiche da effettuare, queste devono essere prima indicate tramite suggestion, attraverso la sezione di Review della pull-request, e successivamente apportate alla feature in cui si sta lavorando;
-            \item Se la pull-request viene approvata, si esegue il merge$_G$ nel branch del documento e si elimina il branch di feature creato;
-            \item Si ripetono le operazioni indicate dal punto \{3\} al punto \{8\} fino a quando il documento non è stato completato;
-            \item Quando il documento è completo si aprirà una pull-request verso il branch$_G$ Main e, dopo l'approvazione del documento da parte dei due Verificatori presenti durante il periodo di lavoro, si esegue il merge$_G$ nel branch$_G$ Main. Successivamente, si procede ad eliminare il branch$_G$ dedicato, solo se non sono previsti ulteriori sviluppi.
-        \end{enumerate}
 
     \subsubsection{Template in \LaTeX}
     Per la stesura dei documenti, viene utilizzato un template in formato \LaTeX. Questo template ha lo scopo di semplificare la redazione dei documenti, garantire la coerenza e risparmiare del tempo, in modo da rendere la produzione dei documenti più efficiente e professionale. Sono stati sviluppati tre diversi modelli di template:
@@ -848,6 +802,65 @@
         \item \textbf{Done}: attività completate, in attesa di verifica.
     \end{enumerate}
 
+    \subsubsection{Ciclo di vita e Versionamento dei documenti}
+    I documenti seguono due workflow distinti a seconda che si tratti di verbali (interni o esterni) oppure di documenti più corposi, e le versioni delle modifiche successive apportate ai documenti seguono il sistema$_G$ di versionamento$_G$ indicato di seguito.\\
+
+        \paragraph{Versionamento dei documenti}
+        Il sistema$_G$ adottato dal team per il versionamento$_G$ dei documenti è il sistema$_G$ di versionamento$_G$ semantico: \{x.y.z\}, in cui ogni numero ha un significato specifico:\\
+        \begin{itemize}
+            \item "x" indica la versione maggiore, incrementata per cambiamenti incompatibili con versioni precedenti;
+            \item "y" rappresenta la versione minore, usata per aggiungere informazioni compatibili;
+            \item "z" è la versione di patch, aggiornata per correzioni di errori poco significativi e retrocompatibili.
+        \end{itemize}
+        Questo sistema$_G$ aiuta il team a comprendere velocemente l'impatto di un aggiornamento fatto ad un documento prodotto.\\
+
+        \paragraph{Workflow verbali}
+        I verbali seguono il seguente workflow:
+        \begin{enumerate}
+            \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno (la versione iniziale del documento corrisponde a \{0.1.0\});
+            \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
+            \item Nella sezione Decisioni prese si compila una
+            tabella in cui ciascuna azione da intraprendere viene associata ad una issue$_G$ corrispondente;
+            \item Creazione di una pull-request (PR) dal branch$_G$ Verbali al branch$_G$ Main;
+            \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
+            \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare;
+            Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
+            \item Quando il documento è completo l'ultimo Verificatore
+            chiude la pull-request ed esegue il merge$_G$ nel branch$_G$ Main.
+        \end{enumerate}
+
+        \paragraph{Workflow Documenti Ufficiali}
+        I documenti ufficiali seguono il seguente workflow:
+        \begin{enumerate}
+            \item Creazione di un branch$_G$ dedicato esclusivamente alla redazione di un documento specifico;
+            \item Creazione del documento a partire da un template comune a tutti i documenti (esclusi i verbali). La versione iniziale del documento corrisponde a \{0.1.0\};
+            \item Creazione di un branch di feauture per la redazione di una sezione del documento, o per una modifica da apportare al documento partendo dal branch$_G$ del documento;
+            \item Compilazione dei campi della sezione Registro modifiche;
+            \item Creazione di una pull-request dal branch$_G$ di feauture, precedentemente creato, al branch$_G$ del documento desiderato;
+            \item Verifica della documentazione$_G$ prodotta da parte del Verificatore indicato nel Registro modifiche e associato alle modifiche effettuate in quella seduta di lavoro;
+            \item Se ci sono correzioni o ulteriori modifiche da effettuare, queste devono essere prima indicate tramite suggestion, attraverso la sezione di Review della pull-request, e successivamente apportate alla feature in cui si sta lavorando;
+            \item Se la pull-request viene approvata, si esegue il merge$_G$ nel branch del documento e si elimina il branch di feature creato;
+            \item Si ripetono le operazioni indicate dal punto \{3\} al punto \{8\} fino a quando il documento non è stato completato;
+            \item Quando il documento è completo si aprirà una pull-request verso il branch$_G$ Main e, dopo l'approvazione del documento da parte dei due Verificatori presenti durante il periodo di lavoro, si esegue il merge$_G$ nel branch$_G$ Main. Successivamente, si procede ad eliminare il branch$_G$ dedicato, solo se non sono previsti ulteriori sviluppi.
+        \end{enumerate}
+
+    \subsubsection{Ciclo di vita del software}
+    Il ciclo di vita del software adottato si basa su un approccio ispirato al modello di Gitflow semplificato.
+    In particolare, si fa uso di branch$_G$ derivati da Main, con verifiche e merge che rispettano il workflow descritto di seguito.
+
+    \paragraph{Workflow Software}
+    Il software segue il seguente workflow:
+    \begin{itemize}
+        \item Creazione di un nuovo branch$_G$ funzionale derivato da un branch$_G$ collettivo, il quale a sua volta deriva direttamente dal branch$_G$ Main. Ogni branch$_G$ collettivo è dedicato a un gruppo di funzionalità correlate o a una specifica fase dello sviluppo;
+        \item Sviluppo della parte assegnata nel branch$_G$ funzionale. Ogni modifica rilevante deve essere tracciata mediante issue$_G$ associata;
+        \item Test locale e/o automatizzato della funzionalità sviluppata, con l'obiettivo di garantirne il corretto funzionamento e l'assenza di regressioni. Al termine, viene aperta una pull-request$_G$ (PR) per richiedere il merge$_G$ nel branch$_G$ collettivo;
+        \item Merge$_G$ del branch$_G$ funzionale nel branch$_G$ collettivo, effettuato solo dopo la validazione della funzionalità da parte di un Verificatore;
+        \item Eliminazione del branch$_G$ funzionale una volta completato il merge$_G$ nel branch$_G$ collettivo, al fine di mantenere ordinata la struttura della repository;
+        \item Verifica del branch$_G$ collettivo da parte del Verificatore, che controlla la coerenza tra le parti, l'integrabilità delle componenti e l'assenza di conflitti. Tale verifica include l'analisi del risultato delle GitHub Actions, che eseguono test automatizzati e restituiscono metriche tramite badge integrati nella PR;
+        \item Creazione di una pull-request$_G$ dal branch$_G$ collettivo al branch$_G$ Main, subordinata all’approvazione di tutte le modifiche da parte del Verificatore;
+        \item Solo a seguito della verifica positiva e dell'approvazione formale della PR è consentito il merge$_G$ definitivo nel branch$_G$ Main.
+    \end{itemize}
+
     \subsubsection{Repository}
     Il gruppo utilizza tre repository$_G$ all'interno della propria organizzazione Github$_G$:
     \begin{itemize}
@@ -878,10 +891,11 @@
     \subsubsection{Descrizione e Scopo} 
     La verifica è un processo$_G$ essenziale che deve essere applicato a tutti gli altri processi per poterli considerare completati. Il suo scopo principale è quello di assicurare che i prodotti siano corretti e che aderiscano ai vincoli individuati ed elencati nel documento \textit{Piano\_di\_Qualifica}. Le attività di verifica sono assegnate ai verificatori, che si impegnano a far rispettare i vincoli di qualità presenti nel \textit{Piano\_di\_Qualifica}, correggendo e/o segnalando qualora siano presenti contenuti non conformi agli standard.
     \subsubsection{Strumenti}
-    Gli strumenti utilizzati per agevolare il processo$_G$ di verifica sono i seguenti:
-    \paragraph{GitHub}
-    Github$_G$ fornisce un servizio di code review integrato nel meccanismo delle pull-request, consentendo ai verificatori di visualizzare le ultime modifiche. Dopo aver completato la verifica del documento, il Verificatore può aggiungere commenti con correzioni o suggerimenti di miglioramento e richiedere delle modifiche. In alternativa, può approvarla e passare alla verifica di altri prodotti in attesa di revisione nel repository$_G$.\\
-    Il sistema$_G$ di review di Github$_G$ permette all'intero team di tracciare le modifiche apportate nel repository$_G$. Inoltre, è possibile assegnare regole alle pull-request per garantire che la verifica venga effettuata da almeno due verificatori prima di eseguire il merge$_G$ nel branch$_G$ Main.
+    Lo strumento utilizzato per agevolare il processo$_G$ di verifica è il seguente:
+    \begin{itemize}
+        \item \textbf{GitHub}: Piattaforma di versionamento$_G$ e repository$_G$ che fornisce un servizio di code review integrato nel meccanismo delle pull-request, consentendo ai verificatori di visualizzare le ultime modifiche. Dopo aver completato la verifica del documento, il Verificatore può aggiungere commenti con correzioni o suggerimenti di miglioramento e richiedere delle modifiche. In alternativa, può approvarla e passare alla verifica di altri prodotti in attesa di revisione nel repository$_G$.\\
+        Il sistema$_G$ di review di Github$_G$ permette all'intero team di tracciare le modifiche apportate nel repository$_G$. Inoltre, è possibile assegnare regole alle pull-request per garantire che la verifica venga effettuata da almeno due verificatori prima di eseguire il merge$_G$ nel branch$_G$ Main.
+    \end{itemize}
 
     \subsubsection{Analisi statica}
     L'analisi statica è un tipo di verifica che viene effettuata sul prodotto software o sulla documentazione$_G$ senza dover eseguire il sistema$_G$ software. Serve ad accertare la conformità con le regole adottate, verificare l'assenza di difetti e la presenza di proprietà desiderate, garantendo un livello ottimale di qualità. Le due principali tecniche sono Inspection$_G$ e Walkthrough$_G$. Il gruppo preferisce l'approccio ad Inspection$_G$, così da ridurre il tempo di verifica affinché l'autore possa dedicarsi alla stesura di altri documenti o codice.
@@ -1355,24 +1369,6 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
                             \item $TRP$: requisiti opzionali totali.
                         \end{itemize}
             \end{itemize}
-    % \item   \textbf{MPD04 - Function Point (FP)}:
-    %         \begin{itemize}
-    %             \item   \textbf{Descrizione}: metrica utilizzata per misurare la dimensione funzionale di un prodotto software. Si basa sulle funzionalità offerte dal sistema$_G$ agli utenti finali, e pertanto tiene conto di elementi quali input, output, interfacce, file e query$_G$ interne.
-    %             Il calcolo di tale metrica segue uno schema standardizzato che fa riferimento al IFPUG (International Function Point Users Group), e include cinque componenti principali:
-    %             \begin{enumerate}
-    %                 \item Ingressi esterni (EI).
-    %                 \item Uscite esterne (EO).
-    %                 \item Query$_G$ esterne (EQ).
-    %                 \item File logici interni (ILF).
-    %                 \item File di interfaccia esterni (EIF).
-    %             \end{enumerate}
-    %             Il numero totale di function points viene ponderato sulla base della complessità (alta, media o bassa) relativa a ciascuno di questi elementi.
-    %             \begin{figure}[H]
-    %             \centering
-    %             \includegraphics[width=0.7\textwidth]{FunctionPointFigure.png}
-    %             \caption{Schema riassuntivo della metrica Function Point}
-    %             \end{figure}
-    %         \end{itemize}
 \end{itemize}
 
 \subsubsection{Affidabilità}
