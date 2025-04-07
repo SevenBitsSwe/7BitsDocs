@@ -296,14 +296,14 @@ In seguito sono presenti le metriche definite dallo \hyperref[ISO 9126]{standard
   % MPD12 & Coefficiente di accoppiamento fra classi & $\leq$ 4 & $\leq$ 2 \\
   \hline
   MPD09 & Linee di codice per metodo & $\leq$ 50 & $\leq$ 25 \\
+  % \hline
+  % MPD10 & Parametri per metodo & $\leq$ 7 & $\leq$ 4 \\
   \hline
-  MPD10 & Parametri per metodo & $\leq$ 7 & $\leq$ 4 \\
+  MPD10 & Attributi per classe & $\leq$ 7 & $\leq$ 5 \\
   \hline
-  MPD11 & Attributi per classe & $\leq$ 7 & $\leq$ 5 \\
+  MPD11 & Structure Fan IN & - & - \\
   \hline
-  MPD12 & Structure Fan IN & - & va massimizzato \\
-  \hline
-  MPD13 & Structure Fan OUT & - & va minimizzato \\
+  MPD12 & Structure Fan OUT & - & va minimizzato \\
   \hline
 \end{tabular}
 \caption{Manutenibilità - Qualità di prodotto}
@@ -670,7 +670,7 @@ TA9 & Verificare che il sensore possa trasmettere in tempo reale al Sistema$_G$ 
 \label{sec:cruscotto}
 \subsection{Qualità di processo - fornitura}
 \label{sec:QdP_fornitura}
-\subsubsection{MPC01 - Estimated at completion (EAC)}
+\subsubsection{MPC01 - Estimated at completion (EAC)}%TODO
 
 \begin{figure}[H]
   \centering
@@ -690,7 +690,7 @@ per la metrica. Questo indica che il progetto è sufficientemente in linea con l
 \textbf{PB}:
 
 
-\subsubsection{MPC05 - Planned Value (PV) \& MPC04 - Earned Value (EV)}
+\subsubsection{MPC05 - Planned Value (PV) \& MPC04 - Earned Value (EV)}%TODO
 
 \begin{figure}[H]
   \centering
@@ -708,7 +708,7 @@ leggermente superiore a quella del PV. Ciò indica che il progetto sta producend
 \textbf{PB}:
 
 
-\subsubsection{MPC03 - Actual Cost (AC) \& MPC02 - Estimate to Complete (ETC)}
+\subsubsection{MPC03 - Actual Cost (AC) \& MPC02 - Estimate to Complete (ETC)}%TODO
 
 \begin{figure}[H]
   \centering
@@ -727,7 +727,7 @@ rispetto all'ETC, in linea con le aspettative economiche del progetto.
 \textbf{PB}:
 
 
-\subsubsection{MPC08 - Cost Performance Index (CPI)}
+\subsubsection{MPC08 - Cost Performance Index (CPI)}%TODO
 
 \begin{figure}[H]
   \centering
@@ -749,7 +749,7 @@ Questo indica che il progetto ha prodotto un valore maggiore rispetto ai costi s
 % originariamente qui c'era una sottosezione in più di Pianificazione, che non appare però negli Obiettivi Metrici di qualità (sopra):
 % \subsection{Qualità di processo - Pianificazione}
 % si può rimettere aggiungendo però pianificazione anche nei Obiettivi Metrici di qualità, e volendo inserendo in pianificazione anche la metrica proposta sotto a questa:
-\subsubsection{MPC07 - Cost Variance (CV) \& MPC06 - Schedule Variance (SV)}
+\subsubsection{MPC07 - Cost Variance (CV) \& MPC06 - Schedule Variance (SV)}%TODO
 
 \begin{figure}[H]
   \centering
@@ -771,8 +771,7 @@ pianificato nel corso delle iterazioni effettuate. Invece per il sesto sprint la
 
 
 \subsection{Qualità di processo - Sviluppo}
-% da modificare formula in NdP seguendo formula indicata sugli spreadsheets
-\subsubsection{MPC10 - Requirements Stability Index (RSI)}  
+\subsubsection{MPC10 - Requirements Stability Index (RSI)}%TODO 
 
 \begin{figure}[H]
   \centering
@@ -797,7 +796,7 @@ significativi cambiamenti in caso di esito negativo.\\
 
 
 \subsection{Qualità di processo - Gestione dei processi}
-\subsubsection{MPC16 - Rischi non previsti}
+\subsubsection{MPC16 - Rischi non previsti}%TODO
 
 \begin{figure}[H]
   \centering
@@ -814,7 +813,7 @@ riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.
 \textbf{PB}:
 
 
-\subsubsection{MPC17 - Efficienza temporale (ET)}
+\subsubsection{MPC17 - Efficienza temporale (ET)}%TODO
 
 \begin{figure}[H]
   \centering
@@ -835,7 +834,7 @@ sotto del valore ideale (pari o superiore a 1.0).\\
 
 
 \subsection{Qualità di processo - Documentazione}
-\subsubsection{MPC01 - Errori ortografici}
+\subsubsection{MPC01 - Errori ortografici}%TODO
 
 \begin{figure}[H]
   \centering
@@ -854,7 +853,7 @@ dei documenti privi di errori ortografici, e ciò è stato raggiunto, dato che a
 \textbf{PB}:
 
 
-\subsubsection{MPC11 - Indice Gulpease}
+\subsubsection{MPC11 - Indice Gulpease}%TODO
 
 \begin{figure}[H]
   \centering
@@ -874,7 +873,7 @@ A questo proposito il gruppo si porrà in futuro l'obiettivo di migliorare il va
 
 
 \subsection{Qualità di processo - Gestione della qualità}
-\subsubsection{MPC15 - Metriche di qualità soddisfatte}
+\subsubsection{MPC15 - Metriche di qualità soddisfatte}%TODO
 
 \begin{figure}[H]
   \centering
@@ -897,7 +896,7 @@ una metrica unica facendo la media dei cinque valori misurati.\\
 
 
 \subsection{Qualità di processo - Analisi dei Requisiti}
-\subsubsection{MPC09 - Requisiti Obbligatori Soddisfatti (ROS)}
+\subsubsection{MPC09 - Requisiti Obbligatori Soddisfatti (ROS)}%TODO
 
 \begin{figure}[H]
   \centering
@@ -909,94 +908,119 @@ una metrica unica facendo la media dei cinque valori misurati.\\
 La costante progressione verso il 100\% dei requisiti obbligatori soddisfatti, culminata nel raggiungimento del valore ideale, è un segnale estremamente positivo. Dimostra una solida comprensione delle esigenze del progetto e un'efficace esecuzione da parte del team nel tradurre tali requisiti in funzionalità complete.
 
 
-\subsection{Qualità di processo- Verifica}
-\subsubsection{MPD06 - Branch Coverage}
+\subsection{Qualità di processo - Verifica}
+\subsubsection{MPD04 - Line Coverage}
 
 \begin{figure}[H]
   \centering
-  %\includegraphics[width=0.9\linewidth]{}
+  \includegraphics[width=0.9\linewidth]{LineCoverage.png}
+  \caption{Grafico a linee della metrica "Line coverage"}
+\end{figure}
+
+\textbf{PB}: La metrica rappresenta la percentuale di linee di codice coperte dai test automatici. Il valore ideale è 100\%, mentre il valore accettabile è 90\%.\\
+Il grafico mostra che il valore di questa metrica è sempre stato al di sopra del valore accettabile, e ha raggiunto il valore ideale in prossimità della revisione PB.\\
+Da notare che non c'è alcun valore registrato in corrispondenza della settima iterazione poiché nessun test era ancora stati implementato durante quest'ultima.\\
+
+
+\subsubsection{MPD05 - Branch Coverage}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{BranchCoverage.png}
   \caption{Grafico a linee della metrica "Branch coverage"}
 \end{figure}
 
-\textbf{PB}:
+\textbf{PB}: La metrica rappresenta la percentuale di rami di codice coperti dai test automatici. Il valore ideale è 100\%, mentre il valore accettabile è 90\%.\\
+Il grafico mostra che il valore di questa metrica è sempre stato al di sopra del valore accettabile, e ha raggiunto il valore ideale in prossimità della revisione PB.\\
+Da notare che non c'è alcun valore registrato in corrispondenza della settima iterazione poiché nessun test era ancora stati implementato durante quest'ultima.\\
 
 
 \subsubsection{MPD10 - Linee di codice per metodo}
 
 \begin{figure}[H]
   \centering
-  %\includegraphics[width=0.9\linewidth]{}
+  \includegraphics[width=0.7\linewidth]{metrics_lines.png}
   \caption{Grafico a barre della metrica "Linee di codice per metodo"}
 \end{figure}
 
-\textbf{PB}:
+\textbf{PB}: Questo grafico rappresenta il numero di linee di codice per ciascun metodo scritto durante la fase di codifica.\\
+Rispetto alla maggior parte delle altre metriche il grafico non rappresenta un andamento temporale, ma mostra il numero di linee di codice per ogni metodo allo stato
+corrente del prodotto software; ciò perché non sarebbe stato possibile rappresentare in maniera immediata e  facilmente leggibile tale metrica altrimenti.\\
+In ogni caso dal grafico si evince che il valore ideale (inferiore a 25) è quasi sempre stato rispettato, ad esclusione di tre casi, in cui è comunque stato registrato
+un valore accettabile (inferiore a 50).\\
 
 
-\subsubsection{MPD11 - Parametri per metodo}
+% \subsubsection{MPD11 - Parametri per metodo}
+
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{metrics_parameters.png}
+%   \caption{Grafico a barre della metrica "Parametri per metodo"}
+% \end{figure}
+
+% \textbf{PB}:
+
+
+\subsubsection{MPD10 - Attributi per classe}
 
 \begin{figure}[H]
   \centering
-  %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a barre della metrica "Parametri per metodo"}
-\end{figure}
-
-\textbf{PB}:
-
-
-\subsubsection{MPD12 - Attributi per classe}
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[width=0.9\linewidth]{}
+  \includegraphics[width=0.9\linewidth]{metrics_attributes.png}
   \caption{Grafico a barre della metrica "Attributi per classe"}
 \end{figure}
 
-\textbf{PB}:
+\textbf{PB}: Questo grafico rappresenta il numero di attributi per ogni classe scritta durante la fase di codifica.\\
+Rispetto alla maggior parte delle altre metriche il grafico non rappresenta un andamento temporale, ma mostra il numero di attributi per ogni classe allo stato 
+corrente del prodotto software; ciò perché non sarebbe stato possibile rappresentare in maniera immediata e  facilmente leggibile tale metrica altrimenti.\\
+Analizzando il grafico si evince che il valore ideale (inferiore a 5) è sempre stato rispettato, ad esclusione di un caso, in cui è comunque stato registrato un valore
+accettabile (inferiore a 7).\\
 
 
-\subsubsection{MPD13 - Structure Fan IN}
+\subsubsection{MPD11 - Structure Fan IN}
 
 \begin{figure}[H]
   \centering
-  %\includegraphics[width=0.9\linewidth]{}
+  \includegraphics[width=0.9\linewidth]{metrics_fan_in.png}
   \caption{Grafico a barre della metrica "Structure Fan IN"}
 \end{figure}
 
-\textbf{PB}:
+\textbf{PB}: Questo grafico rappresenta per ogni classe il numero di altre classi che dipendono da essa.\\
+Rispetto alla maggior parte delle altre metriche il grafico non rappresenta un andamento temporale, ma mostra il numero di attributi per ogni classe allo stato 
+corrente del prodotto software; ciò perché non sarebbe stato possibile rappresentare in maniera immediata e  facilmente leggibile tale metrica altrimenti.\\
+Dall'analisi del grafico emerge che la fan-IN è sempre stata inferiore a 5 e per molti moduli si è registrato un valore nullo. Questa metrica non ha un valore ideale,
+poiché un alta fan-IN indica che una classe è molto utilizzata da altre classi, e quindi è un buon segnale di riutilizzo del codice; ma allo stesso tempo un valore 
+elevato indica che una classe crea molto accoppiamento essendo molto utilizzata, e quindi è un segnale negativo.\\ In generale i valori riscontrati non sono troppo 
+elevati, e sono in linea con le aspettative del gruppo.\\
 
 
-\subsubsection{MPD14 - Structure Fan OUT}
+\subsubsection{MPD12 - Structure Fan OUT}
 
 \begin{figure}[H]
   \centering
-  %\includegraphics[width=0.9\linewidth]{}
+  \includegraphics[width=0.9\linewidth]{metrics_fan_out.png}
   \caption{Grafico a barre della metrica "Structure Fan OUT"}
 \end{figure}
 
-\textbf{PB}:
-
-
-\subsubsection{MPC13 - Line Coverage}
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[width=0.9\linewidth]{}
-  \caption{Grafico a linee della metrica "Line coverage"}
-\end{figure}
-
-\textbf{PB}:
-
+\textbf{PB}: Questo grafico rappresenta per ogni classe il numero di altre classi la prima chiama o usa.\\
+Rispetto alla maggior parte delle altre metriche il grafico non rappresenta un andamento temporale, ma mostra il numero di attributi per ogni classe allo stato 
+corrente del prodotto software; ciò perché non sarebbe stato possibile rappresentare in maniera immediata e  facilmente leggibile tale metrica altrimenti.\\
+Dall'analisi del grafico emerge che la fan-OUT è sempre stata inferiore a 7 e per molti moduli si è registrato un valore nullo. Questa metrica non ha un valore ideale,
+poiché un alta fan-OUT indica che una classe è molto dipendente da altre, cosa che generalmente è negativa (a meno che la classe non sia un controller o orchestratore); 
+ma allo stesso tempo un valore basso, anche se p indice di buona coesione e indipendenza, può anche indicare che una classe è troppo semplice e superflua.\\
+In generale il valore di fan-OUT ad eccezione di alcuni casi, è stato relativamente basso, in linea con le aspettative del gruppo.\\
 
 
 \subsubsection{MPC14 - Passed test cases percentage}
 
 \begin{figure}[H]
   \centering
-  %\includegraphics[width=0.9\linewidth]{}
+  \includegraphics[width=0.9\linewidth]{PTCP.png}
   \caption{Grafico a linee della metrica "Passed test cases percentage"}
 \end{figure}
 
-\textbf{PB}:
+\textbf{PB}: Questa metrica rappresenta la percentuale di test superati rispetto al totale dei test eseguiti. Il valore ideale è 100\%, mentre il valore accettabile è 90\%.\\
+Il grafico mostra che il valore di questa metrica è sempre stato al di sopra del valore accettabile, e ha raggiunto il valore ideale in prossimità della revisione PB.\\
+Da notare che non c'è alcun valore registrato in corrispondenza della settima iterazione poiché nessun test era ancora stati implementato durante quest'ultima.\\
 
 \end{justify}
 \end{document}
