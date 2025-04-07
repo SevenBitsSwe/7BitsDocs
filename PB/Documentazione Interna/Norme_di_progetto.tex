@@ -817,16 +817,16 @@
         \paragraph{Workflow verbali}
         I verbali seguono il seguente workflow:
         \begin{enumerate}
-            \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno (la versione iniziale del documento corrisponde a \{0.1.0\});
-            \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
+            \item Creazione del documento a partire da un template diverso a seconda che si tratti di un verbale interno o esterno;
+            \item Redazione del documento indicando la durata dell'incontro, i partecipanti (interni ed esterni) e la piattaforma utilizzata. Seguono l'ordine del giorno, la sintesi di quanto fatto e una descrizione di ciascuna delle considerazioni fatte e successive decisioni prese;
             \item Nella sezione Decisioni prese si compila una
             tabella in cui ciascuna azione da intraprendere viene associata ad una issue$_G$ corrispondente;
-            \item Creazione di una pull-request (PR) dal branch$_G$ Verbali al branch$_G$ Main;
+            \item Creazione di una pull-request$_G$ (PR) dal branch$_G$ Verbali al branch$_G$ Main;
             \item Se ci sono correzioni o ulteriori modifiche da fare, queste devono essere indicate nella sezione Registro modifiche, e successivamente verificate;
             \item Solo se la verifica dà esito positivo si può passare alla fase di approvazione, anch'essa da verificare;
             Da questo punto se il verbale è interno si passa all'ultimo passaggio mentre se il verbale è esterno va mandato all'azienda SyncLab$_G$ perché venga firmato;
             \item Quando il documento è completo l'ultimo Verificatore
-            chiude la pull-request ed esegue il merge$_G$ nel branch$_G$ Main.
+            chiude la pull-request$_G$ ed esegue il merge$_G$ nel branch$_G$ Main.
         \end{enumerate}
 
         \paragraph{Workflow Documenti Ufficiali}
@@ -1447,19 +1447,15 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di linee di codice consentito per singolo metodo.
       \end{itemize}
-    \item \textbf{MPD10 - Parametri per metodo}:
-      \begin{itemize}
-        \item \textbf{Descrizione}: massimo numero di parametri consentito per singolo metodo.
-      \end{itemize}
-    \item \textbf{MPD11 - Attributi per classe}:
+    \item \textbf{MPD10 - Attributi per classe}:
       \begin{itemize}
         \item \textbf{Descrizione}: massimo numero di attributi consentito per singola classe.
       \end{itemize}
-    \item \textbf{MPD12 - Structure Fan IN}:
+    \item \textbf{MPD11 - Structure Fan IN}:
       \begin{itemize}
         \item \textbf{Descrizione}: rappresenta il numero di moduli, funzioni o classi che chiamano o utilizzano una specifica funzione o modulo, indicando quanto è riutilizzato.
       \end{itemize}
-    \item \textbf{MPD13 - Structure Fan OUT}:
+    \item \textbf{MPD12 - Structure Fan OUT}:
       \begin{itemize}
         \item \textbf{Descrizione}: misura il numero di moduli, funzioni o classi che una specifica funzione o modulo utilizza o chiama, evidenziando le sue dipendenze.
       \end{itemize}
@@ -1467,14 +1463,14 @@ L'acronimo principale utilizzato in questa sezione è MPD, da Metriche di qualit
 
 \subsubsection{Portabilità}
   \begin{itemize}
-    \item \textbf{MPD14 - Versioni browser supportati}:
+    \item \textbf{MPD13 - Versioni browser supportati}:
       \begin{itemize}
         \item \textbf{Descrizione}: percentuale delle versioni di browser supportate rispetto al totale delle versioni disponibili.
       \end{itemize}
 \end{itemize}
 
 \subsection{Metriche di qualità di Processo}
-L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualità del Processo$_G$.
+L'acronimo principale utilizzato in questa sezione è MPC, da Metriche di qualità di Processo$_G$.
 
 \subsubsection{Processi Primari}
 \paragraph{Fornitura}
