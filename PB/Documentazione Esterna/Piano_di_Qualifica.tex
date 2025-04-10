@@ -16,7 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 
-\newcommand\version{1.0.5} %aggiunta versione come variabile
+\newcommand\version{1.1.0} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
@@ -97,6 +97,8 @@
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
+    \hline
+    1.1.0 & 2025-03-29 & Federico Pivetta & Riccardo Piva & Aggiunta sezione per le metriche escluse dal cruscotto\\
     \hline
     1.0.5 & 2025-03-28 & Leonardo Trolese & Riccardo Piva & Ampliamento del cruscotto con le metriche relative alla revisione PB\\
     \hline
@@ -668,7 +670,7 @@ TA9 & Verificare che il sensore possa trasmettere in tempo reale al Sistema$_G$ 
 
 \section{Cruscotto di valutazione delle qualità}
 \label{sec:cruscotto}
-\subsection{Qualità di processo - fornitura}
+\subsection{Qualità di processo - Fornitura}
 \label{sec:QdP_fornitura}
 \subsubsection{MPC01 - Estimated at completion (EAC)}
 
@@ -684,7 +686,7 @@ TA9 & Verificare che il sensore possa trasmettere in tempo reale al Sistema$_G$ 
 dei costi sostenuti fino a un certo momento (in termini di ore produttive svolte), e dei costi stimati al completamento (in termini di ore produttive 
 restanti in riferimento al preventivo iniziale del progetto).\\ 
 In questo caso emerge dal grafico che il valore di EAC è poco al di sotto del preventivo iniziale (BAC), e in ogni caso entro i valori accettabili definiti
-per la metrica. Questo indica che il progetto è sufficientemente in linea con le aspettative in termini di costi.
+per la metrica. Questo indica che il progetto è sufficientemente in linea con le aspettative in termini di costi.\\
 
 \noindent
 \textbf{PB}: Per quanto riguarda la Product Baseline, il valore di EAC si è sempre mantenuto entro i valori accettabili e poco al di sotto del valore ideale,
@@ -706,7 +708,7 @@ il gruppo può affermare di aver risparmiato 440,00 € rispetto al budget inizi
 \textbf{RTB}: Il grafico mostra la curva del valore guadagnato (Earned Value), e la curva del valore pianificato (Planned Value). Come si può notare osservando la 
 figura le due curve sono molto vicine, questo indica che il lavoro effettivamente svolto è conforme alla pianificazione; e nello specifico quella dell'EV è sempre 
 leggermente superiore a quella del PV. Ciò indica che il progetto sta producendo un valore maggiore rispetto a quanto pianificato, e quindi che il lavoro svolto 
-è leggermente al di sopra delle aspettative.
+è leggermente al di sopra delle aspettative.\\
 
 \noindent
 \textbf{PB}: In questo caso le osservazioni già fatte per la RTB si possono applicare anche alla PB: il lavoro effettivamente svolto (EV - Earned Value) è sempre stato 
@@ -748,7 +750,7 @@ rispetto all'ETC, in linea con le aspettative economiche del progetto.\\
 progetto. La metrica è data dal rapporto fra il valore guadagnato (EV) e i costi sostenuti (AC), e infatti il suo valore ideale deve essere maggiore o pari a 1.
 Il valore accettabile invece è stato scelto essere maggiore o uguale a 0.9.\\
 Il grafico mostra che il CPI ha avuto valore strettamente maggiore di 1 per tutto il progetto, assestandosi fra il terzo e il sesto sprint a un valore pari a circa 1.06.
-Questo indica che il progetto ha prodotto un valore maggiore rispetto ai costi sostenuti.
+Questo indica che il progetto ha prodotto un valore maggiore rispetto ai costi sostenuti.\\
 
 \noindent
 \textbf{PB}: Anche nel corso della seconda fase del progetto la metrica CPI ha continuato il suo andamento, mantenendosi su un valore di poco superiore a 1.00, ovvero 
@@ -824,7 +826,7 @@ concentrati i maggiori sforzi da parte del gruppo di correggere le imprecisioni 
 \end{figure}
 
 \textbf{RTB}: Nel corso del progetto il team ha senz'altro avuto modo di affrontare svariati dei rischi emersi durante l'analisi dei rischi, tuttavia non sono stati
-riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.
+riscontrati rischi non previsti nel corso dei primi sei periodi del progetto.\\
 
 \noindent
 \textbf{PB}: Anche durante la seconda fase del progetto il gruppo non ha riscontrato alcun rischio non previsto.\\
@@ -925,11 +927,11 @@ una metrica unica facendo la media dei cinque valori misurati.\\
 
 
 \subsection{Qualità di processo - Analisi dei Requisiti}
-\subsubsection{MPC09 - Requisiti Obbligatori Soddisfatti (ROS)}%TODO
+\subsubsection{MPC09 - Requisiti Obbligatori Soddisfatti (ROS)}
 
 \begin{figure}[H]
   \centering
-  %\includegraphics[width=0.9\linewidth]{}
+  \includegraphics[width=0.9\linewidth]{ROS.png}
   \caption{Grafico a linee della metrica ROS}
 \end{figure}
 
@@ -1050,6 +1052,28 @@ In generale il valore di fan-OUT ad eccezione di alcuni casi, è stato relativam
 \textbf{PB}: Questa metrica rappresenta la percentuale di test superati rispetto al totale dei test eseguiti. Il valore ideale è 100\%, mentre il valore accettabile è 90\%.\\
 Il grafico mostra che il valore di questa metrica è sempre stato al di sopra del valore accettabile, e ha raggiunto il valore ideale in prossimità della revisione PB.\\
 Da notare che non è presente alcun valore registrato in corrispondenza della settima iterazione poiché nessun test era ancora stato implementato durante quest'ultima.\\
+
+\section{Metriche non incluse nel cruscotto}
+Le seguenti metriche, pur essendo parte integrante della valutazione della qualità del prodotto, non sono state incluse nel cruscotto di valutazione delle qualità. La loro natura non si presta infatti a una rappresentazione grafica.
+Di seguito sono riportati i dettagli relativi a ciascuna metrica, con le rispettive soglie di accettazione e i valori attualmente rilevati.
+
+\begin{table}[H]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Metrica} & \textbf{Descrizione} & \textbf{Valore accettazione} & \textbf{Valore attuale}\\
+    \hline
+    MPD06 & Tempo medio di risposta & $\leq$ 10 secondi & -- secondi\\
+    \hline
+    MPD07 & Facilità di utilizzo & $\leq$ 7 click & -- click\\
+    \hline
+    MPD08 & Tempo medio di apprendimento & $\leq$ 5 minuti & -- \\
+    \hline
+    MPD13 & Versioni browser supportati & $\geq$ 80\% & -- \\
+    \hline
+    \end{tabular}
+    \caption{Metriche di qualità non incluse nel cruscotto}
+\end{table}
 
 \end{justify}
 \end{document}
