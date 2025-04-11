@@ -12,8 +12,24 @@ src-esterni
 .vscode/
 RTB/images
 *.lof
+.DS_Store
+src-esterni
+
+##Python
+*.py~
+
+##Others
+*.notes
+.vscode
+RTB/images
 *.lot
 .DS_Store
+RTB/images
+src-esterni
+
+##Others
+*.notes
+.vscode
 src-esterni
 
 ##Others

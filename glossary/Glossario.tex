@@ -14,7 +14,7 @@
 \usepackage{eso-pic}
 \usepackage{longtable}
 
-\newcommand\version{1.0.0} %aggiunta versione come variabile
+\newcommand\version{2.0.0} %aggiunta versione come variabile
 
 \graphicspath{{images/}}
 
@@ -91,6 +91,12 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Verificatore} & \textbf{Descrizione}\\
 \endhead
     \hline
+    2.0.0 & 2025-04-04 & Leonardo Trolese & Manuel Gusella & Approvazione documento per PB\\
+    \hline
+    1.1.0 & 2025-04-01 & Alfredo Rubino & Giovanni Cristellon & Modifica struttura del documento e aggiunta dei nuovi termini derivanti dal documento Specifica Tecnica\\
+    \hline
+    1.0.1 & 2025-03-21 & Alfredo Rubino & Federico Pivetta & Aggiunta dei nuovi termini derivanti dal documento Manuale Utente\\
+    \hline
     1.0.0 & 2025-02-21 & Giovanni Cristellon & Riccardo Piva & Approvazione documento per RTB \\
     \hline
     0.2.14 & 2025-02-21 & Leonardo Trolese & Uncas Peruzzi & Aggiunta di alcuni termini\\
@@ -134,22 +140,23 @@
 \newpage
 
 \section{Introduzione}
-Questo documento ha lo scopo di fornire una raccolta di termini specifici e delle loro definizioni. Il glossario è stato pensato per facilitare la comprensione dei concetti chiave utilizzati nei vari documenti redatti. Per questa ragione ogni termine elencato viene accompagnato da una definizione chiara e concisa.\\
+Questo documento ha lo scopo di fornire una raccolta di termini specifici e delle loro definizioni. Il glossario è stato pensato per facilitare la comprensione dei concetti chiave utilizzati nei vari documenti redatti. Per questa ragione ogni termine elencato viene accompagnato da una definizione chiara e concisa.
 
 \section{Struttura del glossario}
 Questo glossario è strutturato come una raccolta di semplici tabelle caratterizzate da due colonne: Termini e Definizioni. I termini sono elencati in ordine alfabetico nella prima colonna, ciascuno accompagnato da una definizione dettagliata nella colonna accanto. \newline
-Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tabella. Questo sistema rende il glossario più ordinato e facilmente consultabile, aiutando il fruitore a trovare velocemente le definizioni di cui ha bisogno.\\
+Per migliorare la navigazione, ad ogni lettera dell'alfabeto corrisponde una tabella. Questo sistema rende il glossario più ordinato e facilmente consultabile, aiutando il fruitore a trovare velocemente le definizioni di cui ha bisogno.
 
 \section{Tabelle Glossario}
-Di seguito sono riportate le tabelle per ogni lettera del glossario.
+Nelle pagine seguenti sono riportate le tabelle per ogni lettera del glossario.
+\newpage
 
 \vspace{2mm}
 \renewcommand{\arraystretch}{1.5} % gestisce altezza delle righe
 \setlength{\tabcolsep}{10pt} % padding orizzontale alle celle
 
-% Aggiungi il pulsante "Torna su" solo a partire dalla pagina 4
+% Aggiungi il pulsante "Torna all'indice" solo a partire dalla pagina 3
 \AddToShipoutPictureBG{
-    \ifnum\value{page}>3 % Appare a partire dalla pagina 4
+    \ifnum\value{page}>2 % Appare a partire dalla pagina 3
     \begin{tikzpicture}[overlay, remember picture]
         \node[anchor=south east, xshift=-10mm, yshift=10mm] at (current page.south east) {
             \hyperlink{indice}{\textbf{\underline{Torna all'indice}}}
@@ -158,7 +165,8 @@ Di seguito sono riportate le tabelle per ogni lettera del glossario.
     \fi
 }
 
-\subsection{A} % LETTERA A
+\subsection*{A} % LETTERA A
+\addcontentsline{toc}{subsection}{A}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -173,11 +181,17 @@ Analisi dei Requisiti & Processo fondamentale nello sviluppo di un prodotto soft
 \hline
 API & Acronimo di "Application Programming Interface", è un insieme di regole e protocolli che consente a diversi software di comunicare e interagire tra loro. Agisce come un ponte, definendo metodi e strutture dati standardizzati per lo scambio di informazioni e funzionalità. Le API permettono alle applicazioni di collaborare in modo efficiente, facilitando l'integrazione e la connessione tra sistemi diversi.\\
 \hline
+API Key & Chiave di autenticazione utilizzata per accedere ai servizi API di Groq, che forniscono elaborazione ad alte prestazioni per modelli di intelligenza artificiale. Questa chiave è necessaria per autenticare le richieste e garantire un accesso sicuro alle risorse e alle funzionalità offerte dalla piattaforma Groq.\\
+\hline
+Architettura Esagonale & Pattern architetturale che separa la logica di business dai dettagli di implementazione, utilizzando porte (ports) e adattatori (adapters) per interfacciarsi con sistemi esterni. Garantisce manutenibilità, testabilità e indipendenza tecnologica.\\
+\hline
 Attore & Entità esterna al sistema che interagisce con esso per raggiungere uno scopo specifico. Gli attori possono essere principali (comunicano attivamente con il sistema) o secondari (invocati dal sistema per fornire supporto o servizi).\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{B} % LETTERA B
+\subsection*{B} % LETTERA B
+\addcontentsline{toc}{subsection}{B}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -192,13 +206,17 @@ Best Practices & Insieme di metodi o procedure considerate le più efficaci e af
 \hline
 Branch & Linea parallela di sviluppo in un sistema di versionamento, che permette di lavorare a modifiche o nuove funzionalità senza alterare il codice principale di un sistema software. I branch consentono a più sviluppatori di lavorare in modo indipendente e permettono una agevole separazione delle attività.\\
 \hline
+Broker & Componente software che funge da intermediario tra sistemi, servizi o altri componenti, facilitando la comunicazione e l’integrazione tra di essi. A seconda del contesto, un broker può gestire il routing dei messaggi, la trasformazione dei dati o la mediazione tra produttori e consumatori di messaggi.\\
+\hline
 Bug & Un errore o malfunzionamento nel codice del software che provoca un comportamento inatteso, indesiderato o errato. I bug possono derivare da errori di programmazione, progettazione o implementazione.\\
 \hline
 Build & Il processo che compone ogni sottoprodotto (eseguibili, documenti, ecc.) a partire da un insieme di parti, come il codice sorgente e le risorse necessarie. Durante questo processo, il codice viene compilato e assemblato per generare una versione eseguibile o distribuita del prodotto, che può essere testata o distribuita. La build include anche la gestione delle dipendenze e, in alcuni casi, l’esecuzione di test automatici per garantire la correttezza e il funzionamento del software.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{C} % LETTERA C
+\subsection*{C} % LETTERA C
+\addcontentsline{toc}{subsection}{C}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -226,8 +244,10 @@ Cruscotto & Traduzione italiana del termine inglese "Dashboard".\\
 CV & Acronimo di "Cost Variance", è una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il costo effettivo (AC) sostenuto fino al momento corrente.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{D} % LETTERA D
+\subsection*{D} % LETTERA D
+\addcontentsline{toc}{subsection}{D}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -240,6 +260,10 @@ Database & Sistema organizzato per raccogliere e gestire dati strutturati, con l
 \hline
 DBMS & Acronimo di "DataBase Management System", è un software progettato per creare e gestire i database. Fornisce un'interfaccia per gli utenti, consentendo di eseguire operazioni come l'inserimento, la modifica, la cancellazione e l'interrogazione dei dati in modo efficiente e sicuro.\\
 \hline
+Design Pattern & Soluzione generale e riutilizzabile a problemi comuni di progettazione software. I design pattern vengono impiegati per strutturare in modo modulare ed efficiente i componenti del sistema, garantendo manutenibilità e scalabilità del codice.\\
+\hline
+Discord & Piattaforma di comunicazione utilizzata per le riunioni interne del team. Fornisce strumenti per chat testuali, chiamate vocali e video, facilitando la collaborazione e la condivisione di informazioni tra i membri del progetto.\\
+\hline
 Docker & Piattaforma che consente di creare, distribuire ed eseguire applicazioni all'interno di container, ovvero ambienti isolati contenenti tutto il necessario per far funzionare una applicazione. I container garantiscono che l'applicazione funzioni in modo coerente su diversi sistemi, migliorando portabilità e gestione.\\
 \hline
 Docker Compose & Strumento che consente di definire e gestire applicazioni multi-container Docker. Permette di configurare un'applicazione complessa con più servizi e le relative dipendenze in un unico file.\\
@@ -247,8 +271,10 @@ Docker Compose & Strumento che consente di definire e gestire applicazioni multi
 Documentazione & Insieme di documenti, manuali e guide che descrivono un prodotto, un sistema o un processo. Ha lo scopo di fornire istruzioni, spiegazioni e dettagli utili per l'uso, la manutenzione e lo sviluppo di un prodotto.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{E} % LETTERA E
+\subsection*{E} % LETTERA E
+\addcontentsline{toc}{subsection}{E}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -265,9 +291,13 @@ ETC & Acronimo di "Estimate to Complete", è una stima dei costi aggiuntivi nece
 \hline
 EV & Acronimo di "Earned Value", è una metrica che rappresenta il valore in euro delle attività realizzate alla data corrente, ovvero il valore dei deliverable rilasciati fino al momento della misurazione in seguito alle attività svolte.\\
 \hline
+Event-Driven & Paradigma architetturale in cui il flusso di esecuzione di un sistema è determinato da eventi, come input utente, messaggi da altri servizi o variazioni di stato. Questo approccio consente alta reattività e scalabilità, ed è utilizzato in sistemi distribuiti, microservizi e piattaforme di stream processing.\\
+\hline
 \end{longtable}
+\newpage
 
-\subsection{F} % LETTERA F
+\subsection*{F} % LETTERA F
+\addcontentsline{toc}{subsection}{F}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -278,11 +308,15 @@ Faker & Libreria Python progettata per generare dati falsi in modo casuale, come
 \hline
 Feedback & Riscontro, positivo o negativo, dato per influenzare il comportamento futuro.\\
 \hline
+Flink & Apache Flink è un framework open-source per l'elaborazione di stream di dati in tempo reale. Nel nostro progetto, Flink processa i dati di posizionamento trasformandoli in messaggi pubblicitari personalizzati e filtrandoli per evitare ripetizioni.\\
+\hline
 Framework & Architettura logica di supporto sulla quale un software può essere progettato e realizzato.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{G} % LETTERA G
+\subsection*{G} % LETTERA G
+\addcontentsline{toc}{subsection}{G}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -293,11 +327,19 @@ Git & Sistema di controllo versione distribuito (DVCS) progettato per tracciare 
 \hline
 GitHub & Piattaforma di hosting per il controllo delle versioni basata su Git, utilizzata principalmente per gestire repository di codice sorgente. Tra le sue funzionalità principali ci sono il controllo delle versioni, strumenti di tracciamento per modifiche e problemi (issues) e la gestione dei progetti tramite funzionalità come le bacheche (project boards), facilitando così l'organizzazione e la collaborazione all'interno dei team di sviluppo.\\
 \hline
+GitHub Actions & Servizio di automazione fornito da GitHub che permette di gestire e automatizzare flussi di lavoro all’interno di un repository. Consente agli sviluppatori di creare, personalizzare e condividere workflow che si attivano in risposta a eventi specifici, come il push di codice o l’apertura di una pull request.\\
+\hline
+Google Meet & Piattaforma di videoconferenza utilizzata per le riunioni esterne del gruppo con la proponente. Consente comunicazioni audio e video, condivisione dello schermo e collaborazione in tempo reale, facilitando l’interazione con gli stakeholder.\\
+\hline
 Grafana & Piattaforma open-source per la visualizzazione e il monitoraggio dei dati. Permette di creare dashboard interattive e personalizzabili, report e grafici utilizzando dati provenienti da diverse fonti.\\
 \hline
+Groq & Azienda nota per la progettazione di unità di elaborazione ad alte prestazioni, ottimizzate per eseguire modelli di deep learning con bassa latenza e alta efficienza. Le sue soluzioni sono utilizzate per applicazioni che richiedono elaborazione in tempo reale, come l'AI generativa e l'analisi di dati su larga scala.\\
+\hline
 \end{longtable}
+\newpage
 
-%\subsection{H} % LETTERA H
+%\subsection*{H} % LETTERA H
+%\addcontentsline{toc}{subsection}{H}
 %\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 %\hline
 %\rowcolor[gray]{0.8}
@@ -307,8 +349,10 @@ Grafana & Piattaforma open-source per la visualizzazione e il monitoraggio dei d
 % & \\
 %\hline
 %\end{longtable}
+%\newpage
 
-\subsection{I} % LETTERA I
+\subsection*{I} % LETTERA I
+\addcontentsline{toc}{subsection}{I}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -316,6 +360,8 @@ Grafana & Piattaforma open-source per la visualizzazione e il monitoraggio dei d
 \endhead
 \hline
 IA & Acronimo italiano di "Intelligenza artificiale", è l'abilità di una macchina di mostrare capacità umane quali il ragionamento, l'apprendimento, la pianificazione e la creatività.\\
+\hline
+IDE & Acronimo di "Integrated Development Environment", è un ambiente software completo, progettato per agevolare lo sviluppo, la compilazione, il debug e la gestione del codice di programmazione. Esso include una serie di strumenti integrati come un editor di testo, un compilatore, un debugger, un gestore di versioni e altre utilità, offrendo un’interfaccia unificata per gli sviluppatori.\\
 \hline
 IEEE & Acronimo di "Institute of Electrical and Electronics Engineers", è un'organizzazione internazionale dedicata all'avanzamento della tecnologia in diversi ambiti, fra cui l'informatica. L'IEEE è noto per la pubblicazione di standard tecnici che definiscono specifiche e linee guida per garantire interoperabilità, qualità, sicurezza e prestazioni nei dispositivi e nei sistemi.\\
 \hline
@@ -326,19 +372,23 @@ Issue & Strumento di tracciamento utilizzato per segnalare e gestire problemi, b
 ITS & Acronimo di "Issue Tracking System", sono dei software utilizzati per gestire e tenere traccia di problemi, bug, richieste di funzionalità e altre attività correlate nel ciclo di sviluppo del software. Questi sistemi forniscono un'infrastruttura organizzativa che supporta la gestione delle problematiche, permettendo a sviluppatori, team di supporto e stakeholder di documentare e risolvere le questioni che emergono durante lo sviluppo del progetto.\\
 \hline
 \end{longtable}
+\newpage
 
-%\subsection{J} % LETTERA J
-%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
-%\hline
-%\rowcolor[gray]{0.8}
-%\textbf{Termine} & \textbf{Definizione}\\
-%\endhead
-%\hline
-% & \\
-%\hline
-%\end{longtable}
+\subsection*{J} % LETTERA J
+\addcontentsline{toc}{subsection}{J}
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+JSON & JSON è un formato leggero per lo scambio di dati, strutturato come coppie chiave-valore. Nel nostro progetto, JSON viene utilizzato per formattare e serializzare i messaggi scambiati tra i diversi componenti del sistema, facilitando la comunicazione tra Kafka, Flink e le altre applicazioni.\\
+\hline
+\end{longtable}
+\newpage
 
-\subsection{K} % LETTERA K
+\subsection*{K} % LETTERA K
+\addcontentsline{toc}{subsection}{K}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -347,9 +397,15 @@ ITS & Acronimo di "Issue Tracking System", sono dei software utilizzati per gest
 \hline
 Kafka & Piattaforma distribuita open-source, progettata per la gestione di flussi di dati in tempo reale. Utilizza un'architettura basata su messaggi pubblicati e sottoscritti (pub-sub), consentendo la raccolta e l'elaborazione di grandi quantità di dati. È comunemente usata per applicazioni di streaming, analisi di eventi e integrazione tra sistemi.\\
 \hline
+Kafka Poisoning & Un tipo di attacco informatico in cui vengono inviati dati dannosi o manipolati ai topic di Apache Kafka, compromettendo l'integrità del flusso di informazioni.\\
+\hline
+Kappa Architecture & Architettura progettata per l'elaborazione di dati in tempo reale, eliminando la distinzione tra batch e streaming. Utilizza un unico flusso di dati continuo per semplificare la gestione e migliorare la scalabilità.\\
+\hline
 \end{longtable}
+\newpage
 
-\subsection{L} % LETTERA L
+\subsection*{L} % LETTERA L
+\addcontentsline{toc}{subsection}{L}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -361,13 +417,17 @@ Kafka & Piattaforma distribuita open-source, progettata per la gestione di fluss
 LLM & Acronimo di "Large Language Model", è un tipo di modello linguistico notevole per essere in grado di ottenere la comprensione e la generazione di linguaggio di ambito generale. Gli LLM acquisiscono questa capacità adoperando enormi quantità di dati per apprendere miliardi di parametri nell'addestramento.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{M} % LETTERA M
+\subsection*{M} % LETTERA M
+\addcontentsline{toc}{subsection}{M}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \endhead
+\hline
+Manuale Utente &  Documento noto anche come guida utente (user guide) o manuale d’uso (user manual), ha lo scopo di assistere l'utente finale nell’installazione e utilizzo di un particolare prodotto, servizio o applicazione.
 \hline
 Marker & Un marker identifica una posizione su una mappa tramite un'immagine standard, per esempio un cerchio, un quadrato o un triangolo.\\
 \hline
@@ -380,8 +440,10 @@ Milestone & Data di riferimento che fissa un punto di avanzamento previsto nel t
 MVP & Acronimo di "Minimum Viable Product", è una versione di un prodotto software che include solo le funzionalità essenziali per soddisfare i bisogni principali degli utenti. L'obiettivo di un MVP è quello di testare il prodotto, raccogliendo feedback degli utenti per migliorarlo e svilupparlo ulteriormente.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{N} % LETTERA N
+\subsection*{N} % LETTERA N
+\addcontentsline{toc}{subsection}{N}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -391,8 +453,10 @@ MVP & Acronimo di "Minimum Viable Product", è una versione di un prodotto softw
 Norme & Insieme di regole, linee guida o standard che stabiliscono comportamenti e procedure da seguire in un determinato contesto o settore. Il loro scopo principale è garantire la sicurezza, la qualità, l'efficienza e l'efficacia delle attività svolte, assicurando che vengano rispettati determinati criteri e pratiche operative.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{O} % LETTERA O
+\subsection*{O} % LETTERA O
+\addcontentsline{toc}{subsection}{O}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -402,23 +466,31 @@ Norme & Insieme di regole, linee guida o standard che stabiliscono comportamenti
 Overleaf & Piattaforma online per la scrittura collaborativa di documenti in \LaTeX. Essa offre un ambiente basato sul web che permette a più utenti di lavorare contemporaneamente sugli stessi documenti, facilitando la collaborazione in tempo reale e la revisione, senza la necessità di configurare software locali.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{P} % LETTERA P
+\subsection*{P} % LETTERA P
+\addcontentsline{toc}{subsection}{P}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
 \textbf{Termine} & \textbf{Definizione}\\
 \endhead
 \hline
+Pannello & È un elemento visuale all'interno di una dashboard, progettato per rappresentare specifici dati o metriche attraverso grafici, tabelle, numeri singoli o altri tipi di visualizzazione. Ogni pannello è configurabile per interrogare una o più fonti dati, applicare trasformazioni e presentare le informazioni in modo chiaro e significativo per il monitoraggio e l'analisi.\\
+\hline
 PB & Acronimo di "Product Baseline", è una tappa chiave nello sviluppo di un progetto, durante la quale viene verificata e dimostrata la solidità dell'architettura definita nella fase precedente (RTB). È la seconda revisione di avanzamento del progetto didattico, corrispondente alla presentazione dell'MVP.\\
 \hline
-Percorso & Un percorso è lo spostamento che un utente sta compiendo con un mezzo, in questo caso la bicicletta noleggiata.\\
+Percorso & Un percorso è lo spostamento che un utente sta compiendo con un mezzo, nel contesto del nostro progetto, è quello compiuto dall'utente con la bicicletta noleggiata.\\
 \hline
 PoC & Acronimo di "Proof of Concept", è un prototipo iniziale realizzato per dimostrare la fattibilità tecnologica di un prodotto atteso, permettendo di delineare il suo potenziale di realizzazione.\\
+\hline
+PoI & Un Punto di Interesse è una localizzazione geografica rilevante all'interno del sistema. Nel nostro progetto, i PoI vengono utilizzati per identificare posizioni specifiche, ossia le attività che offrono dei servizi.\\
 \hline
 Processo & Insieme di attività collegate tra loro, finalizzate al raggiungimento di un obiettivo specifico, utilizzando risorse e seguendo regole prestabilite. Deve essere condotto in modo sistematico, disciplinato e misurabile.\\
 \hline
 Progetto & Insieme di attività coordinate e pianificate, con risorse limitate, finalizzate al raggiungimento di un obiettivo a partire da determinate specifiche. Ha una data d'inizio e una data di fine fissate.\\
+\hline
+Prompt & Input testuale fornito a un modello linguistico per generare una risposta. Utilizzato per creare messaggi pubblicitari personalizzati basati su contesto e preferenze.\\
 \hline
 Proponente & L'entità che avanza una proposta per la realizzazione di un progetto. Il proponente definisce i requisiti e gli obiettivi finali del progetto, garantendo che il risultato finale risponda alle sue necessità. Nel caso del nostro progetto, il proponente è l'azienda SyncLab.\\
 \hline
@@ -431,8 +503,10 @@ Pull Request & Richiesta da parte di un membro del team, solitamente effettuata 
 Python & Linguaggio di programmazione ad alto livello, semplice e versatile. Supporta più paradigmi di programmazione, tra cui quello ad oggetti e quello funzionale. Grazie alla sua sintassi, viene utilizzato in una vasta gamma di applicazioni, tra cui sviluppo software, automazione, analisi dei dati e intelligenza artificiale.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{Q} % LETTERA Q
+\subsection*{Q} % LETTERA Q
+\addcontentsline{toc}{subsection}{Q}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -442,8 +516,10 @@ Python & Linguaggio di programmazione ad alto livello, semplice e versatile. Sup
 Query & Istruzione formale utilizzata per interagire con i sistemi di gestione dei database. Solitamente scritta in linguaggi come SQL, è uno strumento fondamentale per gestire e analizzare grandi quantità di informazioni in modo strutturato.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{R} % LETTERA R
+\subsection*{R} % LETTERA R
+\addcontentsline{toc}{subsection}{R}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -461,8 +537,10 @@ RSI & Acronimo di "Requirements Stability Index", è una metrica che  misura la 
 RTB & Acronimo di "Requirements and Technology Baseline", è la prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente; motiva le tecnologie, i framework, le librerie adottate dimostrandone sia l'adeguatezza sia la compatibilità tramite il Proof of Concept (PoC).\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{S} % LETTERA S
+\subsection*{S} % LETTERA S
+\addcontentsline{toc}{subsection}{S}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -485,13 +563,17 @@ SQL & Acronimo di "Structured Query Language", è un linguaggio di programmazion
 \hline
 Stakeholder & Può essere una persona, un gruppo o un'organizzazione che ha influenza sul prodotto e sul progetto. Può includere i clienti, i dipendenti, i fornitori ed eventuali regolatori.\\
 \hline
+Stream Processing & Tecnica di elaborazione dei dati in tempo reale, in cui i flussi di dati vengono processati in modo continuo man mano che vengono generati, senza necessità di memorizzazione preventiva. È utilizzata per analisi in tempo reale, monitoraggio e rilevamento di eventi.\\
+\hline
 SV & Acronimo di "Schedule Variance", trattasi di una metrica che rappresenta la differenza in euro tra il valore guadagnato (EV) e il valore pianificato (PV) fino al momento corrente.\\
 \hline
 SyncLab & Azienda italiana attenta ai paradigmi della trasformazione digitale che realizza prodotti e soluzioni per diversi mercati quali: Sanità, Industria, Energia, Telco, Finanza e Trasporti \& Logistica. Offre anche consulenze per diversi temi come: GDPR, Big Data, Cloud Computing, IoT, Mobile e Cyber Security.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{T} % LETTERA T
+\subsection*{T} % LETTERA T
+\addcontentsline{toc}{subsection}{T}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -505,8 +587,10 @@ Test & Un processo o un'attività finalizzata a verificare il funzionamento di u
 Topic & In Apache Kafka, è una categoria che consente di organizzare e suddividere i flussi di messaggi. I topic sono essenziali nel modello di pubblicazione/sottoscrizione di Kafka, dove i produttori inviano messaggi a specifici topic e i consumatori si sottoscrivono a tali topic per ricevere i messaggi di loro interesse.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{U} % LETTERA U
+\subsection*{U} % LETTERA U
+\addcontentsline{toc}{subsection}{U}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -518,8 +602,10 @@ UML & Acronimo di "Unified Modeling Language", è un linguaggio di modellazione 
 User story & Descrizione concisa di una funzionalità o di un requisito del sistema, espressa dal punto di vista dell'utente. Viene utilizzata per definire i requisiti di un prodotto in modo semplice e comprensibile, per questo è solitamente scritta in linguaggio naturale.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{V} % LETTERA V
+\subsection*{V} % LETTERA V
+\addcontentsline{toc}{subsection}{V}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -529,8 +615,10 @@ User story & Descrizione concisa di una funzionalità o di un requisito del sist
 Versionamento & Il processo di "version control" consente di stabilire la storia cronologica delle azioni eseguite per una certa attività, tracciando tutti i cambiamenti effettuati e fornendo la possibilità di ritornare a uno stadio precedente se necessario. Il versionamento è fondamentale per mantenere il controllo sulle modifiche, evitare perdite di dati e permettere una gestione efficace delle versioni in progetti complessi.\\
 \hline
 \end{longtable}
+\newpage
 
-\subsection{W} % LETTERA W
+\subsection*{W} % LETTERA W
+\addcontentsline{toc}{subsection}{W}
 \begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 \hline
 \rowcolor[gray]{0.8}
@@ -542,8 +630,10 @@ Walkthrough & Tecnica di verifica di un documento o di un codice in modo approfo
 Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei comportamenti che devono essere adottati da un team o un'organizzazione per svolgere le proprie attività allo stato dell'arte.\\
 \hline
 \end{longtable}
+\newpage
 
-%\subsection{X} % LETTERA X
+%\subsection*{X} % LETTERA X
+%\addcontentsline{toc}{subsection}{X}
 %\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 %\hline
 %\rowcolor[gray]{0.8}
@@ -553,8 +643,10 @@ Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei 
 % & \\
 %\hline
 %\end{longtable}
+%\newpage
 
-%\subsection{Y} % LETTERA Y
+%\subsection*{Y} % LETTERA Y
+%\addcontentsline{toc}{subsection}{Y}
 %\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
 %\hline
 %\rowcolor[gray]{0.8}
@@ -564,16 +656,19 @@ Way of Working & Insieme delle metodologie, dei processi, degli strumenti e dei 
 % & \\
 %\hline
 %\end{longtable}
+%\newpage
 
-%\subsection{Z} % LETTERA Z
-%\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
-%\hline
-%\rowcolor[gray]{0.8}
-%\textbf{Termine} & \textbf{Definizione}\\
-%\endhead
-%\hline
-% & \\
-%\hline
-%\end{longtable}
+\subsection*{Z} % LETTERA Z
+\addcontentsline{toc}{subsection}{Z}
+\begin{longtable}{|>{\centering\arraybackslash}m{2.5cm}|>{\arraybackslash}m{12.5cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Termine} & \textbf{Definizione}\\
+\endhead
+\hline
+ Zookeeper & Servizio di coordinamento distribuito utilizzato nel progetto per garantire la gestione affidabile dei nodi e la sincronizzazione tra le componenti del sistema. Nel contesto della nostra architettura, viene impiegato per supportare Apache Kafka, gestendo i broker, mantenendo metadati di configurazione e coordinando le operazioni di leader election. Questo assicura un'elevata disponibilità e tolleranza ai guasti nella gestione dello streaming dei dati.\\
+\hline
+\end{longtable}
+\newpage
 
 \end{document}
