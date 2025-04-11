@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tabularx}
 \usepackage{hyperref}
-\usepackage{array}  
+\usepackage{array}
 \usepackage{graphicx}
 \usepackage{geometry} 
 \usepackage{fancyhdr} 
@@ -11,8 +11,9 @@
 \usepackage{ragged2e}
 \usepackage{anyfontsize}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{tabularx, etoolbox} 
+\usepackage{tabularx, etoolbox}
 \usepackage{eso-pic}
+\usepackage{titlesec}
 \usepackage{float}
 \usepackage{longtable}
 
@@ -21,19 +22,31 @@
 \graphicspath{{images/}}
 %\graphicspath{{../images/}}
 
-\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{5}
 
-%cambio misure della pagina
+\renewcommand\theparagraph{\thesubsubsection.\arabic{paragraph}}
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+  {0pt}{1ex plus .2ex}{1ex plus .2ex}
+
+\renewcommand\thesubparagraph{\theparagraph.\arabic{subparagraph}}
+\titleformat{\subparagraph}
+  {\normalfont\normalsize\itshape}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}
+  {0pt}{1ex plus .2ex}{1ex plus .2ex}
+
 \geometry{a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm}
-%ebdfc7
 \definecolor{colorePie}{HTML}{ebdfc7}
+
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \lhead{
     \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
 }
-\rhead{\textcolor[HTML]{9e978a}{ Nome Documento v\version}
+\rhead{\textcolor[HTML]{9e978a}{ Nome Documento v\version} % cambiare nome
 }
 \setlength{\headheight}{25pt}
 \cfoot{\thepage}
@@ -48,27 +61,22 @@
 \begin{titlepage}
     \setcounter{page}{0}
     \centering
-    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    
     \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
     
-    % Titolo
      {\fontsize{40}{40}\bfseries Nome\_Documento}\selectfont \\[3.9em]
     
- % Email del gruppo
     {\large sevenbits.swe.unipd@gmail.com} \\[3em]
     
-    % Spazio per il logo dell'università
     \hfill
       
-    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+    \AddToShipoutPictureBG{
         \ifnum\value{page}=0
         \begin{tikzpicture}[overlay]
         
-            % Definisce un triangolo blu in basso a destra
             \fill[colorePie] 
                 (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
             
-            % Inserisce il logo all'interno del triangolo
             \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
                 \includegraphics[width=4.5cm]{LogoUnipd.png}
             };
@@ -76,7 +84,7 @@
         \fi
     }
         
-\vfill % Aggiunge spazio verticale per centrare il contenuto
+\vfill
 \end{titlepage}
 \newpage
 \clearpage
@@ -96,7 +104,8 @@
 \endhead
 \hline
 \end{longtable}
-\rowcolors{0}{}{} % Riporta le righe alla colorazione originale
+
+\rowcolors{0}{}{}
 
 \newpage
 \tableofcontents
@@ -108,32 +117,6 @@
 \newpage
 \begin{justify}
 
-\section{Introduzione}
-
-%% Codice per Immagini %%
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.5\linewidth]{NomeImmagine.png}
-%    \caption{TestoCaption}
-%    \label{LabelImmagine}
-%\end{figure}
-
-
-%% Codice per Tabelle %%
-
-%\begin{center}
-%\renewcommand{\arraystretch}{1.5}
-%\begin{longtable}
-%{|>{\centering\arraybackslash}m{2.7cm}|>       {\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.1cm}|}
-%\hline
-%\textbf{} & \textbf{} & \textbf{}\\
-%\endhead
-%\hline
-%\hline
-%\caption{Requisiti$_G$ funzionali}
-%\end{longtable}
-%\end{center}
 
 \end{justify}
 \end{document}
