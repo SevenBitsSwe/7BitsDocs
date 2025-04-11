@@ -1,0 +1,169 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{array}  
+\usepackage{graphicx}
+\usepackage{geometry} 
+\usepackage{fancyhdr} 
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{anyfontsize}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx, etoolbox} 
+\usepackage{eso-pic}
+\usepackage{float}
+\usepackage{longtable}
+
+\graphicspath{{images}}
+%\graphicspath{{../images/}}
+
+\setcounter{secnumdepth}{4}
+
+
+%cambio misure della pagina
+\geometry{a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm}
+%ebdfc7
+\definecolor{colorePie}{HTML}{ebdfc7}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{
+    \parbox[c]{1cm}{\includegraphics[width=1.1cm]{Sevenbitslogo.png}}
+}
+\rhead{\textcolor[HTML]{9e978a}{LETTERA DI PRESENTAZIONE}
+}
+\setlength{\headheight}{25pt}
+\cfoot{\thepage}
+
+
+\renewcommand*\contentsname{Indice}
+\renewcommand{\listfigurename}{Elenco delle figure}
+\renewcommand{\listtablename}{Elenco delle tabelle}
+
+\begin{document}
+
+% Pagina del titolo
+\begin{titlepage}
+    \setcounter{page}{0}
+    \centering
+    % Inserisci il logo del gruppo (modifica il percorso dell'immagine)
+    \includegraphics[width=7.2cm]{Sevenbitslogo.png} \\[2cm] 
+    
+    % Titolo
+     {\fontsize{30}{30}\bfseries Lettera di Presentazione PB}\selectfont \\[3em]
+    % Email del gruppo
+    {\large sevenbits.swe.unipd@gmail.com} \\[3em]
+    
+    % Sottotitolo
+    {\huge Componenti} \\[2.7em]
+    {\large 
+     \begin{tabular}{l l l}
+       Cristellon & Giovanni & 1216730\\
+       Gusella & Manuel & 2076430\\
+       Peruzzi & Uncas & 2068239\\
+       Piva & Riccardo & 2079241\\
+       Pivetta & Federico & 2009693\\
+       Rubino & Alfredo & 2076435\\
+       Trolese & Leonardo & 2068238\\ 
+     \end{tabular}
+    } \\[3em]
+    
+    % Spazio per il logo dell'università
+    \hfill
+      
+    \AddToShipoutPictureBG{ % Imposta il triangolo con logo
+        \ifnum\value{page}=0
+        \begin{tikzpicture}[overlay]
+        
+            % Definisce un triangolo blu in basso a destra
+            \fill[colorePie] 
+                (current page.south east) -- ++(-9cm,0) -- ++(9cm,9cm);
+            
+            % Inserisce il logo all'interno del triangolo
+            \node[anchor=south east, xshift=-0.3cm, yshift=0.3cm] at (current page.south east) {
+                \includegraphics[width=4.5cm]{LogoUnipd.png}
+            };
+        \end{tikzpicture}
+        \fi
+    }
+        
+\vfill % Aggiunge spazio verticale per centrare il contenuto
+\end{titlepage}
+\newpage
+\noindent
+Egregio prof. Vardanega,\\
+Egregio prof. Cardin,\\
+con la presente lettera il gruppo SevenBits è lieto di comunicarVi la propria candidatura alla revisione di avanzamento Product Baseline, per il capitolato denominato:
+\begin{center}
+\textcolor{blue}{\texttt{\href{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C4.pdf}{C4 - NearYou Smart custom advertising platform}}}\\
+\end{center}
+proposto dall'azienda SyncLab.\\
+Tutta la documentazione riguardante il lavoro svolto è consultabile nel sito web del nostro gruppo:
+\begin{center}
+\textcolor{blue}{\texttt{\url{https://sevenbitsswe.github.io/7BitsDocs/documentation.html}}}\\
+\end{center}
+All'interno della sezione ``PB'', oltre alla presente lettera, sono inclusi i seguenti documenti:
+\begin{itemize}
+\item Documentazione Esterna:
+  \begin{itemize}
+    \item Analisi dei Requisiti v2.0.0;
+    \item Piano di Progetto v2.0.0;
+    \item Piano di Qualifica v2.0.0;
+    \item Manuale Utente v.1.0.0;
+    \item Specifica Tecnica v1.0.0;
+    \item Verbali esterni.
+  \end{itemize}
+\item Documentazione Interna:
+  \begin{itemize}
+    \item Norme di Progetto v2.0.0;
+    \item Glossario v2.0.0;
+    \item Verbali interni.
+  \end{itemize}
+\end{itemize}
+
+\noindent
+Viene inoltre reso disponibile il Minimum Viable Product, approvato dall'azienda proponente in data 2025-04-02 e disponibile al seguente link:
+\begin{center}
+\textcolor{blue}{\texttt{\url{https://github.com/SevenBitsSwe/MVP}}}\\
+\end{center}
+Con la presente lettera desideriamo aggiornarVi in merito ai costi e alle tempistiche del progetto.\\
+La spesa complessiva sostenuta ammonta a \textbf{12.510 €}, risultando inferiore rispetto alla cifra preventivata in fase di candidatura alla RTB, pari a \textbf{12.950 €}, con un risparmio complessivo di \textbf{440 €}.\\
+Tuttavia, si è verificato un lieve ritardo rispetto a quanto dichiarato alla revisione RTB, la data di ultima consegna era infatti prevista per il \textbf{4 aprile 2025} ma è stata spostata al \textbf{11 aprile 2025} a causa della necessità di ultimare le verifiche di una parte della documentazione. Nonostante il lieve slittamento della consegna finale, desideriamo sottolineare che la consegna del prodotto MVP all'azienda e della documentazione richiesta per la revisione con il professor Cardin sono state completate con successo entro la data prevista del \textbf{4 aprile 2025}.\\
+Di seguito viene riportata la tabella riassuntiva delle ore di lavoro impiegate da ogni membro del team:
+\begin{longtable}{|>{\centering\arraybackslash}m{3.5cm}|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{4cm}|}
+\hline
+\rowcolor[gray]{0.8}
+\textbf{Membro} & \textbf{Ore Impiegate} & \textbf{Ore Previste}\\
+\endhead
+\hline
+Cristellon Giovanni & 87 & 95\\
+\hline
+Gusella Manuel & 89 & 95\\
+\hline
+Peruzzi Uncas & 91 & 92\\
+\hline
+Piva Riccardo & 93 & 95\\
+\hline
+Pivetta Federico & 93 & 95\\
+\hline
+Rubino Alfredo & 84 & 85\\
+\hline
+Trolese Leonardo & 90 & 92\\ 
+\hline
+\end{longtable}
+
+\begin{longtable}{|c|c|}
+\hline
+\cellcolor[gray]{0.8} Totale Utilizzate & 627 ore \\
+\hline
+\cellcolor[gray]{0.8} Rimanenti & 22 ore \\
+\hline
+\end{longtable}
+
+\vspace{2mm}
+\noindent
+Cordiali saluti,\\
+Gruppo SevenBits
+\end{document}
